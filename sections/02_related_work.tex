@@ -1,0 +1,28 @@
+\section{Related Work}
+\label{sec:related}
+\paragraph{Dexterous visual control.}
+ViserDex combines monocular RGB pose estimation with reinforcement learning and
+teacher-student distillation for in-hand reorientation~\cite{bhardwaj2026viserdex}.
+It is relevant to the visual control stack, but it does not directly supply the
+hidden semantic-target search task studied here. DexArt provides a benchmark
+for generalizable dexterous manipulation of articulated
+objects~\cite{bao2023dexart}; its emphasis on object generalization informs our
+split design, rather than serving as a directly interchangeable task.
+
+\paragraph{Language-conditioned policies and imitation.}
+UniDex studies universal dexterous hand control using egocentric human
+videos~\cite{zhang2026unidex}. Adapting a released checkpoint is a relevant test
+of pretrained dexterous representations, subject to hand and observation
+compatibility. Diffusion Policy models action sequences through a conditional
+denoising process~\cite{chi2023diffusion}. Our proposed comparator would add
+language conditioning; results must be attributed to that adaptation rather
+than presented as an unmodified published baseline. A visual-language PPO
+policy is also a semantic comparator, even without large-scale VLA pretraining.
+
+\paragraph{Active perception and memory.}
+CoMe-VLA learns active perception with cognitive and memory mechanisms from
+egocentric human data~\cite{li2026actsenseact}. This prior work rules out a broad
+novelty claim based merely on language, memory, and information-seeking actions.
+Our candidate distinction is evidence about object surfaces whose visibility
+and contact constraints are changed by the same finger actions. Establishing
+this distinction requires a fuller literature review and controlled tests.

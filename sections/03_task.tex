@@ -1,0 +1,60 @@
+\section{Task and Evaluation Contract}
+\label{sec:task}
+\subsection{Observations and actions}
+An episode provides an instruction $\ell$ naming a unique target region on a
+grasped object. The initial state may hide this region from a fixed camera.
+The deployable actor receives
+\begin{equation}
+  o_t = (I_t, p_t, a_{t-1}), \qquad
+  a_t \in \R^{21},
+\end{equation}
+where $I_t$ is the camera image and $p_t$ is available hand proprioception.
+RGB versus RGB-D remains a benchmark decision; every main comparator must use
+the same selected modality. The action represents 21 joint commands with common
+limits, control frequency, and filtering. The actor may maintain history but
+cannot read a target face index, hidden surface labels, or simulator object
+pose. Privileged state may be used for training rewards, an asymmetric critic,
+and a separately labeled diagnostic oracle.
+
+\subsection{Search, presentation, and success}
+Ground-truth annotation identifies which surface region satisfies $\ell$.
+Evaluation measures its visible fraction $v_t$, projected area $A_t$, and
+camera-relative facing angle $\theta_t$. The visible fraction uses an
+unoccluded projected reference mask for the same region and pose; masks behind
+the object or with negligible projected area are not valid presentations.
+Object linear and angular speed are denoted $u_t$ and $\omega_t$.
+Define the per-step display condition as
+\begin{equation}
+\begin{split}
+ g_t ={}& \ind[v_t \geq v_{\min},\ A_t \geq A_{\min},\
+                  \theta_t \leq \theta_{\max}]\\
+       &\cdot\ind[\|u_t\| \leq u_{\max},\
+                  \|\omega_t\| \leq \omega_{\max}].
+\end{split}
+\end{equation}
+At a fixed evaluation horizon $T$, terminal stable presentation succeeds only
+if $g_t=1$ throughout the final dwell window and the object has never dropped.
+An earlier successful dwell followed by loss of visibility is reported as an
+intermediate achievement, not terminal success. Presentation does not require
+one arbitrary object quaternion or yaw, unless the instruction specifies an
+upright reading direction. Thresholds and the horizon must be frozen after
+calibration and before comparing methods.
+
+Additional metrics include time to first clear target exposure, time to first
+completed display dwell, drop rate, wrong-target declaration rate, and recovery
+after disturbances. Exposure is a geometric metric; it does not by itself prove
+the policy recognized the target. A recognition or stopping output, where used,
+is assessed separately. Timeouts remain failures in success rates and must not
+disappear from time-to-success analyses.
+
+\subsection{Splits and supervision}
+Marker identity and placement are randomized independently of the initial pose.
+Evaluation separates held-out layouts, attribute compositions, and object
+instances; unseen geometry is a later extension. Counterfactual instructions
+on the same object test whether language changes the selected surface. A fixed
+color-to-face map is only a debugging task, since it permits semantic shortcuts.
+
+``Without human demonstrations'' means without human task-action demonstrations
+for the target task. Simulator rewards, simulation-generated trajectories, and
+external visual-language pretraining are disclosed separately. A teacher that
+knows the hidden target location is not an equal-information search policy.

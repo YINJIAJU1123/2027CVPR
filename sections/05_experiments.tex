@@ -1,0 +1,77 @@
+\section{Planned Experiments}
+\label{sec:experiments}
+\textbf{Status.} This section specifies experiments to run. There are no measured
+results for the new semantic search-and-presentation task.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Initial comparisons and the question each answers. All rows are planned.
+Every main baseline receives the same instruction and deployable sensors.}
+\label{tab:baselines}
+\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}p{0.35\columnwidth}>{\raggedright\arraybackslash}X@{}}
+\toprule
+Comparator & Primary question \\
+\midrule
+Scan, recognize, hold & Does simple systematic exploration suffice? \\
+Recurrent language PPO & What does ordinary unified interaction learning achieve? \\
+Candidate memory PPO & Does explicit evidence improve on matched recurrence? \\
+Language-conditioned DP & How far does a strong fixed-data imitation policy get? \\
+Matched BC / BC$\to$PPO & What changes when the same policy receives interaction? \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{RQ1: learning semantic search}
+First validate visibility and stability measurements on controlled rendered
+states, including a correct face blocked by fingers and a briefly visible face
+followed by a drop. Then compare scanning, recurrent PPO, and the candidate
+memory policy. The scanning baseline follows a predeclared inspection sequence,
+uses language-conditioned recognition, and invokes a trained holding controller
+when evidence is sufficient. Its training and controller costs are reported.
+
+All policies are evaluated on the same episodes with initially visible and
+initially hidden targets reported separately. Control gains, action limits,
+initial states, and simulator budgets are held constant where applicable.
+Architecture tests additionally match the encoder, PPO setup, reward, and
+approximately the trainable parameter count. Scanning versus an end-to-end
+policy is a system comparison, not an isolated memory ablation.
+
+\subsection{RQ2: interaction and recovery}
+A language-conditioned Diffusion Policy (DP)~\cite{chi2023diffusion} is trained
+on simulation-generated demonstrations at several fixed data budgets. The
+generator must acquire hidden-target evidence through permitted observations;
+privileged target-aware trajectories, if tested, form a separate upper-bound
+condition. Data generation, teacher training, failed rollouts, and filtering
+costs are recorded.
+
+To isolate interaction from architecture, compare behavior cloning (BC) and
+BC followed by PPO within the same policy family and initialization. Include a
+BC continuation control using additional observable trajectories collected with
+a comparable simulation budget; otherwise a gain may reflect extra data rather
+than the learning objective. Report success against both total interaction and
+compute, because optimizing these budgets simultaneously is generally
+impossible. A DP-versus-PPO result alone is a system comparison.
+
+Evaluation includes held-out resets, bounded object disturbances, temporary
+occlusion, and goal switches. For goal switches, the dwell window is evaluated
+against the new instruction after the switch. Recovery is measured from common
+perturbed states, with disturbance magnitude and available recovery time fixed
+in advance. At least three independent training seeds are proposed, with paired
+evaluation episodes and seed-level uncertainty. Evaluation seeds of one trained
+policy are not independent training replicates.
+
+\subsection{Ablations and later comparisons}
+Mechanism ablations remove memory, remove negative inspected-region evidence,
+and reset memory after occlusion. Additional diagnostics use permuted language,
+an oracle grounder, or oracle surface association. Oracle rows must state their
+extra information and remain separate from deployable main comparisons.
+Figures should pair rendered trajectories with target visibility and object
+speed, so success and failure are visually auditable.
+
+After the task and initial controls are stable, add a VLM planner with a shared
+continuous-goal controller, and assess adaptation of a released UniDex
+checkpoint~\cite{zhang2026unidex}. The latter may need a hand-specific action
+interface and different sensor preprocessing. Its pretraining data, additional
+modalities, and tuning budget must be visible in the comparison. Neither
+baseline is assumed to run on the current hand without adaptation.

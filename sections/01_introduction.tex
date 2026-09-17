@@ -1,0 +1,34 @@
+\section{Introduction}
+\label{sec:intro}
+Consider an instruction such as ``show the face with the striped triangle.''
+When that face is hidden, a robot cannot resolve the request from its first
+image. It must manipulate the object to inspect additional surfaces, recognize
+the requested mark, and find a grasp that keeps it visible. Rotating the correct
+surface toward a camera is insufficient if a finger covers the distinguishing
+pattern or the object immediately slips.
+
+This problem couples perception and contact-rich control. An action can improve
+visibility while reducing grasp stability; another can secure the object while
+hiding the relevant evidence. Recent visual in-hand reorientation systems
+address perception and control~\cite{bhardwaj2026viserdex}, while general
+dexterous policies incorporate language and human-derived
+priors~\cite{zhang2026unidex}. These developments motivate a more specific
+question: how should a hand gather and retain evidence about an initially
+unobserved semantic target while preparing to display it?
+
+The proposed study has two research questions. \textbf{RQ1:} Can an agent learn
+language-guided search and stable presentation without human task-action
+demonstrations? \textbf{RQ2:} Does interaction improve search and recovery on
+states and trajectories that a finite demonstration set does not cover?
+Neither question presupposes that reinforcement learning universally
+outperforms imitation. RQ2 requires controlled comparisons within the same
+policy family as well as a credible imitation baseline.
+
+The intended contributions, conditional on experimental evidence, are a
+benchmark that jointly measures semantic discovery and stable display, a
+mechanism for accumulating actionable evidence under occlusion, and an analysis
+of how interaction changes exploration and recovery. Combining language,
+recurrence, and PPO alone is not treated as a sufficient methodological
+contribution. Before drafting a results-based introduction, we must show a
+measurable benefit over a strong recurrent policy under the same observations,
+reward, and interaction budget.

@@ -1,0 +1,46 @@
+\section{Candidate Approach}
+\label{sec:method}
+\subsection{Ordinary recurrent policy first}
+The first learned control baseline encodes images and language with a shared
+frozen encoder, fuses them with proprioception, and updates a recurrent state:
+\begin{equation}
+\begin{aligned}
+ h_t &= f_\eta(h_{t-1}, E_I(I_t), E_L(\ell), p_t, a_{t-1}),\\
+ a_t &\sim \pi_\phi(\cdot\mid h_t).
+\end{aligned}
+\end{equation}
+PPO trains the actor using a common task reward. This establishes whether an
+ordinary history representation already handles the benchmark. The final
+reward and curriculum are open design choices; all mechanism comparisons
+must use the same choices. Ground-truth scoring is computed outside the actor
+and is not passed back as a hidden-target observation.
+
+\subsection{Evidence about surfaces}
+The candidate extension is an evidence memory $m_t$ that distinguishes surfaces
+not yet inspected, surfaces inspected without the requested mark, and positive
+target observations with uncertain current visibility. Crucially, occlusion is
+not negative semantic evidence: losing sight of a previously observed mark must
+not erase its identity. A direct policy would condition its joint actions on
+$m_t$, language, current vision, and proprioception.
+
+The memory representation is unresolved. Object-aligned slots may make coverage
+explicit, but require an association or pose estimate derived from permitted
+observations. Learned visual tokens reduce geometric assumptions but can lose
+correspondence as the object rotates. Ground-truth surface identities are
+allowed only in a labeled oracle ablation. The first implementation should
+therefore be selected after measuring correspondence errors and the failure
+modes of the recurrent baseline.
+
+\subsection{Learning and falsifiable mechanism tests}
+The candidate actor is intended to learn through simulation interaction without
+human task-action demonstrations. Auxiliary objectives for visible-region
+grounding or temporal consistency are possibilities, not established components.
+Any coverage reward or auxiliary privileged label must be disclosed and tested
+separately from the memory architecture.
+
+The mechanism predicts fewer unproductive revisits and better return to a
+previously found target after occlusion, at a comparable drop rate. If a
+parameter-matched recurrent PPO policy performs equally well, or gains disappear
+after equalizing rewards and observation access, the evidence-memory hypothesis
+is unsupported. We should simplify or revise the method rather than claim a
+benefit from architectural naming alone.
