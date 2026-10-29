@@ -1,0 +1,46 @@
+{
+  "status": "completed",
+  "identity": {
+    "checkpoint_sha256": "69beb7fbc91b7b2cc5e7bb95aee2187182103a6e103670c6460d809616f5deda",
+    "adapter_sha256": "d5a060b87eb720b4f08697e6861854a50c8e6780b5c36cb23d33d5e9f9f105c7"
+  },
+  "lora_tensor_count": 144,
+  "lora_parameter_count": 2949120,
+  "enabled_vs_saved_service": {
+    "latent_max_abs": 0.0,
+    "latent_l2_mean": 0.0,
+    "latent_l2_max": 0.0,
+    "readable_probability_abs_mean": 0.0,
+    "readable_probability_abs_max": 0.0,
+    "skill_changed": 0,
+    "accepted_changed": 0,
+    "image_hash_equal": 40
+  },
+  "enabled_vs_disabled": {
+    "latent_max_abs": 0.05244607292115688,
+    "latent_l2_mean": 0.29732890268995715,
+    "latent_l2_max": 0.4001018296231226,
+    "readable_probability_abs_mean": 0.18576430510729552,
+    "readable_probability_abs_max": 0.6061670519411564,
+    "skill_changed": 33,
+    "accepted_changed": 1,
+    "image_hash_equal": 40
+  },
+  "conditions": {
+    "enabled": {
+      "cases": 40,
+      "accepted": 38,
+      "nearest_goal_correct": 40,
+      "accepted_correct": 38
+    },
+    "disabled": {
+      "cases": 40,
+      "accepted": 39,
+      "nearest_goal_correct": 7,
+      "accepted_correct": 7
+    }
+  },
+  "peak_allocated_mib": 4232.23095703125,
+  "elapsed_s": 12.441259796993108,
+  "limitation": "Same head after disabling its co-trained adapter. This tests dependency, not model-quality superiority."
+}

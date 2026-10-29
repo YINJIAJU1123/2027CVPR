@@ -1,0 +1,77 @@
+{
+  "format": "formal_vlm_exact_rgb_overlap_audit_v1",
+  "at": "2026-10-29T12:25:10.086570+00:00",
+  "formal_episode_files": 40,
+  "requests_with_hash": 130,
+  "unique_formal_rgb_hashes": 130,
+  "request_pixels_verified": 130,
+  "missing_hash": [],
+  "pixel_mismatch": [],
+  "datasets": {
+    "teacher_train": {
+      "capture_seed": 182811,
+      "shape": [
+        4096,
+        120,
+        120,
+        3
+      ],
+      "dtype": "uint8",
+      "frames": 4096,
+      "unique_rgb_hashes": 4096,
+      "matched_frames": 0,
+      "matched_unique_hashes": 0,
+      "matches": []
+    },
+    "teacher_validation": {
+      "capture_seed": 182812,
+      "shape": [
+        1024,
+        120,
+        120,
+        3
+      ],
+      "dtype": "uint8",
+      "frames": 1024,
+      "unique_rgb_hashes": 1024,
+      "matched_frames": 0,
+      "matched_unique_hashes": 0,
+      "matches": []
+    },
+    "student_train": {
+      "capture_seed": 182931,
+      "shape": [
+        4800,
+        120,
+        120,
+        3
+      ],
+      "dtype": "uint8",
+      "frames": 4800,
+      "unique_rgb_hashes": 4800,
+      "matched_frames": 0,
+      "matched_unique_hashes": 0,
+      "matches": []
+    },
+    "student_validation": {
+      "capture_seed": 182932,
+      "shape": [
+        2400,
+        120,
+        120,
+        3
+      ],
+      "dtype": "uint8",
+      "frames": 2400,
+      "unique_rgb_hashes": 2400,
+      "matched_frames": 0,
+      "matched_unique_hashes": 0,
+      "matches": []
+    }
+  },
+  "interpretation": "Exact uint8 RGB pixel comparison. No-match excludes byte-identical frames in these four capture datasets only. It does not exclude near-duplicates, fixed-layout shortcuts, or unknown pretraining data.",
+  "formal_requests_by_run": {
+    "vlm_183101": 62,
+    "vlm_183102": 68
+  }
+}

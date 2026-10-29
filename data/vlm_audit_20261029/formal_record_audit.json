@@ -1,0 +1,119 @@
+{
+  "source": "outputs/pose_latent_student_v1/pure_vlm_addendum_20261029/formal_export/trials.json",
+  "source_sha256": "3cd487ff4b334f10c4a1351d8641b7a5bce59b07c66f7ea3224936de3bb6de8f",
+  "conditions": {
+    "finetuned_vlm_bare": {
+      "trials": 40,
+      "success": 27,
+      "outcomes": {
+        "success": 27,
+        "false_stop": 4,
+        "drop": 9
+      },
+      "calls": 130,
+      "latency_median_s": 0.10868053347803652,
+      "latency_max_s": 0.21403993386775255,
+      "first_skill_delivery_steps": {
+        "4": 37,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "seed_successes": {
+        "183101": 14,
+        "183102": 13
+      }
+    },
+    "rule_vlm_bare": {
+      "trials": 40,
+      "success": 14,
+      "outcomes": {
+        "drop": 15,
+        "horizon": 2,
+        "success": 14,
+        "false_stop": 9
+      },
+      "calls": 153,
+      "latency_median_s": 1.1506883958354592,
+      "latency_max_s": 1.6865515131503344,
+      "first_skill_delivery_steps": {
+        "33": 6,
+        "36": 5,
+        "38": 4,
+        "41": 3,
+        "null": 1,
+        "37": 2,
+        "30": 2,
+        "32": 1,
+        "28": 3,
+        "39": 1,
+        "35": 2,
+        "34": 1,
+        "24": 2,
+        "40": 1,
+        "29": 1,
+        "23": 1,
+        "26": 1,
+        "31": 2,
+        "42": 1
+      },
+      "seed_successes": {
+        "183101": 5,
+        "183102": 9
+      }
+    },
+    "astra_full": {
+      "trials": 40,
+      "success": 29,
+      "outcomes": {
+        "success": 29,
+        "drop": 10,
+        "service_excluded": 1
+      },
+      "calls": 94,
+      "latency_median_s": 5.141935405321419,
+      "latency_max_s": 120.48712275316939,
+      "first_skill_delivery_steps": {
+        "128": 3,
+        "144": 2,
+        "173": 1,
+        "132": 1,
+        "129": 1,
+        "155": 1,
+        "131": 2,
+        "152": 1,
+        "182": 1,
+        "147": 1,
+        "108": 1,
+        "189": 1,
+        "153": 1,
+        "271": 1,
+        "133": 1,
+        "130": 1,
+        "183": 2,
+        "209": 1,
+        "141": 1,
+        "151": 1,
+        "134": 2,
+        "136": 1,
+        "156": 1,
+        "140": 1,
+        "215": 1,
+        "149": 1,
+        "145": 1,
+        "164": 1,
+        "124": 1,
+        "127": 1,
+        "138": 1,
+        "146": 1,
+        "162": 1,
+        "116": 1
+      },
+      "seed_successes": {
+        "183101": 13,
+        "183102": 16
+      }
+    }
+  },
+  "all_40_initial_states_match": true
+}
