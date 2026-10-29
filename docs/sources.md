@@ -1,41 +1,21 @@
-# Source ledger
+# Primary sources verified 2026-10-29
 
-Checked on 2026-09-18. Bibliographic metadata below were checked against the linked primary pages. These are starting references, not a completed systematic review. Abstract-level relevance checks do not establish full implementation equivalence.
+- CVPR 2027 author guidelines: https://cvpr.thecvf.com/Conferences/2027/AuthorGuidelines
+- Dates: https://cvpr.thecvf.com/Conferences/2027/Dates
+- ViserDex: https://rffr.leggedrobotics.com/works/viserdex/ and https://arxiv.org/abs/2604.11138
+- VERA: https://vera.csail.mit.edu/ and https://arxiv.org/abs/2605.27817 . Includes language-conditioned dexterous in-hand reorientation. Do not claim it is arm-only.
+- A2C2: https://arxiv.org/abs/2509.23224
+- RTC: https://arxiv.org/abs/2506.07339
+- ARLI: https://arxiv.org/abs/2608.23831
+- DEFLECT: https://arxiv.org/abs/2605.19294
+- LiMA: https://arxiv.org/abs/2609.28431
+- SigLIP2: https://arxiv.org/abs/2502.14786
+- Qwen3-VL-4B: https://huggingface.co/Qwen/Qwen3-VL-4B-Instruct
+- DAgger: https://proceedings.mlr.press/v15/ross11a.html
 
-| BibTeX key | Verified source | Use and boundary |
-|---|---|---|
-| `bao2023dexart` | [CVF, CVPR 2023](https://openaccess.thecvf.com/content/CVPR2023/html/Bao_DexArt_Benchmarking_Generalizable_Dexterous_Manipulation_With_Articulated_Objects_CVPR_2023_paper.html) | Articulated-object dexterous benchmark and generalization; different task from in-hand semantic search. |
-| `zhang2026unidex` | [CVF, CVPR 2026](https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_UniDex_A_Robot_Foundation_Suite_for_Universal_Dexterous_Hand_Control_CVPR_2026_paper.html) | Human-video-derived universal dexterous control; relevant pretrained adaptation candidate, not an already reproduced baseline. |
-| `bhardwaj2026viserdex` | [arXiv:2604.11138](https://arxiv.org/abs/2604.11138) | Monocular RGB pose estimation, 3DGS, RL and teacher-student in-hand reorientation; not a hidden language-target search benchmark. Cited using verified arXiv metadata. |
-| `chi2023diffusion` | [arXiv:2303.04137](https://arxiv.org/abs/2303.04137) | Action diffusion and visual conditioning; the proposed language-conditioned version is our adaptation. Cited using the arXiv entry, not an inferred venue/year. |
-| `li2026actsenseact` | [arXiv:2602.04600](https://arxiv.org/abs/2602.04600), v2 dated 2026-07-10 | CoMe-VLA: cognitive/memory active perception from egocentric data. Precludes a generic novelty claim about adding language and memory to active perception. |
+CVPR 2025 presentation references, used for section organization and evidence-driven writing rather than copied prose:
 
-Implementation entry points from earlier project discussion; verify exact revisions, license, checkpoints, observation requirements, and hand compatibility before running:
+- Magma: https://openaccess.thecvf.com/content/CVPR2025/html/Yang_Magma_A_Foundation_Model_for_Multimodal_AI_Agents_CVPR_2025_paper.html
+- ManipTrans: https://openaccess.thecvf.com/content/CVPR2025/html/Li_ManipTrans_Efficient_Dexterous_Bimanual_Manipulation_Transfer_via_Residual_Learning_CVPR_2025_paper.html
 
-- UniDex: https://github.com/unidex-ai/UniDex and https://huggingface.co/UniDex-ai/UniDex
-- ViserDex: https://github.com/leggedrobotics/ViserDex
-- Diffusion Policy: https://github.com/real-stanford/diffusion_policy
-- CoMe-VLA: https://github.com/Joringell/ASA
-
-## Literature still to inspect in depth
-
-These links are research leads retained from the discussion; they are not additional fully audited bibliography entries in this scaffold.
-
-- [Scaffolding Dexterous Manipulation with Vision-Language Models, NeurIPS 2025](https://proceedings.neurips.cc/paper_files/paper/2025/hash/862644b156e51c35dea5a7446d640b14-Abstract-Conference.html): grounding/planning with low-level RL.
-- [VERA: Turning Video Models into Generalist Robot Policies](https://arxiv.org/abs/2605.27817): inspect the actual in-hand deployment availability before estimating adaptation work.
-- [SaPaVe](https://arxiv.org/abs/2603.12193): active perception through camera/manipulation actions; check distinction from a fixed-camera hand changing object visibility.
-- [HORA](https://arxiv.org/abs/2210.04887): in-hand rotation control and adaptation background.
-
-## CVPR 2027 requirements checked
-
-Primary source: https://cvpr.thecvf.com/Conferences/2027/CallForPapers
-
-- Scope includes embodied vision/robotics, reasoning and reinforcement learning, agentic AI, and physical AI.
-- Registration: 2026-11-10 AoE.
-- Paper submission: 2026-11-16 AoE.
-- Supplementary material: 2026-11-23 AoE.
-- The CFP says work appearing online after 2026-09-15 is generally contemporaneous. Authors must still cite and discuss it, and compare empirically to the degree feasible. Work influencing the submission must be credited. The policy does not distinguish arXiv from conference/journal papers for this rule.
-- The LLM usage policy is still being finalized on the checked page. Recheck before submission and retain an accurate record of assistance.
-- The linked [2027 Author Guidelines](https://cvpr.thecvf.com/Conferences/2027/AuthorGuidelines) page returned page-not-found during this check. Therefore the exact 2027 page limit and final formatting rules are not certified by this scaffold.
-
-No real-robot mandate was identified in the checked CFP. This observation is not a guarantee about final author policies or acceptance; simulation-only claims must stay within their evidence.
+Novelty must be evaluated against the actual problem and method, not model branding or a claim that language-driven hands are absent from prior work.

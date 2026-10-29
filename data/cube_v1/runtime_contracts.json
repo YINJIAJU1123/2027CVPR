@@ -1,0 +1,3451 @@
+{
+  "finetuned_vlm_bare": {
+    "vlm_183101": {
+      "student_sha256": "9d55b83f27c4f1dd24b56695639a76d95bd56ccb248668c5e742ee597d84dd24",
+      "original_student_sha256": "022f963f3fa177cc84d3ca14888ba2872e594577ccf1614713834eb10f9336f1",
+      "physical_binding": {
+        "source_environment": "<runtime-path-redacted>",
+        "source_environment_sha256": "f8d5eef6ac7fdf56b37cfc54095d1918dfa6acd62821637a05f3ca65584318df",
+        "contract_sha256": "8845592f802e8badeccce52ed332a8453e50a80edd93c03370516077f21c6279",
+        "assets": {
+          "robot": {
+            "path": "<runtime-path-redacted>",
+            "sha256": "a13e3f0ac0482d88c57a9050b4095fde62cc01e9db5dd6053d6dd19ce8f0c650"
+          },
+          "object": {
+            "path": "<runtime-path-redacted>",
+            "sha256": "0df16dfdb9c483e5b1e1ddc28b479afb44e2eac34d9a83955e44a3788057ae92"
+          }
+        },
+        "physics": "isaaclab_newton.physics.mjwarp_manager:NewtonMJWarpManager",
+        "step_dt": 0.03333333333333333,
+        "nconmax": 4096,
+        "njmax": 1024
+      },
+      "pose_estimator": {
+        "checkpoint": "<runtime-path-redacted>",
+        "checkpoint_sha256": "6a940233e65146bf34f1051a593727f79fa0821d0d8bcc7feec18b07a67794ed",
+        "keypoints_sha256": "d5e65f06e32872cfbf5cf2147179dcabb604911b0b8c2a283effbb2af10dcd01",
+        "image_size": [
+          120,
+          120
+        ],
+        "pose_frame": "right_hand_base_link",
+        "quaternion_order": "xyzw",
+        "position_unit": "m",
+        "cnn_preprocessing": [
+          "binary_opening",
+          "released_network_resize_and_normalization"
+        ],
+        "visual_noise_added_to_cnn_pose": false,
+        "ground_truth_fallback": false
+      },
+      "camera": {
+        "image_protocol": "original_gsplat_object_plus_depth_ordered_black_hand_occlusion",
+        "raw_calibration_size": [
+          1280,
+          1024
+        ],
+        "cnn_image_size": [
+          120,
+          120
+        ],
+        "camera_intrinsics": [
+          [
+            122.86667490224502,
+            0.0,
+            60.31119860275362
+          ],
+          [
+            0.0,
+            153.5033526224968,
+            58.38762604230718
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_base_camera": [
+          [
+            0.09686958975171941,
+            -0.7892732850133177,
+            -0.6063530029163036,
+            0.2905681944462764
+          ],
+          [
+            0.9402422071523159,
+            0.27237946668979046,
+            -0.20433799943996125,
+            0.06494179774601874
+          ],
+          [
+            0.32643663163112346,
+            -0.5503245475990239,
+            0.7684933427423132,
+            -0.2447436270886566
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_world_camera_env0": [
+          [
+            -0.3264366581128613,
+            0.5503246258134735,
+            -0.7684932754835058,
+            0.3647436201572418
+          ],
+          [
+            0.9402421932162344,
+            0.27237954366345374,
+            -0.20433796096079226,
+            0.06494180113077164
+          ],
+          [
+            0.096869635779394,
+            -0.7892732039141765,
+            -0.6063531011275678,
+            0.8005682229995728
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_world_camera_expected_env0": [
+          [
+            -0.3264366316311234,
+            0.5503245475990238,
+            -0.768493342742313,
+            0.3647436244064475
+          ],
+          [
+            0.9402422071523157,
+            0.2723794666897904,
+            -0.2043379994399612,
+            0.06494179774601871
+          ],
+          [
+            0.09686958975171939,
+            -0.7892732850133175,
+            -0.6063530029163035,
+            0.8005681849095332
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "maximum_position_error_m": 3.809003956689594e-08,
+        "maximum_rotation_matrix_abs_error": 9.82112643432842e-08,
+        "maximum_extrinsic_abs_error": 9.82112643432842e-08,
+        "num_envs_checked": 1,
+        "extrinsic_position_tolerance_m_per_axis_max": [
+          1.0596046447753906e-06,
+          1.0149011611938476e-06,
+          1.1192092895507812e-06
+        ],
+        "extrinsic_rotation_abs_tolerance": 1e-06,
+        "distortion": "GS and ray camera use rectified pinhole rays; real RGB must use the same undistortion",
+        "full_hand_rgb_in_network_input": false,
+        "calibration_sha256": {
+          "hikrobot_DB0447679_1280x1024_intrinsics.json": "80742054a501a20d29d5fcb9602e2a0d5fa28d49a50aba97e8bec23cdf99955b",
+          "hikrobot_DB0447679_1280x1024_extrinsics_revo3_20261022.json": "8fba74d72baf2ddf1565d675d9e64731ca8b61f65d569e0f39f07f1986b32ca4"
+        }
+      },
+      "live_geometry": {
+        "world_count": 1,
+        "body_count": 23,
+        "collision_shape_count": 117,
+        "collision_types": {
+          "CONVEX_MESH": 116,
+          "BOX": 1
+        }
+      },
+      "goal_manifest": {
+        "asset_sha256": "93d60bde1d00cf5398b5d31e2016663e793d8bb4cdee817421e324f47fccb4a8",
+        "cache_sha256": "579ca62922aac9e5084f13b33bf3e2cd846bc19a5aa53ed11568ef71cf252856",
+        "latent_source": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+        "colors": [
+          "red",
+          "green",
+          "blue",
+          "yellow",
+          "magenta",
+          "cyan"
+        ],
+        "symbols": [
+          "T",
+          "E",
+          "R",
+          "L",
+          "S",
+          "H"
+        ],
+        "texture_numbers": [
+          2,
+          1,
+          4,
+          6,
+          5,
+          3
+        ],
+        "normals_body": [
+          [
+            0,
+            -1,
+            0
+          ],
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "target_quaternions_world_xyzw": [
+          [
+            -0.7071067811865476,
+            0,
+            0,
+            0.7071067811865476
+          ],
+          [
+            0,
+            0.7071067811865476,
+            0,
+            0.7071067811865476
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0.7071067811865476,
+            0,
+            0,
+            0.7071067811865476
+          ],
+          [
+            0,
+            -0.7071067811865476,
+            0,
+            0.7071067811865476
+          ]
+        ],
+        "cyan_channel_visual_name": "pale blue H",
+        "magenta_channel_visual_name": "purple S",
+        "mapping_scope": "fixed body-frame mapping in the exact released asset, not randomized face layouts"
+      },
+      "explicit_task_overrides": {
+        "horizon_seconds": 120,
+        "maximum_steps": 3600,
+        "success_counter_termination": null,
+        "drop": "distance from nominal object grasp position >=0.24m",
+        "goal_resampling": "disabled",
+        "student_time_feature": "clip(1 - elapsed_control_steps/600,0,1), preserving the released 20s clock scale"
+      },
+      "goal_input": "direct 768D latent; no target or relative-goal quaternion in student",
+      "source_sha256": {
+        "newton_runtime.py": "578f6dc93fe50007e70e9981d792dc3a7257f41422683dc2b796a444ba87a312",
+        "model.py": "7e69500b12808df7912b615b58f39288e92d3100c9b02d86f5c10d30b061c582",
+        "goals.py": "125de050472754c34118c01b375ad2962cfbec14e1ec0bb07c0d4cdfd54cb0f0",
+        "perception.py": "d5298b33ccc890caee24534733df7bf3518d8de681c9caba3f42e0f208783219"
+      },
+      "provider": "vlm",
+      "maintenance": "continue",
+      "controller_modes": {
+        "waiting": "student",
+        "execution": "student"
+      },
+      "seed": 183101,
+      "episodes": 20,
+      "start_episode": 0,
+      "evaluator_sha256": "46936ecc3354ca0cd8302d841fd3ec0a83aa5ade561566a47b1fc5ca3c03035c",
+      "actor_sha256": null,
+      "execution_actor_sha256": null,
+      "completion_sha256": null,
+      "completion_kind": null,
+      "stop_mode": "measured",
+      "measured_stop_threshold_rad": 0.16,
+      "stopping": "measured-pose gate with model-declared requested binding at 3Hz, no hold",
+      "physics": "continuous during every request; 30Hz wall pacing while pending; delivery after ceil(actual latency*30) steps",
+      "request_budget": 6,
+      "service_exclusion": "service error or measured request latency >120s; report raw and eligible",
+      "inspection": "Astra model-selected; fine-tuned VLM uses shared deterministic unseen-view schedule when unreadable",
+      "fine_tuned_goal": "continuous returned vector enters student unchanged; nearest skill only for public verification and logs",
+      "formal_release_sha256": "c74dfbbceaa00e27db4b2add0624dd1efe94d3100be6e585c65cbeb976fa1a7e"
+    },
+    "vlm_183102": {
+      "student_sha256": "9d55b83f27c4f1dd24b56695639a76d95bd56ccb248668c5e742ee597d84dd24",
+      "original_student_sha256": "022f963f3fa177cc84d3ca14888ba2872e594577ccf1614713834eb10f9336f1",
+      "physical_binding": {
+        "source_environment": "<runtime-path-redacted>",
+        "source_environment_sha256": "f8d5eef6ac7fdf56b37cfc54095d1918dfa6acd62821637a05f3ca65584318df",
+        "contract_sha256": "8845592f802e8badeccce52ed332a8453e50a80edd93c03370516077f21c6279",
+        "assets": {
+          "robot": {
+            "path": "<runtime-path-redacted>",
+            "sha256": "a13e3f0ac0482d88c57a9050b4095fde62cc01e9db5dd6053d6dd19ce8f0c650"
+          },
+          "object": {
+            "path": "<runtime-path-redacted>",
+            "sha256": "0df16dfdb9c483e5b1e1ddc28b479afb44e2eac34d9a83955e44a3788057ae92"
+          }
+        },
+        "physics": "isaaclab_newton.physics.mjwarp_manager:NewtonMJWarpManager",
+        "step_dt": 0.03333333333333333,
+        "nconmax": 4096,
+        "njmax": 1024
+      },
+      "pose_estimator": {
+        "checkpoint": "<runtime-path-redacted>",
+        "checkpoint_sha256": "6a940233e65146bf34f1051a593727f79fa0821d0d8bcc7feec18b07a67794ed",
+        "keypoints_sha256": "d5e65f06e32872cfbf5cf2147179dcabb604911b0b8c2a283effbb2af10dcd01",
+        "image_size": [
+          120,
+          120
+        ],
+        "pose_frame": "right_hand_base_link",
+        "quaternion_order": "xyzw",
+        "position_unit": "m",
+        "cnn_preprocessing": [
+          "binary_opening",
+          "released_network_resize_and_normalization"
+        ],
+        "visual_noise_added_to_cnn_pose": false,
+        "ground_truth_fallback": false
+      },
+      "camera": {
+        "image_protocol": "original_gsplat_object_plus_depth_ordered_black_hand_occlusion",
+        "raw_calibration_size": [
+          1280,
+          1024
+        ],
+        "cnn_image_size": [
+          120,
+          120
+        ],
+        "camera_intrinsics": [
+          [
+            122.86667490224502,
+            0.0,
+            60.31119860275362
+          ],
+          [
+            0.0,
+            153.5033526224968,
+            58.38762604230718
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_base_camera": [
+          [
+            0.09686958975171941,
+            -0.7892732850133177,
+            -0.6063530029163036,
+            0.2905681944462764
+          ],
+          [
+            0.9402422071523159,
+            0.27237946668979046,
+            -0.20433799943996125,
+            0.06494179774601874
+          ],
+          [
+            0.32643663163112346,
+            -0.5503245475990239,
+            0.7684933427423132,
+            -0.2447436270886566
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_world_camera_env0": [
+          [
+            -0.3264366581128613,
+            0.5503246258134735,
+            -0.7684932754835058,
+            0.3647436201572418
+          ],
+          [
+            0.9402421932162344,
+            0.27237954366345374,
+            -0.20433796096079226,
+            0.06494180113077164
+          ],
+          [
+            0.096869635779394,
+            -0.7892732039141765,
+            -0.6063531011275678,
+            0.8005682229995728
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_world_camera_expected_env0": [
+          [
+            -0.3264366316311234,
+            0.5503245475990238,
+            -0.768493342742313,
+            0.3647436244064475
+          ],
+          [
+            0.9402422071523157,
+            0.2723794666897904,
+            -0.2043379994399612,
+            0.06494179774601871
+          ],
+          [
+            0.09686958975171939,
+            -0.7892732850133175,
+            -0.6063530029163035,
+            0.8005681849095332
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "maximum_position_error_m": 3.809003956689594e-08,
+        "maximum_rotation_matrix_abs_error": 9.82112643432842e-08,
+        "maximum_extrinsic_abs_error": 9.82112643432842e-08,
+        "num_envs_checked": 1,
+        "extrinsic_position_tolerance_m_per_axis_max": [
+          1.0596046447753906e-06,
+          1.0149011611938476e-06,
+          1.1192092895507812e-06
+        ],
+        "extrinsic_rotation_abs_tolerance": 1e-06,
+        "distortion": "GS and ray camera use rectified pinhole rays; real RGB must use the same undistortion",
+        "full_hand_rgb_in_network_input": false,
+        "calibration_sha256": {
+          "hikrobot_DB0447679_1280x1024_intrinsics.json": "80742054a501a20d29d5fcb9602e2a0d5fa28d49a50aba97e8bec23cdf99955b",
+          "hikrobot_DB0447679_1280x1024_extrinsics_revo3_20261022.json": "8fba74d72baf2ddf1565d675d9e64731ca8b61f65d569e0f39f07f1986b32ca4"
+        }
+      },
+      "live_geometry": {
+        "world_count": 1,
+        "body_count": 23,
+        "collision_shape_count": 117,
+        "collision_types": {
+          "CONVEX_MESH": 116,
+          "BOX": 1
+        }
+      },
+      "goal_manifest": {
+        "asset_sha256": "93d60bde1d00cf5398b5d31e2016663e793d8bb4cdee817421e324f47fccb4a8",
+        "cache_sha256": "579ca62922aac9e5084f13b33bf3e2cd846bc19a5aa53ed11568ef71cf252856",
+        "latent_source": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+        "colors": [
+          "red",
+          "green",
+          "blue",
+          "yellow",
+          "magenta",
+          "cyan"
+        ],
+        "symbols": [
+          "T",
+          "E",
+          "R",
+          "L",
+          "S",
+          "H"
+        ],
+        "texture_numbers": [
+          2,
+          1,
+          4,
+          6,
+          5,
+          3
+        ],
+        "normals_body": [
+          [
+            0,
+            -1,
+            0
+          ],
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "target_quaternions_world_xyzw": [
+          [
+            -0.7071067811865476,
+            0,
+            0,
+            0.7071067811865476
+          ],
+          [
+            0,
+            0.7071067811865476,
+            0,
+            0.7071067811865476
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0.7071067811865476,
+            0,
+            0,
+            0.7071067811865476
+          ],
+          [
+            0,
+            -0.7071067811865476,
+            0,
+            0.7071067811865476
+          ]
+        ],
+        "cyan_channel_visual_name": "pale blue H",
+        "magenta_channel_visual_name": "purple S",
+        "mapping_scope": "fixed body-frame mapping in the exact released asset, not randomized face layouts"
+      },
+      "explicit_task_overrides": {
+        "horizon_seconds": 120,
+        "maximum_steps": 3600,
+        "success_counter_termination": null,
+        "drop": "distance from nominal object grasp position >=0.24m",
+        "goal_resampling": "disabled",
+        "student_time_feature": "clip(1 - elapsed_control_steps/600,0,1), preserving the released 20s clock scale"
+      },
+      "goal_input": "direct 768D latent; no target or relative-goal quaternion in student",
+      "source_sha256": {
+        "newton_runtime.py": "578f6dc93fe50007e70e9981d792dc3a7257f41422683dc2b796a444ba87a312",
+        "model.py": "7e69500b12808df7912b615b58f39288e92d3100c9b02d86f5c10d30b061c582",
+        "goals.py": "125de050472754c34118c01b375ad2962cfbec14e1ec0bb07c0d4cdfd54cb0f0",
+        "perception.py": "d5298b33ccc890caee24534733df7bf3518d8de681c9caba3f42e0f208783219"
+      },
+      "provider": "vlm",
+      "maintenance": "continue",
+      "controller_modes": {
+        "waiting": "student",
+        "execution": "student"
+      },
+      "seed": 183102,
+      "episodes": 20,
+      "start_episode": 0,
+      "evaluator_sha256": "46936ecc3354ca0cd8302d841fd3ec0a83aa5ade561566a47b1fc5ca3c03035c",
+      "actor_sha256": null,
+      "execution_actor_sha256": null,
+      "completion_sha256": null,
+      "completion_kind": null,
+      "stop_mode": "measured",
+      "measured_stop_threshold_rad": 0.16,
+      "stopping": "measured-pose gate with model-declared requested binding at 3Hz, no hold",
+      "physics": "continuous during every request; 30Hz wall pacing while pending; delivery after ceil(actual latency*30) steps",
+      "request_budget": 6,
+      "service_exclusion": "service error or measured request latency >120s; report raw and eligible",
+      "inspection": "Astra model-selected; fine-tuned VLM uses shared deterministic unseen-view schedule when unreadable",
+      "fine_tuned_goal": "continuous returned vector enters student unchanged; nearest skill only for public verification and logs",
+      "formal_release_sha256": "c74dfbbceaa00e27db4b2add0624dd1efe94d3100be6e585c65cbeb976fa1a7e"
+    }
+  },
+  "rule_vlm_bare": {
+    "rule_183101": {
+      "student_sha256": "9d55b83f27c4f1dd24b56695639a76d95bd56ccb248668c5e742ee597d84dd24",
+      "original_student_sha256": "022f963f3fa177cc84d3ca14888ba2872e594577ccf1614713834eb10f9336f1",
+      "physical_binding": {
+        "source_environment": "<runtime-path-redacted>",
+        "source_environment_sha256": "f8d5eef6ac7fdf56b37cfc54095d1918dfa6acd62821637a05f3ca65584318df",
+        "contract_sha256": "8845592f802e8badeccce52ed332a8453e50a80edd93c03370516077f21c6279",
+        "assets": {
+          "robot": {
+            "path": "<runtime-path-redacted>",
+            "sha256": "a13e3f0ac0482d88c57a9050b4095fde62cc01e9db5dd6053d6dd19ce8f0c650"
+          },
+          "object": {
+            "path": "<runtime-path-redacted>",
+            "sha256": "0df16dfdb9c483e5b1e1ddc28b479afb44e2eac34d9a83955e44a3788057ae92"
+          }
+        },
+        "physics": "isaaclab_newton.physics.mjwarp_manager:NewtonMJWarpManager",
+        "step_dt": 0.03333333333333333,
+        "nconmax": 4096,
+        "njmax": 1024
+      },
+      "pose_estimator": {
+        "checkpoint": "<runtime-path-redacted>",
+        "checkpoint_sha256": "6a940233e65146bf34f1051a593727f79fa0821d0d8bcc7feec18b07a67794ed",
+        "keypoints_sha256": "d5e65f06e32872cfbf5cf2147179dcabb604911b0b8c2a283effbb2af10dcd01",
+        "image_size": [
+          120,
+          120
+        ],
+        "pose_frame": "right_hand_base_link",
+        "quaternion_order": "xyzw",
+        "position_unit": "m",
+        "cnn_preprocessing": [
+          "binary_opening",
+          "released_network_resize_and_normalization"
+        ],
+        "visual_noise_added_to_cnn_pose": false,
+        "ground_truth_fallback": false
+      },
+      "camera": {
+        "image_protocol": "original_gsplat_object_plus_depth_ordered_black_hand_occlusion",
+        "raw_calibration_size": [
+          1280,
+          1024
+        ],
+        "cnn_image_size": [
+          120,
+          120
+        ],
+        "camera_intrinsics": [
+          [
+            122.86667490224502,
+            0.0,
+            60.31119860275362
+          ],
+          [
+            0.0,
+            153.5033526224968,
+            58.38762604230718
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_base_camera": [
+          [
+            0.09686958975171941,
+            -0.7892732850133177,
+            -0.6063530029163036,
+            0.2905681944462764
+          ],
+          [
+            0.9402422071523159,
+            0.27237946668979046,
+            -0.20433799943996125,
+            0.06494179774601874
+          ],
+          [
+            0.32643663163112346,
+            -0.5503245475990239,
+            0.7684933427423132,
+            -0.2447436270886566
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_world_camera_env0": [
+          [
+            -0.3264366581128613,
+            0.5503246258134735,
+            -0.7684932754835058,
+            0.3647436201572418
+          ],
+          [
+            0.9402421932162344,
+            0.27237954366345374,
+            -0.20433796096079226,
+            0.06494180113077164
+          ],
+          [
+            0.096869635779394,
+            -0.7892732039141765,
+            -0.6063531011275678,
+            0.8005682229995728
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_world_camera_expected_env0": [
+          [
+            -0.3264366316311234,
+            0.5503245475990238,
+            -0.768493342742313,
+            0.3647436244064475
+          ],
+          [
+            0.9402422071523157,
+            0.2723794666897904,
+            -0.2043379994399612,
+            0.06494179774601871
+          ],
+          [
+            0.09686958975171939,
+            -0.7892732850133175,
+            -0.6063530029163035,
+            0.8005681849095332
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "maximum_position_error_m": 3.809003956689594e-08,
+        "maximum_rotation_matrix_abs_error": 9.82112643432842e-08,
+        "maximum_extrinsic_abs_error": 9.82112643432842e-08,
+        "num_envs_checked": 1,
+        "extrinsic_position_tolerance_m_per_axis_max": [
+          1.0596046447753906e-06,
+          1.0149011611938476e-06,
+          1.1192092895507812e-06
+        ],
+        "extrinsic_rotation_abs_tolerance": 1e-06,
+        "distortion": "GS and ray camera use rectified pinhole rays; real RGB must use the same undistortion",
+        "full_hand_rgb_in_network_input": false,
+        "calibration_sha256": {
+          "hikrobot_DB0447679_1280x1024_intrinsics.json": "80742054a501a20d29d5fcb9602e2a0d5fa28d49a50aba97e8bec23cdf99955b",
+          "hikrobot_DB0447679_1280x1024_extrinsics_revo3_20261022.json": "8fba74d72baf2ddf1565d675d9e64731ca8b61f65d569e0f39f07f1986b32ca4"
+        }
+      },
+      "live_geometry": {
+        "world_count": 1,
+        "body_count": 23,
+        "collision_shape_count": 117,
+        "collision_types": {
+          "CONVEX_MESH": 116,
+          "BOX": 1
+        }
+      },
+      "goal_manifest": {
+        "asset_sha256": "93d60bde1d00cf5398b5d31e2016663e793d8bb4cdee817421e324f47fccb4a8",
+        "cache_sha256": "579ca62922aac9e5084f13b33bf3e2cd846bc19a5aa53ed11568ef71cf252856",
+        "latent_source": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+        "colors": [
+          "red",
+          "green",
+          "blue",
+          "yellow",
+          "magenta",
+          "cyan"
+        ],
+        "symbols": [
+          "T",
+          "E",
+          "R",
+          "L",
+          "S",
+          "H"
+        ],
+        "texture_numbers": [
+          2,
+          1,
+          4,
+          6,
+          5,
+          3
+        ],
+        "normals_body": [
+          [
+            0,
+            -1,
+            0
+          ],
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "target_quaternions_world_xyzw": [
+          [
+            -0.7071067811865476,
+            0,
+            0,
+            0.7071067811865476
+          ],
+          [
+            0,
+            0.7071067811865476,
+            0,
+            0.7071067811865476
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0.7071067811865476,
+            0,
+            0,
+            0.7071067811865476
+          ],
+          [
+            0,
+            -0.7071067811865476,
+            0,
+            0.7071067811865476
+          ]
+        ],
+        "cyan_channel_visual_name": "pale blue H",
+        "magenta_channel_visual_name": "purple S",
+        "mapping_scope": "fixed body-frame mapping in the exact released asset, not randomized face layouts"
+      },
+      "explicit_task_overrides": {
+        "horizon_seconds": 120,
+        "maximum_steps": 3600,
+        "success_counter_termination": null,
+        "drop": "distance from nominal object grasp position >=0.24m",
+        "goal_resampling": "disabled",
+        "student_time_feature": "clip(1 - elapsed_control_steps/600,0,1), preserving the released 20s clock scale"
+      },
+      "goal_input": "direct 768D latent; no target or relative-goal quaternion in student",
+      "source_sha256": {
+        "newton_runtime.py": "578f6dc93fe50007e70e9981d792dc3a7257f41422683dc2b796a444ba87a312",
+        "model.py": "7e69500b12808df7912b615b58f39288e92d3100c9b02d86f5c10d30b061c582",
+        "goals.py": "125de050472754c34118c01b375ad2962cfbec14e1ec0bb07c0d4cdfd54cb0f0",
+        "perception.py": "d5298b33ccc890caee24534733df7bf3518d8de681c9caba3f42e0f208783219"
+      },
+      "provider": "rule",
+      "maintenance": "continue",
+      "controller_modes": {
+        "waiting": "student",
+        "execution": "student"
+      },
+      "seed": 183101,
+      "episodes": 20,
+      "start_episode": 0,
+      "evaluator_sha256": "46936ecc3354ca0cd8302d841fd3ec0a83aa5ade561566a47b1fc5ca3c03035c",
+      "actor_sha256": null,
+      "execution_actor_sha256": null,
+      "completion_sha256": null,
+      "completion_kind": null,
+      "stop_mode": "measured",
+      "measured_stop_threshold_rad": 0.16,
+      "stopping": "measured-pose gate with model-declared requested binding at 3Hz, no hold",
+      "physics": "continuous during every request; 30Hz wall pacing while pending; delivery after ceil(actual latency*30) steps",
+      "request_budget": 6,
+      "service_exclusion": "service error or measured request latency >120s; report raw and eligible",
+      "inspection": "Astra model-selected; fine-tuned VLM uses shared deterministic unseen-view schedule when unreadable",
+      "fine_tuned_goal": "continuous returned vector enters student unchanged; nearest skill only for public verification and logs",
+      "formal_release_sha256": "c74dfbbceaa00e27db4b2add0624dd1efe94d3100be6e585c65cbeb976fa1a7e",
+      "upstream_model": "/home/yin/DexManipulation/VLMmanipulation/outputs/agentic_v4/models/Qwen3-VL-4B-Instruct"
+    },
+    "rule_183102": {
+      "student_sha256": "9d55b83f27c4f1dd24b56695639a76d95bd56ccb248668c5e742ee597d84dd24",
+      "original_student_sha256": "022f963f3fa177cc84d3ca14888ba2872e594577ccf1614713834eb10f9336f1",
+      "physical_binding": {
+        "source_environment": "<runtime-path-redacted>",
+        "source_environment_sha256": "f8d5eef6ac7fdf56b37cfc54095d1918dfa6acd62821637a05f3ca65584318df",
+        "contract_sha256": "8845592f802e8badeccce52ed332a8453e50a80edd93c03370516077f21c6279",
+        "assets": {
+          "robot": {
+            "path": "<runtime-path-redacted>",
+            "sha256": "a13e3f0ac0482d88c57a9050b4095fde62cc01e9db5dd6053d6dd19ce8f0c650"
+          },
+          "object": {
+            "path": "<runtime-path-redacted>",
+            "sha256": "0df16dfdb9c483e5b1e1ddc28b479afb44e2eac34d9a83955e44a3788057ae92"
+          }
+        },
+        "physics": "isaaclab_newton.physics.mjwarp_manager:NewtonMJWarpManager",
+        "step_dt": 0.03333333333333333,
+        "nconmax": 4096,
+        "njmax": 1024
+      },
+      "pose_estimator": {
+        "checkpoint": "<runtime-path-redacted>",
+        "checkpoint_sha256": "6a940233e65146bf34f1051a593727f79fa0821d0d8bcc7feec18b07a67794ed",
+        "keypoints_sha256": "d5e65f06e32872cfbf5cf2147179dcabb604911b0b8c2a283effbb2af10dcd01",
+        "image_size": [
+          120,
+          120
+        ],
+        "pose_frame": "right_hand_base_link",
+        "quaternion_order": "xyzw",
+        "position_unit": "m",
+        "cnn_preprocessing": [
+          "binary_opening",
+          "released_network_resize_and_normalization"
+        ],
+        "visual_noise_added_to_cnn_pose": false,
+        "ground_truth_fallback": false
+      },
+      "camera": {
+        "image_protocol": "original_gsplat_object_plus_depth_ordered_black_hand_occlusion",
+        "raw_calibration_size": [
+          1280,
+          1024
+        ],
+        "cnn_image_size": [
+          120,
+          120
+        ],
+        "camera_intrinsics": [
+          [
+            122.86667490224502,
+            0.0,
+            60.31119860275362
+          ],
+          [
+            0.0,
+            153.5033526224968,
+            58.38762604230718
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_base_camera": [
+          [
+            0.09686958975171941,
+            -0.7892732850133177,
+            -0.6063530029163036,
+            0.2905681944462764
+          ],
+          [
+            0.9402422071523159,
+            0.27237946668979046,
+            -0.20433799943996125,
+            0.06494179774601874
+          ],
+          [
+            0.32643663163112346,
+            -0.5503245475990239,
+            0.7684933427423132,
+            -0.2447436270886566
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_world_camera_env0": [
+          [
+            -0.3264366581128613,
+            0.5503246258134735,
+            -0.7684932754835058,
+            0.3647436201572418
+          ],
+          [
+            0.9402421932162344,
+            0.27237954366345374,
+            -0.20433796096079226,
+            0.06494180113077164
+          ],
+          [
+            0.096869635779394,
+            -0.7892732039141765,
+            -0.6063531011275678,
+            0.8005682229995728
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_world_camera_expected_env0": [
+          [
+            -0.3264366316311234,
+            0.5503245475990238,
+            -0.768493342742313,
+            0.3647436244064475
+          ],
+          [
+            0.9402422071523157,
+            0.2723794666897904,
+            -0.2043379994399612,
+            0.06494179774601871
+          ],
+          [
+            0.09686958975171939,
+            -0.7892732850133175,
+            -0.6063530029163035,
+            0.8005681849095332
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "maximum_position_error_m": 3.809003956689594e-08,
+        "maximum_rotation_matrix_abs_error": 9.82112643432842e-08,
+        "maximum_extrinsic_abs_error": 9.82112643432842e-08,
+        "num_envs_checked": 1,
+        "extrinsic_position_tolerance_m_per_axis_max": [
+          1.0596046447753906e-06,
+          1.0149011611938476e-06,
+          1.1192092895507812e-06
+        ],
+        "extrinsic_rotation_abs_tolerance": 1e-06,
+        "distortion": "GS and ray camera use rectified pinhole rays; real RGB must use the same undistortion",
+        "full_hand_rgb_in_network_input": false,
+        "calibration_sha256": {
+          "hikrobot_DB0447679_1280x1024_intrinsics.json": "80742054a501a20d29d5fcb9602e2a0d5fa28d49a50aba97e8bec23cdf99955b",
+          "hikrobot_DB0447679_1280x1024_extrinsics_revo3_20261022.json": "8fba74d72baf2ddf1565d675d9e64731ca8b61f65d569e0f39f07f1986b32ca4"
+        }
+      },
+      "live_geometry": {
+        "world_count": 1,
+        "body_count": 23,
+        "collision_shape_count": 117,
+        "collision_types": {
+          "CONVEX_MESH": 116,
+          "BOX": 1
+        }
+      },
+      "goal_manifest": {
+        "asset_sha256": "93d60bde1d00cf5398b5d31e2016663e793d8bb4cdee817421e324f47fccb4a8",
+        "cache_sha256": "579ca62922aac9e5084f13b33bf3e2cd846bc19a5aa53ed11568ef71cf252856",
+        "latent_source": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+        "colors": [
+          "red",
+          "green",
+          "blue",
+          "yellow",
+          "magenta",
+          "cyan"
+        ],
+        "symbols": [
+          "T",
+          "E",
+          "R",
+          "L",
+          "S",
+          "H"
+        ],
+        "texture_numbers": [
+          2,
+          1,
+          4,
+          6,
+          5,
+          3
+        ],
+        "normals_body": [
+          [
+            0,
+            -1,
+            0
+          ],
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "target_quaternions_world_xyzw": [
+          [
+            -0.7071067811865476,
+            0,
+            0,
+            0.7071067811865476
+          ],
+          [
+            0,
+            0.7071067811865476,
+            0,
+            0.7071067811865476
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0.7071067811865476,
+            0,
+            0,
+            0.7071067811865476
+          ],
+          [
+            0,
+            -0.7071067811865476,
+            0,
+            0.7071067811865476
+          ]
+        ],
+        "cyan_channel_visual_name": "pale blue H",
+        "magenta_channel_visual_name": "purple S",
+        "mapping_scope": "fixed body-frame mapping in the exact released asset, not randomized face layouts"
+      },
+      "explicit_task_overrides": {
+        "horizon_seconds": 120,
+        "maximum_steps": 3600,
+        "success_counter_termination": null,
+        "drop": "distance from nominal object grasp position >=0.24m",
+        "goal_resampling": "disabled",
+        "student_time_feature": "clip(1 - elapsed_control_steps/600,0,1), preserving the released 20s clock scale"
+      },
+      "goal_input": "direct 768D latent; no target or relative-goal quaternion in student",
+      "source_sha256": {
+        "newton_runtime.py": "578f6dc93fe50007e70e9981d792dc3a7257f41422683dc2b796a444ba87a312",
+        "model.py": "7e69500b12808df7912b615b58f39288e92d3100c9b02d86f5c10d30b061c582",
+        "goals.py": "125de050472754c34118c01b375ad2962cfbec14e1ec0bb07c0d4cdfd54cb0f0",
+        "perception.py": "d5298b33ccc890caee24534733df7bf3518d8de681c9caba3f42e0f208783219"
+      },
+      "provider": "rule",
+      "maintenance": "continue",
+      "controller_modes": {
+        "waiting": "student",
+        "execution": "student"
+      },
+      "seed": 183102,
+      "episodes": 20,
+      "start_episode": 0,
+      "evaluator_sha256": "46936ecc3354ca0cd8302d841fd3ec0a83aa5ade561566a47b1fc5ca3c03035c",
+      "actor_sha256": null,
+      "execution_actor_sha256": null,
+      "completion_sha256": null,
+      "completion_kind": null,
+      "stop_mode": "measured",
+      "measured_stop_threshold_rad": 0.16,
+      "stopping": "measured-pose gate with model-declared requested binding at 3Hz, no hold",
+      "physics": "continuous during every request; 30Hz wall pacing while pending; delivery after ceil(actual latency*30) steps",
+      "request_budget": 6,
+      "service_exclusion": "service error or measured request latency >120s; report raw and eligible",
+      "inspection": "Astra model-selected; fine-tuned VLM uses shared deterministic unseen-view schedule when unreadable",
+      "fine_tuned_goal": "continuous returned vector enters student unchanged; nearest skill only for public verification and logs",
+      "formal_release_sha256": "c74dfbbceaa00e27db4b2add0624dd1efe94d3100be6e585c65cbeb976fa1a7e",
+      "upstream_model": "/home/yin/DexManipulation/VLMmanipulation/outputs/agentic_v4/models/Qwen3-VL-4B-Instruct"
+    }
+  },
+  "astra_full": {
+    "astra_183101": {
+      "student_sha256": "9d55b83f27c4f1dd24b56695639a76d95bd56ccb248668c5e742ee597d84dd24",
+      "original_student_sha256": "022f963f3fa177cc84d3ca14888ba2872e594577ccf1614713834eb10f9336f1",
+      "physical_binding": {
+        "source_environment": "<runtime-path-redacted>",
+        "source_environment_sha256": "f8d5eef6ac7fdf56b37cfc54095d1918dfa6acd62821637a05f3ca65584318df",
+        "contract_sha256": "8845592f802e8badeccce52ed332a8453e50a80edd93c03370516077f21c6279",
+        "assets": {
+          "robot": {
+            "path": "<runtime-path-redacted>",
+            "sha256": "a13e3f0ac0482d88c57a9050b4095fde62cc01e9db5dd6053d6dd19ce8f0c650"
+          },
+          "object": {
+            "path": "<runtime-path-redacted>",
+            "sha256": "0df16dfdb9c483e5b1e1ddc28b479afb44e2eac34d9a83955e44a3788057ae92"
+          }
+        },
+        "physics": "isaaclab_newton.physics.mjwarp_manager:NewtonMJWarpManager",
+        "step_dt": 0.03333333333333333,
+        "nconmax": 4096,
+        "njmax": 1024
+      },
+      "pose_estimator": {
+        "checkpoint": "<runtime-path-redacted>",
+        "checkpoint_sha256": "6a940233e65146bf34f1051a593727f79fa0821d0d8bcc7feec18b07a67794ed",
+        "keypoints_sha256": "d5e65f06e32872cfbf5cf2147179dcabb604911b0b8c2a283effbb2af10dcd01",
+        "image_size": [
+          120,
+          120
+        ],
+        "pose_frame": "right_hand_base_link",
+        "quaternion_order": "xyzw",
+        "position_unit": "m",
+        "cnn_preprocessing": [
+          "binary_opening",
+          "released_network_resize_and_normalization"
+        ],
+        "visual_noise_added_to_cnn_pose": false,
+        "ground_truth_fallback": false
+      },
+      "camera": {
+        "image_protocol": "original_gsplat_object_plus_depth_ordered_black_hand_occlusion",
+        "raw_calibration_size": [
+          1280,
+          1024
+        ],
+        "cnn_image_size": [
+          120,
+          120
+        ],
+        "camera_intrinsics": [
+          [
+            122.86667490224502,
+            0.0,
+            60.31119860275362
+          ],
+          [
+            0.0,
+            153.5033526224968,
+            58.38762604230718
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_base_camera": [
+          [
+            0.09686958975171941,
+            -0.7892732850133177,
+            -0.6063530029163036,
+            0.2905681944462764
+          ],
+          [
+            0.9402422071523159,
+            0.27237946668979046,
+            -0.20433799943996125,
+            0.06494179774601874
+          ],
+          [
+            0.32643663163112346,
+            -0.5503245475990239,
+            0.7684933427423132,
+            -0.2447436270886566
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_world_camera_env0": [
+          [
+            -0.3264366581128613,
+            0.5503246258134735,
+            -0.7684932754835058,
+            0.3647436201572418
+          ],
+          [
+            0.9402421932162344,
+            0.27237954366345374,
+            -0.20433796096079226,
+            0.06494180113077164
+          ],
+          [
+            0.096869635779394,
+            -0.7892732039141765,
+            -0.6063531011275678,
+            0.8005682229995728
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_world_camera_expected_env0": [
+          [
+            -0.3264366316311234,
+            0.5503245475990238,
+            -0.768493342742313,
+            0.3647436244064475
+          ],
+          [
+            0.9402422071523157,
+            0.2723794666897904,
+            -0.2043379994399612,
+            0.06494179774601871
+          ],
+          [
+            0.09686958975171939,
+            -0.7892732850133175,
+            -0.6063530029163035,
+            0.8005681849095332
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "maximum_position_error_m": 3.809003956689594e-08,
+        "maximum_rotation_matrix_abs_error": 9.82112643432842e-08,
+        "maximum_extrinsic_abs_error": 9.82112643432842e-08,
+        "num_envs_checked": 1,
+        "extrinsic_position_tolerance_m_per_axis_max": [
+          1.0596046447753906e-06,
+          1.0149011611938476e-06,
+          1.1192092895507812e-06
+        ],
+        "extrinsic_rotation_abs_tolerance": 1e-06,
+        "distortion": "GS and ray camera use rectified pinhole rays; real RGB must use the same undistortion",
+        "full_hand_rgb_in_network_input": false,
+        "calibration_sha256": {
+          "hikrobot_DB0447679_1280x1024_intrinsics.json": "80742054a501a20d29d5fcb9602e2a0d5fa28d49a50aba97e8bec23cdf99955b",
+          "hikrobot_DB0447679_1280x1024_extrinsics_revo3_20261022.json": "8fba74d72baf2ddf1565d675d9e64731ca8b61f65d569e0f39f07f1986b32ca4"
+        }
+      },
+      "live_geometry": {
+        "world_count": 1,
+        "body_count": 23,
+        "collision_shape_count": 117,
+        "collision_types": {
+          "CONVEX_MESH": 116,
+          "BOX": 1
+        }
+      },
+      "goal_manifest": {
+        "asset_sha256": "93d60bde1d00cf5398b5d31e2016663e793d8bb4cdee817421e324f47fccb4a8",
+        "cache_sha256": "579ca62922aac9e5084f13b33bf3e2cd846bc19a5aa53ed11568ef71cf252856",
+        "latent_source": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+        "colors": [
+          "red",
+          "green",
+          "blue",
+          "yellow",
+          "magenta",
+          "cyan"
+        ],
+        "symbols": [
+          "T",
+          "E",
+          "R",
+          "L",
+          "S",
+          "H"
+        ],
+        "texture_numbers": [
+          2,
+          1,
+          4,
+          6,
+          5,
+          3
+        ],
+        "normals_body": [
+          [
+            0,
+            -1,
+            0
+          ],
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "target_quaternions_world_xyzw": [
+          [
+            -0.7071067811865476,
+            0,
+            0,
+            0.7071067811865476
+          ],
+          [
+            0,
+            0.7071067811865476,
+            0,
+            0.7071067811865476
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0.7071067811865476,
+            0,
+            0,
+            0.7071067811865476
+          ],
+          [
+            0,
+            -0.7071067811865476,
+            0,
+            0.7071067811865476
+          ]
+        ],
+        "cyan_channel_visual_name": "pale blue H",
+        "magenta_channel_visual_name": "purple S",
+        "mapping_scope": "fixed body-frame mapping in the exact released asset, not randomized face layouts"
+      },
+      "explicit_task_overrides": {
+        "horizon_seconds": 120,
+        "maximum_steps": 3600,
+        "success_counter_termination": null,
+        "drop": "distance from nominal object grasp position >=0.24m",
+        "goal_resampling": "disabled",
+        "student_time_feature": "clip(1 - elapsed_control_steps/600,0,1), preserving the released 20s clock scale"
+      },
+      "goal_input": "direct 768D latent; no target or relative-goal quaternion in student",
+      "source_sha256": {
+        "newton_runtime.py": "578f6dc93fe50007e70e9981d792dc3a7257f41422683dc2b796a444ba87a312",
+        "model.py": "7e69500b12808df7912b615b58f39288e92d3100c9b02d86f5c10d30b061c582",
+        "goals.py": "125de050472754c34118c01b375ad2962cfbec14e1ec0bb07c0d4cdfd54cb0f0",
+        "perception.py": "d5298b33ccc890caee24534733df7bf3518d8de681c9caba3f42e0f208783219"
+      },
+      "provider": "astra",
+      "maintenance": "learned",
+      "controller_modes": {
+        "waiting": "learned",
+        "execution": "learned"
+      },
+      "seed": 183101,
+      "episodes": 20,
+      "start_episode": 0,
+      "evaluator_sha256": "46936ecc3354ca0cd8302d841fd3ec0a83aa5ade561566a47b1fc5ca3c03035c",
+      "actor_sha256": "2f55120ee866e19fea406d14a528536bb8cb88e3baa05bbb275dd92c4fee9f19",
+      "execution_actor_sha256": "4e0160227dc8e5076ca3e9dc58039c7856b37eed2f9f798f4b99dcbaebb285cd",
+      "completion_sha256": null,
+      "completion_kind": null,
+      "stop_mode": "measured",
+      "measured_stop_threshold_rad": 0.16,
+      "stopping": "measured-pose gate with model-declared requested binding at 3Hz, no hold",
+      "physics": "continuous during every request; 30Hz wall pacing while pending; delivery after ceil(actual latency*30) steps",
+      "request_budget": 6,
+      "service_exclusion": "service error or measured request latency >120s; report raw and eligible",
+      "inspection": "Astra model-selected; fine-tuned VLM uses shared deterministic unseen-view schedule when unreadable",
+      "fine_tuned_goal": "continuous returned vector enters student unchanged; nearest skill only for public verification and logs",
+      "formal_release_sha256": "07922f1aa5522fd665b6fc0a70da6aa75e6d52801b387372427a18d6e3e0ef28",
+      "upstream_model": "gpt-6-astra"
+    },
+    "astra_183102": {
+      "student_sha256": "9d55b83f27c4f1dd24b56695639a76d95bd56ccb248668c5e742ee597d84dd24",
+      "original_student_sha256": "022f963f3fa177cc84d3ca14888ba2872e594577ccf1614713834eb10f9336f1",
+      "physical_binding": {
+        "source_environment": "<runtime-path-redacted>",
+        "source_environment_sha256": "f8d5eef6ac7fdf56b37cfc54095d1918dfa6acd62821637a05f3ca65584318df",
+        "contract_sha256": "8845592f802e8badeccce52ed332a8453e50a80edd93c03370516077f21c6279",
+        "assets": {
+          "robot": {
+            "path": "<runtime-path-redacted>",
+            "sha256": "a13e3f0ac0482d88c57a9050b4095fde62cc01e9db5dd6053d6dd19ce8f0c650"
+          },
+          "object": {
+            "path": "<runtime-path-redacted>",
+            "sha256": "0df16dfdb9c483e5b1e1ddc28b479afb44e2eac34d9a83955e44a3788057ae92"
+          }
+        },
+        "physics": "isaaclab_newton.physics.mjwarp_manager:NewtonMJWarpManager",
+        "step_dt": 0.03333333333333333,
+        "nconmax": 4096,
+        "njmax": 1024
+      },
+      "pose_estimator": {
+        "checkpoint": "<runtime-path-redacted>",
+        "checkpoint_sha256": "6a940233e65146bf34f1051a593727f79fa0821d0d8bcc7feec18b07a67794ed",
+        "keypoints_sha256": "d5e65f06e32872cfbf5cf2147179dcabb604911b0b8c2a283effbb2af10dcd01",
+        "image_size": [
+          120,
+          120
+        ],
+        "pose_frame": "right_hand_base_link",
+        "quaternion_order": "xyzw",
+        "position_unit": "m",
+        "cnn_preprocessing": [
+          "binary_opening",
+          "released_network_resize_and_normalization"
+        ],
+        "visual_noise_added_to_cnn_pose": false,
+        "ground_truth_fallback": false
+      },
+      "camera": {
+        "image_protocol": "original_gsplat_object_plus_depth_ordered_black_hand_occlusion",
+        "raw_calibration_size": [
+          1280,
+          1024
+        ],
+        "cnn_image_size": [
+          120,
+          120
+        ],
+        "camera_intrinsics": [
+          [
+            122.86667490224502,
+            0.0,
+            60.31119860275362
+          ],
+          [
+            0.0,
+            153.5033526224968,
+            58.38762604230718
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_base_camera": [
+          [
+            0.09686958975171941,
+            -0.7892732850133177,
+            -0.6063530029163036,
+            0.2905681944462764
+          ],
+          [
+            0.9402422071523159,
+            0.27237946668979046,
+            -0.20433799943996125,
+            0.06494179774601874
+          ],
+          [
+            0.32643663163112346,
+            -0.5503245475990239,
+            0.7684933427423132,
+            -0.2447436270886566
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_world_camera_env0": [
+          [
+            -0.3264366581128613,
+            0.5503246258134735,
+            -0.7684932754835058,
+            0.3647436201572418
+          ],
+          [
+            0.9402421932162344,
+            0.27237954366345374,
+            -0.20433796096079226,
+            0.06494180113077164
+          ],
+          [
+            0.096869635779394,
+            -0.7892732039141765,
+            -0.6063531011275678,
+            0.8005682229995728
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_world_camera_expected_env0": [
+          [
+            -0.3264366316311234,
+            0.5503245475990238,
+            -0.768493342742313,
+            0.3647436244064475
+          ],
+          [
+            0.9402422071523157,
+            0.2723794666897904,
+            -0.2043379994399612,
+            0.06494179774601871
+          ],
+          [
+            0.09686958975171939,
+            -0.7892732850133175,
+            -0.6063530029163035,
+            0.8005681849095332
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "maximum_position_error_m": 3.809003956689594e-08,
+        "maximum_rotation_matrix_abs_error": 9.82112643432842e-08,
+        "maximum_extrinsic_abs_error": 9.82112643432842e-08,
+        "num_envs_checked": 1,
+        "extrinsic_position_tolerance_m_per_axis_max": [
+          1.0596046447753906e-06,
+          1.0149011611938476e-06,
+          1.1192092895507812e-06
+        ],
+        "extrinsic_rotation_abs_tolerance": 1e-06,
+        "distortion": "GS and ray camera use rectified pinhole rays; real RGB must use the same undistortion",
+        "full_hand_rgb_in_network_input": false,
+        "calibration_sha256": {
+          "hikrobot_DB0447679_1280x1024_intrinsics.json": "80742054a501a20d29d5fcb9602e2a0d5fa28d49a50aba97e8bec23cdf99955b",
+          "hikrobot_DB0447679_1280x1024_extrinsics_revo3_20261022.json": "8fba74d72baf2ddf1565d675d9e64731ca8b61f65d569e0f39f07f1986b32ca4"
+        }
+      },
+      "live_geometry": {
+        "world_count": 1,
+        "body_count": 23,
+        "collision_shape_count": 117,
+        "collision_types": {
+          "CONVEX_MESH": 116,
+          "BOX": 1
+        }
+      },
+      "goal_manifest": {
+        "asset_sha256": "93d60bde1d00cf5398b5d31e2016663e793d8bb4cdee817421e324f47fccb4a8",
+        "cache_sha256": "579ca62922aac9e5084f13b33bf3e2cd846bc19a5aa53ed11568ef71cf252856",
+        "latent_source": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+        "colors": [
+          "red",
+          "green",
+          "blue",
+          "yellow",
+          "magenta",
+          "cyan"
+        ],
+        "symbols": [
+          "T",
+          "E",
+          "R",
+          "L",
+          "S",
+          "H"
+        ],
+        "texture_numbers": [
+          2,
+          1,
+          4,
+          6,
+          5,
+          3
+        ],
+        "normals_body": [
+          [
+            0,
+            -1,
+            0
+          ],
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "target_quaternions_world_xyzw": [
+          [
+            -0.7071067811865476,
+            0,
+            0,
+            0.7071067811865476
+          ],
+          [
+            0,
+            0.7071067811865476,
+            0,
+            0.7071067811865476
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0.7071067811865476,
+            0,
+            0,
+            0.7071067811865476
+          ],
+          [
+            0,
+            -0.7071067811865476,
+            0,
+            0.7071067811865476
+          ]
+        ],
+        "cyan_channel_visual_name": "pale blue H",
+        "magenta_channel_visual_name": "purple S",
+        "mapping_scope": "fixed body-frame mapping in the exact released asset, not randomized face layouts"
+      },
+      "explicit_task_overrides": {
+        "horizon_seconds": 120,
+        "maximum_steps": 3600,
+        "success_counter_termination": null,
+        "drop": "distance from nominal object grasp position >=0.24m",
+        "goal_resampling": "disabled",
+        "student_time_feature": "clip(1 - elapsed_control_steps/600,0,1), preserving the released 20s clock scale"
+      },
+      "goal_input": "direct 768D latent; no target or relative-goal quaternion in student",
+      "source_sha256": {
+        "newton_runtime.py": "578f6dc93fe50007e70e9981d792dc3a7257f41422683dc2b796a444ba87a312",
+        "model.py": "7e69500b12808df7912b615b58f39288e92d3100c9b02d86f5c10d30b061c582",
+        "goals.py": "125de050472754c34118c01b375ad2962cfbec14e1ec0bb07c0d4cdfd54cb0f0",
+        "perception.py": "d5298b33ccc890caee24534733df7bf3518d8de681c9caba3f42e0f208783219"
+      },
+      "provider": "astra",
+      "maintenance": "learned",
+      "controller_modes": {
+        "waiting": "learned",
+        "execution": "learned"
+      },
+      "seed": 183102,
+      "episodes": 20,
+      "start_episode": 0,
+      "evaluator_sha256": "46936ecc3354ca0cd8302d841fd3ec0a83aa5ade561566a47b1fc5ca3c03035c",
+      "actor_sha256": "2f55120ee866e19fea406d14a528536bb8cb88e3baa05bbb275dd92c4fee9f19",
+      "execution_actor_sha256": "4e0160227dc8e5076ca3e9dc58039c7856b37eed2f9f798f4b99dcbaebb285cd",
+      "completion_sha256": null,
+      "completion_kind": null,
+      "stop_mode": "measured",
+      "measured_stop_threshold_rad": 0.16,
+      "stopping": "measured-pose gate with model-declared requested binding at 3Hz, no hold",
+      "physics": "continuous during every request; 30Hz wall pacing while pending; delivery after ceil(actual latency*30) steps",
+      "request_budget": 6,
+      "service_exclusion": "service error or measured request latency >120s; report raw and eligible",
+      "inspection": "Astra model-selected; fine-tuned VLM uses shared deterministic unseen-view schedule when unreadable",
+      "fine_tuned_goal": "continuous returned vector enters student unchanged; nearest skill only for public verification and logs",
+      "formal_release_sha256": "07922f1aa5522fd665b6fc0a70da6aa75e6d52801b387372427a18d6e3e0ef28",
+      "upstream_model": "gpt-6-astra"
+    },
+    "astra_183102_resume12": {
+      "student_sha256": "9d55b83f27c4f1dd24b56695639a76d95bd56ccb248668c5e742ee597d84dd24",
+      "original_student_sha256": "022f963f3fa177cc84d3ca14888ba2872e594577ccf1614713834eb10f9336f1",
+      "physical_binding": {
+        "source_environment": "<runtime-path-redacted>",
+        "source_environment_sha256": "f8d5eef6ac7fdf56b37cfc54095d1918dfa6acd62821637a05f3ca65584318df",
+        "contract_sha256": "8845592f802e8badeccce52ed332a8453e50a80edd93c03370516077f21c6279",
+        "assets": {
+          "robot": {
+            "path": "<runtime-path-redacted>",
+            "sha256": "a13e3f0ac0482d88c57a9050b4095fde62cc01e9db5dd6053d6dd19ce8f0c650"
+          },
+          "object": {
+            "path": "<runtime-path-redacted>",
+            "sha256": "0df16dfdb9c483e5b1e1ddc28b479afb44e2eac34d9a83955e44a3788057ae92"
+          }
+        },
+        "physics": "isaaclab_newton.physics.mjwarp_manager:NewtonMJWarpManager",
+        "step_dt": 0.03333333333333333,
+        "nconmax": 4096,
+        "njmax": 1024
+      },
+      "pose_estimator": {
+        "checkpoint": "<runtime-path-redacted>",
+        "checkpoint_sha256": "6a940233e65146bf34f1051a593727f79fa0821d0d8bcc7feec18b07a67794ed",
+        "keypoints_sha256": "d5e65f06e32872cfbf5cf2147179dcabb604911b0b8c2a283effbb2af10dcd01",
+        "image_size": [
+          120,
+          120
+        ],
+        "pose_frame": "right_hand_base_link",
+        "quaternion_order": "xyzw",
+        "position_unit": "m",
+        "cnn_preprocessing": [
+          "binary_opening",
+          "released_network_resize_and_normalization"
+        ],
+        "visual_noise_added_to_cnn_pose": false,
+        "ground_truth_fallback": false
+      },
+      "camera": {
+        "image_protocol": "original_gsplat_object_plus_depth_ordered_black_hand_occlusion",
+        "raw_calibration_size": [
+          1280,
+          1024
+        ],
+        "cnn_image_size": [
+          120,
+          120
+        ],
+        "camera_intrinsics": [
+          [
+            122.86667490224502,
+            0.0,
+            60.31119860275362
+          ],
+          [
+            0.0,
+            153.5033526224968,
+            58.38762604230718
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_base_camera": [
+          [
+            0.09686958975171941,
+            -0.7892732850133177,
+            -0.6063530029163036,
+            0.2905681944462764
+          ],
+          [
+            0.9402422071523159,
+            0.27237946668979046,
+            -0.20433799943996125,
+            0.06494179774601874
+          ],
+          [
+            0.32643663163112346,
+            -0.5503245475990239,
+            0.7684933427423132,
+            -0.2447436270886566
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_world_camera_env0": [
+          [
+            -0.3264366581128613,
+            0.5503246258134735,
+            -0.7684932754835058,
+            0.3647436201572418
+          ],
+          [
+            0.9402421932162344,
+            0.27237954366345374,
+            -0.20433796096079226,
+            0.06494180113077164
+          ],
+          [
+            0.096869635779394,
+            -0.7892732039141765,
+            -0.6063531011275678,
+            0.8005682229995728
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_world_camera_expected_env0": [
+          [
+            -0.3264366316311234,
+            0.5503245475990238,
+            -0.768493342742313,
+            0.3647436244064475
+          ],
+          [
+            0.9402422071523157,
+            0.2723794666897904,
+            -0.2043379994399612,
+            0.06494179774601871
+          ],
+          [
+            0.09686958975171939,
+            -0.7892732850133175,
+            -0.6063530029163035,
+            0.8005681849095332
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "maximum_position_error_m": 3.809003956689594e-08,
+        "maximum_rotation_matrix_abs_error": 9.82112643432842e-08,
+        "maximum_extrinsic_abs_error": 9.82112643432842e-08,
+        "num_envs_checked": 1,
+        "extrinsic_position_tolerance_m_per_axis_max": [
+          1.0596046447753906e-06,
+          1.0149011611938476e-06,
+          1.1192092895507812e-06
+        ],
+        "extrinsic_rotation_abs_tolerance": 1e-06,
+        "distortion": "GS and ray camera use rectified pinhole rays; real RGB must use the same undistortion",
+        "full_hand_rgb_in_network_input": false,
+        "calibration_sha256": {
+          "hikrobot_DB0447679_1280x1024_intrinsics.json": "80742054a501a20d29d5fcb9602e2a0d5fa28d49a50aba97e8bec23cdf99955b",
+          "hikrobot_DB0447679_1280x1024_extrinsics_revo3_20261022.json": "8fba74d72baf2ddf1565d675d9e64731ca8b61f65d569e0f39f07f1986b32ca4"
+        }
+      },
+      "live_geometry": {
+        "world_count": 1,
+        "body_count": 23,
+        "collision_shape_count": 117,
+        "collision_types": {
+          "CONVEX_MESH": 116,
+          "BOX": 1
+        }
+      },
+      "goal_manifest": {
+        "asset_sha256": "93d60bde1d00cf5398b5d31e2016663e793d8bb4cdee817421e324f47fccb4a8",
+        "cache_sha256": "579ca62922aac9e5084f13b33bf3e2cd846bc19a5aa53ed11568ef71cf252856",
+        "latent_source": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+        "colors": [
+          "red",
+          "green",
+          "blue",
+          "yellow",
+          "magenta",
+          "cyan"
+        ],
+        "symbols": [
+          "T",
+          "E",
+          "R",
+          "L",
+          "S",
+          "H"
+        ],
+        "texture_numbers": [
+          2,
+          1,
+          4,
+          6,
+          5,
+          3
+        ],
+        "normals_body": [
+          [
+            0,
+            -1,
+            0
+          ],
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "target_quaternions_world_xyzw": [
+          [
+            -0.7071067811865476,
+            0,
+            0,
+            0.7071067811865476
+          ],
+          [
+            0,
+            0.7071067811865476,
+            0,
+            0.7071067811865476
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0.7071067811865476,
+            0,
+            0,
+            0.7071067811865476
+          ],
+          [
+            0,
+            -0.7071067811865476,
+            0,
+            0.7071067811865476
+          ]
+        ],
+        "cyan_channel_visual_name": "pale blue H",
+        "magenta_channel_visual_name": "purple S",
+        "mapping_scope": "fixed body-frame mapping in the exact released asset, not randomized face layouts"
+      },
+      "explicit_task_overrides": {
+        "horizon_seconds": 120,
+        "maximum_steps": 3600,
+        "success_counter_termination": null,
+        "drop": "distance from nominal object grasp position >=0.24m",
+        "goal_resampling": "disabled",
+        "student_time_feature": "clip(1 - elapsed_control_steps/600,0,1), preserving the released 20s clock scale"
+      },
+      "goal_input": "direct 768D latent; no target or relative-goal quaternion in student",
+      "source_sha256": {
+        "newton_runtime.py": "578f6dc93fe50007e70e9981d792dc3a7257f41422683dc2b796a444ba87a312",
+        "model.py": "7e69500b12808df7912b615b58f39288e92d3100c9b02d86f5c10d30b061c582",
+        "goals.py": "125de050472754c34118c01b375ad2962cfbec14e1ec0bb07c0d4cdfd54cb0f0",
+        "perception.py": "d5298b33ccc890caee24534733df7bf3518d8de681c9caba3f42e0f208783219"
+      },
+      "provider": "astra",
+      "maintenance": "learned",
+      "controller_modes": {
+        "waiting": "learned",
+        "execution": "learned"
+      },
+      "seed": 183102,
+      "episodes": 8,
+      "start_episode": 12,
+      "evaluator_sha256": "46936ecc3354ca0cd8302d841fd3ec0a83aa5ade561566a47b1fc5ca3c03035c",
+      "actor_sha256": "2f55120ee866e19fea406d14a528536bb8cb88e3baa05bbb275dd92c4fee9f19",
+      "execution_actor_sha256": "4e0160227dc8e5076ca3e9dc58039c7856b37eed2f9f798f4b99dcbaebb285cd",
+      "completion_sha256": null,
+      "completion_kind": null,
+      "stop_mode": "measured",
+      "measured_stop_threshold_rad": 0.16,
+      "stopping": "measured-pose gate with model-declared requested binding at 3Hz, no hold",
+      "physics": "continuous during every request; 30Hz wall pacing while pending; delivery after ceil(actual latency*30) steps",
+      "request_budget": 6,
+      "service_exclusion": "service error or measured request latency >120s; report raw and eligible",
+      "inspection": "Astra model-selected; fine-tuned VLM uses shared deterministic unseen-view schedule when unreadable",
+      "fine_tuned_goal": "continuous returned vector enters student unchanged; nearest skill only for public verification and logs",
+      "formal_release_sha256": "07922f1aa5522fd665b6fc0a70da6aa75e6d52801b387372427a18d6e3e0ef28",
+      "upstream_model": "gpt-6-astra"
+    }
+  },
+  "finetuned_vlm_full": {
+    "vlm_183101": {
+      "student_sha256": "9d55b83f27c4f1dd24b56695639a76d95bd56ccb248668c5e742ee597d84dd24",
+      "original_student_sha256": "022f963f3fa177cc84d3ca14888ba2872e594577ccf1614713834eb10f9336f1",
+      "physical_binding": {
+        "source_environment": "<runtime-path-redacted>",
+        "source_environment_sha256": "f8d5eef6ac7fdf56b37cfc54095d1918dfa6acd62821637a05f3ca65584318df",
+        "contract_sha256": "8845592f802e8badeccce52ed332a8453e50a80edd93c03370516077f21c6279",
+        "assets": {
+          "robot": {
+            "path": "<runtime-path-redacted>",
+            "sha256": "a13e3f0ac0482d88c57a9050b4095fde62cc01e9db5dd6053d6dd19ce8f0c650"
+          },
+          "object": {
+            "path": "<runtime-path-redacted>",
+            "sha256": "0df16dfdb9c483e5b1e1ddc28b479afb44e2eac34d9a83955e44a3788057ae92"
+          }
+        },
+        "physics": "isaaclab_newton.physics.mjwarp_manager:NewtonMJWarpManager",
+        "step_dt": 0.03333333333333333,
+        "nconmax": 4096,
+        "njmax": 1024
+      },
+      "pose_estimator": {
+        "checkpoint": "<runtime-path-redacted>",
+        "checkpoint_sha256": "6a940233e65146bf34f1051a593727f79fa0821d0d8bcc7feec18b07a67794ed",
+        "keypoints_sha256": "d5e65f06e32872cfbf5cf2147179dcabb604911b0b8c2a283effbb2af10dcd01",
+        "image_size": [
+          120,
+          120
+        ],
+        "pose_frame": "right_hand_base_link",
+        "quaternion_order": "xyzw",
+        "position_unit": "m",
+        "cnn_preprocessing": [
+          "binary_opening",
+          "released_network_resize_and_normalization"
+        ],
+        "visual_noise_added_to_cnn_pose": false,
+        "ground_truth_fallback": false
+      },
+      "camera": {
+        "image_protocol": "original_gsplat_object_plus_depth_ordered_black_hand_occlusion",
+        "raw_calibration_size": [
+          1280,
+          1024
+        ],
+        "cnn_image_size": [
+          120,
+          120
+        ],
+        "camera_intrinsics": [
+          [
+            122.86667490224502,
+            0.0,
+            60.31119860275362
+          ],
+          [
+            0.0,
+            153.5033526224968,
+            58.38762604230718
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_base_camera": [
+          [
+            0.09686958975171941,
+            -0.7892732850133177,
+            -0.6063530029163036,
+            0.2905681944462764
+          ],
+          [
+            0.9402422071523159,
+            0.27237946668979046,
+            -0.20433799943996125,
+            0.06494179774601874
+          ],
+          [
+            0.32643663163112346,
+            -0.5503245475990239,
+            0.7684933427423132,
+            -0.2447436270886566
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_world_camera_env0": [
+          [
+            -0.3264366581128613,
+            0.5503246258134735,
+            -0.7684932754835058,
+            0.3647436201572418
+          ],
+          [
+            0.9402421932162344,
+            0.27237954366345374,
+            -0.20433796096079226,
+            0.06494180113077164
+          ],
+          [
+            0.096869635779394,
+            -0.7892732039141765,
+            -0.6063531011275678,
+            0.8005682229995728
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_world_camera_expected_env0": [
+          [
+            -0.3264366316311234,
+            0.5503245475990238,
+            -0.768493342742313,
+            0.3647436244064475
+          ],
+          [
+            0.9402422071523157,
+            0.2723794666897904,
+            -0.2043379994399612,
+            0.06494179774601871
+          ],
+          [
+            0.09686958975171939,
+            -0.7892732850133175,
+            -0.6063530029163035,
+            0.8005681849095332
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "maximum_position_error_m": 3.809003956689594e-08,
+        "maximum_rotation_matrix_abs_error": 9.82112643432842e-08,
+        "maximum_extrinsic_abs_error": 9.82112643432842e-08,
+        "num_envs_checked": 1,
+        "extrinsic_position_tolerance_m_per_axis_max": [
+          1.0596046447753906e-06,
+          1.0149011611938476e-06,
+          1.1192092895507812e-06
+        ],
+        "extrinsic_rotation_abs_tolerance": 1e-06,
+        "distortion": "GS and ray camera use rectified pinhole rays; real RGB must use the same undistortion",
+        "full_hand_rgb_in_network_input": false,
+        "calibration_sha256": {
+          "hikrobot_DB0447679_1280x1024_intrinsics.json": "80742054a501a20d29d5fcb9602e2a0d5fa28d49a50aba97e8bec23cdf99955b",
+          "hikrobot_DB0447679_1280x1024_extrinsics_revo3_20261022.json": "8fba74d72baf2ddf1565d675d9e64731ca8b61f65d569e0f39f07f1986b32ca4"
+        }
+      },
+      "live_geometry": {
+        "world_count": 1,
+        "body_count": 23,
+        "collision_shape_count": 117,
+        "collision_types": {
+          "CONVEX_MESH": 116,
+          "BOX": 1
+        }
+      },
+      "goal_manifest": {
+        "asset_sha256": "93d60bde1d00cf5398b5d31e2016663e793d8bb4cdee817421e324f47fccb4a8",
+        "cache_sha256": "579ca62922aac9e5084f13b33bf3e2cd846bc19a5aa53ed11568ef71cf252856",
+        "latent_source": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+        "colors": [
+          "red",
+          "green",
+          "blue",
+          "yellow",
+          "magenta",
+          "cyan"
+        ],
+        "symbols": [
+          "T",
+          "E",
+          "R",
+          "L",
+          "S",
+          "H"
+        ],
+        "texture_numbers": [
+          2,
+          1,
+          4,
+          6,
+          5,
+          3
+        ],
+        "normals_body": [
+          [
+            0,
+            -1,
+            0
+          ],
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "target_quaternions_world_xyzw": [
+          [
+            -0.7071067811865476,
+            0,
+            0,
+            0.7071067811865476
+          ],
+          [
+            0,
+            0.7071067811865476,
+            0,
+            0.7071067811865476
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0.7071067811865476,
+            0,
+            0,
+            0.7071067811865476
+          ],
+          [
+            0,
+            -0.7071067811865476,
+            0,
+            0.7071067811865476
+          ]
+        ],
+        "cyan_channel_visual_name": "pale blue H",
+        "magenta_channel_visual_name": "purple S",
+        "mapping_scope": "fixed body-frame mapping in the exact released asset, not randomized face layouts"
+      },
+      "explicit_task_overrides": {
+        "horizon_seconds": 120,
+        "maximum_steps": 3600,
+        "success_counter_termination": null,
+        "drop": "distance from nominal object grasp position >=0.24m",
+        "goal_resampling": "disabled",
+        "student_time_feature": "clip(1 - elapsed_control_steps/600,0,1), preserving the released 20s clock scale"
+      },
+      "goal_input": "direct 768D latent; no target or relative-goal quaternion in student",
+      "source_sha256": {
+        "newton_runtime.py": "578f6dc93fe50007e70e9981d792dc3a7257f41422683dc2b796a444ba87a312",
+        "model.py": "7e69500b12808df7912b615b58f39288e92d3100c9b02d86f5c10d30b061c582",
+        "goals.py": "125de050472754c34118c01b375ad2962cfbec14e1ec0bb07c0d4cdfd54cb0f0",
+        "perception.py": "d5298b33ccc890caee24534733df7bf3518d8de681c9caba3f42e0f208783219"
+      },
+      "provider": "vlm",
+      "maintenance": "learned",
+      "controller_modes": {
+        "waiting": "learned",
+        "execution": "learned"
+      },
+      "seed": 183101,
+      "episodes": 20,
+      "start_episode": 0,
+      "evaluator_sha256": "46936ecc3354ca0cd8302d841fd3ec0a83aa5ade561566a47b1fc5ca3c03035c",
+      "actor_sha256": "2f55120ee866e19fea406d14a528536bb8cb88e3baa05bbb275dd92c4fee9f19",
+      "execution_actor_sha256": "4e0160227dc8e5076ca3e9dc58039c7856b37eed2f9f798f4b99dcbaebb285cd",
+      "completion_sha256": null,
+      "completion_kind": null,
+      "stop_mode": "measured",
+      "measured_stop_threshold_rad": 0.16,
+      "stopping": "measured-pose gate with model-declared requested binding at 3Hz, no hold",
+      "physics": "continuous during every request; 30Hz wall pacing while pending; delivery after ceil(actual latency*30) steps",
+      "request_budget": 6,
+      "service_exclusion": "service error or measured request latency >120s; report raw and eligible",
+      "inspection": "Astra model-selected; fine-tuned VLM uses shared deterministic unseen-view schedule when unreadable",
+      "fine_tuned_goal": "continuous returned vector enters student unchanged; nearest skill only for public verification and logs",
+      "formal_release_sha256": "07922f1aa5522fd665b6fc0a70da6aa75e6d52801b387372427a18d6e3e0ef28"
+    },
+    "vlm_183102": {
+      "student_sha256": "9d55b83f27c4f1dd24b56695639a76d95bd56ccb248668c5e742ee597d84dd24",
+      "original_student_sha256": "022f963f3fa177cc84d3ca14888ba2872e594577ccf1614713834eb10f9336f1",
+      "physical_binding": {
+        "source_environment": "<runtime-path-redacted>",
+        "source_environment_sha256": "f8d5eef6ac7fdf56b37cfc54095d1918dfa6acd62821637a05f3ca65584318df",
+        "contract_sha256": "8845592f802e8badeccce52ed332a8453e50a80edd93c03370516077f21c6279",
+        "assets": {
+          "robot": {
+            "path": "<runtime-path-redacted>",
+            "sha256": "a13e3f0ac0482d88c57a9050b4095fde62cc01e9db5dd6053d6dd19ce8f0c650"
+          },
+          "object": {
+            "path": "<runtime-path-redacted>",
+            "sha256": "0df16dfdb9c483e5b1e1ddc28b479afb44e2eac34d9a83955e44a3788057ae92"
+          }
+        },
+        "physics": "isaaclab_newton.physics.mjwarp_manager:NewtonMJWarpManager",
+        "step_dt": 0.03333333333333333,
+        "nconmax": 4096,
+        "njmax": 1024
+      },
+      "pose_estimator": {
+        "checkpoint": "<runtime-path-redacted>",
+        "checkpoint_sha256": "6a940233e65146bf34f1051a593727f79fa0821d0d8bcc7feec18b07a67794ed",
+        "keypoints_sha256": "d5e65f06e32872cfbf5cf2147179dcabb604911b0b8c2a283effbb2af10dcd01",
+        "image_size": [
+          120,
+          120
+        ],
+        "pose_frame": "right_hand_base_link",
+        "quaternion_order": "xyzw",
+        "position_unit": "m",
+        "cnn_preprocessing": [
+          "binary_opening",
+          "released_network_resize_and_normalization"
+        ],
+        "visual_noise_added_to_cnn_pose": false,
+        "ground_truth_fallback": false
+      },
+      "camera": {
+        "image_protocol": "original_gsplat_object_plus_depth_ordered_black_hand_occlusion",
+        "raw_calibration_size": [
+          1280,
+          1024
+        ],
+        "cnn_image_size": [
+          120,
+          120
+        ],
+        "camera_intrinsics": [
+          [
+            122.86667490224502,
+            0.0,
+            60.31119860275362
+          ],
+          [
+            0.0,
+            153.5033526224968,
+            58.38762604230718
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_base_camera": [
+          [
+            0.09686958975171941,
+            -0.7892732850133177,
+            -0.6063530029163036,
+            0.2905681944462764
+          ],
+          [
+            0.9402422071523159,
+            0.27237946668979046,
+            -0.20433799943996125,
+            0.06494179774601874
+          ],
+          [
+            0.32643663163112346,
+            -0.5503245475990239,
+            0.7684933427423132,
+            -0.2447436270886566
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_world_camera_env0": [
+          [
+            -0.3264366581128613,
+            0.5503246258134735,
+            -0.7684932754835058,
+            0.3647436201572418
+          ],
+          [
+            0.9402421932162344,
+            0.27237954366345374,
+            -0.20433796096079226,
+            0.06494180113077164
+          ],
+          [
+            0.096869635779394,
+            -0.7892732039141765,
+            -0.6063531011275678,
+            0.8005682229995728
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_world_camera_expected_env0": [
+          [
+            -0.3264366316311234,
+            0.5503245475990238,
+            -0.768493342742313,
+            0.3647436244064475
+          ],
+          [
+            0.9402422071523157,
+            0.2723794666897904,
+            -0.2043379994399612,
+            0.06494179774601871
+          ],
+          [
+            0.09686958975171939,
+            -0.7892732850133175,
+            -0.6063530029163035,
+            0.8005681849095332
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "maximum_position_error_m": 3.809003956689594e-08,
+        "maximum_rotation_matrix_abs_error": 9.82112643432842e-08,
+        "maximum_extrinsic_abs_error": 9.82112643432842e-08,
+        "num_envs_checked": 1,
+        "extrinsic_position_tolerance_m_per_axis_max": [
+          1.0596046447753906e-06,
+          1.0149011611938476e-06,
+          1.1192092895507812e-06
+        ],
+        "extrinsic_rotation_abs_tolerance": 1e-06,
+        "distortion": "GS and ray camera use rectified pinhole rays; real RGB must use the same undistortion",
+        "full_hand_rgb_in_network_input": false,
+        "calibration_sha256": {
+          "hikrobot_DB0447679_1280x1024_intrinsics.json": "80742054a501a20d29d5fcb9602e2a0d5fa28d49a50aba97e8bec23cdf99955b",
+          "hikrobot_DB0447679_1280x1024_extrinsics_revo3_20261022.json": "8fba74d72baf2ddf1565d675d9e64731ca8b61f65d569e0f39f07f1986b32ca4"
+        }
+      },
+      "live_geometry": {
+        "world_count": 1,
+        "body_count": 23,
+        "collision_shape_count": 117,
+        "collision_types": {
+          "CONVEX_MESH": 116,
+          "BOX": 1
+        }
+      },
+      "goal_manifest": {
+        "asset_sha256": "93d60bde1d00cf5398b5d31e2016663e793d8bb4cdee817421e324f47fccb4a8",
+        "cache_sha256": "579ca62922aac9e5084f13b33bf3e2cd846bc19a5aa53ed11568ef71cf252856",
+        "latent_source": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+        "colors": [
+          "red",
+          "green",
+          "blue",
+          "yellow",
+          "magenta",
+          "cyan"
+        ],
+        "symbols": [
+          "T",
+          "E",
+          "R",
+          "L",
+          "S",
+          "H"
+        ],
+        "texture_numbers": [
+          2,
+          1,
+          4,
+          6,
+          5,
+          3
+        ],
+        "normals_body": [
+          [
+            0,
+            -1,
+            0
+          ],
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "target_quaternions_world_xyzw": [
+          [
+            -0.7071067811865476,
+            0,
+            0,
+            0.7071067811865476
+          ],
+          [
+            0,
+            0.7071067811865476,
+            0,
+            0.7071067811865476
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0.7071067811865476,
+            0,
+            0,
+            0.7071067811865476
+          ],
+          [
+            0,
+            -0.7071067811865476,
+            0,
+            0.7071067811865476
+          ]
+        ],
+        "cyan_channel_visual_name": "pale blue H",
+        "magenta_channel_visual_name": "purple S",
+        "mapping_scope": "fixed body-frame mapping in the exact released asset, not randomized face layouts"
+      },
+      "explicit_task_overrides": {
+        "horizon_seconds": 120,
+        "maximum_steps": 3600,
+        "success_counter_termination": null,
+        "drop": "distance from nominal object grasp position >=0.24m",
+        "goal_resampling": "disabled",
+        "student_time_feature": "clip(1 - elapsed_control_steps/600,0,1), preserving the released 20s clock scale"
+      },
+      "goal_input": "direct 768D latent; no target or relative-goal quaternion in student",
+      "source_sha256": {
+        "newton_runtime.py": "578f6dc93fe50007e70e9981d792dc3a7257f41422683dc2b796a444ba87a312",
+        "model.py": "7e69500b12808df7912b615b58f39288e92d3100c9b02d86f5c10d30b061c582",
+        "goals.py": "125de050472754c34118c01b375ad2962cfbec14e1ec0bb07c0d4cdfd54cb0f0",
+        "perception.py": "d5298b33ccc890caee24534733df7bf3518d8de681c9caba3f42e0f208783219"
+      },
+      "provider": "vlm",
+      "maintenance": "learned",
+      "controller_modes": {
+        "waiting": "learned",
+        "execution": "learned"
+      },
+      "seed": 183102,
+      "episodes": 20,
+      "start_episode": 0,
+      "evaluator_sha256": "46936ecc3354ca0cd8302d841fd3ec0a83aa5ade561566a47b1fc5ca3c03035c",
+      "actor_sha256": "2f55120ee866e19fea406d14a528536bb8cb88e3baa05bbb275dd92c4fee9f19",
+      "execution_actor_sha256": "4e0160227dc8e5076ca3e9dc58039c7856b37eed2f9f798f4b99dcbaebb285cd",
+      "completion_sha256": null,
+      "completion_kind": null,
+      "stop_mode": "measured",
+      "measured_stop_threshold_rad": 0.16,
+      "stopping": "measured-pose gate with model-declared requested binding at 3Hz, no hold",
+      "physics": "continuous during every request; 30Hz wall pacing while pending; delivery after ceil(actual latency*30) steps",
+      "request_budget": 6,
+      "service_exclusion": "service error or measured request latency >120s; report raw and eligible",
+      "inspection": "Astra model-selected; fine-tuned VLM uses shared deterministic unseen-view schedule when unreadable",
+      "fine_tuned_goal": "continuous returned vector enters student unchanged; nearest skill only for public verification and logs",
+      "formal_release_sha256": "07922f1aa5522fd665b6fc0a70da6aa75e6d52801b387372427a18d6e3e0ef28"
+    }
+  },
+  "rule_vlm_full": {
+    "rule_183101": {
+      "student_sha256": "9d55b83f27c4f1dd24b56695639a76d95bd56ccb248668c5e742ee597d84dd24",
+      "original_student_sha256": "022f963f3fa177cc84d3ca14888ba2872e594577ccf1614713834eb10f9336f1",
+      "physical_binding": {
+        "source_environment": "<runtime-path-redacted>",
+        "source_environment_sha256": "f8d5eef6ac7fdf56b37cfc54095d1918dfa6acd62821637a05f3ca65584318df",
+        "contract_sha256": "8845592f802e8badeccce52ed332a8453e50a80edd93c03370516077f21c6279",
+        "assets": {
+          "robot": {
+            "path": "<runtime-path-redacted>",
+            "sha256": "a13e3f0ac0482d88c57a9050b4095fde62cc01e9db5dd6053d6dd19ce8f0c650"
+          },
+          "object": {
+            "path": "<runtime-path-redacted>",
+            "sha256": "0df16dfdb9c483e5b1e1ddc28b479afb44e2eac34d9a83955e44a3788057ae92"
+          }
+        },
+        "physics": "isaaclab_newton.physics.mjwarp_manager:NewtonMJWarpManager",
+        "step_dt": 0.03333333333333333,
+        "nconmax": 4096,
+        "njmax": 1024
+      },
+      "pose_estimator": {
+        "checkpoint": "<runtime-path-redacted>",
+        "checkpoint_sha256": "6a940233e65146bf34f1051a593727f79fa0821d0d8bcc7feec18b07a67794ed",
+        "keypoints_sha256": "d5e65f06e32872cfbf5cf2147179dcabb604911b0b8c2a283effbb2af10dcd01",
+        "image_size": [
+          120,
+          120
+        ],
+        "pose_frame": "right_hand_base_link",
+        "quaternion_order": "xyzw",
+        "position_unit": "m",
+        "cnn_preprocessing": [
+          "binary_opening",
+          "released_network_resize_and_normalization"
+        ],
+        "visual_noise_added_to_cnn_pose": false,
+        "ground_truth_fallback": false
+      },
+      "camera": {
+        "image_protocol": "original_gsplat_object_plus_depth_ordered_black_hand_occlusion",
+        "raw_calibration_size": [
+          1280,
+          1024
+        ],
+        "cnn_image_size": [
+          120,
+          120
+        ],
+        "camera_intrinsics": [
+          [
+            122.86667490224502,
+            0.0,
+            60.31119860275362
+          ],
+          [
+            0.0,
+            153.5033526224968,
+            58.38762604230718
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_base_camera": [
+          [
+            0.09686958975171941,
+            -0.7892732850133177,
+            -0.6063530029163036,
+            0.2905681944462764
+          ],
+          [
+            0.9402422071523159,
+            0.27237946668979046,
+            -0.20433799943996125,
+            0.06494179774601874
+          ],
+          [
+            0.32643663163112346,
+            -0.5503245475990239,
+            0.7684933427423132,
+            -0.2447436270886566
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_world_camera_env0": [
+          [
+            -0.3264366581128613,
+            0.5503246258134735,
+            -0.7684932754835058,
+            0.3647436201572418
+          ],
+          [
+            0.9402421932162344,
+            0.27237954366345374,
+            -0.20433796096079226,
+            0.06494180113077164
+          ],
+          [
+            0.096869635779394,
+            -0.7892732039141765,
+            -0.6063531011275678,
+            0.8005682229995728
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_world_camera_expected_env0": [
+          [
+            -0.3264366316311234,
+            0.5503245475990238,
+            -0.768493342742313,
+            0.3647436244064475
+          ],
+          [
+            0.9402422071523157,
+            0.2723794666897904,
+            -0.2043379994399612,
+            0.06494179774601871
+          ],
+          [
+            0.09686958975171939,
+            -0.7892732850133175,
+            -0.6063530029163035,
+            0.8005681849095332
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "maximum_position_error_m": 3.809003956689594e-08,
+        "maximum_rotation_matrix_abs_error": 9.82112643432842e-08,
+        "maximum_extrinsic_abs_error": 9.82112643432842e-08,
+        "num_envs_checked": 1,
+        "extrinsic_position_tolerance_m_per_axis_max": [
+          1.0596046447753906e-06,
+          1.0149011611938476e-06,
+          1.1192092895507812e-06
+        ],
+        "extrinsic_rotation_abs_tolerance": 1e-06,
+        "distortion": "GS and ray camera use rectified pinhole rays; real RGB must use the same undistortion",
+        "full_hand_rgb_in_network_input": false,
+        "calibration_sha256": {
+          "hikrobot_DB0447679_1280x1024_intrinsics.json": "80742054a501a20d29d5fcb9602e2a0d5fa28d49a50aba97e8bec23cdf99955b",
+          "hikrobot_DB0447679_1280x1024_extrinsics_revo3_20261022.json": "8fba74d72baf2ddf1565d675d9e64731ca8b61f65d569e0f39f07f1986b32ca4"
+        }
+      },
+      "live_geometry": {
+        "world_count": 1,
+        "body_count": 23,
+        "collision_shape_count": 117,
+        "collision_types": {
+          "CONVEX_MESH": 116,
+          "BOX": 1
+        }
+      },
+      "goal_manifest": {
+        "asset_sha256": "93d60bde1d00cf5398b5d31e2016663e793d8bb4cdee817421e324f47fccb4a8",
+        "cache_sha256": "579ca62922aac9e5084f13b33bf3e2cd846bc19a5aa53ed11568ef71cf252856",
+        "latent_source": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+        "colors": [
+          "red",
+          "green",
+          "blue",
+          "yellow",
+          "magenta",
+          "cyan"
+        ],
+        "symbols": [
+          "T",
+          "E",
+          "R",
+          "L",
+          "S",
+          "H"
+        ],
+        "texture_numbers": [
+          2,
+          1,
+          4,
+          6,
+          5,
+          3
+        ],
+        "normals_body": [
+          [
+            0,
+            -1,
+            0
+          ],
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "target_quaternions_world_xyzw": [
+          [
+            -0.7071067811865476,
+            0,
+            0,
+            0.7071067811865476
+          ],
+          [
+            0,
+            0.7071067811865476,
+            0,
+            0.7071067811865476
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0.7071067811865476,
+            0,
+            0,
+            0.7071067811865476
+          ],
+          [
+            0,
+            -0.7071067811865476,
+            0,
+            0.7071067811865476
+          ]
+        ],
+        "cyan_channel_visual_name": "pale blue H",
+        "magenta_channel_visual_name": "purple S",
+        "mapping_scope": "fixed body-frame mapping in the exact released asset, not randomized face layouts"
+      },
+      "explicit_task_overrides": {
+        "horizon_seconds": 120,
+        "maximum_steps": 3600,
+        "success_counter_termination": null,
+        "drop": "distance from nominal object grasp position >=0.24m",
+        "goal_resampling": "disabled",
+        "student_time_feature": "clip(1 - elapsed_control_steps/600,0,1), preserving the released 20s clock scale"
+      },
+      "goal_input": "direct 768D latent; no target or relative-goal quaternion in student",
+      "source_sha256": {
+        "newton_runtime.py": "578f6dc93fe50007e70e9981d792dc3a7257f41422683dc2b796a444ba87a312",
+        "model.py": "7e69500b12808df7912b615b58f39288e92d3100c9b02d86f5c10d30b061c582",
+        "goals.py": "125de050472754c34118c01b375ad2962cfbec14e1ec0bb07c0d4cdfd54cb0f0",
+        "perception.py": "d5298b33ccc890caee24534733df7bf3518d8de681c9caba3f42e0f208783219"
+      },
+      "provider": "rule",
+      "maintenance": "learned",
+      "controller_modes": {
+        "waiting": "learned",
+        "execution": "learned"
+      },
+      "seed": 183101,
+      "episodes": 20,
+      "start_episode": 0,
+      "evaluator_sha256": "46936ecc3354ca0cd8302d841fd3ec0a83aa5ade561566a47b1fc5ca3c03035c",
+      "actor_sha256": "2f55120ee866e19fea406d14a528536bb8cb88e3baa05bbb275dd92c4fee9f19",
+      "execution_actor_sha256": "4e0160227dc8e5076ca3e9dc58039c7856b37eed2f9f798f4b99dcbaebb285cd",
+      "completion_sha256": null,
+      "completion_kind": null,
+      "stop_mode": "measured",
+      "measured_stop_threshold_rad": 0.16,
+      "stopping": "measured-pose gate with model-declared requested binding at 3Hz, no hold",
+      "physics": "continuous during every request; 30Hz wall pacing while pending; delivery after ceil(actual latency*30) steps",
+      "request_budget": 6,
+      "service_exclusion": "service error or measured request latency >120s; report raw and eligible",
+      "inspection": "Astra model-selected; fine-tuned VLM uses shared deterministic unseen-view schedule when unreadable",
+      "fine_tuned_goal": "continuous returned vector enters student unchanged; nearest skill only for public verification and logs",
+      "formal_release_sha256": "07922f1aa5522fd665b6fc0a70da6aa75e6d52801b387372427a18d6e3e0ef28",
+      "upstream_model": "/home/yin/DexManipulation/VLMmanipulation/outputs/agentic_v4/models/Qwen3-VL-4B-Instruct"
+    },
+    "rule_183102": {
+      "student_sha256": "9d55b83f27c4f1dd24b56695639a76d95bd56ccb248668c5e742ee597d84dd24",
+      "original_student_sha256": "022f963f3fa177cc84d3ca14888ba2872e594577ccf1614713834eb10f9336f1",
+      "physical_binding": {
+        "source_environment": "<runtime-path-redacted>",
+        "source_environment_sha256": "f8d5eef6ac7fdf56b37cfc54095d1918dfa6acd62821637a05f3ca65584318df",
+        "contract_sha256": "8845592f802e8badeccce52ed332a8453e50a80edd93c03370516077f21c6279",
+        "assets": {
+          "robot": {
+            "path": "<runtime-path-redacted>",
+            "sha256": "a13e3f0ac0482d88c57a9050b4095fde62cc01e9db5dd6053d6dd19ce8f0c650"
+          },
+          "object": {
+            "path": "<runtime-path-redacted>",
+            "sha256": "0df16dfdb9c483e5b1e1ddc28b479afb44e2eac34d9a83955e44a3788057ae92"
+          }
+        },
+        "physics": "isaaclab_newton.physics.mjwarp_manager:NewtonMJWarpManager",
+        "step_dt": 0.03333333333333333,
+        "nconmax": 4096,
+        "njmax": 1024
+      },
+      "pose_estimator": {
+        "checkpoint": "<runtime-path-redacted>",
+        "checkpoint_sha256": "6a940233e65146bf34f1051a593727f79fa0821d0d8bcc7feec18b07a67794ed",
+        "keypoints_sha256": "d5e65f06e32872cfbf5cf2147179dcabb604911b0b8c2a283effbb2af10dcd01",
+        "image_size": [
+          120,
+          120
+        ],
+        "pose_frame": "right_hand_base_link",
+        "quaternion_order": "xyzw",
+        "position_unit": "m",
+        "cnn_preprocessing": [
+          "binary_opening",
+          "released_network_resize_and_normalization"
+        ],
+        "visual_noise_added_to_cnn_pose": false,
+        "ground_truth_fallback": false
+      },
+      "camera": {
+        "image_protocol": "original_gsplat_object_plus_depth_ordered_black_hand_occlusion",
+        "raw_calibration_size": [
+          1280,
+          1024
+        ],
+        "cnn_image_size": [
+          120,
+          120
+        ],
+        "camera_intrinsics": [
+          [
+            122.86667490224502,
+            0.0,
+            60.31119860275362
+          ],
+          [
+            0.0,
+            153.5033526224968,
+            58.38762604230718
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_base_camera": [
+          [
+            0.09686958975171941,
+            -0.7892732850133177,
+            -0.6063530029163036,
+            0.2905681944462764
+          ],
+          [
+            0.9402422071523159,
+            0.27237946668979046,
+            -0.20433799943996125,
+            0.06494179774601874
+          ],
+          [
+            0.32643663163112346,
+            -0.5503245475990239,
+            0.7684933427423132,
+            -0.2447436270886566
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_world_camera_env0": [
+          [
+            -0.3264366581128613,
+            0.5503246258134735,
+            -0.7684932754835058,
+            0.3647436201572418
+          ],
+          [
+            0.9402421932162344,
+            0.27237954366345374,
+            -0.20433796096079226,
+            0.06494180113077164
+          ],
+          [
+            0.096869635779394,
+            -0.7892732039141765,
+            -0.6063531011275678,
+            0.8005682229995728
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "T_world_camera_expected_env0": [
+          [
+            -0.3264366316311234,
+            0.5503245475990238,
+            -0.768493342742313,
+            0.3647436244064475
+          ],
+          [
+            0.9402422071523157,
+            0.2723794666897904,
+            -0.2043379994399612,
+            0.06494179774601871
+          ],
+          [
+            0.09686958975171939,
+            -0.7892732850133175,
+            -0.6063530029163035,
+            0.8005681849095332
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "maximum_position_error_m": 3.809003956689594e-08,
+        "maximum_rotation_matrix_abs_error": 9.82112643432842e-08,
+        "maximum_extrinsic_abs_error": 9.82112643432842e-08,
+        "num_envs_checked": 1,
+        "extrinsic_position_tolerance_m_per_axis_max": [
+          1.0596046447753906e-06,
+          1.0149011611938476e-06,
+          1.1192092895507812e-06
+        ],
+        "extrinsic_rotation_abs_tolerance": 1e-06,
+        "distortion": "GS and ray camera use rectified pinhole rays; real RGB must use the same undistortion",
+        "full_hand_rgb_in_network_input": false,
+        "calibration_sha256": {
+          "hikrobot_DB0447679_1280x1024_intrinsics.json": "80742054a501a20d29d5fcb9602e2a0d5fa28d49a50aba97e8bec23cdf99955b",
+          "hikrobot_DB0447679_1280x1024_extrinsics_revo3_20261022.json": "8fba74d72baf2ddf1565d675d9e64731ca8b61f65d569e0f39f07f1986b32ca4"
+        }
+      },
+      "live_geometry": {
+        "world_count": 1,
+        "body_count": 23,
+        "collision_shape_count": 117,
+        "collision_types": {
+          "CONVEX_MESH": 116,
+          "BOX": 1
+        }
+      },
+      "goal_manifest": {
+        "asset_sha256": "93d60bde1d00cf5398b5d31e2016663e793d8bb4cdee817421e324f47fccb4a8",
+        "cache_sha256": "579ca62922aac9e5084f13b33bf3e2cd846bc19a5aa53ed11568ef71cf252856",
+        "latent_source": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+        "colors": [
+          "red",
+          "green",
+          "blue",
+          "yellow",
+          "magenta",
+          "cyan"
+        ],
+        "symbols": [
+          "T",
+          "E",
+          "R",
+          "L",
+          "S",
+          "H"
+        ],
+        "texture_numbers": [
+          2,
+          1,
+          4,
+          6,
+          5,
+          3
+        ],
+        "normals_body": [
+          [
+            0,
+            -1,
+            0
+          ],
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "target_quaternions_world_xyzw": [
+          [
+            -0.7071067811865476,
+            0,
+            0,
+            0.7071067811865476
+          ],
+          [
+            0,
+            0.7071067811865476,
+            0,
+            0.7071067811865476
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0.7071067811865476,
+            0,
+            0,
+            0.7071067811865476
+          ],
+          [
+            0,
+            -0.7071067811865476,
+            0,
+            0.7071067811865476
+          ]
+        ],
+        "cyan_channel_visual_name": "pale blue H",
+        "magenta_channel_visual_name": "purple S",
+        "mapping_scope": "fixed body-frame mapping in the exact released asset, not randomized face layouts"
+      },
+      "explicit_task_overrides": {
+        "horizon_seconds": 120,
+        "maximum_steps": 3600,
+        "success_counter_termination": null,
+        "drop": "distance from nominal object grasp position >=0.24m",
+        "goal_resampling": "disabled",
+        "student_time_feature": "clip(1 - elapsed_control_steps/600,0,1), preserving the released 20s clock scale"
+      },
+      "goal_input": "direct 768D latent; no target or relative-goal quaternion in student",
+      "source_sha256": {
+        "newton_runtime.py": "578f6dc93fe50007e70e9981d792dc3a7257f41422683dc2b796a444ba87a312",
+        "model.py": "7e69500b12808df7912b615b58f39288e92d3100c9b02d86f5c10d30b061c582",
+        "goals.py": "125de050472754c34118c01b375ad2962cfbec14e1ec0bb07c0d4cdfd54cb0f0",
+        "perception.py": "d5298b33ccc890caee24534733df7bf3518d8de681c9caba3f42e0f208783219"
+      },
+      "provider": "rule",
+      "maintenance": "learned",
+      "controller_modes": {
+        "waiting": "learned",
+        "execution": "learned"
+      },
+      "seed": 183102,
+      "episodes": 20,
+      "start_episode": 0,
+      "evaluator_sha256": "46936ecc3354ca0cd8302d841fd3ec0a83aa5ade561566a47b1fc5ca3c03035c",
+      "actor_sha256": "2f55120ee866e19fea406d14a528536bb8cb88e3baa05bbb275dd92c4fee9f19",
+      "execution_actor_sha256": "4e0160227dc8e5076ca3e9dc58039c7856b37eed2f9f798f4b99dcbaebb285cd",
+      "completion_sha256": null,
+      "completion_kind": null,
+      "stop_mode": "measured",
+      "measured_stop_threshold_rad": 0.16,
+      "stopping": "measured-pose gate with model-declared requested binding at 3Hz, no hold",
+      "physics": "continuous during every request; 30Hz wall pacing while pending; delivery after ceil(actual latency*30) steps",
+      "request_budget": 6,
+      "service_exclusion": "service error or measured request latency >120s; report raw and eligible",
+      "inspection": "Astra model-selected; fine-tuned VLM uses shared deterministic unseen-view schedule when unreadable",
+      "fine_tuned_goal": "continuous returned vector enters student unchanged; nearest skill only for public verification and logs",
+      "formal_release_sha256": "07922f1aa5522fd665b6fc0a70da6aa75e6d52801b387372427a18d6e3e0ef28",
+      "upstream_model": "/home/yin/DexManipulation/VLMmanipulation/outputs/agentic_v4/models/Qwen3-VL-4B-Instruct"
+    }
+  }
+}

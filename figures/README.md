@@ -1,10 +1,9 @@
-# Planned figures
+# Figures
 
-Use actual rendered observations and measured traces when available. Do not substitute invented successful trajectories.
+`method.pdf`: vector system schematic, not a measured trajectory.
 
-1. Task sequence: initially hidden mark, inspection, recognition, unobstructed stable display. Show the instruction and camera view.
-2. Candidate mechanism: observation-derived association, evidence update, direct joint-action policy. Draw only after architecture selection.
-3. Main results: terminal presentation, drop rate, and first-discovery time, with training-seed uncertainty.
-4. Recovery: common disturbance states, visibility and angular-speed traces, successes and failures.
+`cube_results.pdf`: generated from frozen eligible outcomes and raw drop contexts.
 
-Figures and quantitative plots are intentionally absent from the current scaffold because new-task data have not been collected.
+`observations.pdf`: uncropped real model-input frames from formal Astra trial 183101000, requests 1–3. They are Gaussian-rendered object observations with live black hand occlusion. They are not real-robot images.
+
+Regenerate with `python3 scripts/render_evidence.py`. Source images remain in `assets/`.

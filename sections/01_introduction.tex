@@ -1,34 +1,21 @@
 \section{Introduction}
-\label{sec:intro}
-Consider an instruction such as ``show the face with the striped triangle.''
-When that face is hidden, a robot cannot resolve the request from its first
-image. It must manipulate the object to inspect additional surfaces, recognize
-the requested mark, and find a grasp that keeps it visible. Rotating the correct
-surface toward a camera is insufficient if a finger covers the distinguishing
-pattern or the object immediately slips.
+A command such as ``turn the face marked T upward'' specifies a visual relation, not a sequence of joint targets. A robot must locate the mark, associate it with a controllable orientation, and move the object without losing it. The requested face may initially be hidden by the object itself or by the fingers. Moving to obtain evidence changes both visibility and contact. This coupling makes in-hand reorientation a useful setting for studying visual agents that act through physical feedback.
 
-This problem couples perception and contact-rich control. An action can improve
-visibility while reducing grasp stability; another can secure the object while
-hiding the relevant evidence. Recent visual in-hand reorientation systems
-address perception and control~\cite{bhardwaj2026viserdex}, while general
-dexterous policies incorporate language and human-derived
-priors~\cite{zhang2026unidex}. These developments motivate a more specific
-question: how should a hand gather and retain evidence about an initially
-unobserved semantic target while preparing to display it?
+Large visual models provide a flexible interface between an instruction and an action. Their inference time introduces another problem. The hand cannot assume that the object remains in place while an external model reasons. Continuing the current skill can expose useful evidence or destabilize the grasp. Slowing every action can reduce movement without supplying the corrective motion needed to recover. A suitable local controller must act on the current contact state even when the next semantic decision is unavailable.
 
-The proposed study has two research questions. \textbf{RQ1:} Can an agent learn
-language-guided search and stable presentation without human task-action
-demonstrations? \textbf{RQ2:} Does interaction improve search and recovery on
-states and trajectories that a finite demonstration set does not cover?
-Neither question presupposes that reinforcement learning universally
-outperforms imitation. RQ2 requires controlled comparisons within the same
-policy family as well as a credible imitation baseline.
+We investigate the following question: \emph{how should a dexterous controller execute a visual agent's current intention while a new decision is pending, and resume useful motion after it arrives?} Our system separates the semantic decision rate from the motor control rate. An asynchronous agent requests inspection, binds a visible target, and updates its command from feedback. A recurrent student maps a goal representation and measured object pose to joint targets. Two compact learned controllers adapt those targets during pending requests and ordinary execution. This design permits a local policy to react without a second expensive reasoning call.
 
-The intended contributions, conditional on experimental evidence, are a
-benchmark that jointly measures semantic discovery and stable display, a
-mechanism for accumulating actionable evidence under occlusion, and an analysis
-of how interaction changes exploration and recovery. Combining language,
-recurrence, and PPO alone is not treated as a sufficient methodological
-contribution. Before drafting a results-based introduction, we must show a
-measurable benefit over a strong recurrent policy under the same observations,
-reward, and interaction budget.
+The visual and control interfaces are explicit. We adapt a ViserDex-style RGB-to-pose policy~\cite{bhardwaj2026viserdex} to a continuous semantic goal input while reusing compatible recurrent weights. A fine-tuned local VLM directly predicts a goal vector. The Astra implementation instead emits validated public tool arguments that are mapped to the same goal space. Thus the controller consumes a common representation, but the Astra branch does not expose hidden model embeddings. The distinction makes it possible to compare a strong external agent with a compact learned grounding model without changing the deployed motor interface.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/method.pdf}
+\caption{\textbf{Continuous control around asynchronous semantic decisions.} The visual agent selects an inspection or target skill. Its validated public command determines a semantic goal vector. A frozen RGB pose estimator and recurrent student run underneath this interface. Separate learned actors adapt joint targets while a request is pending and during execution. The hand continues moving during inference. A common measured-pose gate decides when to stop, and an independent evaluator checks true task completion. The fine-tuned VLM baseline predicts its vector directly and uses the same student without the added actors.}
+\label{fig:method}
+\end{figure*}
+
+A credible evaluation must distinguish seeing the target, moving toward it, and finishing correctly. We therefore freeze the task mapping, checkpoint identities, stopping path, and physical success rule before the reported evaluation. Each system retains 40 raw trials. Service-related exclusions are applied symmetrically within a comparison and reported alongside the raw counts. Physical reach diagnostics use a separate metric. This avoids attributing a high low-level reach rate to successful semantic reasoning or autonomous stopping.
+
+The present evidence supports a working semantic reorientation system and a specific control-learning hypothesis. On the frozen cube release, learned waiting and execution produce 29 successes compared with 23 under fixed slowing and the unmodified student. The fine-tuned VLM is competitive with Astra. Current sample sizes do not establish an advantage over that baseline or a reliable interaction between the two controllers. We report these limits because they determine which experiments can substantiate the proposed method.
+
+This draft develops three contributions: (1) a pose-mediated semantic control interface that connects asynchronous visual agents to a recurrent dexterous student, (2) phase-specific control learning from privileged teacher targets using deployable observations and active goals, and (3) a matched evaluation that separates semantic completion, contact failure, and service availability. The first cube study is complete. Multi-object transfer, causal tests of semantic conditioning, and hardware evaluation remain open experimental requirements.

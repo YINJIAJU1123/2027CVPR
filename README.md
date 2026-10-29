@@ -1,45 +1,41 @@
-# CVPR 2027: Language-Guided Active In-Hand Search
+# AgenticRotation — CVPR 2027 working paper
 
-研究问题：在无需人类任务操作示范的条件下，如何学会根据语言搜索指定表面或标记，并将其转出、稳定展示？进一步检验交互学习能否改善有限示范覆盖不到的探索与恢复行为。
+**Learning Local Control for Asynchronous Visual Agents in Semantic In-Hand Reorientation**
 
-**状态：研究设计与论文骨架，2026-09-18。方法尚未定稿，新任务尚无实验结果。** 本仓库用于论文、实验协议和证据记录；训练代码位于独立的 [agent-inhand-manipulation](https://github.com/YINJIAJU1123/agent-inhand-manipulation) 仓库。
+2026-10-29：完整英文论文初稿及补充材料。当前只有正方体的完整测评数据。未完成的多物体、改进 predictor 和真机实验均明确标记 **TODO**，没有伪造实测数字。
 
-## 入口
+## 阅读
 
-- [中文研究计划](docs/research_plan_zh.md)：研究问题、候选方法、第一阶段实验和待讨论决策。
-- [任务与 baseline 协议](docs/task_and_baselines_zh.md)：语义信息公平性、成功定义、数据与计算预算。
-- [现有资产与证据边界](docs/current_assets_zh.md)：已有控制器、视觉原型，以及尚缺少的部分。
-- [文献与会议要求](docs/sources.md)：已核对来源、可支持的表述、后续调研入口。
-- [论文结构](docs/paper_outline_zh.md)：各节需要回答的问题、证据与图表。
-- [模板来源](TEMPLATE.md)：官方 author kit 的固定版本及 2027 待核对项。
+- [论文 PDF](output/pdf/agenticrotation-2027.pdf)
+- [补充材料 PDF](output/pdf/agenticrotation-2027-supplement.pdf)
+- [四个实验问题与待补证据](docs/experiment_plan_zh.md)
+- [新物体交接](docs/new_object_handoff_zh.md)
+- [冻结的 cube-v1 证据](data/cube_v1/README.md)
+- [官方 CVPR 2027 模板来源](TEMPLATE.md)
 
-英文主文件为 `main.tex`，分节位于 `sections/`。当前 PDF 使用明确标注的计划性表述，不包含占位实验数字。
+## 当前结果
 
-## 编译
+| 完整系统 | 全部 40 次成功数 | 公共 eligible 集合 |
+|---|---:|---:|
+| Astra + 等待/执行控制器 | 29/40（72.5%） | 29/39（74.4%） |
+| 微调 VLM，无附加控制器 | 27/40（67.5%） | 26/39（66.7%） |
+| 规则 VLM，无附加控制器 | 14/40（35.0%） | 13/39（33.3%） |
 
-需要 Tectonic（本次验证为 0.17.0），或安装了常用 TeX 包的 `latexmk` / pdfLaTeX。
+Astra 对微调 VLM 的当前差异没有达到统计显著（配对精确 McNemar p=0.607）。共享相同控制器的辅助对照也保留，微调 VLM 是 30/40，不能据此宣布 Astra 全面领先。
 
-```bash
-make check
-```
+新 student 的追加 DAgger 已完成。另一组新的 40 次底层测试中，原 student 39/40、冻结 latent 38/40、模拟噪声追加训练 39/40、CNN 反馈追加训练 40/40。这是单独的 160 次开发诊断，CNN 没有重新训练，**不改变本表的任何权重或结果，也不是 Astra 成功率**。见 [student 开发数据](data/student_adaptation_dev/README.md)。
 
-如 Tectonic 不在 PATH 中：
-
-```bash
-TECTONIC=/absolute/path/to/tectonic make check
-```
-
-首次使用 Tectonic 可能需要联网获取 TeX 包。输出为 `output/pdf/research_scaffold.pdf`；`make check` 检查编译日志与引用。版式修改后还需渲染检查：
+## 构建与数据
 
 ```bash
-mkdir -p tmp/pdfs
-pdftoppm -r 120 -png output/pdf/research_scaffold.pdf tmp/pdfs/page
+# 需要 matplotlib，图表已提交，可跳过重生成
+python3 scripts/render_evidence.py
+# 使用 Tectonic 或 latexmk
+make
+# 也可以 TECTONIC=/absolute/path/to/tectonic make
+bash scripts/check_paper.sh
 ```
 
-在 Overleaf 中上传源文件并将 `main.tex` 设为主文件即可。PDF、编译缓存和模型权重不提交到 Git。
+图表由 400 条独立试验记录生成并校验，不手工填写占位百分比。`main.tex` 与 `supplement.tex` 可分别设为 Overleaf 主文件。当前 PDF 使用官方 2027 匿名 review 模板并包含 LLM Usage Statement。投稿前需要完成 TODO、人工审核科学论断和参考文献，并确认匿名提交包。
 
-## 当前边界
-
-主对比必须接收相同语言目标和可部署观测，不要求全部采用预训练 VLA。先验证扫描识别、普通历史 PPO 和候选方法，再加入一个认真调试的模仿学习对照及同架构交互实验。UniDex 和 VLM 分层方案列为后续适配候选。
-
-已有状态控制结果不属于本任务结果。本文暂不声称 RL 普遍优于 IL、首次实现语言手内操作，或已验证实机迁移。此次仓库初始化不启动新的训练任务。
+此前 2026-09-18 的研究骨架保留在 Git 历史 `c3784c6`，本次不混用早期 RGB-D 后端数据。

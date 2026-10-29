@@ -1,0 +1,710 @@
+{
+  "created_at": "2026-10-29T07:12:30.663266+00:00",
+  "scope": "Completed frozen pose-latent suite on reserved seeds. Cube scene only.",
+  "formal_release_sha256": "07922f1aa5522fd665b6fc0a70da6aa75e6d52801b387372427a18d6e3e0ef28",
+  "analysis_source_sha256": "72ddcb3ba541bbed87debf79e0d509905276527f3626151459df3f6e284c7087",
+  "complete": true,
+  "raw_trials": 320,
+  "raw_trials_per_condition": 40,
+  "semantic_conditions": {
+    "astra_full": {
+      "planned_raw_trials": 40,
+      "observed_trials": 40,
+      "complete": true,
+      "physics_log_valid": true,
+      "physics_checks_pending": [],
+      "physics_issues": [],
+      "success": 29,
+      "failure_subtypes": {
+        "success": 29,
+        "drop_execution": 9,
+        "drop_wait": 1,
+        "service_excluded": 1
+      },
+      "failure_contexts": {
+        "inspection_without_binding": 10,
+        "service_excluded": 1
+      },
+      "raw_success_rate": 0.725,
+      "raw_wilson_95": [
+        0.5716504419378943,
+        0.8389198375233267
+      ],
+      "recorded_exclusions": 1,
+      "actual_calls": 94,
+      "per_seed": {
+        "183101": {
+          "trials": 20,
+          "success": 13
+        },
+        "183102": {
+          "trials": 20,
+          "success": 16
+        }
+      },
+      "runs": [
+        {
+          "records": 20,
+          "fragment_valid": true,
+          "result_status": "completed",
+          "episodes_sha256": "500afb06c110db83db0eed1dbae28597e7ac328d576e48b3325ab1fa1741cd07",
+          "manifest_sha256": "6c838e6aad2136fa533416b59956e8d1d73082091de2fe5833d8d22fbe661e65"
+        },
+        {
+          "records": 12,
+          "fragment_valid": true,
+          "result_status": "service_blocked",
+          "episodes_sha256": "10522239e7fa9e52811b53a98cf3dd842413f6c17c0f81afddfeb2cc66f56646",
+          "manifest_sha256": "f63a85b6c4d7266fecbe368e65aa4817debcfe9358bf6b822b28118361d4f129"
+        },
+        {
+          "records": 8,
+          "fragment_valid": true,
+          "result_status": "completed",
+          "episodes_sha256": "a9ac6945f96ed3d5161e294cdcd939c556898963f96dec59306c4ba4f1ecec43",
+          "manifest_sha256": "9008554cc660bb51a9806496b787689ffd77eb696d319029e30941943d5af945"
+        }
+      ]
+    },
+    "finetuned_vlm_full": {
+      "planned_raw_trials": 40,
+      "observed_trials": 40,
+      "complete": true,
+      "physics_log_valid": true,
+      "physics_checks_pending": [],
+      "physics_issues": [],
+      "success": 30,
+      "failure_subtypes": {
+        "success": 30,
+        "drop_execution": 5,
+        "horizon": 3,
+        "semantic_wrong_binding": 2
+      },
+      "failure_contexts": {
+        "correct_bound_goal": 2,
+        "horizon": 3,
+        "inspection_without_binding": 3,
+        "semantic_wrong_binding": 2
+      },
+      "raw_success_rate": 0.75,
+      "raw_wilson_95": [
+        0.5980603857923197,
+        0.858128813609037
+      ],
+      "recorded_exclusions": 0,
+      "actual_calls": 149,
+      "per_seed": {
+        "183101": {
+          "trials": 20,
+          "success": 15
+        },
+        "183102": {
+          "trials": 20,
+          "success": 15
+        }
+      },
+      "runs": [
+        {
+          "records": 20,
+          "fragment_valid": true,
+          "result_status": "completed",
+          "episodes_sha256": "5bec2205759e856bbf26ae3c2fac77c77e443d7111716523051de955c8334e46",
+          "manifest_sha256": "f16867d525cea8a1cdbf7319af5650f013f7a7aae2239e91fe21361c555a789b"
+        },
+        {
+          "records": 20,
+          "fragment_valid": true,
+          "result_status": "completed",
+          "episodes_sha256": "d8b48d50ff45c9b39c40d3703f7bdfc9cf7748b4dbf1542fbee2eb259390611c",
+          "manifest_sha256": "e361b581eb967e92a69169ba9ddfebd2793bbf5f1c0de882fcc449dad824a4f4"
+        }
+      ]
+    },
+    "rule_vlm_full": {
+      "planned_raw_trials": 40,
+      "observed_trials": 40,
+      "complete": true,
+      "physics_log_valid": true,
+      "physics_checks_pending": [],
+      "physics_issues": [],
+      "success": 16,
+      "failure_subtypes": {
+        "drop_execution": 12,
+        "success": 16,
+        "semantic_wrong_binding": 7,
+        "horizon": 5
+      },
+      "failure_contexts": {
+        "inspection_without_binding": 12,
+        "semantic_wrong_binding": 7,
+        "horizon": 5
+      },
+      "raw_success_rate": 0.4,
+      "raw_wilson_95": [
+        0.2634832568429192,
+        0.5540410633965381
+      ],
+      "recorded_exclusions": 0,
+      "actual_calls": 173,
+      "per_seed": {
+        "183101": {
+          "trials": 20,
+          "success": 6
+        },
+        "183102": {
+          "trials": 20,
+          "success": 10
+        }
+      },
+      "runs": [
+        {
+          "records": 20,
+          "fragment_valid": true,
+          "result_status": "completed",
+          "episodes_sha256": "348b2bad78479ade873d3fd8a1560d6cf10eb5821489c1ad26eaa1404d3b4e8a",
+          "manifest_sha256": "d1b06b13334e719481671215ec52fcea08341899f7f4146cbab59e141af17062"
+        },
+        {
+          "records": 20,
+          "fragment_valid": true,
+          "result_status": "completed",
+          "episodes_sha256": "679fdd5c155f8c02fd0c87df9d58e0c5a8e4e84acfe344c67b02951891a7c877",
+          "manifest_sha256": "38a70b0fb07d759e1e7ebe8dfcb4f776eb153f193bd5cc976fff70cc6718d1ee"
+        }
+      ]
+    },
+    "fixed_slow_no_execution_recovery": {
+      "planned_raw_trials": 40,
+      "observed_trials": 40,
+      "complete": true,
+      "physics_log_valid": true,
+      "physics_checks_pending": [],
+      "physics_issues": [],
+      "success": 23,
+      "failure_subtypes": {
+        "drop_execution": 12,
+        "success": 23,
+        "drop_startup_wait": 4,
+        "pose_false_stop": 1
+      },
+      "failure_contexts": {
+        "inspection_without_binding": 10,
+        "before_first_skill": 4,
+        "correct_bound_goal": 2,
+        "pose_false_stop": 1
+      },
+      "raw_success_rate": 0.575,
+      "raw_wilson_95": [
+        0.42195068541991065,
+        0.7149060744004962
+      ],
+      "recorded_exclusions": 0,
+      "actual_calls": 85,
+      "per_seed": {
+        "183101": {
+          "trials": 20,
+          "success": 11
+        },
+        "183102": {
+          "trials": 20,
+          "success": 12
+        }
+      },
+      "runs": [
+        {
+          "records": 20,
+          "fragment_valid": true,
+          "result_status": "completed",
+          "episodes_sha256": "2c047f5eae34d6cd0e1bbb2835c5b7638139785f218ee90c3ad44405bbf29279",
+          "manifest_sha256": "8e5c2cbd1726ad1a56a7e96ba0545cf7268d298522f7033f2799bc634d36217e"
+        },
+        {
+          "records": 20,
+          "fragment_valid": true,
+          "result_status": "completed",
+          "episodes_sha256": "86b8bfa55d226946f0ec7764041a76ee21b3097630532a1594e0172dd9d3abcd",
+          "manifest_sha256": "9dd3106bb01c4d9e5852cd339b9cc22364925eed595c1edc26ed4dd6c8349bc5"
+        }
+      ]
+    },
+    "learned_waiting_only": {
+      "planned_raw_trials": 40,
+      "observed_trials": 40,
+      "complete": true,
+      "physics_log_valid": true,
+      "physics_checks_pending": [],
+      "physics_issues": [],
+      "success": 26,
+      "failure_subtypes": {
+        "drop_wait": 3,
+        "success": 26,
+        "drop_execution": 7,
+        "pose_false_stop": 1,
+        "service_excluded": 1,
+        "abstain": 1,
+        "drop_startup_wait": 1
+      },
+      "failure_contexts": {
+        "inspection_without_binding": 10,
+        "pose_false_stop": 1,
+        "service_excluded": 1,
+        "abstain": 1,
+        "before_first_skill": 1
+      },
+      "raw_success_rate": 0.65,
+      "raw_wilson_95": [
+        0.49505880837257693,
+        0.7786547112682372
+      ],
+      "recorded_exclusions": 1,
+      "actual_calls": 107,
+      "per_seed": {
+        "183101": {
+          "trials": 20,
+          "success": 15
+        },
+        "183102": {
+          "trials": 20,
+          "success": 11
+        }
+      },
+      "runs": [
+        {
+          "records": 20,
+          "fragment_valid": true,
+          "result_status": "completed",
+          "episodes_sha256": "00e7038d7849f2c891e82be64f0e1a13f5e6d7e5a85c9fa05528d6a3cafb7032",
+          "manifest_sha256": "e8e4745b667fd741c39ad36c7b9daa8614e37e82c7d5d1bc79f3031930b356f7"
+        },
+        {
+          "records": 11,
+          "fragment_valid": true,
+          "result_status": "service_blocked",
+          "episodes_sha256": "6857c58c4535a088b7a9096c0b04e4c229d6a7d1015e92bdc0d93dc8b29c4a78",
+          "manifest_sha256": "4d9a2f9578616c463b43bc54112d8055fd3089aa5c46f843a19e2b0c7b16a2f5"
+        },
+        {
+          "records": 9,
+          "fragment_valid": true,
+          "result_status": "completed",
+          "episodes_sha256": "5c538fcac59a06e9fbd4363c4f28284952ee72ec2020d103616e29e13e0e79e3",
+          "manifest_sha256": "1214662ea712589892cba12a3e557ba2fea39f9ca78464ee08ba01189d84a40d"
+        }
+      ]
+    },
+    "learned_execution_only_with_fixed_slow_waiting": {
+      "planned_raw_trials": 40,
+      "observed_trials": 40,
+      "complete": true,
+      "physics_log_valid": true,
+      "physics_checks_pending": [],
+      "physics_issues": [],
+      "success": 28,
+      "failure_subtypes": {
+        "drop_execution": 4,
+        "success": 28,
+        "pose_false_stop": 1,
+        "drop_startup_wait": 4,
+        "service_excluded": 1,
+        "semantic_wrong_binding": 1,
+        "abstain": 1
+      },
+      "failure_contexts": {
+        "correct_bound_goal": 3,
+        "pose_false_stop": 1,
+        "before_first_skill": 4,
+        "inspection_without_binding": 1,
+        "service_excluded": 1,
+        "semantic_wrong_binding": 1,
+        "abstain": 1
+      },
+      "raw_success_rate": 0.7,
+      "raw_wilson_95": [
+        0.5456998118185507,
+        0.8192515477025347
+      ],
+      "recorded_exclusions": 1,
+      "actual_calls": 106,
+      "per_seed": {
+        "183101": {
+          "trials": 20,
+          "success": 16
+        },
+        "183102": {
+          "trials": 20,
+          "success": 12
+        }
+      },
+      "runs": [
+        {
+          "records": 20,
+          "fragment_valid": true,
+          "result_status": "completed",
+          "episodes_sha256": "d4bae8ad7ccfa917e80fba31ba4217081be36a3d6b15663095497a3235f6f896",
+          "manifest_sha256": "2e52ed0a823ab54f99b1d53f9e9005ad6c4dd4c577d7ab139ae0bfc450f0516a"
+        },
+        {
+          "records": 1,
+          "fragment_valid": true,
+          "result_status": "service_blocked",
+          "episodes_sha256": "3f153265809e32efb5f2e5c2677a27340a60cbe09b173c2344bd9d53a6d12646",
+          "manifest_sha256": "9c10a9bbc44563739a61d70b380604d802d006ea2968ed907c8ec5ebf6afe705"
+        },
+        {
+          "records": 19,
+          "fragment_valid": true,
+          "result_status": "completed",
+          "episodes_sha256": "109a45bd95c9ea7b76f994862d75668efe172d094c1f26f729a7679c6257f136",
+          "manifest_sha256": "73b789bc51ecac54c97cf7f0986cc45f51d4707f98912b8ac278a714c481fc03"
+        }
+      ]
+    }
+  },
+  "low_level_diagnostics": {
+    "released_pose_goal_student": {
+      "raw_trials": 40,
+      "reached_before_drop": 39,
+      "reach_before_drop_rate": 0.975,
+      "wilson_95": [
+        0.8711863103652591,
+        0.9955731684973186
+      ],
+      "drops": 1,
+      "initially_reached": 0,
+      "reasons": {
+        "drop": 1,
+        "reach": 39
+      },
+      "metric_scope": "Physical reach-before-drop under the released environment horizon. Not autonomous semantic success."
+    },
+    "migrated_pose_latent_student": {
+      "raw_trials": 40,
+      "reached_before_drop": 35,
+      "reach_before_drop_rate": 0.875,
+      "wilson_95": [
+        0.738878801611489,
+        0.945404997490546
+      ],
+      "drops": 5,
+      "initially_reached": 0,
+      "reasons": {
+        "drop": 5,
+        "reach": 35
+      },
+      "metric_scope": "Physical reach-before-drop under the released environment horizon. Not autonomous semantic success."
+    }
+  },
+  "provider_comparison": {
+    "conditions": [
+      "astra_full",
+      "finetuned_vlm_full",
+      "rule_vlm_full"
+    ],
+    "raw_trials_per_condition": 40,
+    "excluded_trial_seeds": [
+      "183102011"
+    ],
+    "eligible_trials": 39,
+    "exclusion_reasons": {
+      "183102011": {
+        "astra_full": "service_error"
+      }
+    },
+    "outcomes": {
+      "astra_full": {
+        "success": 29,
+        "eligible_trials": 39,
+        "success_rate": 0.7435897435897436,
+        "wilson_95": [
+          0.5891834407831603,
+          0.8543121945900741
+        ]
+      },
+      "finetuned_vlm_full": {
+        "success": 29,
+        "eligible_trials": 39,
+        "success_rate": 0.7435897435897436,
+        "wilson_95": [
+          0.5891834407831603,
+          0.8543121945900741
+        ]
+      },
+      "rule_vlm_full": {
+        "success": 15,
+        "eligible_trials": 39,
+        "success_rate": 0.38461538461538464,
+        "wilson_95": [
+          0.24891373465561348,
+          0.5410093854307493
+        ]
+      }
+    },
+    "contrasts": {
+      "astra_full__finetuned_vlm_full": {
+        "raw": {
+          "paired_trials": 40,
+          "exact_initial_state_matches": 40,
+          "mismatched_trial_seeds": [],
+          "outcomes": {
+            "both_success": 23,
+            "a_only_success": 6,
+            "b_only_success": 7,
+            "both_fail": 4
+          },
+          "complete": true,
+          "raw_exact_mcnemar_p": 1.0
+        },
+        "matched_eligible": {
+          "paired_trials": 39,
+          "exact_initial_state_matches": 39,
+          "mismatched_trial_seeds": [],
+          "outcomes": {
+            "both_success": 23,
+            "a_only_success": 6,
+            "b_only_success": 6,
+            "both_fail": 4
+          },
+          "complete": true,
+          "exact_mcnemar_p_unadjusted": 1.0
+        }
+      },
+      "astra_full__rule_vlm_full": {
+        "raw": {
+          "paired_trials": 40,
+          "exact_initial_state_matches": 40,
+          "mismatched_trial_seeds": [],
+          "outcomes": {
+            "a_only_success": 18,
+            "both_success": 11,
+            "b_only_success": 5,
+            "both_fail": 6
+          },
+          "complete": true,
+          "raw_exact_mcnemar_p": 0.010622024536132812
+        },
+        "matched_eligible": {
+          "paired_trials": 39,
+          "exact_initial_state_matches": 39,
+          "mismatched_trial_seeds": [],
+          "outcomes": {
+            "a_only_success": 18,
+            "both_success": 11,
+            "b_only_success": 4,
+            "both_fail": 6
+          },
+          "complete": true,
+          "exact_mcnemar_p_unadjusted": 0.004343509674072266
+        }
+      }
+    }
+  },
+  "astra_waiting_execution_factorial": {
+    "conditions": [
+      "astra_full",
+      "fixed_slow_no_execution_recovery",
+      "learned_waiting_only",
+      "learned_execution_only_with_fixed_slow_waiting"
+    ],
+    "raw_trials_per_condition": 40,
+    "excluded_trial_seeds": [
+      "183102000",
+      "183102010",
+      "183102011"
+    ],
+    "eligible_trials": 37,
+    "exclusion_reasons": {
+      "183102000": {
+        "learned_execution_only_with_fixed_slow_waiting": "service_error"
+      },
+      "183102010": {
+        "learned_waiting_only": "service_error"
+      },
+      "183102011": {
+        "astra_full": "service_error"
+      }
+    },
+    "outcomes": {
+      "astra_full": {
+        "success": 27,
+        "eligible_trials": 37,
+        "success_rate": 0.7297297297297297,
+        "wilson_95": [
+          0.5702183167528573,
+          0.8460253848895091
+        ]
+      },
+      "fixed_slow_no_execution_recovery": {
+        "success": 20,
+        "eligible_trials": 37,
+        "success_rate": 0.5405405405405406,
+        "wilson_95": [
+          0.3838404689217949,
+          0.6896143019562697
+        ]
+      },
+      "learned_waiting_only": {
+        "success": 25,
+        "eligible_trials": 37,
+        "success_rate": 0.6756756756756757,
+        "wilson_95": [
+          0.514636672419722,
+          0.8036673347185581
+        ]
+      },
+      "learned_execution_only_with_fixed_slow_waiting": {
+        "success": 26,
+        "eligible_trials": 37,
+        "success_rate": 0.7027027027027027,
+        "wilson_95": [
+          0.5421686408886435,
+          0.8251052135016799
+        ]
+      }
+    },
+    "contrasts": {
+      "astra_full__fixed_slow_no_execution_recovery": {
+        "raw": {
+          "paired_trials": 40,
+          "exact_initial_state_matches": 40,
+          "mismatched_trial_seeds": [],
+          "outcomes": {
+            "a_only_success": 15,
+            "both_success": 14,
+            "b_only_success": 9,
+            "both_fail": 2
+          },
+          "complete": true,
+          "raw_exact_mcnemar_p": 0.30745625495910645
+        },
+        "matched_eligible": {
+          "paired_trials": 37,
+          "exact_initial_state_matches": 37,
+          "mismatched_trial_seeds": [],
+          "outcomes": {
+            "a_only_success": 15,
+            "both_success": 12,
+            "b_only_success": 8,
+            "both_fail": 2
+          },
+          "complete": true,
+          "exact_mcnemar_p_unadjusted": 0.21003961563110352
+        }
+      },
+      "astra_full__learned_waiting_only": {
+        "raw": {
+          "paired_trials": 40,
+          "exact_initial_state_matches": 40,
+          "mismatched_trial_seeds": [],
+          "outcomes": {
+            "a_only_success": 10,
+            "both_success": 19,
+            "b_only_success": 7,
+            "both_fail": 4
+          },
+          "complete": true,
+          "raw_exact_mcnemar_p": 0.629058837890625
+        },
+        "matched_eligible": {
+          "paired_trials": 37,
+          "exact_initial_state_matches": 37,
+          "mismatched_trial_seeds": [],
+          "outcomes": {
+            "a_only_success": 8,
+            "both_success": 19,
+            "b_only_success": 6,
+            "both_fail": 4
+          },
+          "complete": true,
+          "exact_mcnemar_p_unadjusted": 0.79052734375
+        }
+      },
+      "astra_full__learned_execution_only_with_fixed_slow_waiting": {
+        "raw": {
+          "paired_trials": 40,
+          "exact_initial_state_matches": 40,
+          "mismatched_trial_seeds": [],
+          "outcomes": {
+            "a_only_success": 9,
+            "both_success": 20,
+            "b_only_success": 8,
+            "both_fail": 3
+          },
+          "complete": true,
+          "raw_exact_mcnemar_p": 1.0
+        },
+        "matched_eligible": {
+          "paired_trials": 37,
+          "exact_initial_state_matches": 37,
+          "mismatched_trial_seeds": [],
+          "outcomes": {
+            "a_only_success": 8,
+            "both_success": 19,
+            "b_only_success": 7,
+            "both_fail": 3
+          },
+          "complete": true,
+          "exact_mcnemar_p_unadjusted": 1.0
+        }
+      },
+      "learned_waiting_only__fixed_slow_no_execution_recovery": {
+        "raw": {
+          "paired_trials": 40,
+          "exact_initial_state_matches": 40,
+          "mismatched_trial_seeds": [],
+          "outcomes": {
+            "both_fail": 4,
+            "a_only_success": 13,
+            "both_success": 13,
+            "b_only_success": 10
+          },
+          "complete": true,
+          "raw_exact_mcnemar_p": 0.6776394844055176
+        },
+        "matched_eligible": {
+          "paired_trials": 37,
+          "exact_initial_state_matches": 37,
+          "mismatched_trial_seeds": [],
+          "outcomes": {
+            "both_fail": 4,
+            "a_only_success": 13,
+            "both_success": 12,
+            "b_only_success": 8
+          },
+          "complete": true,
+          "exact_mcnemar_p_unadjusted": 0.38331031799316406
+        }
+      },
+      "learned_execution_only_with_fixed_slow_waiting__fixed_slow_no_execution_recovery": {
+        "raw": {
+          "paired_trials": 40,
+          "exact_initial_state_matches": 40,
+          "mismatched_trial_seeds": [],
+          "outcomes": {
+            "both_fail": 8,
+            "a_only_success": 9,
+            "both_success": 19,
+            "b_only_success": 4
+          },
+          "complete": true,
+          "raw_exact_mcnemar_p": 0.266845703125
+        },
+        "matched_eligible": {
+          "paired_trials": 37,
+          "exact_initial_state_matches": 37,
+          "mismatched_trial_seeds": [],
+          "outcomes": {
+            "both_fail": 8,
+            "a_only_success": 9,
+            "both_success": 17,
+            "b_only_success": 3
+          },
+          "complete": true,
+          "exact_mcnemar_p_unadjusted": 0.14599609375
+        }
+      }
+    }
+  },
+  "statistics": "Wilson intervals and two-sided exact paired McNemar tests. P values are unadjusted across the listed contrasts and do not automatically establish model superiority.",
+  "exclusions": "Symmetric group-wide service exclusions only. The provider triplet and Astra factorial have separately stated eligible sets. All raw forty-trial outcomes are retained.",
+  "limitations": "Matched initial states are not a guarantee of bitwise physical trajectories. Low-level reach is not semantic completion. No multi-object or real-hardware evidence is implied."
+}

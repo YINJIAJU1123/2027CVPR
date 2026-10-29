@@ -1,0 +1,11 @@
+{
+  "latent_student": "9d55b83f27c4f1dd24b56695639a76d95bd56ccb248668c5e742ee597d84dd24",
+  "teacher": "fc3a2e23b13eef53d8c192672436bc949dece8c5afa423c3bf7138e85e9e52c0",
+  "original_student": "da23adb565d8f26c4c73e3b12d5bc1f53747dcb6d4e7cccf1cbaf169a2604016",
+  "pose_cnn": "6a940233e65146bf34f1051a593727f79fa0821d0d8bcc7feec18b07a67794ed",
+  "waiting_actor": "2f55120ee866e19fea406d14a528536bb8cb88e3baa05bbb275dd92c4fee9f19",
+  "execution_actor": "4e0160227dc8e5076ca3e9dc58039c7856b37eed2f9f798f4b99dcbaebb285cd",
+  "grounding_head": "69beb7fbc91b7b2cc5e7bb95aee2187182103a6e103670c6460d809616f5deda",
+  "vlm_lora": "d5a060b87eb720b4f08697e6861854a50c8e6780b5c36cb23d33d5e9f9f105c7",
+  "goal_bank": "579ca62922aac9e5084f13b33bf3e2cd846bc19a5aa53ed11568ef71cf252856"
+}

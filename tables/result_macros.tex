@@ -1,0 +1,17 @@
+\newcommand{\MainResultRows}{%
+Rule VLM (bare) & 14/40 & 15 & 13/39 & 33.3 & [20.6, 49.0] \\
+Fine-tuned VLM (bare) & 27/40 & 9 & 26/39 & 66.7 & [51.0, 79.4] \\
+Astra + learned control (ours) & 29/40 & 10 & 29/39 & 74.4 & [58.9, 85.4] \\
+}
+\newcommand{\AblationResultRows}{%
+Fixed 0.15 & Student & 23/40 & 16 & 20/37 & 54.1 \\
+Learned & Student & 26/40 & 11 & 25/37 & 67.6 \\
+Fixed 0.15 & Learned & 28/40 & 8 & 26/37 & 70.3 \\
+Learned & Learned & 29/40 & 10 & 27/37 & 73.0 \\
+}
+\newcommand{\StudentResultRows}{%
+Released pose-goal student & 39/40 & 1 \\
+Frozen latent student & 38/40 & 2 \\
+Latent + simulated-noise DAgger & 39/40 & 1 \\
+Latent + CNN-feedback DAgger & 40/40 & 0 \\
+}

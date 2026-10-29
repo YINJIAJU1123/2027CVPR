@@ -1,12 +1,9 @@
-\section{Limitations and Intended Conclusion}
-The current plan is simulation-first. Simulation results can support conclusions
-about the defined benchmark, but cannot establish physical deployment reliability
-or sim-to-real transfer. Colored patches are useful for debugging; they do not
-alone establish natural-language compositional grounding. Pretrained encoders
-also introduce external data, even when task-action demonstrations are absent.
+\section{Discussion and Limitations}
+The current results suggest that semantic inspection and contact-preserving execution must be evaluated together. Astra's remaining drops concentrate before target binding, so a controller trained only to hold during inference cannot solve the full problem. Evidence-seeking actions must also move safely through unbound states. The complete system has the highest observed raw success in the primary comparison, but it neither eliminates drops nor establishes superiority over a fine-tuned VLM. A stronger paper needs to explain which decisions benefit from a stronger agent and which failures are dominated by perception or motor control.
 
-A final conclusion will depend on the experiments. It must distinguish learning
-the task, outperforming simple exploration, and explaining a mechanism. Existing
-state-based reorientation pilots answer none of these semantic-task questions.
-Real-robot validation remains a valuable extension, with claims restricted to
-the level of evidence actually obtained.
+The fixed cube arrangement permits a shortcut from the requested letter to its color skill. Current success does not rule out memorizing that relation. A layout permutation, image masking or shuffling intervention, and paired alternative targets are necessary to substantiate visual semantic grounding. Such interventions can retain the original background and lighting. They test the claimed mechanism rather than broad appearance generalization.
+
+The deployed visual domain is currently a Gaussian-rendered object with hand occlusion. Simulator capacity checks establish valid execution of this chosen model, not physical fidelity or real-world robustness. A proprietary semantic service also limits exact model replication. Its public prompt, tool schema, route version, sampling settings, outputs, and measured latencies must accompany a final experimental release. No safety guarantee, broad object generalization, or statistically resolved advantage over the fine-tuned baseline is claimed from this cube study.
+
+\section{Conclusion}
+We presented a pose-mediated semantic reorientation system with learned local control around asynchronous visual decisions. It preserves a common motor interface while comparing an external agent, a fine-tuned goal predictor, and a rule-based VLM. The frozen cube results establish an executable baseline and locate the main remaining failures in unbound inspection. The outstanding experiments are explicit: causal tests of semantic control and feedback, improved visual perception under fixed control, additional object policies, and independently scored real-hand trials. Together these studies can determine whether the proposed control interface provides a repeatable advantage for agentic dexterous manipulation.

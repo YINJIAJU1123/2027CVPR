@@ -1,0 +1,76 @@
+{
+  "version": "student_pose_adaptation_20261029_v1",
+  "created_at": "2026-10-29T05:50:57.367033+00:00",
+  "purpose": "Test whether matching the frozen CNN pose input during additional student DAgger improves transfer beyond equal-budget simulated-noise DAgger.",
+  "status": "prepared_before_new_training; waits for the entire existing frozen formal suite to complete",
+  "prior_formal_seen": true,
+  "formal_trial_reuse": false,
+  "formal_release_unchanged": "07922f1aa5522fd665b6fc0a70da6aa75e6d52801b387372427a18d6e3e0ef28",
+  "initial_student_sha256": "9d55b83f27c4f1dd24b56695639a76d95bd56ccb248668c5e742ee597d84dd24",
+  "teacher_sha256": "fc3a2e23b13eef53d8c192672436bc949dece8c5afa423c3bf7138e85e9e52c0",
+  "pose_estimator_sha256": "6a940233e65146bf34f1051a593727f79fa0821d0d8bcc7feec18b07a67794ed",
+  "sensor_conditions": [
+    "simulated",
+    "gs_cnn"
+  ],
+  "training": {
+    "seed": 183201,
+    "num_envs": 16,
+    "iterations": 400,
+    "rollout_steps": 45,
+    "epochs": 4,
+    "env_batch_size": 16,
+    "learning_rate": 0.0003,
+    "optimizer": "Adam with new optimizer state, zero weight decay",
+    "transitions_per_condition": 288000,
+    "teacher_mix": ".9*.95**iteration",
+    "auxiliary_weight": 0.2,
+    "final_checkpoint_only": true,
+    "same_frozen_initialization": true
+  },
+  "development": {
+    "seeds": [
+      183221,
+      183222
+    ],
+    "episodes_per_seed": 20,
+    "conditions": [
+      "released_student",
+      "frozen_latent_student",
+      "simulated_extra_dagger",
+      "cnn_extra_dagger"
+    ],
+    "pose_source": "gs_cnn for all four",
+    "planned_raw_trials": 160,
+    "metric": "unchanged low-level full-quaternion reach <=0.16 rad before drop under released diagnostic horizon; not autonomous semantic success",
+    "retain_every_result": true
+  },
+  "admission": {
+    "automatic_deployment": false,
+    "eligibility": "CNN candidate must strictly exceed both frozen latent and extra-simulated reach counts and have no more drops than either, on the complete fresh development set. Otherwise keep the existing student. This is a development gate, not a significance claim.",
+    "controller_compatibility": "Existing recovery actors are checkpoint-bound. A new student requires separate control collection, fitting and agent validation before any release.",
+    "future_agent_evaluation": "New reserved seeds 183301/183302, forty raw trials per condition, same autonomous success and exclusions. Do not run or inspect these states during training/development."
+  },
+  "no_api_calls": true,
+  "sources_sha256": {
+    "train.py": "31673244171d41e099ac91c57a50c5128dd25aae01bba65d6f7d94db016228af",
+    "model.py": "7e69500b12808df7912b615b58f39288e92d3100c9b02d86f5c10d30b061c582",
+    "goals.py": "125de050472754c34118c01b375ad2962cfbec14e1ec0bb07c0d4cdfd54cb0f0",
+    "perception.py": "d5298b33ccc890caee24534733df7bf3518d8de681c9caba3f42e0f208783219",
+    "evaluate.py": "1afb75d2dce26051a63b58d9407095392aafdec8ff2ca33d4aea5263fc29b4c9",
+    "formal_release.py": "88ef321a981a0692ca8b722e30886922c28624dd16ae23d035b391e414e56586",
+    "run_logged.py": "aa558c69319c6b9745f25bb53788b6ab2a752b0794ffda3789775cdb2c2ce047",
+    "run_pose_adaptation.sh": "7b62d764244bd2e1a9b07e1666904bd4f52408a346f6c38d9a6577348f60e018"
+  },
+  "limitations": [
+    "The two on-policy training trajectories can diverge. Equal budgets do not mean identical training states.",
+    "RGB is calibrated GS object plus black hand occlusion, not full-scene or real-camera evidence.",
+    "The plan is motivated after seeing previous formal outcomes. It is a new development experiment, not a preregistered explanation of the old result."
+  ],
+  "one_shot_supervisor_sha256": "2a0c339252029b4619b59aadf290f67fa8d8fab90534e9f5618318478ec8c790",
+  "planned_gpus": {
+    "simulated": 3,
+    "gs_cnn": 4
+  },
+  "gpu_start_condition": "No compute processes, memory < 2048 MiB, utilization < 10 percent, after all 320 frozen formal slots are verified complete."
+}

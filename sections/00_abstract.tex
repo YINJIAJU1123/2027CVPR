@@ -1,16 +1,3 @@
 \begin{abstract}
-Finding and displaying a language-specified surface on a grasped object requires
-the hand to reveal information while maintaining control of the object. The
-target may initially face away from the camera, and a correct orientation may
-still leave its identifying mark obscured by fingers. This research scaffold
-defines a task in which a dexterous hand must search for the requested surface,
-make it clearly visible, and sustain a stable presentation. We ask whether this
-behavior can be learned without human task-action demonstrations, and whether
-additional interaction improves exploration and recovery beyond the coverage
-of a fixed demonstration set. A candidate approach combines language grounding,
-temporally accumulated visual evidence, and reinforcement learning. Planned
-comparisons include semantic scanning, a recurrent visual-language PPO policy,
-and language-conditioned imitation learning. The evaluation separates target
-discovery, sustained presentation, and recovery under controlled perturbations.
-The method is not finalized, and no results on this task are reported here.
+A visual agent can decide which face of an object a user wants to see, but a dexterous hand must maintain contact while that decision is being computed. We study semantic in-hand reorientation with asynchronous visual reasoning and continuous physical execution. \method combines a frozen RGB pose estimator, a recurrent student conditioned on a semantic goal representation, and lightweight controllers learned for pending requests and subsequent execution. The controllers use current measurements, the active goal, and request history to modulate the student's joint targets. Privileged teacher actions supervise training without entering the deployed policy. A frozen protocol evaluates the requested semantic binding and true orientation at autonomous stopping, separately from physical reach. On one marked cube with 40 raw trials per system, the full Astra system succeeds in 29 trials, a fine-tuned VLM without the added controllers in 27, and a rule-based VLM in 14. Under the common service-eligible set, the rates are 74.4\%, 66.7\%, and 33.3\%. The small difference from the fine-tuned VLM is not statistically resolved. Phase-level analysis identifies unbound inspection as the main remaining failure source. \TODO{Complete the additional-object, predictor, and real-robot studies before submission.}
 \end{abstract}

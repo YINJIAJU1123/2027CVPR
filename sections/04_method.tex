@@ -1,46 +1,70 @@
-\section{Candidate Approach}
+\section{Method}
 \label{sec:method}
-\subsection{Ordinary recurrent policy first}
-The first learned control baseline encodes images and language with a shared
-frozen encoder, fuses them with proprioception, and updates a recurrent state:
+Figure~\ref{fig:method} summarizes \method. The system has a semantic interface, a visual motor policy, and local adaptation. The semantic interface changes the active intention. The local controllers change how that intention is executed using current measurements.
+
+\subsection{Reusing a visual pose-conditioned student}
+A frozen CNN predicts the image coordinates and depth of the object center and eight keypoints from a $120\times120$ RGB image. Calibration, unprojection, and rigid fitting recover $\hat p_t\in\R^7$, comprising position and an XYZW quaternion. The fit residual accompanies the measurement. The current rendering uses the object's Gaussian representation with live black hand occlusion. It is not a full-scene image or a real-camera observation, and no ground-truth pose fallback is used at deployment.
+
+The inherited student expects geometric goals. We replace its goal channels with a learned projection of $g_t\in\R^{768}$:
+\begin{align}
+ z_t&=\tanh(W_g g_t+b_g)\in\R^{64},\\
+ (u_t,h_{t+1})&=\pi_\theta([x_t,z_t],\hat p_t,h_t).
+\label{eq:student}
+\end{align}
+Here $x_t\in\R^{109}$ contains target-free proprioceptive features and history, while $u_t\in\R^{21}$ gives normalized joint-target proposals. Compatible encoders, recurrent weights, actor weights, and normalization statistics are initialized from the released policy. Neither target quaternion nor relative-goal quaternion is an input to the migrated student.
+
+The first training stage fits the new interface while preserving inherited coefficients. A second stage adapts the recurrent core using actions labeled by the frozen privileged teacher. Teacher and student rollouts are mixed in a DAgger-style procedure~\cite{ross2011dagger}. The frozen release uses 200 interface updates and 400 adaptation updates, each with 128 environments and 45 rollout steps, totaling 3,456,000 transitions. These stages use simulated pose noise. All reported closed-loop trials instead obtain pose from the frozen CNN. We separately measure the loss introduced by this transfer rather than assuming that initialization preserves the teacher's performance.
+
+\subsection{Semantic grounding and public actions}
+We maintain six normalized goal vectors $B=\{g_1,\ldots,g_6\}$ from cached SigLIP2 text features~\cite{tschannen2025siglip2}. Each vector denotes a color skill and is bound to a canonical orientation in the audited asset. The goal bank is fixed for the cube release.
+
+\paragraph{Astra interface.}
+Astra receives the requested letter and visual observations. It emits a validated public action from \texttt{inspect\_face}, \texttt{reorient\_target}, \texttt{verify\_target}, \texttt{stop}, or \texttt{abstain}. A color argument selects a vector from $B$. Inspection can change the motor goal without declaring that the requested letter has been found. Inspection actions can request between 10 and 90 control steps. Subsequent visual evidence and public action history support another decision. We use the name Astra for the hosted route \texttt{gpt-6-astra} recorded in our experiment, not for a model trained here. Its exact reproducible provider version is a release requirement.
+
+The vector delivered to the student is a local encoding of a public command. We do not access Astra's internal features, train Astra weights, or describe this pathway as end-to-end language-to-action learning. This explicit interface also enables fixed-public-plan diagnostics in which the motor system is evaluated under recorded decisions and delays.
+
+\paragraph{Fine-tuned VLM.}
+The compact baseline uses Qwen3-VL-4B-Instruct~\cite{qwen3vl} with low-rank adaptation and a goal head. The head predicts a normalized continuous vector in the centered five-dimensional span of $B$, together with a readability probability. The continuous vector enters Eq.~\ref{eq:student} directly. Its nearest canonical vector determines the declared binding and the orientation used by the shared stopping gate. This interface is not unrestricted open-vocabulary motor generation.
+
+Let $y$ indicate whether the requested mark is readable, $k$ its skill index, and $\hat g$ the predicted goal. Training combines readability binary cross-entropy with positive-example goal classification and cosine alignment:
 \begin{equation}
-\begin{aligned}
- h_t &= f_\eta(h_{t-1}, E_I(I_t), E_L(\ell), p_t, a_{t-1}),\\
- a_t &\sim \pi_\phi(\cdot\mid h_t).
-\end{aligned}
+ \mathcal{L}_{\mathrm{ground}}=\operatorname{BCE}(\hat y,y)+\mathbf{1}[y=1]\bigl(\operatorname{CE}(\hat k,k)+1-\cos(\hat g,g_k)\bigr).
 \end{equation}
-PPO trains the actor using a common task reward. This establishes whether an
-ordinary history representation already handles the benchmark. The final
-reward and curriculum are open design choices; all mechanism comparisons
-must use the same choices. Ground-truth scoring is computed outside the actor
-and is not passed back as a hidden-target observation.
+The implementation averages positive terms over readable examples. Readability supervision uses geometric visibility and an image-signal filter, not human judgments. Training first uses teacher-view data and then includes observations from student trajectories. The current objective does not include an action-consistency loss.
 
-\subsection{Evidence about surfaces}
-The candidate extension is an evidence memory $m_t$ that distinguishes surfaces
-not yet inspected, surfaces inspected without the requested mark, and positive
-target observations with uncertain current visibility. Crucially, occlusion is
-not negative semantic evidence: losing sight of a previously observed mark must
-not erase its identity. A direct policy would condition its joint actions on
-$m_t$, language, current vision, and proprioception.
+\paragraph{Rule VLM.}
+The rule baseline parses a color and readability decision from the local VLM and maps accepted colors to $B$. Both local baselines use the same fixed inspection sequence when a view is not accepted. They use the migrated student directly, with no learned waiting actor, execution actor, or learned completion correction. This is the primary complete-system comparison. A separate auxiliary comparison adds the same control actors to each provider to examine the control contribution.
 
-The memory representation is unresolved. Object-aligned slots may make coverage
-explicit, but require an association or pose estimate derived from permitted
-observations. Learned visual tokens reduce geometric assumptions but can lose
-correspondence as the object rotates. Ground-truth surface identities are
-allowed only in a labeled oracle ablation. The first implementation should
-therefore be selected after measuring correspondence errors and the failure
-modes of the recurrent baseline.
+\subsection{Learning control while a request is pending}
+\label{sec:wait}
+An outstanding query does not determine whether the current movement is still safe. We construct a deployable feature vector $s_t$ from proprioception, measured pose, student belief, proposed action, pose-fit residual, semantic binding status, and request status. It also includes the measured pose and command at the request anchor and elapsed pending time. The active goal $g_t$ is encoded separately. Before a binding is established it denotes the startup or inspection skill, not the unavailable future target.
 
-\subsection{Learning and falsifiable mechanism tests}
-The candidate actor is intended to learn through simulation interaction without
-human task-action demonstrations. Auxiliary objectives for visible-region
-grounding or temporal consistency are possibilities, not established components.
-Any coverage reward or auxiliary privileged label must be disclosed and tested
-separately from the memory architecture.
+A 192-dimensional sensor encoder and 64-dimensional goal encoder feed a 128-dimensional fusion layer. A waiting actor produces one speed logit $r_t$ and a residual $v_t\in\R^{21}$. Let $\bar q_t$ be normalized current joint position and $\bar u_t$ the clipped student proposal. The applied command is
+\begin{align}
+ \alpha_t&=\sigmoid(4r_t+\logit(0.15)),\\
+ b_t&=\begin{cases}
+ \bar q_t+\alpha_t(\bar u_t-\bar q_t),&m_t=1,\\
+ \bar u_t,&m_t=0,
+ \end{cases}\\
+ a_t&=\clip\bigl(b_t+0.35\tanh(v_t),-1,1\bigr).
+\label{eq:control}
+\end{align}
+Zero outputs reproduce fixed slowing with a coefficient of 0.15 during a pending query. The environment applies its original joint mapping and smoothing. The residual gives the controller a way to correct a holding posture rather than merely suppress movement.
 
-The mechanism predicts fewer unproductive revisits and better return to a
-previously found target after occlusion, at a comparable drop rate. If a
-parameter-matched recurrent PPO policy performs equally well, or gains disappear
-after equalizing rewards and observation access, the evidence-memory hypothesis
-is unsupported. We should simplify or revise the method rather than claim a
-benefit from architectural naming alone.
+Waiting targets are generated by the frozen teacher with the request anchor as the holding objective. This supervision is available in simulation. The deployed actor receives measurements and the active goal only. It never receives the answer being computed. The objective fits the applied action to the teacher label and penalizes residual magnitude:
+\begin{equation}
+ \mathcal{L}_{\mathrm{control}}=\mathbb{E}_{(s,g,a^*)\sim\mathcal{D}}\left[\|a_\phi(s,g)-a^*\|_2^2+0.01\|\delta_\phi(s,g)\|_2^2\right].
+\label{eq:control_loss}
+\end{equation}
+
+\subsection{Learning execution after a decision}
+A second actor with the same architecture serves non-pending execution. It uses the student proposal as its base, with no speed attenuation, and learns the bounded correction in Eq.~\ref{eq:control}. Its target is the teacher action for the active goal. It can remain active throughout execution, including inspection, rather than only during a short handover interval.
+
+Paired training examples reuse a physical state and recurrent history with different valid goals. Features and teacher labels are reconstructed for each goal. The motivation is that a generic holding action can preserve contact without moving toward the requested orientation. Goal-dependent labels give the actor a reason to retain directional information. This data construction does not itself demonstrate that the deployed network uses semantics. A matched no-goal actor, shuffled-goal evaluation, and a same-state/different-goal intervention are required to test that mechanism.
+
+Training also includes states collected under recorded public action and delay schedules, matching the controller's pending and execution phases more closely to deployment. The selected execution actor is the v6 candidate from development. The same weights are retained throughout the frozen evaluation. The original development selection was informed by observed development outcomes, not a blind preregistration. Reserved evaluation results did not select the checkpoint. Learned completion heads were explored during development but are not active in the reported release.
+
+\subsection{Closed-loop execution}
+At each control step, the system updates visual pose, advances the recurrent student, chooses the waiting or execution actor, and applies the resulting joint targets. A completed semantic response is validated before it changes the active skill or declared binding. The next image reflects the motion that occurred while the previous response was pending. The common stopping gate is checked separately from semantic action generation. Invalid model output cannot supply ground-truth information or silently select the requested target.
+
+This decomposition offers two distinct opportunities for learning. The low-level student can improve physical reach under its actual pose sensor. The controllers can improve how a fixed student handles a pending request or a new intention. These changes must be evaluated separately. Replacing a student changes the controller's belief and proposal distribution, so existing controller weights are checkpoint-bound and cannot be assumed to transfer unchanged.

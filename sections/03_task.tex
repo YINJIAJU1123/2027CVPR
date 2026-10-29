@@ -1,60 +1,20 @@
 \section{Task and Evaluation Contract}
 \label{sec:task}
-\subsection{Observations and actions}
-An episode provides an instruction $\ell$ naming a unique target region on a
-grasped object. The initial state may hide this region from a fixed camera.
-The deployable actor receives
+\paragraph{Semantic target.}
+The current object is a cube with six marked faces. An instruction identifies one letter from $\{T,E,R,L,S,H\}$. Each face has a fixed color and a canonical world orientation $Q(g)$ that places its normal upward. The environment scores the full canonical quaternion, including its fixed twist, rather than accepting every orientation with the correct normal. The language prompt is therefore less specific than the scoring convention. This convention is disclosed and held constant for all methods. A face-normal-only score can be reported as an additional diagnostic without replacing the primary metric.
+
+At step $t$, the agent observes RGB evidence $I_t$ and the instruction $\ell$. The motor system observes proprioception $x_t$ and measured pose $\hat p_t$. True pose $p_t$, teacher actions, and future semantic responses are unavailable to online control. The simulator exposes them only for training labels and independent scoring. We denote the active goal vector by $g_t$, recurrent state by $h_t$, and the pending-request flag by $m_t$.
+
+\paragraph{Physical time.}
+One request may be pending at a time. Each episode allows six model calls and 3,600 logical control steps at 30~Hz. If a call starts at $k$ and takes $L$ wall-clock seconds, its response becomes usable only after the call completes and at least $\lceil30L\rceil$ control steps have elapsed. Physics continues throughout this interval. The simulator currently runs slower than real time. This protocol represents inference delay in simulated physical time, but does not demonstrate a 30~Hz hardware pipeline.
+
+\paragraph{Autonomous completion.}
+All systems share a measured-pose stopping gate, evaluated at 3~Hz. It requires a declared binding for the requested symbol, no pending request, a non-inspection state, and measured full-orientation error at most $\epsilon=0.16$ radians. The gate may stop independently of an agent's native stop suggestion. At stop time $\tau$, the independent success variable is
 \begin{equation}
-  o_t = (I_t, p_t, a_{t-1}), \qquad
-  a_t \in \R^{21},
+ S=\mathbf{1}\!\left[\hat b_\tau=b^*(\ell),\ d(q_\tau,Q(b^*))\leq\epsilon,\ \neg D_{0:\tau}\right],
+\label{eq:success}
 \end{equation}
-where $I_t$ is the camera image and $p_t$ is available hand proprioception.
-RGB versus RGB-D remains a benchmark decision; every main comparator must use
-the same selected modality. The action represents 21 joint commands with common
-limits, control frequency, and filtering. The actor may maintain history but
-cannot read a target face index, hidden surface labels, or simulator object
-pose. Privileged state may be used for training rewards, an asymmetric critic,
-and a separately labeled diagnostic oracle.
+where $\hat b_\tau$ is the declared face binding, $q_\tau$ is true orientation, $D_{0:\tau}$ indicates an earlier terminal drop, and $d(q,Q)=2\arccos(|\langle q,Q\rangle|)$ for normalized quaternions. Merely passing through a target does not count. No extra hold duration is added after stopping. A pose false stop and a semantically wrong binding are failures even if the hand retains the object. The frozen drop rule is distance of at least 0.24 metres from the nominal object grasp position.
 
-\subsection{Search, presentation, and success}
-Ground-truth annotation identifies which surface region satisfies $\ell$.
-Evaluation measures its visible fraction $v_t$, projected area $A_t$, and
-camera-relative facing angle $\theta_t$. The visible fraction uses an
-unoccluded projected reference mask for the same region and pose; masks behind
-the object or with negligible projected area are not valid presentations.
-Object linear and angular speed are denoted $u_t$ and $\omega_t$.
-Define the per-step display condition as
-\begin{equation}
-\begin{split}
- g_t ={}& \ind[v_t \geq v_{\min},\ A_t \geq A_{\min},\
-                  \theta_t \leq \theta_{\max}]\\
-       &\cdot\ind[\|u_t\| \leq u_{\max},\
-                  \|\omega_t\| \leq \omega_{\max}].
-\end{split}
-\end{equation}
-At a fixed evaluation horizon $T$, terminal stable presentation succeeds only
-if $g_t=1$ throughout the final dwell window and the object has never dropped.
-An earlier successful dwell followed by loss of visibility is reported as an
-intermediate achievement, not terminal success. Presentation does not require
-one arbitrary object quaternion or yaw, unless the instruction specifies an
-upright reading direction. Thresholds and the horizon must be frozen after
-calibration and before comparing methods.
-
-Additional metrics include time to first clear target exposure, time to first
-completed display dwell, drop rate, wrong-target declaration rate, and recovery
-after disturbances. Exposure is a geometric metric; it does not by itself prove
-the policy recognized the target. A recognition or stopping output, where used,
-is assessed separately. Timeouts remain failures in success rates and must not
-disappear from time-to-success analyses.
-
-\subsection{Splits and supervision}
-Marker identity and placement are randomized independently of the initial pose.
-Evaluation separates held-out layouts, attribute compositions, and object
-instances; unseen geometry is a later extension. Counterfactual instructions
-on the same object test whether language changes the selected surface. A fixed
-color-to-face map is only a debugging task, since it permits semantic shortcuts.
-
-``Without human demonstrations'' means without human task-action demonstrations
-for the target task. Simulator rewards, simulation-generated trajectories, and
-external visual-language pretraining are disclosed separately. A teacher that
-knows the hidden target location is not an equal-information search policy.
+\paragraph{Matched reporting.}
+Every arm uses 40 raw trials from two seeds, with 20 trials per seed and matching initial physical states and instructions across semantic conditions. A service error or measured model latency above 120 seconds is recorded as a service exclusion. For a panel of methods $\mathcal{C}$, the eligible set removes the union of excluded trial identifiers across $\mathcal{C}$. We report both raw and eligible outcomes, never replace an excluded trial, and never mix denominators from different panels. Long service delays remain visible without being interpreted as controller failures.

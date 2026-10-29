@@ -1,0 +1,142 @@
+\documentclass[10pt,twocolumn,letterpaper]{article}
+\usepackage[review]{cvpr}
+\input{preamble}
+\definecolor{cvprblue}{rgb}{0.21,0.49,0.74}
+\usepackage[breaklinks,colorlinks,allcolors=cvprblue]{hyperref}
+\def\confName{CVPR}\def\confYear{2027}
+\title{AgenticRotation: Supplementary Material}
+\author{Anonymous submission}
+\begin{document}
+\raggedbottom
+\maketitle
+\setcounter{section}{0}\renewcommand{\thesection}{\Alph{section}}
+\section{Scope of This Release}
+This supplement accompanies the working manuscript dated 29 October 2026. Its empirical results concern the marked RSLCube and a single frozen pose-latent policy release. The archive contains 400 unique trials: 80 physical diagnostics and 320 semantic trials. The full Astra condition appears in several comparisons but is counted once. Results from an earlier RGB-D backend, invalid contact-capacity runs, and development seeds are not pooled with this release. Missing experiments are marked TODO throughout. No synthetic performance numbers are used.
+
+The original eight-condition suite has 320 trials. The two later bare VLM conditions add 80. The latter were requested after the original evaluation to distinguish complete-system baselines from shared-controller baselines. Their addition changes neither the physical metric nor the selected weights. Since the condition definitions were amended after earlier outcomes existed, the full study is not described as a blindly preregistered comparison.
+
+\section{Exact Task and Runtime Contract}
+\subsection{Object and goals}
+Table~\ref{tab:mapping} records the fixed face mapping. Body normals include the original mesh rotation. All methods use the same mapping and cached six-vector bank. The cyan channel corresponds visually to a pale-blue face and magenta to a purple face. The target quaternion gives a canonical twist as well as the upward face normal.
+
+\begin{table}[h]
+\centering\small
+\begin{tabular}{llcc}
+\toprule
+Letter & Skill color & Body normal & Target XYZW\\
+\midrule
+T & red & $(0,-1,0)$ & $(-s,0,0,s)$\\
+E & green & $(-1,0,0)$ & $(0,s,0,s)$\\
+R & blue & $(0,0,-1)$ & $(1,0,0,0)$\\
+L & yellow & $(0,0,1)$ & $(0,0,0,1)$\\
+S & magenta & $(0,1,0)$ & $(s,0,0,s)$\\
+H & cyan & $(1,0,0)$ & $(0,-s,0,s)$\\
+\bottomrule
+\end{tabular}
+\caption{Frozen goal mapping, with $s=\sqrt{1/2}$.}
+\label{tab:mapping}
+\end{table}
+
+The semantic instruction identifies a letter. It does not specify an arbitrary target quaternion. The benchmark scores its associated canonical quaternion at a 0.16-radian tolerance. A drop is recorded when the distance from the object's nominal grasp position is at least 0.24 metres. This is an operational benchmark termination, not a detector of every transient slip or lost contact. The object may move within that boundary without a recorded drop.
+
+\subsection{Physics and perception}
+The runtime uses Isaac Lab 3.0, Isaac Sim 6.2, Newton 1.6.1, Warp 1.17, and PyTorch 2.11 with CUDA 13.0. The validated collision model contains 23 bodies and 117 shapes, comprising 116 convex shapes and one box. The contact allocation uses \texttt{nconmax=4096} and \texttt{njmax=1024}. Earlier overflow runs are invalid even if their reported rewards appear plausible.
+
+The pose estimator is frozen. It predicts 27 image-coordinate/depth outputs for nine points, then recovers pose through calibrated geometry. The object image is rendered at $120\times120$ with live hand occlusion. Sensor calibration, object asset, policy normalization, joint order, action mapping, and smoothing belong to the release contract. A change to one of these produces a new release. The current setup does not establish real-camera robustness or unseen-scene generalization.
+
+\subsection{Timing, termination, and exclusions}
+The semantic horizon is 120 seconds of logical control time. Model latency is measured independently and translated into a minimum pending duration of $\lceil30L\rceil$ steps. The request must also have actually completed. Physics is never intentionally paused to await a semantic response. Because simulation throughput is below the logical 30~Hz rate, wall time per episode exceeds logical duration. A hardware claim requires a separately measured end-to-end rate.
+
+The shared gate runs at 3~Hz. It requires an accepted requested-symbol binding, a non-inspection command, no outstanding request, and estimated canonical orientation error no greater than 0.16 radians. The independent scorer applies the same angular tolerance to true orientation and checks the actual requested face. No post-stop dwell is required. Success is not the minimum orientation error at any earlier time.
+
+A service error or model call exceeding 120 seconds is recorded without replacement. The main three-system panel removes trial 183102011 from every arm. The four-way control panel removes 183102000, 183102010, and 183102011. The resulting denominators are 39 and 37. Their percentages are not directly interchangeable. Raw 40-trial outcomes remain visible, including service-affected cases.
+
+\section{Models and Training}
+\subsection{Semantic and motor inputs}
+The motor policy receives 109 target-free proprioceptive/history features, seven measured pose values, and a 768-dimensional goal. Its goal projection has width 64 and a tanh nonlinearity. The inherited recurrent policy emits 21 normalized joint targets. The asset-specific goal quaternion is absent from the migrated student's inference inputs.
+
+The hosted model route recorded in the manifests is \texttt{gpt-6-astra}. The local grounding backbone is Qwen3-VL-4B-Instruct. The Astra pathway uses public tool actions and a deterministic goal-bank lookup. The fine-tuned pathway predicts a continuous vector within the normalized skill span. Neither pathway receives the requested face's true pose. The local unreadable-view schedule is $(1,3,0,2,4,5)$ with 90-step inspections. Astra chooses inspection actions of 10--90 steps. This scheduler difference is part of the complete-system comparison and a confound for attributing all effects to model weights.
+
+\TODO{Document the hosted model's exact serving revision, sampling settings, and full sanitized system prompt/tool schema in the final anonymous release. A route name alone does not guarantee reproducibility across provider updates.}
+
+\subsection{Grounding supervision}
+The grounding model first uses 4,096 teacher-view training examples and 1,024 validation examples, then 4,800 student-view training examples and 2,400 validation examples with mixed replay. Each adaptation stage uses 240 updates. Training and validation collection seeds are disjoint from the formal evaluation seeds. Readability is a geometric/image-signal proxy. The objective combines readability prediction, readable-example skill classification, and cosine alignment to a canonical vector. We do not claim human-verified text recognition labels or an action-consistency objective in this release.
+
+The fixed layout permits learned letter-to-color shortcuts. A held-out pose or trajectory alone does not remove that possibility. A convincing grounding test changes or hides the visual evidence while holding the instruction and physical state fixed, then checks whether the model's selected target changes appropriately.
+
+\subsection{Controller features and losses}
+The sensor branch uses the current proprioceptive vector, measured pose, student belief and proposal, request-anchor pose and action, fitting residual, binding flag, pending flag, and elapsed pending duration. Its normalized inputs are clipped to $[-8,8]$. Goal features are centered and scaled using the fixed bank. The sensor, goal, and fusion widths are 192, 64, and 128. Each actor has 22 outputs: a speed logit and 21 residual values.
+
+The waiting actor interpolates from current joint positions toward the proposal and adds a bounded residual. The execution actor applies a bounded residual to the proposal at full speed. Both are supervised from the teacher with residual regularization of 0.01. Waiting labels hold the request anchor. Execution labels follow the active goal. Paired state/goal examples and schedule-derived states are used during fitting. Their causal utility remains to be established by matched training ablations.
+
+No raw RGB, true object pose, teacher action, future model response, or oracle semantic label is a deployed actor input. Vision affects the actor through estimated pose and recurrent belief. The reported stopping gate is measured-pose based. Previously trained completion-evidence heads are inactive and cannot be credited for the current results.
+
+\section{Additional Numerical Results}
+\begin{table}[h]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrr}
+\toprule
+Semantic condition & Seed 1 & Seed 2 & Raw total\\
+\midrule
+Astra full & 13/20 & 16/20 & 29/40\\
+Fine-tuned VLM, bare & 14/20 & 13/20 & 27/40\\
+Rule VLM, bare & 5/20 & 9/20 & 14/40\\
+Fine-tuned VLM, shared control & 15/20 & 15/20 & 30/40\\
+Rule VLM, shared control & 6/20 & 10/20 & 16/40\\
+Astra, fixed slow / student & 11/20 & 12/20 & 23/40\\
+Astra, learned wait / student & 15/20 & 11/20 & 26/40\\
+Astra, fixed slow / learned exec. & 16/20 & 12/20 & 28/40\\
+\bottomrule
+\end{tabular}
+\caption{Raw semantic successes by seed. Seed 1 is 183101 and seed 2 is 183102. The bare addendum contributes the second and third rows only.}
+\end{table}
+
+\begin{table}[h]
+\centering\small
+\begin{tabular}{lrrr}
+\toprule
+Comparison on eligible trials & A-only & B-only & Exact $p$\\
+\midrule
+Full Astra / bare fine-tuned & 9 & 6 & 0.6072\\
+Full Astra / bare rule & 18 & 2 & 0.0004\\
+Full Astra / fixed control & 15 & 8 & 0.2100\\
+Full Astra / waiting only & 8 & 6 & 0.7905\\
+Full Astra / execution only & 8 & 7 & 1.0000\\
+\bottomrule
+\end{tabular}
+\caption{Exploratory two-sided exact McNemar tests. The first two rows use 39 trials and the last three use 37. Tests are unadjusted and do not establish all module effects.}
+\end{table}
+
+On raw paired trials, adding shared control to the fine-tuned VLM changes successes from 27 to 30 and drops from nine to five. Five trials succeed only without the actors and eight only with them, giving $p=0.581$. The rule VLM changes from 14 to 16 successes, with $p=0.754$. These auxiliary results must remain available even though the primary baselines omit the actors. They show that controller access can affect a complete-system comparison and that current evidence does not establish an Astra-specific benefit.
+
+Individual rate intervals use the Wilson method with nominal 95\% coverage. Paired comparisons use trial identities and initial-state verification. They account for pairing but do not address all uncertainty from hosted model variability or future object distributions. A single two-seed cohort is insufficient to establish a stable ordering between systems separated by two or three raw successes.
+
+\section{Successor Student: A Separate Development Study}
+The existing cube results use a fixed student checksum. Successor training is designed to ask whether extra DAgger with the actual frozen CNN sensor improves physical control beyond an equal budget with simulated pose noise. Both branches start from that same latent student, use training seed 183201, and run 400 updates with 16 environments, 45 rollout steps, and four fitting epochs. Learning rate is $3\times10^{-4}$ with a new Adam state and zero weight decay. The teacher action fraction decays as $0.9\cdot0.95^i$. Each branch collects 288,000 transitions. The CNN and teacher remain frozen.
+
+After training, the final checkpoint from each branch is compared with the released student and the frozen latent student. Every arm uses CNN observations and 40 fresh diagnostic trials from seeds 183221 and 183222. No intermediate checkpoint is selected from those trials. The CNN branch must exceed both latent references in reach count without increasing drops to pass the development admission rule. This gate is an engineering selection rule, not a significance claim.
+
+A selected new student still requires separately collected controller data and compatibility validation. Only then may a new semantic release use reserved seeds 183301 and 183302. The original cube-v1 results remain unchanged. Both branches and all 160 diagnostic trials have completed with valid physics logs. The four reach counts are 39/40, 38/40, 39/40, and 40/40 for the released, frozen latent, extra simulated, and extra CNN policies. Drops are one, two, one, and zero. The CNN candidate passes the stated gate and has not been automatically deployed. Exact paired tests against the frozen latent and extra simulated policies give $p=0.5$ and $p=1.0$. Thus this is a promising development result, not an established perception-matching effect.
+
+\section{Experimental Requirements Before Submission}
+\subsection{Separate model strength from control}
+The primary comparison uses full Astra against bare VLM baselines. Its interpretation is system-level. To attribute gains to the upper-level model, compare all providers with identical control actors, timing conventions, stopping, and information access. Preserve the existing shared-control results. Repeated live calls can produce different public plans even on matching initial states. Fixed-public-plan replay can isolate motor changes, but replay success must not be reported as a new live Astra success rate.
+
+\subsection{Test semantic and visual causality}
+Use the same physical state with different valid requested faces. Measure action direction and completion with the correct goal, a shuffled goal, and no goal. Train the no-goal actor with equal capacity and data. Permute the letter-color layout or mask/shuffle image evidence while keeping background and lighting fixed. Pair these with a text-only baseline. These controls determine whether success depends on current visual semantics rather than a fixed lookup.
+
+\subsection{Test agent feedback}
+Hold the model, student, and local actors fixed. Compare one initial semantic query with the complete feedback loop, then remove history or verification feedback. Match call limits and record actual calls, logical duration, wall time, and service failures. Latency replay should use the same public plan and delay sequence across motor variants. A simple time-aware residual actor provides a stronger learning baseline than fixed slowing alone. It should not be labeled an official reproduction of A2C2 or ARLI without a verified implementation.
+
+\subsection{Separate perception accuracy and control benefit}
+Compare the original and improved predictors with the same student and agent first. Report independent translation/rotation error, tail error, keypoint visibility, false stops, and semantic success. Oracle pose estimates the residual motor gap. Only a second experiment should adapt the student to the new predictor. A lower pose error is useful evidence, but it does not guarantee a higher task success rate.
+
+\subsection{Objects and physical hand}
+Select about five objects with variation in geometry, inertia, contact affordances, and semantic ambiguity. Record object-specific students and training budgets. Balance the task set within each object and report each row before computing an object macro-average. Forty trials per arm per object is the default batch size. Hardware runs need calibrated independent scoring, documented resets, two sessions, and synchronized video and command logs. A new object checkpoint alone is insufficient without its assets, calibration, normalization, action conventions, and goal definitions.
+
+\section{Reproducibility and Evidence Audit}
+The accompanying research archive stores 400 frozen-release trial records and 160 separately labeled successor development records, sanitized summaries, source-file checksums, and checkpoint hashes. Runtime hostnames and authorization material are excluded. Original local evidence is retained separately and hashed before export. Result tables and plots are regenerated from the archived data. The public goal mapping and physical success contract are frozen for cube-v1. New predictors, students, objects, or stop rules require separate versioned releases.
+
+\TODO{Complete the anonymous implementation package and object-specific licenses before submission.} The manuscript itself contains no link to an identifying project repository. Public repository publication is a development convenience, not a replacement for a self-contained anonymous submission.
+\end{document}
