@@ -7,9 +7,9 @@ ROOT=Path(__file__).resolve().parents[1];D=ROOT/'data/cube_followup_20261030'
 read=lambda n:json.loads((D/n).read_text())
 def table(name,rows):
  (ROOT/'tables'/name).write_text('\n'.join(' & '.join(map(str,r))+' '+chr(92)*2 for r in rows)+'\n')
-r=read('replication_snapshot.json');trials={c:{int(k):v for k,v in rows.items()} for c,rows in r['trials'].items()}
+r=read('replication_complete.json');trials={c:{int(k):v for k,v in rows.items()} for c,rows in r['trials'].items()}
 common=set.intersection(*(set(d) for d in trials.values()));eligible={k for k in common if all(d[k]['exclusion_reason'] is None for d in trials.values())}
-assert len(common)==18 and len(eligible)==15 and sorted(common-eligible)==r['excluded_slots']
+assert len(common)==40 and len(eligible)==37 and sorted(common-eligible)==r['excluded_slots']
 assert all(len({d[k]['initial_state_sha256'] for d in trials.values()})==1 for k in common)
 rows=[]
 for c,label in [('astra_full','Astra full'),('finetuned_vlm_bare','Fine-tuned VLM, bare'),('rule_vlm_bare','Rule VLM, bare')]:
@@ -40,7 +40,7 @@ rows=[]
 for c,label in [('active','Explicit actor goal'),('center','No explicit actor goal')]:
  d=p['conditions'][c];assert d['branches']==38;rows.append((label,f"{d['final_within_tolerance_count']}/38",d['drop_count']))
 table('followup_pair_rows.tex',rows)
-print('Verified 98 replication snapshot records, 240 visual trials, existing 37-slot factorial, and 19-state recovery scope.')
+print('Verified 120 complete replication records, 240 visual trials, existing 37-slot factorial, and 19-state recovery scope.')
 
 macros=[]
 for name,macro in [('followup_phase_rows','FollowupPhaseRows'),('followup_replication_rows','FollowupReplicationRows'),('followup_pair_rows','FollowupPairRows'),('followup_visual_rows','FollowupVisualRows')]:

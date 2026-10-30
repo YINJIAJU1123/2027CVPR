@@ -120,12 +120,12 @@ After training, the final checkpoint from each branch is compared with the relea
 
 A selected new student still requires separately collected controller data and compatibility validation. Only then may a new semantic release use reserved seeds 183301 and 183302. The original cube-v1 results remain unchanged. Both branches and all 160 diagnostic trials have completed with valid physics logs. The four reach counts are 39/40, 38/40, 39/40, and 40/40 for the released, frozen latent, extra simulated, and extra CNN policies. Drops are one, two, one, and zero. The CNN candidate passes the stated gate and has not been automatically deployed. Exact paired tests against the frozen latent and extra simulated policies give $p=0.5$ and $p=1.0$. Thus this is a promising development result, not an established perception-matching effect.
 
-\section{Separate Follow-up Cohorts: Snapshot}
+\section{Separate Follow-up Cohorts}
 \label{sec:followup}
 These studies retain the frozen task success criterion and do not replace the completed cube-v1 cohort. Service-eligible success is the primary metric. Cross-method comparisons remove the same service-affected slots from every arm. All raw records, including excluded physical drops, remain available. Forty scheduled slots do not necessarily yield forty eligible trials.
 
-\subsection{Incomplete independent replication}
-The new seeds are 183411 and 183412. At the archived snapshot, Astra has visited 18 of 40 scheduled slots. Slots 183411008, 183411015 and 183411017 have recorded service errors. The last includes a connection failure after approximately 126 seconds and a waiting-phase drop. It is excluded by the existing service rule, not by a new outcome-dependent criterion. The remaining Astra outcomes are 11 successes and four drops. Both bare VLM arms are complete, at 29/40 and 22/40, but only the same 15 eligible slots support the partial paired comparison below.
+\subsection{Completed independent replication}
+Seeds 183411 and 183412 each provide 20 trials per method. All 120 scheduled records pass the source, checkpoint, physical-log and initial-state audits. Slots 183411008, 183411015 and 183411017 have recorded Astra service errors and are removed from every arm for the matched comparison. The last includes a connection failure after approximately 126 seconds and a waiting-phase drop. Its exclusion follows the existing service rule. Raw success counts are 26/40, 29/40 and 22/40 for Astra, bare fine-tuned VLM and bare rule VLM. The common eligible counts appear below.
 
 \begin{table}[h]
 \centering\small
@@ -136,10 +136,10 @@ Method & Eligible success & Rate (\%)\\
 \FollowupReplicationRows
 \bottomrule
 \end{tabular}
-\caption{Incomplete replication, restricted to 15 identical valid initial states. These counts are a progress snapshot, not a final forty-trial ranking. The preceding raw 62.5\% report used a different 16-slot prefix and included service exclusions.}
+\caption{Completed independent replication on 37 common service-eligible initial states from 40 scheduled trials per method. This supersedes the archived partial snapshot and remains separate from the original cube-v1 cohort.}
 \end{table}
 
-The four valid Astra failures consist of one startup drop, two unbound inspection drops, and one drop 13 steps after a correct target command following four inspection calls. This differs from the earlier completed cohort, whose drops all occurred before correct binding. Small-sample phase counts identify cases for development rather than establish a new population failure distribution.
+The eleven eligible Astra failures comprise nine drops, one false stop and one abstention. The drops include one during startup, two during subsequent waiting and six outside waiting. Raw Astra counts additionally include one service-excluded drop. Against the fine-tuned VLM, Astra has five exclusive successes and six exclusive failures (exact paired $p=1.0$). Against the rule VLM, the counts are eleven and six ($p=0.332$). These exploratory comparisons do not establish superiority. The earlier 18-slot snapshot remains archived for provenance but is no longer used for the follow-up table.
 
 \subsection{Control interaction and explicit goals}
 The completed factorial retains the common 37-trial panel shown in the main paper. Learned waiting alone reduces startup drops from four to one but introduces three later waiting drops, leaving total waiting-related drops at four. With execution recovery present, learned waiting eliminates four startup drops while execution drops increase from four to nine. The full method wins eight trials lost by execution-only control and loses seven won by that control. Hence net success improves by one, without a resolved interaction benefit.
@@ -199,7 +199,7 @@ Compare the original and improved predictors with the same student and agent fir
 Select about five objects with variation in geometry, inertia, contact affordances, and semantic ambiguity. Record object-specific students and training budgets. Balance the task set within each object and report each row before computing an object macro-average. Forty trials per arm per object is the default batch size. Hardware runs need calibrated independent scoring, documented resets, two sessions, and synchronized video and command logs. A new object checkpoint alone is insufficient without its assets, calibration, normalization, action conventions, and goal definitions.
 
 \section{Reproducibility and Evidence Audit}
-The accompanying research archive stores 400 frozen-release trial records and 160 separately labeled successor development records, sanitized summaries, source-file checksums, and checkpoint hashes. Runtime hostnames and authorization material are excluded. Original local evidence is retained separately and hashed before export. Result tables and plots are regenerated from the archived data. A separate follow-up archive contains 98 replication snapshot records, 240 completed visual-intervention trials, and summaries of the 19-state recovery diagnostic. Its partial replication is never pooled with the original cohort to form a final result. The public goal mapping and physical success contract are frozen for cube-v1. New predictors, students, objects, or stop rules require separate versioned releases.
+The accompanying research archive stores 400 frozen-release trial records and 160 separately labeled successor development records, sanitized summaries, source-file checksums, and checkpoint hashes. Runtime hostnames and authorization material are excluded. Original local evidence is retained separately and hashed before export. Result tables and plots are regenerated from the archived data. A separate follow-up archive contains 120 completed independent-replication records, 240 completed visual-intervention trials, and summaries of the 19-state recovery diagnostic. The historical 98-record partial snapshot is retained separately and adds no trials. The replication is not pooled with the original cohort to form a revised main result. The public goal mapping and physical success contract are frozen for cube-v1. New predictors, students, objects, or stop rules require separate versioned releases.
 
 \TODO{Complete the anonymous implementation package and object-specific licenses before submission.} The manuscript itself contains no link to an identifying project repository. Public repository publication is a development convenience, not a replacement for a self-contained anonymous submission.
 \end{document}

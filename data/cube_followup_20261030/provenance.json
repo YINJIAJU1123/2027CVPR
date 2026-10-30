@@ -6,9 +6,15 @@
   },
   "record_counts": {
     "independent_replication_snapshot": 98,
-    "bare_visual_interventions": 240
+    "bare_visual_interventions": 240,
+    "independent_replication_complete": 120
   },
   "no_trial_replacement": true,
   "success_definition_changed": false,
-  "primary_metric": "service-eligible success, symmetric exclusions for matched comparisons"
+  "primary_metric": "service-eligible success, symmetric exclusions for matched comparisons",
+  "completed_replication_source_sha256": {
+    "summary.json": "69eb69e41b76c9e079ed98cf1f0482667055210cbcad439282cb872d4fec9500",
+    "trials.json": "53a0b55dfc2e2921c4c75be9cb4221f53e765bb9f3e71e9e16f9dae8bff3fe05"
+  },
+  "record_count_note": "Historical 98-record snapshot is a subset of the completed 120-record archive, not additional trials."
 }
