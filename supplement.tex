@@ -158,10 +158,10 @@ Actor input & Final in tolerance & Drops\\
 \caption{Paired recovery diagnostic on 19 states, two goals each. Four branches in each condition already start within tolerance. Final tolerance is not autonomous semantic success. Explicit actor-goal conditioning is not supported as beneficial by this diagnostic.}
 \end{table}
 
-Mean assigned-goal progress is 1.195 radians with explicit actor-goal input and 1.340 without it. Different first actions under different goals do not isolate the actor's explicit goal pathway because the student itself is goal-conditioned. The separately trained correct-goal, no-explicit-goal and shuffled-goal semantic arms have no formal outcomes at this snapshot.
+Mean assigned-goal progress is 1.195 radians with explicit actor-goal input and 1.340 without it. Different first actions under different goals do not isolate the actor's explicit goal pathway because the student itself is goal-conditioned. The separately trained correct-goal, no-explicit-goal and shuffled-goal semantic comparison remains incomplete.
 
 \subsection{Completed bare-VLM visual interventions}
-The upper-level image changes while the low-level pose predictor continues to receive the original image. Lighting is fixed. The permuted condition assigns the next symbol in the cyclic sequence $(T,E,R,L,S,H)$ to each color face and scores the corresponding physical target. The masked condition hides the lettering. Geometry-consistent image construction and the transmitted image hashes are audited. Seeds 183441 and 183442 provide 20 trials each, and physical initial-state hashes match across the three conditions.
+The upper-level image changes while the low-level pose predictor continues to receive the original image. Lighting is fixed. The permuted condition assigns the next symbol in $(T,E,R,L,S,H)$ to each color face and changes the requested symbol accordingly, preserving the scored physical target across conditions. The masked condition hides the lettering. Geometry-consistent image construction and the transmitted image hashes are audited. Seeds 183441 and 183442 provide 20 trials each, and physical initial-state hashes match across the three conditions.
 
 \begin{table}[h]
 \centering\small
@@ -178,6 +178,27 @@ Astra full & \pending & \pending & \pending\\
 \end{table}
 
 Fine-tuned success falls by 35 percentage points after remapping and to 7.5\% after masking. Rule-based success is 57.5\% under both identity and remapping, then zero after masking. Equal aggregate identity and remapped rates do not imply identical trial outcomes. The results establish intervention sensitivity but do not show that all fine-tuned successes arise from a fixed lookup, or that Astra is more robust before its matched arms finish.
+
+\paragraph{Applied semantic bindings.}
+We audit every applied, accepted call from the same 240 trials. The episode-file hashes match the archived results, and the last accepted skill agrees with the recorded terminal binding. Table~\ref{tab:visual-bindings} separates acquiring the correct target from completing it. Under permutation, the fine-tuned model first binds correctly in 25 trials and incorrectly in eleven, compared with 34 and four under identity. Nine of its eleven wrong-binding trials select the original color for the newly requested symbol. The rule model has six wrong-binding trials under each layout, with three following the old association after permutation. This pattern is consistent with reliance on training associations, but does not identify the model's internal mechanism.
+
+\begin{table}[h]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{llrrrr}
+\toprule
+Model & Layout & Correct & Wrong & None & Old\\
+\midrule
+\FollowupVisualBindingRows
+\bottomrule
+\end{tabular}
+\caption{First accepted binding in each of 40 trials. Old counts trials with an accepted skill matching the original symbol--color association, defined only for permutation. These are the same trials as the success table, not new evaluations.}
+\label{tab:visual-bindings}
+\end{table}
+
+No wrong-to-correct binding transition occurs in these bare-VLM cohorts. This is descriptive: trajectories, visibility, and opportunities for additional calls differ. Of fourteen fine-tuned false stops under permutation, ten end with a wrong binding and four with the correct binding but an independently incorrect final pose. Masking leads to no accepted binding in 36 fine-tuned trials and all forty rule-model trials. The three masked fine-tuned successes cannot establish letter grounding when that information is removed.
+
+Identity versus permutation yields eighteen exclusive successes and four exclusive failures for the fine-tuned model (exact paired $p=0.00434$), versus ten and ten for the rule model ($p=1.0$). These are exploratory paired comparisons without multiplicity correction. The single deterministic remapping and edited upper images limit generalization claims. Astra's corresponding calls and recovery behavior must be audited after its cohorts complete.
 
 \subsection{Outstanding agent feedback evidence}
 The same-Astra comparison uses one initial bounded plan versus at most six feedback calls. The student, actors, stopping gate and physical horizon are held fixed. Protocol checks, synthetic downstream rollouts and real development-image interface checks have passed. Formal results for the two 40-trial arms are pending. No benefit from subsequent observation or replanning is inferred from interface validation alone.

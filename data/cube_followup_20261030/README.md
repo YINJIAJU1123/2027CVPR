@@ -12,3 +12,5 @@ This snapshot extends the paper without replacing cube-v1. Model credentials, ho
 Service failures are excluded from the primary success denominator using the existing protocol. Raw outcomes remain auditable, and ordinary task failures are retained. A recorded drop may coexist with a service exclusion. Never classify eligibility using the terminal reason alone.
 
 Run `python3 scripts/render_followup.py` to validate and regenerate the follow-up tables. The complete follow-up table uses the same 37 eligible trial IDs for all methods. No partial prefix is used for its rates.
+
+- `visual_binding_audit.json`: applied-call and terminal-binding audit of the same 240 bare-VLM trials, including old-mapping errors and exploratory paired comparisons. This adds no trials.

@@ -16,5 +16,10 @@
     "summary.json": "69eb69e41b76c9e079ed98cf1f0482667055210cbcad439282cb872d4fec9500",
     "trials.json": "53a0b55dfc2e2921c4c75be9cb4221f53e765bb9f3e71e9e16f9dae8bff3fe05"
   },
-  "record_count_note": "Historical 98-record snapshot is a subset of the completed 120-record archive, not additional trials."
+  "record_count_note": "Historical 98-record snapshot is a subset of the completed 120-record archive, not additional trials.",
+  "visual_binding_audit": {
+    "sha256": "e99906899f4669e988dd41c4bb4c6eb063d4900407cf416421640cf137d2db67",
+    "scope": "Reanalysis of existing 240 bare-VLM trials, no additional trials",
+    "auditor_source_sha256": "f1811b89e1df096f67448b8e80c5697b4a8eabfdf8aab504a3b12e44fd130bb5"
+  }
 }

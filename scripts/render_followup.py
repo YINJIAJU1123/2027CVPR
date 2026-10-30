@@ -35,15 +35,34 @@ for provider,label in [('finetuned_vlm_bare','Fine-tuned VLM'),('rule_vlm_bare',
   n=sum(x['success'] for x in records);assert n==v['conditions'][c]['success'];counts.append(f'{n}/40')
  rows.append((label,*counts))
 table('followup_visual_rows.tex',rows)
+b=read('visual_binding_audit.json');binding_rows=[]
+assert b['initial_states_matched']
+for provider,label in [('finetuned_vlm_bare','Fine-tuned'),('rule_vlm_bare','Rule')]:
+ for mode,layout in [('identity','Identity'),('permuted','Permuted'),('letter_masked','Masked')]:
+  name=provider+'__'+mode;g=b['groups'][name];records=g['records'];c=g['counts']
+  assert len(records)==g['trials']==40
+  original={x['trial_seed']:x for x in v['trials'][name]}
+  assert len(original)==40 and set(original)=={x['trial_seed'] for x in records}
+  for x in records:
+   assert x['success']==original[x['trial_seed']]['success'] and x['reason']==original[x['trial_seed']]['reason']
+   assert x['goal_index']==original[x['trial_seed']]['goal_index'] and x['requested_symbol']==original[x['trial_seed']]['symbol']
+  first=Counter(x['first_binding'] for x in records)
+  assert sum(first.values())==40
+  assert all(first[k]==c.get('first_binding_'+k,0) for k in ('correct','wrong','none'))
+  legacy=sum(x['any_legacy_mapping'] for x in records)
+  assert legacy==c['any_legacy_mapping']
+  assert sum(x['success'] for x in records)==c['success']==v['conditions'][name]['success']
+  binding_rows.append((label,layout,first['correct'],first['wrong'],first['none'],legacy if mode=='permuted' else '--'))
+table('followup_visual_binding_rows.tex',binding_rows)
 p=read('paired_recovery.json');assert p['verified_states']==19 and p['planned_states']==20
 rows=[]
 for c,label in [('active','Explicit actor goal'),('center','No explicit actor goal')]:
  d=p['conditions'][c];assert d['branches']==38;rows.append((label,f"{d['final_within_tolerance_count']}/38",d['drop_count']))
 table('followup_pair_rows.tex',rows)
-print('Verified 120 complete replication records, 240 visual trials, existing 37-slot factorial, and 19-state recovery scope.')
+print('Verified 120 complete replication records, 240 visual trials and their applied-binding audit, existing 37-slot factorial, and 19-state recovery scope.')
 
 macros=[]
-for name,macro in [('followup_phase_rows','FollowupPhaseRows'),('followup_replication_rows','FollowupReplicationRows'),('followup_pair_rows','FollowupPairRows'),('followup_visual_rows','FollowupVisualRows')]:
+for name,macro in [('followup_phase_rows','FollowupPhaseRows'),('followup_replication_rows','FollowupReplicationRows'),('followup_pair_rows','FollowupPairRows'),('followup_visual_rows','FollowupVisualRows'),('followup_visual_binding_rows','FollowupVisualBindingRows')]:
  body=(ROOT/'tables'/(name+'.tex')).read_text()
  macros.append(chr(92)+'newcommand{'+chr(92)+macro+'}{%\n'+body+'}')
 (ROOT/'tables/followup_macros.tex').write_text('\n'.join(macros)+'\n')
