@@ -1,0 +1,1814 @@
+{
+  "primary_metric": "Success / service-eligible trials; cross-method comparisons use identical valid trial slots",
+  "score_definition_changed": false,
+  "observed_matched_trials": 18,
+  "matched_valid_trials": 15,
+  "excluded_slots": [
+    183411008,
+    183411015,
+    183411017
+  ],
+  "initial_states_match": true,
+  "methods": {
+    "astra_full": {
+      "recorded": 18,
+      "own_valid": 15,
+      "own_valid_success": 11,
+      "matched_success": 11,
+      "matched_n": 15,
+      "matched_rate": 0.7333333333333333,
+      "valid_failure_phases": {
+        "startup_wait": 1,
+        "execution": 3
+      },
+      "service_exclusions": 3
+    },
+    "finetuned_vlm_bare": {
+      "recorded": 40,
+      "own_valid": 40,
+      "own_valid_success": 29,
+      "matched_success": 9,
+      "matched_n": 15,
+      "matched_rate": 0.6,
+      "valid_failure_phases": {
+        "execution": 3
+      },
+      "service_exclusions": 0
+    },
+    "rule_vlm_bare": {
+      "recorded": 40,
+      "own_valid": 40,
+      "own_valid_success": 22,
+      "matched_success": 9,
+      "matched_n": 15,
+      "matched_rate": 0.6,
+      "valid_failure_phases": {
+        "execution": 5
+      },
+      "service_exclusions": 0
+    }
+  },
+  "trials": {
+    "astra_full": {
+      "183411000": {
+        "trial_seed": 183411000,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 360,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          10.207937885075808
+        ],
+        "declared_goal": 0,
+        "goal_index": 0,
+        "first_skill_delivery_step": 307,
+        "initial_state_sha256": "1ed7c355462388d3283a27048042d2a0bc25b7e856f50aa558c6b5a7d8a5148c"
+      },
+      "183411001": {
+        "trial_seed": 183411001,
+        "reason": "drop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": "execution",
+        "steps": 472,
+        "actual_model_calls": 2,
+        "latencies_s": [
+          5.514633671846241,
+          6.628407332580537
+        ],
+        "declared_goal": null,
+        "goal_index": 1,
+        "first_skill_delivery_step": 166,
+        "initial_state_sha256": "d93cb29bfb58b731bdba01be6c687f2094524f1414e35fd6e72fef13ca9007ef"
+      },
+      "183411002": {
+        "trial_seed": 183411002,
+        "reason": "drop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": "execution",
+        "steps": 1298,
+        "actual_model_calls": 5,
+        "latencies_s": [
+          5.385562594048679,
+          7.615476747974753,
+          5.60944491205737,
+          8.350249676033854,
+          6.793997602071613
+        ],
+        "declared_goal": 2,
+        "goal_index": 2,
+        "first_skill_delivery_step": 162,
+        "initial_state_sha256": "27559bb63bbd6f2593f6cdb1f6ca2249cf89a8666782d04c93723cba9c7de11b"
+      },
+      "183411003": {
+        "trial_seed": 183411003,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 250,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          6.750696907285601
+        ],
+        "declared_goal": 3,
+        "goal_index": 3,
+        "first_skill_delivery_step": 203,
+        "initial_state_sha256": "9a65324399369d541ecbf19d067b12399a9c3c31b651b76ec5158337c41d38ca"
+      },
+      "183411004": {
+        "trial_seed": 183411004,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 260,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          7.435402324888855
+        ],
+        "declared_goal": 4,
+        "goal_index": 4,
+        "first_skill_delivery_step": 224,
+        "initial_state_sha256": "4323a40ad0e4dcb728fee9cf49aa13cd5f19718c7adfb367471d1b5cb8184ccb"
+      },
+      "183411005": {
+        "trial_seed": 183411005,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 190,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          4.348811777308583
+        ],
+        "declared_goal": 5,
+        "goal_index": 5,
+        "first_skill_delivery_step": 131,
+        "initial_state_sha256": "3dea2ba5aa7a320f71f1bd7c85c62c3d8eeb2da80b47137d3f5837f8288e5e66"
+      },
+      "183411006": {
+        "trial_seed": 183411006,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 970,
+        "actual_model_calls": 4,
+        "latencies_s": [
+          5.25557600799948,
+          6.159465302713215,
+          6.325870632659644,
+          6.940486257895827
+        ],
+        "declared_goal": 0,
+        "goal_index": 0,
+        "first_skill_delivery_step": 158,
+        "initial_state_sha256": "adc2c4850f8ee6b61748f940492af0bbc1da7874062fcde9ecaba728740bdd66"
+      },
+      "183411007": {
+        "trial_seed": 183411007,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 390,
+        "actual_model_calls": 2,
+        "latencies_s": [
+          4.271965325810015,
+          5.388933950103819
+        ],
+        "declared_goal": 1,
+        "goal_index": 1,
+        "first_skill_delivery_step": 129,
+        "initial_state_sha256": "181093133cecb4ebc1f6c61213d1c83d16cc9530979bfc947076bbbf22f0d4e5"
+      },
+      "183411008": {
+        "trial_seed": 183411008,
+        "reason": "service_excluded",
+        "success": false,
+        "exclusion_reason": "service_error",
+        "drop_phase": null,
+        "steps": 10,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          1.353622528258711
+        ],
+        "declared_goal": null,
+        "goal_index": 2,
+        "first_skill_delivery_step": null,
+        "initial_state_sha256": "d9ab39d503ea84a3780eda356b92e3f8eabd718e13da3527891c993da7c7b8fe"
+      },
+      "183411009": {
+        "trial_seed": 183411009,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 1390,
+        "actual_model_calls": 5,
+        "latencies_s": [
+          7.335523777175695,
+          6.449023804161698,
+          6.405733251944184,
+          7.9695741781033576,
+          8.580281109083444
+        ],
+        "declared_goal": 3,
+        "goal_index": 3,
+        "first_skill_delivery_step": 221,
+        "initial_state_sha256": "476f9da1c3b2a9f833879882812bb30037db4cb2efc2c9e6959e88f6f002e290"
+      },
+      "183411010": {
+        "trial_seed": 183411010,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 470,
+        "actual_model_calls": 2,
+        "latencies_s": [
+          5.4927396876737475,
+          7.91173079283908
+        ],
+        "declared_goal": 4,
+        "goal_index": 4,
+        "first_skill_delivery_step": 165,
+        "initial_state_sha256": "4b8a9adaf76bd48de4a14788bd1620d2d739310a967a30ff90cac700258ca8ee"
+      },
+      "183411011": {
+        "trial_seed": 183411011,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 320,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          10.409302236046642
+        ],
+        "declared_goal": 5,
+        "goal_index": 5,
+        "first_skill_delivery_step": 313,
+        "initial_state_sha256": "c06888258e43694881d389b25921ee21c2c792985a51f307d299fdda3541d8bc"
+      },
+      "183411012": {
+        "trial_seed": 183411012,
+        "reason": "drop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": "startup_wait",
+        "steps": 181,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          6.295972517225891
+        ],
+        "declared_goal": null,
+        "goal_index": 0,
+        "first_skill_delivery_step": null,
+        "initial_state_sha256": "3d4494f9ed00e97acfcbb0dc9368667299bf45a493832b0f46b6a454cb974180"
+      },
+      "183411013": {
+        "trial_seed": 183411013,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 240,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          6.819250808097422
+        ],
+        "declared_goal": 1,
+        "goal_index": 1,
+        "first_skill_delivery_step": 205,
+        "initial_state_sha256": "9825c1dc20286bf1d7f1b81ebddb7ca07045f8f828683cbca689bec9dfdacb9d"
+      },
+      "183411014": {
+        "trial_seed": 183411014,
+        "reason": "drop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": "execution",
+        "steps": 847,
+        "actual_model_calls": 3,
+        "latencies_s": [
+          6.31937952619046,
+          6.781762809026986,
+          9.90493213199079
+        ],
+        "declared_goal": null,
+        "goal_index": 2,
+        "first_skill_delivery_step": 190,
+        "initial_state_sha256": "ae78d0951135dfd33d238c1f6b600ab7db71350320b90749202c143fd0ef5653"
+      },
+      "183411015": {
+        "trial_seed": 183411015,
+        "reason": "service_excluded",
+        "success": false,
+        "exclusion_reason": "service_error",
+        "drop_phase": null,
+        "steps": 521,
+        "actual_model_calls": 2,
+        "latencies_s": [
+          13.387915757019073,
+          4.112678322941065
+        ],
+        "declared_goal": null,
+        "goal_index": 3,
+        "first_skill_delivery_step": 402,
+        "initial_state_sha256": "ec111f5c9d30efac5c1cbcde852801421976d59b175b00c285deb7d01c143a6e"
+      },
+      "183411016": {
+        "trial_seed": 183411016,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 1050,
+        "actual_model_calls": 4,
+        "latencies_s": [
+          5.093895087949932,
+          8.181137728039175,
+          7.888016675133258,
+          7.614186132792383
+        ],
+        "declared_goal": 4,
+        "goal_index": 4,
+        "first_skill_delivery_step": 153,
+        "initial_state_sha256": "9f83a292666645cf94ac9bd1b25cd1d562ad6c37bc61efbeddace1749813296d"
+      },
+      "183411017": {
+        "trial_seed": 183411017,
+        "reason": "drop",
+        "success": false,
+        "exclusion_reason": "service_error",
+        "drop_phase": "wait",
+        "steps": 1263,
+        "actual_model_calls": 3,
+        "latencies_s": [
+          6.832112922798842,
+          9.09354348341003,
+          125.85119820898399
+        ],
+        "declared_goal": null,
+        "goal_index": 5,
+        "first_skill_delivery_step": 205,
+        "initial_state_sha256": "39aa8810e2eafe0084a5ce438e15c71391f2da51010cc9afafe94a73f9952e68"
+      }
+    },
+    "finetuned_vlm_bare": {
+      "183411000": {
+        "trial_seed": 183411000,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 60,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          0.1283068978227675
+        ],
+        "declared_goal": 0,
+        "goal_index": 0,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "1ed7c355462388d3283a27048042d2a0bc25b7e856f50aa558c6b5a7d8a5148c"
+      },
+      "183411001": {
+        "trial_seed": 183411001,
+        "reason": "drop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": "execution",
+        "steps": 51,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          0.10968196438625455
+        ],
+        "declared_goal": null,
+        "goal_index": 1,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "d93cb29bfb58b731bdba01be6c687f2094524f1414e35fd6e72fef13ca9007ef"
+      },
+      "183411002": {
+        "trial_seed": 183411002,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 380,
+        "actual_model_calls": 5,
+        "latencies_s": [
+          0.11401145998388529,
+          0.1289675310254097,
+          0.12853307090699673,
+          0.12507425993680954,
+          0.12693917099386454
+        ],
+        "declared_goal": 2,
+        "goal_index": 2,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "27559bb63bbd6f2593f6cdb1f6ca2249cf89a8666782d04c93723cba9c7de11b"
+      },
+      "183411003": {
+        "trial_seed": 183411003,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 70,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          0.12449298007413745
+        ],
+        "declared_goal": 3,
+        "goal_index": 3,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "9a65324399369d541ecbf19d067b12399a9c3c31b651b76ec5158337c41d38ca"
+      },
+      "183411004": {
+        "trial_seed": 183411004,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 40,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          0.11722981091588736
+        ],
+        "declared_goal": 4,
+        "goal_index": 4,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "4323a40ad0e4dcb728fee9cf49aa13cd5f19718c7adfb367471d1b5cb8184ccb"
+      },
+      "183411005": {
+        "trial_seed": 183411005,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 40,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          0.1347762867808342
+        ],
+        "declared_goal": 5,
+        "goal_index": 5,
+        "first_skill_delivery_step": 5,
+        "initial_state_sha256": "3dea2ba5aa7a320f71f1bd7c85c62c3d8eeb2da80b47137d3f5837f8288e5e66"
+      },
+      "183411006": {
+        "trial_seed": 183411006,
+        "reason": "false_stop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 30,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          0.11405226914212108
+        ],
+        "declared_goal": 1,
+        "goal_index": 0,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "adc2c4850f8ee6b61748f940492af0bbc1da7874062fcde9ecaba728740bdd66"
+      },
+      "183411007": {
+        "trial_seed": 183411007,
+        "reason": "false_stop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 760,
+        "actual_model_calls": 6,
+        "latencies_s": [
+          0.11927268607541919,
+          0.1091470392420888,
+          0.10900832200422883,
+          0.10715184919536114,
+          0.11518467916175723,
+          0.11498945625498891
+        ],
+        "declared_goal": 1,
+        "goal_index": 1,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "181093133cecb4ebc1f6c61213d1c83d16cc9530979bfc947076bbbf22f0d4e5"
+      },
+      "183411008": {
+        "trial_seed": 183411008,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 50,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          0.13858728483319283
+        ],
+        "declared_goal": 2,
+        "goal_index": 2,
+        "first_skill_delivery_step": 5,
+        "initial_state_sha256": "d9ab39d503ea84a3780eda356b92e3f8eabd718e13da3527891c993da7c7b8fe"
+      },
+      "183411009": {
+        "trial_seed": 183411009,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 200,
+        "actual_model_calls": 3,
+        "latencies_s": [
+          0.10771578410640359,
+          0.11318315425887704,
+          0.12155998172238469
+        ],
+        "declared_goal": 3,
+        "goal_index": 3,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "476f9da1c3b2a9f833879882812bb30037db4cb2efc2c9e6959e88f6f002e290"
+      },
+      "183411010": {
+        "trial_seed": 183411010,
+        "reason": "false_stop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 300,
+        "actual_model_calls": 4,
+        "latencies_s": [
+          0.10506396507844329,
+          0.11034665675833821,
+          0.1106467992067337,
+          0.11560476198792458
+        ],
+        "declared_goal": 3,
+        "goal_index": 4,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "4b8a9adaf76bd48de4a14788bd1620d2d739310a967a30ff90cac700258ca8ee"
+      },
+      "183411011": {
+        "trial_seed": 183411011,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 30,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          0.11103160912171006
+        ],
+        "declared_goal": 5,
+        "goal_index": 5,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "c06888258e43694881d389b25921ee21c2c792985a51f307d299fdda3541d8bc"
+      },
+      "183411012": {
+        "trial_seed": 183411012,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 50,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          0.11004906985908747
+        ],
+        "declared_goal": 0,
+        "goal_index": 0,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "3d4494f9ed00e97acfcbb0dc9368667299bf45a493832b0f46b6a454cb974180"
+      },
+      "183411013": {
+        "trial_seed": 183411013,
+        "reason": "drop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": "execution",
+        "steps": 40,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          0.10927130514755845
+        ],
+        "declared_goal": 1,
+        "goal_index": 1,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "9825c1dc20286bf1d7f1b81ebddb7ca07045f8f828683cbca689bec9dfdacb9d"
+      },
+      "183411014": {
+        "trial_seed": 183411014,
+        "reason": "drop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": "execution",
+        "steps": 1296,
+        "actual_model_calls": 6,
+        "latencies_s": [
+          0.11166942259296775,
+          0.13112876983359456,
+          0.12604039907455444,
+          0.11584557266905904,
+          0.11537695908918977,
+          0.1741766487248242
+        ],
+        "declared_goal": null,
+        "goal_index": 2,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "ae78d0951135dfd33d238c1f6b600ab7db71350320b90749202c143fd0ef5653"
+      },
+      "183411015": {
+        "trial_seed": 183411015,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 200,
+        "actual_model_calls": 3,
+        "latencies_s": [
+          0.13066718028858304,
+          0.1124845459125936,
+          0.11266581900417805
+        ],
+        "declared_goal": 3,
+        "goal_index": 3,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "ec111f5c9d30efac5c1cbcde852801421976d59b175b00c285deb7d01c143a6e"
+      },
+      "183411016": {
+        "trial_seed": 183411016,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 480,
+        "actual_model_calls": 6,
+        "latencies_s": [
+          0.10656901495531201,
+          0.11110288836061954,
+          0.1924048070795834,
+          0.11467584921047091,
+          0.13237573998048902,
+          0.11511987401172519
+        ],
+        "declared_goal": 4,
+        "goal_index": 4,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "9f83a292666645cf94ac9bd1b25cd1d562ad6c37bc61efbeddace1749813296d"
+      },
+      "183411017": {
+        "trial_seed": 183411017,
+        "reason": "drop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": "execution",
+        "steps": 334,
+        "actual_model_calls": 4,
+        "latencies_s": [
+          0.11422588070854545,
+          0.11644072504714131,
+          0.11637846613302827,
+          0.10652769170701504
+        ],
+        "declared_goal": null,
+        "goal_index": 5,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "39aa8810e2eafe0084a5ce438e15c71391f2da51010cc9afafe94a73f9952e68"
+      },
+      "183411018": {
+        "trial_seed": 183411018,
+        "reason": "horizon",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 3600,
+        "actual_model_calls": 6,
+        "latencies_s": [
+          0.1087874872609973,
+          0.10934025794267654,
+          0.17157195089384913,
+          0.11108030192553997,
+          0.11356959398835897,
+          0.11054840078577399
+        ],
+        "declared_goal": 0,
+        "goal_index": 0,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "5b8716a9253d63f63693ec13b8cc37147a9b6fcdfb3ad609b5fa2d9d4f16070f"
+      },
+      "183411019": {
+        "trial_seed": 183411019,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 100,
+        "actual_model_calls": 2,
+        "latencies_s": [
+          0.12015322595834732,
+          0.17156881326809525
+        ],
+        "declared_goal": 1,
+        "goal_index": 1,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "1eecdf61747e162027ce0998ef625272a9abbe1709904efef22898b090ec1161"
+      },
+      "183412000": {
+        "trial_seed": 183412000,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 390,
+        "actual_model_calls": 5,
+        "latencies_s": [
+          0.12887194519862533,
+          0.11559249181300402,
+          0.12063837703317404,
+          0.1322986138984561,
+          0.16606820281594992
+        ],
+        "declared_goal": 2,
+        "goal_index": 2,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "4ea82b1aaa65dfbdd1698e1fcec62b7f9c1f4dd58258c19d67d7ddb548a6e40b"
+      },
+      "183412001": {
+        "trial_seed": 183412001,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 110,
+        "actual_model_calls": 2,
+        "latencies_s": [
+          0.1361982198432088,
+          0.13596924487501383
+        ],
+        "declared_goal": 3,
+        "goal_index": 3,
+        "first_skill_delivery_step": 5,
+        "initial_state_sha256": "ecba0cb1ca7b075452769dd06d85222e8e8e247d623f9ae2184d6259458297b5"
+      },
+      "183412002": {
+        "trial_seed": 183412002,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 480,
+        "actual_model_calls": 6,
+        "latencies_s": [
+          0.10746540268883109,
+          0.11196831380948424,
+          0.11558456113561988,
+          0.13076349534094334,
+          0.11409046081826091,
+          0.17602942930534482
+        ],
+        "declared_goal": 4,
+        "goal_index": 4,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "f726285b452236864923cf95b1d0067055bdc67425c8db0c6bfd660d145e43d3"
+      },
+      "183412003": {
+        "trial_seed": 183412003,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 40,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          0.10757269011810422
+        ],
+        "declared_goal": 5,
+        "goal_index": 5,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "6b23f3763544b6a2bcd951de00076daef3ecdeb6c4c7723a5a8ac9b07ab72455"
+      },
+      "183412004": {
+        "trial_seed": 183412004,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 290,
+        "actual_model_calls": 4,
+        "latencies_s": [
+          0.11357072787359357,
+          0.11315308883786201,
+          0.11128266481682658,
+          0.12452572118490934
+        ],
+        "declared_goal": 0,
+        "goal_index": 0,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "392aeed0d7e2b660aeefe142e8fcffef9f2acfdd9239d7438d9b86e6a2021825"
+      },
+      "183412005": {
+        "trial_seed": 183412005,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 110,
+        "actual_model_calls": 2,
+        "latencies_s": [
+          0.11858900543302298,
+          0.24431293783709407
+        ],
+        "declared_goal": 1,
+        "goal_index": 1,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "bfaa8ae8fbb85f6aab9d17ee6094596b90af038ad15626b62dd170fe8f5d2d58"
+      },
+      "183412006": {
+        "trial_seed": 183412006,
+        "reason": "drop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": "execution",
+        "steps": 320,
+        "actual_model_calls": 4,
+        "latencies_s": [
+          0.10860592033714056,
+          0.10622010612860322,
+          0.11418590182438493,
+          0.39379587210714817
+        ],
+        "declared_goal": null,
+        "goal_index": 2,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "40f7ef68f90f5a7bff324ef7533355e160a344ec0e7e8c441824b48ed665ab01"
+      },
+      "183412007": {
+        "trial_seed": 183412007,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 120,
+        "actual_model_calls": 2,
+        "latencies_s": [
+          0.11190946493297815,
+          0.1101621980778873
+        ],
+        "declared_goal": 3,
+        "goal_index": 3,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "657b853a64d718813ced7cea3e78ae3ec92a72c2b67fe3fd258a6de5f8dc3441"
+      },
+      "183412008": {
+        "trial_seed": 183412008,
+        "reason": "drop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": "execution",
+        "steps": 36,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          0.19361547892913222
+        ],
+        "declared_goal": 4,
+        "goal_index": 4,
+        "first_skill_delivery_step": 6,
+        "initial_state_sha256": "c32c966899f7961a9463689764b359b8027fb17a670f828d9c2933880bc35fd2"
+      },
+      "183412009": {
+        "trial_seed": 183412009,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 220,
+        "actual_model_calls": 3,
+        "latencies_s": [
+          0.10886153904721141,
+          0.12020006496459246,
+          0.11392250936478376
+        ],
+        "declared_goal": 5,
+        "goal_index": 5,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "bb6fa05124a1d121fac911288296c18e503c5789858755ce4cb02b8a12a29364"
+      },
+      "183412010": {
+        "trial_seed": 183412010,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 290,
+        "actual_model_calls": 4,
+        "latencies_s": [
+          0.14959410391747952,
+          0.12169954925775528,
+          0.11391035607084632,
+          0.11318649211898446
+        ],
+        "declared_goal": 0,
+        "goal_index": 0,
+        "first_skill_delivery_step": 5,
+        "initial_state_sha256": "1aa6ef71ab8ef8562ab3489e84c98c776f0cbc60503de2f7cb5e4eab4638e724"
+      },
+      "183412011": {
+        "trial_seed": 183412011,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 100,
+        "actual_model_calls": 2,
+        "latencies_s": [
+          0.1187550462782383,
+          0.12574917869642377
+        ],
+        "declared_goal": 1,
+        "goal_index": 1,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "e91c8236fa019c3a263d7315988fe60d9d6bfac158d722bb16627513b9fd833a"
+      },
+      "183412012": {
+        "trial_seed": 183412012,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 410,
+        "actual_model_calls": 5,
+        "latencies_s": [
+          0.10721700033172965,
+          0.1101793902926147,
+          0.12057832395657897,
+          0.11578795500099659,
+          0.12699335208162665
+        ],
+        "declared_goal": 2,
+        "goal_index": 2,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "7fdb448bbcdefd466a8398b697ab44f414987e4b15a38beedfeb449f922e015b"
+      },
+      "183412013": {
+        "trial_seed": 183412013,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 200,
+        "actual_model_calls": 3,
+        "latencies_s": [
+          0.10504178889095783,
+          0.22414431115612388,
+          0.10986473970115185
+        ],
+        "declared_goal": 3,
+        "goal_index": 3,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "af8c41665cbfb82ad7a6956b13c8c9b60a188c52cc2419bf622394002af5797a"
+      },
+      "183412014": {
+        "trial_seed": 183412014,
+        "reason": "drop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": "execution",
+        "steps": 741,
+        "actual_model_calls": 6,
+        "latencies_s": [
+          0.10213273810222745,
+          0.16361855808645487,
+          0.11053181672468781,
+          0.11249981261789799,
+          0.11770380986854434,
+          0.12438245629891753
+        ],
+        "declared_goal": 3,
+        "goal_index": 4,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "f0b1ddf64cdbdf4bb6e9569d4961e0acce753c03dbfd0c23b8adb5a6fd3b8659"
+      },
+      "183412015": {
+        "trial_seed": 183412015,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 30,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          0.12611575424671173
+        ],
+        "declared_goal": 5,
+        "goal_index": 5,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "3d62f4f457567a83f7de634f7ab3d0b31ff27e4160d5aa19434170e3d02c94f5"
+      },
+      "183412016": {
+        "trial_seed": 183412016,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 290,
+        "actual_model_calls": 4,
+        "latencies_s": [
+          0.1665553175844252,
+          0.1085179802030325,
+          0.10678210807964206,
+          0.12071422394365072
+        ],
+        "declared_goal": 0,
+        "goal_index": 0,
+        "first_skill_delivery_step": 5,
+        "initial_state_sha256": "9b39a871b81ac27f0b7344e788a6432d87fd026cf0c3e47239101555cf1fb2e1"
+      },
+      "183412017": {
+        "trial_seed": 183412017,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 100,
+        "actual_model_calls": 2,
+        "latencies_s": [
+          0.10981476213783026,
+          0.121070119086653
+        ],
+        "declared_goal": 1,
+        "goal_index": 1,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "26beef21bc99bb64fa05baf6c0855facc36e6411a8f3e2710cdda76d83586687"
+      },
+      "183412018": {
+        "trial_seed": 183412018,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 390,
+        "actual_model_calls": 5,
+        "latencies_s": [
+          0.10796614037826657,
+          0.10657010693103075,
+          0.12111460883170366,
+          0.10829936992377043,
+          0.11466646892949939
+        ],
+        "declared_goal": 2,
+        "goal_index": 2,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "9cc734473d48a41f871c82e8f8fd621f5153af6f6e745cb0f90ad9af8f911efd"
+      },
+      "183412019": {
+        "trial_seed": 183412019,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 120,
+        "actual_model_calls": 2,
+        "latencies_s": [
+          0.11151323793455958,
+          0.11361737176775932
+        ],
+        "declared_goal": 3,
+        "goal_index": 3,
+        "first_skill_delivery_step": 4,
+        "initial_state_sha256": "45e78fc5bf0f2e4f0562dd0052a658e65fac412858aca6c4b23c2526efde96fd"
+      }
+    },
+    "rule_vlm_bare": {
+      "183411000": {
+        "trial_seed": 183411000,
+        "reason": "drop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": "execution",
+        "steps": 56,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          0.9557365789078176
+        ],
+        "declared_goal": 0,
+        "goal_index": 0,
+        "first_skill_delivery_step": 29,
+        "initial_state_sha256": "1ed7c355462388d3283a27048042d2a0bc25b7e856f50aa558c6b5a7d8a5148c"
+      },
+      "183411001": {
+        "trial_seed": 183411001,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 160,
+        "actual_model_calls": 2,
+        "latencies_s": [
+          1.2464185380376875,
+          0.8125694398768246
+        ],
+        "declared_goal": 1,
+        "goal_index": 1,
+        "first_skill_delivery_step": 38,
+        "initial_state_sha256": "d93cb29bfb58b731bdba01be6c687f2094524f1414e35fd6e72fef13ca9007ef"
+      },
+      "183411002": {
+        "trial_seed": 183411002,
+        "reason": "drop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": "execution",
+        "steps": 234,
+        "actual_model_calls": 2,
+        "latencies_s": [
+          1.0637583248317242,
+          1.2265811269171536
+        ],
+        "declared_goal": null,
+        "goal_index": 2,
+        "first_skill_delivery_step": 32,
+        "initial_state_sha256": "27559bb63bbd6f2593f6cdb1f6ca2249cf89a8666782d04c93723cba9c7de11b"
+      },
+      "183411003": {
+        "trial_seed": 183411003,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 50,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          0.832266204059124
+        ],
+        "declared_goal": 3,
+        "goal_index": 3,
+        "first_skill_delivery_step": 25,
+        "initial_state_sha256": "9a65324399369d541ecbf19d067b12399a9c3c31b651b76ec5158337c41d38ca"
+      },
+      "183411004": {
+        "trial_seed": 183411004,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 60,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          0.9730729260481894
+        ],
+        "declared_goal": 4,
+        "goal_index": 4,
+        "first_skill_delivery_step": 30,
+        "initial_state_sha256": "4323a40ad0e4dcb728fee9cf49aa13cd5f19718c7adfb367471d1b5cb8184ccb"
+      },
+      "183411005": {
+        "trial_seed": 183411005,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 60,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          0.870563664007932
+        ],
+        "declared_goal": 5,
+        "goal_index": 5,
+        "first_skill_delivery_step": 27,
+        "initial_state_sha256": "3dea2ba5aa7a320f71f1bd7c85c62c3d8eeb2da80b47137d3f5837f8288e5e66"
+      },
+      "183411006": {
+        "trial_seed": 183411006,
+        "reason": "drop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": "execution",
+        "steps": 256,
+        "actual_model_calls": 2,
+        "latencies_s": [
+          2.2685591392219067,
+          1.2021569712087512
+        ],
+        "declared_goal": null,
+        "goal_index": 0,
+        "first_skill_delivery_step": 69,
+        "initial_state_sha256": "adc2c4850f8ee6b61748f940492af0bbc1da7874062fcde9ecaba728740bdd66"
+      },
+      "183411007": {
+        "trial_seed": 183411007,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 150,
+        "actual_model_calls": 2,
+        "latencies_s": [
+          1.0162809267640114,
+          0.883600109256804
+        ],
+        "declared_goal": 1,
+        "goal_index": 1,
+        "first_skill_delivery_step": 31,
+        "initial_state_sha256": "181093133cecb4ebc1f6c61213d1c83d16cc9530979bfc947076bbbf22f0d4e5"
+      },
+      "183411008": {
+        "trial_seed": 183411008,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 170,
+        "actual_model_calls": 2,
+        "latencies_s": [
+          1.0306638730689883,
+          1.203786597121507
+        ],
+        "declared_goal": 2,
+        "goal_index": 2,
+        "first_skill_delivery_step": 31,
+        "initial_state_sha256": "d9ab39d503ea84a3780eda356b92e3f8eabd718e13da3527891c993da7c7b8fe"
+      },
+      "183411009": {
+        "trial_seed": 183411009,
+        "reason": "drop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": "execution",
+        "steps": 177,
+        "actual_model_calls": 2,
+        "latencies_s": [
+          1.060932656750083,
+          1.433104733005166
+        ],
+        "declared_goal": null,
+        "goal_index": 3,
+        "first_skill_delivery_step": 32,
+        "initial_state_sha256": "476f9da1c3b2a9f833879882812bb30037db4cb2efc2c9e6959e88f6f002e290"
+      },
+      "183411010": {
+        "trial_seed": 183411010,
+        "reason": "drop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": "execution",
+        "steps": 176,
+        "actual_model_calls": 2,
+        "latencies_s": [
+          0.9522807691246271,
+          1.0166531978175044
+        ],
+        "declared_goal": null,
+        "goal_index": 4,
+        "first_skill_delivery_step": 29,
+        "initial_state_sha256": "4b8a9adaf76bd48de4a14788bd1620d2d739310a967a30ff90cac700258ca8ee"
+      },
+      "183411011": {
+        "trial_seed": 183411011,
+        "reason": "false_stop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 70,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          0.932138601783663
+        ],
+        "declared_goal": 4,
+        "goal_index": 5,
+        "first_skill_delivery_step": 28,
+        "initial_state_sha256": "c06888258e43694881d389b25921ee21c2c792985a51f307d299fdda3541d8bc"
+      },
+      "183411012": {
+        "trial_seed": 183411012,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 50,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          1.180831904988736
+        ],
+        "declared_goal": 0,
+        "goal_index": 0,
+        "first_skill_delivery_step": 36,
+        "initial_state_sha256": "3d4494f9ed00e97acfcbb0dc9368667299bf45a493832b0f46b6a454cb974180"
+      },
+      "183411013": {
+        "trial_seed": 183411013,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 160,
+        "actual_model_calls": 2,
+        "latencies_s": [
+          1.2395306369289756,
+          0.8385429498739541
+        ],
+        "declared_goal": 1,
+        "goal_index": 1,
+        "first_skill_delivery_step": 38,
+        "initial_state_sha256": "9825c1dc20286bf1d7f1b81ebddb7ca07045f8f828683cbca689bec9dfdacb9d"
+      },
+      "183411014": {
+        "trial_seed": 183411014,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 530,
+        "actual_model_calls": 5,
+        "latencies_s": [
+          1.0727857053279877,
+          1.343630600720644,
+          1.1229233308695257,
+          1.151362918317318,
+          0.8004837576299906
+        ],
+        "declared_goal": 2,
+        "goal_index": 2,
+        "first_skill_delivery_step": 33,
+        "initial_state_sha256": "ae78d0951135dfd33d238c1f6b600ab7db71350320b90749202c143fd0ef5653"
+      },
+      "183411015": {
+        "trial_seed": 183411015,
+        "reason": "drop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": "wait",
+        "steps": 380,
+        "actual_model_calls": 4,
+        "latencies_s": [
+          1.1088662426918745,
+          1.2531705172732472,
+          1.0552400583401322,
+          0.8157301410101354
+        ],
+        "declared_goal": null,
+        "goal_index": 3,
+        "first_skill_delivery_step": 34,
+        "initial_state_sha256": "ec111f5c9d30efac5c1cbcde852801421976d59b175b00c285deb7d01c143a6e"
+      },
+      "183411016": {
+        "trial_seed": 183411016,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 670,
+        "actual_model_calls": 6,
+        "latencies_s": [
+          1.1007469398900867,
+          1.2354494840838015,
+          1.133594948798418,
+          1.237426218111068,
+          1.2666930919513106,
+          0.8713265969417989
+        ],
+        "declared_goal": 4,
+        "goal_index": 4,
+        "first_skill_delivery_step": 34,
+        "initial_state_sha256": "9f83a292666645cf94ac9bd1b25cd1d562ad6c37bc61efbeddace1749813296d"
+      },
+      "183411017": {
+        "trial_seed": 183411017,
+        "reason": "drop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": "execution",
+        "steps": 1817,
+        "actual_model_calls": 6,
+        "latencies_s": [
+          1.4785079467110336,
+          1.0630676136352122,
+          0.9990000412799418,
+          1.2249670140445232,
+          1.4983381158672273,
+          0.9931734898127615
+        ],
+        "declared_goal": null,
+        "goal_index": 5,
+        "first_skill_delivery_step": 45,
+        "initial_state_sha256": "39aa8810e2eafe0084a5ce438e15c71391f2da51010cc9afafe94a73f9952e68"
+      },
+      "183411018": {
+        "trial_seed": 183411018,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 410,
+        "actual_model_calls": 4,
+        "latencies_s": [
+          1.064266450703144,
+          1.3067731778137386,
+          1.3299035159870982,
+          0.8237183960154653
+        ],
+        "declared_goal": 0,
+        "goal_index": 0,
+        "first_skill_delivery_step": 32,
+        "initial_state_sha256": "5b8716a9253d63f63693ec13b8cc37147a9b6fcdfb3ad609b5fa2d9d4f16070f"
+      },
+      "183411019": {
+        "trial_seed": 183411019,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 160,
+        "actual_model_calls": 2,
+        "latencies_s": [
+          1.156095220707357,
+          0.8472350821830332
+        ],
+        "declared_goal": 1,
+        "goal_index": 1,
+        "first_skill_delivery_step": 35,
+        "initial_state_sha256": "1eecdf61747e162027ce0998ef625272a9abbe1709904efef22898b090ec1161"
+      },
+      "183412000": {
+        "trial_seed": 183412000,
+        "reason": "drop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": "execution",
+        "steps": 693,
+        "actual_model_calls": 6,
+        "latencies_s": [
+          1.430224270094186,
+          1.13752509560436,
+          1.1252490910701454,
+          0.9307112819515169,
+          1.1671032849699259,
+          1.279102098196745
+        ],
+        "declared_goal": null,
+        "goal_index": 2,
+        "first_skill_delivery_step": 43,
+        "initial_state_sha256": "4ea82b1aaa65dfbdd1698e1fcec62b7f9c1f4dd58258c19d67d7ddb548a6e40b"
+      },
+      "183412001": {
+        "trial_seed": 183412001,
+        "reason": "drop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": "execution",
+        "steps": 2772,
+        "actual_model_calls": 6,
+        "latencies_s": [
+          1.1725445911288261,
+          1.547441836912185,
+          1.26487226318568,
+          1.5509273470379412,
+          1.0019504223018885,
+          1.3600062797777355
+        ],
+        "declared_goal": null,
+        "goal_index": 3,
+        "first_skill_delivery_step": 36,
+        "initial_state_sha256": "ecba0cb1ca7b075452769dd06d85222e8e8e247d623f9ae2184d6259458297b5"
+      },
+      "183412002": {
+        "trial_seed": 183412002,
+        "reason": "drop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": "execution",
+        "steps": 427,
+        "actual_model_calls": 4,
+        "latencies_s": [
+          1.2395522729493678,
+          1.0581020517274737,
+          1.2380026658065617,
+          1.133535735309124
+        ],
+        "declared_goal": null,
+        "goal_index": 4,
+        "first_skill_delivery_step": 38,
+        "initial_state_sha256": "f726285b452236864923cf95b1d0067055bdc67425c8db0c6bfd660d145e43d3"
+      },
+      "183412003": {
+        "trial_seed": 183412003,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 60,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          0.8644795059226453
+        ],
+        "declared_goal": 5,
+        "goal_index": 5,
+        "first_skill_delivery_step": 26,
+        "initial_state_sha256": "6b23f3763544b6a2bcd951de00076daef3ecdeb6c4c7723a5a8ac9b07ab72455"
+      },
+      "183412004": {
+        "trial_seed": 183412004,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 410,
+        "actual_model_calls": 4,
+        "latencies_s": [
+          1.243371362797916,
+          1.3666583723388612,
+          1.121111675631255,
+          0.792924677953124
+        ],
+        "declared_goal": 0,
+        "goal_index": 0,
+        "first_skill_delivery_step": 38,
+        "initial_state_sha256": "392aeed0d7e2b660aeefe142e8fcffef9f2acfdd9239d7438d9b86e6a2021825"
+      },
+      "183412005": {
+        "trial_seed": 183412005,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 160,
+        "actual_model_calls": 2,
+        "latencies_s": [
+          1.2142695211805403,
+          0.8225744641385972
+        ],
+        "declared_goal": 1,
+        "goal_index": 1,
+        "first_skill_delivery_step": 37,
+        "initial_state_sha256": "bfaa8ae8fbb85f6aab9d17ee6094596b90af038ad15626b62dd170fe8f5d2d58"
+      },
+      "183412006": {
+        "trial_seed": 183412006,
+        "reason": "false_stop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 560,
+        "actual_model_calls": 5,
+        "latencies_s": [
+          1.0993115697056055,
+          1.510071970988065,
+          1.1699713505804539,
+          1.5566111579537392,
+          0.9167005368508399
+        ],
+        "declared_goal": 4,
+        "goal_index": 2,
+        "first_skill_delivery_step": 33,
+        "initial_state_sha256": "40f7ef68f90f5a7bff324ef7533355e160a344ec0e7e8c441824b48ed665ab01"
+      },
+      "183412007": {
+        "trial_seed": 183412007,
+        "reason": "drop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": "execution",
+        "steps": 357,
+        "actual_model_calls": 3,
+        "latencies_s": [
+          1.0020621428266168,
+          1.493085902184248,
+          1.156758822966367
+        ],
+        "declared_goal": null,
+        "goal_index": 3,
+        "first_skill_delivery_step": 31,
+        "initial_state_sha256": "657b853a64d718813ced7cea3e78ae3ec92a72c2b67fe3fd258a6de5f8dc3441"
+      },
+      "183412008": {
+        "trial_seed": 183412008,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 70,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          0.8848625873215497
+        ],
+        "declared_goal": 4,
+        "goal_index": 4,
+        "first_skill_delivery_step": 27,
+        "initial_state_sha256": "c32c966899f7961a9463689764b359b8027fb17a670f828d9c2933880bc35fd2"
+      },
+      "183412009": {
+        "trial_seed": 183412009,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 320,
+        "actual_model_calls": 3,
+        "latencies_s": [
+          1.2604105537757277,
+          1.607440949883312,
+          0.7719578291289508
+        ],
+        "declared_goal": 5,
+        "goal_index": 5,
+        "first_skill_delivery_step": 38,
+        "initial_state_sha256": "bb6fa05124a1d121fac911288296c18e503c5789858755ce4cb02b8a12a29364"
+      },
+      "183412010": {
+        "trial_seed": 183412010,
+        "reason": "drop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": "execution",
+        "steps": 687,
+        "actual_model_calls": 6,
+        "latencies_s": [
+          1.0357784829102457,
+          1.05275097489357,
+          1.086210137233138,
+          1.3128538629971445,
+          1.1767425569705665,
+          1.046169477980584
+        ],
+        "declared_goal": null,
+        "goal_index": 0,
+        "first_skill_delivery_step": 32,
+        "initial_state_sha256": "1aa6ef71ab8ef8562ab3489e84c98c776f0cbc60503de2f7cb5e4eab4638e724"
+      },
+      "183412011": {
+        "trial_seed": 183412011,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 150,
+        "actual_model_calls": 2,
+        "latencies_s": [
+          1.034763250965625,
+          0.8380957562476397
+        ],
+        "declared_goal": 1,
+        "goal_index": 1,
+        "first_skill_delivery_step": 32,
+        "initial_state_sha256": "e91c8236fa019c3a263d7315988fe60d9d6bfac158d722bb16627513b9fd833a"
+      },
+      "183412012": {
+        "trial_seed": 183412012,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 550,
+        "actual_model_calls": 5,
+        "latencies_s": [
+          1.1151858381927013,
+          1.0319666508585215,
+          1.4991538398899138,
+          1.2517586429603398,
+          0.7925886050797999
+        ],
+        "declared_goal": 2,
+        "goal_index": 2,
+        "first_skill_delivery_step": 34,
+        "initial_state_sha256": "7fdb448bbcdefd466a8398b697ab44f414987e4b15a38beedfeb449f922e015b"
+      },
+      "183412013": {
+        "trial_seed": 183412013,
+        "reason": "drop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": "execution",
+        "steps": 1968,
+        "actual_model_calls": 6,
+        "latencies_s": [
+          1.2127060759812593,
+          1.413590861018747,
+          1.3961042277514935,
+          1.602542252279818,
+          1.3831003857776523,
+          1.339163159020245
+        ],
+        "declared_goal": null,
+        "goal_index": 3,
+        "first_skill_delivery_step": 37,
+        "initial_state_sha256": "af8c41665cbfb82ad7a6956b13c8c9b60a188c52cc2419bf622394002af5797a"
+      },
+      "183412014": {
+        "trial_seed": 183412014,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 680,
+        "actual_model_calls": 6,
+        "latencies_s": [
+          1.4364785822108388,
+          1.1735933721065521,
+          1.233289083931595,
+          1.3370271706953645,
+          1.297948190011084,
+          0.9163905899040401
+        ],
+        "declared_goal": 4,
+        "goal_index": 4,
+        "first_skill_delivery_step": 44,
+        "initial_state_sha256": "f0b1ddf64cdbdf4bb6e9569d4961e0acce753c03dbfd0c23b8adb5a6fd3b8659"
+      },
+      "183412015": {
+        "trial_seed": 183412015,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 60,
+        "actual_model_calls": 1,
+        "latencies_s": [
+          0.9036477198824286
+        ],
+        "declared_goal": 5,
+        "goal_index": 5,
+        "first_skill_delivery_step": 28,
+        "initial_state_sha256": "3d62f4f457567a83f7de634f7ab3d0b31ff27e4160d5aa19434170e3d02c94f5"
+      },
+      "183412016": {
+        "trial_seed": 183412016,
+        "reason": "drop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": "execution",
+        "steps": 451,
+        "actual_model_calls": 4,
+        "latencies_s": [
+          1.206664298195392,
+          1.195649758912623,
+          1.2615938209928572,
+          1.1158717568032444
+        ],
+        "declared_goal": null,
+        "goal_index": 0,
+        "first_skill_delivery_step": 37,
+        "initial_state_sha256": "9b39a871b81ac27f0b7344e788a6432d87fd026cf0c3e47239101555cf1fb2e1"
+      },
+      "183412017": {
+        "trial_seed": 183412017,
+        "reason": "success",
+        "success": true,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 160,
+        "actual_model_calls": 2,
+        "latencies_s": [
+          1.1589857120998204,
+          0.8389773578383029
+        ],
+        "declared_goal": 1,
+        "goal_index": 1,
+        "first_skill_delivery_step": 35,
+        "initial_state_sha256": "26beef21bc99bb64fa05baf6c0855facc36e6411a8f3e2710cdda76d83586687"
+      },
+      "183412018": {
+        "trial_seed": 183412018,
+        "reason": "drop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": "execution",
+        "steps": 968,
+        "actual_model_calls": 6,
+        "latencies_s": [
+          1.1950648566707969,
+          1.1548199229873717,
+          1.423966039903462,
+          1.403176099061966,
+          1.3046530978754163,
+          1.0455890148878098
+        ],
+        "declared_goal": null,
+        "goal_index": 2,
+        "first_skill_delivery_step": 36,
+        "initial_state_sha256": "9cc734473d48a41f871c82e8f8fd621f5153af6f6e745cb0f90ad9af8f911efd"
+      },
+      "183412019": {
+        "trial_seed": 183412019,
+        "reason": "false_stop",
+        "success": false,
+        "exclusion_reason": null,
+        "drop_phase": null,
+        "steps": 180,
+        "actual_model_calls": 2,
+        "latencies_s": [
+          1.755168803036213,
+          1.046991016715765
+        ],
+        "declared_goal": 4,
+        "goal_index": 3,
+        "first_skill_delivery_step": 53,
+        "initial_state_sha256": "45e78fc5bf0f2e4f0562dd0052a658e65fac412858aca6c4b23c2526efde96fd"
+      }
+    }
+  },
+  "scope": "Incomplete independent replication snapshot: 18 visited Astra slots, 15 common service-eligible slots. Not a completed forty-trial result.",
+  "snapshot_date": "2026-10-30"
+}

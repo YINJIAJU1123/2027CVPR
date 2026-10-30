@@ -3,7 +3,7 @@
 We organize evaluation around four questions: \textbf{Q1}~How do complete systems compare across five objects? \textbf{Q2}~What do learned control, goal conditioning, and agent feedback contribute? \textbf{Q3}~Does improved visual pose prediction improve closed-loop success? \textbf{Q4}~Do the findings transfer to a physical hand? Current evidence covers one cube and part of Q2. Unfinished studies are marked explicitly.
 
 \subsection{Setup and evidence scope}
-Experiments use the released Revo3 cube assets in an independent Isaac Lab 3.0/Newton environment. The validated scene has 23 bodies and 117 collision shapes. Contact capacities are fixed at 4,096 contacts and 1,024 constraints. Earlier runs with contact-buffer overflow are invalid and are excluded from this release. The original 320-trial suite contains 80 low-level diagnostics, 120 shared-control provider trials, and 120 additional Astra ablation trials. An 80-trial addendum evaluates the two bare VLM baselines. This gives 400 unique trials, including 320 semantic trials. Reusing an Astra cell across tables does not create new trials.
+Experiments use the released Revo3 cube assets in an independent Isaac Lab 3.0/Newton environment. Contact capacities are validated before evaluation; earlier overflow runs are excluded. Scene details are recorded in the supplement. The original 320-trial suite contains 80 low-level diagnostics, 120 shared-control provider trials, and 120 additional Astra ablation trials. An 80-trial addendum evaluates the two bare VLM baselines. This gives 400 unique trials, including 320 semantic trials. Reusing an Astra cell across tables does not create new trials.
 
 All semantic arms use the same scene, pose estimator, goal bank, student checkpoint, physical threshold, and shared stopping gate. The primary VLM baselines omit our learned control actors. For each arm, seeds 183101 and 183102 provide 20 trials each. Initial state matching is verified from recorded state values. Training, development, and evaluation seeds are separated, while repeated development measurements are not treated as held-out evidence. The bare-baseline addendum was declared after the earlier suite had run, following a clarification of baseline scope. It selected no new weights and changed no previous outcome.
 
@@ -11,17 +11,17 @@ All semantic arms use the same scene, pose estimator, goal bank, student checkpo
 \centering\small
 \begin{tabular}{lrrrrr}
 \toprule
-System & Raw successes & Raw drops & Eligible successes & Eligible rate (\%) & 95\% Wilson interval\\
+System & Eligible successes & Rate (\%) & 95\% Wilson interval & Raw successes & Raw drops\\
 \midrule
 \MainResultRows
 \bottomrule
 \end{tabular}
-\caption{\textbf{Q1: frozen cube comparison.} Each system has 40 raw trials. A service exclusion in one Astra trial removes the same trial from all three methods for the eligible comparison, leaving 39. The fine-tuned and rule VLM baselines use the shared student without learned waiting or execution actors. The raw success fractions are 72.5\%, 67.5\%, and 35.0\% for Astra, fine-tuned VLM, and rule VLM, respectively. Intervals describe individual eligible rates, not paired effect sizes.}
+\caption{\textbf{Q1: frozen cube comparison.} Each system has 40 raw trials. A service exclusion in one Astra trial removes the same trial from all three methods for the eligible comparison, leaving 39. The fine-tuned and rule VLM baselines use the shared student without learned waiting or execution actors. Eligible success is the primary metric. Raw counts retain service availability for audit. Intervals describe individual eligible rates, not paired effect sizes.}
 \label{tab:main}
 \end{table*}
 
 \subsection{Q1: Five-object system comparison}
-Table~\ref{tab:main} reports the frozen cube results. Astra with learned control succeeds in 29 of 40 raw trials. The fine-tuned VLM succeeds in 27 and the rule VLM in 14. Excluding the shared service-affected trial gives 29/39, 26/39, and 13/39. The excluded trial was successful for both bare VLMs, which explains why their numerators also change. It would be incorrect to compare an eligible Astra rate against a raw VLM rate.
+Table~\ref{tab:main} reports the completed frozen cube cohort. On its common service-eligible panel, Astra succeeds in 29/39 trials, the fine-tuned VLM in 26/39, and the rule VLM in 13/39. The excluded trial was successful for both bare VLMs, which explains why their numerators also change. It would be incorrect to compare an eligible Astra rate against a raw VLM rate.
 
 Astra and the fine-tuned VLM share 20 eligible successes. Astra has nine exclusive successes and the VLM six, giving a two-sided exact McNemar $p=0.607$. Astra and the rule VLM share 11 successes, with 18 Astra-only and two rule-only successes, giving $p=0.000402$. These are exploratory, unadjusted paired tests. The present evidence shows a large observed improvement over the rule baseline but does not establish an advantage over the fine-tuned model. Failure to resolve that difference is also not evidence of equivalence.
 
@@ -32,6 +32,9 @@ Astra and the fine-tuned VLM share 20 eligible successes. Astra has nine exclusi
 \label{fig:results}
 \end{figure*}
 
+\paragraph{Independent replication in progress.}
+A separately registered cohort retains the same checkpoints and task criterion. At the current snapshot, Astra has visited 18 of 40 slots. Three service-affected slots leave 15 common valid trials, with 11 Astra successes and nine for each bare VLM. Both VLM arms have completed 40 trials, with 29 and 22 successes. Their complete-cohort rates cannot be ranked against Astra's partial prefix. This follow-up remains incomplete and does not replace Table~\ref{tab:main}. Its 73.3\% eligible Astra rate does not establish a decline from the completed cohort's 74.4\%.
+
 \paragraph{Object coverage.}
 The present evidence concerns one marked cube. Additional object checkpoints will be integrated through the same semantic goal interface, with object-specific geometry, calibration, pose predictor, motor policy, and skill definitions recorded. An object-specific student is legitimate but does not demonstrate zero-shot object transfer. We plan approximately five objects with different grasp geometries and visual ambiguities rather than five texture variants of the same cube.
 
@@ -41,25 +44,25 @@ The present evidence concerns one marked cube. Additional object checkpoints wil
 \toprule
 Simulation object & Rule & Fine-tuned & Full\\
 \midrule
-Cube & 14/40 & 27/40 & 29/40\\
+Cube & 13/39 & 26/39 & 29/39\\
 Object 2 & \pending & \pending & \pending\\
 Object 3 & \pending & \pending & \pending\\
 Object 4 & \pending & \pending & \pending\\
 Object 5 & \pending & \pending & \pending\\
 \bottomrule
 \end{tabularx}
-\caption{\textbf{Q1: planned five-object comparison. Only the cube row is complete.} Entries retain raw denominators. Eligible comparisons and uncertainty will accompany every completed object. No macro-average is computed over unfinished rows.}
+\caption{\textbf{Q1: planned five-object comparison. Only the cube row is complete.} Entries use common service-eligible trials from 40 scheduled trials per arm. Raw counts and uncertainty accompany completed objects. No macro-average is computed over unfinished rows.}
 \label{tab:objects}
 \end{table}
 
 \paragraph{Failure structure.}
-The ten Astra drops occur during unbound inspection. Nine occur with no model request pending and one during a pending request. None occurs before the first skill is delivered. The bare fine-tuned VLM has nine drops, two pose false stops, and two wrong-binding failures. Of its drops, five occur during unbound inspection, one after an incorrect binding, and three after a correct binding. The bare rule VLM has 15 drops, nine wrong bindings, and two horizon failures. These categories separate physical control from semantic decisions. The full method does not minimize raw drops among the three systems, even though it has the largest raw success count.
+The ten Astra drops occur during unbound inspection. Nine occur with no model request pending and one during a pending request. None occurs before the first skill is delivered. The bare fine-tuned VLM has nine drops, two pose false stops, and two wrong-binding failures. Of its drops, five occur during unbound inspection, one after an incorrect binding, and three after a correct binding. The bare rule VLM has 15 drops, nine wrong bindings, and two horizon failures. These categories separate physical control from semantic decisions. The full method does not minimize drops among the three systems, even though it has the largest eligible success count in this cohort.
 
 \paragraph{Model and control contributions.}
 As an auxiliary comparison, we retain the original runs that use the same learned controllers for every provider. Fine-tuned VLM with shared control succeeds in 30/40 raw trials and rule VLM in 16/40, with five and twelve drops. On that panel's common 39 eligible trials, Astra and fine-tuned VLM both succeed in 29, while rule VLM succeeds in 15. Thus an unconditional ranking of Astra above the fine-tuned VLM is not supported. The main comparison assesses complete systems with the requested baseline definitions. The auxiliary panel is needed to discuss the upper-level model independently of exclusive controller access.
 
 \paragraph{Inference and visual evidence.}
-The full Astra arm makes 94 model calls across its 40 raw trials. Recorded call latency has a median of 5.14 seconds and a 95th percentile of 7.15 seconds. One long call is service-excluded. The bare fine-tuned and rule VLMs have median call latencies of 0.109 and 1.151 seconds, respectively. Natural latency is part of the system comparison. These delays span many physical control steps. Usage is available for 93 calls and totals 154,859 reported tokens, so it is not a complete billing estimate. Figure~\ref{fig:views} shows actual model inputs from the first formal Astra trial. Black areas include the background and hand occlusion. The example illustrates the observation domain, not a representative success-rate sample or a full-scene rendering.
+Astra makes 94 calls across 40 trials, with median latency 5.14 seconds and 95th percentile 7.15 seconds. One long call is service-excluded. Bare fine-tuned and rule VLM median latencies are 0.109 and 1.151 seconds. Natural latency is part of the system comparison. Usage records cover 93 calls and 154,859 tokens. Figure~\ref{fig:views} shows actual model inputs, including hand occlusion, from one successful Astra trial; it is not a representative outcome sample.
 
 \begin{figure}[t]
 \centering
@@ -73,31 +76,34 @@ Table~\ref{tab:ablation} holds Astra and the student fixed and varies two learne
 
 \begin{table}[t]
 \centering\small
+\setlength{\tabcolsep}{3pt}
 \begin{tabular}{llrrrr}
 \toprule
-Waiting & Execution & Raw & Drops & Eligible & \%\\
+Waiting & Execution & Success & Start & Wait & Exec.\\
 \midrule
-\AblationResultRows
+\FollowupPhaseRows
 \bottomrule
 \end{tabular}
-\caption{\textbf{Q2: Astra control ablation.} Raw successes and drops retain all 40 trials. Eligible successes use the common 37-trial set. The full cell is the same Astra release as Table~\ref{tab:main}, evaluated on a different shared exclusion set.}
+\caption{\textbf{Q2: matched Astra control ablation.} Every entry uses the same 37 service-eligible trials. Start, Wait and Exec. count drops before the first skill, during later pending requests, and outside waiting. The full cell reuses the original release with the factorial's common exclusions. Raw counts remain in the supplement.}
 \label{tab:ablation}
 \end{table}
 
-Learned waiting alone increases eligible successes from 20 to 25. Learned execution with fixed waiting gives 26, and the full configuration gives 27. The full versus fixed-control paired comparison has $p=0.210$. Full versus waiting-only gives $p=0.791$, and full versus execution-only gives $p=1.0$. These counts motivate the method but do not establish that both components are independently necessary or that their combination has a reliable interaction effect.
+Learned waiting raises eligible success from 20/37 (54.1\%) to 25/37 (67.6\%). Learned execution with fixed waiting gives 26/37 (70.3\%), and the full configuration gives 27/37 (73.0\%). Full versus fixed control has paired $p=0.210$. The point estimate improves by 18.9 percentage points, with total drops falling from 16 to 10, but reliable superiority is not established.
 
-The execution-only arm has eight raw drops, fewer than the full method's ten, yet also has a pose false stop, wrong binding, and abstention. This illustrates why reducing drops alone does not ensure successful completion. In both fixed-waiting arms, four episodes drop before a first skill arrives. The full configuration survives that phase in all four matched cases, but only two subsequently succeed and two drop during later inspection. This is a useful phase-level observation, not a causal estimate from four examples.
+The components do not show a resolved interaction benefit. Adding learned waiting to execution recovery gives eight exclusive successes and seven exclusive failures, a net gain of one trial ($p=1.0$). Startup drops fall from four to zero, while execution drops rise from four to nine. Waiting alone reduces startup drops but leaves total waiting-related drops unchanged at four. These observations motivate better coordination between inspection, waiting and execution. Different trajectories and stochastic agent decisions prevent assigning each changed failure to one actor. In the partial replication, the four valid Astra failures are one startup drop, two unbound inspection drops, and one drop 13 control steps after a correct target command.
 
 \paragraph{Goal conditioning.}
-\TODO{Run the goal interventions on the cube.} Retrain an actor without explicit goal input using matched capacity and training data. Keep the student's correct goal unchanged. A separate inference intervention shuffles only the actor's goal. Since student proposals can still encode the goal, the retrained actor is not a no-semantic-information baseline. For 20 restored states with two valid goals each, evaluate 40 rollouts with matched recurrent history and goal-consistent features. Measure goal-directed progress, drops, and completion rather than output differences alone.
+The correct-goal, retrained no-explicit-goal and shuffled-actor-goal conditions are prepared, with 40 trials each, but have no formal outcomes at this snapshot. The student retains its assigned goal in every condition. A separate restored-state diagnostic verifies 19 of 20 planned states, with two assigned goals and two controller variants per state. Active-goal control gives 26/38 final in-tolerance branches and five drops, versus 29/38 and two drops without explicit actor-goal input. Both variants condition the student on the assigned goal, so action differences alone cannot identify a useful explicit actor-goal pathway. These recovery results do not establish a goal-conditioning benefit and are not semantic task success.
 
 \paragraph{Feedback and visual grounding.}
-\TODO{Compare a single initial Astra plan with the full feedback loop, with 40 trials per condition.} Share the student, control actors, stopping gate, and horizon. The single-call arm may produce a bounded skill sequence. Report actual calls and elapsed time. An optional repeated-call control freezes both RGB and pose-derived feedback to separate fresh evidence from additional inference. A high-level grounding diagnostic changes letter--color assignments or masks letters in the model image while retaining original predictor input. It keeps lighting fixed and isolates semantic evidence from perception shift. Geometrically consistent interventions and independent target labels are required. Whole-pipeline retexturing is a separate test. These unfinished studies extend the completed control factorial without changing its results.
+\TODO{Complete the same-Astra initial-plan versus feedback comparison, 40 trials per condition.} The one-call arm emits a bounded initial plan, while the full arm may use up to six feedback calls. Both share the frozen student, actors, stopping gate and horizon. Call count and elapsed time must accompany success. Runtime preparation and development interface checks have passed, but formal feedback outcomes remain pending.
+
+The upper-image intervention keeps the predictor's input and scene lighting unchanged. The bare fine-tuned VLM succeeds in 30/40 trials with the identity layout, 16/40 after letter--color permutation, and 3/40 with letters masked. The bare rule VLM gives 23/40, 23/40 and 0/40. These completed controls show sensitivity to visual evidence, while the fine-tuned model loses performance under changed associations. They do not prove exclusive use of a memorized lookup. Astra's three corresponding arms remain pending. Protocols and full counts appear in the supplement.
 
 \subsection{Q3: Visual pose predictor improvement}
-The current low-level diagnostic obtains pose from the same frozen CNN for both policies. The released pose-goal student reaches its target before dropping in 39/40 trials, while the migrated latent student reaches in 35/40. Drops rise from one to five. Thirty-five trials succeed for both, four only for the released student, and one for neither. The exact paired $p=0.125$ does not establish a reliable transfer gap, but the observed loss identifies a concrete development target. These results measure physical reach, not autonomous semantic completion, and must not be substituted into Table~\ref{tab:main}.
+The frozen low-level diagnostic uses the same CNN for both policies. The released pose-goal student reaches before dropping in 39/40 trials, versus 35/40 for the migrated latent student, with one and five drops respectively (paired $p=0.125$). This measures physical reach, not semantic completion.
 
-A separate successor development study has now completed. Two branches start from the same latent student and train for 400 additional updates with 16 environments and 45 steps per update. Each receives 288,000 new transitions. One uses simulated pose noise, the other actual frozen CNN predictions. The teacher, CNN, architecture, budget, and initialization remain fixed. On 40 fresh matched CNN-feedback trials, the released student reaches in 39, the frozen latent student in 38, extra simulated-noise training in 39, and extra CNN training in all 40, with zero drops (Table~\ref{tab:perception}). This trains the student to use its sensor, not a better pose predictor. The one- and two-trial gains are not statistically resolved. The CNN candidate passes the development admission rule but is not deployed into the frozen semantic comparison.
+A separate development study gives two successor students equal additional training: 400 updates and 288,000 transitions, using either simulated pose noise or frozen CNN predictions. On 40 fresh matched CNN-feedback trials, the released student reaches in 39, the frozen latent student in 38, noise-trained student in 39, and CNN-trained student in all 40 (Table~\ref{tab:perception}). These small gains are not statistically resolved. This adapts the student to its sensor and does not improve the predictor. The CNN candidate remains outside the frozen semantic comparison. Training details appear in the supplement.
 
 \begin{table}[t]
 \centering\small

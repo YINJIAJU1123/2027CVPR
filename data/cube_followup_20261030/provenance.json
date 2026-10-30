@@ -1,0 +1,14 @@
+{
+  "source_files_sha256": {
+    "outputs/pose_latent_student_v1/module_review_20261030/current_replication.json": "95ccf987bd0674bb73fe6325fd57326c13182e466ac86244e0ca5007165b7ae3",
+    "outputs/pose_latent_student_v1/module_review_20261030/module_effects.json": "67afb6c8b9dcaae99a2c806294cb2c113cfbc60f7977651d44efc15517998746",
+    "outputs/pose_latent_student_v1/paired_recovery_20261029_v2/paired_action_analysis.json": "9d394037a50a465d4242797f024e7f074e8b151e2ffb3fed67738896e66b23fd"
+  },
+  "record_counts": {
+    "independent_replication_snapshot": 98,
+    "bare_visual_interventions": 240
+  },
+  "no_trial_replacement": true,
+  "success_definition_changed": false,
+  "primary_metric": "service-eligible success, symmetric exclusions for matched comparisons"
+}

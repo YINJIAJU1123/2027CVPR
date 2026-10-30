@@ -27,7 +27,7 @@ def drop(s):return sum(v for k,v in s['failure_subtypes'].items() if k.startswit
 rows=[]
 for c in ['rule_vlm_bare','finetuned_vlm_bare','astra_full']:
  s=a['conditions'][c];o=main['outcomes'][c];lo,hi=o['wilson_95']
- rows.append(f"{names[c]} & {s['success']}/40 & {drop(s)} & {o['success']}/39 & {100*o['success_rate']:.1f} & [{100*lo:.1f}, {100*hi:.1f}] \\")
+ rows.append(f"{names[c]} & {o['success']}/39 & {100*o['success_rate']:.1f} & [{100*lo:.1f}, {100*hi:.1f}] & {s['success']}/40 & {drop(s)} \\")
 (ROOT/'tables/main_rows.tex').write_text('\n'.join(r+'\\' for r in rows)+'\n')
 rows=[]
 for c,w,e in [('fixed_slow_no_execution_recovery','Fixed 0.15','Student'),('learned_waiting_only','Learned','Student'),('learned_execution_only_with_fixed_slow_waiting','Fixed 0.15','Learned'),('astra_full','Learned','Learned')]:

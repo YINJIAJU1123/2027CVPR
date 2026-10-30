@@ -1,6 +1,7 @@
 \documentclass[10pt,twocolumn,letterpaper]{article}
 \usepackage[review]{cvpr}
 \input{preamble}
+\input{tables/followup_macros}
 \definecolor{cvprblue}{rgb}{0.21,0.49,0.74}
 \usepackage[breaklinks,colorlinks,allcolors=cvprblue]{hyperref}
 \def\confName{CVPR}\def\confYear{2027}
@@ -119,6 +120,68 @@ After training, the final checkpoint from each branch is compared with the relea
 
 A selected new student still requires separately collected controller data and compatibility validation. Only then may a new semantic release use reserved seeds 183301 and 183302. The original cube-v1 results remain unchanged. Both branches and all 160 diagnostic trials have completed with valid physics logs. The four reach counts are 39/40, 38/40, 39/40, and 40/40 for the released, frozen latent, extra simulated, and extra CNN policies. Drops are one, two, one, and zero. The CNN candidate passes the stated gate and has not been automatically deployed. Exact paired tests against the frozen latent and extra simulated policies give $p=0.5$ and $p=1.0$. Thus this is a promising development result, not an established perception-matching effect.
 
+\section{Separate Follow-up Cohorts: Snapshot}
+\label{sec:followup}
+These studies retain the frozen task success criterion and do not replace the completed cube-v1 cohort. Service-eligible success is the primary metric. Cross-method comparisons remove the same service-affected slots from every arm. All raw records, including excluded physical drops, remain available. Forty scheduled slots do not necessarily yield forty eligible trials.
+
+\subsection{Incomplete independent replication}
+The new seeds are 183411 and 183412. At the archived snapshot, Astra has visited 18 of 40 scheduled slots. Slots 183411008, 183411015 and 183411017 have recorded service errors. The last includes a connection failure after approximately 126 seconds and a waiting-phase drop. It is excluded by the existing service rule, not by a new outcome-dependent criterion. The remaining Astra outcomes are 11 successes and four drops. Both bare VLM arms are complete, at 29/40 and 22/40, but only the same 15 eligible slots support the partial paired comparison below.
+
+\begin{table}[h]
+\centering\small
+\begin{tabular}{lrr}
+\toprule
+Method & Eligible success & Rate (\%)\\
+\midrule
+\FollowupReplicationRows
+\bottomrule
+\end{tabular}
+\caption{Incomplete replication, restricted to 15 identical valid initial states. These counts are a progress snapshot, not a final forty-trial ranking. The preceding raw 62.5\% report used a different 16-slot prefix and included service exclusions.}
+\end{table}
+
+The four valid Astra failures consist of one startup drop, two unbound inspection drops, and one drop 13 steps after a correct target command following four inspection calls. This differs from the earlier completed cohort, whose drops all occurred before correct binding. Small-sample phase counts identify cases for development rather than establish a new population failure distribution.
+
+\subsection{Control interaction and explicit goals}
+The completed factorial retains the common 37-trial panel shown in the main paper. Learned waiting alone reduces startup drops from four to one but introduces three later waiting drops, leaving total waiting-related drops at four. With execution recovery present, learned waiting eliminates four startup drops while execution drops increase from four to nine. The full method wins eight trials lost by execution-only control and loses seven won by that control. Hence net success improves by one, without a resolved interaction benefit.
+
+A deterministic restoration diagnostic verifies 19 of 20 planned physical states. Each state has two assigned goals and both actor conditions, yielding 76 valid branches. State 12 cannot be restored because its prefix terminates, and is not replaced. Both conditions give the assigned goal to the student. No waiting drops occur, but their subsequent execution differs.
+
+\begin{table}[h]
+\centering\small
+\begin{tabular}{lrr}
+\toprule
+Actor input & Final in tolerance & Drops\\
+\midrule
+\FollowupPairRows
+\bottomrule
+\end{tabular}
+\caption{Paired recovery diagnostic on 19 states, two goals each. Four branches in each condition already start within tolerance. Final tolerance is not autonomous semantic success. Explicit actor-goal conditioning is not supported as beneficial by this diagnostic.}
+\end{table}
+
+Mean assigned-goal progress is 1.195 radians with explicit actor-goal input and 1.340 without it. Different first actions under different goals do not isolate the actor's explicit goal pathway because the student itself is goal-conditioned. The separately trained correct-goal, no-explicit-goal and shuffled-goal semantic arms have no formal outcomes at this snapshot.
+
+\subsection{Completed bare-VLM visual interventions}
+The upper-level image changes while the low-level pose predictor continues to receive the original image. Lighting is fixed. The permuted condition assigns the next symbol in the cyclic sequence $(T,E,R,L,S,H)$ to each color face and scores the corresponding physical target. The masked condition hides the lettering. Geometry-consistent image construction and the transmitted image hashes are audited. Seeds 183441 and 183442 provide 20 trials each, and physical initial-state hashes match across the three conditions.
+
+\begin{table}[h]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrr}
+\toprule
+Method & Identity & Permuted & Masked\\
+\midrule
+\FollowupVisualRows
+Astra full & \pending & \pending & \pending\\
+\bottomrule
+\end{tabular}
+\caption{Completed upper-image interventions for the bare VLMs. Every numerical cell contains 40 service-eligible trials, with no service exclusions. Astra cells are pending, not zero. These cohorts are separate from the main cube-v1 table.}
+\end{table}
+
+Fine-tuned success falls by 35 percentage points after remapping and to 7.5\% after masking. Rule-based success is 57.5\% under both identity and remapping, then zero after masking. Equal aggregate identity and remapped rates do not imply identical trial outcomes. The results establish intervention sensitivity but do not show that all fine-tuned successes arise from a fixed lookup, or that Astra is more robust before its matched arms finish.
+
+\subsection{Outstanding agent feedback evidence}
+The same-Astra comparison uses one initial bounded plan versus at most six feedback calls. The student, actors, stopping gate and physical horizon are held fixed. Protocol checks, synthetic downstream rollouts and real development-image interface checks have passed. Formal results for the two 40-trial arms are pending. No benefit from subsequent observation or replanning is inferred from interface validation alone.
+
 \section{Experimental Requirements Before Submission}
 \subsection{Separate model strength from control}
 The primary comparison uses full Astra against bare VLM baselines. Its interpretation is system-level. To attribute gains to the upper-level model, compare all providers with identical control actors, timing conventions, stopping, and information access. Preserve the existing shared-control results. Repeated live calls can produce different public plans even on matching initial states. Fixed-public-plan replay can isolate motor changes, but replay success must not be reported as a new live Astra success rate.
@@ -127,7 +190,7 @@ The primary comparison uses full Astra against bare VLM baselines. Its interpret
 Use the same physical state with different valid requested faces. Measure action direction and completion with the correct goal, a shuffled goal, and no goal. Train the no-goal actor with equal capacity and data. Permute the letter-color layout or mask/shuffle image evidence while keeping background and lighting fixed. Pair these with a text-only baseline. These controls determine whether success depends on current visual semantics rather than a fixed lookup.
 
 \subsection{Test agent feedback}
-Hold the model, student, and local actors fixed. Compare one initial semantic query with the complete feedback loop, then remove history or verification feedback. Match call limits and record actual calls, logical duration, wall time, and service failures. Latency replay should use the same public plan and delay sequence across motor variants. A simple time-aware residual actor provides a stronger learning baseline than fixed slowing alone. It should not be labeled an official reproduction of A2C2 or ARLI without a verified implementation.
+Hold the model, student, and local actors fixed. Compare one initial semantic query with the complete feedback loop, then remove history or verification feedback. Keep the registered one-call and at-most-six-call budgets explicit and record actual calls, logical duration, wall time, and service failures. This contrasts complete protocols and does not isolate fresh information from extra inference compute. Latency replay should use the same public plan and delay sequence across motor variants. A simple time-aware residual actor provides a stronger learning baseline than fixed slowing alone. It should not be labeled an official reproduction of A2C2 or ARLI without a verified implementation.
 
 \subsection{Separate perception accuracy and control benefit}
 Compare the original and improved predictors with the same student and agent first. Report independent translation/rotation error, tail error, keypoint visibility, false stops, and semantic success. Oracle pose estimates the residual motor gap. Only a second experiment should adapt the student to the new predictor. A lower pose error is useful evidence, but it does not guarantee a higher task success rate.
@@ -136,7 +199,7 @@ Compare the original and improved predictors with the same student and agent fir
 Select about five objects with variation in geometry, inertia, contact affordances, and semantic ambiguity. Record object-specific students and training budgets. Balance the task set within each object and report each row before computing an object macro-average. Forty trials per arm per object is the default batch size. Hardware runs need calibrated independent scoring, documented resets, two sessions, and synchronized video and command logs. A new object checkpoint alone is insufficient without its assets, calibration, normalization, action conventions, and goal definitions.
 
 \section{Reproducibility and Evidence Audit}
-The accompanying research archive stores 400 frozen-release trial records and 160 separately labeled successor development records, sanitized summaries, source-file checksums, and checkpoint hashes. Runtime hostnames and authorization material are excluded. Original local evidence is retained separately and hashed before export. Result tables and plots are regenerated from the archived data. The public goal mapping and physical success contract are frozen for cube-v1. New predictors, students, objects, or stop rules require separate versioned releases.
+The accompanying research archive stores 400 frozen-release trial records and 160 separately labeled successor development records, sanitized summaries, source-file checksums, and checkpoint hashes. Runtime hostnames and authorization material are excluded. Original local evidence is retained separately and hashed before export. Result tables and plots are regenerated from the archived data. A separate follow-up archive contains 98 replication snapshot records, 240 completed visual-intervention trials, and summaries of the 19-state recovery diagnostic. Its partial replication is never pooled with the original cohort to form a final result. The public goal mapping and physical success contract are frozen for cube-v1. New predictors, students, objects, or stop rules require separate versioned releases.
 
 \TODO{Complete the anonymous implementation package and object-specific licenses before submission.} The manuscript itself contains no link to an identifying project repository. Public repository publication is a development convenience, not a replacement for a self-contained anonymous submission.
 \end{document}
