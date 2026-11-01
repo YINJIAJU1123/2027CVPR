@@ -1,0 +1,67 @@
+{
+  "scope": "Qualitative example from the first scheduled permuted Astra trial; selected after observing its outcome, not a rate estimate",
+  "trial": {
+    "index": 0,
+    "trial_seed": 186701000,
+    "goal_index": 0,
+    "requested_pips": 2,
+    "reason": "success",
+    "success": true,
+    "final_error_rad": 0.02515303770838858,
+    "declared_goal": 0,
+    "declared_number": 2,
+    "exclusion_reason": null
+  },
+  "chronology": [
+    {
+      "request_step": 0,
+      "applied_step": 189,
+      "tool": "inspect_face",
+      "arguments": {
+        "number": 3,
+        "steps": 90,
+        "evidence": "The broad visible face has two dots, adjacent faces show one and three; no skill association is established. Probe skill 3, which has the lowest local estimated error."
+      }
+    },
+    {
+      "request_step": 279,
+      "applied_step": 376,
+      "tool": "inspect_face",
+      "arguments": {
+        "number": 1,
+        "steps": 90,
+        "evidence": "Skill 3 exposes a clear six-dot upper face, not the requested two. Two dots are visible on the lower adjoining face. Probe skill 1 to establish another association."
+      }
+    },
+    {
+      "request_step": 466,
+      "applied_step": 576,
+      "tool": "reorient_target",
+      "arguments": {
+        "goal_number": 2,
+        "number": 1,
+        "steps": 10,
+        "evidence": "After probing skill 1, the broad upper face clearly shows exactly two diagonal dots; the adjoining lower face shows four. This visually grounds skill 1 to the requested face despite inconsistent error estimates."
+      }
+    }
+  ],
+  "manual_image_review": {
+    "request_02.png": "Six pips clearly visible on the broad face after skill 3.",
+    "request_03.png": "Two pips clearly visible on the broad face after skill 1; four on the adjoining lower face."
+  },
+  "interpretation": "The agent probes physical skills before binding the two-pip target to skill 1. These probes are not wrong-to-correct semantic bindings. Images agree with the reported evidence in this one episode.",
+  "limitations": [
+    "A single successful case does not estimate reliability or establish causality.",
+    "The evaluator receives the mapping for task construction and scoring; the agent receives no mapping table. Full input audit must remain the supporting check.",
+    "No source, weight, prompt, eligibility or outcome was changed."
+  ],
+  "source_sha256": {
+    "calls.json": "4d0b3e2e3db7262f96852898df144b46884f45553c849b04ec82242be324fda2",
+    "request_01.png": "8e9b630d5ef4fb64dbbf4e3e35ebeac5aba93e04b7900b44b690f90489ebd5e2",
+    "request_02.png": "96d262e3d774efabb3f2ab8f0dbf11cac7a24a7948307c9bf751c726ad338826",
+    "request_03.png": "e6e03294998f4f8785c340bb8172707273d2e0906011946096276f9a7ff02ef7",
+    "agent_input_01.json": "690fcdef31d971c77bbc664c13fe304400c90b08e638b0e8ffa09737ffcfe3fa",
+    "agent_input_02.json": "386ea8f9e9e268f76695ab2371e8730673b2d42b512121c5aee776c47578b0d6",
+    "agent_input_03.json": "a914c028b19b380c38bc3dbafab4a12cd386b690abd73070a0653ca48aa6392c"
+  }
+}

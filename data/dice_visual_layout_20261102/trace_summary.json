@@ -1,0 +1,239 @@
+{
+  "scope": "Descriptive mechanisms for fully completed cells; raw outcomes, no new exclusions or causal claims",
+  "complete": true,
+  "pending": [],
+  "final_aggregate_sha256": "20bd09255707be40ce9cb140a5677f92c25804f28584dd0f31b82e8e06e5d511",
+  "limitations": [
+    "A shared explicit skill-ID prompt differs from native-main prompts. Identity controls that shift.",
+    "Model histories and control modules differ across methods as in the frozen system comparison.",
+    "Inspection counts refer to explicit Astra tool calls; bare VLM inspection schedules are not counted and these fields are null.",
+    "Inspection followed by binding describes temporal order; it alone does not establish causation.",
+    "Printed count and physical skill are distinct by construction in the permuted condition.",
+    "Native-association counts describe declared skill IDs, not a claim that the continuous VLM output was quantized. They are post-hoc diagnostics.",
+    "This descriptive analysis was developed while formal cells were completing, including a native-association counter after partial permuted VLM outcomes were visible; no confirmatory hypothesis test is added."
+  ],
+  "cells": {
+    "identity/astra": {
+      "counts": {
+        "trials": 40,
+        "success": 28,
+        "service_excluded": 0,
+        "inspected_trials": 33,
+        "bound_after_inspection": 30,
+        "successful_multi_call_trials": 28,
+        "correct_binding_trials": 29,
+        "wrong_to_correct_binding_trials": 0,
+        "different_skill_and_count_correct_binding_trials": 0,
+        "drops_by_phase": {
+          "execution": 3,
+          "startup_wait": 7
+        },
+        "false_stop_types": {
+          "wrong_physical_binding": 1,
+          "orientation_outside_tolerance": 1
+        },
+        "wrong_binding_false_stops_using_native_pip_id": 0,
+        "outcome_counts": {
+          "success": 28,
+          "drop": 10,
+          "false_stop": 2
+        }
+      },
+      "latencies_s": {
+        "n": 116,
+        "median": 5.316541320997203,
+        "p95": 7.472419760750199,
+        "maximum": 25.039268371998332
+      },
+      "applied_tools": {
+        "inspect_face": 75,
+        "reorient_target": 21,
+        "verify_target": 7,
+        "stop": 2
+      },
+      "observed_models": {
+        "gpt-6-astra": 116
+      }
+    },
+    "identity/vlm": {
+      "counts": {
+        "trials": 40,
+        "success": 23,
+        "service_excluded": 0,
+        "inspected_trials": null,
+        "bound_after_inspection": null,
+        "successful_multi_call_trials": 19,
+        "correct_binding_trials": 36,
+        "wrong_to_correct_binding_trials": 0,
+        "different_skill_and_count_correct_binding_trials": 0,
+        "drops_by_phase": {
+          "execution": 4
+        },
+        "false_stop_types": {
+          "orientation_outside_tolerance": 7
+        },
+        "wrong_binding_false_stops_using_native_pip_id": 0,
+        "outcome_counts": {
+          "false_stop": 7,
+          "success": 23,
+          "horizon": 6,
+          "drop": 4
+        }
+      },
+      "latencies_s": {
+        "n": 148,
+        "median": 0.1282318404992111,
+        "p95": 0.1317260958508996,
+        "maximum": 0.14117234599689255
+      },
+      "applied_tools": {},
+      "observed_models": {}
+    },
+    "identity/rule": {
+      "counts": {
+        "trials": 40,
+        "success": 13,
+        "service_excluded": 0,
+        "inspected_trials": null,
+        "bound_after_inspection": null,
+        "successful_multi_call_trials": 8,
+        "correct_binding_trials": 13,
+        "wrong_to_correct_binding_trials": 0,
+        "different_skill_and_count_correct_binding_trials": 0,
+        "drops_by_phase": {
+          "startup_wait": 2,
+          "execution": 3
+        },
+        "false_stop_types": {
+          "wrong_physical_binding": 16
+        },
+        "wrong_binding_false_stops_using_native_pip_id": 0,
+        "outcome_counts": {
+          "success": 13,
+          "false_stop": 16,
+          "horizon": 6,
+          "drop": 5
+        }
+      },
+      "latencies_s": {
+        "n": 121,
+        "median": 1.4714835260019754,
+        "p95": 1.9317918000015197,
+        "maximum": 2.2328426870008116
+      },
+      "applied_tools": {},
+      "observed_models": {}
+    },
+    "permuted/astra": {
+      "counts": {
+        "trials": 40,
+        "success": 26,
+        "service_excluded": 0,
+        "inspected_trials": 32,
+        "bound_after_inspection": 27,
+        "successful_multi_call_trials": 26,
+        "correct_binding_trials": 27,
+        "wrong_to_correct_binding_trials": 0,
+        "different_skill_and_count_correct_binding_trials": 27,
+        "drops_by_phase": {
+          "startup_wait": 7,
+          "execution": 1
+        },
+        "false_stop_types": {
+          "wrong_physical_binding": 1
+        },
+        "wrong_binding_false_stops_using_native_pip_id": 1,
+        "outcome_counts": {
+          "success": 26,
+          "drop": 8,
+          "abstain": 5,
+          "false_stop": 1
+        }
+      },
+      "latencies_s": {
+        "n": 128,
+        "median": 5.24809132950395,
+        "p95": 7.631596029899811,
+        "maximum": 10.677125656999124
+      },
+      "applied_tools": {
+        "inspect_face": 83,
+        "reorient_target": 17,
+        "stop": 5,
+        "abstain": 5,
+        "verify_target": 6
+      },
+      "observed_models": {
+        "gpt-6-astra": 128
+      }
+    },
+    "permuted/vlm": {
+      "counts": {
+        "trials": 40,
+        "success": 0,
+        "service_excluded": 0,
+        "inspected_trials": null,
+        "bound_after_inspection": null,
+        "successful_multi_call_trials": 0,
+        "correct_binding_trials": 0,
+        "wrong_to_correct_binding_trials": 0,
+        "different_skill_and_count_correct_binding_trials": 0,
+        "drops_by_phase": {
+          "execution": 4
+        },
+        "false_stop_types": {
+          "wrong_physical_binding": 31
+        },
+        "wrong_binding_false_stops_using_native_pip_id": 31,
+        "outcome_counts": {
+          "false_stop": 31,
+          "horizon": 5,
+          "drop": 4
+        }
+      },
+      "latencies_s": {
+        "n": 142,
+        "median": 0.12827649950122577,
+        "p95": 0.13057015770464203,
+        "maximum": 0.13264129200251773
+      },
+      "applied_tools": {},
+      "observed_models": {}
+    },
+    "permuted/rule": {
+      "counts": {
+        "trials": 40,
+        "success": 1,
+        "service_excluded": 0,
+        "inspected_trials": null,
+        "bound_after_inspection": null,
+        "successful_multi_call_trials": 1,
+        "correct_binding_trials": 1,
+        "wrong_to_correct_binding_trials": 0,
+        "different_skill_and_count_correct_binding_trials": 1,
+        "drops_by_phase": {
+          "startup_wait": 2,
+          "execution": 1
+        },
+        "false_stop_types": {
+          "wrong_physical_binding": 32
+        },
+        "wrong_binding_false_stops_using_native_pip_id": 24,
+        "outcome_counts": {
+          "false_stop": 32,
+          "horizon": 4,
+          "drop": 3,
+          "success": 1
+        }
+      },
+      "latencies_s": {
+        "n": 136,
+        "median": 1.5046671035015606,
+        "p95": 1.8713580330004334,
+        "maximum": 2.214851754004485
+      },
+      "applied_tools": {},
+      "observed_models": {}
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "release_sha256": "71fdbef410b8001a550a7132910e6026bb18c88d3ca8d0ac5c175148674ff0bd",
+  "summary_sha256": "20bd09255707be40ce9cb140a5677f92c25804f28584dd0f31b82e8e06e5d511",
+  "independent_audit_sha256": "95ebb5efa3f5b4b7137b1f9c450a486fa9d9011e8642c7efcb33af54a4a11724",
+  "exporter_sha256": "5a8381b8834eb1f5cf20161096ca86750fda756ded201150a6c6879d6d10814d",
+  "input_sha256_relative_to_results": {
+    "identity/astra/episodes.jsonl": "8de3397e893d82b0dd0858b6d775e189458b1ea4f84fd1fde8a46bf4f46fb9f8",
+    "identity/astra/manifest.json": "724217ff1df72a01644b21c5113ffe7d421f88373a0bf1ba7615780e0a9df7b8",
+    "identity/astra/result.json": "64d3a9791d9f808400a609344256390234c288150ed56df3ebac94e0facce9a0",
+    "identity/astra/action_interface.jsonl": "51afa02b71c9295c6dfcc30b3d63552adacac0058993d7630f1464084d54f4cf",
+    "identity/vlm/episodes.jsonl": "8a201262645761b0377f38a8a3a9a039bc25dba76c660cab0722b97e1609de5f",
+    "identity/vlm/manifest.json": "adb2f5e3522d02267142acc95d21c2a8fc6ed58f05118af0503ba0f770d1674a",
+    "identity/vlm/result.json": "1d8adff8fcb1a0cec52bac312a2c3dcd1af3b66aa3547f624604eb924ba4a2a5",
+    "identity/vlm/action_interface.jsonl": "f980d49dd6a0e1abe0584304fa1642bb592bcca33568f9188fc4c7dd1af8613c",
+    "identity/rule/episodes.jsonl": "f8688192d50d5f5e14f0ce2430af5df8830c3dc47167f00360c838341f19fdc0",
+    "identity/rule/manifest.json": "0f500e0d094bd684621beef82aacbb89253f9602e1977368915e91e9b8f13481",
+    "identity/rule/result.json": "7786e7d96e57efdc0effc994167248f68d33a865b43b36187a5268ec87181f10",
+    "identity/rule/action_interface.jsonl": "d5fd2698fc80d0cb3283e36ae00772aed0328f21d0a037770166fb228cdfaac6",
+    "permuted/astra/episodes.jsonl": "71cc270ede457e68bf307e0ce0ba6d75546abae03b9ba3600b2d5a278bf1cc78",
+    "permuted/astra/manifest.json": "1f01654d74e4ecb7edc6cd25d198190887893b03c5004e1f729b15f4d72bfe9c",
+    "permuted/astra/result.json": "eb2713ee8dcb63126e14fd0176af4691cdd5217a5b1366d991936cae01d77a1f",
+    "permuted/astra/action_interface.jsonl": "7fdd7f9759929a44ee828641f711e4022758284b6e44c09152a8b5e001cd6e8c",
+    "permuted/vlm/episodes.jsonl": "6e0a9ee7584e37a6ab31f76045aaaa4796c456499ad8a31dd180c26deb4beae6",
+    "permuted/vlm/manifest.json": "1252c1c8ce6ebecf4ed65497a09b73f40f157847e0ce6f32c999d5b8d5d203d3",
+    "permuted/vlm/result.json": "56ef2f06d5023856176feaa562283c2d6c034ec240e284ea42ae3900b0098e89",
+    "permuted/vlm/action_interface.jsonl": "80e105b82c82296bceafd429ec6d5822cba080a621d2a40017deceda647eab8a",
+    "permuted/rule/episodes.jsonl": "06562e782ac1a44ea03a9c1ceb141b94ea120e494609c187e787766d8ef6c9d0",
+    "permuted/rule/manifest.json": "0a478d572006e8fb18648574651fd1e5ad363d44d3fd2f812ebc50953df14b5d",
+    "permuted/rule/result.json": "4779b6c1917bd6543ae27066aa5e12da85569034561aeb202d69707994c898d5",
+    "permuted/rule/action_interface.jsonl": "3cea17650bc6f9edabb8ce3d4d74a130e11261570c49ef131c85b55573c52281"
+  },
+  "scope": "Frozen dice visual-layout study only; do not pool with native-main cohorts."
+}

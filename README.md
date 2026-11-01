@@ -2,7 +2,7 @@
 
 **Learning Local Control for Asynchronous Visual Agents in Semantic In-Hand Reorientation**
 
-2026-10-29：完整英文论文初稿及补充材料。当前只有正方体的完整测评数据。未完成的多物体、改进 predictor 和真机实验均明确标记 **TODO**，没有伪造实测数字。
+2026-11-02：已完成方块与骰子的主比较、方块消融，以及两种物体各自的视觉语义干预。更多物体、改进 predictor 和真机实验仍标记 **TODO**，没有伪造实测数字。
 
 ## 阅读
 
@@ -13,7 +13,7 @@
 - [冻结的 cube-v1 证据](data/cube_v1/README.md)
 - [官方 CVPR 2027 模板来源](TEMPLATE.md)
 
-## 当前证据（2026-11-01 更新）
+## 当前证据（2026-11-02 更新）
 
 | 最新方块完整系统 | 成功 | 成功率 | 掉落 |
 |---|---:|---:|---:|
@@ -32,6 +32,27 @@
 [最新证据与边界](data/cube_completed_20261101/README.md)包含760次live试验与独立160次开发汇总。视觉试验与旧归档部分重叠，不重复计数。论文保留多物体、同事predictor改进与真机的TODO，没有伪造数值。
 
 新student的160次追加DAgger开发诊断仍单独保留。它没有训练CNN，也不是Astra成功率，没有替换本次主实验student。
+
+## 骰子主比较与换映射
+
+骰子原生场景主比较为 Astra 24/40、裸微调 VLM 20/40、裸规则 VLM 17/40。
+它使用带噪声和延迟的仿真 pose，没有视觉 predictor；方块仍使用冻结 CNN。
+
+另一个独立冻结协议将物理技能编号与点数区分，原映射和换映射均使用同一新提示词。
+旋转原生视觉网格，保持碰撞和惯量不变。六组共 240 次，均无服务排除。
+
+| 方法 | 原映射 | 换映射 |
+|---|---:|---:|
+| Astra 完整方法 | 28/40 (70%) | 26/40 (65%) |
+| 裸微调 VLM | 23/40 (57.5%) | 0/40 |
+| 裸规则 VLM | 13/40 (32.5%) | 1/40 (2.5%) |
+
+换映射下 Astra 对两基线的探索性配对 p 值为 2.98e-8、5.96e-8；Astra 自身映射差异 p=.6875，不等于证实两种布局等效。
+微调模型的 31 次错误绑定停止均选择旧布局同编号技能，实际连续 latent 未被替换。
+Astra 有主动试探、历史和反馈，裸 VLM 只有当前图像与指令，因此结论是完整系统的布局适应能力，不能仅归因于模型规模或微调。
+只测一个新布局，不宣称任意布局泛化。该协议与原生场景主比较分别报告。
+
+[原生场景数据](data/dice_native_20261102/README.md) · [240 次换映射研究及审计](data/dice_visual_layout_20261102/README.md)
 
 ## 当前论文结构与新增评测
 
@@ -67,6 +88,7 @@ python3 scripts/render_completed.py
 python3 scripts/render_ablation_v3.py
 python3 scripts/render_ablation_v3_figure.py
 python3 scripts/render_feedback_example.py
+python3 scripts/render_dice_layout.py
 # 使用 Tectonic 或 latexmk
 make
 # 也可以 TECTONIC=/absolute/path/to/tectonic make

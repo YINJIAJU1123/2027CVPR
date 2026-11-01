@@ -4,6 +4,7 @@
 \input{tables/followup_macros}
 \input{tables/completed_macros}
 \input{tables/ablation_v3_macros}
+\input{tables/dice_layout_macros}
 \definecolor{cvprblue}{rgb}{0.21,0.49,0.74}
 \usepackage[breaklinks,colorlinks,allcolors=cvprblue]{hyperref}
 \def\confName{CVPR}\def\confYear{2027}
@@ -14,7 +15,7 @@
 \maketitle
 \setcounter{section}{0}\renewcommand{\thesection}{\Alph{section}}
 \section{Scope of This Release}
-This supplement accompanies the working manuscript updated on 2 November 2026. The cube cohorts below concern the marked RSLCube. A separate 120-trial native-layout die comparison is documented in the dice extension section. The original release contains 400 trials, followed by separate replication, intervention, and controller-development cohorts. The earlier completion bundle contains 760 live semantic trials and a separate 160-trial fixed-plan development test. Of those live trials, 240 bare-VLM visual records overlap the earlier visual archive. A further 200 distinct raw trials now complete the matched waiting and feedback study. Historical outcomes are retained. Missing multi-object, improved-predictor, and physical-hand measurements are marked TODO.
+This supplement accompanies the working manuscript updated on 2 November 2026. The cube cohorts below concern the marked RSLCube. A separate 120-trial native-layout die comparison and a 240-trial visual-layout study are documented in the dice sections. The original release contains 400 trials, followed by separate replication, intervention, and controller-development cohorts. The earlier completion bundle contains 760 live semantic trials and a separate 160-trial fixed-plan development test. Of those live trials, 240 bare-VLM visual records overlap the earlier visual archive. A further 200 distinct raw trials now complete the matched waiting and feedback study. Historical outcomes are retained. Missing multi-object, improved-predictor, and physical-hand measurements are marked TODO.
 
 The latest complete-system comparison refits only Astra's waiting actor. The student, predictor, execution actor, and task criterion remain frozen. Earlier cohorts use their recorded original controller version. Results from the earlier RGB-D backend, invalid contact-capacity runs, and different protocols are not pooled into the current main result. The original bare-baseline addendum was specified after the first suite, so the full historical study is not described as blindly preregistered.
 
@@ -363,11 +364,65 @@ Rule VLM, bare & 17/40 & 42.5 & 7 & 154\\
 
 Astra's 95\% Wilson interval is [44.6, 73.7]\%, versus [35.2, 64.8]\% for fine-tuning and [28.5, 57.8]\% for rules. Astra has ten exclusive successes against six for fine-tuning (exact paired $p=0.4545$), and eleven against four for rules ($p=0.1185$). These exploratory comparisons do not establish superiority. Astra has twelve startup drops, three execution drops and one false stop. Fine-tuning has eight execution drops, seven false stops and five horizon failures. Rules have seven startup drops, six false stops and ten horizon failures. Median request latencies are 5.63, 0.124 and 1.16 seconds, respectively.
 
-\paragraph{Visual-layout follow-up, pending.}
-A separate frozen study rotates only the native visual mesh by 120 degrees about a body diagonal, leaving collision and inertia unchanged. It pairs identity and changed-layout trials with the same physical target and reset seed. Since fixed motor IDs no longer equal printed counts, all methods receive an explicit skill-ID contract, with no layout table. This common prompt change is controlled by the identity arm. The learned VLM retains its original continuous vector and native-layout weights. The intervention also changes slight visual-shape asymmetries and is not a pure texture edit. Deterministic diagnostic traces match exactly for native, identity and permuted layers; the formal solver settings are unchanged. The planned six cells contain 40 trials each. Development admission is complete, formal evaluation is running, and no follow-up rate is included as a completed result.
+\section{Completed Dice Visual-Layout Study}
+\label{sec:dice-layout}
+\begin{figure*}[t]
+\centering
+\includegraphics[width=.38\textwidth]{data/dice_visual_layout_20261102/qualitative_request_02.png}\hspace{.04\textwidth}
+\includegraphics[width=.38\textwidth]{data/dice_visual_layout_20261102/qualitative_request_03.png}
+\caption{A recorded permuted-layout episode requesting two dots upward. Left: probing physical skill 3 exposes six dots. Right: probing skill 1 exposes two dots. Astra then binds the target to skill 1 and stops with an independently measured orientation error of 0.025 radians. Images are the actual model inputs. This first scheduled trial was selected after its outcome and illustrates one successful sequence, not a reliability estimate.}
+\label{fig:dice-probe}
+\end{figure*}
+
+The six cells use identity or a 120-degree visual-mesh rotation about a body diagonal, crossed with three methods. Each cell contains 40 scheduled trials over seeds 186701 and 186702, with matched physical targets and initial states. Collision, inertia and formal solver settings are unchanged. The mesh has slight asymmetries, so this is a visual-layout intervention rather than a pure texture edit. Independent deterministic diagnostics produce identical 32-step state/action traces for native, identity and permuted layers. The formal solver retains its original settings.
+
+\paragraph{Input and motor contract.}
+Printed counts are separated from fixed physical motor IDs. Skills 1--6 display counts $[1,2,3,4,5,6]$ in identity and $[2,4,6,1,3,5]$ after rotation. This table is used only to construct task instructions and score outcomes. Models receive no layout table, and their commands are not inversely remapped. The learned VLM's continuous 768-dimensional output is applied unchanged. Both layouts share an explicit skill-ID prompt that differs from the native-main prompt, making identity a control for that common change. The VLM retains its native-layout-trained weights. This measures zero-shot layout transfer, not performance after training on permuted examples.
+
+Astra receives updated RGB, action/observation history and noisy feedback and can probe skills. The bare VLMs receive only current RGB and instruction, with their original fallback inspection schedule. From a single view, a new printed-count-to-motor-ID association may be ambiguous without a stable face reference. The comparison therefore measures complete systems, not a controlled effect of model scale or fine-tuning alone. Dice maintenance and stopping modules remain as documented above. The shared primary success predicate is unchanged.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrr}
+\toprule
+System & Identity & Permuted\\
+\midrule
+\DiceLayoutRows
+\bottomrule
+\end{tabular}
+\caption{Dice visual-layout transfer. All 240 scheduled trials are service-eligible. Forty reset states and physical goals are matched across all six cells.}
+\label{tab:dice-layout}
+\end{table}
+
+\paragraph{Results and paired uncertainty.}
+Astra completes 28/40 identity trials and 26/40 permuted trials. Their 95\% Wilson intervals are [54.6, 81.9]\% and [49.5, 77.9]\%. Fine-tuning changes from 23/40 to 0/40, and rules from 13/40 to 1/40. Four paired states succeed only for identity Astra and two only for permuted Astra. The absence of a detected difference does not establish equivalence or robustness to other layouts. Table~\ref{tab:dice-layout-tests} reports all seven exploratory paired contrasts without multiple-testing adjustment. The native-main results are a separate cohort and must not be pooled with this study.
+
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{@{}Xrrr@{}}
+\toprule
+Contrast A versus B & A only & B only & Exact $p$\\
+\midrule
+\DiceLayoutTestRows
+\bottomrule
+\end{tabularx}
+\caption{Exploratory exact two-sided McNemar tests on 40 paired states. Tests are unadjusted. I and P denote identity and permuted layouts.}
+\label{tab:dice-layout-tests}
+\end{table}
+
+\paragraph{Binding and control failures.}
+Permuted Astra has 27 trials with a correct binding to a skill ID different from the printed count, and 26 complete successfully. It applies inspection in 32 trials and first binds after inspection in 27. No wrong-to-correct binding transition is observed. Its failures comprise seven startup drops, one execution drop, five abstentions and one wrong-binding stop. These traces describe evidence gathering before commitment, not recovery from an already executed incorrect binding.
+
+The permuted fine-tuned VLM has 31 wrong-binding stops, five horizons and four execution drops. All 31 wrong-binding stops report the native same-number skill. Code review confirms that RGB and instruction enter the backbone and learned latent head, with no service-side assignment from requested count to skill. In identity, it binds correctly in 36 trials but succeeds in 23, illustrating a separate control/stop limitation. The permuted rule model has 32 wrong-binding stops, four horizons, three drops and one success; 24 of its wrong-binding stops select the native same-number skill. These post-hoc diagnostics are consistent with reliance on native associations. They do not establish memorization as an exclusive cause, especially given the baseline's limited observation history.
+
+
+
+\paragraph{Audit and scope.}
+The independent audit checks all 240 trials, 69 frozen source files, matched resets, model-request image hashes, delayed response application, continuous VLM latents and canonical-quaternion scoring. A separate SciPy calculation verifies all six Wilson intervals and seven exact paired tests. No service exclusions, outcome replacements or post-test checkpoint changes occur. Trace diagnostics were developed while cells were completing and are explicitly post-hoc. Earlier invalid digit-overlay attempts are excluded and preserved separately. One changed layout, one native-trained local checkpoint and object-specific motor weights do not establish broad semantic or geometric generalization.
 
 \section{Reproducibility and Evidence Audit}
-The archive retains 400 original-release trials, 160 successor-development trials, 120 earlier replication trials, and the 19-state recovery diagnostic. The latest snapshot has 760 live records: native 120, goal 120, feedback 80, visual 360, and waiting 80. Its 240 bare visual records overlap the earlier archive. Another 160 fixed-plan development trials complete that 920-trial bundle. The new waiting/feedback snapshot adds 200 distinct raw trials, with its shared full condition counted once. The native-layout die adds 120 separately audited trials. These protocols must not be pooled into one rate. Partial snapshots and the ongoing dice layout study add no completed trials.
+The archive retains 400 original-release trials, 160 successor-development trials, 120 earlier replication trials, and the 19-state recovery diagnostic. The latest snapshot has 760 live records: native 120, goal 120, feedback 80, visual 360, and waiting 80. Its 240 bare visual records overlap the earlier archive. Another 160 fixed-plan development trials complete that 920-trial bundle. The new waiting/feedback snapshot adds 200 distinct raw trials, with its shared full condition counted once. The native-layout die adds 120 separately audited trials. These protocols must not be pooled into one rate. The completed dice layout study adds 240 distinct trials. Partial snapshots add no trials.
 
 Sanitized records retain initial-state hashes, goals, measured stops, independent errors, outcomes, exclusions and latencies. Source hashes link to the full archive. Table generation checks counts, matching, exclusions and paired tests. New students, predictors, objects or stop rules require new releases.
 

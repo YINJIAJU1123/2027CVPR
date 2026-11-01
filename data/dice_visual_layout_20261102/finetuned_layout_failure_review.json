@@ -1,0 +1,47 @@
+{
+  "status": "completed_cell_review",
+  "result": {
+    "trials": 40,
+    "success": 0,
+    "service_excluded": 0,
+    "inspected_trials": null,
+    "bound_after_inspection": null,
+    "successful_multi_call_trials": 0,
+    "correct_binding_trials": 0,
+    "wrong_to_correct_binding_trials": 0,
+    "different_skill_and_count_correct_binding_trials": 0,
+    "drops_by_phase": {
+      "execution": 4
+    },
+    "false_stop_types": {
+      "wrong_physical_binding": 31
+    },
+    "wrong_binding_false_stops_using_native_pip_id": 31,
+    "outcome_counts": {
+      "false_stop": 31,
+      "horizon": 5,
+      "drop": 4
+    }
+  },
+  "code_review": [
+    "The service passes RGB and instruction to DiceLatentPredictor.predict without parsing a target skill from instruction.",
+    "The predictor obtains goal_embedding from learned GoalHead over backbone visual/text hidden features.",
+    "The reported skill is the nearest canonical vector by learned embedding distance; it is not assigned from requested pip count.",
+    "The transmitted continuous goal embedding is applied unchanged; independent audit verified 36 accepted continuous commands in this cell.",
+    "The study semantic module supplies the common physical-skill-ID contract, with no layout table or scorer target."
+  ],
+  "interpretation": "The 31 wrong-binding false stops all report the original same-number skill association. This is consistent with reliance on the native training association, not evidence of a service-side hardcoded remap.",
+  "limitations": [
+    "Post-hoc diagnostic of one permutation and one native-layout-trained checkpoint.",
+    "Bare VLM sees only current RGB and instruction; Astra also receives action/observation history and noisy feedback and can probe skills.",
+    "This comparison measures complete-system layout transfer. It does not isolate model weights, fine-tuning itself, or memorization as an exclusive cause.",
+    "Without action history or a stable physical-face reference, a new printed-count-to-motor-ID mapping may be ambiguous from a single view.",
+    "No checkpoint or prompt was tuned on these formal outcomes."
+  ],
+  "source_sha256": {
+    "scripts/dice_visual_study/vlm_service.py": "04d0001a81a462589d569a6fc2d048063a8ff22941ffe00b17fa05934351e3fa",
+    "scripts/dice_latent_v1/grounding.py": "b957cb174b5ea70492ae946034384632f89a48af9538481ced5be32286874c2f",
+    "scripts/dice_visual_study/semantic.py": "446814afa670d73ded0a2962584f056fd955173ef7f98c3b9611bf95f1e677ef"
+  },
+  "audit": "prefix_audit_20261102_v7.json"
+}
