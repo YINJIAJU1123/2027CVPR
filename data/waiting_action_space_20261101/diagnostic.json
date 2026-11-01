@@ -1,0 +1,38 @@
+{
+  "status": "completed",
+  "scope": "Correlated held-out pending states, not episode success. Frozen teacher target is analysis-only and unavailable at runtime.",
+  "validation_seed": 185302,
+  "states": 17755,
+  "trajectory_groups": 61,
+  "formal_data_used": false,
+  "actual_model_calls": 0,
+  "equation": "alpha*=clip(dot(u_teacher-q, proposal-q)/||proposal-q||^2,0,1); bound=MSE(q+alpha*(proposal-q),u_teacher)",
+  "mean_teacher_action_mse": {
+    "continue": 0.5953057408332825,
+    "fixed_slow": 0.6094502210617065,
+    "oracle_scalar_bound": 0.4329535663127899,
+    "learned_speed": 0.49056142568588257,
+    "learned_speed_residual": 0.3870013654232025
+  },
+  "median_teacher_action_mse": {
+    "continue": 0.5094099640846252,
+    "fixed_slow": 0.589812159538269,
+    "oracle_scalar_bound": 0.3589295744895935,
+    "learned_speed": 0.4167126715183258,
+    "learned_speed_residual": 0.3315139412879944
+  },
+  "mean_interpolation": {
+    "oracle_scalar_bound": 0.5796222686767578,
+    "learned_speed": 0.6054785251617432,
+    "learned_speed_residual": 0.5181695222854614
+  },
+  "full_below_scalar_bound_fraction": 0.6475359201431274,
+  "mean_fraction_target_action_energy_unexplained_by_scalar": 0.5951900482177734,
+  "source_sha256": "f1b4d3ca8f66848172d1e7a2729ef34e2271b86d94e64024bf98a453496ea924",
+  "validation_manifest_sha256": "82df373bb539bed6774424cfa8efd72ca78c60ae074172b8432eb8854f626b79",
+  "actor_sha256": {
+    "learned_speed": "e72c2bf84e5fb793adfc91c57f4fe3dd70c87adb7d68fd1cbd371b3c441e532d",
+    "learned_speed_residual": "d1d9ee14acbfe6ee0d59d9ce8e9f442862daa52828d2affb762cba1cbbfe6c3f"
+  },
+  "limitation": "The per-state optimum uses teacher labels. It is a representational lower bound, not a deployable baseline or an additional formal condition."
+}

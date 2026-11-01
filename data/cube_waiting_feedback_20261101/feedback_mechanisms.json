@@ -1,0 +1,262 @@
+{
+  "status": "verified_from_executed_actions",
+  "groups": {
+    "initial_plan": {
+      "raw_trials": 40,
+      "eligible_trials": 39,
+      "raw_counts": {
+        "trials_with_inspection": 0,
+        "first_target_after_inspection": 0,
+        "wrong_to_correct_executed_binding": 0,
+        "successful_with_multiple_calls": 0
+      },
+      "eligible_counts": {
+        "trials_with_inspection": 0,
+        "first_target_after_inspection": 0,
+        "wrong_to_correct_executed_binding": 0,
+        "successful_with_multiple_calls": 0
+      },
+      "illustrative_trial_ids": []
+    },
+    "learned_speed_residual": {
+      "raw_trials": 40,
+      "eligible_trials": 39,
+      "raw_counts": {
+        "trials_with_inspection": 37,
+        "first_target_after_inspection": 33,
+        "wrong_to_correct_executed_binding": 0,
+        "successful_with_multiple_calls": 32
+      },
+      "eligible_counts": {
+        "trials_with_inspection": 36,
+        "first_target_after_inspection": 32,
+        "wrong_to_correct_executed_binding": 0,
+        "successful_with_multiple_calls": 31
+      },
+      "illustrative_trial_ids": [
+        {
+          "trial_seed": 185501000,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185501002,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185501003,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185501004,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185501005,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185501007,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185501008,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185501009,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185501010,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185501011,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185501014,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185501015,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185501017,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185501018,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185502000,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185502001,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185502002,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185502003,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185502004,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185502006,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185502007,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185502008,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185502009,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185502010,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185502011,
+          "eligible": false,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185502013,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185502015,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185502016,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185502017,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185502018,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        },
+        {
+          "trial_seed": 185502019,
+          "eligible": true,
+          "success": true,
+          "first_target_after_inspection": true,
+          "wrong_to_correct": false
+        }
+      ]
+    },
+    "paired": {
+      "initial_abstain_to_feedback_success": 22,
+      "eligible_trials": 39
+    }
+  },
+  "scope": "Offline trace categorization. Inspection before binding does not by itself prove the target was visually hidden initially."
+}

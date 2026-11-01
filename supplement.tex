@@ -3,6 +3,7 @@
 \input{preamble}
 \input{tables/followup_macros}
 \input{tables/completed_macros}
+\input{tables/ablation_v3_macros}
 \definecolor{cvprblue}{rgb}{0.21,0.49,0.74}
 \usepackage[breaklinks,colorlinks,allcolors=cvprblue]{hyperref}
 \def\confName{CVPR}\def\confYear{2027}
@@ -13,7 +14,7 @@
 \maketitle
 \setcounter{section}{0}\renewcommand{\thesection}{\Alph{section}}
 \section{Scope of This Release}
-This supplement accompanies the working manuscript updated on 1 November 2026. All measured results concern the marked RSLCube. The original release contains 400 trials, followed by separate replication, intervention, and controller-development cohorts. The latest completion bundle contains 760 live semantic trials and a separate 160-trial fixed-plan development test. Its 240 bare-VLM visual trials overlap the earlier visual archive and are not new trials. Historical outcomes are retained. Missing multi-object, improved-predictor, and physical-hand measurements are marked TODO.
+This supplement accompanies the working manuscript updated on 1 November 2026. All measured results concern the marked RSLCube. The original release contains 400 trials, followed by separate replication, intervention, and controller-development cohorts. The earlier completion bundle contains 760 live semantic trials and a separate 160-trial fixed-plan development test. Of those live trials, 240 bare-VLM visual records overlap the earlier visual archive. A further 200 distinct raw trials now complete the matched waiting and feedback study. Historical outcomes are retained. Missing multi-object, improved-predictor, and physical-hand measurements are marked TODO.
 
 The latest complete-system comparison refits only Astra's waiting actor. The student, predictor, execution actor, and task criterion remain frozen. Earlier cohorts use their recorded original controller version. Results from the earlier RGB-D backend, invalid contact-capacity runs, and different protocols are not pooled into the current main result. The original bare-baseline addendum was specified after the first suite, so the full historical study is not described as blindly preregistered.
 
@@ -201,8 +202,54 @@ No wrong-to-correct binding transition occurs in these bare-VLM cohorts. This is
 Identity versus permutation yields eighteen exclusive successes and four exclusive failures for the fine-tuned model (exact paired $p=0.00434$), versus ten and ten for the rule model ($p=1.0$). The final analysis applies Holm correction across six planned image contrasts, giving adjusted $p=0.0130$ for the fine-tuned mapping contrast. The single deterministic remapping and reconstructed upper images limit generalization claims. Astra has five exclusive identity successes and five exclusive permutation successes ($p=1.0$).
 
 
-\subsection{Completed feedback comparison}
+\subsection{Matched waiting and feedback cohort}
+The new cohort uses seeds 185501 and 185502, with 20 trials per seed and five conditions. The full waiting/full-feedback arm is shared between Q2 and Q3. All 200 initial physical-state records and first model-visible images match across their respective paired slots. Runtime, source, checkpoint, physical-log, action-scope, and delayed-delivery checks pass. Speed-only waiting is trained under a zero-residual constraint using the same initialization, data, sampling, optimizer, and 2,400 updates as the full reference. The reproduced full reference has identical deployed tensors.
+
+\begin{table*}[t]
+\centering\small
+\begin{tabular}{lrrrrrrr}
+\toprule
+Condition & Success & Drop & False stop & Abstain & Horizon & Service & Calls\\
+\midrule
+\AblationRawRows
+\bottomrule
+\end{tabular}
+\caption{All 40 raw outcomes per condition in the new 200-trial study. Terminal outcome columns sum to forty. Calls count every actual request, including those not applied before episode termination. These are separate from the historical cohorts.}
+\label{tab:ablation-raw}
+\end{table*}
+
+All four waiting arms retain 40 eligible trials. Raw successes by first and second seed are $(16,9)$ for continued execution, $(15,15)$ for fixed slowing, $(16,12)$ for learned slowing, and $(16,18)$ for learned slowing with correction. Initial planning gives $(4,2)$. This variation limits claims of stable ordering from two seeds. The three registered waiting contrasts give exclusive-success counts of $(10,5)$ for fixed versus continued execution, $(7,9)$ for learned versus fixed slowing, and $(10,4)$ for full versus speed-only learning. Exact paired $p$-values are 0.302, 0.804, and 0.180, becoming 0.604, 0.804, and 0.539 after Holm correction. The lower-level action-space diagnostic below is separate from these online outcomes.
+
+\begin{table}[h]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{@{}Xrrrr@{}}
+\toprule
+Waiting policy & Startup & Later wait & Exec. & Total\\
+\midrule
+\AblationPhaseRows
+\bottomrule
+\end{tabularx}
+\caption{Drop stage on the common 40-trial waiting panel. Stages describe when termination occurs. They do not identify its cause or normalize for differing exposure to each phase.}
+\label{tab:ablation-phases}
+\end{table}
+
+The initial-plan service timeout occurs at trial 185502011 after 121.1 seconds and is the only service exclusion in the new cohort. It leaves 39 common eligible feedback pairs. The interrupted run retains its twelve recorded trials. Only the eight unvisited slots are resumed under a registered range guard. The first 112 visited records remain unchanged, with no retry of the failed slot. Evaluator, controller, physics, prompts, and scoring are unchanged. The continued release changes only the admission guard needed for the remaining range.
+
+Feedback gives 33/39 successes against 6/39 for initial planning, with 27 feedback-only successes and zero initial-only successes. Twenty-two initial abstentions become feedback successes. No executed wrong-to-correct binding is found. Median logical duration is 8.17 seconds for initial planning and 22.0 seconds for feedback on the eligible panel. These durations include unsuccessful termination and must be interpreted alongside 28 initial-plan abstentions. Median measured call latency over raw requests is 8.12 and 5.33 seconds. The protocols use different output structures and call budgets.
+
+\subsection{Historical original-controller feedback comparison}
 The same-Astra comparison uses one initial bounded plan versus at most six feedback calls, with the original actors and frozen student, stopping gate, and horizon. Seeds 183431 and 183432 give 40 trials per arm. Slot 183432001 is service-affected and excluded from both, leaving 7/39 versus 30/39 successes. Raw counts are 7/40 and 31/40. Actual model calls total 40 and 113. Twenty-four trials succeed only with feedback and one only with the initial plan ($p=1.55\times10^{-6}$). Seventeen initial-plan abstentions become feedback successes. No wrong-to-correct binding transition is observed. Unequal inference budgets prevent isolating a pure feedback effect at equal compute.
+
+\subsection{A recorded feedback sequence}
+Figure~\ref{fig:feedback-example} shows trial 185501000 from the new matched waiting/feedback cohort. Both protocols start from the same physical state and byte-identical initial image. The one-call plan abstains. The feedback agent inspects red, then binds T to red after the next observation. The measured gate stops at step 420, with independently scored orientation error 0.0812 radians and correct semantic binding. This is the lowest trial identity among eligible pairs with initial-plan abstention, feedback success, and an inspection action. It is a selected illustration, not a visibility annotation for the whole cohort or evidence of wrong-to-correct binding.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=.92\textwidth]{figures/feedback_example.pdf}
+\caption{\textbf{Inspection followed by grounded execution.} Exact native model-input frames from a completed trial, enlarged without retouching. The requested letter is T. The first observation contains a visible R, and the second exposes T on the red face. Captions summarize recorded public actions. Control continues between request and reply at both observations. The two calls take 5.55 and 5.22 seconds. These are simulator images, not hardware observations.}
+\label{fig:feedback-example}
+\end{figure*}
 
 \subsection{Latest native comparison and failure audit}
 Seeds 185451 and 185452 give 40 matched trials per method with no service exclusions. The full Astra system gives 35 successes, three execution-phase drops, one wrong-binding false stop, and one abstention. The bare fine-tuned system gives 30 successes, nine execution drops, and one horizon failure. The bare rule system gives 17 successes, twelve drops, ten false stops, and one horizon failure. Its drops include two during startup waiting. Astra makes 101 calls, fine-tuning 117, and the rule baseline 126. Median latencies are 4.349, 0.099 and 1.104 seconds.
@@ -213,6 +260,32 @@ The three Astra drops occur during inspection before final target binding. One i
 The refit uses training collection seed 185301, validation seed 185302, and fitting seed 185311. The inherited actor is updated 2,400 times. Actor batches allocate one half to pending states and one quarter each to unbound and bound execution states. Pending samples are uniform. A startup-balanced alternative replaces that half-batch with equal early and later pending samples, holding the other training settings fixed. Only final-iteration candidates are evaluated. Separate fixed-plan development seeds 185321 and 185322 select the uniform candidate under a preset completion/drop gate. Only its waiting outputs replace the deployed actor. Execution remains unchanged.
 
 Live confirmation uses seeds 185341 and 185342. Slot 185341008 has a refit service failure and is removed symmetrically. Original waiting gives 27/39 successes and ten drops, compared with 33/39 and five drops after refitting. Raw success is 28/40 versus 33/40. There are eight refit-only and two original-only successes ($p=0.109375$). The drop counts also apply to the eligible panel. Startup, later-waiting and execution drops change from $(2,2,6)$ to $(0,1,4)$. These data are distinct from the latest native three-system cohort.
+
+\subsection{Why speed and joint correction are distinct}
+A scalar coefficient scales the commanded joint displacement toward the student proposal. It cannot independently change the command direction. Actual motion also depends on the joint servo and contact dynamics. To quantify that restriction, we use 17,755 pending states from 61 validation trajectory groups collected with seed 185302. These states are correlated and contain no formal evaluation trials. For normalized current position $q$, student proposal $u$, and the teacher holding action $a^*$, the best scalar action in hindsight is
+\begin{equation}
+ \alpha^*=\clip\!\left(\frac{(a^*-q)^\top(u-q)}{\|u-q\|_2^2},0,1\right).
+\end{equation}
+If $u=q$, the interpolation action is $q$ for every coefficient. The resulting error is a lower bound for any scalar-speed predictor on that state. It uses privileged teacher labels for analysis and is not a deployable policy.
+
+\begin{table}[h]
+\centering\small
+\begin{tabular}{lr}
+\toprule
+Command design & Teacher-action MSE\\
+\midrule
+Continue student & 0.5953\\
+Fixed slowdown & 0.6095\\
+Learned slowdown & 0.4906\\
+Learned slowdown + correction & 0.3870\\
+\midrule
+Best scalar in hindsight (bound) & 0.4330\\
+\bottomrule
+\end{tabular}
+\caption{Held-out waiting-action fit in normalized joint-command coordinates. Lower is better. The privileged bound is distinct from the four deployable conditions. These values are not task success rates.}
+\label{tab:action_space}
+\end{table}
+The full actor is below the scalar bound in 64.8\% of these states and has a lower mean error than the bound. This supports the additional action space provided by joint correction. It does not show that every residual is useful or that lower action error necessarily improves closed-loop success. The registered live comparison tests that separate question.
 
 \subsection{Goal-input intervention}
 Seeds 183421 and 183422 provide 40 trials per condition. Correct, retrained no-explicit-goal and shuffled controller goals give raw successes of 29/40, 26/40 and 31/40. Four symmetrically excluded slots leave the following panel. The student still receives its assigned goal, so removing the explicit actor-goal vector does not remove all goal information from the controller's proposal and belief inputs.
@@ -244,7 +317,7 @@ Execution condition & Success & Drops\\
 The fixed gate is 0.8282. The phase-fixed gate uses 0.5872 when unbound and 0.9877 when bound. The learned candidate must exceed original execution by at least three successes, exceed the best fixed gate by at least two, and introduce no more drops than the best control. It achieves 26 successes against required counts of 32 and 29, with five drops against a limit of three. All gates fail. Both per-seed outcomes and all negative results are retained. No additional live evaluation is triggered by this candidate.
 
 \subsection{Timing verification}
-The latest native suite contains 344 actual calls, of which 342 are applied before episode termination. The remaining two replies belong to terminated rule-baseline episodes and are retained. The timing audit checks 52,475 control steps. Separate audits cover 80 waiting trials, 80 feedback trials and 360 visual trials. Pending requests preserve continuous logical control, and replies are applied only after their measured latency and actual completion. These checks verify the delay protocol rather than wall-clock real-time operation.
+The latest native suite contains 344 actual calls, of which 342 are applied before episode termination. The remaining two replies belong to terminated rule-baseline episodes and are retained. The timing audit checks 52,475 control steps. Separate audits cover 80 waiting trials, 80 feedback trials and 360 visual trials. Pending requests preserve continuous logical control, and replies are applied only after their measured latency and actual completion. The new matched 200-trial study independently checks 128,357 control steps and 509 actual requests. Of these, 492 replies are applied and seventeen remain unapplied due to terminated episodes or the documented service failure. All applied replies satisfy the recorded delay, and pending control steps are contiguous. These checks verify the delay protocol rather than wall-clock real-time operation.
 
 \section{Experimental Requirements Before Submission}
 \subsection{Separate model strength from control}
@@ -263,7 +336,7 @@ Compare the original and improved predictors with the same student and agent fir
 Select about five objects with variation in geometry, inertia, contact affordances, and semantic ambiguity. Record object-specific students and training budgets. Balance the task set within each object and report each row before computing an object macro-average. Forty trials per arm per object is the default batch size. Hardware runs need calibrated independent scoring, documented resets, two sessions, and synchronized video and command logs. A new object checkpoint alone is insufficient without its assets, calibration, normalization, action conventions, and goal definitions.
 
 \section{Reproducibility and Evidence Audit}
-The archive retains 400 original-release trials, 160 successor-development trials, 120 earlier replication trials, and the 19-state recovery diagnostic. The latest snapshot has 760 live records: native 120, goal 120, feedback 80, visual 360, and waiting 80. Its 240 bare visual records overlap the earlier archive. Another 160 fixed-plan development trials complete the 920-trial bundle. These protocols must not be pooled into one rate. Partial snapshots add no trials.
+The archive retains 400 original-release trials, 160 successor-development trials, 120 earlier replication trials, and the 19-state recovery diagnostic. The latest snapshot has 760 live records: native 120, goal 120, feedback 80, visual 360, and waiting 80. Its 240 bare visual records overlap the earlier archive. Another 160 fixed-plan development trials complete that 920-trial bundle. The new waiting/feedback snapshot adds 200 distinct raw trials, with its shared full condition counted once. These protocols must not be pooled into one rate. Partial snapshots add no trials.
 
 Sanitized records retain initial-state hashes, goals, measured stops, independent errors, outcomes, exclusions and latencies. Source hashes link to the full archive. Table generation checks counts, matching, exclusions and paired tests. New students, predictors, objects or stop rules require new releases.
 

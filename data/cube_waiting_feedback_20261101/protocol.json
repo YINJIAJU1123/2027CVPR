@@ -1,0 +1,177 @@
+{
+  "format": "cube_waiting_feedback_ablation_v3",
+  "cohort": {
+    "seeds": [
+      185501,
+      185502
+    ],
+    "episodes_per_seed": 20,
+    "raw_trials_per_condition": 40
+  },
+  "planned_raw_trials": 200,
+  "comparisons": [
+    [
+      "fixed_slow",
+      "continue"
+    ],
+    [
+      "learned_speed",
+      "fixed_slow"
+    ],
+    [
+      "learned_speed_residual",
+      "learned_speed"
+    ],
+    [
+      "learned_speed_residual",
+      "initial_plan"
+    ]
+  ],
+  "full_condition_shared_between_questions": true,
+  "scoring": "Correct requested-symbol binding and independent true canonical orientation error <=0.16 rad at autonomous measured-pose stop.",
+  "stop": "Frozen CNN measured-pose gate at 3 Hz, no stopping while a request is pending, no post-stop hold.",
+  "horizon_control_steps": 3600,
+  "logical_control_hz": 30,
+  "per_request_service_cutoff_seconds": 120,
+  "exclusions": "Frozen service rules, symmetric eligibility within Q2 four-way and Q3 pair. Keep all raw trials, no replacement.",
+  "inference_budgets": {
+    "feedback": 6,
+    "initial_plan": 1
+  },
+  "runtime": "All five conditions on the same local RTX 3090 with identical asset bytes and declared path relocation.",
+  "controls": "Same student, predictor, execution controller, target distribution, initialization seeds, stop rule and success metric.",
+  "model": "gpt-6-astra",
+  "formal_data_used_for_selection": false,
+  "training": "Same warm start, data, sampling, optimizer and 2400 updates. Speed-only residual constrained to zero during fitting and inference. Full reference reproduced exactly.",
+  "release_sha256": "ebcd3ddd33e640ddabf1681f5a6b2b5be912005a17d04bda06efb63e8d2868a5",
+  "source_sha256": {
+    "summarize.py": "5b54eb365a1825728d9f37ac103c3ab591508543818c378a5f6b36004b31a386",
+    "train_modules.py": "fb216f8ef3e504d183c6b6db817dab1417d74866bfa6877d7444e3b96be8666a",
+    "video.py": "ff6a94cb436e751fcb5033775024dae1b2ee98059a166677a23e2fc217a7b897",
+    "evaluate_agent.py": "58c67ef0b6b29f2ffb9cfd4150604ccb1e0bef3584ef6e382a18c80f46c2cb82",
+    "label_grounding.py": "c02ce454355f4bf2d9f2dd6cbafca0986b78b84de312a1f5dd78f2796c060f9c",
+    "perception.py": "d5298b33ccc890caee24534733df7bf3518d8de681c9caba3f42e0f208783219",
+    "prepare.py": "b5ab977f72bbb7a8995f5e2424c31a5f5513727b85580e96563be8598c912bf4",
+    "semantic.py": "73754e1a1e47646fcc93a0fea3f421b4fd486fd5c67e7ef14faf7362e287ec6d",
+    "grounding.py": "da83a027adbb9d1249e54b94e4790b86fc242af8d481f568c9b8b3ebf374c607",
+    "control_modules.py": "9792141cb870101670958626feb274cbf042a7ef49e2563f85fde6d5b34fe633",
+    "formal_release.py": "804b16a394838e97844ffc4ca72c6beaa1013a38eaaaa9016f6dc041ce259c3c",
+    "prepare_goal_pairs.py": "ae290b0153f2a852088be1cd91f67a4ad3df773a8c824d1b08861b360352ec97",
+    "model.py": "7e69500b12808df7912b615b58f39288e92d3100c9b02d86f5c10d30b061c582",
+    "run_logged.py": "aa558c69319c6b9745f25bb53788b6ab2a752b0794ffda3789775cdb2c2ce047",
+    "visual_intervention.py": "9da42731b287e12b8b3cbcc0933f48f720e6f0b18c5f6e6f76f4bd441e3bf84b",
+    "analyze_controller_inputs.py": "aeecab78a7104bee5de974d9e3c4e3df1c00be5ae27f18efeb770305781bb8b7",
+    "evaluate.py": "1afb75d2dce26051a63b58d9407095392aafdec8ff2ca33d4aea5263fc29b4c9",
+    "export_development.py": "58f8f12307e34f78c17aa745a58507b46a6e8ea423fa9e05938889123d8112f9",
+    "train_completion.py": "d78a06694b863ac82d985d269411ddd99bb6525c90ea6ca361aa593f9802914d",
+    "evaluate_control.py": "c10811bf1b4d85fe11697dc855be77aac6de08ba03beeebba5d0755bbc332201",
+    "calibrate_completion.py": "938f187537d4233d94a7b8279ee1cbd1aff5fa049f8e481ba5b9a089dc5eb573",
+    "newton_runtime.py": "578f6dc93fe50007e70e9981d792dc3a7257f41422683dc2b796a444ba87a312",
+    "collect_control.py": "4994b871ff838095b41d2424b85fff364969f267af161e3d0f596dc7a277962f",
+    "analyze_agent_pair.py": "6fe5d5d529269730958a6907b94c02130cd8cf20e5b4030e02ba1b6607a1bb13",
+    "initial_plan.py": "5f014dcab545de4ef5bc0aba8b283ea1f4545977b118c220f3599e41d0026257",
+    "freeze_release.py": "91e5cef23c346d40fa69ea98766035952577463f179afbf8c90ee13b2c298242",
+    "goals.py": "125de050472754c34118c01b375ad2962cfbec14e1ec0bb07c0d4cdfd54cb0f0",
+    "astra_bridge.py": "26184bfc4ba8a839f6e8c62a7d766e07fcd55ff317832228fac180b37488dc7e",
+    "train.py": "40a0b0fbc3eb4b0141baa435f461e20e2da8df205fb932a67f02015a43c42dc7"
+  },
+  "pose_estimator": {
+    "checkpoint_sha256": "6a940233e65146bf34f1051a593727f79fa0821d0d8bcc7feec18b07a67794ed",
+    "keypoints_sha256": "d5e65f06e32872cfbf5cf2147179dcabb604911b0b8c2a283effbb2af10dcd01",
+    "image_size": [
+      120,
+      120
+    ],
+    "pose_frame": "right_hand_base_link",
+    "quaternion_order": "xyzw",
+    "position_unit": "m",
+    "cnn_preprocessing": [
+      "binary_opening",
+      "released_network_resize_and_normalization"
+    ],
+    "visual_noise_added_to_cnn_pose": false,
+    "ground_truth_fallback": false
+  },
+  "physical_contract_sha256": "8845592f802e8badeccce52ed332a8453e50a80edd93c03370516077f21c6279",
+  "checkpoints": {
+    "continue": {
+      "student_sha256": "9d55b83f27c4f1dd24b56695639a76d95bd56ccb248668c5e742ee597d84dd24",
+      "original_student_sha256": "022f963f3fa177cc84d3ca14888ba2872e594577ccf1614713834eb10f9336f1",
+      "actor_sha256": "d1d9ee14acbfe6ee0d59d9ce8e9f442862daa52828d2affb762cba1cbbfe6c3f",
+      "execution_actor_sha256": "4e0160227dc8e5076ca3e9dc58039c7856b37eed2f9f798f4b99dcbaebb285cd"
+    },
+    "fixed_slow": {
+      "student_sha256": "9d55b83f27c4f1dd24b56695639a76d95bd56ccb248668c5e742ee597d84dd24",
+      "original_student_sha256": "022f963f3fa177cc84d3ca14888ba2872e594577ccf1614713834eb10f9336f1",
+      "actor_sha256": "d1d9ee14acbfe6ee0d59d9ce8e9f442862daa52828d2affb762cba1cbbfe6c3f",
+      "execution_actor_sha256": "4e0160227dc8e5076ca3e9dc58039c7856b37eed2f9f798f4b99dcbaebb285cd"
+    },
+    "learned_speed": {
+      "student_sha256": "9d55b83f27c4f1dd24b56695639a76d95bd56ccb248668c5e742ee597d84dd24",
+      "original_student_sha256": "022f963f3fa177cc84d3ca14888ba2872e594577ccf1614713834eb10f9336f1",
+      "actor_sha256": "e72c2bf84e5fb793adfc91c57f4fe3dd70c87adb7d68fd1cbd371b3c441e532d",
+      "execution_actor_sha256": "4e0160227dc8e5076ca3e9dc58039c7856b37eed2f9f798f4b99dcbaebb285cd"
+    },
+    "learned_speed_residual": {
+      "student_sha256": "9d55b83f27c4f1dd24b56695639a76d95bd56ccb248668c5e742ee597d84dd24",
+      "original_student_sha256": "022f963f3fa177cc84d3ca14888ba2872e594577ccf1614713834eb10f9336f1",
+      "actor_sha256": "d1d9ee14acbfe6ee0d59d9ce8e9f442862daa52828d2affb762cba1cbbfe6c3f",
+      "execution_actor_sha256": "4e0160227dc8e5076ca3e9dc58039c7856b37eed2f9f798f4b99dcbaebb285cd"
+    },
+    "initial_plan": {
+      "student_sha256": "9d55b83f27c4f1dd24b56695639a76d95bd56ccb248668c5e742ee597d84dd24",
+      "original_student_sha256": "022f963f3fa177cc84d3ca14888ba2872e594577ccf1614713834eb10f9336f1",
+      "actor_sha256": "d1d9ee14acbfe6ee0d59d9ce8e9f442862daa52828d2affb762cba1cbbfe6c3f",
+      "execution_actor_sha256": "4e0160227dc8e5076ca3e9dc58039c7856b37eed2f9f798f4b99dcbaebb285cd"
+    }
+  },
+  "condition_modes": {
+    "continue": {
+      "maintenance": "continue_wait_learned_execution",
+      "request_budget": 6,
+      "agent_protocol": "feedback",
+      "waiting_residual_mode": "none"
+    },
+    "fixed_slow": {
+      "maintenance": "learned_execution_only",
+      "request_budget": 6,
+      "agent_protocol": "feedback",
+      "waiting_residual_mode": "none"
+    },
+    "learned_speed": {
+      "maintenance": "learned",
+      "request_budget": 6,
+      "agent_protocol": "feedback",
+      "waiting_residual_mode": "zero"
+    },
+    "learned_speed_residual": {
+      "maintenance": "learned",
+      "request_budget": 6,
+      "agent_protocol": "feedback",
+      "waiting_residual_mode": "learned"
+    },
+    "initial_plan": {
+      "maintenance": "learned",
+      "request_budget": 1,
+      "agent_protocol": "initial_plan",
+      "waiting_residual_mode": "learned"
+    }
+  },
+  "loaded_checkpoint_scope": "Continue and fixed-slow conditions retain the registered actor checkpoint identity but bypass its waiting output. Non-pending control uses the same execution actor in every condition.",
+  "service_continuation": {
+    "interrupted_trial": 185502011,
+    "reason": "HTTP503 ReadTimeout",
+    "preserved_raw_trials": 112,
+    "unvisited_tail_start": 12,
+    "unvisited_tail_count": 8,
+    "failed_trial_retried": false,
+    "evaluator_controller_physics_and_scoring_bytes_unchanged": true,
+    "continued_releases": [
+      {
+        "release_sha256": "7d7b81801ec063a7e90c8af72d189a106e6944d33a206932910651c15c0a7829",
+        "changed_source": "formal_release.py",
+        "continued_admission_source_sha256": "c70d352931aeb37e061839a143ebbd94f986f3fff3fd3b196e5762d9d746c052"
+      }
+    ]
+  }
+}

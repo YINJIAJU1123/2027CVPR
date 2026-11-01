@@ -1,0 +1,54 @@
+{
+  "status": "verified",
+  "all_nonpending_use_frozen_execution": true,
+  "step_counts": {
+    "continue": {
+      "pending_steps": 20429,
+      "execution_steps": 5131,
+      "pending_speed_mean": 1.0,
+      "pending_speed_min": 1.0,
+      "pending_speed_max": 1.0
+    },
+    "fixed_slow": {
+      "pending_steps": 25363,
+      "execution_steps": 9756,
+      "pending_speed_mean": 0.15,
+      "pending_speed_min": 0.15,
+      "pending_speed_max": 0.15
+    },
+    "learned_speed": {
+      "pending_steps": 20413,
+      "execution_steps": 6025,
+      "pending_speed_mean": 0.5569877262791326,
+      "pending_speed_min": 0.0005337200127542019,
+      "pending_speed_max": 0.9978610873222351
+    },
+    "learned_speed_residual": {
+      "pending_steps": 20756,
+      "execution_steps": 6449,
+      "pending_speed_mean": 0.5448593167641241,
+      "pending_speed_min": 0.02382964827120304,
+      "pending_speed_max": 0.9803429245948792
+    },
+    "initial_plan": {
+      "pending_steps": 13584,
+      "execution_steps": 451,
+      "pending_speed_mean": 0.27089626602134675,
+      "pending_speed_min": 0.016885235905647278,
+      "pending_speed_max": 0.9231237173080444
+    }
+  },
+  "input_sha256": {
+    "runs/continue/astra_185501/steps.jsonl": "be0d3bf8fc39563c6806e18d8a7a1a3d52726c605923e56db94efec2cef859fa",
+    "runs/continue/astra_185502/steps.jsonl": "e060c8102751d8a89430804c38b4c36cb7dd3325f1bab8527225d2674bc711c6",
+    "runs/fixed_slow/astra_185501/steps.jsonl": "f7bd86ba5ffe906c258b306e4b58b154f2a8ab11a8d2039d901d72a489551a9f",
+    "runs/fixed_slow/astra_185502/steps.jsonl": "499ae02fe76a93a528533196ed427900c236323e0c49e3a1045cd7f69dbe619e",
+    "runs/learned_speed/astra_185501/steps.jsonl": "d509331a16378ea61ec7ef2f017dc2a5afe5c5f3e4a6925d6bed11e419e52b54",
+    "runs/learned_speed/astra_185502/steps.jsonl": "e68730c209d2f5bf9d3f9d51814ecdd0f5fe41034ca0bc9f9da0b2da575bdfa8",
+    "runs/learned_speed_residual/astra_185501/steps.jsonl": "c715e1f2453bf051411766318851749bc8864177e90244ff434ed5f052f3760b",
+    "runs/learned_speed_residual/astra_185502/steps.jsonl": "57f7ee19290a833adcdac078b98d96dae9ceff2a99ce3967f21bec738bc6b2d8",
+    "runs/initial_plan/astra_185501/steps.jsonl": "17163a1d3554ab8d9df232d641ad3da0b07c086a45e59b50b0c0caab03a9bdb6",
+    "runs/initial_plan/astra_185502/steps.jsonl": "37cf80c73e54d8e873f6c17823805eb79c1f85b906ff52af5aa8d880a320df1a",
+    "runs/initial_plan/astra_185502_resume12/steps.jsonl": "79f93aa97ad1e79905eaa3bcbc3f4188e0f5f0a0dae79804648d83427e853ce4"
+  }
+}

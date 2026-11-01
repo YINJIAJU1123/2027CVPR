@@ -1,0 +1,78 @@
+{
+  "initial_plan": {
+    "trial_seed": 185501000,
+    "symbol": "T",
+    "reason": "abstain",
+    "success": false,
+    "exclusion_reason": null,
+    "final_error_rad": 2.2954892844353134,
+    "steps": 234,
+    "actual_model_calls": 1,
+    "initial_state_sha256": "b50169df004853e4c419c34acad0cedd4521fb613ebe4fdc9d8b7f92f20e24d8",
+    "calls_source_sha256": "81371d04a4a858ea645e738a1ec6c08d57407f482519c7f076b4e32d3255fda0",
+    "calls": [
+      {
+        "call": 1,
+        "request_step": 0,
+        "applied_step": 234,
+        "elapsed_s": 7.773634363000383,
+        "tool": "execute_initial_plan",
+        "arguments": {
+          "actions": [
+            {
+              "tool": "abstain",
+              "arguments": {
+                "evidence": "The initial image and crop show an R on the darker blue face, not a T. No T is visible, and the other faces' letters cannot be read. The pose-error estimates do not establish letter-color associations. With no later image available, I cannot ground the requested T face to a color skill or claim completion."
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "learned_speed_residual": {
+    "trial_seed": 185501000,
+    "symbol": "T",
+    "reason": "success",
+    "success": true,
+    "exclusion_reason": null,
+    "final_error_rad": 0.08120675322926776,
+    "steps": 420,
+    "actual_model_calls": 2,
+    "initial_state_sha256": "b50169df004853e4c419c34acad0cedd4521fb613ebe4fdc9d8b7f92f20e24d8",
+    "calls_source_sha256": "ec46a2286575dd041796183c6a620e998f43e2db2e01d604d5d3638abe8dc520",
+    "calls": [
+      {
+        "call": 1,
+        "request_step": 0,
+        "applied_step": 167,
+        "elapsed_s": 5.553697168000326,
+        "tool": "inspect_face",
+        "arguments": {
+          "color": "red",
+          "steps": 90,
+          "evidence": "Visible dark-blue face reads R, not T; inspect red to locate T."
+        },
+        "image": "request_01.png",
+        "image_sha256": "644b8c437ff6cc42b150759f2f100c09d73e96b355ea2e10241355b5cb09c902"
+      },
+      {
+        "call": 2,
+        "request_step": 257,
+        "applied_step": 414,
+        "elapsed_s": 5.2169825399996625,
+        "tool": "reorient_target",
+        "arguments": {
+          "goal_symbol": "T",
+          "color": "red",
+          "steps": 30,
+          "evidence": "Enlarged image shows a sideways capital T on the red upper face: a long stem meeting a crossbar. Pale-blue adjacent face shows H. Ground target T to red."
+        },
+        "image": "request_02.png",
+        "image_sha256": "7f46b02ee6ab1b347f17565223c07b38c75f0fbc83f586df377a7f9d5c056426"
+      }
+    ]
+  },
+  "selection": "Lowest trial id among common service-eligible pairs with initial-plan abstention, feedback success, and at least one inspection action. An illustrative selected success, not an estimate of frequency or a visibility annotation for all trials.",
+  "image_note": "Exact simulator model-input PNG bytes. Enlarged for display. Native Gaussian-rendered object images with hand occlusion. No pixels repainted."
+}

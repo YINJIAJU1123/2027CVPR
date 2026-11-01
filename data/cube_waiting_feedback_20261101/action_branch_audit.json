@@ -1,0 +1,14 @@
+{
+  "completed": true,
+  "measured_validation_states": {
+    "pending": 64,
+    "nonpending": 63
+  },
+  "full_and_initial_actions_identical": true,
+  "nonpending_actions_identical_all_conditions": true,
+  "speed_only_residual_exactly_zero": true,
+  "learned_speed_max_deviation_from_fixed": 0.8284038066864013,
+  "evaluator_sha256": "58c67ef0b6b29f2ffb9cfd4150604ccb1e0bef3584ef6e382a18c80f46c2cb82",
+  "training_admission_sha256": "891ad5609533638689554d2b69b139cfb655dc63a0272be7a65e36bf92c75b3b",
+  "scope": "Real held-out sensor inputs and the extracted actual evaluator branch; not a closed-loop success result"
+}
