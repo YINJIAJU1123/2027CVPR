@@ -1,0 +1,337 @@
+{
+  "primary_metric": "Success rate on matched service-eligible trials; raw outcomes retained for audit",
+  "status": "completed_and_audited",
+  "release_sha256": "2a42e792df6b96b6bf341dacaaaeda3ffa2dc4c2db09251b953a12b9ce27b330",
+  "cohort": {
+    "seeds": [
+      183441,
+      183442
+    ],
+    "episodes_per_seed": 20,
+    "raw_trials_per_condition": 40
+  },
+  "common_excluded_trial_ids": [
+    183442003
+  ],
+  "continuation_manifest_sha256": "49f4a29f1fead5c24b1ef00f52d69243807511a6f436e90ac042dcdb295424a0",
+  "initial_states_match": true,
+  "eligibility_scope": "Raw forty-trial outcomes unchanged; primary image contrasts use pairwise symmetric service eligibility. Global common-eligible outcomes are auxiliary.",
+  "outcomes": {
+    "astra_full__identity": {
+      "raw_trials": 40,
+      "raw_success": 32,
+      "raw_rate": 0.8,
+      "raw_drops": 4,
+      "raw_reasons": {
+        "success": 32,
+        "false_stop": 4,
+        "drop": 4
+      },
+      "own_service_exclusions": 0,
+      "common_eligible_trials": 39,
+      "common_eligible_success": 31,
+      "common_eligible_rate": 0.7948717948717948,
+      "wilson_95": [
+        0.644660319864177,
+        0.8922028176928961
+      ],
+      "actual_calls": 99,
+      "median_call_latency_s": 4.914447620976716,
+      "drop_phases": {
+        "startup_wait": 1,
+        "execution": 2,
+        "wait": 1
+      }
+    },
+    "astra_full__permuted": {
+      "raw_trials": 40,
+      "raw_success": 32,
+      "raw_rate": 0.8,
+      "raw_drops": 4,
+      "raw_reasons": {
+        "success": 32,
+        "false_stop": 3,
+        "drop": 4,
+        "abstain": 1
+      },
+      "own_service_exclusions": 0,
+      "common_eligible_trials": 39,
+      "common_eligible_success": 32,
+      "common_eligible_rate": 0.8205128205128205,
+      "wilson_95": [
+        0.6733195433811838,
+        0.9102273452678089
+      ],
+      "actual_calls": 108,
+      "median_call_latency_s": 4.81710030301474,
+      "drop_phases": {
+        "execution": 4
+      }
+    },
+    "astra_full__letter_masked": {
+      "raw_trials": 40,
+      "raw_success": 0,
+      "raw_rate": 0.0,
+      "raw_drops": 7,
+      "raw_reasons": {
+        "abstain": 32,
+        "drop": 7,
+        "service_excluded": 1
+      },
+      "own_service_exclusions": 1,
+      "common_eligible_trials": 39,
+      "common_eligible_success": 0,
+      "common_eligible_rate": 0.0,
+      "wilson_95": [
+        -6.938893903907228e-18,
+        0.08966685370757144
+      ],
+      "actual_calls": 166,
+      "median_call_latency_s": 4.955313207581639,
+      "drop_phases": {
+        "execution": 6,
+        "wait": 1
+      }
+    },
+    "finetuned_vlm_bare__identity": {
+      "raw_trials": 40,
+      "raw_success": 30,
+      "raw_rate": 0.75,
+      "raw_drops": 6,
+      "raw_reasons": {
+        "success": 30,
+        "drop": 6,
+        "false_stop": 4
+      },
+      "own_service_exclusions": 0,
+      "common_eligible_trials": 39,
+      "common_eligible_success": 29,
+      "common_eligible_rate": 0.7435897435897436,
+      "wilson_95": [
+        0.5891834407831603,
+        0.8543121945900741
+      ],
+      "actual_calls": 115,
+      "median_call_latency_s": 0.1161421351134777,
+      "drop_phases": {
+        "execution": 6
+      }
+    },
+    "finetuned_vlm_bare__permuted": {
+      "raw_trials": 40,
+      "raw_success": 16,
+      "raw_rate": 0.4,
+      "raw_drops": 10,
+      "raw_reasons": {
+        "false_stop": 14,
+        "success": 16,
+        "drop": 10
+      },
+      "own_service_exclusions": 0,
+      "common_eligible_trials": 39,
+      "common_eligible_success": 15,
+      "common_eligible_rate": 0.38461538461538464,
+      "wilson_95": [
+        0.24891373465561348,
+        0.5410093854307493
+      ],
+      "actual_calls": 104,
+      "median_call_latency_s": 0.11396752065047622,
+      "drop_phases": {
+        "execution": 9,
+        "wait": 1
+      }
+    },
+    "finetuned_vlm_bare__letter_masked": {
+      "raw_trials": 40,
+      "raw_success": 3,
+      "raw_rate": 0.075,
+      "raw_drops": 34,
+      "raw_reasons": {
+        "drop": 34,
+        "false_stop": 1,
+        "success": 3,
+        "horizon": 2
+      },
+      "own_service_exclusions": 0,
+      "common_eligible_trials": 39,
+      "common_eligible_success": 3,
+      "common_eligible_rate": 0.07692307692307693,
+      "wilson_95": [
+        0.02650739530377974,
+        0.20321071167954996
+      ],
+      "actual_calls": 183,
+      "median_call_latency_s": 0.11685434216633439,
+      "drop_phases": {
+        "execution": 34
+      }
+    },
+    "rule_vlm_bare__identity": {
+      "raw_trials": 40,
+      "raw_success": 23,
+      "raw_rate": 0.575,
+      "raw_drops": 11,
+      "raw_reasons": {
+        "drop": 11,
+        "success": 23,
+        "false_stop": 6
+      },
+      "own_service_exclusions": 0,
+      "common_eligible_trials": 39,
+      "common_eligible_success": 23,
+      "common_eligible_rate": 0.5897435897435898,
+      "wilson_95": [
+        0.43418622882896973,
+        0.7292068999927483
+      ],
+      "actual_calls": 125,
+      "median_call_latency_s": 1.1167323435656726,
+      "drop_phases": {
+        "execution": 10,
+        "wait": 1
+      }
+    },
+    "rule_vlm_bare__permuted": {
+      "raw_trials": 40,
+      "raw_success": 23,
+      "raw_rate": 0.575,
+      "raw_drops": 10,
+      "raw_reasons": {
+        "success": 23,
+        "false_stop": 7,
+        "drop": 10
+      },
+      "own_service_exclusions": 0,
+      "common_eligible_trials": 39,
+      "common_eligible_success": 23,
+      "common_eligible_rate": 0.5897435897435898,
+      "wilson_95": [
+        0.43418622882896973,
+        0.7292068999927483
+      ],
+      "actual_calls": 107,
+      "median_call_latency_s": 1.1088529010303319,
+      "drop_phases": {
+        "execution": 10
+      }
+    },
+    "rule_vlm_bare__letter_masked": {
+      "raw_trials": 40,
+      "raw_success": 0,
+      "raw_rate": 0.0,
+      "raw_drops": 33,
+      "raw_reasons": {
+        "drop": 33,
+        "horizon": 7
+      },
+      "own_service_exclusions": 0,
+      "common_eligible_trials": 39,
+      "common_eligible_success": 0,
+      "common_eligible_rate": 0.0,
+      "wilson_95": [
+        -6.938893903907228e-18,
+        0.08966685370757144
+      ],
+      "actual_calls": 195,
+      "median_call_latency_s": 1.185586924199015,
+      "drop_phases": {
+        "execution": 31,
+        "wait": 2
+      }
+    }
+  },
+  "paired_comparisons": [
+    {
+      "left": "astra_full__identity",
+      "right": "astra_full__permuted",
+      "left_only": 5,
+      "right_only": 5,
+      "eligible_trials": 40,
+      "excluded_trial_ids": [],
+      "left_success": 32,
+      "right_success": 32,
+      "exact_mcnemar_p": 1.0,
+      "scope": "Preregistered within-provider image contrast",
+      "holm_adjusted_p_six_contrasts": 1.0
+    },
+    {
+      "left": "astra_full__identity",
+      "right": "astra_full__letter_masked",
+      "left_only": 31,
+      "right_only": 0,
+      "eligible_trials": 39,
+      "excluded_trial_ids": [
+        183442003
+      ],
+      "left_success": 31,
+      "right_success": 0,
+      "exact_mcnemar_p": 9.313225746154785e-10,
+      "scope": "Preregistered within-provider image contrast",
+      "holm_adjusted_p_six_contrasts": 5.587935447692871e-09
+    },
+    {
+      "left": "finetuned_vlm_bare__identity",
+      "right": "finetuned_vlm_bare__permuted",
+      "left_only": 18,
+      "right_only": 4,
+      "eligible_trials": 40,
+      "excluded_trial_ids": [],
+      "left_success": 30,
+      "right_success": 16,
+      "exact_mcnemar_p": 0.004343509674072266,
+      "scope": "Preregistered within-provider image contrast",
+      "holm_adjusted_p_six_contrasts": 0.013030529022216797
+    },
+    {
+      "left": "finetuned_vlm_bare__identity",
+      "right": "finetuned_vlm_bare__letter_masked",
+      "left_only": 27,
+      "right_only": 0,
+      "eligible_trials": 40,
+      "excluded_trial_ids": [],
+      "left_success": 30,
+      "right_success": 3,
+      "exact_mcnemar_p": 1.4901161193847656e-08,
+      "scope": "Preregistered within-provider image contrast",
+      "holm_adjusted_p_six_contrasts": 7.450580596923828e-08
+    },
+    {
+      "left": "rule_vlm_bare__identity",
+      "right": "rule_vlm_bare__permuted",
+      "left_only": 10,
+      "right_only": 10,
+      "eligible_trials": 40,
+      "excluded_trial_ids": [],
+      "left_success": 23,
+      "right_success": 23,
+      "exact_mcnemar_p": 1.0,
+      "scope": "Preregistered within-provider image contrast",
+      "holm_adjusted_p_six_contrasts": 1.0
+    },
+    {
+      "left": "rule_vlm_bare__identity",
+      "right": "rule_vlm_bare__letter_masked",
+      "left_only": 23,
+      "right_only": 0,
+      "eligible_trials": 40,
+      "excluded_trial_ids": [],
+      "left_success": 23,
+      "right_success": 0,
+      "exact_mcnemar_p": 2.384185791015625e-07,
+      "scope": "Preregistered within-provider image contrast",
+      "holm_adjusted_p_six_contrasts": 9.5367431640625e-07
+    }
+  ],
+  "controller_phase_step_counts": {
+    "astra_full__identity": {},
+    "astra_full__permuted": {},
+    "astra_full__letter_masked": {},
+    "finetuned_vlm_bare__identity": {},
+    "finetuned_vlm_bare__permuted": {},
+    "finetuned_vlm_bare__letter_masked": {},
+    "rule_vlm_bare__identity": {},
+    "rule_vlm_bare__permuted": {},
+    "rule_vlm_bare__letter_masked": {}
+  }
+}

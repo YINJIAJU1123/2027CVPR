@@ -1,0 +1,137 @@
+{
+  "primary_metric": "Success rate on matched service-eligible trials; raw outcomes retained for audit",
+  "status": "completed_and_audited",
+  "release_sha256": "9ba41cbb0d903d221243292ca31124d1b1922e11df7a03f289a8fadd5a0e1f6b",
+  "cohort": {
+    "seeds": [
+      185451,
+      185452
+    ],
+    "episodes_per_seed": 20,
+    "raw_trials_per_condition": 40
+  },
+  "common_excluded_trial_ids": [],
+  "continuation_manifest_sha256": null,
+  "initial_states_match": true,
+  "eligibility_scope": "Common symmetric service eligibility across registered conditions",
+  "outcomes": {
+    "astra_full": {
+      "raw_trials": 40,
+      "raw_success": 35,
+      "raw_rate": 0.875,
+      "raw_drops": 3,
+      "raw_reasons": {
+        "success": 35,
+        "drop": 3,
+        "false_stop": 1,
+        "abstain": 1
+      },
+      "own_service_exclusions": 0,
+      "common_eligible_trials": 40,
+      "common_eligible_success": 35,
+      "common_eligible_rate": 0.875,
+      "wilson_95": [
+        0.738878801611489,
+        0.945404997490546
+      ],
+      "actual_calls": 101,
+      "median_call_latency_s": 4.349323549307883,
+      "drop_phases": {
+        "execution": 3
+      }
+    },
+    "finetuned_vlm_bare": {
+      "raw_trials": 40,
+      "raw_success": 30,
+      "raw_rate": 0.75,
+      "raw_drops": 9,
+      "raw_reasons": {
+        "success": 30,
+        "horizon": 1,
+        "drop": 9
+      },
+      "own_service_exclusions": 0,
+      "common_eligible_trials": 40,
+      "common_eligible_success": 30,
+      "common_eligible_rate": 0.75,
+      "wilson_95": [
+        0.5980603857923197,
+        0.858128813609037
+      ],
+      "actual_calls": 117,
+      "median_call_latency_s": 0.09927111072465777,
+      "drop_phases": {
+        "execution": 9
+      }
+    },
+    "rule_vlm_bare": {
+      "raw_trials": 40,
+      "raw_success": 17,
+      "raw_rate": 0.425,
+      "raw_drops": 12,
+      "raw_reasons": {
+        "drop": 12,
+        "success": 17,
+        "horizon": 1,
+        "false_stop": 10
+      },
+      "own_service_exclusions": 0,
+      "common_eligible_trials": 40,
+      "common_eligible_success": 17,
+      "common_eligible_rate": 0.425,
+      "wilson_95": [
+        0.28509392559950375,
+        0.5780493145800892
+      ],
+      "actual_calls": 126,
+      "median_call_latency_s": 1.1043034282047302,
+      "drop_phases": {
+        "execution": 10,
+        "startup_wait": 2
+      }
+    }
+  },
+  "paired_comparisons": [
+    {
+      "left": "astra_full",
+      "right": "finetuned_vlm_bare",
+      "left_only": 9,
+      "right_only": 4,
+      "eligible_trials": 40,
+      "excluded_trial_ids": [],
+      "left_success": 35,
+      "right_success": 30,
+      "exact_mcnemar_p": 0.266845703125,
+      "scope": "Exploratory paired test, no multiple-testing adjustment"
+    },
+    {
+      "left": "astra_full",
+      "right": "rule_vlm_bare",
+      "left_only": 20,
+      "right_only": 2,
+      "eligible_trials": 40,
+      "excluded_trial_ids": [],
+      "left_success": 35,
+      "right_success": 17,
+      "exact_mcnemar_p": 0.00012111663818359375,
+      "scope": "Exploratory paired test, no multiple-testing adjustment"
+    },
+    {
+      "left": "finetuned_vlm_bare",
+      "right": "rule_vlm_bare",
+      "left_only": 16,
+      "right_only": 3,
+      "eligible_trials": 40,
+      "excluded_trial_ids": [],
+      "left_success": 30,
+      "right_success": 17,
+      "exact_mcnemar_p": 0.004425048828125,
+      "scope": "Exploratory paired test, no multiple-testing adjustment"
+    }
+  ],
+  "controller_phase_step_counts": {
+    "astra_full": {},
+    "finetuned_vlm_bare": {},
+    "rule_vlm_bare": {}
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "primary_metric": "Success rate on matched service-eligible trials; raw outcomes retained for audit",
+  "status": "completed_and_audited",
+  "release_sha256": "3dedd2e13d9f0afe09432dfb306a52c77604c446ce2caf825d451770a4b767c1",
+  "cohort": {
+    "seeds": [
+      185341,
+      185342
+    ],
+    "episodes_per_seed": 20,
+    "raw_trials_per_condition": 40
+  },
+  "common_excluded_trial_ids": [
+    185341008
+  ],
+  "continuation_manifest_sha256": "84dc2096465af14d004444cd2630debf8f2ee5710b2e22040414def283c15016",
+  "initial_states_match": true,
+  "eligibility_scope": "Common symmetric service eligibility across registered conditions",
+  "outcomes": {
+    "astra_frozen_waiting": {
+      "raw_trials": 40,
+      "raw_success": 28,
+      "raw_rate": 0.7,
+      "raw_drops": 10,
+      "raw_reasons": {
+        "drop": 10,
+        "success": 28,
+        "abstain": 2
+      },
+      "own_service_exclusions": 0,
+      "common_eligible_trials": 39,
+      "common_eligible_success": 27,
+      "common_eligible_rate": 0.6923076923076923,
+      "wilson_95": [
+        0.5357874562585069,
+        0.8143406769308886
+      ],
+      "actual_calls": 97,
+      "median_call_latency_s": 5.031355121172965,
+      "drop_phases": {
+        "execution": 6,
+        "wait": 2,
+        "startup_wait": 2
+      }
+    },
+    "astra_refit_waiting": {
+      "raw_trials": 40,
+      "raw_success": 33,
+      "raw_rate": 0.825,
+      "raw_drops": 5,
+      "raw_reasons": {
+        "drop": 5,
+        "success": 33,
+        "abstain": 1,
+        "service_excluded": 1
+      },
+      "own_service_exclusions": 1,
+      "common_eligible_trials": 39,
+      "common_eligible_success": 33,
+      "common_eligible_rate": 0.8461538461538461,
+      "wilson_95": [
+        0.7027053635107331,
+        0.927525276230179
+      ],
+      "actual_calls": 106,
+      "median_call_latency_s": 5.090877612819895,
+      "drop_phases": {
+        "wait": 1,
+        "execution": 4
+      }
+    }
+  },
+  "paired_comparisons": [
+    {
+      "left": "astra_frozen_waiting",
+      "right": "astra_refit_waiting",
+      "left_only": 2,
+      "right_only": 8,
+      "eligible_trials": 39,
+      "excluded_trial_ids": [
+        185341008
+      ],
+      "left_success": 27,
+      "right_success": 33,
+      "exact_mcnemar_p": 0.109375,
+      "scope": "Exploratory paired test, no multiple-testing adjustment"
+    }
+  ],
+  "controller_phase_step_counts": {
+    "astra_frozen_waiting": {},
+    "astra_refit_waiting": {}
+  }
+}

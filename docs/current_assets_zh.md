@@ -1,3 +1,7 @@
-# 当前说明
+# 当前论文与实验版本
 
-本文件的 2026-09-18 内容保留在 Git 历史。当前实验与论文结构见 [实验计划](experiment_plan_zh.md)、[新物体交接](new_object_handoff_zh.md) 和 [cube-v1 证据](../data/cube_v1/README.md)。
+更新：2026-11-01。论文正文和补充材料已接入最新方块三方法、等待控制器确认、反馈协议、视觉语义干预，以及负向目标消融和执行门控开发结果。
+
+最新主结果：完整 Astra 35/40（87.5%），裸微调 VLM 30/40（75%），裸规则 VLM 17/40（42.5%），掉落分别3、9、12。最新完整系统保留原执行控制器与student，只更新等待控制器。学习执行门控没有部署。
+
+详见[实验计划](experiment_plan_zh.md)、[最新证据](../data/cube_completed_20261101/README.md)和[新物体交接](new_object_handoff_zh.md)。历史release与失败优化完整保留。多物体、改进predictor、真机仍待补。

@@ -2,6 +2,7 @@
 \usepackage[review]{cvpr}
 \input{preamble}
 \input{tables/followup_macros}
+\input{tables/completed_macros}
 \definecolor{cvprblue}{rgb}{0.21,0.49,0.74}
 \usepackage[breaklinks,colorlinks,allcolors=cvprblue]{hyperref}
 \def\confName{CVPR}\def\confYear{2027}
@@ -12,9 +13,9 @@
 \maketitle
 \setcounter{section}{0}\renewcommand{\thesection}{\Alph{section}}
 \section{Scope of This Release}
-This supplement accompanies the working manuscript dated 29 October 2026. Its empirical results concern the marked RSLCube and a single frozen pose-latent policy release. The archive contains 400 unique trials: 80 physical diagnostics and 320 semantic trials. The full Astra condition appears in several comparisons but is counted once. Results from an earlier RGB-D backend, invalid contact-capacity runs, and development seeds are not pooled with this release. Missing experiments are marked TODO throughout. No synthetic performance numbers are used.
+This supplement accompanies the working manuscript updated on 1 November 2026. All measured results concern the marked RSLCube. The original release contains 400 trials, followed by separate replication, intervention, and controller-development cohorts. The latest completion bundle contains 760 live semantic trials and a separate 160-trial fixed-plan development test. Its 240 bare-VLM visual trials overlap the earlier visual archive and are not new trials. Historical outcomes are retained. Missing multi-object, improved-predictor, and physical-hand measurements are marked TODO.
 
-The original eight-condition suite has 320 trials. The two later bare VLM conditions add 80. The latter were requested after the original evaluation to distinguish complete-system baselines from shared-controller baselines. Their addition changes neither the physical metric nor the selected weights. Since the condition definitions were amended after earlier outcomes existed, the full study is not described as a blindly preregistered comparison.
+The latest complete-system comparison refits only Astra's waiting actor. The student, predictor, execution actor, and task criterion remain frozen. Earlier cohorts use their recorded original controller version. Results from the earlier RGB-D backend, invalid contact-capacity runs, and different protocols are not pooled into the current main result. The original bare-baseline addendum was specified after the first suite, so the full historical study is not described as blindly preregistered.
 
 \section{Exact Task and Runtime Contract}
 \subsection{Object and goals}
@@ -50,7 +51,7 @@ The semantic horizon is 120 seconds of logical control time. Model latency is me
 
 The shared gate runs at 3~Hz. It requires an accepted requested-symbol binding, a non-inspection command, no outstanding request, and estimated canonical orientation error no greater than 0.16 radians. The independent scorer applies the same angular tolerance to true orientation and checks the actual requested face. No post-stop dwell is required. Success is not the minimum orientation error at any earlier time.
 
-A service error or model call exceeding 120 seconds is recorded without replacement. The main three-system panel removes trial 183102011 from every arm. The four-way control panel removes 183102000, 183102010, and 183102011. The resulting denominators are 39 and 37. Their percentages are not directly interchangeable. Raw 40-trial outcomes remain visible, including service-affected cases.
+A service error or model call exceeding 120 seconds is recorded without replacement. The original three-system panel removes trial 183102011 from every arm. The four-way control panel removes 183102000, 183102010, and 183102011. The resulting denominators are 39 and 37. Their percentages are not directly interchangeable. Raw 40-trial outcomes remain visible, including service-affected cases.
 
 \section{Models and Training}
 \subsection{Semantic and motor inputs}
@@ -72,7 +73,7 @@ The waiting actor interpolates from current joint positions toward the proposal 
 
 No raw RGB, true object pose, teacher action, future model response, or oracle semantic label is a deployed actor input. Vision affects the actor through estimated pose and recurrent belief. The reported stopping gate is measured-pose based. Previously trained completion-evidence heads are inactive and cannot be credited for the current results.
 
-\section{Additional Numerical Results}
+\section{Original-Release Numerical Results}
 \begin{table}[h]
 \centering\small
 \setlength{\tabcolsep}{3pt}
@@ -142,7 +143,7 @@ Method & Eligible success & Rate (\%)\\
 The eleven eligible Astra failures comprise nine drops, one false stop and one abstention. The drops include one during startup, two during subsequent waiting and six outside waiting. Raw Astra counts additionally include one service-excluded drop. Against the fine-tuned VLM, Astra has five exclusive successes and six exclusive failures (exact paired $p=1.0$). Against the rule VLM, the counts are eleven and six ($p=0.332$). These exploratory comparisons do not establish superiority. The earlier 18-slot snapshot remains archived for provenance but is no longer used for the follow-up table.
 
 \subsection{Control interaction and explicit goals}
-The completed factorial retains the common 37-trial panel shown in the main paper. Learned waiting alone reduces startup drops from four to one but introduces three later waiting drops, leaving total waiting-related drops at four. With execution recovery present, learned waiting eliminates four startup drops while execution drops increase from four to nine. The full method wins eight trials lost by execution-only control and loses seven won by that control. Hence net success improves by one, without a resolved interaction benefit.
+The historical factorial uses a common 37-trial panel, with successes of 20, 25, 26 and 27 for fixed control, waiting only, execution only and both actors. Learned waiting alone reduces startup drops from four to one but introduces three later waiting drops, leaving total waiting-related drops at four. With execution recovery present, learned waiting eliminates four startup drops while execution drops increase from four to nine. The full method wins eight trials lost by execution-only control and loses seven won by that control. Hence net success improves by one, without a resolved interaction benefit.
 
 A deterministic restoration diagnostic verifies 19 of 20 planned physical states. Each state has two assigned goals and both actor conditions, yielding 76 valid branches. State 12 cannot be restored because its prefix terminates, and is not replaced. Both conditions give the assigned goal to the student. No waiting drops occur, but their subsequent execution differs.
 
@@ -158,9 +159,9 @@ Actor input & Final in tolerance & Drops\\
 \caption{Paired recovery diagnostic on 19 states, two goals each. Four branches in each condition already start within tolerance. Final tolerance is not autonomous semantic success. Explicit actor-goal conditioning is not supported as beneficial by this diagnostic.}
 \end{table}
 
-Mean assigned-goal progress is 1.195 radians with explicit actor-goal input and 1.340 without it. Different first actions under different goals do not isolate the actor's explicit goal pathway because the student itself is goal-conditioned. The separately trained correct-goal, no-explicit-goal and shuffled-goal semantic comparison remains incomplete.
+Mean assigned-goal progress is 1.195 radians with explicit actor-goal input and 1.340 without it. Different first actions under different goals do not isolate the actor's explicit goal pathway because the student itself is goal-conditioned. The completed semantic comparison gives 25/36, 24/36 and 30/36 successes for correct, no-explicit and shuffled controller goals. Four service-affected slots are excluded symmetrically. This does not establish a benefit from the explicit goal input.
 
-\subsection{Completed bare-VLM visual interventions}
+\subsection{Completed visual interventions}
 The upper-level image changes while the low-level pose predictor continues to receive the original image. Lighting is fixed. The permuted condition assigns the next symbol in $(T,E,R,L,S,H)$ to each color face and changes the requested symbol accordingly, preserving the scored physical target across conditions. The masked condition hides the lettering. Geometry-consistent image construction and the transmitted image hashes are audited. Seeds 183441 and 183442 provide 20 trials each, and physical initial-state hashes match across the three conditions.
 
 \begin{table}[h]
@@ -170,14 +171,13 @@ The upper-level image changes while the low-level pose predictor continues to re
 \toprule
 Method & Identity & Permuted & Masked\\
 \midrule
-\FollowupVisualRows
-Astra full & \pending & \pending & \pending\\
+\CompletedVisualRows
 \bottomrule
 \end{tabular}
-\caption{Completed upper-image interventions for the bare VLMs. Every numerical cell contains 40 service-eligible trials, with no service exclusions. Astra cells are pending, not zero. These cohorts are separate from the main cube-v1 table.}
+\caption{Completed upper-image interventions. Identity and permutation each use 40 trials. Astra masking has one service exclusion. For its paired masking contrast the identity numerator becomes 31/39. All conditions use reconstructed face images, not the untouched native-image comparison.}
 \end{table}
 
-Fine-tuned success falls by 35 percentage points after remapping and to 7.5\% after masking. Rule-based success is 57.5\% under both identity and remapping, then zero after masking. Equal aggregate identity and remapped rates do not imply identical trial outcomes. The results establish intervention sensitivity but do not show that all fine-tuned successes arise from a fixed lookup, or that Astra is more robust before its matched arms finish.
+Fine-tuned success falls by 35 percentage points after remapping and to 7.5\% after masking. Rule-based success is 57.5\% under both identity and remapping, then zero after masking. Equal aggregate identity and remapped rates do not imply identical trial outcomes. Astra now has 32/40 successes under both identity and permutation, with zero of 39 eligible masked trials. This supports robustness to the tested permutation, without proving equivalence or identifying all fine-tuned successes as a fixed lookup.
 
 \paragraph{Applied semantic bindings.}
 We audit every applied, accepted call from the same 240 trials. The episode-file hashes match the archived results, and the last accepted skill agrees with the recorded terminal binding. Table~\ref{tab:visual-bindings} separates acquiring the correct target from completing it. Under permutation, the fine-tuned model first binds correctly in 25 trials and incorrectly in eleven, compared with 34 and four under identity. Nine of its eleven wrong-binding trials select the original color for the newly requested symbol. The rule model has six wrong-binding trials under each layout, with three following the old association after permutation. This pattern is consistent with reliance on training associations, but does not identify the model's internal mechanism.
@@ -198,20 +198,63 @@ Model & Layout & Correct & Wrong & None & Old\\
 
 No wrong-to-correct binding transition occurs in these bare-VLM cohorts. This is descriptive: trajectories, visibility, and opportunities for additional calls differ. Of fourteen fine-tuned false stops under permutation, ten end with a wrong binding and four with the correct binding but an independently incorrect final pose. Masking leads to no accepted binding in 36 fine-tuned trials and all forty rule-model trials. The three masked fine-tuned successes cannot establish letter grounding when that information is removed.
 
-Identity versus permutation yields eighteen exclusive successes and four exclusive failures for the fine-tuned model (exact paired $p=0.00434$), versus ten and ten for the rule model ($p=1.0$). These are exploratory paired comparisons without multiplicity correction. The single deterministic remapping and edited upper images limit generalization claims. Astra's corresponding calls and recovery behavior must be audited after its cohorts complete.
+Identity versus permutation yields eighteen exclusive successes and four exclusive failures for the fine-tuned model (exact paired $p=0.00434$), versus ten and ten for the rule model ($p=1.0$). The final analysis applies Holm correction across six planned image contrasts, giving adjusted $p=0.0130$ for the fine-tuned mapping contrast. The single deterministic remapping and reconstructed upper images limit generalization claims. Astra has five exclusive identity successes and five exclusive permutation successes ($p=1.0$).
 
-\subsection{Outstanding agent feedback evidence}
-The same-Astra comparison uses one initial bounded plan versus at most six feedback calls. The student, actors, stopping gate and physical horizon are held fixed. Protocol checks, synthetic downstream rollouts and real development-image interface checks have passed. Formal results for the two 40-trial arms are pending. No benefit from subsequent observation or replanning is inferred from interface validation alone.
+
+\subsection{Completed feedback comparison}
+The same-Astra comparison uses one initial bounded plan versus at most six feedback calls, with the original actors and frozen student, stopping gate, and horizon. Seeds 183431 and 183432 give 40 trials per arm. Slot 183432001 is service-affected and excluded from both, leaving 7/39 versus 30/39 successes. Raw counts are 7/40 and 31/40. Actual model calls total 40 and 113. Twenty-four trials succeed only with feedback and one only with the initial plan ($p=1.55\times10^{-6}$). Seventeen initial-plan abstentions become feedback successes. No wrong-to-correct binding transition is observed. Unequal inference budgets prevent isolating a pure feedback effect at equal compute.
+
+\subsection{Latest native comparison and failure audit}
+Seeds 185451 and 185452 give 40 matched trials per method with no service exclusions. The full Astra system gives 35 successes, three execution-phase drops, one wrong-binding false stop, and one abstention. The bare fine-tuned system gives 30 successes, nine execution drops, and one horizon failure. The bare rule system gives 17 successes, twelve drops, ten false stops, and one horizon failure. Its drops include two during startup waiting. Astra makes 101 calls, fine-tuning 117, and the rule baseline 126. Median latencies are 4.349, 0.099 and 1.104 seconds.
+
+The three Astra drops occur during inspection before final target binding. One is 59 control steps after the most recent applied inspection command, and the others are 36 and 24 steps after it. These intervals describe timing, not causal attribution. The false-stop episode binds R to cyan rather than blue. Its measured error to the declared target is 0.057 radians, while true requested-target error is 3.079 radians. It is a semantic binding failure and cannot simply be assigned to pose estimation. The abstention follows four inspections without a declared target. A favorable instantaneous pose during that trajectory does not meet the autonomous success rule.
+
+\subsection{Waiting refit and live confirmation}
+The refit uses training collection seed 185301, validation seed 185302, and fitting seed 185311. The inherited actor is updated 2,400 times. Actor batches allocate one half to pending states and one quarter each to unbound and bound execution states. Pending samples are uniform. A startup-balanced alternative replaces that half-batch with equal early and later pending samples, holding the other training settings fixed. Only final-iteration candidates are evaluated. Separate fixed-plan development seeds 185321 and 185322 select the uniform candidate under a preset completion/drop gate. Only its waiting outputs replace the deployed actor. Execution remains unchanged.
+
+Live confirmation uses seeds 185341 and 185342. Slot 185341008 has a refit service failure and is removed symmetrically. Original waiting gives 27/39 successes and ten drops, compared with 33/39 and five drops after refitting. Raw success is 28/40 versus 33/40. There are eight refit-only and two original-only successes ($p=0.109375$). The drop counts also apply to the eligible panel. Startup, later-waiting and execution drops change from $(2,2,6)$ to $(0,1,4)$. These data are distinct from the latest native three-system cohort.
+
+\subsection{Goal-input intervention}
+Seeds 183421 and 183422 provide 40 trials per condition. Correct, retrained no-explicit-goal and shuffled controller goals give raw successes of 29/40, 26/40 and 31/40. Four symmetrically excluded slots leave the following panel. The student still receives its assigned goal, so removing the explicit actor-goal vector does not remove all goal information from the controller's proposal and belief inputs.
+\begin{table}[h]
+\centering\small
+\begin{tabular}{lrr}
+\toprule
+Actor input & Eligible success & Rate (\%)\\
+\midrule
+\CompletedGoalRows
+\bottomrule
+\end{tabular}
+\caption{Completed goal-input intervention. No positive explicit-goal benefit is established. Shuffled goals are not selected as a new method after observing these results.}
+\end{table}
+
+\subsection{Rejected execution-gate development}
+This separate 160-trial study replays fixed public decisions and delays, with no new Astra calls. Every arm uses the same refitted waiting actor. During non-pending steps, a gate interpolates between the student's nominal proposal and the original execution actor's corrected action. Waiting actions remain unchanged. Seeds 185481 and 185482 provide 40 trials per arm.
+\begin{table}[h]
+\centering\small
+\begin{tabular}{lrr}
+\toprule
+Execution condition & Success & Drops\\
+\midrule
+\CompletedCloudRows
+\bottomrule
+\end{tabular}
+\caption{Fixed-plan development outcomes, not live Astra evaluation. The learned gate is rejected and absent from the latest main system.}
+\end{table}
+The fixed gate is 0.8282. The phase-fixed gate uses 0.5872 when unbound and 0.9877 when bound. The learned candidate must exceed original execution by at least three successes, exceed the best fixed gate by at least two, and introduce no more drops than the best control. It achieves 26 successes against required counts of 32 and 29, with five drops against a limit of three. All gates fail. Both per-seed outcomes and all negative results are retained. No additional live evaluation is triggered by this candidate.
+
+\subsection{Timing verification}
+The latest native suite contains 344 actual calls, of which 342 are applied before episode termination. The remaining two replies belong to terminated rule-baseline episodes and are retained. The timing audit checks 52,475 control steps. Separate audits cover 80 waiting trials, 80 feedback trials and 360 visual trials. Pending requests preserve continuous logical control, and replies are applied only after their measured latency and actual completion. These checks verify the delay protocol rather than wall-clock real-time operation.
 
 \section{Experimental Requirements Before Submission}
 \subsection{Separate model strength from control}
 The primary comparison uses full Astra against bare VLM baselines. Its interpretation is system-level. To attribute gains to the upper-level model, compare all providers with identical control actors, timing conventions, stopping, and information access. Preserve the existing shared-control results. Repeated live calls can produce different public plans even on matching initial states. Fixed-public-plan replay can isolate motor changes, but replay success must not be reported as a new live Astra success rate.
 
 \subsection{Test semantic and visual causality}
-Use the same physical state with different valid requested faces. Measure action direction and completion with the correct goal, a shuffled goal, and no goal. Train the no-goal actor with equal capacity and data. Permute the letter-color layout or mask/shuffle image evidence while keeping background and lighting fixed. Pair these with a text-only baseline. These controls determine whether success depends on current visual semantics rather than a fixed lookup.
+The completed goal-input and restored-state tests do not establish a useful explicit controller-goal pathway. The completed visual intervention supports sensitivity to visible semantics, with only one reconstructed-image permutation. Further claims require additional mappings or objects, and an optional text-only comparison. These extensions must use new declared trials rather than select models on the completed test set.
 
 \subsection{Test agent feedback}
-Hold the model, student, and local actors fixed. Compare one initial semantic query with the complete feedback loop, then remove history or verification feedback. Keep the registered one-call and at-most-six-call budgets explicit and record actual calls, logical duration, wall time, and service failures. This contrasts complete protocols and does not isolate fresh information from extra inference compute. Latency replay should use the same public plan and delay sequence across motor variants. A simple time-aware residual actor provides a stronger learning baseline than fixed slowing alone. It should not be labeled an official reproduction of A2C2 or ARLI without a verified implementation.
+The completed initial-plan comparison supports the full feedback protocol. An equal-call-budget or history/verification ablation would be needed to isolate those components. Keep the registered one-call and at-most-six-call budgets explicit and record actual calls, logical duration, wall time, and service failures. This contrasts complete protocols and does not isolate fresh information from extra inference compute. Latency replay should use the same public plan and delay sequence across motor variants. A simple time-aware residual actor provides a stronger learning baseline than fixed slowing alone. It should not be labeled an official reproduction of A2C2 or ARLI without a verified implementation.
 
 \subsection{Separate perception accuracy and control benefit}
 Compare the original and improved predictors with the same student and agent first. Report independent translation/rotation error, tail error, keypoint visibility, false stops, and semantic success. Oracle pose estimates the residual motor gap. Only a second experiment should adapt the student to the new predictor. A lower pose error is useful evidence, but it does not guarantee a higher task success rate.
@@ -220,7 +263,9 @@ Compare the original and improved predictors with the same student and agent fir
 Select about five objects with variation in geometry, inertia, contact affordances, and semantic ambiguity. Record object-specific students and training budgets. Balance the task set within each object and report each row before computing an object macro-average. Forty trials per arm per object is the default batch size. Hardware runs need calibrated independent scoring, documented resets, two sessions, and synchronized video and command logs. A new object checkpoint alone is insufficient without its assets, calibration, normalization, action conventions, and goal definitions.
 
 \section{Reproducibility and Evidence Audit}
-The accompanying research archive stores 400 frozen-release trial records and 160 separately labeled successor development records, sanitized summaries, source-file checksums, and checkpoint hashes. Runtime hostnames and authorization material are excluded. Original local evidence is retained separately and hashed before export. Result tables and plots are regenerated from the archived data. A separate follow-up archive contains 120 completed independent-replication records, 240 completed visual-intervention trials, and summaries of the 19-state recovery diagnostic. The historical 98-record partial snapshot is retained separately and adds no trials. The replication is not pooled with the original cohort to form a revised main result. The public goal mapping and physical success contract are frozen for cube-v1. New predictors, students, objects, or stop rules require separate versioned releases.
+The archive retains 400 original-release trials, 160 successor-development trials, 120 earlier replication trials, and the 19-state recovery diagnostic. The latest snapshot has 760 live records: native 120, goal 120, feedback 80, visual 360, and waiting 80. Its 240 bare visual records overlap the earlier archive. Another 160 fixed-plan development trials complete the 920-trial bundle. These protocols must not be pooled into one rate. Partial snapshots add no trials.
 
-\TODO{Complete the anonymous implementation package and object-specific licenses before submission.} The manuscript itself contains no link to an identifying project repository. Public repository publication is a development convenience, not a replacement for a self-contained anonymous submission.
+Sanitized records retain initial-state hashes, goals, measured stops, independent errors, outcomes, exclusions and latencies. Source hashes link to the full archive. Table generation checks counts, matching, exclusions and paired tests. New students, predictors, objects or stop rules require new releases.
+
+\TODO{Complete the anonymous implementation package and object licenses.} The manuscript contains no identifying repository link.
 \end{document}
