@@ -1,9 +1,9 @@
 \section{Experiments}
 \label{sec:experiments}
-We organize evaluation around four questions: \textbf{Q1}~How do complete systems compare under original and changed semantic mappings? \textbf{Q2}~How should the hand move while the agent is thinking? \textbf{Q3}~Is an initial plan sufficient, or does continued visual feedback help? \textbf{Q4}~How do perception and control transfer to a physical hand? Cube system comparisons and the 200-trial matched waiting/feedback cohort are complete. Additional objects, predictor improvements, and hardware results remain TODO.
+We organize evaluation around four questions: \textbf{Q1}~How do complete systems compare under original and changed semantic mappings? \textbf{Q2}~How should the hand move while the agent is thinking? \textbf{Q3}~Is an initial plan sufficient, or does continued visual feedback help? \textbf{Q4}~How do perception and control transfer to a physical hand? Cube and native-layout dice system comparisons and the 200-trial cube waiting/feedback cohort are complete. Further objects, predictor improvements, and hardware results remain TODO.
 
 \subsection{Setup and reporting}
-Experiments use Revo3 cube assets in Isaac Lab 3.0/Newton with validated contact capacities. Each condition has two seeds and 40 scheduled trials. Initial physical states are matched within each study. All systems use the same frozen pose estimator, goal bank, latent student, 0.16-radian success threshold, and measured-pose stopping gate. The primary fine-tuned and rule VLM baselines omit the added waiting and execution actors. Astra uses adaptive inspection, whereas the local baselines use a fixed unreadable-view schedule. This is a comparison of complete systems, with natural model latencies, rather than an isolated test of model weights.
+Experiments use Revo3 cube and dice assets in Isaac Lab 3.0/Newton with validated contact capacities. Each condition has two seeds and 40 scheduled trials. Initial physical states are matched within each study. Within the cube studies, all systems share the frozen pose estimator, goal bank, latent student, 0.16-radian success threshold, and measured-pose stopping gate. Dice trials share an object-specific student and noisy simulator pose; Astra additionally uses calibrated completion correction. We report these backend differences rather than pooling their protocols. The primary fine-tuned and rule VLM baselines omit the added waiting and execution actors. Astra uses adaptive inspection, whereas the local baselines use a fixed unreadable-view schedule. This is a comparison of complete systems, with natural model latencies, rather than an isolated test of model weights.
 
 The latest Astra system replaces only its waiting actor. Earlier release cohorts, module interventions, and fixed-public-plan development tests are kept separate. Table percentages use common service-eligible trials within the stated comparison. All raw records are retained, and no failed or excluded slot is replaced. Wilson intervals describe individual rates. The new waiting contrasts and six registered visual contrasts use Holm correction within their respective families. Historical paired tests remain exploratory and unadjusted.
 
@@ -24,13 +24,8 @@ System & Successes & Rate (\%) & 95\% Wilson interval & Drops & Model calls\\
 The latest full Astra system succeeds in 35/40 trials (87.5\%), compared with 30/40 (75.0\%) for the bare fine-tuned VLM and 17/40 (42.5\%) for the bare rule VLM (Table~\ref{tab:main}). Astra has nine exclusive successes against four for the fine-tuned VLM, giving exact paired $p=0.267$. The 12.5-point difference is therefore a favorable estimate, not established superiority. Against the rule VLM, the corresponding counts are twenty and two ($p=0.000121$).
 
 
-\paragraph{Earlier cohorts are retained.}
-Earlier Astra/fine-tuned/rule cohorts give 29/39, 26/39, 13/39 and 26/37, 27/37, 21/37. Neither establishes Astra superiority over fine-tuning. The latest cohort changes both seeds and waiting weights, so Q2 provides the dedicated control comparison. The supplement retains the earlier factorial and shared-controller studies without pooling versions.
-
-\paragraph{Remaining failures.}
-All three latest Astra drops occur during unbound inspection, outside pending requests. One further trial binds the requested letter to the wrong color and stops, and one abstains before binding. No waiting-stage drop occurs in this native-image cohort. Pending-request drops do occur in the dedicated Q2 cohort. The three inspection failures motivate contact-stable evidence acquisition. Their proximity to an inspection command does not establish its causal role. Success among trials that reach correct binding is not an unconditional measure of student reliability.
-
-The bare fine-tuned VLM has nine execution drops and one horizon failure. The bare rule VLM has twelve drops, ten false stops, and one horizon failure. Median call latencies are 4.35 seconds for Astra, 0.099 seconds for fine-tuning, and 1.10 seconds for the rule baseline. The timing audit verifies continued control through pending intervals and delayed application of replies. It does not establish real-time simulator throughput.
+\paragraph{Remaining failures and prior releases.}
+The latest Astra cohort has three drops during unbound inspection, one wrong-color binding followed by a stop, and one abstention. No pending-stage drop occurs in this cohort, although Q2 contains such failures. Fine-tuning has nine execution drops and one horizon failure. Rules have twelve drops, ten false stops and one horizon failure. The supplement retains earlier cohorts, whose rankings also vary, without pooling controller versions. Timing logs confirm continued control during pending requests and delayed reply application, not real-time simulator throughput.
 
 \begin{table}[t]
 \centering\small
@@ -39,15 +34,18 @@ The bare fine-tuned VLM has nine execution drops and one horizon failure. The ba
 Simulation object & Rule & Fine-tuned & Full\\
 \midrule
 Cube, latest release & 17/40 & 30/40 & 35/40\\
-Object 2 & \pending & \pending & \pending\\
+Die, noisy pose & 17/40 & 20/40 & 24/40\\
 Object 3 & \pending & \pending & \pending\\
 Object 4 & \pending & \pending & \pending\\
 Object 5 & \pending & \pending & \pending\\
 \bottomrule
 \end{tabularx}
-\caption{\textbf{Q1: object coverage.} Only the cube row is measured. Further objects require recorded geometry, calibration, policy, goal definitions, and 40 matched trials per method. Object-specific students do not imply zero-shot transfer. No average is computed over unfinished rows.}
+\caption{\textbf{Q1: object coverage.} Cube and die rows are measured under their own frozen releases. Dice uses noisy simulator pose without a predictor. Further objects require recorded geometry, calibration, policy, goal definitions, and 40 matched trials per method. Object-specific students do not imply zero-shot transfer. No average is computed over unfinished rows.}
 \label{tab:objects}
 \end{table}
+
+\paragraph{Second-object extension.}
+The native-layout die yields 24/40 successes for Astra, 20/40 for fine-tuning, and 17/40 for rules, with no service exclusions. Astra versus fine-tuning remains unresolved (exact paired $p=0.4545$). Twelve of its fifteen drops occur before the first skill arrives. This transfer therefore exposes a startup-control limitation despite successful semantic binding. The weights and perception backend differ from the cube, so this row does not isolate a geometry effect. A separate dice visual-layout study is in progress and contributes no result to this table.
 
 \paragraph{Visual-semantic intervention.}
 We keep predictor input and lighting fixed while changing the upper-level image. Identity, one cyclic letter--color permutation, and letter masking are evaluated on 40 matched states per method. All three conditions use geometry-consistent reconstructed face images, including identity. Consequently, this is a controlled image benchmark rather than the untouched RGB main comparison.
@@ -124,10 +122,8 @@ The initial plan succeeds in 6/39 eligible trials, compared with 33/39 for conti
 The initial plan abstains in 28 eligible trials, of which 22 succeed with feedback. Among the 39 eligible feedback trials, 36 contain inspection, 32 first bind a target after inspection, and 31 successes use multiple calls. No executed wrong-to-correct binding transition is observed. These traces support the benefit of the full observation protocol, especially obtaining evidence before binding. They do not establish that every initial target was hidden or isolate fresh images from additional inference compute. Zero initial-plan drops accompany frequent abstention and do not imply a superior completing policy. A recorded example and the earlier original-controller cohort are retained in the supplement.
 
 \subsection{Q4: From simulation to a physical hand}
-\paragraph{Pose estimation and task completion.}
-With the same frozen CNN, the released pose-goal policy reaches before dropping in 39/40 diagnostic trials, versus 35/40 for the latent student. These measure physical reach, not autonomous semantic success. A separate 160-trial student-adaptation study is retained in the supplement. It changes neither the predictor nor the student used in the main comparison.
+\paragraph{Pose estimation.}
+With the frozen CNN, the original pose-goal policy reaches before dropping in 39/40 diagnostic trials, versus 35/40 for the latent student. These are physical-reach counts, not autonomous semantic success. \TODO{Add the colleague-provided predictor comparison.} Report independent pose errors and 40 matched closed-loop trials with other components fixed. Subsequent student adaptation is a separate experiment.
 
-\TODO{Insert the colleague-provided predictor study.} Compare independent translation and rotation errors, then 40 matched closed-loop trials per predictor with the student, agent, and controllers fixed. Any subsequent policy adaptation is a separate stage. An oracle-pose diagnostic can estimate remaining motor limitations but is not deployable. Existing student training cannot establish a predictor improvement or a hardware advantage over ViserDex.
-
-\paragraph{Physical-hand evaluation.}
-\TODO{Add hardware setup, object dimensions and masses, calibration, control frequency, per-object success, timing, and failures.} Plan 40 trials per system and object across two sessions, with matched setup and independent orientation scoring. Synchronized video and request/action logs must retain failures. A hardware waiting-control comparison will test whether the simulated completion and contact trade-offs transfer.
+\paragraph{Physical hand.}
+\TODO{Add hardware measurements.} Report calibration, object dimensions, control frequency and 40 trials per system and object across two sessions. Independent orientation scoring and synchronized video must retain failures. Include a waiting-control comparison. Existing simulation results establish neither real-camera robustness nor a hardware advantage over ViserDex. The supplement specifies the planned measurements.

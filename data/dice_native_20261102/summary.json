@@ -1,0 +1,114 @@
+{
+  "complete": true,
+  "release_sha256": "253c20d5d2ae83eb41d4b70a6934cf95c8ccefb7b0c3e46b3535f70213500185",
+  "matched_excluded_cases": [],
+  "methods": {
+    "astra": {
+      "raw_trials": 40,
+      "raw_success": 24,
+      "matched_trials": 40,
+      "matched_success": 24,
+      "success_rate": 0.6,
+      "wilson_95": [
+        0.44595893660346186,
+        0.7365167431570808
+      ],
+      "reasons": {
+        "drop": 15,
+        "false_stop": 1,
+        "success": 24
+      },
+      "drops_by_phase": {
+        "startup_wait": 12,
+        "wait": 0,
+        "execution": 3
+      },
+      "model_calls": 63,
+      "per_seed": {
+        "186301": {
+          "n": 20,
+          "success": 13
+        },
+        "186302": {
+          "n": 20,
+          "success": 11
+        }
+      }
+    },
+    "vlm": {
+      "raw_trials": 40,
+      "raw_success": 20,
+      "matched_trials": 40,
+      "matched_success": 20,
+      "success_rate": 0.5,
+      "wilson_95": [
+        0.35199526933465386,
+        0.6480047306653461
+      ],
+      "reasons": {
+        "drop": 8,
+        "false_stop": 7,
+        "horizon": 5,
+        "success": 20
+      },
+      "drops_by_phase": {
+        "startup_wait": 0,
+        "wait": 0,
+        "execution": 8
+      },
+      "model_calls": 141,
+      "per_seed": {
+        "186301": {
+          "n": 20,
+          "success": 11
+        },
+        "186302": {
+          "n": 20,
+          "success": 9
+        }
+      }
+    },
+    "rule": {
+      "raw_trials": 40,
+      "raw_success": 17,
+      "matched_trials": 40,
+      "matched_success": 17,
+      "success_rate": 0.425,
+      "wilson_95": [
+        0.28509392559950375,
+        0.5780493145800892
+      ],
+      "reasons": {
+        "drop": 7,
+        "false_stop": 6,
+        "horizon": 10,
+        "success": 17
+      },
+      "drops_by_phase": {
+        "startup_wait": 7,
+        "wait": 0,
+        "execution": 0
+      },
+      "model_calls": 154,
+      "per_seed": {
+        "186301": {
+          "n": 20,
+          "success": 8
+        },
+        "186302": {
+          "n": 20,
+          "success": 9
+        }
+      }
+    }
+  },
+  "audits": [
+    "case coverage",
+    "paired initial states",
+    "independent final quaternion scoring",
+    "model call ledgers",
+    "response latency delivery",
+    "matched service exclusions"
+  ],
+  "scope": "single native-layout dice object, noisy simulator pose, 40 scheduled cases per method; no pose estimator or unseen-layout claim"
+}

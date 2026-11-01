@@ -1,0 +1,14 @@
+{
+  "source_archive": "outputs/dice_latent_v1_20261102/formal_archive_v1",
+  "source_sha256": {
+    "summary.json": "50de9c2e1eb04a7d0de2691d9e17332038e9ac22178c8f8b5f6edf654f989a19",
+    "completion_audit.json": "442bd3d94da18781a5b404a50d908d978cc9a02d6ba3652ce09feaf3570cd3ce",
+    "release.json": "253c20d5d2ae83eb41d4b70a6934cf95c8ccefb7b0c3e46b3535f70213500185"
+  },
+  "episode_sha256": {
+    "astra": "e2c345627bd8db2b50a0075bfc4e831b497733bc648ba3c0343266c2d8d6c72b",
+    "vlm": "18e8fad2816ffc65ac803b961bdf66564ca0fa7d84ff7ecb05dd772cd5168b81",
+    "rule": "92f35e54b419be2f3d6fd1d26ecb04ab505d5aed869d658419e36521a260fa97"
+  },
+  "scope": "120 completed native-layout dice trials; excludes ongoing layout-shift study"
+}

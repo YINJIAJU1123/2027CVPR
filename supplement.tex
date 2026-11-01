@@ -14,7 +14,7 @@
 \maketitle
 \setcounter{section}{0}\renewcommand{\thesection}{\Alph{section}}
 \section{Scope of This Release}
-This supplement accompanies the working manuscript updated on 1 November 2026. All measured results concern the marked RSLCube. The original release contains 400 trials, followed by separate replication, intervention, and controller-development cohorts. The earlier completion bundle contains 760 live semantic trials and a separate 160-trial fixed-plan development test. Of those live trials, 240 bare-VLM visual records overlap the earlier visual archive. A further 200 distinct raw trials now complete the matched waiting and feedback study. Historical outcomes are retained. Missing multi-object, improved-predictor, and physical-hand measurements are marked TODO.
+This supplement accompanies the working manuscript updated on 2 November 2026. The cube cohorts below concern the marked RSLCube. A separate 120-trial native-layout die comparison is documented in the dice extension section. The original release contains 400 trials, followed by separate replication, intervention, and controller-development cohorts. The earlier completion bundle contains 760 live semantic trials and a separate 160-trial fixed-plan development test. Of those live trials, 240 bare-VLM visual records overlap the earlier visual archive. A further 200 distinct raw trials now complete the matched waiting and feedback study. Historical outcomes are retained. Missing multi-object, improved-predictor, and physical-hand measurements are marked TODO.
 
 The latest complete-system comparison refits only Astra's waiting actor. The student, predictor, execution actor, and task criterion remain frozen. Earlier cohorts use their recorded original controller version. Results from the earlier RGB-D backend, invalid contact-capacity runs, and different protocols are not pooled into the current main result. The original bare-baseline addendum was specified after the first suite, so the full historical study is not described as blindly preregistered.
 
@@ -335,8 +335,39 @@ Compare the original and improved predictors with the same student and agent fir
 \subsection{Objects and physical hand}
 Select about five objects with variation in geometry, inertia, contact affordances, and semantic ambiguity. Record object-specific students and training budgets. Balance the task set within each object and report each row before computing an object macro-average. Forty trials per arm per object is the default batch size. Hardware runs need calibrated independent scoring, documented resets, two sessions, and synchronized video and command logs. A new object checkpoint alone is insufficient without its assets, calibration, normalization, action conventions, and goal definitions.
 
+\section{Native-Layout Dice Extension}
+\label{sec:dice-extension}
+The die is a wooden object with one through six native textured pips, rendered at $512\times512$ with the hand. Three methods each run 40 matched trials over seeds 186301 and 186302. The independent audit verifies all 120 records, canonical targets, paired reset states, source and weight hashes, response latency, and bare-baseline isolation. No trial is service-excluded.
+
+\paragraph{Object-specific motor interface.}
+The released feedforward actor uses ten frames of normalized input. Its goal-related channels are replaced by a learned reconstruction of eight conditioning features. For each frame, a 768-dimensional latent is normalized and encoded to 32 dimensions. The adapter combines it with the four measured quaternion components and their outer product, then applies layers of widths 256, 128, and 8. The original actor and observation normalization remain frozen. Inference receives physical history of shape $10\times116$ and continuous latent history of shape $10\times768$. It receives no true target quaternion, target index or table-based reconstruction of its conditioning features.
+
+\paragraph{Perception, control and stop policy.}
+The die uses the released simulator-pose noise, bias, failure, jitter and delay model. There is no image pose estimator in these trials. All upper methods receive the same RGB and image-only crop. The physical horizon is 120 seconds at 20~Hz and the stop gate is checked at 3~Hz. A reply cannot be applied before $\lceil20L\rceil$ steps, while control continues. The drop boundary and independent full-quaternion success tolerance remain 0.24 metres and 0.16 radians.
+
+Astra uses one object-specific maintenance actor during pending and ordinary execution. Its calibrated completion model learns a bounded correction to measured angular error and an uncertainty term. It accepts when the calibrated upper bound is at most 0.16 radians. Once a correct count is declared and the state is not inspection, this gate may stop even with a further request pending. The bare baselines use no learned maintenance or completion module and stop on the measured-angle criterion only when no request is pending. Thus these are complete-system comparisons, not isolated tests of the semantic models or a replication of the cube's shared measured gate.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrrrr}
+\toprule
+System & Success & \% & Drops & Calls\\
+\midrule
+Astra full & 24/40 & 60.0 & 15 & 63\\
+Fine-tuned VLM, bare & 20/40 & 50.0 & 8 & 141\\
+Rule VLM, bare & 17/40 & 42.5 & 7 & 154\\
+\bottomrule
+\end{tabular}
+\caption{Completed native-layout die comparison. No service exclusions. The independent success definition is shared; internal control and stop modules differ by system.}
+\end{table}
+
+Astra's 95\% Wilson interval is [44.6, 73.7]\%, versus [35.2, 64.8]\% for fine-tuning and [28.5, 57.8]\% for rules. Astra has ten exclusive successes against six for fine-tuning (exact paired $p=0.4545$), and eleven against four for rules ($p=0.1185$). These exploratory comparisons do not establish superiority. Astra has twelve startup drops, three execution drops and one false stop. Fine-tuning has eight execution drops, seven false stops and five horizon failures. Rules have seven startup drops, six false stops and ten horizon failures. Median request latencies are 5.63, 0.124 and 1.16 seconds, respectively.
+
+\paragraph{Visual-layout follow-up, pending.}
+A separate frozen study rotates only the native visual mesh by 120 degrees about a body diagonal, leaving collision and inertia unchanged. It pairs identity and changed-layout trials with the same physical target and reset seed. Since fixed motor IDs no longer equal printed counts, all methods receive an explicit skill-ID contract, with no layout table. This common prompt change is controlled by the identity arm. The learned VLM retains its original continuous vector and native-layout weights. The intervention also changes slight visual-shape asymmetries and is not a pure texture edit. Deterministic diagnostic traces match exactly for native, identity and permuted layers; the formal solver settings are unchanged. The planned six cells contain 40 trials each. Development admission is complete, formal evaluation is running, and no follow-up rate is included as a completed result.
+
 \section{Reproducibility and Evidence Audit}
-The archive retains 400 original-release trials, 160 successor-development trials, 120 earlier replication trials, and the 19-state recovery diagnostic. The latest snapshot has 760 live records: native 120, goal 120, feedback 80, visual 360, and waiting 80. Its 240 bare visual records overlap the earlier archive. Another 160 fixed-plan development trials complete that 920-trial bundle. The new waiting/feedback snapshot adds 200 distinct raw trials, with its shared full condition counted once. These protocols must not be pooled into one rate. Partial snapshots add no trials.
+The archive retains 400 original-release trials, 160 successor-development trials, 120 earlier replication trials, and the 19-state recovery diagnostic. The latest snapshot has 760 live records: native 120, goal 120, feedback 80, visual 360, and waiting 80. Its 240 bare visual records overlap the earlier archive. Another 160 fixed-plan development trials complete that 920-trial bundle. The new waiting/feedback snapshot adds 200 distinct raw trials, with its shared full condition counted once. The native-layout die adds 120 separately audited trials. These protocols must not be pooled into one rate. Partial snapshots and the ongoing dice layout study add no completed trials.
 
 Sanitized records retain initial-state hashes, goals, measured stops, independent errors, outcomes, exclusions and latencies. Source hashes link to the full archive. Table generation checks counts, matching, exclusions and paired tests. New students, predictors, objects or stop rules require new releases.
 
