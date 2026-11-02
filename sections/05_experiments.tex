@@ -1,6 +1,6 @@
 \section{Experiments}
 \label{sec:experiments}
-We organize evaluation around four questions: \textbf{Q1}~How do complete systems compare under original and changed semantic mappings? \textbf{Q2}~How should the hand move while the agent is thinking? \textbf{Q3}~Is an initial plan sufficient, or does continued visual feedback help? \textbf{Q4}~How do perception and control transfer to a physical hand? We report cube and dice studies, including independent control confirmation and image refresh. Further objects, downstream predictor substitution and hardware remain TODO.
+We ask four questions: \textbf{Q1}~How do complete systems compare across objects and semantic mappings? \textbf{Q2}~How should the hand act during deliberation? \textbf{Q3}~Does continued visual feedback help? \textbf{Q4}~Does the system work on physical objects? Multi-object coverage belongs to Q1 and Q4. All Q2/Q3 interventions use only the marked cube to keep assets, perception and motor control fixed. Q1 currently covers two objects. Further objects and hardware remain TODO.
 
 \subsection{Setup and reporting}
 Experiments use Revo3 cube and dice assets in Isaac Lab 3.0/Newton with validated contact capacities. Each agent condition has two seeds and 40 scheduled trials. Initial physical states are matched within each study. Within the cube studies, all systems share the frozen pose estimator, goal bank, latent student, 0.16-radian success threshold, and measured-pose stopping gate. Dice trials share an object-specific student and noisy simulator pose; Astra additionally uses calibrated completion correction. We report these backend differences rather than pooling their protocols. The primary fine-tuned and rule VLM baselines omit the added waiting and execution actors. Astra uses adaptive inspection, whereas the local baselines use a fixed unreadable-view schedule. This is a comparison of complete systems, with natural model latencies, rather than an isolated test of model weights.
@@ -20,7 +20,7 @@ System & Successes & Rate (\%) & 95\% Wilson interval & Drops & Model calls\\
 \label{tab:main}
 \end{table*}
 
-\subsection{Q1: Complete systems and object coverage}
+\subsection{Q1: Systems across objects and mappings}
 The latest full Astra system succeeds in 35/40 trials (87.5\%), compared with 30/40 (75.0\%) for the bare fine-tuned VLM and 17/40 (42.5\%) for the bare rule VLM (Table~\ref{tab:main}). Astra has nine exclusive successes against four for the fine-tuned VLM, giving exact paired $p=0.267$. The 12.5-point difference is therefore a favorable estimate, not established superiority. Against the rule VLM, the corresponding counts are twenty and two ($p=0.000121$).
 
 
@@ -60,7 +60,7 @@ System & Identity & Permuted & Masked\\
 \CompletedVisualRows
 \bottomrule
 \end{tabular}
-\caption{\textbf{Q1: sensitivity to semantic mapping.} Identity and permutation retain all 40 trials. Astra masking has one service exclusion. Its paired masking contrast uses 31/39 identity successes versus 0/39 masked successes. The local methods have no exclusions. This study uses the original Astra actors.}
+\caption{\textbf{Q1: cube semantic-mapping comparison.} Identity and permutation retain all 40 trials. Astra masking has one service exclusion. Its paired masking contrast uses 31/39 identity successes versus 0/39 masked successes. The local methods have no exclusions. This study uses the original Astra actors.}
 \label{tab:visual}
 \end{table}
 
@@ -70,10 +70,10 @@ Astra retains 32/40 successes after permutation, while fine-tuned success falls 
 A separate 240-trial study rotates only the native visual mesh, preserving collision and inertia. The same two layouts use a prompt distinguishing printed counts from motor-skill IDs. With 40 matched trials per cell, Astra completes 28/40 identity and 26/40 permuted trials, fine-tuning 23/40 and 0/40, and rules 13/40 and 1/40. There are no service exclusions. In the permuted condition, Astra's exploratory paired contrasts give $p=2.98\times10^{-8}$ against fine-tuning and $p=5.96\times10^{-8}$ against rules. Its own layout contrast ($p=0.688$) does not establish equivalence. The local baselines receive current RGB and instruction, whereas Astra also uses probes, history and noisy feedback. This result supports system-level layout transfer, not isolated model superiority. The supplement reports protocol differences, binding errors and a recorded probing example.
 
 
-\subsection{Q2: Control during agent deliberation}
-We compare four ways of acting while a semantic request is pending: continue the student proposal, interpolate toward it with fixed speed 0.15, learn that speed, and learn both speed and a bounded joint correction. Every condition uses the same frozen execution actor outside pending intervals. Astra, the student, visual pose predictor, stopping gate, and physical horizon are fixed.
+\subsection{Q2: Controller ablations on the cube}
+On the marked cube, we compare four ways of acting while a semantic request is pending: continue the student proposal, interpolate toward it with fixed speed 0.15, learn that speed, and learn both speed and a bounded joint correction. Every condition uses the same frozen execution actor outside pending intervals. Astra, the student, visual pose predictor, stopping gate, and physical horizon are fixed.
 
-The speed-only actor constrains its waiting residual to zero throughout fitting. Data, initialization, optimizer, sampling and 2,400 updates match the full actor. Reproduction yields identical deployed full-actor weights. Undeployed evidence heads also match. Held-out checks verify identical non-pending actions and a zero speed-only residual.
+The speed-only actor is trained with zero waiting residual, matching full-actor data, initialization, optimizer, sampling and 2,400 updates. Reproduction yields identical deployed full-actor tensors. Held-out checks verify identical non-pending actions.
 
 \begin{table}[t]
 \centering\small
@@ -85,13 +85,13 @@ Waiting policy & Success & \% & Drops & Wait drops\\
 \AblationWaitingRows
 \bottomrule
 \end{tabularx}
-\caption{\textbf{Q2: how should the hand act while Astra is thinking?} Each condition has 40 scheduled trials. All arms use the same frozen controller outside pending requests. Successes and drops use the common service-eligible panel. Wait drops combine startup and later pending intervals. All 40 trials per arm are service-eligible.}
+\caption{\textbf{Q2: cube controller ablation.} Each condition has 40 scheduled trials. All arms use the same frozen controller outside pending requests. Successes and drops use the common service-eligible panel. Wait drops combine startup and later pending intervals. All 40 trials per arm are service-eligible.}
 \label{tab:waiting}
 \end{table}
 
 Continued execution succeeds in 25/40 trials, fixed slowing in 30/40, learned slowing in 28/40, and learned slowing with joint correction in 34/40 (Table~\ref{tab:waiting}). There are no service exclusions. The full actor has the highest observed success, but learning only the speed does not improve on fixed slowing. Holm-adjusted exact paired $p$-values for the three registered adjacent contrasts are 0.604, 0.804, and 0.539. This cohort does not resolve those component gains.
 
-Total drops are twelve, four, eight, and five. The full actor reduces total drops relative to continued execution and learned slowing, but has four later-pending drops versus one for learned slowing. Fixed slowing has four startup drops and no later drops. Thus the best completion count does not coincide with the fewest drops or the fewest pending-stage failures. The supplement separates startup, later waiting, and execution outcomes. Non-pending weights are fixed, but the states and subsequent agent decisions reached after waiting can differ.
+Total drops are twelve, four, eight, and five. Full control has four later-pending drops versus one for learned slowing. Fixed slowing has four startup drops and no later drops. Highest completion therefore does not coincide with fewest drops. The supplement separates phases. Shared execution weights do not imply identical states or subsequent agent decisions.
 
 Trials use seeds 185501 and 185502 with reversed condition order for the second seed. Checkpoints are fixed before these outcomes. Historical training-version comparisons remain separate from this structural ablation.
 
@@ -102,8 +102,8 @@ Without refitting, a new two-seed cohort gives 25/39 successes for continuation,
 \paragraph{Other component evidence.}
 Earlier waiting--execution factorial tests do not establish a reliable interaction. Explicit controller-goal interventions also do not establish a benefit, and a separate learned execution-residual gate fails its development admission rule. These negative results and the matched-state diagnostic are retained in the supplement. The new waiting study changes neither the execution actor nor its goal input.
 
-\subsection{Q3: Initial planning and visual feedback}
-We compare the same Astra under two observation protocols. One receives the initial RGB observation and measured feedback, then commits to a complete plan containing one to six bounded actions. It receives no later semantic observation. Its last non-abstain skill can continue until the shared stopping gate or horizon terminates the trial. The other can use up to six calls with updated observations and history. Both retain continuous pose feedback to the student, the same full waiting and execution actors, and the same stopping rule.
+\subsection{Q3: Visual feedback on the cube}
+On the same cube, we compare Astra under two observation protocols. One receives the initial RGB observation and measured feedback, then commits to a complete plan containing one to six bounded actions. It receives no later semantic observation. Its last non-abstain skill can continue until the shared stopping gate or horizon terminates the trial. The other can use up to six calls with updated observations and history. Both retain continuous pose feedback to the student, the same full waiting and execution actors, and the same stopping rule.
 
 \begin{table}[t]
 \centering\small
@@ -114,7 +114,7 @@ Protocol & Success & \% & Drops & Calls\\
 \AblationFeedbackRows
 \bottomrule
 \end{tabular}
-\caption{\textbf{Q3: initial plan versus continued feedback.} Each arm has 40 scheduled trials. The full-feedback condition is shared with Q2, rather than counted as another 40 raw trials. Calls include all raw episodes. One service-affected slot is excluded symmetrically. Different inference budgets are part of the protocol comparison.}
+\caption{\textbf{Q3: initial plan versus feedback on the cube.} Each arm has 40 scheduled trials. The full-feedback condition is shared with Q2, rather than counted as another 40 raw trials. Calls include all raw episodes. One service-affected slot is excluded symmetrically. Different inference budgets are part of the protocol comparison.}
 \label{tab:feedback}
 \end{table}
 
@@ -134,17 +134,17 @@ Upper RGB & Success & \% & Drops & Calls\\
 \ImageRefreshRows
 \bottomrule
 \end{tabular}
-\caption{\textbf{Q3: fresh visual evidence.} Forty trials per arm, with the same call cap and frozen local controllers. Only upper-level RGB is frozen. Calls are realized totals, not matched compute.}
+\caption{\textbf{Q3: fresh visual evidence on the cube.} Forty trials per arm, with the same call cap and frozen local controllers. Only upper-level RGB is frozen. Calls are realized totals, not matched compute.}
 \label{tab:image-refresh}
 \end{table}
 
 Current images yield 32/40 completions versus 9/40 for repeated first frames (Table~\ref{tab:image-refresh}). All 23 discordant pairs favor current images, a 57.5-point gain (exact $p=2.38\times10^{-7}$, Holm $p=4.77\times10^{-7}$). Abstentions fall from 24 to two, while drops change from four to three. Transport hashes verify the delivered images. This supports the value of later visual evidence with other feedback retained. Actual calls, tokens and trajectories differ, so equal maximum calls do not establish equal realized compute.
 
-\subsection{Q4: From simulation to a physical hand}
-\paragraph{Pose estimation under occlusion.}
+\subsection{Q4: Multi-object hardware evaluation}
+\paragraph{Hardware protocol.}
+\TODO{Insert multi-object hardware results.} Compare full Astra, bare fine-tuned VLM and bare rule VLM on each physical object, with 40 trials per method across two sessions. Report per-object completion, drops, false stops and inference cost, using independent scoring and synchronized videos. Record object-specific policies and calibration. Hardware results remain pending.
+
+\paragraph{Supporting cube perception study.}
 A paired study evaluates fixed RGB and RGB-D estimators on 6,144 rendered cube observations across three seeds and four camera pitches. Recall requires translation error $<10$~mm and rotation error $<10^\circ$, with invalid predictions counted as failures. RGB-D reaches 3,977/6,144 (64.73\%) versus 2,306/6,144 (37.53\%) for RGB. The paired gain is 27.20 percentage points (95\% environment-cluster bootstrap interval 26.07--28.30). At 25--50\% occlusion, recall is 55.45\% versus 19.91\%, but both reach zero at $\geq75\%$. The supplement gives stricter thresholds, no-hand controls and depth perturbations.
 
 Training histories differ, and evaluation uses ideal target masks and virtual depth. This supports a perception-system comparison under light and moderate occlusion, not an isolated fusion effect. These checkpoints differ from the frozen agent predictor. Downstream task gains and physical-camera accuracy remain unmeasured.
-
-\paragraph{Physical hand.}
-\TODO{Add hardware measurements.} Plan 40 trials per system and object across two sessions, with independent scoring, synchronized video and a waiting-control comparison. Simulation alone establishes neither real-camera robustness nor a hardware advantage over ViserDex. The supplement specifies calibration and logging requirements.

@@ -16,7 +16,7 @@
 \maketitle
 \setcounter{section}{0}\renewcommand{\thesection}{\Alph{section}}
 \section{Scope of This Release}
-This supplement accompanies the working manuscript updated on 2 November 2026. The cube cohorts below concern the marked RSLCube. A separate 120-trial native-layout die comparison and a 240-trial visual-layout study are documented in the dice sections. The original release contains 400 trials, followed by separate replication, intervention, and controller-development cohorts. The earlier completion bundle contains 760 live semantic trials and a separate 160-trial fixed-plan development test. Of those live trials, 240 bare-VLM visual records overlap the earlier visual archive. A further 200 distinct raw trials complete the matched waiting and feedback study. Another 200 distinct raw trials provide independent controller confirmation (120) and a fresh-versus-frozen upper-image intervention (80). These cohorts are kept separate. Historical outcomes are retained. An independent 6,144-frame RGB/RGB-D pose study is included separately. Missing additional-object, downstream predictor-substitution and physical-hand measurements are marked TODO.
+This supplement accompanies the working manuscript updated on 2 November 2026. The cube cohorts below concern the marked RSLCube. Q1 system comparisons and planned Q4 hardware evaluation cover multiple objects. All Q2 control ablations and Q3 feedback interventions are cube-only. The independent cube pose study supports Q4 without constituting a hardware result. A separate 120-trial native-layout die comparison and a 240-trial visual-layout study are documented in the dice sections. The original release contains 400 trials, followed by separate replication, intervention, and controller-development cohorts. The earlier completion bundle contains 760 live semantic trials and a separate 160-trial fixed-plan development test. Of those live trials, 240 bare-VLM visual records overlap the earlier visual archive. A further 200 distinct raw trials complete the matched waiting and feedback study. Another 200 distinct raw trials provide independent controller confirmation (120) and a fresh-versus-frozen upper-image intervention (80). These cohorts are kept separate. Historical outcomes are retained. An independent 6,144-frame RGB/RGB-D pose study is included separately. Missing additional-object, downstream predictor-substitution and physical-hand measurements are marked TODO.
 
 The latest complete-system comparison refits only Astra's waiting actor. The student, predictor, execution actor, and task criterion remain frozen. Earlier cohorts use their recorded original controller version. Results from the earlier RGB-D backend, invalid contact-capacity runs, and different protocols are not pooled into the current main result. The original bare-baseline addendum was specified after the first suite, so the full historical study is not described as blindly preregistered.
 
@@ -204,7 +204,7 @@ No wrong-to-correct binding transition occurs in these bare-VLM cohorts. This is
 Identity versus permutation yields eighteen exclusive successes and four exclusive failures for the fine-tuned model (exact paired $p=0.00434$), versus ten and ten for the rule model ($p=1.0$). The final analysis applies Holm correction across six planned image contrasts, giving adjusted $p=0.0130$ for the fine-tuned mapping contrast. The single deterministic remapping and reconstructed upper images limit generalization claims. Astra has five exclusive identity successes and five exclusive permutation successes ($p=1.0$).
 
 
-\subsection{Matched waiting and feedback cohort}
+\subsection{Cube-only waiting and feedback cohort (Q2/Q3)}
 The new cohort uses seeds 185501 and 185502, with 20 trials per seed and five conditions. The full waiting/full-feedback arm is shared between Q2 and Q3. All 200 initial physical-state records and first model-visible images match across their respective paired slots. Runtime, source, checkpoint, physical-log, action-scope, and delayed-delivery checks pass. Speed-only waiting is trained under a zero-residual constraint using the same initialization, data, sampling, optimizer, and 2,400 updates as the full reference. The reproduced full reference has identical deployed tensors.
 
 \begin{table*}[t]
@@ -240,7 +240,7 @@ The initial-plan service timeout occurs at trial 185502011 after 121.1 seconds a
 
 Feedback gives 33/39 successes against 6/39 for initial planning, with 27 feedback-only successes and zero initial-only successes. Twenty-two initial abstentions become feedback successes. No executed wrong-to-correct binding is found. Median logical duration is 8.17 seconds for initial planning and 22.0 seconds for feedback on the eligible panel. These durations include unsuccessful termination and must be interpreted alongside 28 initial-plan abstentions. Median measured call latency over raw requests is 8.12 and 5.33 seconds. The protocols use different output structures and call budgets.
 
-\subsection{Independent confirmation and upper-image refresh}
+\subsection{Cube confirmation and image refresh (Q2/Q3)}
 The follow-up freezes the previous student, predictor, waiting and execution actors, physics, public prompt, six-call cap and scoring rule. Confirmation uses seeds 187101 and 187102, and image refresh uses 187201 and 187202. Each condition contains twenty trials per seed, with condition order reversed for the second seed. Five separate admission trials are not included. Neither these formal outcomes nor additional outcome-driven trials select the weights. This cohort contains 200 unique raw trials.
 
 \begin{table*}[t]
@@ -252,7 +252,7 @@ Condition & Raw success & Eligible & Rate (\%) & Drops & Calls & Tokens\\
 \ConfirmationImageRows
 \bottomrule
 \end{tabular}
-\caption{Independent confirmation and image refresh. Eligible successes, rates and drops use the common panel within each study. Calls and tokens include all raw trials. A failed request may have no reported tokens. The image study uses distinct seeds from controller confirmation.}
+\caption{Cube-only independent confirmation and image refresh. Eligible successes, rates and drops use the common panel within each study. Calls and tokens include all raw trials. A failed request may have no reported tokens. The image study uses distinct seeds from controller confirmation.}
 \label{tab:confirmation-image}
 \end{table*}
 
@@ -362,25 +362,25 @@ The fixed gate is 0.8282. The phase-fixed gate uses 0.5872 when unbound and 0.98
 \subsection{Timing verification}
 The latest native suite contains 344 actual calls, of which 342 are applied before episode termination. The remaining two replies belong to terminated rule-baseline episodes and are retained. The timing audit checks 52,475 control steps. Separate audits cover 80 waiting trials, 80 feedback trials and 360 visual trials. Pending requests preserve continuous logical control, and replies are applied only after their measured latency and actual completion. The new matched 200-trial study independently checks 128,357 control steps and 509 actual requests. Of these, 492 replies are applied and seventeen remain unapplied due to terminated episodes or the documented service failure. All applied replies satisfy the recorded delay, and pending control steps are contiguous. These checks verify the delay protocol rather than wall-clock real-time operation.
 
-\section{Experimental Requirements Before Submission}
+\section{Scope, Interpretation and Remaining Work}
 \subsection{Separate model strength from control}
 The primary comparison uses full Astra against bare VLM baselines. Its interpretation is system-level. To attribute gains to the upper-level model, compare all providers with identical control actors, timing conventions, stopping, and information access. Preserve the existing shared-control results. Repeated live calls can produce different public plans even on matching initial states. Fixed-public-plan replay can isolate motor changes, but replay success must not be reported as a new live Astra success rate.
 
 \subsection{Test semantic and visual causality}
-The completed goal-input and restored-state tests do not establish a useful explicit controller-goal pathway. The completed visual intervention supports sensitivity to visible semantics, with only one reconstructed-image permutation. Further claims require additional mappings or objects, and an optional text-only comparison. These extensions must use new declared trials rather than select models on the completed test set.
+The cube-only goal-input and restored-state tests do not establish a useful explicit controller-goal pathway. Q1 reports semantic-layout sensitivity separately for the cube and die. These complete-system interventions do not extend the Q2 controller findings to other objects. No additional multi-object controller ablation is included in the current experiment scope.
 
 \subsection{Test agent feedback}
-The completed initial-plan comparison supports the full feedback protocol. An equal-call-budget or history/verification ablation would be needed to isolate those components. Keep the registered one-call and at-most-six-call budgets explicit and record actual calls, logical duration, wall time, and service failures. This contrasts complete protocols and does not isolate fresh information from extra inference compute. Latency replay should use the same public plan and delay sequence across motor variants. A simple time-aware residual actor provides a stronger learning baseline than fixed slowing alone. It should not be labeled an official reproduction of A2C2 or ARLI without a verified implementation.
+Q3 is complete on the marked cube. The initial-plan comparison tests the full feedback protocol with different call budgets. The separate fresh-versus-first-frame study holds the six-call cap and trigger policy fixed, supporting later visual evidence with live numeric feedback and local control retained. Realized calls, tokens and trajectories differ. Neither experiment isolates history from verification or establishes a feedback effect across objects. These are interpretation limits, not additional Q3 experiments required by the current scope.
 
 \subsection{Separate perception accuracy and control benefit}
 The independent pose study below establishes frame-level accuracy differences between two supplied systems. To test downstream benefit, compare predictors with the same student and agent. Report false stops, drops and semantic success alongside independent pose error. Oracle pose estimates the residual motor gap. Only a second experiment should adapt the student to the new predictor. A lower pose error is useful evidence, but it does not guarantee a higher task success rate.
 
 \subsection{Objects and physical hand}
-Select about five objects with variation in geometry, inertia, contact affordances, and semantic ambiguity. Record object-specific students and training budgets. Balance the task set within each object and report each row before computing an object macro-average. Forty trials per arm per object is the default batch size. Hardware runs need calibrated independent scoring, documented resets, two sessions, and synchronized video and command logs. A new object checkpoint alone is insufficient without its assets, calibration, normalization, action conventions, and goal definitions.
+Multi-object evaluation is confined to Q1 complete-system comparisons and Q4 physical-hand experiments. For Q1, target about five objects with variation in geometry, inertia, contact affordances and semantic ambiguity. Q4 must identify the actual physical objects tested and report its coverage separately. Record object-specific students and training budgets. Balance the task set within each object and report each row before computing an object macro-average. Forty trials per arm per object is the default batch size. Hardware runs need calibrated independent scoring, documented resets, two sessions, and synchronized video and command logs. A new object checkpoint alone is insufficient without its assets, calibration, normalization, action conventions, and goal definitions.
 
 \section{Independent Pose Estimation under Hand Occlusion}
 \label{sec:pose-occlusion}
-This independent study evaluates fixed RGB and RGB-D estimators on a 58.5~mm lettered cube. Its RGB checkpoint differs from the frozen agent CNN, and its pose recalls do not update agent success counts.
+This supporting perception study for Q4 evaluates fixed RGB and RGB-D estimators on a 58.5~mm lettered cube. Its RGB checkpoint differs from the frozen agent CNN, and its pose recalls do not update agent success counts.
 
 \paragraph{Sampling and scoring.}
 Three test seeds (31001--31003), four camera pitches ($0^\circ$, $60^\circ$, $90^\circ$, $105^\circ$), and 512 frames per group yield 6,144 observations in 48 environment clusters. RGB, RGB-D, their no-hand controls and perturbed-depth RGB-D produce 30,720 predictions. Collection records four geometry rejections; 6,139 admitted observations contain the full object.
@@ -417,7 +417,7 @@ The evaluation uses simulator pose labels, ideal target segmentation, and virtua
 \paragraph{Evidence provenance.}
 The supplied integrity report records 129 unchanged frozen files, shared finite ground truth, and pose-error recomputation within $2.28\times10^{-13}$~mm and $1.01\times10^{-11}$ degrees. Paper integration verifies file hashes and re-sums twelve shard counts. Bootstrap intervals and per-frame checks retain delivery provenance. Protocol/model hashes are archived; the final reproduction package still needs sanitized per-frame records.
 
-\section{Native-Layout Dice Extension}
+\section{Q1: Native-Layout Dice Extension}
 \label{sec:dice-extension}
 The die is a wooden object with one through six native textured pips, rendered at $512\times512$ with the hand. Three methods each run 40 matched trials over seeds 186301 and 186302. The independent audit verifies all 120 records, canonical targets, paired reset states, source and weight hashes, response latency, and bare-baseline isolation. No trial is service-excluded.
 
@@ -445,7 +445,7 @@ Rule VLM, bare & 17/40 & 42.5 & 7 & 154\\
 
 Astra's 95\% Wilson interval is [44.6, 73.7]\%, versus [35.2, 64.8]\% for fine-tuning and [28.5, 57.8]\% for rules. Astra has ten exclusive successes against six for fine-tuning (exact paired $p=0.4545$), and eleven against four for rules ($p=0.1185$). These exploratory comparisons do not establish superiority. Astra has twelve startup drops, three execution drops and one false stop. Fine-tuning has eight execution drops, seven false stops and five horizon failures. Rules have seven startup drops, six false stops and ten horizon failures. Median request latencies are 5.63, 0.124 and 1.16 seconds, respectively.
 
-\section{Completed Dice Visual-Layout Study}
+\section{Q1: Completed Dice Visual-Layout Study}
 \label{sec:dice-layout}
 \begin{figure*}[t]
 \centering
