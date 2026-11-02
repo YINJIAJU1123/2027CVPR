@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-02",
+  "operation": "integrate supplied independent RGB/RGB-D pose evaluation",
+  "main_body_pages": 8,
+  "main_total_pages": 9,
+  "supplement_total_pages": 11,
+  "compile_checks": "passed: no undefined references, LaTeX errors or overfull boxes",
+  "visual_review": "All-page contacts reviewed; main page 8 and supplement pages 8-11 inspected enlarged. No clipping or overlap. Orphan final line removed.",
+  "data_check": "Source hashes checked, 12 shard totals re-summed, invalid predictions retained. Reported cluster bootstrap and secondary metrics not recomputed.",
+  "pdf_text_check": "No replacement characters; 64.73 and 37.53 present in both PDFs.",
+  "files": {
+    "output/pdf/agenticrotation-2027.pdf": {
+      "sha256": "abc33d7314ddf5cf1dde0ff7ef05eec645d8febf11968c5728625b5d7f3bc461",
+      "bytes": 151234
+    },
+    "output/pdf/agenticrotation-2027-supplement.pdf": {
+      "sha256": "c698456f8432affa49c6ad86cdf9c14e1e40c4ad3f66d3b557923feae9f503a4",
+      "bytes": 195356
+    }
+  }
+}

@@ -15,7 +15,7 @@
 \maketitle
 \setcounter{section}{0}\renewcommand{\thesection}{\Alph{section}}
 \section{Scope of This Release}
-This supplement accompanies the working manuscript updated on 2 November 2026. The cube cohorts below concern the marked RSLCube. A separate 120-trial native-layout die comparison and a 240-trial visual-layout study are documented in the dice sections. The original release contains 400 trials, followed by separate replication, intervention, and controller-development cohorts. The earlier completion bundle contains 760 live semantic trials and a separate 160-trial fixed-plan development test. Of those live trials, 240 bare-VLM visual records overlap the earlier visual archive. A further 200 distinct raw trials now complete the matched waiting and feedback study. Historical outcomes are retained. Missing multi-object, improved-predictor, and physical-hand measurements are marked TODO.
+This supplement accompanies the working manuscript updated on 2 November 2026. The cube cohorts below concern the marked RSLCube. A separate 120-trial native-layout die comparison and a 240-trial visual-layout study are documented in the dice sections. The original release contains 400 trials, followed by separate replication, intervention, and controller-development cohorts. The earlier completion bundle contains 760 live semantic trials and a separate 160-trial fixed-plan development test. Of those live trials, 240 bare-VLM visual records overlap the earlier visual archive. A further 200 distinct raw trials now complete the matched waiting and feedback study. Historical outcomes are retained. An independent 6,144-frame RGB/RGB-D pose study is included separately. Missing additional-object, downstream predictor-substitution and physical-hand measurements are marked TODO.
 
 The latest complete-system comparison refits only Astra's waiting actor. The student, predictor, execution actor, and task criterion remain frozen. Earlier cohorts use their recorded original controller version. Results from the earlier RGB-D backend, invalid contact-capacity runs, and different protocols are not pooled into the current main result. The original bare-baseline addendum was specified after the first suite, so the full historical study is not described as blindly preregistered.
 
@@ -331,10 +331,49 @@ The completed goal-input and restored-state tests do not establish a useful expl
 The completed initial-plan comparison supports the full feedback protocol. An equal-call-budget or history/verification ablation would be needed to isolate those components. Keep the registered one-call and at-most-six-call budgets explicit and record actual calls, logical duration, wall time, and service failures. This contrasts complete protocols and does not isolate fresh information from extra inference compute. Latency replay should use the same public plan and delay sequence across motor variants. A simple time-aware residual actor provides a stronger learning baseline than fixed slowing alone. It should not be labeled an official reproduction of A2C2 or ARLI without a verified implementation.
 
 \subsection{Separate perception accuracy and control benefit}
-Compare the original and improved predictors with the same student and agent first. Report independent translation/rotation error, tail error, keypoint visibility, false stops, and semantic success. Oracle pose estimates the residual motor gap. Only a second experiment should adapt the student to the new predictor. A lower pose error is useful evidence, but it does not guarantee a higher task success rate.
+The independent pose study below establishes frame-level accuracy differences between two supplied systems. To test downstream benefit, compare predictors with the same student and agent. Report false stops, drops and semantic success alongside independent pose error. Oracle pose estimates the residual motor gap. Only a second experiment should adapt the student to the new predictor. A lower pose error is useful evidence, but it does not guarantee a higher task success rate.
 
 \subsection{Objects and physical hand}
 Select about five objects with variation in geometry, inertia, contact affordances, and semantic ambiguity. Record object-specific students and training budgets. Balance the task set within each object and report each row before computing an object macro-average. Forty trials per arm per object is the default batch size. Hardware runs need calibrated independent scoring, documented resets, two sessions, and synchronized video and command logs. A new object checkpoint alone is insufficient without its assets, calibration, normalization, action conventions, and goal definitions.
+
+\section{Independent Pose Estimation under Hand Occlusion}
+\label{sec:pose-occlusion}
+This independent study evaluates fixed RGB and RGB-D estimators on a 58.5~mm lettered cube. Its RGB checkpoint differs from the frozen agent CNN, and its pose recalls do not update agent success counts.
+
+\paragraph{Sampling and scoring.}
+Three test seeds (31001--31003), four camera pitches ($0^\circ$, $60^\circ$, $90^\circ$, $105^\circ$), and 512 frames per group yield 6,144 observations in 48 environment clusters. RGB, RGB-D, their no-hand controls and perturbed-depth RGB-D produce 30,720 predictions. Collection records four geometry rejections; 6,139 admitted observations contain the full object.
+
+Recall requires translation error $<10$~mm and full rotation error $<10^\circ$, without cube-symmetry minimization. Invalid predictions count as failures. Secondary recall uses 5~mm and $5^\circ$. ADD uses 6,144 nominal-cube surface points and threshold 0.1 diameter, not BOP average recall. Frozen prose used non-strict inequalities, but all evaluations consistently used strict thresholds. No samples lie on the primary boundaries.
+
+\begin{table}[t]
+\centering\small
+\input{tables/pose_occlusion}
+\caption{Independent pose recall (\%) under hand occlusion. All frames remain in the denominator, including invalid predictions. Occlusion is associated with viewpoint in this sampling design.}
+\label{tab:pose-occlusion}
+\end{table}
+
+\paragraph{Accuracy and uncertainty.}
+RGB passes on 2,306/6,144 observations and RGB-D on 3,977/6,144, a difference of 27.20 percentage points. The reported 95\% intervals are [36.60,38.48]\% for RGB, [64.02,65.46]\% for RGB-D, and [26.07,28.30] points for the paired difference. Intervals use 10,000 paired bootstrap draws of whole environment clusters, stratified by seed, retaining their views and temporal observations together. They describe sampling variation for this object and these test seeds, not variation across trained models or unseen objects. Table~\ref{tab:pose-occlusion} shows that gains concentrate in light and moderate occlusion. At 50--75\%, RGB-D recall is only 5.51\%, and both systems fail all 91 observations at $\geq75\%$.
+
+\begin{table}[t]
+\centering\small
+\input{tables/pose_metrics}
+\caption{Secondary pose metrics. All recall denominators include invalid predictions. $^{*}$Mean errors use valid predictions only and must be interpreted with the invalid counts. Threshold comparisons are strict.}
+\label{tab:pose-metrics}
+\end{table}
+
+\paragraph{Paired controls and sensitivity.}
+Removing hand occlusion at matched poses gives recall of 76.90\% for RGB and 99.89\% for RGB-D. The overall occlusion-associated loss is therefore 39.37 versus 35.16 points, with a paired reduction of 4.22 points [2.77,5.62]. This reduction is not uniform: at 50--75\% occlusion, the loss is 72.20 versus 94.49 points. The higher unoccluded RGB-D ceiling does not imply robustness when most of the object is hidden. The no-hand RGB render retains soft Gaussian-splat boundaries, whereas the occluded image uses a hard visible-object mask, which also limits this control. Restricting to fully framed observations gives 37.56\% versus 64.78\%, similar to the full cohort.
+
+Adding 1~mm Gaussian ray-depth noise and dropping 20\% of points yields RGB-D recall of 3,973/6,144 (64.66\%). This is a sensitivity check, not a calibrated physical depth-camera error model. Per-seed RGB/RGB-D recall is 37.30/64.89\%, 37.70/64.36\%, and 37.60/64.94\%. Viewpoint and occlusion covary: recall at nominal view is 76.04/99.80\%, versus 0.85/4.23\% at $105^\circ$.
+
+\paragraph{Training and interpretation.}
+The RGB system uses development-selected letterboxing and its existing PnP decoder. RGB-D uses the supplied epoch-1812 weights. Training histories and camera adaptation differ, so this is not a matched-budget architecture or depth-input ablation. RGB-D training manifests record 20,000 samples from seeds 43--50, validation uses seed 2027, and the test seeds do not overlap. Only nine training entries have more than 50\% occlusion. This post-hoc manifest observation is consistent with the severe-occlusion failure but is not causal evidence, and the full training imagery has not been re-audited. The old RGB training-data lineage is incomplete.
+
+The evaluation uses simulator pose labels, ideal target segmentation, and virtual co-located depth. Real-camera calibration and Gaussian-splat appearance assets are part of the setup, so it should not be described as using no real-world information. The evidence supports improved simulated pose accuracy over this RGB deployment, with a clear severe-occlusion limit. It does not yet establish improved agent completion or real-camera accuracy. The earlier 39/40 original pose-goal versus 35/40 latent-student physical-reach diagnostic used the frozen agent CNN and is a separate experiment.
+
+\paragraph{Evidence provenance.}
+The supplied integrity report records 129 unchanged frozen files, shared finite ground truth, and pose-error recomputation within $2.28\times10^{-13}$~mm and $1.01\times10^{-11}$ degrees. Paper integration verifies file hashes and re-sums twelve shard counts. Bootstrap intervals and per-frame checks retain delivery provenance. Protocol/model hashes are archived; the final reproduction package still needs sanitized per-frame records.
 
 \section{Native-Layout Dice Extension}
 \label{sec:dice-extension}
@@ -426,5 +465,5 @@ The archive retains 400 original-release trials, 160 successor-development trial
 
 Sanitized records retain initial-state hashes, goals, measured stops, independent errors, outcomes, exclusions and latencies. Source hashes link to the full archive. Table generation checks counts, matching, exclusions and paired tests. New students, predictors, objects or stop rules require new releases.
 
-\TODO{Complete the anonymous implementation package and object licenses.} The manuscript contains no identifying repository link.
+\TODO{Complete the anonymous implementation package and object licenses.}
 \end{document}

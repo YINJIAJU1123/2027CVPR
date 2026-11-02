@@ -1,0 +1,21 @@
+{
+  "source_thread": "01a1928c-1c2b-76b0-b6ac-67ab93a7eff3",
+  "experiment_thread": "01a19631-1491-7e33-b84d-aa9f04843c3e",
+  "original_source_sha256": {
+    "REPORT_ZH.txt": "035769c3a0b94801a8abe5d70987328446c14823fbb2381bced73a815927f5de",
+    "integrity_summary.json": "70e9c234bca69ce1c1eb37ba785185f20c21fe7dc83f98b936c689603ead67eb",
+    "paper_table.tex": "4f604ac7857e73c57023dfc96ad6c90bf07bb8411a1c6768ee6cda7327c438fa"
+  },
+  "integration_date": "2026-11-02",
+  "source_report_sanitized": "Host names, account paths and connection commands removed. Numerical content retained.",
+  "retrieval": "Local copies delivered by prior review. Remote archive unreachable during this integration.",
+  "independent_check": {
+    "shards": 12,
+    "frames": 6144,
+    "rgb_successes": 2306,
+    "rgbd_successes": 3977,
+    "rgb_invalid": 69,
+    "rgbd_invalid": 1
+  },
+  "original_integrity_report_is_colleague_evidence": true
+}
