@@ -1,51 +1,19 @@
 \section{Experiments}
 \label{sec:experiments}
-We ask four questions: \textbf{Q1}~How do complete systems compare across objects and semantic mappings? \textbf{Q2}~How should the hand act during deliberation? \textbf{Q3}~Does continued visual feedback help? \textbf{Q4}~Does the system work on physical objects? Multi-object coverage belongs to Q1 and Q4. All Q2/Q3 interventions use only the marked cube to keep assets, perception and motor control fixed. Q1 currently covers two objects. Further objects and hardware remain TODO.
+We ask four questions: \textbf{Q1}~How do complete systems compare across objects and semantic mappings? \textbf{Q2}~How should the hand act during deliberation? \textbf{Q3}~Does continued visual feedback help? \textbf{Q4}~Does the system work on physical objects? Multi-object coverage belongs to Q1 and Q4. All Q2/Q3 interventions use only the marked cube to keep assets, perception and motor control fixed. Q1 is the multi-object simulation study: all six object-specific releases are complete under the two-mapping protocol. Q4 is a separate multi-object physical-hand study; Q2 and Q3 remain cube-only mechanism studies.
 
 \subsection{Setup and reporting}
 Experiments use Revo3 cube and dice assets in Isaac Lab 3.0/Newton with validated contact capacities. Each agent condition has two seeds and 40 scheduled trials. Initial physical states are matched within each study. Within the cube studies, all systems share the frozen pose estimator, goal bank, latent student, 0.16-radian success threshold, and measured-pose stopping gate. Dice trials share an object-specific student and noisy simulator pose; Astra additionally uses calibrated completion correction. We report these backend differences rather than pooling their protocols. The primary fine-tuned and rule VLM baselines omit the added waiting and execution actors. Astra uses adaptive inspection, whereas the local baselines use a fixed unreadable-view schedule. This is a comparison of complete systems, with natural model latencies, rather than an isolated test of model weights.
 
 The latest cube system replaces only its waiting actor. Release cohorts and module interventions remain separate. Table percentages use common service-eligible trials within the stated comparison. All raw records are retained, and no failed or excluded slot is replaced. Wilson intervals describe individual rates. The new waiting contrasts and six registered visual contrasts use Holm correction within their respective families. The independent confirmation and image-refresh tests form a separate two-test Holm family. Historical paired tests remain exploratory and unadjusted.
 
-\begin{table*}[t]
-\centering\small
-\begin{tabular}{lrrrrr}
-\toprule
-System & Successes & Rate (\%) & 95\% Wilson interval & Drops & Model calls\\
-\midrule
-\CompletedNativeRows
-\bottomrule
-\end{tabular}
-\caption{\textbf{Q1: latest native-image cube comparison.} Each system has 40 matched trials, with no service exclusions. Astra uses refitted waiting control and the original execution actor. The two VLM baselines use the shared student without these actors. Model calls total all 40 trials. This evaluation uses the original object/hand RGB pipeline, not the reconstructed images used for the separate semantic intervention.}
-\label{tab:main}
-\end{table*}
-
 \subsection{Q1: Systems across objects and mappings}
-The latest full Astra system succeeds in 35/40 trials (87.5\%), compared with 30/40 (75.0\%) for the bare fine-tuned VLM and 17/40 (42.5\%) for the bare rule VLM (Table~\ref{tab:main}). Astra has nine exclusive successes against four for the fine-tuned VLM, giving exact paired $p=0.267$. The 12.5-point difference is therefore a favorable estimate, not established superiority. Against the rule VLM, the corresponding counts are twenty and two ($p=0.000121$).
+We compare original and changed semantic mappings across six object-specific releases. Earlier native-image cohorts are retained separately in the supplement. Those cube and die cohorts do not establish Astra superiority over fine-tuning (paired $p=0.267$ and $p=0.4545$), and are not pooled with the mapping study.
 
+\input{tables/q1_all_objects}
 
-\paragraph{Remaining failures and prior releases.}
-The latest Astra cohort has three drops during unbound inspection, one wrong-color binding followed by a stop, and one abstention. No pending-stage drop occurs in this cohort, although Q2 contains such failures. Fine-tuning has nine execution drops and one horizon failure. Rules have twelve drops, ten false stops and one horizon failure. The supplement retains earlier cohorts, whose rankings also vary, without pooling controller versions. Timing logs confirm continued control during pending requests and delayed reply application, not real-time simulator throughput.
-
-\begin{table}[t]
-\centering\small
-\begin{tabularx}{\linewidth}{@{}Xrrr@{}}
-\toprule
-Simulation object & Rule & Fine-tuned & Full\\
-\midrule
-Cube, latest release & 17/40 & 30/40 & 35/40\\
-Die, noisy pose & 17/40 & 20/40 & 24/40\\
-Object 3 & \pending & \pending & \pending\\
-Object 4 & \pending & \pending & \pending\\
-Object 5 & \pending & \pending & \pending\\
-\bottomrule
-\end{tabularx}
-\caption{\textbf{Q1: object coverage.} Cube and die rows are measured under their own frozen releases. Dice uses noisy simulator pose without a predictor. Further objects require recorded geometry, calibration, policy, goal definitions, and 40 matched trials per method. Object-specific students do not imply zero-shot transfer. No average is computed over unfinished rows.}
-\label{tab:objects}
-\end{table}
-
-\paragraph{Second-object extension.}
-The native-layout die yields 24/40 successes for Astra, 20/40 for fine-tuning, and 17/40 for rules, with no service exclusions. Astra versus fine-tuning remains unresolved (exact paired $p=0.4545$). Twelve of its fifteen drops occur before the first skill arrives. This transfer therefore exposes a startup-control limitation despite successful semantic binding. The weights and perception backend differ from the cube, so this row does not isolate a geometry effect. The separate visual-layout study below uses a shared physical-skill prompt and is not pooled with this native-layout result.
+\paragraph{Four additional objects.}
+The registered duck, hedgehog, pig and milk-carton releases complete all 960 raw trials (four objects, three methods, two mappings, forty trials). Table~\ref{tab:q1-all-objects} reports the mapping cohorts for all six objects. Full Astra has the highest observed rate in each new-object cell. Its changed-mapping rates are 60.0\%, 80.0\%, 82.5\% and 27.5\%, compared with 5.0\%, 5.0\%, 7.5\% and 2.5\% for fine-tuning. These are object-specific system comparisons, not a common-policy transfer test. Three historical service failures are excluded symmetrically from their original-mapping comparisons. Milk-carton control remains difficult: Astra drops in 15/40 original and 20/40 changed-mapping trials. Higher completion therefore does not establish uniformly stable grasping. The supplement records the numerical reset review and sensitivity analysis.
 
 \paragraph{Visual-semantic intervention.}
 We keep predictor input and lighting fixed while changing the upper-level image. Identity, one cyclic letter--color permutation, and letter masking are evaluated on 40 matched states per method. All three conditions use geometry-consistent reconstructed face images, including identity. Consequently, this is a controlled image benchmark rather than the untouched RGB main comparison.
@@ -142,7 +110,7 @@ Current images yield 32/40 completions versus 9/40 for repeated first frames (Ta
 
 \subsection{Q4: Multi-object hardware evaluation}
 \paragraph{Hardware protocol.}
-\TODO{Insert multi-object hardware results.} Compare full Astra, bare fine-tuned VLM and bare rule VLM on each physical object, with 40 trials per method across two sessions. Report per-object completion, drops, false stops and inference cost, using independent scoring and synchronized videos. Record object-specific policies and calibration. Hardware results remain pending.
+\TODO{Insert multi-object hardware results.} Compare full Astra, bare fine-tuned VLM and bare rule VLM on each physical object with 40 trials per method and two sessions. Report completion, drops, false stops, inference cost, calibration and synchronized videos. Hardware results remain pending.
 
 \paragraph{Supporting cube perception study.}
 A paired study evaluates fixed RGB and RGB-D estimators on 6,144 rendered cube observations across three seeds and four camera pitches. Recall requires translation error $<10$~mm and rotation error $<10^\circ$, with invalid predictions counted as failures. RGB-D reaches 3,977/6,144 (64.73\%) versus 2,306/6,144 (37.53\%) for RGB. The paired gain is 27.20 percentage points (95\% environment-cluster bootstrap interval 26.07--28.30). At 25--50\% occlusion, recall is 55.45\% versus 19.91\%, but both reach zero at $\geq75\%$. The supplement gives stricter thresholds, no-hand controls and depth perturbations.

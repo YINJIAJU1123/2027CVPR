@@ -1,0 +1,279 @@
+{
+  "accepted_for_reporting": true,
+  "audit_sha256": "a34e95a90e2c35a80bcfcc1468f6509f78781fbdebd3486351cb31370964e016",
+  "rationale": "All 17 differences independently verified: one channel of one pixel differs by one 8-bit level. Delivered request-image equality remains strict.",
+  "pairs": [
+    {
+      "object": "duck",
+      "layout": "identity",
+      "case": 19,
+      "reference_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/duck/formal_v1/identity_rule/187501/batch_000/episode_019/request_01.png",
+      "comparison_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/duck/formal_v1/identity_vlm/187501/batch_000/episode_019/request_01.png",
+      "reference_sha256": "1d83c657fea38d0b082d439d88f9c1a373ef32147357f62dc104b6393515edd1",
+      "comparison_sha256": "6e80bea1384e87986094570ceafc21122a80e38b47d3911a9382207ef95d0dcc",
+      "channel_index": [
+        256,
+        204,
+        2
+      ],
+      "reference_value": 94,
+      "comparison_value": 95
+    },
+    {
+      "object": "duck",
+      "layout": "identity",
+      "case": 19,
+      "reference_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/duck/formal_v1/identity_rule/187501/batch_000/episode_019/request_01.png",
+      "comparison_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/duck/formal_v1/identity_astra/187501/batch_007/episode_019/request_01.png",
+      "reference_sha256": "1d83c657fea38d0b082d439d88f9c1a373ef32147357f62dc104b6393515edd1",
+      "comparison_sha256": "6e80bea1384e87986094570ceafc21122a80e38b47d3911a9382207ef95d0dcc",
+      "channel_index": [
+        256,
+        204,
+        2
+      ],
+      "reference_value": 94,
+      "comparison_value": 95
+    },
+    {
+      "object": "duck",
+      "layout": "identity",
+      "case": 25,
+      "reference_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/duck/formal_v1/identity_rule/187502/batch_020/episode_025/request_01.png",
+      "comparison_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/duck/formal_v1/identity_vlm/187502/batch_020/episode_025/request_01.png",
+      "reference_sha256": "b912498d479c7a8f642bf2896757ca133741ad4e0efabe0f103ebb993d575040",
+      "comparison_sha256": "10f4e094cfaddb6192be8cb74ac6415651f173f6e9c3493d97bac1720141568d",
+      "channel_index": [
+        332,
+        229,
+        2
+      ],
+      "reference_value": 196,
+      "comparison_value": 195
+    },
+    {
+      "object": "duck",
+      "layout": "identity",
+      "case": 25,
+      "reference_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/duck/formal_v1/identity_rule/187502/batch_020/episode_025/request_01.png",
+      "comparison_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/duck/formal_v1/identity_astra/187502/batch_020/episode_025/request_01.png",
+      "reference_sha256": "b912498d479c7a8f642bf2896757ca133741ad4e0efabe0f103ebb993d575040",
+      "comparison_sha256": "10f4e094cfaddb6192be8cb74ac6415651f173f6e9c3493d97bac1720141568d",
+      "channel_index": [
+        332,
+        229,
+        2
+      ],
+      "reference_value": 196,
+      "comparison_value": 195
+    },
+    {
+      "object": "duck",
+      "layout": "identity",
+      "case": 36,
+      "reference_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/duck/formal_v1/identity_rule/187502/batch_020/episode_036/request_01.png",
+      "comparison_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/duck/formal_v1/identity_astra/187502/batch_020/episode_036/request_01.png",
+      "reference_sha256": "1451c214022bb31001ab04cd515b676af16b176223641231e2cf3b419d13b875",
+      "comparison_sha256": "b89c7b1c843a8d52cecd62dfaf58706e11140db01b86f1f3375f094c093db9ed",
+      "channel_index": [
+        317,
+        243,
+        2
+      ],
+      "reference_value": 226,
+      "comparison_value": 225
+    },
+    {
+      "object": "duck",
+      "layout": "permuted",
+      "case": 39,
+      "reference_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/duck/formal_v1/permuted_rule/187502/batch_020/episode_039/request_01.png",
+      "comparison_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/duck/formal_v1/permuted_astra/187502/batch_020/episode_039/request_01.png",
+      "reference_sha256": "7faa8df266d81dc1b4cb853c06613ab655773492e19b8272a82412ecf6bcc61c",
+      "comparison_sha256": "cc0c4d4658ec4ba68ceb527a1481e1d212c3fa93e82d8d4019ddcd1f3afbbf79",
+      "channel_index": [
+        241,
+        179,
+        0
+      ],
+      "reference_value": 118,
+      "comparison_value": 119
+    },
+    {
+      "object": "hedgehog",
+      "layout": "identity",
+      "case": 36,
+      "reference_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_rule/187502/batch_020/episode_036/request_01.png",
+      "comparison_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_vlm/187502/batch_020/episode_036/request_01.png",
+      "reference_sha256": "4ffe2532200018764882219bf2d9f229820d9f485d80b15e5d1784efa0b6da87",
+      "comparison_sha256": "b0ffe98661efb2d7f111ef3b919fd8c74213c57123b7cbd29e730fffce8cb4fd",
+      "channel_index": [
+        317,
+        243,
+        2
+      ],
+      "reference_value": 225,
+      "comparison_value": 226
+    },
+    {
+      "object": "hedgehog",
+      "layout": "identity",
+      "case": 36,
+      "reference_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_rule/187502/batch_020/episode_036/request_01.png",
+      "comparison_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_astra/187502/batch_020/episode_036/request_01.png",
+      "reference_sha256": "4ffe2532200018764882219bf2d9f229820d9f485d80b15e5d1784efa0b6da87",
+      "comparison_sha256": "b0ffe98661efb2d7f111ef3b919fd8c74213c57123b7cbd29e730fffce8cb4fd",
+      "channel_index": [
+        317,
+        243,
+        2
+      ],
+      "reference_value": 225,
+      "comparison_value": 226
+    },
+    {
+      "object": "hedgehog",
+      "layout": "permuted",
+      "case": 39,
+      "reference_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_rule/187502/batch_020/episode_039/request_01.png",
+      "comparison_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_vlm/187502/batch_020/episode_039/request_01.png",
+      "reference_sha256": "87c4f70419e62b39ddcce072edde439e24309de891a5aa229c506ffd3cb37669",
+      "comparison_sha256": "06b0a5d0eebfd6a3c9493a5bd2d1d6e16f5fe57b883de5352df2cb087816e0f9",
+      "channel_index": [
+        241,
+        179,
+        0
+      ],
+      "reference_value": 119,
+      "comparison_value": 118
+    },
+    {
+      "object": "hedgehog",
+      "layout": "permuted",
+      "case": 39,
+      "reference_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_rule/187502/batch_020/episode_039/request_01.png",
+      "comparison_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_astra/187502/batch_020/episode_039/request_01.png",
+      "reference_sha256": "87c4f70419e62b39ddcce072edde439e24309de891a5aa229c506ffd3cb37669",
+      "comparison_sha256": "06b0a5d0eebfd6a3c9493a5bd2d1d6e16f5fe57b883de5352df2cb087816e0f9",
+      "channel_index": [
+        241,
+        179,
+        0
+      ],
+      "reference_value": 119,
+      "comparison_value": 118
+    },
+    {
+      "object": "pig",
+      "layout": "identity",
+      "case": 30,
+      "reference_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_rule/187502/batch_020/episode_030/request_01.png",
+      "comparison_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_vlm/187502/batch_020/episode_030/request_01.png",
+      "reference_sha256": "5d9270d2eb8273006ca7ad28d1f6f934b347bbdc32e25db8369e2c0bf87be52d",
+      "comparison_sha256": "7f3c747a4c6742f70118b3be8dba01112b87f9bb7cffb60c720db3ed886bdbd4",
+      "channel_index": [
+        254,
+        289,
+        1
+      ],
+      "reference_value": 192,
+      "comparison_value": 191
+    },
+    {
+      "object": "pig",
+      "layout": "identity",
+      "case": 34,
+      "reference_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_rule/187502/batch_020/episode_034/request_01.png",
+      "comparison_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_vlm/187502/batch_020/episode_034/request_01.png",
+      "reference_sha256": "4bd6575fd1d206924016071d248c1a4cd4ac9940c2e1647c79ae10eb9f56c89b",
+      "comparison_sha256": "832fce132b502200197db6983031daeb45b3dff3b3a58fd16ae122ec9a54dd10",
+      "channel_index": [
+        272,
+        281,
+        1
+      ],
+      "reference_value": 183,
+      "comparison_value": 182
+    },
+    {
+      "object": "pig",
+      "layout": "permuted",
+      "case": 30,
+      "reference_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_rule/187502/batch_020/episode_030/request_01.png",
+      "comparison_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_astra/187502/batch_020/episode_030/request_01.png",
+      "reference_sha256": "e503c125b3c990ec03a2b6f3b4d00b0fc5703959c10a792aabc36fc42f1c38dc",
+      "comparison_sha256": "de13c0431d27504aa16fb2be46105b75cccaa7d0c2dafaef90b4d6badc5c85fe",
+      "channel_index": [
+        254,
+        289,
+        1
+      ],
+      "reference_value": 191,
+      "comparison_value": 192
+    },
+    {
+      "object": "pig",
+      "layout": "permuted",
+      "case": 34,
+      "reference_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_rule/187502/batch_020/episode_034/request_01.png",
+      "comparison_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_vlm/187502/batch_020/episode_034/request_01.png",
+      "reference_sha256": "558fcb76d910607862c4981ae5c4194b839942fcbf2dae9f7ccf6173e2773736",
+      "comparison_sha256": "7c91365049a333575c3841e5cd0e56fcc72b874e9687f7a0ad8b201f224bc5bb",
+      "channel_index": [
+        272,
+        281,
+        1
+      ],
+      "reference_value": 183,
+      "comparison_value": 182
+    },
+    {
+      "object": "pig",
+      "layout": "permuted",
+      "case": 36,
+      "reference_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_rule/187502/batch_020/episode_036/request_01.png",
+      "comparison_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_vlm/187502/batch_020/episode_036/request_01.png",
+      "reference_sha256": "8d5d4c9c3940685f063d66f9673a22d2e2649bbacf621067ab55c5fab15d03a4",
+      "comparison_sha256": "cafaa722a429cdab237823d1278a1131996c1ba491dea7453e95863805f70e40",
+      "channel_index": [
+        317,
+        243,
+        2
+      ],
+      "reference_value": 225,
+      "comparison_value": 226
+    },
+    {
+      "object": "pig",
+      "layout": "permuted",
+      "case": 39,
+      "reference_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_rule/187502/batch_020/episode_039/request_01.png",
+      "comparison_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_astra/187502/batch_020/episode_039/request_01.png",
+      "reference_sha256": "85cffab9281c31e8286ded89dd742b81f53244912543164ffb5f9ebcdf1b1f82",
+      "comparison_sha256": "6500efa85ef13c50c5de1f723a5ab0f46574cc2ce8706bde20c523fc2d17d05b",
+      "channel_index": [
+        241,
+        179,
+        0
+      ],
+      "reference_value": 119,
+      "comparison_value": 118
+    },
+    {
+      "object": "milk_carton",
+      "layout": "permuted",
+      "case": 39,
+      "reference_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/permuted_rule/187502/batch_020/episode_039/request_01.png",
+      "comparison_path": "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/permuted_astra/187502/batch_020/episode_039/request_01.png",
+      "reference_sha256": "211a3638d4d3450619896d999760276ab9b6565aa44244416c0dbc00034c7175",
+      "comparison_sha256": "cc50a63fd786711fcece57067e222e30d550a15d8d0c9246a9485dbec7c4bb16",
+      "channel_index": [
+        241,
+        179,
+        0
+      ],
+      "reference_value": 118,
+      "comparison_value": 119
+    }
+  ]
+}

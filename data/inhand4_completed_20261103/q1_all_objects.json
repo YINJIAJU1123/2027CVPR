@@ -1,0 +1,231 @@
+{
+  "objects": [
+    {
+      "object": "Cube",
+      "backend": "RGB pose",
+      "protocol": "reconstructed upper images",
+      "cells": {
+        "identity": {
+          "rule": {
+            "success": 23,
+            "trials": 40
+          },
+          "vlm": {
+            "success": 30,
+            "trials": 40
+          },
+          "astra": {
+            "success": 32,
+            "trials": 40
+          }
+        },
+        "permuted": {
+          "rule": {
+            "success": 23,
+            "trials": 40
+          },
+          "vlm": {
+            "success": 16,
+            "trials": 40
+          },
+          "astra": {
+            "success": 32,
+            "trials": 40
+          }
+        }
+      }
+    },
+    {
+      "object": "Die",
+      "backend": "Noisy pose",
+      "protocol": "native visual mesh rotation",
+      "cells": {
+        "identity": {
+          "rule": {
+            "success": 13,
+            "trials": 40
+          },
+          "vlm": {
+            "success": 23,
+            "trials": 40
+          },
+          "astra": {
+            "success": 28,
+            "trials": 40
+          }
+        },
+        "permuted": {
+          "rule": {
+            "success": 1,
+            "trials": 40
+          },
+          "vlm": {
+            "success": 0,
+            "trials": 40
+          },
+          "astra": {
+            "success": 26,
+            "trials": 40
+          }
+        }
+      }
+    },
+    {
+      "object": "Duck",
+      "backend": "Noisy pose",
+      "protocol": "native RGB surface-letter permutation",
+      "cells": {
+        "identity": {
+          "rule": {
+            "success": 15,
+            "trials": 38
+          },
+          "vlm": {
+            "success": 14,
+            "trials": 38
+          },
+          "astra": {
+            "success": 25,
+            "trials": 38
+          }
+        },
+        "permuted": {
+          "rule": {
+            "success": 9,
+            "trials": 40
+          },
+          "vlm": {
+            "success": 2,
+            "trials": 40
+          },
+          "astra": {
+            "success": 24,
+            "trials": 40
+          }
+        }
+      }
+    },
+    {
+      "object": "Hedgehog",
+      "backend": "Noisy pose",
+      "protocol": "native RGB surface-letter permutation",
+      "cells": {
+        "identity": {
+          "rule": {
+            "success": 17,
+            "trials": 39
+          },
+          "vlm": {
+            "success": 13,
+            "trials": 39
+          },
+          "astra": {
+            "success": 28,
+            "trials": 39
+          }
+        },
+        "permuted": {
+          "rule": {
+            "success": 10,
+            "trials": 40
+          },
+          "vlm": {
+            "success": 2,
+            "trials": 40
+          },
+          "astra": {
+            "success": 32,
+            "trials": 40
+          }
+        }
+      }
+    },
+    {
+      "object": "Pig",
+      "backend": "Noisy pose",
+      "protocol": "native RGB surface-letter permutation",
+      "cells": {
+        "identity": {
+          "rule": {
+            "success": 21,
+            "trials": 40
+          },
+          "vlm": {
+            "success": 16,
+            "trials": 40
+          },
+          "astra": {
+            "success": 37,
+            "trials": 40
+          }
+        },
+        "permuted": {
+          "rule": {
+            "success": 15,
+            "trials": 40
+          },
+          "vlm": {
+            "success": 3,
+            "trials": 40
+          },
+          "astra": {
+            "success": 33,
+            "trials": 40
+          }
+        }
+      }
+    },
+    {
+      "object": "Milk carton",
+      "backend": "Noisy pose",
+      "protocol": "native RGB surface-letter permutation",
+      "cells": {
+        "identity": {
+          "rule": {
+            "success": 13,
+            "trials": 40
+          },
+          "vlm": {
+            "success": 9,
+            "trials": 40
+          },
+          "astra": {
+            "success": 17,
+            "trials": 40
+          }
+        },
+        "permuted": {
+          "rule": {
+            "success": 3,
+            "trials": 40
+          },
+          "vlm": {
+            "success": 1,
+            "trials": 40
+          },
+          "astra": {
+            "success": 11,
+            "trials": 40
+          }
+        }
+      }
+    }
+  ],
+  "source_sha256": {
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/final_input_audit.json": "a34e95a90e2c35a80bcfcc1468f6509f78781fbdebd3486351cb31370964e016",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/initial_image_reporting_review.json": "d0ff37bc143acded134f001cea7a341482855f9d7e21125a2a7802ddf3d93116",
+    "/home/yin/DexManipulation/2027CVPR/data/cube_completed_20261101/visual_summary.json": "e106f29173aaea6da3e86f938e1f9f249179ffa00c2d11eefc126522c35b83af",
+    "/home/yin/DexManipulation/2027CVPR/data/dice_visual_layout_20261102/summary.json": "8e184be8df0d9f6662bdc36157e904323361c91faf08408a6ba4922f17f2dc0e",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/duck/formal_v1/summary.json": "8a5ef186e44de39445283d808e999a433e15cd62893f31661561108cc52d19ec",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/duck/release_v1/release.json": "dafa669220957673b2e42087c68449c83415162925945ddde38b715fb386e9de",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/summary.json": "0876a8a8fb12da81ed30a3b6d2e9ac7aed2385ecb0e18d2a954f3c3aa1194098",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/release_v1/release.json": "df3a917de8ee5b4954c8929ec97fec76078e67bf2e6e570ec9eb04dbbea2f21a",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/summary.json": "644ff095c7f06b83204e29678781437122ca93780974b834dba738ca3e23f740",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/release_v1/release.json": "a49ffc5ab10a321ab375cabec79bc779c282ed89da275979997900b3d1a66e2d",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/summary.json": "9a796dee18a430a133e4ba32107712191b0c09dfe8b52594371455e6a452c94e",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/release_v1/release.json": "4d024d55896f3c0ad0b792025ea438a073387ce10e537a6339e4ffd5d4963584"
+  },
+  "raw_trials_in_mapping_table": 1440,
+  "new_raw_trials": 960,
+  "scope": "Q1 only; Q2/Q3 remain cube-only"
+}

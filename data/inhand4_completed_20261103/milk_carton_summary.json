@@ -1,0 +1,221 @@
+{
+  "complete": true,
+  "development": false,
+  "paired_astra_comparisons": {
+    "identity": {
+      "vlm": {
+        "n": 40,
+        "a_only": 11,
+        "b_only": 3,
+        "mcnemar_exact_two_sided_p": 0.057373046875
+      },
+      "rule": {
+        "n": 40,
+        "a_only": 8,
+        "b_only": 4,
+        "mcnemar_exact_two_sided_p": 0.3876953125
+      }
+    },
+    "permuted": {
+      "vlm": {
+        "n": 40,
+        "a_only": 11,
+        "b_only": 1,
+        "mcnemar_exact_two_sided_p": 0.00634765625
+      },
+      "rule": {
+        "n": 40,
+        "a_only": 10,
+        "b_only": 2,
+        "mcnemar_exact_two_sided_p": 0.03857421875
+      }
+    }
+  },
+  "paired_identity_vs_permuted": {
+    "astra": {
+      "n": 40,
+      "a_only": 8,
+      "b_only": 2,
+      "mcnemar_exact_two_sided_p": 0.109375
+    },
+    "vlm": {
+      "n": 40,
+      "a_only": 8,
+      "b_only": 0,
+      "mcnemar_exact_two_sided_p": 0.0078125
+    },
+    "rule": {
+      "n": 40,
+      "a_only": 12,
+      "b_only": 2,
+      "mcnemar_exact_two_sided_p": 0.012939453125
+    }
+  },
+  "release_sha256": "4d024d55896f3c0ad0b792025ea438a073387ce10e537a6339e4ffd5d4963584",
+  "six_cell_excluded_cases": [],
+  "layouts": {
+    "identity": {
+      "astra": {
+        "raw_trials": 40,
+        "raw_success": 17,
+        "matched_trials": 40,
+        "matched_success": 17,
+        "wilson_95": [
+          0.28509392559950375,
+          0.5780493145800892
+        ],
+        "six_cell_common_trials": 40,
+        "six_cell_common_success": 17,
+        "reasons": {
+          "abstain": 4,
+          "drop": 15,
+          "false_stop": 3,
+          "horizon": 1,
+          "success": 17
+        }
+      },
+      "vlm": {
+        "raw_trials": 40,
+        "raw_success": 9,
+        "matched_trials": 40,
+        "matched_success": 9,
+        "wilson_95": [
+          0.12316091323540743,
+          0.37503096742310027
+        ],
+        "six_cell_common_trials": 40,
+        "six_cell_common_success": 9,
+        "reasons": {
+          "drop": 19,
+          "false_stop": 3,
+          "horizon": 9,
+          "success": 9
+        }
+      },
+      "rule": {
+        "raw_trials": 40,
+        "raw_success": 13,
+        "matched_trials": 40,
+        "matched_success": 13,
+        "wilson_95": [
+          0.200845022317827,
+          0.47982253810122333
+        ],
+        "six_cell_common_trials": 40,
+        "six_cell_common_success": 13,
+        "reasons": {
+          "drop": 13,
+          "false_stop": 14,
+          "success": 13
+        }
+      }
+    },
+    "permuted": {
+      "astra": {
+        "raw_trials": 40,
+        "raw_success": 11,
+        "matched_trials": 40,
+        "matched_success": 11,
+        "wilson_95": [
+          0.16108016247667337,
+          0.42834955806210573
+        ],
+        "six_cell_common_trials": 40,
+        "six_cell_common_success": 11,
+        "reasons": {
+          "abstain": 7,
+          "drop": 20,
+          "false_stop": 2,
+          "success": 11
+        }
+      },
+      "vlm": {
+        "raw_trials": 40,
+        "raw_success": 1,
+        "matched_trials": 40,
+        "matched_success": 1,
+        "wilson_95": [
+          0.0044268315026814095,
+          0.1288136896347409
+        ],
+        "six_cell_common_trials": 40,
+        "six_cell_common_success": 1,
+        "reasons": {
+          "drop": 24,
+          "false_stop": 7,
+          "horizon": 8,
+          "success": 1
+        }
+      },
+      "rule": {
+        "raw_trials": 40,
+        "raw_success": 3,
+        "matched_trials": 40,
+        "matched_success": 3,
+        "wilson_95": [
+          0.025836025774588198,
+          0.19864233524310543
+        ],
+        "six_cell_common_trials": 40,
+        "six_cell_common_success": 3,
+        "reasons": {
+          "drop": 13,
+          "false_stop": 24,
+          "success": 3
+        }
+      }
+    }
+  },
+  "input_sha256": {
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/identity_astra/187501/batch_000/episodes.jsonl": "6d7ff18eff1495b81b64dfffbc215feed2614de13532c147020ef125e1b10db8",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/identity_astra/187501/batch_000/manifest.json": "13cfe0ca787d27f54ef5c587596429739f684d0a4fc935b183793162ac92d062",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/identity_astra/187501/batch_000/result.json": "1a119a649965117384d2192c06220d8566d31da9a361ac2614675543cd1d36ae",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/identity_astra/187501/batch_000/action_interface.jsonl": "e7ac3ff17ab6569006567d9ea2c1e3a99e063d88a4645ea1963be71269cdeae2",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/identity_astra/187502/batch_020/episodes.jsonl": "b00541dbba76a41b3654c543374548bce2c0dad446e5bdbb0e14150a9ed197f9",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/identity_astra/187502/batch_020/manifest.json": "13cfe0ca787d27f54ef5c587596429739f684d0a4fc935b183793162ac92d062",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/identity_astra/187502/batch_020/result.json": "cf065e9adb234b9c6deff05fc329eac4bfa795664adb0d7584b2d69352a38cc0",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/identity_astra/187502/batch_020/action_interface.jsonl": "b227a6ccec0321fe3eb5d29eada1dcc89033ae1df128e2b144fad6c6899943be",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/identity_vlm/187501/batch_000/episodes.jsonl": "cef219ea470eb1323b6d75a27b1f1c627e75d57bc0eb90a1e3079adedd2cbc26",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/identity_vlm/187501/batch_000/manifest.json": "f3d828b1635eaefcd7974a2627b218cd509dceb0fef3a8b6de70f82ff462159a",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/identity_vlm/187501/batch_000/result.json": "d9540f8a1d91ed2f7d46aaff2b7bee834c3ade71ebfed2128b4ac8b0da7df04d",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/identity_vlm/187501/batch_000/action_interface.jsonl": "8c21c7fae55572e3dd215b6430712f5a6d7f55b73ff6d2d3dcf57af6ca16022a",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/identity_vlm/187502/batch_020/episodes.jsonl": "785aa332fdbdcc4905a0f41892d35288edc917308b1a7fe37cced566b7a81dde",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/identity_vlm/187502/batch_020/manifest.json": "f3d828b1635eaefcd7974a2627b218cd509dceb0fef3a8b6de70f82ff462159a",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/identity_vlm/187502/batch_020/result.json": "f5919d202895918c33298a477d5f66342e03785a4ea4809dbb4ee74ad6329016",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/identity_vlm/187502/batch_020/action_interface.jsonl": "fcd6815f72e3df28a35339f956590153d551a4cce254107c337f14fb6e9959d7",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/identity_rule/187501/batch_000/episodes.jsonl": "492c9a0a08325be2f0f58438f5b6d28f0af6e756c17b287583a0edf007cdb37c",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/identity_rule/187501/batch_000/manifest.json": "ad5acad369ea1332706becffeaf0a4a159689a19b0093009282a63628c604ddc",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/identity_rule/187501/batch_000/result.json": "292cf88e8f687fe54b33722c00438fafd1f2d629dd5e701cb10292f064b767b9",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/identity_rule/187501/batch_000/action_interface.jsonl": "a1287fc2dacffca1c77c801c70eca76066d972fe18875a3f65e500e1ddc604ae",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/identity_rule/187502/batch_020/episodes.jsonl": "9977379cd376d399501c81f68fe94e1e9e47c088d6794e007e7d7350ac673c2f",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/identity_rule/187502/batch_020/manifest.json": "ad5acad369ea1332706becffeaf0a4a159689a19b0093009282a63628c604ddc",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/identity_rule/187502/batch_020/result.json": "ecab0858308feabc29aab05c56f1d399f7c255208b0be22e5f1364155f29fa64",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/identity_rule/187502/batch_020/action_interface.jsonl": "c9dff92d104d42cbe316b39d4001c04900d2d898a196915febd67dacae321196",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/permuted_astra/187501/batch_000/episodes.jsonl": "ae55e81e07dae96f1887da2b9532927892d34a0b45c9b3e672ef913f171036a7",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/permuted_astra/187501/batch_000/manifest.json": "359b7d5ded1a05416a7b50c611a6560e5868130766c891ac865abeb77916e6fe",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/permuted_astra/187501/batch_000/result.json": "a6cb96c0fe8917c3514b6e60c1e3f5db375443cee7ce5c5cb6ce0ea9e2e4f464",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/permuted_astra/187501/batch_000/action_interface.jsonl": "7bfea15372bf5a952e4286264ef967fc35882cd82606958e60de6c8e815f3a7a",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/permuted_astra/187502/batch_020/episodes.jsonl": "6ad9b7aeb7310d9c5684ce246ad832cf806ab2b10bcd7fb41fb4d37b970795f5",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/permuted_astra/187502/batch_020/manifest.json": "359b7d5ded1a05416a7b50c611a6560e5868130766c891ac865abeb77916e6fe",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/permuted_astra/187502/batch_020/result.json": "697e19f5939256f19ac16c103932ea9396db3d31d7e3a0809dc6f164cd13fc7f",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/permuted_astra/187502/batch_020/action_interface.jsonl": "41f4c27371ec485e29cfdf0097e5b4962789c00465eccb0941cd7b70b88cffae",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/permuted_vlm/187501/batch_000/episodes.jsonl": "9ec39a34f39d9e084ee68e8286bdd5c32a2fe55afb307bbe64d373be4e55f7ff",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/permuted_vlm/187501/batch_000/manifest.json": "fc949852e663608dd498896b8bc8bdb895609a44603f4f415e547e3b37f97d76",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/permuted_vlm/187501/batch_000/result.json": "4036e5c9c5dbf336214126361b2678e913439946ede212aa122b68c783357411",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/permuted_vlm/187501/batch_000/action_interface.jsonl": "01a9ca362941fe825decc9f09e4aaf9163f8d444f3859c96dd81bdc8d9aa4c72",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/permuted_vlm/187502/batch_020/episodes.jsonl": "126e3caf70803694befec61916ed9bfa8a2e11ee20cef564eed6bbb31453a47e",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/permuted_vlm/187502/batch_020/manifest.json": "fc949852e663608dd498896b8bc8bdb895609a44603f4f415e547e3b37f97d76",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/permuted_vlm/187502/batch_020/result.json": "6aa20c1a689e276387ae75f42a6c5562c6cd989aba321b3a8e8b16bce2ef1ed7",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/permuted_vlm/187502/batch_020/action_interface.jsonl": "b3395dcc82117530f47bfad5e48ff07080646711312894a7473670879ad8e519",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/permuted_rule/187501/batch_000/episodes.jsonl": "2531c8b3ddabbc5578b1fb6262820ebd24fd22e874698e6f7d83982399248205",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/permuted_rule/187501/batch_000/manifest.json": "337debb7e69db3481e78e82268cb2b946ba911a7bb10c3f3f32d743368f5e82c",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/permuted_rule/187501/batch_000/result.json": "7f3d2dca217af67d6d8e14a18311c3c93391b3b11872795cf12da7f1119b8d26",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/permuted_rule/187501/batch_000/action_interface.jsonl": "735e2c87bedc0a218b12d92b241e94525b92fa5f5838bff125c80de64852474a",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/permuted_rule/187502/batch_020/episodes.jsonl": "5e13102068587eeadacad8d8542aaa0262b693519272c6af95ac4d2bef4e13da",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/permuted_rule/187502/batch_020/manifest.json": "337debb7e69db3481e78e82268cb2b946ba911a7bb10c3f3f32d743368f5e82c",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/permuted_rule/187502/batch_020/result.json": "ae3db870262758563bd32394e6b61b94e75309ee6f320395029fbe69df8681a8",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/milk_carton/formal_v1/permuted_rule/187502/batch_020/action_interface.jsonl": "dbf21aec5267466c15d15135878e5b7aed140f6d4cda84947e8bfa23023b0ae1"
+  },
+  "object": "milk_carton",
+  "scope": "Object-specific frozen marked-object Q1, six cells of 40 raw slots; original and changed mapping, noisy simulator pose"
+}

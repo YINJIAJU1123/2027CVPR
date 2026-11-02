@@ -1,0 +1,20 @@
+\begin{table*}[t]
+\centering\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{llrrrrrr}
+\toprule
+Object & Perception & \multicolumn{3}{c}{Original mapping} & \multicolumn{3}{c}{Changed mapping}\\
+\cmidrule(lr){3-5}\cmidrule(lr){6-8}
+& & Rule & Fine-tuned & Full Astra & Rule & Fine-tuned & Full Astra\\
+\midrule
+Cube & RGB pose & 23/40 (57.5) & 30/40 (75.0) & 32/40 (80.0) & 23/40 (57.5) & 16/40 (40.0) & 32/40 (80.0)\\
+Die & Noisy pose & 13/40 (32.5) & 23/40 (57.5) & 28/40 (70.0) & 1/40 (2.5) & 0/40 (0.0) & 26/40 (65.0)\\
+Duck & Noisy pose & 15/38 (39.5) & 14/38 (36.8) & 25/38 (65.8) & 9/40 (22.5) & 2/40 (5.0) & 24/40 (60.0)\\
+Hedgehog & Noisy pose & 17/39 (43.6) & 13/39 (33.3) & 28/39 (71.8) & 10/40 (25.0) & 2/40 (5.0) & 32/40 (80.0)\\
+Pig & Noisy pose & 21/40 (52.5) & 16/40 (40.0) & 37/40 (92.5) & 15/40 (37.5) & 3/40 (7.5) & 33/40 (82.5)\\
+Milk carton & Noisy pose & 13/40 (32.5) & 9/40 (22.5) & 17/40 (42.5) & 3/40 (7.5) & 1/40 (2.5) & 11/40 (27.5)\\
+\bottomrule
+\end{tabular}
+\caption{\textbf{Q1: system comparison across six objects and two semantic mappings.} Entries give successes / common service-eligible trials (percent), retaining 40 raw trials per cell. Fine-tuned and rule baselines omit the added control modules. Each object uses its own frozen student and adaptation. The cube uses reconstructed upper-level images and RGB pose, the die rotates its visual mesh, and the four new objects permute surface letters in native RGB with noisy simulator pose. Within each object, both mappings share physical assets and weights. These mapping cohorts are separate from the native-image release comparisons. No cross-release pooled average or zero-shot object-transfer claim is made.}
+\label{tab:q1-all-objects}
+\end{table*}
