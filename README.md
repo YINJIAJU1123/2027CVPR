@@ -33,6 +33,19 @@
 
 新student的160次追加DAgger开发诊断仍单独保留。它没有训练CNN，也不是Astra成功率，没有替换本次主实验student。
 
+## 冻结追加证据：视觉反馈与独立控制确认（2026-11-02）
+
+这轮独立保留 200 个正式回合，未与旧队列混合。数据、成功定义、预设比较和结论边界已冻结。
+
+- **当前 RGB 对重复首帧**：32/40（80%）对 9/40（22.5%），提升 57.5 个百分点。23 对仅新图像成功、0 对仅首帧成功，双侧精确 p=2.38e-7，两项主要比较 Holm 校正 p=4.77e-7。无服务排除。
+- **干预范围**：只冻结上层 Astra 的 RGB。底层视觉、位姿反馈、历史和控制继续更新。调用上限与触发规则相同，实际调用为112和98次，不能写成等计算量或完全去除视觉。
+- **独立控制确认**：持续执行25/39，固定减速31/39，学习速度＋修正30/39。原始分别25/40、32/40、31/40，一次服务异常对称剔除且未替换。学习对固定 Holm p=1，未确认提升。
+- 学习组等待掉落0次、执行掉落8次；固定减速分别3次、2次。不能因等待安全就推断最终成功更高，也不能仅凭阶段把失败归因于底层 policy。
+
+正文 Q3 纳入图像对照，Q2 同时保留独立确认的限制。学习控制器的下一版目标和论文主张仍在讨论，当前没有启动额外训练或评测。
+
+[冻结数据、协议、逐条记录及校验](data/cube_confirmation_image_refresh_20261102/README.md)
+
 ## 骰子主比较与换映射
 
 骰子原生场景主比较为 Astra 24/40、裸微调 VLM 20/40、裸规则 VLM 17/40。
@@ -107,6 +120,7 @@ python3 scripts/render_ablation_v3_figure.py
 python3 scripts/render_feedback_example.py
 python3 scripts/render_dice_layout.py
 python3 scripts/render_pose_occlusion.py
+python3 scripts/render_confirmation_image.py
 # 使用 Tectonic 或 latexmk
 make
 # 也可以 TECTONIC=/absolute/path/to/tectonic make

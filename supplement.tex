@@ -4,6 +4,7 @@
 \input{tables/followup_macros}
 \input{tables/completed_macros}
 \input{tables/ablation_v3_macros}
+\input{tables/confirmation_image_macros}
 \input{tables/dice_layout_macros}
 \definecolor{cvprblue}{rgb}{0.21,0.49,0.74}
 \usepackage[breaklinks,colorlinks,allcolors=cvprblue]{hyperref}
@@ -15,7 +16,7 @@
 \maketitle
 \setcounter{section}{0}\renewcommand{\thesection}{\Alph{section}}
 \section{Scope of This Release}
-This supplement accompanies the working manuscript updated on 2 November 2026. The cube cohorts below concern the marked RSLCube. A separate 120-trial native-layout die comparison and a 240-trial visual-layout study are documented in the dice sections. The original release contains 400 trials, followed by separate replication, intervention, and controller-development cohorts. The earlier completion bundle contains 760 live semantic trials and a separate 160-trial fixed-plan development test. Of those live trials, 240 bare-VLM visual records overlap the earlier visual archive. A further 200 distinct raw trials now complete the matched waiting and feedback study. Historical outcomes are retained. An independent 6,144-frame RGB/RGB-D pose study is included separately. Missing additional-object, downstream predictor-substitution and physical-hand measurements are marked TODO.
+This supplement accompanies the working manuscript updated on 2 November 2026. The cube cohorts below concern the marked RSLCube. A separate 120-trial native-layout die comparison and a 240-trial visual-layout study are documented in the dice sections. The original release contains 400 trials, followed by separate replication, intervention, and controller-development cohorts. The earlier completion bundle contains 760 live semantic trials and a separate 160-trial fixed-plan development test. Of those live trials, 240 bare-VLM visual records overlap the earlier visual archive. A further 200 distinct raw trials complete the matched waiting and feedback study. Another 200 distinct raw trials provide independent controller confirmation (120) and a fresh-versus-frozen upper-image intervention (80). These cohorts are kept separate. Historical outcomes are retained. An independent 6,144-frame RGB/RGB-D pose study is included separately. Missing additional-object, downstream predictor-substitution and physical-hand measurements are marked TODO.
 
 The latest complete-system comparison refits only Astra's waiting actor. The student, predictor, execution actor, and task criterion remain frozen. Earlier cohorts use their recorded original controller version. Results from the earlier RGB-D backend, invalid contact-capacity runs, and different protocols are not pooled into the current main result. The original bare-baseline addendum was specified after the first suite, so the full historical study is not described as blindly preregistered.
 
@@ -238,6 +239,47 @@ Waiting policy & Startup & Later wait & Exec. & Total\\
 The initial-plan service timeout occurs at trial 185502011 after 121.1 seconds and is the only service exclusion in the new cohort. It leaves 39 common eligible feedback pairs. The interrupted run retains its twelve recorded trials. Only the eight unvisited slots are resumed under a registered range guard. The first 112 visited records remain unchanged, with no retry of the failed slot. Evaluator, controller, physics, prompts, and scoring are unchanged. The continued release changes only the admission guard needed for the remaining range.
 
 Feedback gives 33/39 successes against 6/39 for initial planning, with 27 feedback-only successes and zero initial-only successes. Twenty-two initial abstentions become feedback successes. No executed wrong-to-correct binding is found. Median logical duration is 8.17 seconds for initial planning and 22.0 seconds for feedback on the eligible panel. These durations include unsuccessful termination and must be interpreted alongside 28 initial-plan abstentions. Median measured call latency over raw requests is 8.12 and 5.33 seconds. The protocols use different output structures and call budgets.
+
+\subsection{Independent confirmation and upper-image refresh}
+The follow-up freezes the previous student, predictor, waiting and execution actors, physics, public prompt, six-call cap and scoring rule. Confirmation uses seeds 187101 and 187102, and image refresh uses 187201 and 187202. Each condition contains twenty trials per seed, with condition order reversed for the second seed. Five separate admission trials are not included. Neither these formal outcomes nor additional outcome-driven trials select the weights. This cohort contains 200 unique raw trials.
+
+\begin{table*}[t]
+\centering\small
+\begin{tabular}{lrrrrrr}
+\toprule
+Condition & Raw success & Eligible & Rate (\%) & Drops & Calls & Tokens\\
+\midrule
+\ConfirmationImageRows
+\bottomrule
+\end{tabular}
+\caption{Independent confirmation and image refresh. Eligible successes, rates and drops use the common panel within each study. Calls and tokens include all raw trials. A failed request may have no reported tokens. The image study uses distinct seeds from controller confirmation.}
+\label{tab:confirmation-image}
+\end{table*}
+
+An overload (HTTP 503) affects continued execution at slot 187101004. Its original record is retained, and the corresponding slot is excluded in all three controller arms. Only unvisited slots are resumed. No failed slot is retried or replaced. Confirmation therefore has 39 common eligible trials per condition. The image study retains all forty pairs. All physical failures count.
+
+The two primary tests are learned waiting control versus fixed slowing, and fresh versus frozen upper RGB. Two-sided exact paired McNemar tests give $p=1.0$ and $2.3842\times10^{-7}$, respectively, with Holm-adjusted values of $1.0$ and $4.7684\times10^{-7}$. The exclusive-success pairs are $(6,7)$ and $(23,0)$. Learned control versus continuation is a predeclared secondary comparison, with $(11,6)$ exclusive successes and unadjusted $p=0.3323$. This neither establishes superiority over fixed slowing nor equivalence.
+
+\begin{table}[h]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{@{}Xrrrr@{}}
+\toprule
+Waiting policy & Startup & Later wait & Exec. & Total\\
+\midrule
+\ConfirmationPhaseRows
+\bottomrule
+\end{tabularx}
+\caption{Drop phases in independent confirmation, on the 39-trial common panel. The learned actor has zero observed waiting drops, but eight during execution. Failure stage is descriptive and does not identify the causal component.}
+\end{table}
+
+Raw successes by first and second seed are $(11,14)$ for continuation, $(17,15)$ for fixed slowing, $(18,13)$ for learned control, $(17,15)$ for current images, and $(5,4)$ for repeated first frames. Individual Wilson intervals are retained in the archive. For the image study they are 65.2--89.5\% and 12.3--37.5\%.
+
+Only the upper agent's RGB changes in the image experiment. The frozen arm sends exactly its first frame, including derived crops. Every request also saves the actual current frame. Pixel and file hashes are checked against transport records. All forty initial states and first images match. Later live frames differ from the first on 72 fresh-arm and 58 frozen-arm requests. Both arms have 31 trials with multiple calls. The local perception, numeric pose feedback, history and motor controller remain live in both arms.
+
+Fresh-image outcomes comprise 32 successes, three drops, three false stops and two abstentions. Frozen-image outcomes comprise nine successes, four drops, three false stops and 24 abstentions. Median measured call latency is 6.25 versus 6.95 seconds, and median logical duration is 22.67 versus 25.62 seconds. Actual calls total 112 versus 98, and reported tokens total 209,547 versus 161,082. These differences are part of the resulting closed-loop trajectories, not a matched-realized-compute test. Audits verify continuous simulated control while reasoning and delayed response application, without asserting wall-clock real-time simulation.
+
+The frozen public archive contains all 200 trial records, image and timing audit summaries, a separate SciPy statistical recomputation, protocol and SHA-256 checksums. Future cohorts must remain separate from this snapshot. The image result supports later visual evidence in this cube protocol. The controller result limits claims of improved completion from learned waiting control.
 
 \subsection{Historical original-controller feedback comparison}
 The same-Astra comparison uses one initial bounded plan versus at most six feedback calls, with the original actors and frozen student, stopping gate, and horizon. Seeds 183431 and 183432 give 40 trials per arm. Slot 183432001 is service-affected and excluded from both, leaving 7/39 versus 30/39 successes. Raw counts are 7/40 and 31/40. Actual model calls total 40 and 113. Twenty-four trials succeed only with feedback and one only with the initial plan ($p=1.55\times10^{-6}$). Seventeen initial-plan abstentions become feedback successes. No wrong-to-correct binding transition is observed. Unequal inference budgets prevent isolating a pure feedback effect at equal compute.

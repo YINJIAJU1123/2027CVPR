@@ -1,11 +1,11 @@
 \section{Experiments}
 \label{sec:experiments}
-We organize evaluation around four questions: \textbf{Q1}~How do complete systems compare under original and changed semantic mappings? \textbf{Q2}~How should the hand move while the agent is thinking? \textbf{Q3}~Is an initial plan sufficient, or does continued visual feedback help? \textbf{Q4}~How do perception and control transfer to a physical hand? Cube and dice comparisons, both visual interventions, and the 200-trial cube waiting/feedback cohort are complete. An independent pose-estimation study is also complete. Further objects, downstream predictor substitution, and hardware remain TODO.
+We organize evaluation around four questions: \textbf{Q1}~How do complete systems compare under original and changed semantic mappings? \textbf{Q2}~How should the hand move while the agent is thinking? \textbf{Q3}~Is an initial plan sufficient, or does continued visual feedback help? \textbf{Q4}~How do perception and control transfer to a physical hand? We report cube and dice studies, including independent control confirmation and image refresh. Further objects, downstream predictor substitution and hardware remain TODO.
 
 \subsection{Setup and reporting}
 Experiments use Revo3 cube and dice assets in Isaac Lab 3.0/Newton with validated contact capacities. Each agent condition has two seeds and 40 scheduled trials. Initial physical states are matched within each study. Within the cube studies, all systems share the frozen pose estimator, goal bank, latent student, 0.16-radian success threshold, and measured-pose stopping gate. Dice trials share an object-specific student and noisy simulator pose; Astra additionally uses calibrated completion correction. We report these backend differences rather than pooling their protocols. The primary fine-tuned and rule VLM baselines omit the added waiting and execution actors. Astra uses adaptive inspection, whereas the local baselines use a fixed unreadable-view schedule. This is a comparison of complete systems, with natural model latencies, rather than an isolated test of model weights.
 
-The latest cube system replaces only its waiting actor. Release cohorts and module interventions remain separate. Table percentages use common service-eligible trials within the stated comparison. All raw records are retained, and no failed or excluded slot is replaced. Wilson intervals describe individual rates. The new waiting contrasts and six registered visual contrasts use Holm correction within their respective families. Historical paired tests remain exploratory and unadjusted.
+The latest cube system replaces only its waiting actor. Release cohorts and module interventions remain separate. Table percentages use common service-eligible trials within the stated comparison. All raw records are retained, and no failed or excluded slot is replaced. Wilson intervals describe individual rates. The new waiting contrasts and six registered visual contrasts use Holm correction within their respective families. The independent confirmation and image-refresh tests form a separate two-test Holm family. Historical paired tests remain exploratory and unadjusted.
 
 \begin{table*}[t]
 \centering\small
@@ -95,12 +95,9 @@ Total drops are twelve, four, eight, and five. The full actor reduces total drop
 
 Trials use seeds 185501 and 185502 with reversed condition order for the second seed. Checkpoints are fixed before these outcomes. Historical training-version comparisons remain separate from this structural ablation.
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=.96\textwidth]{figures/waiting_feedback.pdf}
-\caption{\textbf{Matched waiting and feedback studies.} Bars show autonomous semantic success and individual 95\% Wilson intervals. Q2 has 40 eligible trials per condition. Q3 has 39 after one symmetric service exclusion. Its full-feedback arm reuses the same 40 raw trials as the full waiting controller, with one successful slot removed for the paired Q3 analysis. There are 200 unique raw trials, not 240. The feedback protocols have different inference budgets.}
-\label{fig:waiting-feedback}
-\end{figure*}
+\paragraph{Independent confirmation.}
+Without refitting, a new two-seed cohort gives 25/39 successes for continuation, 31/39 for fixed slowing, and 30/39 for learned slowing with correction. One service slot is excluded symmetrically, with all 120 raw trials retained. Learning versus fixed slowing has six versus seven exclusive successes (Holm $p=1.0$). The learned arm has no waiting drops but eight execution drops, compared with three and two for fixed slowing. This confirmation does not establish a learned-control advantage. Later failures may reflect states and commands induced by waiting, despite identical execution weights. The supplement reports the full panel.
+
 
 \paragraph{Other component evidence.}
 Earlier waiting--execution factorial tests do not establish a reliable interaction. Explicit controller-goal interventions also do not establish a benefit, and a separate learned execution-residual gate fails its development admission rule. These negative results and the matched-state diagnostic are retained in the supplement. The new waiting study changes neither the execution actor nor its goal input.
@@ -123,7 +120,25 @@ Protocol & Success & \% & Drops & Calls\\
 
 The initial plan succeeds in 6/39 eligible trials, compared with 33/39 for continued feedback. Twenty-seven paired trials succeed only with feedback and none only with the initial plan (exact $p=1.49\times10^{-8}$). Raw success is 6/40 versus 34/40. One initial-plan HTTP 503 timeout is excluded from both arms without replacement. Actual calls total 40 and 120.
 
-The initial plan abstains in 28 eligible trials, of which 22 succeed with feedback. Among the 39 eligible feedback trials, 36 contain inspection, 32 first bind a target after inspection, and 31 successes use multiple calls. No executed wrong-to-correct binding transition is observed. These traces support the benefit of the full observation protocol, especially obtaining evidence before binding. They do not establish that every initial target was hidden or isolate fresh images from additional inference compute. Zero initial-plan drops accompany frequent abstention and do not imply a superior completing policy. A recorded example and the earlier original-controller cohort are retained in the supplement.
+The initial plan abstains in 28 eligible trials, of which 22 succeed with feedback. Among eligible feedback trials, 36 contain inspection, 32 first bind after inspection, and 31 successes use multiple calls. These traces support obtaining evidence before binding, without demonstrating correction of an executed wrong binding. The protocols differ in inference budget. Zero initial-plan drops accompany frequent abstention, not better completion. The supplement retains a recorded example and the earlier cohort.
+
+\paragraph{Does the next image matter?}
+A separate cohort retains the same six-call cap and trigger policy in both arms, changing only the upper agent's image. One arm receives current RGB, the other the exact first frame on every call. Numeric pose feedback, action history, lower visual perception and control remain live. Forty pairs share initial physical states and first images, with no service exclusions.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrrrr}
+\toprule
+Upper RGB & Success & \% & Drops & Calls\\
+\midrule
+\ImageRefreshRows
+\bottomrule
+\end{tabular}
+\caption{\textbf{Q3: fresh visual evidence.} Forty trials per arm, with the same call cap and frozen local controllers. Only upper-level RGB is frozen. Calls are realized totals, not matched compute.}
+\label{tab:image-refresh}
+\end{table}
+
+Current images yield 32/40 completions versus 9/40 for repeated first frames (Table~\ref{tab:image-refresh}). All 23 discordant pairs favor current images, a 57.5-point gain (exact $p=2.38\times10^{-7}$, Holm $p=4.77\times10^{-7}$). Abstentions fall from 24 to two, while drops change from four to three. Transport hashes verify the delivered images. This supports the value of later visual evidence with other feedback retained. Actual calls, tokens and trajectories differ, so equal maximum calls do not establish equal realized compute.
 
 \subsection{Q4: From simulation to a physical hand}
 \paragraph{Pose estimation under occlusion.}
