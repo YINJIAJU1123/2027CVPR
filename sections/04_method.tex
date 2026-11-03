@@ -1,9 +1,15 @@
 \section{Method}
 \label{sec:method}
-Figure~\ref{fig:method} summarizes \method. The system has a semantic interface, a visual motor policy, and local adaptation. The semantic interface changes the active intention. The local controllers change how that intention is executed using current measurements.
+The system has a semantic interface, a visual motor policy, and local adaptation. The semantic interface changes the active intention. The local controllers change how that intention is executed using current measurements.
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.88\textwidth]{figures/imported/pipeline_v4_slide2_refined.pdf}
+\caption{\textbf{REVEAL training and deployment pipeline.} Privileged supervision trains a student conditioned on a public goal-bank vector. The semantic agent selects skills, and local controllers adapt their execution. Dashed physical-hand slots are pending; they do not report hardware results.}
+\label{fig:pipeline}
+\end{figure*}
 
 \subsection{Reusing a visual pose-conditioned student}
-A frozen CNN predicts the image coordinates and depth of the object center and eight keypoints from a $120\times120$ RGB image. Calibration, unprojection, and rigid fitting recover $\hat p_t\in\R^7$, comprising position and an XYZW quaternion. The fit residual accompanies the measurement. The current rendering uses the object's Gaussian representation with live black hand occlusion. It is not a full-scene image or a real-camera observation, and no ground-truth pose fallback is used at deployment.
+A frozen CNN predicts the image coordinates and depth of the object center and eight keypoints from a $120\times120$ RGB crop. Calibration and rigid fitting recover the measured position and XYZW orientation, together with a fit residual. Cube trials use rendered object views with live hand occlusion; deployment receives no ground-truth pose.
 
 The inherited student expects geometric goals. We replace its goal channels with a learned projection of $g_t\in\R^{768}$:
 \begin{align}
@@ -13,36 +19,33 @@ The inherited student expects geometric goals. We replace its goal channels with
 \end{align}
 Here $x_t\in\R^{109}$ contains target-free proprioceptive features and history, while $u_t\in\R^{21}$ gives normalized joint-target proposals. Compatible encoders, recurrent weights, actor weights, and normalization statistics are initialized from the released policy. Neither target quaternion nor relative-goal quaternion is an input to the migrated student.
 
-The first training stage fits the new interface while preserving inherited coefficients. A second stage adapts the recurrent core using actions labeled by the frozen privileged teacher. Teacher and student rollouts are mixed in a DAgger-style procedure~\cite{ross2011dagger}. The frozen release uses 200 interface updates and 400 adaptation updates, each with 128 environments and 45 rollout steps, totaling 3,456,000 transitions. These stages use simulated pose noise. All reported cube closed-loop trials instead obtain pose from the frozen CNN. We separately measure the loss introduced by this transfer rather than assuming that initialization preserves the teacher's performance.
-
-\paragraph{Dice backend.}
-The second object reuses a released feedforward policy over ten observation frames. A learned adapter maps continuous goal history and measured orientation to eight normalized conditioning features for that frozen actor. It receives no target quaternion at inference. This backend uses the released noisy and delayed simulator pose model, not a visual predictor. Its maintenance and calibrated completion modules are fitted separately. The supplement records these differences; the dice comparison tests an object-specific system extension, not zero-shot transfer of cube weights.
+We fit the new goal interface and adapt the recurrent core with frozen-teacher actions in a DAgger-style procedure~\cite{ross2011dagger}. Teacher state and actions are training-only. The cube deployment uses the frozen RGB pose estimator; object-specific policy and perception differences for the other releases are documented in the supplement.
 
 \subsection{Semantic grounding and public actions}
-We maintain six normalized goal vectors $B=\{g_1,\ldots,g_6\}$ from cached SigLIP2 text features~\cite{tschannen2025siglip2}. Each vector denotes a color skill and is bound to a canonical orientation in the audited asset. The goal bank is fixed for the cube release.
+The cube uses six normalized goal vectors $B=\{g_1,\ldots,g_6\}$ from cached SigLIP2 text features~\cite{tschannen2025siglip2}; each is bound to a color skill and canonical asset orientation.
 
-\paragraph{Astra interface.}
-Astra receives the requested letter and visual observations. It emits a validated public action from \texttt{inspect\_face}, \texttt{reorient\_target}, \texttt{verify\_target}, \texttt{stop}, or \texttt{abstain}. A color argument selects a vector from $B$. Inspection can change the motor goal without declaring that the requested letter has been found. Inspection actions can request between 10 and 90 control steps. Subsequent visual evidence and public action history support another decision. We use the name Astra for the hosted route \texttt{gpt-6-astra} recorded in our experiment, not for a model trained here. Its exact reproducible provider version is a release requirement.
+\paragraph{Semantic agent interface.}
+Given the requested symbol and current image, the hosted agent emits a validated public action (inspect, reorient, verify, stop, or abstain). A color argument selects a vector from $B$; inspection may change the motor goal without binding the requested symbol. Each request spans 10--90 control steps, after which updated visual evidence and action history inform another decision. Public arguments map deterministically to the student goal; hidden agent features are not used.
 
-The vector delivered to the student is a local encoding of a public command. We do not access Astra's internal features, train Astra weights, or describe this pathway as end-to-end language-to-action learning. This explicit interface also enables fixed-public-plan diagnostics in which the motor system is evaluated under recorded decisions and delays.
-
-\paragraph{Fine-tuned VLM.}
-The compact baseline uses Qwen3-VL-4B-Instruct~\cite{qwen3vl} with low-rank adaptation and a goal head. The head predicts a normalized continuous vector in the centered five-dimensional span of $B$, together with a readability probability. The continuous vector enters Eq.~\ref{eq:student} directly. Its nearest canonical vector determines the declared binding and the orientation used by the shared stopping gate. This interface is not unrestricted open-vocabulary motor generation.
-
-Let $y$ indicate whether the requested mark is readable, $k$ its skill index, and $\hat g$ the predicted goal. Training combines readability binary cross-entropy with positive-example goal classification and cosine alignment:
-\begin{equation}
- \mathcal{L}_{\mathrm{ground}}=\operatorname{BCE}(\hat y,y)+\mathbf{1}[y=1]\bigl(\operatorname{CE}(\hat k,k)+1-\cos(\hat g,g_k)\bigr).
-\end{equation}
-The implementation averages positive terms over readable examples. Readability supervision uses geometric visibility and an image-signal filter, not human judgments. Training first uses teacher-view data and then includes observations from student trajectories. The current objective does not include an action-consistency loss.
-
-\paragraph{Rule VLM.}
-The rule baseline parses a color and readability decision from the local VLM and maps accepted colors to $B$. Both local baselines use the same fixed inspection sequence when a view is not accepted. They use the migrated student directly, with no learned waiting actor, execution actor, or learned completion correction. This is the primary complete-system comparison. A separate auxiliary comparison adds the same control actors to each provider to examine the control contribution.
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.96\columnwidth]{figures/imported/agentic_search_component.png}
+\caption{\textbf{Visual target search.} The agent observes, inspects candidate faces, binds the requested target, and issues a presentation command. The reference crops are simulated; real-hand frames are pending.}
+\label{fig:search-component}
+\end{figure}
 
 \subsection{Learning control while a request is pending}
 \label{sec:wait}
 An outstanding query does not determine whether the current movement is still safe. We construct a deployable feature vector $s_t$ from proprioception, measured pose, student belief, proposed action, pose-fit residual, semantic binding status, and request status. It also includes the measured pose and command at the request anchor and elapsed pending time. The active goal $g_t$ is encoded separately. Before a binding is established it denotes the startup or inspection skill, not the unavailable future target.
 
-A 192-dimensional sensor encoder and 64-dimensional goal encoder feed a 128-dimensional fusion layer. A waiting actor produces one speed logit $r_t$ and a residual $v_t\in\R^{21}$. Let $\bar q_t$ be normalized current joint position and $\bar u_t$ the clipped student proposal. The applied command is
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.96\columnwidth]{figures/imported/controller_component.png}
+\caption{\textbf{Local control component.} A goal-conditioned actor combines sensor and goal features to scale the student proposal and add a bounded residual. The photo slots in the source illustration are pending and do not show real-hand results.}
+\label{fig:controller-component}
+\end{figure}
+
+A sensor encoder and a goal encoder feed a fusion layer. The waiting actor predicts a speed logit $r_t$ and a residual $v_t\in\R^{21}$. Let $\bar q_t$ be normalized current joint position and $\bar u_t$ the clipped student proposal. The applied command is
 \begin{align}
  \alpha_t&=\sigmoid(4r_t+\logit(0.15)),\\
  b_t&=\begin{cases}
@@ -52,7 +55,7 @@ A 192-dimensional sensor encoder and 64-dimensional goal encoder feed a 128-dime
  a_t&=\clip\bigl(b_t+0.35\tanh(v_t),-1,1\bigr).
 \label{eq:control}
 \end{align}
-Zero outputs reproduce fixed slowing with a coefficient of 0.15 during a pending query. The coefficient scales the proposed joint-position displacement while simulation time and the control loop continue to advance. The environment applies its original joint mapping and smoothing. Scalar slowing restricts the command to the segment between current joint position and the student proposal. The joint residual can change the command outside that segment, which permits contact adjustments that a speed coefficient alone cannot express.
+Zero outputs reproduce fixed slowing with coefficient 0.15 while a query is pending. The environment's joint mapping and smoothing remain unchanged. The residual permits contact adjustments outside the interpolation between current joints and the student proposal.
 
 Waiting targets are generated by the frozen teacher with the request anchor as the holding objective. This supervision is available in simulation. The deployed actor receives measurements and the active goal only. It never receives the answer being computed. The objective fits the applied action to the teacher label and penalizes residual magnitude:
 \begin{equation}
@@ -61,15 +64,10 @@ Waiting targets are generated by the frozen teacher with the request anchor as t
 \end{equation}
 
 
-\paragraph{Refitting the waiting policy.}
-The waiting actor is refitted for 2,400 updates on separately collected measured-state trajectories. Each actor batch contains one half pending states and one quarter each unbound and bound execution states. A separate fixed-plan development gate selects uniform pending sampling over a startup-balanced candidate. Only pending-request outputs are deployed. Execution, student, predictor, and stopping remain fixed. The supplement records selection and fresh live confirmation. Neither uses the subsequent three-system or Q2/Q3 test outcomes.
+Refit protocol, checkpoint selection, and independent confirmation are reported in the supplement. Only pending-request outputs are deployed; the student, predictor, execution controller, and stopping gate remain fixed.
 
 \subsection{Learning execution after a decision}
-A second actor with the same architecture serves non-pending execution. It uses the student proposal as its base, with no speed attenuation, and learns the bounded correction in Eq.~\ref{eq:control}. Its target is the teacher action for the active goal. It can remain active throughout execution, including inspection, rather than only during a short handover interval.
-
-Paired training examples reuse a physical state and recurrent history with different valid goals. Features and teacher labels are reconstructed for each goal. The motivation is that a generic holding action can preserve contact without moving toward the requested orientation. Goal-dependent labels give the actor a reason to retain directional information. This data construction does not itself demonstrate that the deployed network uses semantics. We test this mechanism with a matched no-explicit-goal actor, shuffled-goal evaluation, and restored-state interventions. The completed tests do not establish a benefit from the explicit actor-goal pathway (Sec.~\ref{sec:experiments}).
-
-Training also includes states collected under recorded public action and delay schedules, matching the controller's pending and execution phases more closely to deployment. The selected execution actor is the v6 candidate from development. The same weights are retained throughout the frozen evaluation. The original development selection was informed by observed development outcomes, not a blind preregistration. Reserved evaluation results did not select the checkpoint. Learned completion heads were explored during development but are not active in the reported release.
+A second actor uses the student proposal as its base and learns a bounded teacher-supervised correction for non-pending execution. Its active goal is explicit, although the goal-input interventions do not establish a benefit from this pathway (Sec.~\ref{sec:experiments}).
 
 \subsection{Closed-loop execution}
 At each control step, the system updates visual pose, advances the recurrent student, chooses the waiting or execution actor, and applies the resulting joint targets. A completed semantic response is validated before it changes the active skill or declared binding. The next image reflects the motion that occurred while the previous response was pending. The common stopping gate is checked separately from semantic action generation. Invalid model output cannot supply ground-truth information or silently select the requested target.

@@ -1,6 +1,11 @@
 \section{Experiments}
 \label{sec:experiments}
-We ask four questions: \textbf{Q1}~How do complete systems compare across objects and semantic mappings? \textbf{Q2}~How should the hand act during deliberation? \textbf{Q3}~Does continued visual feedback help? \textbf{Q4}~Does the system work on physical objects? Multi-object coverage belongs to Q1 and Q4. All Q2/Q3 interventions use only the marked cube to keep assets, perception and motor control fixed. Q1 is the multi-object simulation study: all six object-specific releases are complete under the two-mapping protocol. Q4 is a separate multi-object physical-hand study; Q2 and Q3 remain cube-only mechanism studies.
+We evaluate REVEAL through four questions. Q1 tests complete systems across objects and semantic mappings; Q2 studies local control during deliberation; Q3 tests visual feedback; Q4 concerns physical-hand evaluation. Q2 and Q3 use the marked cube.
+
+\noindent\textbf{Q1.} How do complete systems compare across objects and semantic mappings?\\
+\textbf{Q2.} How should the hand act during deliberation?\\
+\textbf{Q3.} Does continued visual feedback help?\\
+\textbf{Q4.} Does the system work on physical objects?
 
 \subsection{Setup and reporting}
 Experiments use Revo3 cube and dice assets in Isaac Lab 3.0/Newton with validated contact capacities. Each agent condition has two seeds and 40 scheduled trials. Initial physical states are matched within each study. Within the cube studies, all systems share the frozen pose estimator, goal bank, latent student, 0.16-radian success threshold, and measured-pose stopping gate. Dice trials share an object-specific student and noisy simulator pose; Astra additionally uses calibrated completion correction. We report these backend differences rather than pooling their protocols. The primary fine-tuned and rule VLM baselines omit the added waiting and execution actors. Astra uses adaptive inspection, whereas the local baselines use a fixed unreadable-view schedule. This is a comparison of complete systems, with natural model latencies, rather than an isolated test of model weights.
@@ -110,9 +115,25 @@ Current images yield 32/40 completions versus 9/40 for repeated first frames (Ta
 
 \subsection{Q4: Multi-object hardware evaluation}
 \paragraph{Hardware protocol.}
-\TODO{Insert multi-object hardware results.} Compare full Astra, bare fine-tuned VLM and bare rule VLM on each physical object with 40 trials per method and two sessions. Report completion, drops, false stops, inference cost, calibration and synchronized videos. Hardware results remain pending.
+\TODO{Run and audit the multi-object physical-hand evaluation.} The planned protocol compares the complete system and two baselines on each available object. Report completion, drops, false stops, inference cost, calibration and synchronized videos. No physical-hand outcomes are available yet. The supplementary figures show the planned presentation protocol and qualitative panel layout; their real-hand image regions remain unfilled.
+\begin{table}[t]
+\centering\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lccc}
+\toprule
+Physical object & Full Astra & Fine-tuned VLM & Rule VLM\\
+\midrule
+Cube & \TODO{data} & \TODO{data} & \TODO{data}\\
+Die & \TODO{data} & \TODO{data} & \TODO{data}\\
+Duck & \TODO{data} & \TODO{data} & \TODO{data}\\
+Hedgehog & \TODO{data} & \TODO{data} & \TODO{data}\\
+Pig & \TODO{data} & \TODO{data} & \TODO{data}\\
+Milk carton & \TODO{data} & \TODO{data} & \TODO{data}\\
+\bottomrule
+\end{tabular}
+\caption{\textbf{Q4: planned physical-hand evaluation.} Cells marked TODO await matched physical trials and audit; the simulation results in Table~\ref{tab:q1-all-objects} do not fill these entries.}
+\label{tab:hardware-placeholder}
+\end{table}
 
 \paragraph{Supporting cube perception study.}
-A paired study evaluates fixed RGB and RGB-D estimators on 6,144 rendered cube observations across three seeds and four camera pitches. Recall requires translation error $<10$~mm and rotation error $<10^\circ$, with invalid predictions counted as failures. RGB-D reaches 3,977/6,144 (64.73\%) versus 2,306/6,144 (37.53\%) for RGB. The paired gain is 27.20 percentage points (95\% environment-cluster bootstrap interval 26.07--28.30). At 25--50\% occlusion, recall is 55.45\% versus 19.91\%, but both reach zero at $\geq75\%$. The supplement gives stricter thresholds, no-hand controls and depth perturbations.
-
-Training histories differ, and evaluation uses ideal target masks and virtual depth. This supports a perception-system comparison under light and moderate occlusion, not an isolated fusion effect. These checkpoints differ from the frozen agent predictor. Downstream task gains and physical-camera accuracy remain unmeasured.
+On 6,144 rendered observations, RGB-D reaches 64.73\% pose recall versus 37.53\% for RGB at $10$~mm/$10^\circ$. This independent estimator comparison uses ideal target masks and virtual depth; it does not establish downstream task gains or physical-camera accuracy. Full protocol and occlusion analysis are in the supplement.

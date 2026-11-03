@@ -1,4 +1,4 @@
-% Official CVPR 2027 anonymous review format. This is an incomplete working draft.
+% CVPR 2027 anonymous review format.
 \documentclass[10pt,twocolumn,letterpaper]{article}
 \usepackage[review]{cvpr}
 \input{preamble}
@@ -11,11 +11,19 @@
 \definecolor{cvprblue}{rgb}{0.21,0.49,0.74}
 \usepackage[pagebackref,breaklinks,colorlinks,allcolors=cvprblue]{hyperref}
 \def\confName{CVPR}\def\confYear{2027}
-\title{AgenticRotation: Learning Local Control for Asynchronous\\Visual Agents in Semantic In-Hand Reorientation}
+\title{REVEAL: Agentic In-Hand Manipulation for Language-Guided Target Presentation}
 \author{Anonymous submission}
 \begin{document}
 \raggedbottom
+\twocolumn[{
 \maketitle
+\begin{center}
+\includegraphics[width=0.98\textwidth]{figures/imported/reveal_teaser.png}
+\captionof{figure}{\textbf{REVEAL overview.} New visual evidence guides semantic decisions as the hand inspects and presents a requested object face. This staged simulation illustration is not a recorded rollout or physical-robot result.}
+\label{fig:teaser}
+\end{center}
+\vspace{-0.7em}
+}]
 \input{sections/00_abstract}
 \input{sections/01_introduction}
 \input{sections/02_related_work}

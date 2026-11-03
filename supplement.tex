@@ -9,14 +9,14 @@
 \definecolor{cvprblue}{rgb}{0.21,0.49,0.74}
 \usepackage[breaklinks,colorlinks,allcolors=cvprblue]{hyperref}
 \def\confName{CVPR}\def\confYear{2027}
-\title{AgenticRotation: Supplementary Material}
+\title{REVEAL: Supplementary Material}
 \author{Anonymous submission}
 \begin{document}
 \raggedbottom
 \maketitle
 \setcounter{section}{0}\renewcommand{\thesection}{\Alph{section}}
 \section{Scope of This Release}
-This supplement accompanies the working manuscript updated on 2 November 2026. The cube cohorts below concern the marked RSLCube. Q1 system comparisons and planned Q4 hardware evaluation cover multiple objects. All Q2 control ablations and Q3 feedback interventions are cube-only. The independent cube pose study supports Q4 without constituting a hardware result. A separate 120-trial native-layout die comparison and a 240-trial visual-layout study are documented in the dice sections. The original release contains 400 trials, followed by separate replication, intervention, and controller-development cohorts. The earlier completion bundle contains 760 live semantic trials and a separate 160-trial fixed-plan development test. Of those live trials, 240 bare-VLM visual records overlap the earlier visual archive. A further 200 distinct raw trials complete the matched waiting and feedback study. Another 200 distinct raw trials provide independent controller confirmation (120) and a fresh-versus-frozen upper-image intervention (80). These cohorts are kept separate. Historical outcomes are retained. An independent 6,144-frame RGB/RGB-D pose study is included separately. Missing additional-object, downstream predictor-substitution and physical-hand measurements are marked TODO.
+This supplement accompanies the manuscript updated on 3 November 2026. Q1 system comparisons cover six object-specific simulation releases; Q2 control ablations and Q3 feedback interventions use only the marked cube. The independent cube pose study is supporting evidence, not a hardware result. A separate 120-trial native-layout die comparison and a 240-trial visual-layout study are documented below. Historical outcomes remain separate from later cohorts. The four additional Q1 objects contribute 960 completed raw trials. The multi-object physical-hand evaluation and downstream predictor-substitution study remain TODO.
 
 The latest complete-system comparison refits only Astra's waiting actor. The student, predictor, execution actor, and task criterion remain frozen. Earlier cohorts use their recorded original controller version. Results from the earlier RGB-D backend, invalid contact-capacity runs, and different protocols are not pooled into the current main result. The original bare-baseline addendum was specified after the first suite, so the full historical study is not described as blindly preregistered.
 
@@ -57,6 +57,13 @@ The shared gate runs at 3~Hz. It requires an accepted requested-symbol binding, 
 A service error or model call exceeding 120 seconds is recorded without replacement. The original three-system panel removes trial 183102011 from every arm. The four-way control panel removes 183102000, 183102010, and 183102011. The resulting denominators are 39 and 37. Their percentages are not directly interchangeable. Raw 40-trial outcomes remain visible, including service-affected cases.
 
 \section{Models and Training}
+Figure~\ref{fig:method-supp} expands the main-text task overview with the training and deployment pathways.
+\begin{figure*}[t]
+\centering
+\includegraphics[width=.96\textwidth]{figures/method.pdf}
+\caption{\textbf{Expanded system architecture.} The diagram shows privileged teacher supervision, the semantic-to-latent student interface, and closed-loop deployment. Dashed photo slots are illustrative placeholders, not physical-robot evidence.}
+\label{fig:method-supp}
+\end{figure*}
 \subsection{Semantic and motor inputs}
 The motor policy receives 109 target-free proprioceptive/history features, seven measured pose values, and a 768-dimensional goal. Its goal projection has width 64 and a tanh nonlinearity. The inherited recurrent policy emits 21 normalized joint targets. The asset-specific goal quaternion is absent from the migrated student's inference inputs.
 
@@ -377,6 +384,27 @@ The independent pose study below establishes frame-level accuracy differences be
 
 \subsection{Objects and physical hand}
 Multi-object evaluation is confined to Q1 complete-system comparisons and Q4 physical-hand experiments. For Q1, the current scope is six objects with variation in geometry, inertia, contact affordances and semantic ambiguity. Q4 must identify the actual physical objects tested and report its coverage separately. Record object-specific students and training budgets. Balance the task set within each object and report each row before computing an object macro-average. Forty trials per arm per object is the default batch size. Hardware runs need calibrated independent scoring, documented resets, two sessions, and synchronized video and command logs. A new object checkpoint alone is insufficient without its assets, calibration, normalization, action conventions, and goal definitions.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.98\textwidth]{figures/imported/sim_real_protocol_placeholder.png}
+\caption{\textbf{Planned simulation/physical presentation protocol.} The source layout pairs hidden-target, reveal, and stable-display stages across simulation and a physical hand. All outcome image slots are empty; this is a protocol mockup, not a completed experiment.}
+\label{fig:sim-real-protocol}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.98\textwidth]{figures/imported/real_robot_cases_placeholder.png}
+\caption{\textbf{Planned qualitative and physical-hand panels.} The comparison and real-world case slots are intentionally unfilled pending matched trials and physical images. No real-robot outcome is represented.}
+\label{fig:physical-panels}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.98\textwidth]{figures/imported/qualitative_real_robot_placeholder.png}
+\caption{\textbf{Planned qualitative comparison and real-robot cases.} Reference render crops are shown only as visual task cues. Initial/end-state and physical-robot image slots remain placeholders until corresponding observations are available.}
+\label{fig:qualitative-real}
+\end{figure*}
 
 \section{Independent Pose Estimation under Hand Occlusion}
 \label{sec:pose-occlusion}
