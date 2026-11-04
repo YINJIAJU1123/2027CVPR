@@ -247,6 +247,31 @@ The initial-plan service timeout occurs at trial 185502011 after 121.1 seconds a
 
 Feedback gives 33/39 successes against 6/39 for initial planning, with 27 feedback-only successes and zero initial-only successes. Twenty-two initial abstentions become feedback successes. No executed wrong-to-correct binding is found. Median logical duration is 8.17 seconds for initial planning and 22.0 seconds for feedback on the eligible panel. These durations include unsuccessful termination and must be interpreted alongside 28 initial-plan abstentions. Median measured call latency over raw requests is 8.12 and 5.33 seconds. The protocols use different output structures and call budgets.
 
+\subsection{Additional collaborator-reported waiting ablation}
+\label{sec:collaborator-waiting}
+The collaborator reports two additional seeds, each with 40 trials per waiting condition. Table~\ref{tab:collaborator-waiting} preserves the supplied aggregate counts alongside the earlier structural cohort. These are reported task-completion counts; service eligibility, checkpoint identity, protocol compatibility and trial independence await verification against the source records. No significance test or pooled estimate is derived from these aggregates.
+
+\begin{table}[h]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrr}
+\toprule
+Waiting policy & Earlier cohort & Additional runs\\
+\midrule
+Continue & 25/40 (62.5\%) & 48/80 (60.0\%)\\
+Fixed slowing & 30/40 (75.0\%) & 58/80 (72.5\%)\\
+Learned slowing & 28/40 (70.0\%) & 54/80 (67.5\%)\\
+Slowing + correction & 34/40 (85.0\%) & 70/80 (87.5\%)\\
+\bottomrule
+\end{tabular}
+\caption{Collaborator-reported additional cube waiting results, pending source-record reconciliation. The ordering agrees across the two aggregate cohorts; per-seed counts for the additional runs were not supplied. The separate independent confirmation (30/39 full versus 31/39 fixed) remains part of the evidence.}
+\label{tab:collaborator-waiting}
+\end{table}
+
+Full control has one reported waiting-phase drop among 80 scheduled trials (1.25\% per scheduled task). Of its ten unsuccessful trials, nine therefore have other outcomes; they cannot all be labeled execution drops without terminal causes. Waiting-drop counts for the three baselines and the number of trials reaching a pending interval are not yet available. Thus neither a comparative waiting-drop reduction nor an exposure-adjusted rate is established by this report. Identical execution weights do not isolate execution failures from the states induced by waiting control.
+
+The earlier 40-trial cohort is recorded as seeds 185501 and 185502, with 20 trials each. The additional cohort is reported as two seeds with 40 trials each, but identifiers have not been supplied. We therefore do not label the combined evidence as three seeds of 40 trials. The numerical sum would be 73, 88, 82 and 104 successes out of 120 per condition if independence and compatibility are confirmed; it is not a replacement for the separate confirmation cohort.
+
 \subsection{Cube confirmation and image refresh (Q2/Q3)}
 The follow-up freezes the previous student, predictor, waiting and execution actors, physics, public prompt, six-call cap and scoring rule. Confirmation uses seeds 187101 and 187102, and image refresh uses 187201 and 187202. Each condition contains twenty trials per seed, with condition order reversed for the second seed. Five separate admission trials are not included. Neither these formal outcomes nor additional outcome-driven trials select the weights. This cohort contains 200 unique raw trials.
 

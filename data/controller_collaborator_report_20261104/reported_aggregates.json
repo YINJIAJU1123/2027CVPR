@@ -1,0 +1,19 @@
+{
+  "source": "User-provided collaborator aggregates in Codex conversation, 2026-11-04",
+  "status": "reported_not_trial_level_verified",
+  "reported_seeds": 2,
+  "trials_per_seed_per_condition": 40,
+  "seed_ids": null,
+  "per_seed_counts": null,
+  "successes": {
+    "continue_execution": 48,
+    "fixed_slow": 58,
+    "learned_speed": 54,
+    "learned_speed_joint_correction": 70
+  },
+  "full_waiting_drops": 1,
+  "full_execution_drops": null,
+  "baseline_waiting_drops": null,
+  "service_exclusions": null,
+  "checkpoint_hashes": null
+}
