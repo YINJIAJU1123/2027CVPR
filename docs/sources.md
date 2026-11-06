@@ -19,3 +19,5 @@ CVPR 2025 presentation references, used for section organization and evidence-dr
 - ManipTrans: https://openaccess.thecvf.com/content/CVPR2025/html/Li_ManipTrans_Efficient_Dexterous_Bimanual_Manipulation_Transfer_via_Residual_Learning_CVPR_2025_paper.html
 
 Novelty must be evaluated against the actual problem and method, not model branding or a claim that language-driven hands are absent from prior work.
+
+- GoalDex: https://arxiv.org/html/2611.02171v1 . Checked 2026-11-06: Sections 4.6/B.6 use VLM selection from candidate goal views; B.4 uses asynchronous visual encoding. This is close prior work, not a baseline result for REVEAL.

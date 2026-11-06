@@ -1,0 +1,27 @@
+\begin{table}[t]
+\centering\footnotesize
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+ & \multicolumn{2}{c}{English} & \multicolumn{2}{c}{Chinese}\\
+System & Standard & Rewrite & Standard & Rewrite\\
+\midrule
+\multicolumn{5}{l}{\textit{Cube: $n=60, 60, 60, 60$}}\\
+Full Astra & 42/60 & 47/60 & 48/60 & 36/60\\
+Fine-tuned VLM & 42/60 & 44/60 & 46/60 & 47/60\\
+Rule VLM & 28/60 & 27/60 & 18/60 & 19/60\\
+\midrule
+\multicolumn{5}{l}{\textit{Duck: $n=60, 60, 60, 60$}}\\
+Full Astra & 41/60 & 40/60 & 41/60 & 46/60\\
+Fine-tuned VLM & 23/60 & 18/60 & 19/60 & 21/60\\
+Rule VLM & 30/60 & 15/60 & 20/60 & 19/60\\
+\midrule
+\multicolumn{5}{l}{\textit{Hedgehog: $n=60, 60, 60, 60$}}\\
+Full Astra & 44/60 & 46/60 & 39/60 & 46/60\\
+Fine-tuned VLM & 23/60 & 19/60 & 21/60 & 15/60\\
+Rule VLM & 28/60 & 23/60 & 21/60 & 22/60\\
+\bottomrule
+\end{tabular}
+\caption{Raw completion counts over all scheduled trials, retaining infrastructure failures in the denominator. These are separate object-specific cohorts; the four instruction variants reuse physical tasks.}
+\label{tab:language-raw}
+\end{table}

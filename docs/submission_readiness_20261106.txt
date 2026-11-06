@@ -1,0 +1,55 @@
+REVEAL — 2026-11-06 manuscript review and submission priorities
+
+Assessment
+The simulation evidence and manuscript structure are substantial, but this is still a working draft, not a submission-ready paper. The strongest current claim is online acquisition of visual evidence for semantic binding during in-hand control. A general advantage of learned waiting control, shared-policy transfer across objects, and physical-camera deployment are not established. No acceptance probability is assigned.
+
+Evidence already available
+- Six object-specific systems, original/changed semantic mappings. Perception and stopping differences are explicit.
+- 2,160 language/wording trials across cube, duck and hedgehog. Full Astra exceeds fine-tuning in all eight duck/hedgehog cells after Holm correction; all four cube contrasts remain unresolved. Language non-significance is not equivalence.
+- Fresh-versus-first-frame cube intervention: 32/40 versus 9/40, adjusted p = 4.7684e-7, with a common six-call cap. Actual compute and trajectories differ.
+- Structural waiting ablation and independent confirmation are both retained. The latter gives full 30/39 versus fixed slowing 31/39; these outcomes cannot support a consistent controller advantage.
+- Independent RGB/RGB-D estimator comparison is supporting perception evidence only.
+
+Priority 1: close the experimental claim, not just add trials
+1. Reconcile the collaborator's 80 trials per arm against per-trial source records, seed IDs, frozen checkpoints, service eligibility and protocol. Preserve the separate negative confirmation; do not pool incompatible releases or keep sampling until significance.
+2. A same-model, same-controller, same-information/call-cap comparison against a simple reactive visual loop or fixed inspection schedule would isolate the agent's adaptive inspection/history contribution. Current fresh-image evidence isolates access to later images, not every agent component. This is a scientific recommendation, not a mandatory conference requirement or a newly authorized experiment.
+3. Complete matched physical-hand evaluation on the actual available objects, with independent success verification, resets, calibration, drops/false stops, measured latency and synchronized videos. Keep simulation and physical outcomes separate. Camera-based pose performance is especially material because non-cube simulation uses noisy simulator pose.
+4. If revised controller results remain inconclusive, retain the finding and narrow the contribution. A successful paper does not require every component to improve a metric, but its principal novelty needs direct evidence.
+
+Priority 2: positioning and reproducibility
+- Position the contribution around online observation, target binding and control. GoalDex already links language to image-goal reorientation and includes multi-object physical deployment; asynchronous execution alone is also established prior work. The current related-work discussion acknowledges this. A direct comparison should use a compatible task/interface and should not imply that baseline adaptation has already been run.
+- Complete sanitized system prompts/tool schemas, sampling/runtime settings, any provider-exposed serving version, per-release checkpoint/source hashes, code instructions and asset-license inventory. Task-level language prompts are already archived; they do not replace full system schemas.
+- Prepare self-contained anonymous artifacts; the colleague GitHub branch is not automatically an anonymous submission package. Do not add identity-revealing links to the submitted PDF.
+- The existing staged teaser is explicitly illustrative. Quantitative/qualitative evidence is linked to recorded trials. At the author's request, the original method diagrams and supplementary planned hardware panels are restored; their captions explicitly identify unfilled physical-image slots and pending outcomes.
+
+Current abstract and main-result summary
+The abstract now emphasizes the problem and method, placing the evaluation scope and headline result in its final two sentences. It retains only 65.8% object-averaged success under changed mappings and a 40.4-percentage-point gain over the strongest evaluated baseline. The main table also reports 70.4% on original mappings. These are post-hoc descriptive equal-object means, generated from frozen counts; no SOTA or new aggregate-significance claim is made.
+
+Changes made in this editorial pass
+- Aligned abstract, introduction, contributions and conclusion with current Q1/Q3 evidence.
+- Defined Full Astra as the complete REVEAL deployment; clarified cube-specific inputs, timing, actors and other-object exceptions.
+- Distinguished bounded action durations from request latency; clarified which actor supplies non-pending residuals.
+- Initially introduced a compact vector schematic; subsequently restored the original pipeline, visual-search and controller figures at the author's request. The original supplementary architecture and three planned panels are also restored. The unretouched recorded feedback example remains in the main paper.
+- Enlarged the six-object table and preserved all 36 rates and denominators. Retained the previously requested 600-dpi single-column language table image unchanged.
+- Kept unverified collaborator aggregates in the supplement with their limitations, rather than using them as headline evidence.
+- Archived the empty hardware table as tables/hardware_planned.tex; it is not rendered until actual audited data exist. Original figure assets remain on disk.
+- Moved the LLM Usage Statement before references, named Codex and its uses, and updated the page-boundary check.
+- Compacted the supplement without deleting negative outcomes or raw language/service-exclusion reporting.
+
+Validation
+The official CVPR 2027 cvpr.sty downloaded on 2026-11-06 is byte-identical to the repository style (SHA256 1cd7f434b13d41c475df4a1901a5d82d9ca8b80b8cf6205dc4602a5c164286b4). No margins or body fonts were changed.
+Current restored-figure version: 9 body pages + 1 statement/reference page. Supplement: 17 pages. The eight-page check correctly fails on this complete working draft; submission requires condensing the body while retaining the restored figures.
+Language generator verifies all 2,160 records and 144 main/sensitivity tests. Q2/Q3 generator verifies 200 audited records. Experiment-data hashes and the language image remain unchanged. The six-object table's displayed rates were checked against its original fractions. Builds have no undefined references/citations or reported overfull boxes; rendered pages were inspected for layout.
+This is still a working draft: hardware, model disclosure and anonymous-package TODOs must be resolved before submission. Hardware results will require another content/page-budget pass.
+
+Regenerate the new vector schematic
+Run scripts/render_reveal_pipeline.py using a Python environment with reportlab and the Liberation Sans fonts. The checked-in vector PDF is retained as an alternative asset; the restored manuscript uses the original figures. No image-generation service or experiment API is needed.
+
+Official sources checked 2026-11-06
+CVPR 2027 Author Guidelines: https://cvpr.thecvf.com/Conferences/2027/AuthorGuidelines
+CVPR 2027 Dates: https://cvpr.thecvf.com/Conferences/2027/Dates
+Registration: Nov 10, 2026 AoE; manuscript: Nov 16, 2026 AoE; supplement: Nov 23, 2026 AoE. Registration/authorship/profile requirements should be handled before waiting for all experiments to finish.
+GoalDex primary paper: https://arxiv.org/html/2611.02171v1 (Secs. 4.6 and B.6 for visual-goal selection, B.4 for asynchronous visual encoding).
+
+Scope of this GitHub update
+This commit publishes the manuscript sources, figures, generated result tables, PDFs and generation scripts. The newly added cube-language and three-object language raw-record/prompt/provenance bundles remain local and are not included in this push. Regenerating those analyses from individual trials requires the corresponding local data directories; the regular PDF build uses the checked-in tables and figure assets.

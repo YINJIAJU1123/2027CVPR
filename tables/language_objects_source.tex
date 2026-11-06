@@ -1,0 +1,27 @@
+\begin{table}[t]
+\centering\footnotesize
+\setlength{\tabcolsep}{2pt}
+\begin{tabular*}{\linewidth}{@{}l@{\extracolsep{\fill}}rrrr@{}}
+\toprule
+ & \multicolumn{2}{c}{English} & \multicolumn{2}{c}{Chinese}\\
+System & Standard & Rewrite & Standard & Rewrite\\
+\midrule
+\textbf{Cube} ($n$) & 56 & 59 & 57 & 53\\
+Rule VLM & 48.2 & 45.8 & 31.6 & 32.1\\
+Fine-tuned VLM & 71.4 & 72.9 & 75.4 & \textbf{81.1}\\
+Full Astra & \textbf{75.0} & \textbf{79.7} & \textbf{84.2} & 67.9\\
+\midrule
+\textbf{Duck} ($n$) & 60 & 59 & 60 & 60\\
+Rule VLM & 50.0 & 25.4 & 33.3 & 31.7\\
+Fine-tuned VLM & 38.3 & 30.5 & 31.7 & 35.0\\
+Full Astra & \textbf{68.3} & \textbf{67.8} & \textbf{68.3} & \textbf{76.7}\\
+\midrule
+\textbf{Hedgehog} ($n$) & 60 & 60 & 52 & 60\\
+Rule VLM & 46.7 & 38.3 & 36.5 & 36.7\\
+Fine-tuned VLM & 38.3 & 31.7 & 34.6 & 25.0\\
+Full Astra & \textbf{73.3} & \textbf{76.7} & \textbf{75.0} & \textbf{76.7}\\
+\bottomrule
+\end{tabular*}
+\caption{\textbf{Q1: language and wording coverage.} Completion (\%) on common service-eligible trials. Methods share the listed $n$ of 60 scheduled slots. Bold denotes the highest observed rate, not significance. Raw counts and paired analyses are in the supplement.}
+\label{tab:language-objects}
+\end{table}

@@ -16,11 +16,12 @@
 \maketitle
 \setcounter{section}{0}\renewcommand{\thesection}{\Alph{section}}
 \section{Scope of This Release}
-This supplement accompanies the manuscript updated on 3 November 2026. Q1 system comparisons cover six object-specific simulation releases; Q2 control ablations and Q3 feedback interventions use only the marked cube. The independent cube pose study is supporting evidence, not a hardware result. A separate 120-trial native-layout die comparison and a 240-trial visual-layout study are documented below. Historical outcomes remain separate from later cohorts. The four additional Q1 objects contribute 960 completed raw trials. The multi-object physical-hand evaluation and downstream predictor-substitution study remain TODO.
+This supplement accompanies the manuscript updated on 6 November 2026. Q1 system comparisons cover six object-specific simulation releases; Q2 control ablations and Q3 feedback interventions use only the marked cube. The independent cube pose study is supporting evidence, not a hardware result. A separate 120-trial native-layout die comparison and a 240-trial visual-layout study are documented below. Historical outcomes remain separate from later cohorts. The four additional Q1 objects contribute 960 completed raw trials. A separate language study adds 2,160 trials across cube, duck and hedgehog. The multi-object physical-hand evaluation and downstream predictor-substitution study remain TODO.
 
 The latest complete-system comparison refits only Astra's waiting actor. The student, predictor, execution actor, and task criterion remain frozen. Earlier cohorts use their recorded original controller version. Results from the earlier RGB-D backend, invalid contact-capacity runs, and different protocols are not pooled into the current main result. The original bare-baseline addendum was specified after the first suite, so the full historical study is not described as blindly preregistered.
 
 \section{Exact Task and Runtime Contract}
+This section and the model details that follow specify the cube backend. Object-specific differences are described in the dice, additional-object and language sections below.
 \subsection{Object and goals}
 Table~\ref{tab:mapping} records the fixed face mapping. Body normals include the original mesh rotation. All methods use the same mapping and cached six-vector bank. The cyan channel corresponds visually to a pale-blue face and magenta to a purple face. The target quaternion gives a canonical twist as well as the upward face normal.
 
@@ -61,7 +62,7 @@ Figure~\ref{fig:method-supp} expands the main-text task overview with the traini
 \begin{figure*}[t]
 \centering
 \includegraphics[width=.96\textwidth]{figures/method.pdf}
-\caption{\textbf{Expanded system architecture.} The diagram shows privileged teacher supervision, the semantic-to-latent student interface, and closed-loop deployment. Dashed photo slots are illustrative placeholders, not physical-robot evidence.}
+\caption{\textbf{Expanded system architecture.} The diagram shows privileged teacher supervision, the semantic-to-latent student interface, and closed-loop deployment. This schematic describes the cube implementation and does not report hardware outcomes.}
 \label{fig:method-supp}
 \end{figure*}
 \subsection{Semantic and motor inputs}
@@ -69,7 +70,7 @@ The motor policy receives 109 target-free proprioceptive/history features, seven
 
 The hosted model route recorded in the manifests is \texttt{gpt-6-astra}. The local grounding backbone is Qwen3-VL-4B-Instruct. The Astra pathway uses public tool actions and a deterministic goal-bank lookup. The fine-tuned pathway predicts a continuous vector within the normalized skill span. Neither pathway receives the requested face's true pose. The local unreadable-view schedule is $(1,3,0,2,4,5)$ with 90-step inspections. Astra chooses inspection actions of 10--90 steps. This scheduler difference is part of the complete-system comparison and a confound for attributing all effects to model weights.
 
-\TODO{Document the hosted model's exact serving revision, sampling settings, and full sanitized system prompt/tool schema in the final anonymous release. A route name alone does not guarantee reproducibility across provider updates.}
+The language-study archive contains exact task prompts and schedules. The route name alone does not identify immutable serving weights. \TODO{Reconcile available serving metadata and sampling settings, and include full sanitized system prompts/tool schemas for each release in the anonymous package; state explicitly which provider revisions were not exposed.}
 
 \subsection{Grounding supervision}
 The grounding model first uses 4,096 teacher-view training examples and 1,024 validation examples, then 4,800 student-view training examples and 2,400 validation examples with mixed replay. Each adaptation stage uses 240 updates. Training and validation collection seeds are disjoint from the formal evaluation seeds. Readability is a geometric/image-signal proxy. The objective combines readability prediction, readable-example skill classification, and cosine alignment to a canonical vector. We do not claim human-verified text recognition labels or an action-consistency objective in this release.
@@ -410,24 +411,27 @@ The independent pose study below establishes frame-level accuracy differences be
 \subsection{Objects and physical hand}
 Multi-object evaluation is confined to Q1 complete-system comparisons and Q4 physical-hand experiments. For Q1, the current scope is six objects with variation in geometry, inertia, contact affordances and semantic ambiguity. Q4 must identify the actual physical objects tested and report its coverage separately. Record object-specific students and training budgets. Balance the task set within each object and report each row before computing an object macro-average. Forty trials per arm per object is the default batch size. Hardware runs need calibrated independent scoring, documented resets, two sessions, and synchronized video and command logs. A new object checkpoint alone is insufficient without its assets, calibration, normalization, action conventions, and goal definitions.
 
+
+
+
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.98\textwidth]{figures/imported/sim_real_protocol_placeholder.png}
-\caption{\textbf{Planned simulation/physical presentation protocol.} The source layout pairs hidden-target, reveal, and stable-display stages across simulation and a physical hand. All outcome image slots are empty; this is a protocol mockup, not a completed experiment.}
+\caption{\textbf{Planned inspection and presentation sequence.} Reference crops illustrate observing, inspecting, binding, and presenting a requested face. Real-hand image slots remain empty. This is a protocol mockup, not a physical-robot result.}
 \label{fig:sim-real-protocol}
 \end{figure*}
 
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.98\textwidth]{figures/imported/real_robot_cases_placeholder.png}
-\caption{\textbf{Planned qualitative and physical-hand panels.} The comparison and real-world case slots are intentionally unfilled pending matched trials and physical images. No real-robot outcome is represented.}
+\caption{\textbf{Planned simulation/physical presentation comparison.} The layout pairs hidden-target, reveal, and stable-display stages. The reference simulation crop is illustrative; the remaining simulation and physical-hand slots await matched observations. No real-robot outcome is represented.}
 \label{fig:physical-panels}
 \end{figure*}
 
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.98\textwidth]{figures/imported/qualitative_real_robot_placeholder.png}
-\caption{\textbf{Planned qualitative comparison and real-robot cases.} Reference render crops are shown only as visual task cues. Initial/end-state and physical-robot image slots remain placeholders until corresponding observations are available.}
+\caption{\textbf{Planned qualitative comparison and real-robot cases.} Initial/end-state and physical-robot image slots remain placeholders until corresponding observations are available. No completed trial is represented.}
 \label{fig:qualitative-real}
 \end{figure*}
 
@@ -562,10 +566,39 @@ The full audit covers all 960 episodes, 320 within-mapping initial-image groups 
 
 As a sensitivity analysis, removing slot 7 from every method gives original-mapping successes of 24/37 for Astra, 13/37 for fine-tuning and 15/37 for rules. Removing it from the changed mapping gives 23/39, 2/39 and 9/39. The ordering is unchanged. The main table retains the frozen service-exclusion rule. This post-run sensitivity check does not replace outcomes or change the success definition.
 
+\section{Q1: Language and Wording Coverage Across Three Objects}
+\label{sec:language-supp}
+Three separate cohorts contribute 2,160 recorded trials: cube, duck and hedgehog, each with three systems, two languages, two wording templates per language and 60 trials per cell. Cube seeds are 210501--210503, duck seeds 210601--210603, and hedgehog seeds 210701--210703, twenty trials per seed. Each of six goals occurs ten times per cell. These are evaluation blocks, not independent training seeds. Within each object, the same 60 reset seeds and physical goals are reused across methods and instruction variants. Four prompt variants must not be pooled as 240 independent physical tasks.
+
+\paragraph{Intervention and deployment.}
+Mapping, task criterion and object-specific weights remain fixed within each system. Cube retains its visual pose estimator, goal bank, latent student, 30-Hz control and measured-pose stopping; Astra uses its paper-selected waiting and execution actors. Duck and hedgehog use their own latent students, 20-Hz control and noisy simulator-pose feedback; Astra additionally uses object-specific learned maintenance and completion correction. Bare local baselines omit these added actors. All systems use the independently scored 0.16-radian tolerance. Upper RGB is 120-by-120 for cube and 512-by-512 for duck and hedgehog. The English-trained fine-tuned models receive the requested instructions without Chinese retraining. The rule baseline additionally uses localized task/output instructions for Chinese conditions. This is deployed-system language coverage, not an isolated change to the user sentence for every backend, a shared-policy transfer test, or a causal test of fine-tuning. Exact prompts are retained in the evidence bundle.
+
+\paragraph{Service eligibility and raw records.}
+The main-paper language table reports completion conditional on service availability. Within each object and instruction condition, the union of infrastructure-affected slots is removed from all three methods, including any successful baseline outcome at that slot. Thus each row comparison uses identical physical tasks and the same denominator. These rates do not measure end-to-end service reliability. This reporting choice was made after inspecting the raw outcomes; it is not described as preregistered. Table~\ref{tab:language-raw} retains every scheduled slot and Table~\ref{tab:language-exclusions} lists exclusions. No excluded slot is replaced; continuations visit only unvisited slots. Physical drops, incorrect stopping, abstention and task-horizon failures remain in the denominator. Infrastructure faults include TLS/proxy failures and server overload, not model grounding or control errors.
+
+\input{tables/language_objects_raw}
+\input{tables/language_objects_exclusions}
+
+\paragraph{Continuation and availability.}
+The hedgehog queue stopped after three consecutive service exclusions. The remaining unvisited tasks were partitioned into an Astra worker and a rule worker on two idle GPUs. A further SSL failure stopped the Astra worker; its dedicated bridge was then changed from the existing local proxy to verified direct HTTPS to the same official endpoint. Account selection, model, TLS verification, one-attempt transport policy, weights, prompts, seeds, scoring and evaluator code were retained. Actual latency, including deployment effects, remains recorded. Existing outcomes and errors were not overwritten. The amended scheduler and source-ledger hashes are archived; this availability intervention is part of the deployment history.
+
+\paragraph{State pairing and image sensitivity.}
+Cube and duck initial-state hashes match exactly across methods and instruction conditions. Four hedgehog slots differ only in object-quaternion components by at most $5.96\times10^{-8}$; all other recorded state components match exactly. A post-run numerical reset audit uses a $10^{-6}$ component tolerance, and the strict sensitivity below removes any nonidentical hashes. Cube first-image hashes match exactly. Some duck and hedgehog renders differ at the pixel level; these do not alter the service-eligible main denominator. Table~\ref{tab:language-sensitivity} additionally requires identical initial-state and first-image hashes across all three methods in a condition. All strict paired tests are retained in the data export. The duck differences involve six slots, at most two RGB pixels and one channel level per pixel in 512-by-512 images. Hedgehog image differences involve 12 slots, at most two RGB pixels and one channel level in the same resolution.
+
+\input{tables/language_objects_sensitivity}
+
+\paragraph{Paired inference.}
+Two-sided exact McNemar tests use discordant pairs. Method tests use the same common three-method service-eligible panels as the main table. A language/wording contrast excludes the union of service-affected slots in its two arms; its denominator can differ from a main-table denominator. Holm correction is applied jointly across three objects: one family of 36 language/wording contrasts and a separate family of 36 method contrasts. The strict state-and-image-matched sensitivity applies the same corrections separately. Tables~\ref{tab:language-wording-tests} and~\ref{tab:language-method-tests} report all main adjusted tests. No language/wording contrast survives Holm correction. 20 of 36 method contrasts survive correction. Strict state-and-image-matched sensitivity changes the 0.05 significance decision in 0 of the 72 contrasts; all discordant counts and adjusted values are archived. These tests do not isolate model-only or controller-only effects.
+
+\input{tables/language_objects_tests}
+
+\paragraph{Scope and evidence.}
+Only two languages and two templates per language are tested, with six fixed letter targets and one mapping per object. Non-significance establishes neither equivalence nor broad multilingual generalization. Earlier incorrectly configured language runs are excluded from this comparison, and historical 40-trial native/mapping cohorts remain separate. The sanitized evidence contains all 2,160 per-trial outcomes, 72 main and 72 sensitivity comparisons, exact prompts, schedules, source-ledger hashes and continuation records. Credentials and account identifiers are omitted. All 131 source ledgers were hashed; all 38 ledgers present before the hedgehog continuation match their original hashes.
+
 \section{Reproducibility and Evidence Audit}
-The archive retains 400 original-release trials, 160 successor-development trials, 120 earlier replication trials, and the 19-state recovery diagnostic. The latest snapshot has 760 live records: native 120, goal 120, feedback 80, visual 360, and waiting 80. Its 240 bare visual records overlap the earlier archive. Another 160 fixed-plan development trials complete that 920-trial bundle. The new waiting/feedback snapshot adds 200 distinct raw trials, with its shared full condition counted once. The native-layout die adds 120 separately audited trials. These protocols must not be pooled into one rate. The completed dice layout study adds 240 distinct trials. The four additional objects add 960 distinct raw trials. Partial snapshots add no trials.
+The archive separates 400 original-release trials, 160 successor-development trials, 120 earlier replication trials, and a 19-state recovery diagnostic. A 920-record bundle contains 760 live records (120 native, 120 goal, 80 feedback, 360 visual, 80 waiting) and 160 fixed-plan development trials; 240 bare visual records overlap the earlier archive. Distinct additions comprise 200 waiting/feedback trials (the shared full arm counted once), 120 native-layout die trials, 240 dice-layout trials, 960 additional-object trials, and 2,160 corrected language trials. Partial snapshots add no trials; different protocols are never pooled into one rate.
 
-Sanitized records retain initial-state hashes, goals, measured stops, independent errors, outcomes, exclusions and latencies. Source hashes link to the full archive. Table generation checks counts, matching, exclusions and paired tests. New students, predictors, objects or stop rules require new releases.
+Sanitized records retain state hashes, goals, stops, independent errors, outcomes, exclusions and latencies. Generators check pairing, counts and tests against hashed sources.
 
-\TODO{Complete the anonymous implementation package and object licenses.}
+\TODO{Complete anonymous code and asset licenses.}
 \end{document}

@@ -1,0 +1,32 @@
+\begin{table}[t]
+\centering\footnotesize
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+ & \multicolumn{2}{c}{English vs. Chinese} & \multicolumn{2}{c}{Standard vs. rewrite}\\
+System & Standard & Rewrite & English & Chinese\\
+\midrule
+Full Astra & 1.0000 & 1.0000 & 1.0000 & 0.2471\\
+Fine-tuned VLM & 1.0000 & 1.0000 & 1.0000 & 1.0000\\
+Rule VLM & 0.1553 & 0.3857 & 1.0000 & 1.0000\\
+\bottomrule
+\end{tabular}
+\caption{Holm-adjusted exact paired $p$-values, twelve language/wording contrasts. Non-significance is not evidence of equivalence.}
+\label{tab:language-wording-tests}
+\end{table}
+\begin{table}[t]
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Condition & Astra--Rule & Astra--FT & FT--Rule\\
+\midrule
+EN standard & 0.0488 & 1.0000 & 0.0488\\
+EN rewrite & 0.0043 & 1.0000 & 0.0106\\
+ZH standard & $<0.0001$ & 0.9969 & $<0.0001$\\
+ZH rewrite & 0.0006 & 0.5739 & $<0.0001$\\
+\bottomrule
+\end{tabular}
+\caption{Holm-adjusted exact paired $p$-values, a separate twelve-test method family. FT denotes fine-tuning. Pair-specific exclusions and discordant counts are archived.}
+\label{tab:language-method-tests}
+\end{table}

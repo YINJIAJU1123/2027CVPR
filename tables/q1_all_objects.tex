@@ -1,20 +1,22 @@
 \begin{table*}[t]
-\centering\scriptsize
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{llrrrrrr}
+\centering\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llcrrrrrr@{}}
 \toprule
-Object & Perception & \multicolumn{3}{c}{Original mapping} & \multicolumn{3}{c}{Changed mapping}\\
-\cmidrule(lr){3-5}\cmidrule(lr){6-8}
-& & Rule & Fine-tuned & Full Astra & Rule & Fine-tuned & Full Astra\\
+Object & Motor pose & $n_{\rm orig}/n_{\rm changed}$ & \multicolumn{3}{c}{Original mapping} & \multicolumn{3}{c}{Changed mapping}\\
+\cmidrule(lr){4-6}\cmidrule(lr){7-9}
+& & & Rule & Fine-tuned & Full Astra & Rule & Fine-tuned & Full Astra\\
 \midrule
-Cube & RGB pose & 23/40 (57.5) & 30/40 (75.0) & 32/40 (80.0) & 23/40 (57.5) & 16/40 (40.0) & 32/40 (80.0)\\
-Die & Noisy pose & 13/40 (32.5) & 23/40 (57.5) & 28/40 (70.0) & 1/40 (2.5) & 0/40 (0.0) & 26/40 (65.0)\\
-Duck & Noisy pose & 15/38 (39.5) & 14/38 (36.8) & 25/38 (65.8) & 9/40 (22.5) & 2/40 (5.0) & 24/40 (60.0)\\
-Hedgehog & Noisy pose & 17/39 (43.6) & 13/39 (33.3) & 28/39 (71.8) & 10/40 (25.0) & 2/40 (5.0) & 32/40 (80.0)\\
-Pig & Noisy pose & 21/40 (52.5) & 16/40 (40.0) & 37/40 (92.5) & 15/40 (37.5) & 3/40 (7.5) & 33/40 (82.5)\\
-Milk carton & Noisy pose & 13/40 (32.5) & 9/40 (22.5) & 17/40 (42.5) & 3/40 (7.5) & 1/40 (2.5) & 11/40 (27.5)\\
+Cube & RGB pose & 40 / 40 & 57.5 & 75.0 & \textbf{80.0} & 57.5 & 40.0 & \textbf{80.0}\\
+Die & Noisy pose & 40 / 40 & 32.5 & 57.5 & \textbf{70.0} & 2.5 & 0.0 & \textbf{65.0}\\
+Duck & Noisy pose & 38 / 40 & 39.5 & 36.8 & \textbf{65.8} & 22.5 & 5.0 & \textbf{60.0}\\
+Hedgehog & Noisy pose & 39 / 40 & 43.6 & 33.3 & \textbf{71.8} & 25.0 & 5.0 & \textbf{80.0}\\
+Pig & Noisy pose & 40 / 40 & 52.5 & 40.0 & \textbf{92.5} & 37.5 & 7.5 & \textbf{82.5}\\
+Milk carton & Noisy pose & 40 / 40 & 32.5 & 22.5 & \textbf{42.5} & 7.5 & 2.5 & \textbf{27.5}\\
+\midrule
+\QOneAverageRow
 \bottomrule
-\end{tabular}
-\caption{\textbf{Q1: system comparison across six objects and two semantic mappings.} Entries give successes / common service-eligible trials (percent), retaining 40 raw trials per cell. Fine-tuned and rule baselines omit the added control modules. Each object uses its own frozen student and adaptation. The cube uses reconstructed upper-level images and RGB pose, the die rotates its visual mesh, and the four new objects permute surface letters in native RGB with noisy simulator pose. Within each object, both mappings share physical assets and weights. These mapping cohorts are separate from the native-image release comparisons. No cross-release pooled average or zero-shot object-transfer claim is made.}
+\end{tabular*}
+\caption{\textbf{Q1: six objects and two semantic mappings.} Completion (\%) uses common service-eligible trials; each cell has 40 scheduled trials. Mean weights six objects equally. Bold denotes the highest observed rate, not significance. Object-specific weights remain fixed across mappings; bare baselines omit added control modules. Cube uses reconstructed upper images and RGB pose; die rotates its visual mesh; other objects permute surface letters with noisy simulator pose. Native-image and language cohorts remain separate.}
 \label{tab:q1-all-objects}
 \end{table*}

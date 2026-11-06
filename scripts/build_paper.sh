@@ -3,6 +3,8 @@ set -euo pipefail
 project_root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$project_root"
 mkdir -p build/main build/supplement output/pdf
+python3 scripts/render_language_table_image.py --check
+python3 scripts/render_q1_summary.py > build/q1_summary.log
 for target in main supplement; do
     if [[ -n "${TECTONIC:-}" ]]; then
         "$TECTONIC" --keep-logs --keep-intermediates --outdir "build/$target" "$target.tex"

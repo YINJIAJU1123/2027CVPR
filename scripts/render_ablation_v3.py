@@ -4,7 +4,7 @@ from collections import Counter
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 DATA=ROOT/'data/cube_waiting_feedback_20261101'
-NAMES={'continue':'Continue student','fixed_slow':'Fixed slowdown','learned_speed':'Learned slowdown','learned_speed_residual':'Learned slowdown + correction','initial_plan':'One initial plan'}
+NAMES={'continue':'Continue student','fixed_slow':'Fixed slowdown','learned_speed':'Learned slowdown','learned_speed_residual':'Slowing + correction','initial_plan':'One initial plan'}
 def read(n):return json.loads((DATA/n).read_text())
 def pct(x):return f'{100*x:.1f}'
 def pvalue(x):return f'{x:.3g}'
