@@ -47,7 +47,7 @@ def table(name,rows):
  macros.append('\\newcommand{\\Completed'+name.title().replace('_','')+'Rows}{%\n'+body+'}')
 def matched(o):return f"{o['common_eligible_success']}/{o['common_eligible_trials']}"
 def rate(o):return f"{100*o['common_eligible_rate']:.1f}"
-labels={'astra_full':'Astra full','finetuned_vlm_bare':'Fine-tuned VLM, bare','rule_vlm_bare':'Rule VLM, bare'}
+labels={'astra_full':'REVEAL','finetuned_vlm_bare':'Fine-tuned VLM, bare','rule_vlm_bare':'Rule VLM, bare'}
 rows=[]
 for c in ['astra_full','finetuned_vlm_bare','rule_vlm_bare']:
  o=summaries['native']['outcomes'][c];lo,hi=o['wilson_95']

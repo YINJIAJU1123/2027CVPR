@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 BASE=ROOT/'data/cube_language_20261105'
 rows=json.loads((BASE/'trials.json').read_text());result=json.loads((BASE/'results.json').read_text())
 conditions=['en_standard','en_rewrite','zh_standard','zh_rewrite']
-methods=['astra','vlm','rule'];names={'astra':'Full Astra','vlm':'Fine-tuned VLM','rule':'Rule VLM'}
+methods=['astra','vlm','rule'];names={'astra':'REVEAL','vlm':'Fine-tuned VLM','rule':'Rule VLM'}
 lookup={(r['condition'],r['method'],r['episode']):r for r in rows}
 assert len(lookup)==len(rows)==720
 for c in conditions:
@@ -45,7 +45,7 @@ for m in methods:
  lines.append(names[m]+' & '+' & '.join(f'{n} ({100*n/60:.1f})' for n in vals)+r'\\')
 caption=r"""\bottomrule
 \end{tabular}
-\caption{\textbf{Q1: cube instruction coverage.} Success counts (percent), each out of 60 scheduled trials. Astra service exclusions are 4, 1, 3 and 7 in column order; baselines have none. All remain in these raw denominators.}
+\caption{\textbf{Q1: cube instruction coverage.} Success counts (percent), each out of 60 scheduled trials. REVEAL service exclusions are 4, 1, 3 and 7 in column order; baselines have none. All remain in these raw denominators.}
 \label{tab:cube-language}
 \end{table}
 """
@@ -88,7 +88,7 @@ tests+=r"""\bottomrule
 \setlength{\tabcolsep}{3pt}
 \begin{tabular}{@{}lrrr@{}}
 \toprule
-Condition & Astra--Rule & Astra--FT & FT--Rule\\
+Condition & REVEAL--Rule & REVEAL--FT & FT--Rule\\
 \midrule
 """
 for c in conditions:

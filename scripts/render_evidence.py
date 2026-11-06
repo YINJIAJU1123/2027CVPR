@@ -22,7 +22,7 @@ for panel in [main,ab]:
  for c,o in panel['outcomes'].items():
   rows=[t for t in trials if t['condition']==c and t['trial_seed'] not in excluded]
   assert len(rows)==o['eligible_trials'] and sum(bool(t['success']) for t in rows)==o['success']
-names={'astra_full':'Astra + learned control (ours)','finetuned_vlm_bare':'Fine-tuned VLM (bare)','rule_vlm_bare':'Rule VLM (bare)'}
+names={'astra_full':'REVEAL','finetuned_vlm_bare':'Fine-tuned VLM (bare)','rule_vlm_bare':'Rule VLM (bare)'}
 def drop(s):return sum(v for k,v in s['failure_subtypes'].items() if k.startswith('drop'))
 rows=[]
 for c in ['rule_vlm_bare','finetuned_vlm_bare','astra_full']:
@@ -50,7 +50,7 @@ for filename, macro in [('main_rows','MainResultRows'),('ablation_rows','Ablatio
 (ROOT/'tables/result_macros.tex').write_text('\n'.join(macros)+'\n')
 plt.rcParams.update({'font.family':'DejaVu Sans','font.size':9,'pdf.fonttype':42,'ps.fonttype':42})
 fig,axes=plt.subplots(1,2,figsize=(7.0,2.45),gridspec_kw={'width_ratios':[1,1.15]},layout='constrained')
-labels=['Rule VLM','Fine-tuned VLM','Astra + control']; colors=['#a8adb6','#35959b','#304f81']
+labels=['Rule VLM','Fine-tuned VLM','REVEAL']; colors=['#a8adb6','#35959b','#304f81']
 vals=[main['outcomes'][c] for c in ['rule_vlm_bare','finetuned_vlm_bare','astra_full']]
 for i,(o,col) in enumerate(zip(vals,colors)):
  y=o['success_rate']*100;lo,hi=[v*100 for v in o['wilson_95']]

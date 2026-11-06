@@ -1,9 +1,12 @@
 {
-  "source": "User-provided collaborator aggregates in Codex conversation, 2026-11-04",
-  "status": "reported_not_trial_level_verified",
+  "source": "User-provided collaborator aggregates on 2026-11-04, supplemented with seed IDs and outcome breakdown on 2026-11-07",
+  "status": "user_reported_aggregates_with_outcome_breakdown",
   "reported_seeds": 2,
   "trials_per_seed_per_condition": 40,
-  "seed_ids": null,
+  "seed_ids": [
+    187103,
+    187104
+  ],
   "per_seed_counts": null,
   "successes": {
     "continue_execution": 48,
@@ -12,8 +15,31 @@
     "learned_speed_joint_correction": 70
   },
   "full_waiting_drops": 1,
-  "full_execution_drops": null,
-  "baseline_waiting_drops": null,
+  "full_execution_drops": 3,
+  "baseline_waiting_drops": {
+    "continue_execution": 17,
+    "fixed_slow": 9,
+    "learned_speed": 6
+  },
   "service_exclusions": null,
-  "checkpoint_hashes": null
+  "checkpoint_hashes": null,
+  "waiting_drops": {
+    "continue_execution": 17,
+    "fixed_slow": 9,
+    "learned_speed": 6,
+    "learned_speed_joint_correction": 1
+  },
+  "execution_drops": {
+    "continue_execution": 9,
+    "fixed_slow": 8,
+    "learned_speed": 7,
+    "learned_speed_joint_correction": 3
+  },
+  "other_failures": {
+    "continue_execution": 6,
+    "fixed_slow": 5,
+    "learned_speed": 13,
+    "learned_speed_joint_correction": 6
+  },
+  "trial_level_records_available": false
 }

@@ -1,11 +1,11 @@
 {
-  "renderer_sha256": "a23b78bb102ca237d95a69c56f8312fa7d2822357bd5b44b344fa52f604714d9",
+  "renderer_sha256": "31ca5394ae4f1681ffaf66731b10d128600d57ee36276a9d41fa839f46f4dbab",
   "font_family": "Times",
   "dpi": 600,
   "width_px": 1969,
   "height_px": 1281,
   "column_width_inches": 3.28125,
-  "source_sha256": "70ca097e3c4ef9e945a5f6ee9189e8b3ddf07ef2928fbf1ca7a52b9156a93139",
-  "image_sha256": "29c744c0c0f7b3a8bc545e497a6b052a2a578f62a8d02ce4f25190c58328d352",
+  "source_sha256": "34e3aa67e65f286b6a7b5e30bb205e5a3a4705bf4e7e66180960050926207cc9",
+  "image_sha256": "902a63b79dbef652051fd7521cade9da8e4ea003d29176a615db043fb1626b10",
   "caption": "Native LaTeX caption and table label remain outside image"
 }

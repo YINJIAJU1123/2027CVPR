@@ -2,7 +2,7 @@
 import argparse,hashlib,itertools,json,math
 from pathlib import Path
 C=['en_standard','en_rewrite','zh_standard','zh_rewrite'];M=['astra','vlm','rule'];O=['cube','duck','hedgehog']
-N={'astra':'Full Astra','vlm':'Fine-tuned VLM','rule':'Rule VLM','cube':'Cube','duck':'Duck','hedgehog':'Hedgehog'}
+N={'astra':'REVEAL','vlm':'Fine-tuned VLM','rule':'Rule VLM','cube':'Cube','duck':'Duck','hedgehog':'Hedgehog'}
 def dump(p,d):p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(d,indent=2,ensure_ascii=False)+'\n')
 def exact(a,b):
  n=a+b
@@ -118,7 +118,7 @@ def render(out,result):
     if oi<2:q+='\\midrule\n'
    s+=q+ending('Exact paired language/wording tests, Holm-adjusted jointly over 36 contrasts across three objects. Non-significance does not establish equivalence.','tab:language-wording-tests')
   else:
-   q='\\begin{table}[t]\n\\centering\\footnotesize\n\\setlength{\\tabcolsep}{5pt}\n\\begin{tabular}{@{}lrrr@{}}\n\\toprule\nCondition & Astra--FT & Astra--Rule & FT--Rule\\\\\n\\midrule\n'
+   q='\\begin{table}[t]\n\\centering\\footnotesize\n\\setlength{\\tabcolsep}{5pt}\n\\begin{tabular}{@{}lrrr@{}}\n\\toprule\nCondition & REVEAL--FT & REVEAL--Rule & FT--Rule\\\\\n\\midrule\n'
    for oi,obj in enumerate(O):
     q+='\\multicolumn{4}{l}{\\textit{'+N[obj]+'}}\\\\\n'
     for c in C:

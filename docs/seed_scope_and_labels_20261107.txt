@@ -1,0 +1,11 @@
+Revision scope, 7 November 2026
+
+The author confirmed that formal controller ablation Q2 comprises only evaluation seeds 187102, 187103, 187104, 40 trials per method per seed. The first-seed success counts are 25,30,28,34; the other two seeds jointly contribute 48,58,54,70. Counts and all existing raw records are preserved.
+
+The manuscript no longer presents historical controller/factorial, confirmation, goal-input and rejected-gate development panels as additional formal Q2 evidence. The original source snapshot is preserved outside the repository at ../.build/before_seed_naming_citations.zip. Existing raw archives remain unchanged. This is an author-confirmed scope correction, not a new experiment or a claim that historical records never existed. Explicit controller-goal benefit remains unestablished and is not claimed.
+
+Old archive trial IDs 185501/185502 are not printed as evaluation seed identifiers. They were NOT rewritten or synthetically mapped to new trial IDs. Q3 initial-plan/feedback retains the recorded first-40 Q2 overlap. Q3 fresh/frozen images retain their separate seeds 187201/187202 and 40 pairs, with no pooling into Q2.
+
+The reported Q3 image p-value is the original exact unadjusted paired value, 2.3842e-7. The historical Holm value 4.7684e-7 was calculated with a separate controller confirmation contrast no longer in the formal Q2 presentation; no new multiplicity family or pre-registration claim is invented.
+
+All displayed method labels use REVEAL. Lowercase archive method keys and the exact hosted model route in reproducibility metadata remain unchanged; REVEAL is the complete system, not the provider's model name.

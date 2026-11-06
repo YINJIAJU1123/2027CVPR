@@ -28,8 +28,12 @@ tex=r'''\documentclass[10pt,border=0pt]{standalone}
 '''
 (build/'language_objects_image.tex').write_text(tex)
 tectonic=os.environ.get('TECTONIC') or shutil.which('tectonic')
-if not tectonic:raise RuntimeError('Set TECTONIC or install tectonic')
-subprocess.run([tectonic,'--keep-logs','--outdir',str(build),str(build/'language_objects_image.tex')],check=True)
+if tectonic:
+    subprocess.run([tectonic,'--keep-logs','--outdir',str(build),str(build/'language_objects_image.tex')],check=True)
+elif shutil.which('pdflatex'):
+    subprocess.run(['pdflatex','-interaction=nonstopmode','-halt-on-error','-output-directory',str(build),str(build/'language_objects_image.tex')],check=True)
+else:
+    raise RuntimeError('Install tectonic or pdflatex')
 out=ROOT/'figures/language_objects';out.parent.mkdir(exist_ok=True)
 subprocess.run([os.environ.get('PDFTOPPM','pdftoppm'),'-r','600','-singlefile','-png',str(build/'language_objects_image.pdf'),str(out)],check=True)
 png=out.with_suffix('.png');blob=png.read_bytes();assert blob[:8]==b'\x89PNG\r\n\x1a\n';width,height=struct.unpack('>II',blob[16:24]);assert 1960<=width<=1980 and 800<height<1600,(width,height)

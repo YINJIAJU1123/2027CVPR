@@ -20,10 +20,12 @@
   title={Leave No Observation Behind: Real-time Correction for {VLA} Action Chunks},
   journal={arXiv preprint arXiv:2509.23224}, year={2025}
 }
-@article{black2025rtc,
-  author={Kevin Black and Manuel Y. Galliker and Sergey Levine},
+@inproceedings{black2025rtc,
+  author={Kevin Black and Manuel Galliker and Sergey Levine},
   title={Real-Time Execution of Action Chunking Flow Policies},
-  journal={arXiv preprint arXiv:2506.07339}, year={2025}
+  booktitle={Advances in Neural Information Processing Systems},
+  volume={38}, pages={33383--33407}, year={2025},
+  doi={10.52202/085713-1122}
 }
 @article{bhardwaj2026viserdex,
   author={Arjun Bhardwaj and Maximum Wilder-Smith and Mayank Mittal and Vaishakh Patil and Marco Hutter},
@@ -40,11 +42,10 @@
   title={{SigLIP 2}: Multilingual Vision-Language Encoders with Improved Semantic Understanding, Localization, and Dense Features},
   journal={arXiv preprint arXiv:2502.14786}, year={2025}
 }
-@misc{qwen3vl,
-  author={{Qwen Team}},
-  title={{Qwen3-VL-4B-Instruct} Model Card},
-  year={2025},
-  howpublished={\url{https://huggingface.co/Qwen/Qwen3-VL-4B-Instruct}}
+@article{qwen3vl,
+  author={Shuai Bai and Yuxuan Cai and Ruizhe Chen and Keqin Chen and Xionghui Chen and Zesen Cheng and Lianghao Deng and Wei Ding and Chang Gao and Chunjiang Ge and Wenbin Ge and Zhifang Guo and Qidong Huang and Jie Huang and Fei Huang and Binyuan Hui and Shutong Jiang and Zhaohai Li and Mingsheng Li and Mei Li and Kaixin Li and Zicheng Lin and Junyang Lin and Xuejing Liu and Jiawei Liu and Chenglong Liu and Yang Liu and Dayiheng Liu and Shixuan Liu and Dunjie Lu and Ruilin Luo and Chenxu Lv and Rui Men and Lingchen Meng and Xuancheng Ren and Xingzhang Ren and Sibo Song and Yuchong Sun and Jun Tang and Jianhong Tu and Jianqiang Wan and Peng Wang and Pengfei Wang and Qiuyue Wang and Yuxuan Wang and Tianbao Xie and Yiheng Xu and Haiyang Xu and Jin Xu and Zhibo Yang and Mingkun Yang and Jianxin Yang and An Yang and Bowen Yu and Fei Zhang and Hang Zhang and Xi Zhang and Bo Zheng and Humen Zhong and Jingren Zhou and Fan Zhou and Jing Zhou and Yuanzhi Zhu and Ke Zhu},
+  title={{Qwen3-VL} Technical Report},
+  journal={arXiv preprint arXiv:2511.21631}, year={2025}
 }
 @inproceedings{ross2011dagger,
  author={Stephane Ross and Geoffrey Gordon and Drew Bagnell},
@@ -66,4 +67,67 @@
   author={Ning Chen and Yankai Fu and Junkai Zhao and Qianpu Sun and Guocai Yao and Pengwei Wang and Zhongyuan Wang and Shanghang Zhang},
   title={{LiMA}: Bridging Long-term Imagination to Real-time Dexterous Manipulation via Asynchronous Diffusion},
   journal={arXiv preprint arXiv:2609.28431}, year={2026}
+}
+
+@article{openai2018dexterity,
+  author={Marcin Andrychowicz and Bowen Baker and Maciek Chociej and Rafal J{\'o}zefowicz and Bob McGrew and Jakub Pachocki and Arthur Petron and Matthias Plappert and Glenn Powell and Alex Ray and Jonas Schneider and Szymon Sidor and Josh Tobin and Peter Welinder and Lilian Weng and Wojciech Zaremba},
+  title={Learning Dexterous In-Hand Manipulation},
+  journal={The International Journal of Robotics Research},
+  volume={39}, number={1}, pages={3--20}, year={2020},
+  doi={10.1177/0278364919887447}
+}
+@inproceedings{chen2022reorientation,
+  author={Tao Chen and Jie Xu and Pulkit Agrawal},
+  title={A System for General In-Hand Object Re-Orientation},
+  booktitle={Proceedings of the 5th Conference on Robot Learning},
+  series={Proceedings of Machine Learning Research}, volume={164}, pages={297--307}, year={2022}
+}
+@inproceedings{qi2023hora,
+  author={Haozhi Qi and Ashish Kumar and Roberto Calandra and Yi Ma and Jitendra Malik},
+  title={In-Hand Object Rotation via Rapid Motor Adaptation},
+  booktitle={Proceedings of the 6th Conference on Robot Learning},
+  series={Proceedings of Machine Learning Research}, volume={205}, pages={1722--1732}, year={2023}
+}
+@inproceedings{qi2023rotateit,
+  author={Haozhi Qi and Brent Yi and Sudharshan Suresh and Mike Lambeta and Yi Ma and Roberto Calandra and Jitendra Malik},
+  title={General In-Hand Object Rotation with Vision and Touch},
+  booktitle={Proceedings of the 7th Conference on Robot Learning},
+  series={Proceedings of Machine Learning Research}, volume={229}, pages={2549--2564}, year={2023}
+}
+@inproceedings{yang2025anyrotate,
+  author={Max Yang and Chenghua Lu and Alex Church and Yijiong Lin and Christopher J. Ford and Haoran Li and Efi Psomopoulou and David A. W. Barton and Nathan F. Lepora},
+  title={{AnyRotate}: Gravity-Invariant In-Hand Object Rotation with Sim-to-Real Touch},
+  booktitle={Proceedings of the 8th Conference on Robot Learning},
+  series={Proceedings of Machine Learning Research}, volume={270}, pages={4727--4747}, year={2025}
+}
+@inproceedings{ichter2023saycan,
+  author={Brian Ichter and Anthony Brohan and Yevgen Chebotar and Chelsea Finn and Karol Hausman and Alexander Herzog and Daniel Ho and Julian Ibarz and Alex Irpan and Eric Jang and Ryan Julian and Dmitry Kalashnikov and Sergey Levine and Yao Lu and Carolina Parada and Kanishka Rao and Pierre Sermanet and Alexander T. Toshev and Vincent Vanhoucke and Fei Xia and Ted Xiao and Peng Xu and Mengyuan Yan and Noah Brown and Michael Ahn and Omar Cortes and Nicolas Sievers and Clayton Tan and Sichun Xu and Diego Reyes and Jarek Rettinghouse and Jornell Quiambao and Peter Pastor and Linda Luu and Kuang-Huei Lee and Yuheng Kuang and Sally Jesmonth and Nikhil J. Joshi and Kyle Jeffrey and Rosario Jauregui Ruano and Jasmine Hsu and Keerthana Gopalakrishnan and Byron David and Andy Zeng and Chuyuan Kelly Fu},
+  title={Do As I Can, Not As I Say: Grounding Language in Robotic Affordances},
+  booktitle={Proceedings of the 6th Conference on Robot Learning},
+  series={Proceedings of Machine Learning Research}, volume={205}, pages={287--318}, year={2023}
+}
+@inproceedings{huang2023innermonologue,
+  author={Wenlong Huang and Fei Xia and Ted Xiao and Harris Chan and Jacky Liang and Pete Florence and Andy Zeng and Jonathan Tompson and Igor Mordatch and Yevgen Chebotar and Pierre Sermanet and Tomas Jackson and Noah Brown and Linda Luu and Sergey Levine and Karol Hausman and Brian Ichter},
+  title={Inner Monologue: Embodied Reasoning through Planning with Language Models},
+  booktitle={Proceedings of the 6th Conference on Robot Learning},
+  series={Proceedings of Machine Learning Research}, volume={205}, pages={1769--1782}, year={2023}
+}
+@inproceedings{liang2022codepolicies,
+  author={Jacky Liang and Wenlong Huang and Fei Xia and Peng Xu and Karol Hausman and Brian Ichter and Pete Florence and Andy Zeng},
+  title={Code as Policies: Language Model Programs for Embodied Control},
+  booktitle={Proceedings of the IEEE International Conference on Robotics and Automation},
+  pages={9493--9500}, year={2023},
+  doi={10.1109/ICRA48891.2023.10160591}
+}
+@inproceedings{huang2023voxposer,
+  author={Wenlong Huang and Chen Wang and Ruohan Zhang and Yunzhu Li and Jiajun Wu and Li Fei-Fei},
+  title={{VoxPoser}: Composable {3D} Value Maps for Robotic Manipulation with Language Models},
+  booktitle={Proceedings of the 7th Conference on Robot Learning},
+  series={Proceedings of Machine Learning Research}, volume={229}, pages={540--562}, year={2023}
+}
+@inproceedings{huang2025rekep,
+  author={Wenlong Huang and Chen Wang and Yunzhu Li and Ruohan Zhang and Li Fei-Fei},
+  title={{ReKep}: Spatio-Temporal Reasoning of Relational Keypoint Constraints for Robotic Manipulation},
+  booktitle={Proceedings of the 8th Conference on Robot Learning},
+  series={Proceedings of Machine Learning Research}, volume={270}, pages={4573--4602}, year={2025}
 }
