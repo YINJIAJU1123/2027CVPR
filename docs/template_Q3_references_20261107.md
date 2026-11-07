@@ -10,7 +10,7 @@ The linked v1 archive was re-downloaded. SHA256: da1ec5db9b73531ea82a87723e4aedb
 
 Q1's equal-object means are distinct from cube-only Q2. Q1 cube original and changed mappings each report 32/40 (80.0%); Q2's full controller reports 104/120 (86.7%) in its separate three-seed cohort. Different observed rates do not by themselves establish inconsistency or an improvement between studies. We retain all reported counts and explicitly restrict controller contrasts to Q2. Distinct cohorts do not excuse undocumented changes in scoring or model settings.
 
-Q3 is now one two-panel table: (a) initial planning versus continued feedback; (b) repeated first frame versus current image. The panels remain separate cohorts, with respective service-eligible denominators and raw call totals. Q3(a)'s full-feedback arm reuses the initial 40-trial Q2 subset; it is not new independent replication. Seed and archived trial identifiers retain the provenance described in controller_update_20261107.md.
+At the time of this earlier update, Q3 was a two-panel table (superseded by the three-panel inspection-policy update in `q3_inspection_update_20261107.txt`): (a) initial planning versus continued feedback; (b) repeated first frame versus current image. The panels remain separate cohorts, with respective service-eligible denominators and raw call totals. Q3(a)'s full-feedback arm reuses the initial 40-trial Q2 subset; it is not new independent replication. Seed and archived trial identifiers retain the provenance described in controller_update_20261107.md.
 
 ## Added literature and primary verification sources
 

@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "physical_states_and_first_images_matched": true,
+  "raw_trials": 80,
+  "service_exclusions": 0,
+  "all_four_blocks_physical_logs_valid": true,
+  "all_four_exit_codes": 0,
+  "applied_policy_audit_passed": true,
+  "all_source_hashes_verified_before_export": true,
+  "original_final_audit_sha256": "76100910ab48e5bd1a4fc6e4320088f67b87cd48cce01affc6f10aebabf232d1",
+  "source_sha256": {
+    "runs/adaptive/astra_187301/manifest.json": "5636c5586a8acef4afe451bdd059b6fd1d2e1a4270e462620e7dd439124ebc2e",
+    "runs/adaptive/astra_187301/episodes.jsonl": "23c758b616b4f6932e315443ddfc38e3714d80c709dfaf564a34f51db36e44e6",
+    "runs/adaptive/astra_187301/result.json": "07b292f05b6039cd3b6084f8a65e5c23b992921fd73883bfb7f0e21062ac2bc2",
+    "runs/adaptive/astra_187302/manifest.json": "33dc4cab13197b325821f28041d2515143eed50e958ec3604a6de7fe1d673262",
+    "runs/adaptive/astra_187302/episodes.jsonl": "ec62e1e105a1ed1249b5c9b5275b916fcda71b2ee69fbd1074bb639d919ac060",
+    "runs/adaptive/astra_187302/result.json": "5169d19bb2bc5ad0f4efa5a235ab687ac3b53c6d498d6c4bc7ae23327570aeaa",
+    "runs/fixed/astra_187301/manifest.json": "dd690a75730e7eff658eb46b29788fdfefdb1d95595b7a785602cc87013bc9df",
+    "runs/fixed/astra_187301/episodes.jsonl": "c1ba6183940949a99f6e5aa947184a3f91d6ab60edea164c5b55969352f6f4ec",
+    "runs/fixed/astra_187301/result.json": "ea32364c6313a678dc0e6798f9a64b3e6d469e4be9a5ebbf8a9fd446ca872098",
+    "runs/fixed/astra_187302/manifest.json": "3e2f2a16a234f398c15a1308986d3d8efd111ea52f9c76d782ae449d13defb90",
+    "runs/fixed/astra_187302/episodes.jsonl": "853388731bb84b503c12c8ee78016f2300fa4c95c5fcccc978e1a73a57abb637",
+    "runs/fixed/astra_187302/result.json": "8742dac6271107575482388eef8fe1eb45a0380644cfd7f2a77a4e3c392de025"
+  },
+  "publication_scope": "Aggregate outcomes, protocol and evidence hashes only. No credentials, local account/path metadata, model prompts, raw trajectories or images."
+}

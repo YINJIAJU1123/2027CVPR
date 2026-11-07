@@ -1,0 +1,25 @@
+Q3 inspection-policy update — 2026-11-07
+
+Based on paper main commit 9800696d76bd820466b0cf97c161abdbf74c1d10.
+
+New experiment
+80 formal cube trials, 40 matched pairs, seeds 187301 and 187302 (20 per seed per arm). Two smoke episodes are excluded. The frozen protocol changes only inspect_face direction/duration. Both arms retain semantic decisions, shared controllers and stop gate; both receive actual executed actions. All initial state/image matches, runtime contracts, physical logs and applied-policy audits passed. No service exclusions or replacement trials occurred.
+
+Adaptive: 38/40 success, 39 correct terminal bindings, 1 unbound, no drops, 1 abstention and 1 false stop. Fixed: 31/40 success, 32 correct terminal bindings, 1 wrong binding, 7 unbound, 1 execution drop, 6 abstentions and 2 false stops. Calls: 117 vs 126; tokens: 247383 vs 273048.
+The paired success table is both=29, adaptive-only=9, fixed-only=2, neither=0. Exact two-sided McNemar p=0.0654296875. The observed 17.5-point gain remains unresolved at alpha=0.05. No significant-advantage, equivalence or general-best-policy claim is made. The fixed sample is complete; there is no extension to chase significance.
+
+Existing-data analysis
+The previous fresh/repeated-frame Q3(b) cohort has the same nine call-one correct bindings in both arms. Fresh images add 25 later first-correct bindings, of which 23 complete; repeated first frames add none. This is a post-hoc applied-declaration audit, not visual-recognition accuracy. Provisional single-AI visibility labels are omitted from all published results pending independent human review.
+
+Manuscript changes
+Q3 main table now has three independent panels. The supplement documents intervention boundaries, seeds/order, failure counts, exact paired test, individual Wilson intervals, binding-call distributions including never-bound trials, tokens and latency. No historical cohorts are pooled. Q1 and Q2 numerical results and all existing figure assets are unchanged. Repeated discussion text was condensed to retain an eight-page body without changing margins, fonts or the official style.
+
+Validation
+- render_q3_inspection.py --check passes and reproduces the exact paired test from the exported 2x2 counts.
+- analyze_q3_terminal_bindings.py --check passes for the existing 80-trial image cohort.
+- build_paper.sh and check_paper.sh pass. Main body: 8 pages; statement/references: 2 additional pages; supplement: 15 pages.
+- No unresolved citations/references, LaTeX errors or overfull boxes. Main pages 6–8 and supplement pages 5–7 were rendered and inspected; figures, table columns and captions are legible and unclipped.
+- Aggregate arithmetic and source hashes were checked against the completed local run. Published exports contain no account credentials, prompts, raw images or trajectories. The reproducible aggregate script does not claim to reproduce the private trajectory audit.
+
+Publication scope
+Manuscript sources, PDFs, generated table macros, sanitized aggregate outcomes/protocol/audit hashes and aggregate validation script. The two previously untracked language raw-data directories remain local and untouched. The earlier submission_readiness_20261106.txt is historical; its Q2/Q3 and page-count statements are superseded by this note and the current README.

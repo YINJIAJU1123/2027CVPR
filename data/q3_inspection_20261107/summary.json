@@ -1,0 +1,98 @@
+{
+  "status": "complete_audited",
+  "scope": "New paired cube cohort; not pooled with other Q3 or Q2 cohorts",
+  "seeds": [
+    187301,
+    187302
+  ],
+  "trials_per_seed_per_arm": 20,
+  "raw_trials": 80,
+  "smoke_trials_excluded": 2,
+  "service_exclusions": [],
+  "summary": {
+    "adaptive": {
+      "raw_n": 40,
+      "raw_success": 38,
+      "eligible_n": 40,
+      "success": 38,
+      "terminal_correct": 39,
+      "unbound": 1,
+      "reasons": {
+        "success": 38,
+        "abstain": 1,
+        "false_stop": 1
+      },
+      "drops_by_phase": {},
+      "first_correct_call_histogram": {
+        "4": 5,
+        "3": 12,
+        "1": 8,
+        "2": 12,
+        "5": 2
+      },
+      "never_correct_binding": 1,
+      "calls": 117,
+      "per_seed": {
+        "187301": {
+          "n": 20,
+          "success": 18
+        },
+        "187302": {
+          "n": 20,
+          "success": 20
+        }
+      },
+      "terminal_wrong": 0,
+      "tokens": 247383,
+      "median_call_latency_s": 4.574120823002886,
+      "median_logical_duration_s": 17.833333333333336
+    },
+    "fixed": {
+      "raw_n": 40,
+      "raw_success": 31,
+      "eligible_n": 40,
+      "success": 31,
+      "terminal_correct": 32,
+      "unbound": 7,
+      "reasons": {
+        "false_stop": 2,
+        "success": 31,
+        "abstain": 6,
+        "drop": 1
+      },
+      "drops_by_phase": {
+        "execution": 1
+      },
+      "first_correct_call_histogram": {
+        "4": 6,
+        "2": 5,
+        "1": 8,
+        "3": 9,
+        "5": 4
+      },
+      "never_correct_binding": 8,
+      "calls": 126,
+      "per_seed": {
+        "187301": {
+          "n": 20,
+          "success": 16
+        },
+        "187302": {
+          "n": 20,
+          "success": 15
+        }
+      },
+      "terminal_wrong": 1,
+      "tokens": 273048,
+      "median_call_latency_s": 4.556824527011486,
+      "median_logical_duration_s": 20.333333333333336
+    }
+  },
+  "paired_success": {
+    "adaptive_only": 9,
+    "fixed_only": 2,
+    "exact_two_sided_mcnemar_p": 0.0654296875
+  },
+  "release_sha256": "369419e917dec33f3dcd4d55aede283b193c8b2caf4e01e2aa0582280a0ac14f",
+  "final_audit_sha256": "76100910ab48e5bd1a4fc6e4320088f67b87cd48cce01affc6f10aebabf232d1"
+}

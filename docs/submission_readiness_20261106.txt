@@ -1,3 +1,5 @@
+Historical review retained for provenance. Its controller, Q3 and page-count statements are superseded by README.md, docs/controller_update_20261107.md and docs/q3_inspection_update_20261107.txt.
+
 REVEAL — 2026-11-06 manuscript review and submission priorities
 
 Assessment

@@ -259,6 +259,43 @@ Fresh-image outcomes comprise 32 successes, three drops, three false stops and t
 A post-hoc audit classifies terminal declarations in these same trials as correct, incorrect, or absent. Current images yield counts of 34, one and five; repeated first frames yield nine, three and 28. A correct declaration need not imply task completion: two fresh-image trials retain a correct binding but fail the final pose criterion. These are terminal binding states, not first-binding accuracy, initial target visibility, or post-stop stability. The reproducible audit retains the source hash and per-trial classifications.
 
 
+\paragraph{When correct bindings are acquired.}
+A further post-hoc audit uses applied tool calls rather than terminal states alone. Both arms first declare the correct binding on call one in the same nine trials. With fresh images, an additional 25 trials first bind correctly on calls two through six: eight, nine, five, two and one trials, respectively. Of these 25, 23 subsequently succeed; the other two stop with an incorrect true pose. Repeated first frames produce no additional correct binding after call one. Six fresh-image trials and 31 repeated-frame trials never bind correctly. These are semantic declarations in recorded trajectories, not independently measured first visual-recognition events. All 210 request images were verified against transport hashes. Initial-target readability and finger-versus-back-face occlusion have not been independently annotated and are not reported as results.
+
+\subsection{Q3: Adaptive versus fixed inspection}
+\label{sec:inspection-policy}
+This prospective addendum uses new seeds 187301 and 187302, with 20 trials per seed and arm (40 matched pairs; 80 formal trials). Two admission trials with seed 187291 are excluded from results. Both formal arms were run anew; the earlier fresh-image arm is not reused as a control. The order is adaptive then fixed for the first seed and fixed then adaptive for the second. All 80 outcomes are retained, with no service exclusions, replacement trials or extension after observing the result.
+
+\paragraph{Intervention and controls.}
+Both arms use the archived fresh-image cube release's semantic model (\texttt{gpt-6-astra}), system prompt, tool schema, pose estimator, latent student, waiting and execution actors, physical horizon and stopping rule. Each has the same six-call cap. In the adaptive arm, the model selects the color and duration of each \texttt{inspect\_face} action, from 10 to 90 control steps. In the fixed arm, only these actions are replaced by a cyclic green, yellow, red, blue, magenta, cyan sequence, each lasting 90 steps at 30~Hz. The sweep index advances only on inspection. Non-inspection actions and target declarations are unchanged. Both arms retain the model's choice of whether to inspect, bind, verify, stop or abstain, so this isolates inspection direction/duration rather than removing all high-level autonomy.
+
+The common feedback schema adds the last executed action in both arms, preventing an overridden fixed action from silently being treated as the model's proposed action. Numeric feedback and image history remain live; their realized values and subsequent trajectories differ. Initial physical-state and first-image hashes match for every pair. Runtime contracts, delivered images, applied actions and physical logs passed the final audit. Realized latency and compute are reported rather than assumed equal.
+
+\begin{table}[h]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrrr}
+\toprule
+Inspection & Success & Bound & Unbound & Drops & Calls\\
+\midrule
+Fixed sweep & 31/40 & 32 & 7 & 1 & 126\\
+Adaptive & 38/40 & 39 & 1 & 0 & 117\\
+\bottomrule
+\end{tabular}
+\caption{New Q3 inspection-policy cohort. Bound counts correct terminal bindings. Fixed inspection additionally has one wrong terminal binding; adaptive has none. Binding categories and terminal failure types overlap and must not be added together.}
+\label{tab:inspection-policy-supp}
+\end{table}
+
+Successes by seed are $(18,20)$ for adaptive inspection and $(16,15)$ for the fixed sweep. Adaptive failures comprise one abstention and one false stop. Fixed failures comprise six abstentions, two false stops and one execution-stage drop. The drop phase describes timing, not its cause. Correct terminal bindings are 39/40 and 32/40, respectively.
+
+\paragraph{Inference and acquisition cost.}
+The prespecified primary endpoint is autonomous success, tested by exact two-sided paired McNemar. The paired table contains 29 shared successes, nine adaptive-only successes, two fixed-only successes and zero shared failures. The observed gain is 17.5 percentage points, but $p=0.0654297$ does not reject equal success probabilities at $\alpha=0.05$. Wilson 95\% intervals for the individual rates are 83.5--98.6\% and 62.5--87.7\%; these are not paired-effect intervals. This is one primary test in a new study; binding and cost outcomes are descriptive secondary measures. The result is neither a statistically significant advantage nor evidence of equivalence.
+
+First correct-binding call counts for calls one through six are $(8,12,12,5,2,0)$ for adaptive and $(8,5,9,6,4,0)$ for fixed inspection. One and eight trials, respectively, never bind correctly. The index includes the input producing the binding; strictly preceding observations equal the index minus one. These never-bound outcomes must accompany any conditional acquisition-time statistic; early failure cannot be interpreted as faster acquisition. The experiment records declared bindings, not an independent visibility annotation.
+
+Adaptive inspection uses 117 calls and 247,383 tokens, versus 126 calls and 273,048 tokens for the fixed sweep. Median measured call latency is 4.57 versus 4.56 seconds; median logical episode duration is 17.83 versus 20.33 seconds, including failures. One prescribed sweep on one cube does not establish superiority to all reactive policies, and an equal maximum call count does not ensure equal realized compute. Different cohorts and hosted-service conditions also preclude attributing differences from older Q3 success rates to this intervention.
+
+
 
 \subsection{A recorded feedback sequence}
 Figure~\ref{fig:feedback-example} shows a recorded pair from the initial-plan/continued-feedback comparison. Both protocols start from the same physical state and byte-identical initial image. The one-call plan abstains. The feedback agent inspects red, then binds T to red after the next observation. The measured gate stops at step 420, with independently scored orientation error 0.0812 radians and correct semantic binding. This is the lowest trial identity among eligible pairs with initial-plan abstention, feedback success, and an inspection action. It is a selected illustration, not a visibility annotation for the whole cohort or evidence of wrong-to-correct binding.
@@ -319,7 +356,7 @@ The primary comparison uses REVEAL against bare VLM baselines. Its interpretatio
 The current Q2 study does not isolate the utility of explicit controller-goal input; no benefit is attributed to that pathway. Q1 reports semantic-layout sensitivity separately for the cube and die. These complete-system interventions do not extend the Q2 controller findings to other objects. No additional multi-object controller ablation is included in the current experiment scope.
 
 \subsection{Test agent feedback}
-Q3 is complete on the marked cube. The initial-plan comparison tests the full feedback protocol with different call budgets. The separate fresh-versus-first-frame study holds the six-call cap and trigger policy fixed, supporting later visual evidence with live numeric feedback and local control retained. Realized calls, tokens and trajectories differ. Neither experiment isolates history from verification or establishes a feedback effect across objects. These are interpretation limits, not additional Q3 experiments required by the current scope.
+Q3 now contains three separate cube cohorts: continued feedback, fresh images, and adaptive versus fixed inspection. The first changes call budgets; the second changes upper RGB under a common cap; the third changes inspection direction/duration and shows a favorable but statistically unresolved success difference. None isolates every history or verification component, equalizes realized compute, or establishes a mechanism across objects.
 
 \subsection{Separate perception accuracy and control benefit}
 The independent pose study below establishes frame-level accuracy differences between two supplied systems. To test downstream benefit, compare predictors with the same student and agent. Report false stops, drops and semantic success alongside independent pose error. Oracle pose estimates the residual motor gap. Only a second experiment should adapt the student to the new predictor. A lower pose error is useful evidence, but it does not guarantee a higher task success rate.

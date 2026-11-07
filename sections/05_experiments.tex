@@ -51,7 +51,7 @@ Slowing with joint correction achieves 104/120 successes (86.7\%), compared with
 \caption{\textbf{Recorded inspection before binding.} Unretouched model-input frames from a recorded simulated trial. The initial plan abstains; feedback reveals T, then REVEAL binds T to red and completes at step 420 (true error 0.0812 radians). Both arms start from identical state and image. This selected example illustrates evidence acquisition, not wrong-binding correction or hardware performance.}
 \label{fig:recorded-search}
 \end{figure*}
-We test two complementary interventions in separate paired cohorts (Table~\ref{tab:q3-feedback}). Panel (a) compares complete feedback protocols; panel (b) isolates whether later images carry useful evidence under a common call cap. Their outcomes are not pooled.
+Three separate paired cohorts test continued feedback, fresh images, and inspection policy (Table~\ref{tab:q3-feedback}). Outcomes are not pooled.
 
 \begin{table}[t]
 \centering\small
@@ -64,23 +64,25 @@ Condition & Success & \% & Drops & Calls\\
 \midrule
 \multicolumn{5}{l}{\textbf{(b) Fresh visual evidence: same six-call cap}}\\
 \ImageRefreshRows
+\midrule
+\multicolumn{5}{l}{\textbf{(c) Inspection policy: same model and controllers}}\\
+\InspectionPolicyRows
 \bottomrule
 \end{tabular}
-\caption{\textbf{Q3: feedback and fresh evidence on the cube.} Each panel has 40 scheduled trials per arm. (a) excludes one service-affected pair; its full-feedback arm reuses the initial 40-trial Q2 subset. (b) has no exclusions and changes only upper-agent RGB. Drops and calls are raw totals. Cohorts are separate; realized calls are not matched compute.}
+\caption{\textbf{Q3: feedback, evidence and inspection on the cube.} Each panel schedules 40 trials per arm. (a) excludes one service-affected pair and reuses Q2's initial full-feedback subset. (b) changes only upper RGB. (c) changes inspection direction/duration. (b,c) have no exclusions. Drops/calls are raw totals; cohorts and realized compute differ.}
 \label{tab:q3-feedback}
 \label{tab:feedback}
 \label{tab:image-refresh}
 \end{table}
 
 \paragraph{(a) Is continued feedback useful?}
-The initial-plan arm receives the first RGB observation and measured feedback, then commits to one to six bounded actions without later semantic observations. Its last non-abstain skill can continue until the common stopping gate or horizon. Full feedback permits up to six calls with updated observations and history. Both arms retain continuous student pose feedback, identical local controllers and the same stopping rule.
-
-Success rises from 6/39 to 33/39 eligible trials: 27 pairs succeed only with feedback and none only with the initial plan (exact $p=1.49\times10^{-8}$). Raw success is 6/40 versus 34/40; an initial-plan HTTP 503 timeout is excluded symmetrically. Of 28 eligible initial-plan abstentions, 22 succeed with feedback. Among eligible feedback trials, 36 inspect, 32 first bind after inspection, and 31 successes use multiple calls. This supports evidence acquisition before binding, not correction of an executed wrong binding. Calls total 40 versus 120, so this contrast includes differing inference budgets. Zero initial-plan drops accompany frequent abstention. Figure~\ref{fig:recorded-search} shows a recorded example.
+The initial-plan arm commits to up to six bounded actions from one RGB observation and measured feedback; full feedback allows up to six calls with updated images and history. Both retain the same local controllers, stopping gate and horizon. Success rises from 6/39 to 33/39 eligible trials: 27 pairs favor feedback and none favor initial planning (exact $p=1.49\times10^{-8}$). One initial-plan service failure is excluded symmetrically. Of 28 eligible initial-plan abstentions, 22 succeed with feedback; 32 feedback trials first bind after inspection. This supports evidence acquisition, not correction of an executed wrong binding. The call budgets differ.
 
 \paragraph{(b) Does the next image matter?}
-Both arms retain the same six-call cap and trigger policy. Only upper-agent RGB changes: current images versus the exact first frame on every call. Numeric pose feedback, history, lower perception and control remain live. Forty pairs share initial states and first images, without exclusions.
+Only upper-agent RGB changes: current images versus the exact first frame on every call. Both retain the six-call cap, trigger policy, live numeric feedback, history and local control. Success is 32/40 versus 9/40, with all 23 discordant pairs favoring fresh images (exact $p=2.38\times10^{-7}$). Correct terminal bindings number 34 versus nine. Both arms first bind correctly on call one in the same nine trials; fresh images yield 25 additional correct bindings later, of which 23 succeed. Drops differ by only one. These post-hoc traces support acquiring target evidence; they do not measure first recognition accuracy or initial visibility.
 
-Current images yield 32/40 successes versus 9/40 for repeated first frames. All 23 discordant pairs favor fresh images, a 57.5-point gain (exact $p=2.38\times10^{-7}$). A post-hoc audit finds correct terminal bindings in 34/40 versus 9/40 trials. Abstentions fall from 24 to two, while drops change from four to three. This pattern supports acquiring target evidence rather than a gain explained solely by fewer drops. Transport hashes verify delivered images. Actual calls, tokens and trajectories differ, so the common cap does not equalize realized compute.
+\paragraph{(c) Does adaptive inspection help?}
+Forty new pairs compare model-selected inspection directions and durations with a fixed color sweep of 90-step actions. Both arms retain the same model, controllers, fresh-image/history interface and stopping rule; actual executed actions enter feedback. The model still decides whether to inspect, bind or abstain. Adaptive inspection achieves 95.0\% success versus 77.5\%, a 17.5-point observed gain. Nine pairs favor adaptive and two favor fixed inspection (exact $p=0.0654$), leaving the difference unresolved at $\alpha=0.05$. Correct terminal bindings are 39 versus 32, with zero versus one drop. This is a favorable trend against one fixed sweep, not a general or statistically significant advantage.
 
 \subsection{Q4: Multi-object hardware evaluation}
 \paragraph{Hardware protocol.}

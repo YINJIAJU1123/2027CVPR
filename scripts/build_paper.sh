@@ -6,6 +6,7 @@ mkdir -p build/main build/supplement output/pdf
 python3 scripts/render_language_table_image.py --check
 python3 scripts/render_q1_summary.py > build/q1_summary.log
 python3 scripts/render_controller_three_seed.py > build/controller_three_seed.log
+python3 scripts/render_q3_inspection.py > build/q3_inspection.log
 for target in main supplement; do
     if [[ -n "${TECTONIC:-}" ]]; then
         "$TECTONIC" --keep-logs --keep-intermediates --outdir "build/$target" "$target.tex"
