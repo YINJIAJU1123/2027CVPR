@@ -1,0 +1,69 @@
+REVEAL manuscript revision — 7 November 2026
+
+Base: GitHub main 37cb6bc (paired inspection-policy study).
+Integrated: the earlier local plain-language revision based on 9800696.
+Working branch: codex/paper-clarity-q3-20261107.
+The original local checkout and the read-only remote snapshot are preserved.
+
+Purpose
+Make the paper's central question and the new Q3 evidence easier to follow:
+find the requested surface through inspection, bind it to a motor goal,
+and continue controlling the object while semantic inference is pending.
+
+Changes and review disposition
+1. Q3 renamed to Active Target Search and Visual Feedback. Its question,
+   opening paragraph and three intervention headings now follow the search
+   process: continued feedback, fresh evidence, and selection of inspection
+   direction/duration.
+2. Abstract rewritten in plain English. It emphasizes the established fresh-
+   image contrast (9/40 versus 32/40), alongside the six-object result, rather
+   than leading with an unresolved inspection-policy comparison.
+3. Introduction defines target binding and connects search to asynchronous
+   motor control. Contributions and result summary now include the new Q3
+   inspection study, with the 17.5-point gain explicitly unresolved.
+4. Previous plain-language edits integrated into related work, task, method,
+   experiments and selected supplementary paragraphs. Conflict resolution
+   retains all new Q3 experiments and trajectory analysis.
+5. Method clarifies pretrained student adaptation under frozen-teacher
+   supervision, then local-controller learning. The residual in the loss is
+   explicitly defined as 0.35*tanh(v), matching control_modules.py and the
+   residual penalty in train_modules.py. Displayed equations are unchanged.
+6. Supporting rendered RGB-D pose comparison remains in the supplement;
+   its paragraph was removed from Q4 to keep it separate from hardware claims.
+7. Discussion distinguishes the supported evidence from remaining scope
+   limits. It explicitly notes that success does not independently test final
+   readability or a holding duration after stopping.
+
+Preserved evidence
+- All data/, tables/, figures/ files and references.bib match 37cb6bc.
+- All citation keys, displayed equations and inline table entries preserved.
+- Q2 remains seeds 187102/187103/187104, 40 trials per method and seed.
+- Q3(c) remains 38/40 vs 31/40; exact paired p=0.0654296875.
+- Q3(b) additional correct bindings remain 25 versus zero, 23 successes.
+- No new experiments, significance claims, visibility labels or hardware
+  results have been introduced.
+
+Remaining priorities
+- Complete Q4 hardware comparisons and replace pending figure slots with
+  corresponding recorded observations.
+- If claiming a clearly visible, stable final display, measure final target
+  readability and post-stop holding separately; preserve the old success
+  metric for comparisons rather than changing it retrospectively.
+- Preserve the new Q3 raw trajectories privately for trace-level review;
+  the public aggregate check cannot reproduce the private source audit.
+- Resolve the existing appendix TODOs for serving metadata, sanitized prompts,
+  anonymous code and asset licenses before submission.
+- Broader inspection-policy, controller-goal or cross-object mechanism
+  claims would require additional controls. They are not asserted here.
+
+Validation
+bash scripts/build_paper.sh
+bash scripts/check_paper.sh
+python3 scripts/render_q3_inspection.py --check
+python3 scripts/analyze_q3_terminal_bindings.py --check
+git diff --check
+Data/table/figure/bibliography equality, citation-key equality and displayed
+math/inline-table equality checked against 37cb6bc.
+Main body remains eight pages, plus two pages for disclosure/references;
+supplement remains fifteen pages. No undefined references/citations or
+overfull boxes. PDF pages inspected after rendering.

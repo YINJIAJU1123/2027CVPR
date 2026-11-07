@@ -15,13 +15,13 @@
 \raggedbottom
 \maketitle
 \setcounter{section}{0}\renewcommand{\thesection}{\Alph{section}}
-\section{Scope of This Release}
-This supplement accompanies the manuscript updated on 7 November 2026. Q1 system comparisons cover six object-specific simulation releases; Q2 control ablations and Q3 feedback interventions use only the marked cube. The independent cube pose study is supporting evidence, not a hardware result. A separate 120-trial native-layout die comparison and a 240-trial visual-layout study are documented below. Q2 has one formal controller study: seeds 187102, 187103 and 187104, with 40 trials per seed and method. Other seed identifiers below belong to separately identified Q1/Q3 studies or training diagnostics. The four additional Q1 objects contribute 960 completed raw trials. A separate language study adds 2,160 trials across cube, duck and hedgehog. The multi-object physical-hand evaluation and downstream predictor-substitution study remain TODO.
+\section{Overview}
+This supplement accompanies the manuscript updated on 7 November 2026. Q1 compares six object-specific systems in simulation. Q2 studies control during inference; Q3 studies active target search and visual feedback on the marked cube. Q2 uses only seeds 187102, 187103 and 187104, with 40 trials per seed and method. Other seeds below belong to Q1, Q3 or training diagnostics. We also report the 120-trial native-layout die comparison, the 240-trial die layout study, 960 trials on four additional Q1 objects, and 2,160 language trials on cube, duck and hedgehog. The independent cube pose study provides supporting simulation evidence. Physical-hand tests and downstream tests of a replacement pose estimator remain unfinished.
 
-The latest complete-system comparison refits only REVEAL's waiting actor. The student, predictor, execution actor, and task criterion remain frozen. Earlier cohorts use their recorded original controller version. Results from the earlier RGB-D backend, invalid contact-capacity runs, and different protocols are not pooled into the current main result. The original bare-baseline addendum was specified after the first suite, so the full historical study is not described as blindly preregistered.
+The current complete-system comparison updates only REVEAL's waiting actor. The student, pose estimator, execution actor and success rule stay fixed. Earlier studies use their recorded controller versions and are reported separately. We exclude invalid contact-capacity runs and do not combine results from the earlier RGB-D system or different protocols. The original baseline-only comparison was added after the first study, so we do not describe the full historical evaluation as preregistered.
 
-\section{Exact Task and Runtime Contract}
-This section and the model details that follow specify the cube backend. Object-specific differences are described in the dice, additional-object and language sections below.
+\section{Task and Runtime}
+This section describes the cube system. The die, additional-object and language sections explain the differences for other objects.
 \subsection{Object and goals}
 Table~\ref{tab:mapping} records the fixed face mapping. Body normals include the original mesh rotation. All methods use the same mapping and cached six-vector bank. The cyan channel corresponds visually to a pale-blue face and magenta to a purple face. The target quaternion gives a canonical twist as well as the upward face normal.
 
@@ -43,7 +43,7 @@ H & cyan & $(1,0,0)$ & $(0,-s,0,s)$\\
 \label{tab:mapping}
 \end{table}
 
-The semantic instruction identifies a letter. It does not specify an arbitrary target quaternion. The benchmark scores its associated canonical quaternion at a 0.16-radian tolerance. A drop is recorded when the distance from the object's nominal grasp position is at least 0.24 metres. This is an operational benchmark termination, not a detector of every transient slip or lost contact. The object may move within that boundary without a recorded drop.
+The instruction names a letter, and the benchmark checks its fixed reference orientation with a 0.16-radian tolerance. A drop ends the trial when the object moves at least 0.24 metres from its nominal grasp position. This rule does not detect every brief slip or loss of contact within that boundary.
 
 \subsection{Physics and perception}
 The runtime uses Isaac Lab 3.0, Isaac Sim 6.2, Newton 1.6.1, Warp 1.17, and PyTorch 2.11 with CUDA 13.0. The validated collision model contains 23 bodies and 117 shapes, comprising 116 convex shapes and one box. The contact allocation uses \texttt{nconmax=4096} and \texttt{njmax=1024}. Earlier overflow runs are invalid even if their reported rewards appear plausible.
@@ -51,9 +51,9 @@ The runtime uses Isaac Lab 3.0, Isaac Sim 6.2, Newton 1.6.1, Warp 1.17, and PyTo
 The pose estimator is frozen. It predicts 27 image-coordinate/depth outputs for nine points, then recovers pose through calibrated geometry. The object image is rendered at $120\times120$ with live hand occlusion. Sensor calibration, object asset, policy normalization, joint order, action mapping, and smoothing belong to the release contract. A change to one of these produces a new release. The current setup does not establish real-camera robustness or unseen-scene generalization.
 
 \subsection{Timing, termination, and exclusions}
-The semantic horizon is 120 seconds of logical control time. Model latency is measured independently and translated into a minimum pending duration of $\lceil30L\rceil$ steps. The request must also have actually completed. Physics is never intentionally paused to await a semantic response. Because simulation throughput is below the logical 30~Hz rate, wall time per episode exceeds logical duration. A hardware claim requires a separately measured end-to-end rate.
+Each episode lasts at most 120 seconds of simulated control time. A model call taking $L$ wall-clock seconds must remain pending for at least $\lceil30L\rceil$ control steps, and its reply cannot be used before the call finishes. Physics continues throughout. Since simulation runs slower than real time, an episode takes longer in wall-clock time. Hardware control speed must be measured separately.
 
-The shared gate runs at 3~Hz. It requires an accepted requested-symbol binding, a non-inspection command, no outstanding request, and estimated canonical orientation error no greater than 0.16 radians. The independent scorer applies the same angular tolerance to true orientation and checks the actual requested face. No post-stop dwell is required. Success is not the minimum orientation error at any earlier time.
+The stopping check runs at 3~Hz. The requested symbol must be bound to a goal, with no inspection or model request underway, and estimated orientation error must be at most 0.16 radians. The independent scorer then checks the actual requested face and true orientation using the same tolerance. It scores the stop time, without an extra holding period or credit for a better pose reached earlier.
 
 A service error or model call exceeding 120 seconds is recorded without replacement. The original three-system panel removes trial 183102011 from every arm. This leaves 39 common eligible trials for that historical Q1 panel. The current Q2 study reports all 120 outcomes per method. Raw 40-trial outcomes remain visible, including service-affected cases.
 
@@ -84,7 +84,7 @@ The waiting actor interpolates from current joint positions toward the proposal 
 
 No raw RGB, true object pose, teacher action, future model response, or oracle semantic label is a deployed actor input. Vision affects the actor through estimated pose and recurrent belief. The reported stopping gate is measured-pose based. Previously trained completion-evidence heads are inactive and cannot be credited for the current results.
 
-\section{Original-Release Numerical Results}
+\section{Earlier System Comparisons}
 \begin{table}[h]
 \centering\small
 \setlength{\tabcolsep}{3pt}
@@ -122,7 +122,7 @@ After training, the final model from each branch is compared with the released s
 
 A selected new student still requires separately collected controller data and compatibility validation. Only then may a new semantic release use reserved seeds 183301 and 183302. The original cube-v1 results remain unchanged. Both branches and all 160 diagnostic trials have completed with valid physics logs. The four reach counts are 39/40, 38/40, 39/40, and 40/40 for the released, frozen latent, extra simulated, and extra CNN policies. Drops are one, two, one, and zero. The CNN candidate passes the stated gate and has not been automatically deployed. Exact paired tests against the frozen latent and extra simulated policies give $p=0.5$ and $p=1.0$. Thus this is a promising development result, not an established perception-matching effect.
 
-\section{Separate Follow-up Cohorts}
+\section{Additional Experiments}
 \label{sec:followup}
 These studies retain the frozen task success criterion and do not replace the completed cube-v1 cohort. Service-eligible success is the primary metric. Cross-method comparisons remove the same service-affected slots from every arm. All raw records, including excluded physical drops, remain available. Forty scheduled slots do not necessarily yield forty eligible trials.
 
@@ -187,7 +187,7 @@ Identity versus permutation yields eighteen exclusive successes and four exclusi
 
 \subsection{Q3: Initial planning and continued feedback}
 \label{sec:feedback-protocol}
-This comparison uses 40 matched initial states per arm. Its full-feedback arm is the seed-187102 subset of Q2, shared rather than counted as an independent replication. The initial-plan arm receives one observation and returns a bounded action sequence; the feedback arm receives updated observations and history on up to six calls. Both use the same student, local controllers, stopping rule and horizon.
+The two conditions share 40 initial states. Full feedback reuses Q2's 40 trials from seed 187102, so these trials are not an independent replication. The initial plan uses one observation to return a bounded action sequence. Full feedback uses updated observations and history on up to six calls. Both conditions use the same student, local controllers, stopping rule and time limit.
 
 \begin{table}[h]
 \centering\small
@@ -204,13 +204,13 @@ Continued feedback & 34/40 & 33/39 & 5 & 120\\
 \label{tab:feedback-protocol-supp}
 \end{table}
 
-Feedback gives 27 exclusive successes and zero exclusive failures (two-sided exact paired $p=1.49\times10^{-8}$). Of 28 eligible initial-plan abstentions, 22 succeed with feedback. Among eligible feedback trials, 36 inspect, 32 first bind after inspection, and 31 successes use multiple calls. No executed wrong-to-correct binding is found. These statistics describe evidence acquisition; they do not annotate initial target visibility or establish the correctness of every first binding.
+Twenty-seven pairs succeed only with feedback, and none only with the initial plan (two-sided exact paired $p=1.49\times10^{-8}$). Of 28 eligible initial-plan abstentions, 22 succeed with feedback. Among eligible feedback trials, 36 inspect, 32 first bind after inspection, and 31 successful trials use multiple calls. No trial corrects an executed wrong binding. These counts describe how the agent gathers evidence. They do not tell us whether the target was initially visible or whether every first binding was correct.
 
 Median logical duration is 8.17 seconds for initial planning and 22.0 seconds for feedback on the eligible panel. These durations include unsuccessful termination and must be interpreted alongside 28 initial-plan abstentions. Median measured call latency over raw requests is 8.12 and 5.33 seconds. The protocols differ in output structure and inference budget.
 
 \subsection{Three-seed controller evaluation}
 \label{sec:collaborator-waiting}
-The controller ablation uses seeds 187102, 187103 and 187104, with 40 trials per seed and method. Seed 187102 contributes the initial 40-trial subset; seeds 187103 and 187104 contribute 80 additional trials per method. This is the only formal online controller ablation reported in the paper. The main-paper Q2 table pools these counts. Learned slowing is fitted under a zero-residual constraint with the same initialization, data, sampling, optimizer and 2,400 updates as the full reference. The two additional seeds are available as aggregate outcomes, so no seed-level variance or paired significance test is derived from this table.
+The controller ablation uses seeds 187102, 187103 and 187104, with 40 trials per seed and method. Seed 187102 provides the first 40 trials, and the other two seeds add 80. Q2 reports their combined counts as the paper's only formal online controller ablation. For learned slowing alone, we disable joint correction and keep the same initialization, data, sampling, optimizer and 2,400 updates. Only combined counts are available for the two additional seeds, so this table cannot support seed-level variance estimates or paired significance tests.
 
 \begin{table}[h]
 \centering\small
@@ -229,7 +229,7 @@ Slowing + correction & 34 / 4 / 1 / 1 & 70 / 1 / 3 / 6\\
 \label{tab:collaborator-waiting}
 \end{table}
 
-The Q1 mapping study and the Q3 image intervention below are separate from this pooled table. Their absolute rates are not matched comparisons; Q2 controller gains use only its own within-study outcomes. The full-feedback arm of the initial-plan comparison reuses the 40 trials from seed 187102, as stated above.
+Q1's mapping study and Q3's image intervention use different trials. Their absolute rates need not match Q2, whose controller gains are measured within its own trial set. The initial-plan comparison shares the 40 full-feedback trials from seed 187102, as noted above.
 
 \subsection{Q3: Fresh visual evidence}
 \label{sec:fresh-evidence}
@@ -250,13 +250,13 @@ Repeated first frame & 9/40 & 4 & 98 & 161,082\\
 \label{tab:confirmation-image}
 \end{table}
 
-All 23 discordant success pairs favor current images (two-sided exact paired $p=2.3842\times10^{-7}$). This is the unadjusted test for the image comparison. Successes by seed are $(17,15)$ for current images and $(5,4)$ for repeated first frames. Wilson 95\% intervals are 65.2--89.5\% and 12.3--37.5\%, respectively.
+All 23 pairs with different success outcomes favor current images (two-sided exact paired $p=2.3842\times10^{-7}$, unadjusted). Success counts for the two seeds are $(17,15)$ with current images and $(5,4)$ with repeated first frames. Wilson 95\% intervals for the combined rates are 65.2--89.5\% and 12.3--37.5\%, respectively.
 
 Only the upper agent's RGB changes. The frozen arm sends exactly its first frame, including derived crops. Every request also saves the actual current frame. Pixel and file hashes are checked against transport records. All 40 initial states and first images match. Later live frames differ from the first on 72 fresh-arm and 58 frozen-arm requests. Both arms have 31 trials with multiple calls. Local perception, numeric pose feedback, history and motor control remain live in both arms.
 
 Fresh-image outcomes comprise 32 successes, three drops, three false stops and two abstentions. Frozen-image outcomes comprise nine successes, four drops, three false stops and 24 abstentions. Median measured call latency is 6.25 versus 6.95 seconds, and median logical duration is 22.67 versus 25.62 seconds. Actual inference cost and trajectories differ, so this is not a matched-realized-compute test. Timing checks verify continuous logical control and delayed response application, without asserting wall-clock real-time simulation.
 
-A post-hoc audit classifies terminal declarations in these same trials as correct, incorrect, or absent. Current images yield counts of 34, one and five; repeated first frames yield nine, three and 28. A correct declaration need not imply task completion: two fresh-image trials retain a correct binding but fail the final pose criterion. These are terminal binding states, not first-binding accuracy, initial target visibility, or post-stop stability. The reproducible audit retains the source hash and per-trial classifications.
+A post-hoc analysis checks whether each trial ends with a correct, incorrect or absent target binding. Current images give counts of 34, one and five. Repeated first frames give nine, three and 28. Correct binding alone is insufficient for success: two current-image trials bind correctly but fail the final pose check. These counts do not measure first-binding accuracy, initial target visibility or stability after stopping. The analysis script records the source hash and each trial's classification.
 
 
 \paragraph{When correct bindings are acquired.}

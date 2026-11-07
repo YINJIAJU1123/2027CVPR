@@ -1,12 +1,12 @@
 \section{Discussion and Limitations}
-\paragraph{Evidence boundaries.}
-Fresh images aid cube completion; the adaptive-inspection advantage remains statistically unresolved. Q1 confounds semantic models with inspection, control and stopping. Two languages and templates do not establish broad multilingual generalization or equivalence.
+\paragraph{Search and control.}
+Fresh images help the agent bind targets that it does not bind from the first view. The inspection-policy comparison shows a favorable but statistically unresolved trend. Together with the controller ablation, these studies examine evidence gathering and control during inference. Q1 compares complete systems and cannot separate all model, inspection, controller and stopping effects. Q2/Q3 mechanisms are tested only on the cube.
 
-\paragraph{Unresolved controls.}
-Two aggregate-only Q2 seeds prevent seed-level variability estimates and paired tests. Explicit controller goals have no demonstrated benefit; comparison with a generic time-aware residual controller remains open. Q2/Q3 mechanisms are cube-only, and matched call caps do not equalize realized compute.
+\paragraph{Evaluation limits.}
+Two Q2 seeds are available only as combined counts, preventing seed-level variability estimates and paired tests. We have not isolated the benefit of controller-goal input or compared with a generic time-aware residual controller. Equal call limits do not ensure equal inference cost. We test one changed mapping per object and limited English/Chinese templates. Success checks binding and pose at termination, without an independent visibility check or a post-stop hold. It also requires a twist not specified by the instruction.
 
 \paragraph{Deployment scope.}
-Object-specific weights, rendered cube RGB and noisy simulator pose on other objects do not establish real-camera robustness or zero-shot transfer. Only one changed mapping is tested per object. Full-quaternion scoring fixes a twist unspecified by the instruction. Hosted-model revisions limit replication; service-conditional rates omit end-to-end availability. Hardware evaluation remains pending.
+Each object uses separate weights. Cube pose comes from rendered RGB; other objects use noisy simulator pose. Real-camera performance, transfer to new objects and hardware execution remain untested. Hosted models may change over time, limiting reproducibility. Rates excluding service failures do not measure end-to-end availability.
 
 \section{Conclusion}
-REVEAL connects visual search and semantic binding to continuous in-hand control. Six-object mean success is \QOneOriginalSuccess\% on original mappings and \QOneChangedSuccess\% on changed mappings. Cube studies support fresh observations and waiting-time joint correction; physical-hand deployment remains unvalidated.
+REVEAL connects active visual search and target binding to continuous in-hand control. Across six object-specific systems, mean success is \QOneOriginalSuccess\% with original mappings and \QOneChangedSuccess\% with changed mappings. Cube studies show how fresh observations support target binding and how joint correction helps during inference. Adaptive inspection offers a promising but statistically unresolved gain over a fixed sweep. Physical-hand tests remain necessary to assess deployment.

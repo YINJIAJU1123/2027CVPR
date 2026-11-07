@@ -2,7 +2,7 @@
 
 **REVEAL: Agentic In-Hand Manipulation for Language-Guided Target Presentation**
 
-2026-11-07 更新：新增 Q3 固定巡检与自主巡检的 80 次配对实验，以及已有图像干预的绑定时序分析。成功率为 95.0% vs 77.5%，配对检验 p=0.0654，保留“观察到优势、尚未达到统计显著”的解释。此前三 seed 控制器结果、图像和命名保持一致。
+2026-11-07 文字整合版：基于新增 Q3 配对实验，合入此前通俗语言修订。Q3 更名为 Active Target Search and Visual Feedback，摘要、引言和结论统一围绕主动观察、目标绑定和持续手内控制展开。实验数值、统计口径、引用及图像保持一致；自主巡检 95.0% vs 77.5% 仍明确为尚未达到统计显著的结果。详见 docs/q3_clarity_revision_20261107.txt。
 
 ## 阅读
 

@@ -1,57 +1,57 @@
 \section{Experiments}
 \label{sec:experiments}
-We organize evaluation around four questions. Q1 tests complete systems, Q2 studies local control, and Q3 tests visual feedback. Q4 specifies the pending hardware evaluation. Q2 and Q3 use only the marked cube.
+Q1 compares complete systems, Q2 studies control during inference, and Q3 studies active target search. Q2 and Q3 use only the marked cube. Q4 describes the pending hardware evaluation.
 
 \noindent\textbf{Q1.} How do complete systems compare across objects, mappings and instruction variants?\\
-\textbf{Q2.} How should the hand act during deliberation?\\
-\textbf{Q3.} Does continued visual feedback help?\\
+\textbf{Q2.} How should the hand move while the agent is reasoning?\\
+\textbf{Q3.} How do new observations and inspection choices help find the target?\\
 \textbf{Q4.} Does the system work on physical objects?
 
 \subsection{Setup and reporting}
-Experiments use Revo3 assets in Isaac Lab 3.0/Newton with validated contact capacities. Unless specified, each condition has two evaluation seeds and 40 scheduled trials. Physical tasks are paired within each study. Cube systems share the frozen visual pose estimator, goal bank, latent student, 0.16-radian tolerance and measured-pose stopping. Other objects use separate students and noisy simulator pose; REVEAL additionally uses calibrated completion correction. Bare VLM baselines omit the added control actors and use a fixed unreadable-view schedule, while REVEAL adapts its inspection. REVEAL denotes the complete deployed system. Natural model latency and these backend differences are part of the complete-system comparison.
+We use Revo3 assets in Isaac Lab 3.0/Newton. Unless specified otherwise, each condition has 40 trials across two evaluation seeds, paired by physical task. Cube systems share the frozen RGB pose estimator, goal bank, student, stopping rule and 0.16-radian tolerance. Other objects use separate students and noisy simulator pose. REVEAL additionally uses calibrated completion correction on these objects. The VLM baselines omit the extra control actors and follow a fixed inspection schedule when the target is unreadable. REVEAL chooses its inspection actions. These differences and measured inference delays are part of the complete-system comparison.
 
-The latest cube release replaces only its waiting actor. Q1 and Q3 rates use common service-eligible slots across compared methods; Q2 reports all 120 outcomes per method. Q1 and Q2 use distinct evaluation cohorts: Q1 measures complete systems across mappings, whereas Q2 isolates pending-request control on the cube. Their absolute rates are not matched estimates; controller gains are computed within Q2. The three-seed Q2 table is descriptive. Paired tests and any multiplicity corrections are specified separately for each study in the supplement.
+The current cube system updates only the waiting actor. Q1 and Q3 compare methods on the same service-eligible trials. Q2 reports all 120 trials per method. Q1 and Q2 use different trial sets and answer different questions, so their absolute success rates need not match. Controller gains are measured within Q2. Its three-seed table reports descriptive results. The supplement gives the paired tests and corrections for multiple comparisons used in each study.
 
 \subsection{Q1: Systems across objects and mappings}
-We compare original and changed semantic mappings across six object-specific releases. Historical native-image cohorts remain separate in the supplement; their REVEAL--fine-tuned differences are unresolved (cube $p=0.267$, die $p=0.4545$).
+We compare the original and changed target-to-skill mappings on six objects. Earlier native-image studies are reported separately in the supplement. Neither found a significant REVEAL--fine-tuned difference (cube $p=0.267$, die $p=0.4545$).
 
 \input{tables/q1_all_objects}
 
 \paragraph{Aggregate system performance.}
-Over 1,440 scheduled trials, equal-object mean success is \QOneOriginalSuccess\% on original mappings and \QOneChangedSuccess\% on changed mappings. The strongest baseline means are \QOneOriginalBaseline\% (fine-tuning) and \QOneChangedBaseline\% (rules), yielding gains of \QOneOriginalGain{} and \QOneChangedGain{} percentage points. These post-hoc descriptive means weight six service-eligible object rates equally; they neither pool trials nor add a significance test.
+Across 1,440 scheduled trials, mean success is \QOneOriginalSuccess\% with original mappings and \QOneChangedSuccess\% with changed mappings. The strongest baseline averages are \QOneOriginalBaseline\% for fine-tuning and \QOneChangedBaseline\% for rules, respectively. REVEAL improves on them by \QOneOriginalGain{} and \QOneChangedGain{} percentage points. These post-hoc averages weight each object's service-eligible rate equally. They do not pool trials or provide an additional significance test.
 
 
 \paragraph{Four additional objects.}
-Duck, hedgehog, pig and milk carton contribute 960 trials across two mappings. REVEAL has the highest observed rate in each cell (Table~\ref{tab:q1-all-objects}); these are object-specific systems, not common-policy transfer. Three historical service failures are excluded symmetrically. Milk-carton REVEAL drops in 15/40 original and 20/40 changed-mapping trials, so higher completion does not imply stable grasping. Reset and sensitivity audits are in the supplement.
+Duck, hedgehog, pig and milk carton contribute 960 trials across two mappings. REVEAL has the highest observed rate in each condition (Table~\ref{tab:q1-all-objects}), with a separate policy for each object. Three service failures exclude matching trials from all methods. The milk carton still drops in 15/40 original-mapping and 20/40 changed-mapping REVEAL trials. Thus, higher completion does not guarantee a stable grasp. Reset checks and sensitivity analyses are in the supplement.
 
 \paragraph{Visual-semantic intervention.}
-Only the upper image changes; predictor input and lighting remain fixed. Identity, cyclic letter--color permutation and masking use 40 matched states per method, all with reconstructed face images. REVEAL retains 32/40 successes after permutation; fine-tuning falls from 30/40 to 16/40 (Holm $p=0.0130$, six contrasts); rules remain at 23/40. Masking yields 0/39, 3/40 and 0/40, respectively (full supplement table). Nine of eleven fine-tuned wrong bindings after permutation select the old association, consistent with learned shortcuts but not an exclusive memorization mechanism. One permutation does not establish broad generalization or equivalence.
+We change only the image sent to the agent, keeping pose-estimator input and lighting fixed. Each method uses 40 matched states under three conditions: original letters, cyclically reassigned letters, and hidden letters. All three use reconstructed face images. After reassignment, REVEAL remains at 32/40 successes, fine-tuning falls from 30/40 to 16/40 (Holm $p=0.0130$, six comparisons), and rules remain at 23/40. Hiding letters yields 0/39, 3/40 and 0/40, respectively. Nine of eleven fine-tuned wrong bindings after reassignment follow the old mapping. This suggests learned shortcuts, although it does not prove memorization as the sole cause. One reassignment cannot establish broad generalization or equivalence.
 
 \paragraph{Dice layout transfer.}
-A separate 240-trial study rotates only the native visual mesh, preserving collision, inertia and the prompt distinguishing printed counts from motor-skill IDs. Table~\ref{tab:q1-all-objects} reports 40 matched trials per cell, with no exclusions. Permuted-layout REVEAL contrasts give exploratory paired $p=2.98\times10^{-8}$ against fine-tuning and $p=5.96\times10^{-8}$ against rules; its layout contrast ($p=0.688$) does not establish equivalence. REVEAL also receives probes, history and noisy feedback, so this supports system-level transfer, not isolated model superiority.
+A separate 240-trial study changes the die's visible layout by rotating its visual mesh. Collision geometry, inertia and the prompt separating dot counts from motor-skill IDs stay fixed. Each condition has 40 matched trials with no exclusions. Under the changed layout, exploratory paired tests give $p=2.98\times10^{-8}$ against fine-tuning and $p=5.96\times10^{-8}$ against rules. REVEAL's own layout difference is not significant ($p=0.688$), which does not prove equivalence. REVEAL also uses inspection, history and noisy feedback, so the result compares complete systems.
 
 \paragraph{Language and wording coverage.}
-Three object-specific cohorts test English/Chinese standard and rewritten instructions: three evaluation seeds, 60 scheduled trials per cell, 2,160 total. Table~\ref{tab:language-objects} uses common service-eligible slots; weights, mappings and scoring remain fixed, without Chinese retraining. The rule baseline also localizes its task/output instructions, so this tests deployed-system coverage. Rates are conditional on service availability; the supplement retains raw outcomes.
+We test standard and rewritten instructions in English and Chinese on three objects: 60 trials per condition across three seeds, totaling 2,160 trials. Table~\ref{tab:language-objects} compares the same service-eligible trials for all methods. We keep weights, mappings and scoring fixed, without retraining for Chinese. The rule baseline also translates its task/output instructions. This tests language coverage of the deployed systems. The supplement retains all raw outcomes, including service failures.
 
-REVEAL reaches 67.8--76.7\% on duck and 73.3--76.7\% on hedgehog, exceeding fine-tuning in all eight conditions (Holm-adjusted paired $p\leq0.0258$ across 36 method contrasts). Against rules, six of eight contrasts survive correction; English-standard differences remain unresolved. On cube, REVEAL leads numerically in three conditions, while fine-tuning leads on Chinese rewriting (81.1\% versus 67.9\%); none of their four contrasts is significant (all adjusted $p=1.0$). Strict pairing sensitivity preserves these decisions. No language/wording contrast survives its separate 36-test correction; this does not establish language equivalence.
+REVEAL reaches 67.8--76.7\% on duck and 73.3--76.7\% on hedgehog. It outperforms fine-tuning in all eight conditions (Holm-adjusted paired $p\leq0.0258$ across 36 method comparisons). Six of eight differences against rules remain significant after correction. On cube, REVEAL leads numerically in three conditions, while fine-tuning leads for rewritten Chinese instructions (81.1\% versus 67.9\%). None of these four differences is significant (all adjusted $p=1.0$). Requiring exact state and image matching preserves these significance decisions. No language or wording comparison is significant after its separate 36-test correction, which does not prove equivalence.
 
 \input{tables/language_objects}
 
 \subsection{Q2: Controller ablations on the cube}
-We compare four ways of acting while a semantic request is pending: continuing the student proposal, fixed slowing with coefficient 0.15, learned slowing, and learned slowing with a bounded joint correction. The ablation changes pending-request control while retaining the same execution controller outside pending intervals. Each method is evaluated for 120 trials, with 40 trials per seed across three seeds.
+We compare four ways to control the hand while the agent is reasoning: continue the student's command, slow it by a fixed coefficient of 0.15, learn the slowing coefficient, or learn slowing together with a bounded joint correction. All four use the same execution controller when no request is pending. Each method has 120 trials, with 40 per seed across three seeds.
 
 \input{tables/controller_three_seed}
 
-Slowing with joint correction achieves 104/120 successes (86.7\%), compared with 88/120 (73.3\%) for fixed slowing, a gain of 13.3 percentage points. Waiting drops decrease from 13 to five, and execution drops from eight to four. Learning the speed alone yields 82/120 successes (68.3\%), below fixed slowing. These results favor combining speed adaptation with joint correction in this evaluation; failure stages describe when a drop occurs rather than identifying its cause. Seed settings and outcome breakdowns are reported in the supplement.
+Learned slowing with joint correction achieves 104/120 successes (86.7\%), compared with 88/120 (73.3\%) for fixed slowing, a gain of 13.3 percentage points. Waiting drops decrease from 13 to five, and execution drops from eight to four. Learning speed alone gives 82/120 successes (68.3\%), below fixed slowing. The results favor learning speed and joint correction together. Drop stages tell us when failure occurs, but do not identify its cause. Seed settings and outcome breakdowns are in the supplement.
 
-\subsection{Q3: Visual feedback on the cube}
+\subsection{Q3: Active Target Search and Visual Feedback}
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.86\textwidth]{figures/feedback_example.pdf}
 \caption{\textbf{Recorded inspection before binding.} Unretouched model-input frames from a recorded simulated trial. The initial plan abstains; feedback reveals T, then REVEAL binds T to red and completes at step 420 (true error 0.0812 radians). Both arms start from identical state and image. This selected example illustrates evidence acquisition, not wrong-binding correction or hardware performance.}
 \label{fig:recorded-search}
 \end{figure*}
-Three separate paired cohorts test continued feedback, fresh images, and inspection policy (Table~\ref{tab:q3-feedback}). Outcomes are not pooled.
+Three separate paired experiments examine the search process (Table~\ref{tab:q3-feedback}): continuing to observe and decide, receiving new images, and choosing where and how long to inspect. Each comparison uses its own trial set.
 
 \begin{table}[t]
 \centering\small
@@ -69,25 +69,21 @@ Condition & Success & \% & Drops & Calls\\
 \InspectionPolicyRows
 \bottomrule
 \end{tabular}
-\caption{\textbf{Q3: feedback, evidence and inspection on the cube.} Each panel schedules 40 trials per arm. (a) excludes one service-affected pair and reuses Q2's initial full-feedback subset. (b) changes only upper RGB. (c) changes inspection direction/duration. (b,c) have no exclusions. Drops/calls are raw totals; cohorts and realized compute differ.}
+\caption{\textbf{Q3: active target search on the cube.} Each panel has 40 scheduled trials per condition. (a) excludes one service-affected pair and reuses Q2's initial full-feedback subset. (b) changes only the agent's RGB input. (c) changes inspection direction and duration. (b,c) have no exclusions. Drops/calls include all trials; actual inference cost differs.}
 \label{tab:q3-feedback}
 \label{tab:feedback}
 \label{tab:image-refresh}
 \end{table}
 
-\paragraph{(a) Is continued feedback useful?}
-The initial-plan arm commits to up to six bounded actions from one RGB observation and measured feedback; full feedback allows up to six calls with updated images and history. Both retain the same local controllers, stopping gate and horizon. Success rises from 6/39 to 33/39 eligible trials: 27 pairs favor feedback and none favor initial planning (exact $p=1.49\times10^{-8}$). One initial-plan service failure is excluded symmetrically. Of 28 eligible initial-plan abstentions, 22 succeed with feedback; 32 feedback trials first bind after inspection. This supports evidence acquisition, not correction of an executed wrong binding. The call budgets differ.
+\paragraph{(a) Does continued feedback help find the target?}
+The initial plan selects up to six bounded actions from one image and measured feedback. Full feedback allows up to six calls with new images and history. Both use the same local controllers, stopping rule and time limit. Success rises from 6/39 to 33/39 eligible trials: 27 pairs succeed only with feedback and none only with the initial plan (exact $p=1.49\times10^{-8}$). One service failure excludes a matched pair. Of 28 initial-plan abstentions, 22 succeed with feedback; 32 feedback trials first bind after inspection. Figure~\ref{fig:recorded-search} illustrates this search process. This comparison also changes the call budget.
 
-\paragraph{(b) Does the next image matter?}
-Only upper-agent RGB changes: current images versus the exact first frame on every call. Both retain the six-call cap, trigger policy, live numeric feedback, history and local control. Success is 32/40 versus 9/40, with all 23 discordant pairs favoring fresh images (exact $p=2.38\times10^{-7}$). Correct terminal bindings number 34 versus nine. Both arms first bind correctly on call one in the same nine trials; fresh images yield 25 additional correct bindings later, of which 23 succeed. Drops differ by only one. These post-hoc traces support acquiring target evidence; they do not measure first recognition accuracy or initial visibility.
+\paragraph{(b) Does the next image provide useful evidence?}
+Both conditions allow six calls with the same request rule, live numeric feedback, history and local control. Only the agent's RGB input changes: the current image versus the exact first frame on every call. Success is 32/40 versus 9/40, with all 23 pairs with different outcomes favoring fresh images (exact $p=2.38\times10^{-7}$). Correct terminal bindings number 34 versus nine. Both conditions first bind correctly on call one in the same nine trials. Fresh images enable 25 additional correct bindings later, of which 23 lead to success; repeated first frames enable none. Drops differ by only one. These records connect new observations to target binding and completion. They measure declared bindings, not initial visibility or first visual recognition.
 
-\paragraph{(c) Does adaptive inspection help?}
-Forty new pairs compare model-selected inspection directions and durations with a fixed color sweep of 90-step actions. Both arms retain the same model, controllers, fresh-image/history interface and stopping rule; actual executed actions enter feedback. The model still decides whether to inspect, bind or abstain. Adaptive inspection achieves 95.0\% success versus 77.5\%, a 17.5-point observed gain. Nine pairs favor adaptive and two favor fixed inspection (exact $p=0.0654$), leaving the difference unresolved at $\alpha=0.05$. Correct terminal bindings are 39 versus 32, with zero versus one drop. This is a favorable trend against one fixed sweep, not a general or statistically significant advantage.
+\paragraph{(c) Does choosing the next view help?}
+Forty new pairs compare agent-selected inspection directions and durations with a fixed color sweep of 90-step actions. Both use the same model, controllers, fresh images, history format and stopping rule. Feedback reports the action actually executed. The model still decides whether to inspect, bind or abstain in both conditions. Adaptive inspection achieves 38/40 successes (95.0\%), compared with 31/40 (77.5\%) for the fixed sweep. Nine pairs favor adaptive and two favor fixed inspection, giving a 17.5-point observed gain (exact $p=0.0654$). Correct terminal bindings are 39 versus 32, with zero versus one drop. This suggests a benefit from choosing inspection actions, but the success difference is not significant at $\alpha=0.05$ and tests only one fixed sweep.
 
 \subsection{Q4: Multi-object hardware evaluation}
 \paragraph{Hardware protocol.}
-\TODO{Complete the multi-object physical-hand evaluation.} No hardware outcomes are available yet. The planned comparison uses REVEAL and two baselines per object, reporting completion, drops, false stops and inference cost. Calibration, resets, independent scoring and synchronized-video requirements are specified in the supplement.
-
-
-\paragraph{Supporting cube perception study.}
-On 6,144 rendered observations, RGB-D reaches 64.73\% pose recall versus 37.53\% for RGB at $10$~mm/$10^\circ$. Ideal masks and virtual depth limit this estimator comparison; downstream gains and physical-camera accuracy remain untested. The supplement details its protocol and occlusion analysis.
+\TODO{Complete the multi-object physical-hand evaluation.} No hardware outcomes are available yet. The planned comparison uses REVEAL and two baselines per object, reporting completion, drops, false stops and inference cost. The supplement details calibration, resets, independent scoring and synchronized videos.
