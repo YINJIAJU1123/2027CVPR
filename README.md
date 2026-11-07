@@ -6,7 +6,8 @@
 
 ## 阅读
 
-- [论文 PDF](output/pdf/agenticrotation-2027.pdf)
+- [完整阅读版：正文＋参考文献＋补充材料](output/pdf/agenticrotation-2027.pdf)
+- [独立正文 PDF](output/pdf/agenticrotation-2027-paper.pdf)
 - [补充材料 PDF](output/pdf/agenticrotation-2027-supplement.pdf)
 - [本次范围与命名更正](docs/seed_scope_and_labels_20261107.txt)
 - [23 条引用核对记录](docs/reference_verification_20261107.txt)
@@ -41,4 +42,4 @@ python3 scripts/render_q3_inspection.py --check
 
 若重新生成语言表，先运行 `python3 scripts/render_language_objects.py --verify-paper .`，再运行 `python3 scripts/render_language_table_image.py`。构建时会检查表格图像来源哈希，并重算 Q1 汇总、Q2 三 seed 表及 Q3 巡检表和配对统计。旧归档图表脚本仅用于其对应历史数据，不作为当前结果口径的入口。
 
-`main.tex` 与 `supplement.tex` 可分别设为 Overleaf 主文件。使用官方 CVPR 2027 匿名 review 模板；正文 8 页，引用与 LLM Usage Statement 另页。现存硬件与复现信息 TODO 保留，不代表相关工作已经完成。
+Overleaf 默认编译 `main.tex`，可连续阅读正文、参考文献和补充材料。`paper.tex` 生成独立正文，`supplement.tex` 生成独立补充材料。两种阅读方式共用 `sections/supplement_content.tex`，后续只需修改这一份附录内容。补充材料的图、表、公式以 S 编号，完整阅读版页码连续。使用官方 CVPR 2027 匿名 review 模板；独立正文 8 页，引用与 LLM Usage Statement 另页。现存硬件与复现信息 TODO 保留，不代表相关工作已经完成。

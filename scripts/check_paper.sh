@@ -1,18 +1,19 @@
 #!/usr/bin/env bash
 set -euo pipefail
 cd "$(dirname -- "${BASH_SOURCE[0]}")/.."
-for log in build/main/main.log build/supplement/supplement.log; do
+for log in build/main/main.log build/paper/paper.log build/supplement/supplement.log; do
     [[ -s "$log" ]] || { printf 'Missing build log: %s\n' "$log" >&2; exit 1; }
 done
-if rg -n 'undefined references|Citation .+ undefined|LaTeX Error|Overfull \\hbox|Overfull \\vbox' build/main/main.log build/supplement/supplement.log; then
+if rg -n 'undefined references|Citation .+ undefined|LaTeX Error|Overfull \\hbox|Overfull \\vbox|multiply defined|destination with the same identifier' build/main/main.log build/paper/paper.log build/supplement/supplement.log; then
     exit 1
 fi
 ${PDFINFO:-pdfinfo} output/pdf/agenticrotation-2027.pdf | head -18
 ${PDFINFO:-pdfinfo} output/pdf/agenticrotation-2027-supplement.pdf | head -18
+${PDFINFO:-pdfinfo} output/pdf/agenticrotation-2027-paper.pdf | head -18
 
 python3 - <<'PY_CHECK'
 import os,re,subprocess
-text=subprocess.check_output([os.environ.get('PDFTOTEXT','/usr/bin/pdftotext'),'-layout','output/pdf/agenticrotation-2027.pdf','-'],text=True)
+text=subprocess.check_output([os.environ.get('PDFTOTEXT','/usr/bin/pdftotext'),'-layout','output/pdf/agenticrotation-2027-paper.pdf','-'],text=True)
 pages=text.split('\f')
 llm=[i for i,page in enumerate(pages) if re.search(r'^\s*(?:\d+\s+)?LLM Usage Statement(?:\s{2,}|$)',page,re.M)]
 refs=[i for i,page in enumerate(pages) if re.search(r'^\s*(?:\d+\s+)?References(?:\s{2,}|$)',page,re.M)]
@@ -20,4 +21,19 @@ if not llm or not refs:raise SystemExit('LLM statement or references boundary mi
 if llm[0]>8:raise SystemExit('Main body exceeds eight pages')
 if text.index('LLM Usage Statement')>text.index('References'):raise SystemExit('LLM statement must precede references')
 print(f'Main body: {llm[0]} pages before LLM statement and references')
+def read_pages(name):
+    value=subprocess.check_output([os.environ.get('PDFTOTEXT','/usr/bin/pdftotext'),'-layout',f'output/pdf/{name}.pdf','-'],text=True)
+    return value.rstrip('\f').split('\f')
+paper=read_pages('agenticrotation-2027-paper')
+combined=read_pages('agenticrotation-2027')
+supp=read_pages('agenticrotation-2027-supplement')
+if combined[:len(paper)] != paper:
+    raise SystemExit('Combined reading version changed the standalone paper pages')
+appended='\n'.join(combined[len(paper):])
+if 'Supplementary Material' not in combined[len(paper)]:
+    raise SystemExit('Supplement does not start immediately after the paper')
+for title in ('Overview','Adaptive versus fixed inspection','Reproducibility'):
+    if title not in appended:
+        raise SystemExit(f'Missing supplementary section: {title}')
+print(f'Complete reading version: {len(combined)} pages; standalone paper: {len(paper)}; standalone supplement: {len(supp)}')
 PY_CHECK

@@ -2,12 +2,12 @@
 set -euo pipefail
 project_root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$project_root"
-mkdir -p build/main build/supplement output/pdf
+mkdir -p build/main build/paper build/supplement output/pdf
 python3 scripts/render_language_table_image.py --check
 python3 scripts/render_q1_summary.py > build/q1_summary.log
 python3 scripts/render_controller_three_seed.py > build/controller_three_seed.log
 python3 scripts/render_q3_inspection.py > build/q3_inspection.log
-for target in main supplement; do
+for target in paper supplement main; do
     if [[ -n "${TECTONIC:-}" ]]; then
         "$TECTONIC" --keep-logs --keep-intermediates --outdir "build/$target" "$target.tex"
     elif command -v tectonic >/dev/null 2>&1; then
@@ -20,4 +20,5 @@ for target in main supplement; do
     fi
 done
 cp build/main/main.pdf output/pdf/agenticrotation-2027.pdf
+cp build/paper/paper.pdf output/pdf/agenticrotation-2027-paper.pdf
 cp build/supplement/supplement.pdf output/pdf/agenticrotation-2027-supplement.pdf

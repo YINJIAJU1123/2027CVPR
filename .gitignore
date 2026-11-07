@@ -3,6 +3,7 @@
 !/output/pdf/
 /output/pdf/*
 !/output/pdf/agenticrotation-2027.pdf
+!/output/pdf/agenticrotation-2027-paper.pdf
 !/output/pdf/agenticrotation-2027-supplement.pdf
 /tmp/
 *.aux

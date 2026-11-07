@@ -1,4 +1,5 @@
-% CVPR 2027 anonymous review format.
+% Complete reading version: main paper, references, then supplementary material.
+% Compile paper.tex for the standalone submission paper.
 \documentclass[10pt,twocolumn,letterpaper]{article}
 \usepackage[review]{cvpr}
 \input{preamble}
@@ -37,4 +38,17 @@
 \section*{LLM Usage Statement}
 OpenAI Codex assisted with research discussion, implementation, experiment orchestration, literature retrieval, statistical analysis, figure-layout code, and drafting and editing throughout the manuscript. A hosted vision-language model and Qwen3-VL are evaluated system components. Numerical claims are grounded in recorded experiments; unfinished work is identified explicitly. The authors are responsible for verifying the text, references, code, figures, and results before submission.
 {\small\bibliographystyle{ieeenat_fullname}\bibliography{references}}
+% The default main target includes the supplement for convenient reading.
+\ifdefined\REVEALPaperOnly
+\else
+\clearpage
+\input{supplement_setup}
+\twocolumn[{
+\begin{center}
+{\Large\bfseries REVEAL: Supplementary Material\par}
+\vspace{1em}
+\end{center}
+}]
+\input{sections/supplement_content}
+\fi
 \end{document}
