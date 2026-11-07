@@ -1,7 +1,5 @@
 \section{Overview}
-This supplement accompanies the manuscript updated on 7 November 2026. Q1 compares six object-specific systems in simulation. Q2 studies control during inference; Q3 studies active target search and visual feedback on the marked cube. Q2 uses only seeds 187102, 187103 and 187104, with 40 trials per seed and method. Other seeds below belong to Q1, Q3 or training diagnostics. We also report the 120-trial native-layout die comparison, the 240-trial die layout study, 960 trials on four additional Q1 objects, and 2,160 language trials on cube, duck and hedgehog. The independent cube pose study provides supporting simulation evidence. Physical-hand tests and downstream tests of a replacement pose estimator remain unfinished.
-
-The current complete-system comparison updates only REVEAL's waiting actor. The student, pose estimator, execution actor and success rule stay fixed. Earlier studies use their recorded controller versions and are reported separately. We exclude invalid contact-capacity runs and do not combine results from the earlier RGB-D system or different protocols. The original baseline-only comparison was added after the first study, so we do not describe the full historical evaluation as preregistered.
+This supplement provides runtime and training details, followed by Q3 target-search evidence, Q2 controller results and Q1 system comparisons. Q2 uses exactly three evaluation seeds, 187102, 187103 and 187104, with 40 trials per method and seed. Other seeds identify separate studies or training diagnostics. All reported rates retain their study-specific denominators. Physical-hand evaluation remains pending.
 
 \section{Task and Runtime}
 This section describes the cube system. The die, additional-object and language sections explain the differences for other objects.
@@ -48,6 +46,11 @@ Figure~\ref{fig:method-supp} expands the main-text task overview with the traini
 \caption{\textbf{Expanded system architecture.} The diagram shows privileged teacher supervision, the semantic-to-latent student interface, and closed-loop deployment. This schematic describes the cube implementation and does not report hardware outcomes.}
 \label{fig:method-supp}
 \end{figure*}
+\subsection{ViserDex-based Revo3 foundation and student adaptation}
+Our motor foundation adapts the teacher--student approach of ViserDex~\cite{bhardwaj2026viserdex} to the Revo3 hand. We start REVEAL adaptation from the resulting pretrained teacher and student. The teacher is frozen while the student acquires its goal-bank interface. Compatible observation encoders, recurrent and actor weights, and normalization statistics are reused. The new interface removes the target quaternion and relative-goal quaternion from the student's deployed inputs.
+
+The student is fitted on collected trajectories using frozen-teacher action labels. Goal-projection warmup uses action MSE. Recurrent adaptation additionally uses a training-only decoder with normalized privileged state targets, excluding goal-quaternion channels; its reconstruction MSE has weight 0.2. The decoder provides auxiliary supervision and is absent from deployed control. This loss is distinct from the local-controller loss in the main paper.
+
 \subsection{Semantic and motor inputs}
 The motor policy receives 109 target-free proprioceptive/history features, seven measured pose values, and a 768-dimensional goal. Its goal projection has width 64 and a tanh nonlinearity. The inherited recurrent policy emits 21 normalized joint targets. The asset-specific goal quaternion is absent from the migrated student's inference inputs.
 
@@ -67,107 +70,7 @@ The waiting actor interpolates from current joint positions toward the proposal 
 
 No raw RGB, true object pose, teacher action, future model response, or oracle semantic label is a deployed actor input. Vision affects the actor through estimated pose and recurrent belief. The reported stopping gate is measured-pose based. Previously trained completion-evidence heads are inactive and cannot be credited for the current results.
 
-\section{Earlier System Comparisons}
-\begin{table}[h]
-\centering\small
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{lrrr}
-\toprule
-Semantic condition & Seed 1 & Seed 2 & Raw total\\
-\midrule
-REVEAL & 13/20 & 16/20 & 29/40\\
-Fine-tuned VLM, bare & 14/20 & 13/20 & 27/40\\
-Rule VLM, bare & 5/20 & 9/20 & 14/40\\
-\bottomrule
-\end{tabular}
-\caption{Raw semantic successes by seed. Seed 1 is 183101 and seed 2 is 183102. The bare addendum contributes the second and third rows only.}
-\end{table}
-
-\begin{table}[h]
-\centering\small
-\begin{tabular}{lrrr}
-\toprule
-Comparison on eligible trials & A-only & B-only & Exact $p$\\
-\midrule
-REVEAL / bare fine-tuned & 9 & 6 & 0.6072\\
-REVEAL / bare rule & 18 & 2 & 0.0004\\
-\bottomrule
-\end{tabular}
-\caption{Exploratory two-sided exact McNemar tests. Both comparisons use 39 common eligible trials. Tests are exploratory and unadjusted.}
-\end{table}
-
-Individual rate intervals use the Wilson method with nominal 95\% coverage. Paired comparisons use trial identities and initial-state verification. They account for pairing but do not address all uncertainty from hosted model variability or future object distributions. A single two-seed cohort is insufficient to establish a stable ordering between systems separated by two or three raw successes.
-
-\section{Successor Student: A Separate Development Study}
-The existing cube results use a fixed student weights. Successor training is designed to ask whether extra DAgger with the actual frozen CNN sensor improves physical control beyond an equal budget with simulated pose noise. Both branches start from that same latent student, use training seed 183201, and run 400 updates with 16 environments, 45 rollout steps, and four fitting epochs. Learning rate is $3\times10^{-4}$ with a new Adam state and zero weight decay. The teacher action fraction decays as $0.9\cdot0.95^i$. Each branch collects 288,000 transitions. The CNN and teacher remain frozen.
-
-After training, the final model from each branch is compared with the released student and the frozen latent student. Every arm uses CNN observations and 40 fresh diagnostic trials from seeds 183221 and 183222. No intermediate model is selected from those trials. The CNN branch must exceed both latent references in reach count without increasing drops to pass the development admission rule. This gate is an engineering selection rule, not a significance claim.
-
-A selected new student still requires separately collected controller data and compatibility validation. Only then may a new semantic release use reserved seeds 183301 and 183302. The original cube-v1 results remain unchanged. Both branches and all 160 diagnostic trials have completed with valid physics logs. The four reach counts are 39/40, 38/40, 39/40, and 40/40 for the released, frozen latent, extra simulated, and extra CNN policies. Drops are one, two, one, and zero. The CNN candidate passes the stated gate and has not been automatically deployed. Exact paired tests against the frozen latent and extra simulated policies give $p=0.5$ and $p=1.0$. Thus this is a promising development result, not an established perception-matching effect.
-
-\section{Additional Experiments}
-\label{sec:followup}
-These studies retain the frozen task success criterion and do not replace the completed cube-v1 cohort. Service-eligible success is the primary metric. Cross-method comparisons remove the same service-affected slots from every arm. All raw records, including excluded physical drops, remain available. Forty scheduled slots do not necessarily yield forty eligible trials.
-
-\subsection{Completed independent replication}
-Seeds 183411 and 183412 each provide 20 trials per method. All 120 scheduled records pass the physical-log and initial-state checks. Slots 183411008, 183411015 and 183411017 have recorded REVEAL service errors and are removed from every arm for the matched comparison. The last includes a connection failure after approximately 126 seconds and a waiting-phase drop. Its exclusion follows the existing service rule. Raw success counts are 26/40, 29/40 and 22/40 for REVEAL, bare fine-tuned VLM and bare rule VLM. The common eligible counts appear below.
-
-\begin{table}[h]
-\centering\small
-\begin{tabular}{lrr}
-\toprule
-Method & Eligible success & Rate (\%)\\
-\midrule
-\FollowupReplicationRows
-\bottomrule
-\end{tabular}
-\caption{Completed independent replication on 37 common service-eligible initial states from 40 scheduled trials per method. This supersedes the archived partial snapshot and remains separate from the original cube-v1 cohort.}
-\end{table}
-
-The eleven eligible REVEAL failures comprise nine drops, one false stop and one abstention. The drops include one during startup, two during subsequent waiting and six outside waiting. Raw REVEAL counts additionally include one service-excluded drop. Against the fine-tuned VLM, REVEAL has five exclusive successes and six exclusive failures (exact paired $p=1.0$). Against the rule VLM, the counts are eleven and six ($p=0.332$). These exploratory comparisons do not establish superiority. The earlier 18-slot snapshot remains archived for provenance but is no longer used for the follow-up table.
-
-
-
-\subsection{Completed visual interventions}
-The upper-level image changes while the low-level pose predictor continues to receive the original image. Lighting is fixed. The permuted condition assigns the next symbol in $(T,E,R,L,S,H)$ to each color face and changes the requested symbol accordingly, preserving the scored physical target across conditions. The masked condition hides the lettering. Geometry-consistent image construction and the transmitted image hashes are audited. Seeds 183441 and 183442 provide 20 trials each, and physical initial-state hashes match across the three conditions.
-
-\begin{table}[h]
-\centering\small
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{lrrr}
-\toprule
-Method & Identity & Permuted & Masked\\
-\midrule
-\CompletedVisualRows
-\bottomrule
-\end{tabular}
-\caption{Completed upper-image interventions. Identity and permutation each use 40 trials. REVEAL masking has one service exclusion. For its paired masking contrast the identity numerator becomes 31/39. All conditions use reconstructed face images, not the untouched native-image comparison.}
-\end{table}
-
-Fine-tuned success falls by 35 percentage points after remapping and to 7.5\% after masking. Rule-based success is 57.5\% under both identity and remapping, then zero after masking. Equal aggregate identity and remapped rates do not imply identical trial outcomes. REVEAL now has 32/40 successes under both identity and permutation, with zero of 39 eligible masked trials. This supports robustness to the tested permutation, without proving equivalence or identifying all fine-tuned successes as a fixed lookup.
-
-\paragraph{Applied semantic bindings.}
-We audit every applied, accepted call from the same 240 trials. The episode-file hashes match the archived results, and the last accepted skill agrees with the recorded terminal binding. Table~\ref{tab:visual-bindings} separates acquiring the correct target from completing it. Under permutation, the fine-tuned model first binds correctly in 25 trials and incorrectly in eleven, compared with 34 and four under identity. Nine of its eleven wrong-binding trials select the original color for the newly requested symbol. The rule model has six wrong-binding trials under each layout, with three following the old association after permutation. This pattern is consistent with reliance on training associations, but does not identify the model's internal mechanism.
-
-\begin{table}[h]
-\centering\small
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{llrrrr}
-\toprule
-Model & Layout & Correct & Wrong & None & Old\\
-\midrule
-\FollowupVisualBindingRows
-\bottomrule
-\end{tabular}
-\caption{First accepted binding in each of 40 trials. Old counts trials with an accepted skill matching the original symbol--color association, defined only for permutation. These are the same trials as the success table, not new evaluations.}
-\label{tab:visual-bindings}
-\end{table}
-
-No wrong-to-correct binding transition occurs in these bare-VLM cohorts. This is descriptive: trajectories, visibility, and opportunities for additional calls differ. Of fourteen fine-tuned false stops under permutation, ten end with a wrong binding and four with the correct binding but an independently incorrect final pose. Masking leads to no accepted binding in 36 fine-tuned trials and all forty rule-model trials. The three masked fine-tuned successes cannot establish letter grounding when that information is removed.
-
-Identity versus permutation yields eighteen exclusive successes and four exclusive failures for the fine-tuned model (exact paired $p=0.00434$), versus ten and ten for the rule model ($p=1.0$). The final analysis applies Holm correction across six planned image contrasts, giving adjusted $p=0.0130$ for the fine-tuned mapping contrast. The single deterministic remapping and reconstructed upper images limit generalization claims. REVEAL has five exclusive identity successes and five exclusive permutation successes ($p=1.0$).
-
-
+\section{Q3: Active Target Search and Visual Feedback}
 \subsection{Q3: Initial planning and continued feedback}
 \label{sec:feedback-protocol}
 The two conditions share 40 initial states. Full feedback reuses Q2's 40 trials from seed 187102, so these trials are not an independent replication. The initial plan uses one observation to return a bounded action sequence. Full feedback uses updated observations and history on up to six calls. Both conditions use the same student, local controllers, stopping rule and time limit.
@@ -190,29 +93,6 @@ Continued feedback & 34/40 & 33/39 & 5 & 120\\
 Twenty-seven pairs succeed only with feedback, and none only with the initial plan (two-sided exact paired $p=1.49\times10^{-8}$). Of 28 eligible initial-plan abstentions, 22 succeed with feedback. Among eligible feedback trials, 36 inspect, 32 first bind after inspection, and 31 successful trials use multiple calls. No trial corrects an executed wrong binding. These counts describe how the agent gathers evidence. They do not tell us whether the target was initially visible or whether every first binding was correct.
 
 Median logical duration is 8.17 seconds for initial planning and 22.0 seconds for feedback on the eligible panel. These durations include unsuccessful termination and must be interpreted alongside 28 initial-plan abstentions. Median measured call latency over raw requests is 8.12 and 5.33 seconds. The protocols differ in output structure and inference budget.
-
-\subsection{Three-seed controller evaluation}
-\label{sec:collaborator-waiting}
-The controller ablation uses seeds 187102, 187103 and 187104, with 40 trials per seed and method. Seed 187102 provides the first 40 trials, and the other two seeds add 80. Q2 reports their combined counts as the paper's only formal online controller ablation. For learned slowing alone, we disable joint correction and keep the same initialization, data, sampling, optimizer and 2,400 updates. Only combined counts are available for the two additional seeds, so this table cannot support seed-level variance estimates or paired significance tests.
-
-\begin{table}[h]
-\centering\small
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{lrr}
-\toprule
-Waiting policy & 187102 & 187103 + 187104\\
-\midrule
-Continue & 25 / 7 / 5 / 3 & 48 / 17 / 9 / 6\\
-Fixed slowing & 30 / 4 / 0 / 6 & 58 / 9 / 8 / 5\\
-Learned slowing & 28 / 1 / 7 / 4 & 54 / 6 / 7 / 13\\
-Slowing + correction & 34 / 4 / 1 / 1 & 70 / 1 / 3 / 6\\
-\bottomrule
-\end{tabular}
-\caption{Outcome breakdown for the three-seed controller study. The two columns contain 40 and 80 trials per method, respectively. Each cell lists success / waiting drop / execution drop / other failure. Other failures are not further subdivided.}
-\label{tab:collaborator-waiting}
-\end{table}
-
-Q1's mapping study and Q3's image intervention use different trials. Their absolute rates need not match Q2, whose controller gains are measured within its own trial set. The initial-plan comparison shares the 40 full-feedback trials from seed 187102, as noted above.
 
 \subsection{Q3: Fresh visual evidence}
 \label{sec:fresh-evidence}
@@ -290,10 +170,29 @@ Figure~\ref{fig:feedback-example} shows a recorded pair from the initial-plan/co
 \label{fig:feedback-example}
 \end{figure*}
 
-\subsection{Latest native comparison and failure audit}
-Seeds 185451 and 185452 give 40 matched trials per method with no service exclusions. The REVEAL system gives 35 successes, three execution-phase drops, one wrong-binding false stop, and one abstention. The bare fine-tuned system gives 30 successes, nine execution drops, and one horizon failure. The bare rule system gives 17 successes, twelve drops, ten false stops, and one horizon failure. Its drops include two during startup waiting. REVEAL makes 101 calls, fine-tuning 117, and the rule baseline 126. Median latencies are 4.349, 0.099 and 1.104 seconds.
+\section{Q2: Control During Agent Inference}
+\subsection{Three-seed controller evaluation}
+\label{sec:collaborator-waiting}
+The controller ablation uses seeds 187102, 187103 and 187104, with 40 trials per seed and method. Seed 187102 provides the first 40 trials, and the other two seeds add 80. Q2 reports their combined counts as the paper's only formal online controller ablation. For learned slowing alone, we disable joint correction and keep the same initialization, data, sampling, optimizer and 2,400 updates.
 
-The three REVEAL drops occur during inspection before final target binding. One is 59 control steps after the most recent applied inspection command, and the others are 36 and 24 steps after it. These intervals describe timing, not causal attribution. The false-stop episode binds R to cyan rather than blue. Its measured error to the declared target is 0.057 radians, while true requested-target error is 3.079 radians. It is a semantic binding failure and cannot simply be assigned to pose estimation. The abstention follows four inspections without a declared target. A favorable instantaneous pose during that trajectory does not meet the autonomous success rule.
+\begin{table}[h]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrr}
+\toprule
+Waiting policy & 187102 & 187103 + 187104\\
+\midrule
+Continue & 25 / 7 / 5 / 3 & 48 / 17 / 9 / 6\\
+Fixed slowing & 30 / 4 / 0 / 6 & 58 / 9 / 8 / 5\\
+Learned slowing & 28 / 1 / 7 / 4 & 54 / 6 / 7 / 13\\
+Slowing + correction & 34 / 4 / 1 / 1 & 70 / 1 / 3 / 6\\
+\bottomrule
+\end{tabular}
+\caption{Outcome breakdown for the three-seed controller study. The two columns contain 40 and 80 trials per method, respectively. Each cell lists success / waiting drop / execution drop / other failure. Other failures are not further subdivided.}
+\label{tab:collaborator-waiting}
+\end{table}
+
+Q1's mapping study and Q3's image intervention use different trials. Their absolute rates need not match Q2, whose controller gains are measured within its own trial set. The initial-plan comparison shares the 40 full-feedback trials from seed 187102, as noted above.
 
 \subsection{Waiting-controller fitting}
 The waiting refit uses training collection seed 185301, validation seed 185302, and fitting seed 185311. These are training/validation seeds, not Q2 evaluation seeds. The inherited actor is updated 2,400 times. Actor batches allocate one half to pending states and one quarter each to unbound and bound execution states. Pending samples are uniform. Only the waiting outputs replace the deployed actor; execution remains unchanged. Formal Q2 evaluation uses the three seeds in Sec.~\ref{sec:collaborator-waiting}.
@@ -331,84 +230,54 @@ The full actor is below the scalar bound in 64.8\% of these states and has a low
 \subsection{Timing verification}
 The request logs verify that pending requests preserve continuous logical control and that replies are applied only after their measured latency and actual completion. Replies arriving after episode termination are not applied. These checks verify the simulated delay protocol rather than wall-clock real-time operation. Q2 aggregate outcomes do not provide per-trial timing for the two additional seeds, so no timing result is extrapolated to all 120 trials.
 
-\section{Scope, Interpretation and Remaining Work}
-\subsection{Separate model strength from control}
-The primary comparison uses REVEAL against bare VLM baselines. Its interpretation is system-level. To attribute gains to the upper-level model, compare all providers with identical control actors, timing conventions, stopping, and information access. The current Q2 table varies pending-request control within REVEAL; it does not supply this matched comparison across semantic models. Repeated live calls can produce different public plans even on matching initial states. Fixed-public-plan replay can isolate motor changes, but replay success must not be reported as a new live REVEAL success rate.
+\section{Q1: Cube System Comparisons}
+\label{sec:followup}
+These comparisons have their own frozen releases and trial sets. They are not additional Q2 controller seeds. Service-eligible comparisons remove the same affected slots from all arms; raw records remain archived.
 
-\subsection{Test semantic and visual causality}
-The current Q2 study does not isolate the utility of explicit controller-goal input; no benefit is attributed to that pathway. Q1 reports semantic-layout sensitivity separately for the cube and die. These complete-system interventions do not extend the Q2 controller findings to other objects. No additional multi-object controller ablation is included in the current experiment scope.
+\subsection{Completed visual interventions}
+The upper-level image changes while the low-level pose predictor continues to receive the original image. Lighting is fixed. The permuted condition assigns the next symbol in $(T,E,R,L,S,H)$ to each color face and changes the requested symbol accordingly, preserving the scored physical target across conditions. The masked condition hides the lettering. Geometry-consistent image construction and the transmitted image hashes are audited. Seeds 183441 and 183442 provide 20 trials each, and physical initial-state hashes match across the three conditions.
 
-\subsection{Test agent feedback}
-Q3 now contains three separate cube cohorts: continued feedback, fresh images, and adaptive versus fixed inspection. The first changes call budgets; the second changes upper RGB under a common cap; the third changes inspection direction/duration and shows a favorable but statistically unresolved success difference. None isolates every history or verification component, equalizes realized compute, or establishes a mechanism across objects.
-
-\subsection{Separate perception accuracy and control benefit}
-The independent pose study below establishes frame-level accuracy differences between two supplied systems. To test downstream benefit, compare predictors with the same student and agent. Report false stops, drops and semantic success alongside independent pose error. Oracle pose estimates the residual motor gap. Only a second experiment should adapt the student to the new predictor. A lower pose error is useful evidence, but it does not guarantee a higher task success rate.
-
-\subsection{Objects and physical hand}
-Multi-object evaluation is confined to Q1 complete-system comparisons and Q4 physical-hand experiments. For Q1, the current scope is six objects with variation in geometry, inertia, contact affordances and semantic ambiguity. Q4 must identify the actual physical objects tested and report its coverage separately. Record object-specific students and training budgets. Balance the task set within each object and report each row before computing an object macro-average. Forty trials per arm per object is the default batch size. Hardware runs need calibrated independent scoring, documented resets, two sessions, and synchronized video and command logs. Each object requires its assets, calibration, action conventions and goal definitions.
-
-
-
-
-\begin{figure*}[t]
-\centering
-\includegraphics[width=0.98\textwidth]{figures/imported/sim_real_protocol_placeholder.png}
-\caption{\textbf{Planned inspection and presentation sequence.} Reference crops illustrate observing, inspecting, binding, and presenting a requested face. Real-hand image slots remain empty. This is a protocol mockup, not a physical-robot result.}
-\label{fig:sim-real-protocol}
-\end{figure*}
-
-\begin{figure*}[t]
-\centering
-\includegraphics[width=0.98\textwidth]{figures/imported/real_robot_cases_placeholder.png}
-\caption{\textbf{Planned simulation/physical presentation comparison.} The layout pairs hidden-target, reveal, and stable-display stages. The reference simulation crop is illustrative; the remaining simulation and physical-hand slots await matched observations. No real-robot outcome is represented.}
-\label{fig:physical-panels}
-\end{figure*}
-
-\begin{figure*}[t]
-\centering
-\includegraphics[width=0.98\textwidth]{figures/imported/qualitative_real_robot_placeholder.png}
-\caption{\textbf{Planned qualitative comparison and real-robot cases.} Initial/end-state and physical-robot image slots remain placeholders until corresponding observations are available. No completed trial is represented.}
-\label{fig:qualitative-real}
-\end{figure*}
-
-\section{Independent Pose Estimation under Hand Occlusion}
-\label{sec:pose-occlusion}
-This supporting perception study for Q4 evaluates fixed RGB and RGB-D estimators on a 58.5~mm lettered cube. Its RGB model differs from the frozen agent CNN, and its pose recalls do not update agent success counts.
-
-\paragraph{Sampling and scoring.}
-Three test seeds (31001--31003), four camera pitches ($0^\circ$, $60^\circ$, $90^\circ$, $105^\circ$), and 512 frames per group yield 6,144 observations in 48 environment clusters. RGB, RGB-D, their no-hand controls and perturbed-depth RGB-D produce 30,720 predictions. Collection records four geometry rejections; 6,139 admitted observations contain the full object.
-
-Recall requires translation error $<10$~mm and full rotation error $<10^\circ$, without cube-symmetry minimization. Invalid predictions count as failures. Secondary recall uses 5~mm and $5^\circ$. ADD uses 6,144 nominal-cube surface points and threshold 0.1 diameter, not BOP average recall. Frozen prose used non-strict inequalities, but all evaluations consistently used strict thresholds. No samples lie on the primary boundaries.
-
-\begin{table}[t]
+\begin{table}[h]
 \centering\small
-\input{tables/pose_occlusion}
-\caption{Independent pose recall (\%) under hand occlusion. All frames remain in the denominator, including invalid predictions. Occlusion is associated with viewpoint in this sampling design.}
-\label{tab:pose-occlusion}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrr}
+\toprule
+Method & Identity & Permuted & Masked\\
+\midrule
+\CompletedVisualRows
+\bottomrule
+\end{tabular}
+\caption{Completed upper-image interventions. Identity and permutation each use 40 trials. REVEAL masking has one service exclusion. For its paired masking contrast the identity numerator becomes 31/39. All conditions use reconstructed face images, not the untouched native-image comparison.}
 \end{table}
 
-\paragraph{Accuracy and uncertainty.}
-RGB passes on 2,306/6,144 observations and RGB-D on 3,977/6,144, a difference of 27.20 percentage points. The reported 95\% intervals are [36.60,38.48]\% for RGB, [64.02,65.46]\% for RGB-D, and [26.07,28.30] points for the paired difference. Intervals use 10,000 paired bootstrap draws of whole environment clusters, stratified by seed, retaining their views and temporal observations together. They describe sampling variation for this object and these test seeds, not variation across trained models or unseen objects. Table~\ref{tab:pose-occlusion} shows that gains concentrate in light and moderate occlusion. At 50--75\%, RGB-D recall is only 5.51\%, and both systems fail all 91 observations at $\geq75\%$.
+Fine-tuned success falls by 35 percentage points after remapping and to 7.5\% after masking. Rule-based success is 57.5\% under both identity and remapping, then zero after masking. Equal aggregate identity and remapped rates do not imply identical trial outcomes. REVEAL now has 32/40 successes under both identity and permutation, with zero of 39 eligible masked trials. This supports robustness to the tested permutation, without proving equivalence or identifying all fine-tuned successes as a fixed lookup.
 
-\begin{table}[t]
+\paragraph{Applied semantic bindings.}
+We audit every applied, accepted call from the same 240 trials. The episode-file hashes match the archived results, and the last accepted skill agrees with the recorded terminal binding. Table~\ref{tab:visual-bindings} separates acquiring the correct target from completing it. Under permutation, the fine-tuned model first binds correctly in 25 trials and incorrectly in eleven, compared with 34 and four under identity. Nine of its eleven wrong-binding trials select the original color for the newly requested symbol. The rule model has six wrong-binding trials under each layout, with three following the old association after permutation. This pattern is consistent with reliance on training associations, but does not identify the model's internal mechanism.
+
+\begin{table}[h]
 \centering\small
-\input{tables/pose_metrics}
-\caption{Secondary pose metrics. All recall denominators include invalid predictions. $^{*}$Mean errors use valid predictions only and must be interpreted with the invalid counts. Threshold comparisons are strict.}
-\label{tab:pose-metrics}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{llrrrr}
+\toprule
+Model & Layout & Correct & Wrong & None & Old\\
+\midrule
+\FollowupVisualBindingRows
+\bottomrule
+\end{tabular}
+\caption{First accepted binding in each of 40 trials. Old counts trials with an accepted skill matching the original symbol--color association, defined only for permutation. These are the same trials as the success table, not new evaluations.}
+\label{tab:visual-bindings}
 \end{table}
 
-\paragraph{Paired controls and sensitivity.}
-Removing hand occlusion at matched poses gives recall of 76.90\% for RGB and 99.89\% for RGB-D. The overall occlusion-associated loss is therefore 39.37 versus 35.16 points, with a paired reduction of 4.22 points [2.77,5.62]. This reduction is not uniform: at 50--75\% occlusion, the loss is 72.20 versus 94.49 points. The higher unoccluded RGB-D ceiling does not imply robustness when most of the object is hidden. The no-hand RGB render retains soft Gaussian-splat boundaries, whereas the occluded image uses a hard visible-object mask, which also limits this control. Restricting to fully framed observations gives 37.56\% versus 64.78\%, similar to the full cohort.
+No wrong-to-correct binding transition occurs in these bare-VLM cohorts. This is descriptive: trajectories, visibility, and opportunities for additional calls differ. Of fourteen fine-tuned false stops under permutation, ten end with a wrong binding and four with the correct binding but an independently incorrect final pose. Masking leads to no accepted binding in 36 fine-tuned trials and all forty rule-model trials. The three masked fine-tuned successes cannot establish letter grounding when that information is removed.
 
-Adding 1~mm Gaussian ray-depth noise and dropping 20\% of points yields RGB-D recall of 3,973/6,144 (64.66\%). This is a sensitivity check, not a calibrated physical depth-camera error model. Per-seed RGB/RGB-D recall is 37.30/64.89\%, 37.70/64.36\%, and 37.60/64.94\%. Viewpoint and occlusion covary: recall at nominal view is 76.04/99.80\%, versus 0.85/4.23\% at $105^\circ$.
+Identity versus permutation yields eighteen exclusive successes and four exclusive failures for the fine-tuned model (exact paired $p=0.00434$), versus ten and ten for the rule model ($p=1.0$). The final analysis applies Holm correction across six planned image contrasts, giving adjusted $p=0.0130$ for the fine-tuned mapping contrast. The single deterministic remapping and reconstructed upper images limit generalization claims. REVEAL has five exclusive identity successes and five exclusive permutation successes ($p=1.0$).
 
-\paragraph{Training and interpretation.}
-The RGB system uses development-selected letterboxing and its existing PnP decoder. RGB-D uses the supplied epoch-1812 weights. Training histories and camera adaptation differ, so this is not a matched-budget architecture or depth-input ablation. RGB-D training manifests record 20,000 samples from seeds 43--50, validation uses seed 2027, and the test seeds do not overlap. Only nine training entries have more than 50\% occlusion. This post-hoc manifest observation is consistent with the severe-occlusion failure but is not causal evidence, and the full training imagery has not been re-audited. The old RGB training-data lineage is incomplete.
 
-The evaluation uses simulator pose labels, ideal target segmentation, and virtual co-located depth. Real-camera calibration and Gaussian-splat appearance assets are part of the setup, so it should not be described as using no real-world information. The evidence supports improved simulated pose accuracy over this RGB deployment, with a clear severe-occlusion limit. It does not yet establish improved agent completion or real-camera accuracy. The earlier 39/40 original pose-goal versus 35/40 latent-student physical-reach diagnostic used the frozen agent CNN and is a separate experiment.
+\subsection{Native-image comparison and failure audit}
+Seeds 185451 and 185452 give 40 matched trials per method with no service exclusions. The REVEAL system gives 35 successes, three execution-phase drops, one wrong-binding false stop, and one abstention. The bare fine-tuned system gives 30 successes, nine execution drops, and one horizon failure. The bare rule system gives 17 successes, twelve drops, ten false stops, and one horizon failure. Its drops include two during startup waiting. REVEAL makes 101 calls, fine-tuning 117, and the rule baseline 126. Median latencies are 4.349, 0.099 and 1.104 seconds.
 
-\paragraph{Evidence provenance.}
-The supplied integrity report records 129 unchanged frozen files, shared finite ground truth, and pose-error recomputation within $2.28\times10^{-13}$~mm and $1.01\times10^{-11}$ degrees. Paper integration verifies file hashes and re-sums twelve shard counts. Bootstrap intervals and per-frame checks retain delivery provenance. Protocol/model hashes are archived; the final reproduction package still needs sanitized per-frame records.
+The three REVEAL drops occur during inspection before final target binding. One is 59 control steps after the most recent applied inspection command, and the others are 36 and 24 steps after it. These intervals describe timing, not causal attribution. The false-stop episode binds R to cyan rather than blue. Its measured error to the declared target is 0.057 radians, while true requested-target error is 3.079 radians. It is a semantic binding failure and cannot simply be assigned to pose estimation. The abstention follows four inspections without a declared target. A favorable instantaneous pose during that trajectory does not meet the autonomous success rule.
 
 \section{Q1: Native-Layout Dice Extension}
 \label{sec:dice-extension}
@@ -530,6 +399,71 @@ Two-sided exact McNemar tests use discordant pairs. Method tests use the same co
 
 \paragraph{Scope and evidence.}
 Two languages and two templates per language, with six fixed targets and one mapping per object, do not establish broad multilingual generalization or equivalence. Earlier misconfigured runs are excluded; historical native/mapping cohorts remain separate. The sanitized archive retains all 2,160 outcomes, 72 main and 72 sensitivity comparisons, prompts, schedules and checksums.
+
+\section{Independent Pose Estimation under Hand Occlusion}
+\label{sec:pose-occlusion}
+This supporting perception study for Q4 evaluates fixed RGB and RGB-D estimators on a 58.5~mm lettered cube. Its RGB model differs from the frozen agent CNN, and its pose recalls do not update agent success counts.
+
+\paragraph{Sampling and scoring.}
+Three test seeds (31001--31003), four camera pitches ($0^\circ$, $60^\circ$, $90^\circ$, $105^\circ$), and 512 frames per group yield 6,144 observations in 48 environment clusters. RGB, RGB-D, their no-hand controls and perturbed-depth RGB-D produce 30,720 predictions. Collection records four geometry rejections; 6,139 admitted observations contain the full object.
+
+Recall requires translation error $<10$~mm and full rotation error $<10^\circ$, without cube-symmetry minimization. Invalid predictions count as failures. Secondary recall uses 5~mm and $5^\circ$. ADD uses 6,144 nominal-cube surface points and threshold 0.1 diameter, not BOP average recall. Frozen prose used non-strict inequalities, but all evaluations consistently used strict thresholds. No samples lie on the primary boundaries.
+
+\begin{table}[t]
+\centering\small
+\input{tables/pose_occlusion}
+\caption{Independent pose recall (\%) under hand occlusion. All frames remain in the denominator, including invalid predictions. Occlusion is associated with viewpoint in this sampling design.}
+\label{tab:pose-occlusion}
+\end{table}
+
+\paragraph{Accuracy and uncertainty.}
+RGB passes on 2,306/6,144 observations and RGB-D on 3,977/6,144, a difference of 27.20 percentage points. The reported 95\% intervals are [36.60,38.48]\% for RGB, [64.02,65.46]\% for RGB-D, and [26.07,28.30] points for the paired difference. Intervals use 10,000 paired bootstrap draws of whole environment clusters, stratified by seed, retaining their views and temporal observations together. They describe sampling variation for this object and these test seeds, not variation across trained models or unseen objects. Table~\ref{tab:pose-occlusion} shows that gains concentrate in light and moderate occlusion. At 50--75\%, RGB-D recall is only 5.51\%, and both systems fail all 91 observations at $\geq75\%$.
+
+\begin{table}[t]
+\centering\small
+\input{tables/pose_metrics}
+\caption{Secondary pose metrics. All recall denominators include invalid predictions. $^{*}$Mean errors use valid predictions only and must be interpreted with the invalid counts. Threshold comparisons are strict.}
+\label{tab:pose-metrics}
+\end{table}
+
+\paragraph{Paired controls and sensitivity.}
+Removing hand occlusion at matched poses gives recall of 76.90\% for RGB and 99.89\% for RGB-D. The overall occlusion-associated loss is therefore 39.37 versus 35.16 points, with a paired reduction of 4.22 points [2.77,5.62]. This reduction is not uniform: at 50--75\% occlusion, the loss is 72.20 versus 94.49 points. The higher unoccluded RGB-D ceiling does not imply robustness when most of the object is hidden. The no-hand RGB render retains soft Gaussian-splat boundaries, whereas the occluded image uses a hard visible-object mask, which also limits this control. Restricting to fully framed observations gives 37.56\% versus 64.78\%, similar to the full cohort.
+
+Adding 1~mm Gaussian ray-depth noise and dropping 20\% of points yields RGB-D recall of 3,973/6,144 (64.66\%). This is a sensitivity check, not a calibrated physical depth-camera error model. Per-seed RGB/RGB-D recall is 37.30/64.89\%, 37.70/64.36\%, and 37.60/64.94\%. Viewpoint and occlusion covary: recall at nominal view is 76.04/99.80\%, versus 0.85/4.23\% at $105^\circ$.
+
+\paragraph{Training and interpretation.}
+The RGB system uses development-selected letterboxing and its existing PnP decoder. RGB-D uses the supplied epoch-1812 weights. Training histories and camera adaptation differ, so this is not a matched-budget architecture or depth-input ablation. RGB-D training manifests record 20,000 samples from seeds 43--50, validation uses seed 2027, and the test seeds do not overlap. Only nine training entries have more than 50\% occlusion. This post-hoc manifest observation is consistent with the severe-occlusion failure but is not causal evidence, and the full training imagery has not been re-audited. The old RGB training-data lineage is incomplete.
+
+The evaluation uses simulator pose labels, ideal target segmentation, and virtual co-located depth. Real-camera calibration and Gaussian-splat appearance assets are part of the setup, so it should not be described as using no real-world information. The evidence supports improved simulated pose accuracy over this RGB deployment, with a clear severe-occlusion limit. It does not yet establish improved agent completion or real-camera accuracy. The earlier 39/40 original pose-goal versus 35/40 latent-student physical-reach diagnostic used the frozen agent CNN and is a separate experiment.
+
+\paragraph{Evidence provenance.}
+The supplied integrity report records 129 unchanged frozen files, shared finite ground truth, and pose-error recomputation within $2.28\times10^{-13}$~mm and $1.01\times10^{-11}$ degrees. Paper integration verifies file hashes and re-sums twelve shard counts. Bootstrap intervals and per-frame checks retain delivery provenance. Protocol/model hashes are archived; the final reproduction package still needs sanitized per-frame records.
+
+\section{Physical-Hand Evaluation and Remaining Scope}
+Physical-hand results are not yet available. The planned evaluation will identify the tested objects, camera calibration, reset procedure and independent scorer, and record synchronized images and commands. The simulation evidence measures terminal binding and orientation. Direct visibility and post-stop holding should be evaluated separately to test sustained target presentation. The following layouts reserve space for the planned hardware evidence.
+
+
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/imported/sim_real_protocol_placeholder.png}
+\caption{\textbf{Planned inspection and presentation sequence.} Reference crops illustrate observing, inspecting, binding, and presenting a requested face. Real-hand image slots remain empty. This is a protocol mockup, not a physical-robot result.}
+\label{fig:sim-real-protocol}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/imported/real_robot_cases_placeholder.png}
+\caption{\textbf{Planned simulation/physical presentation comparison.} The layout pairs hidden-target, reveal, and stable-display stages. The reference simulation crop is illustrative; the remaining simulation and physical-hand slots await matched observations. No real-robot outcome is represented.}
+\label{fig:physical-panels}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/imported/qualitative_real_robot_placeholder.png}
+\caption{\textbf{Planned qualitative comparison and real-robot cases.} Initial/end-state and physical-robot image slots remain placeholders until corresponding observations are available. No completed trial is represented.}
+\label{fig:qualitative-real}
+\end{figure*}
 
 \section{Reproducibility}
 The archived evidence retains outcomes, goals, stopping errors, service exclusions and latency for the audited cohorts. The three-seed controller aggregate is maintained separately from the historical trial records.

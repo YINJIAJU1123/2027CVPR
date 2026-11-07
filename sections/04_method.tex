@@ -1,10 +1,10 @@
 \section{Method}
 \label{sec:method}
-REVEAL connects the agent to continuous motor control through a shared goal bank (Fig.~\ref{fig:pipeline}). We first adapt a pretrained student with frozen-teacher supervision, then train local controllers around that student. At deployment, the agent selects inspection or presentation goals from new observations. We describe the cube system below; other objects use their own students, noisy pose feedback and maintenance controllers.
+REVEAL builds on a teacher--student motor system adapted from ViserDex~\cite{bhardwaj2026viserdex} for the Revo3 hand. We use its pretrained teacher and student as the motor foundation, adapt the student to a shared goal bank under frozen-teacher supervision, and then train local controllers around the adapted student. At deployment, the agent selects inspection and presentation goals from new observations. Figure~\ref{fig:pipeline} separates privileged supervision, student adaptation and closed-loop execution. We describe the cube system below; other objects use their own students, noisy pose feedback and maintenance controllers.
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.88\textwidth]{figures/imported/pipeline_v4_slide2_refined.pdf}
-\caption{\textbf{REVEAL training and deployment.} Teacher supervision trains a student to follow goal-bank vectors. During deployment, the agent selects skills and local controllers adjust the hand commands. Dashed slots are reserved for future physical-hand images.}
+\caption{\textbf{REVEAL training and deployment.} (a) The motor foundation follows ViserDex's teacher--student approach, adapted to Revo3. (b) A frozen teacher supervises goal-bank-conditioned student adaptation; the state decoder is used only in training. (c) The agent selects inspection or presentation skills, with local controllers adjusting joint commands. Dashed photo slots await physical-hand results.}
 \label{fig:pipeline}
 \end{figure*}
 
@@ -19,7 +19,7 @@ We start from a pretrained student that takes geometric goals. A learned project
 \end{align}
 Here $x_t\in\R^{109}$ contains proprioception and history without the target pose, and $u_t\in\R^{21}$ contains proposed joint targets in normalized coordinates. We reuse compatible encoders, recurrent and actor weights, and normalization statistics from the released policy. The adapted student receives neither the target quaternion nor the relative-goal quaternion.
 
-We train the goal projection and adapt the recurrent policy using actions from a frozen teacher in a DAgger-style procedure~\cite{ross2011dagger}. Teacher states and actions are available only during training. At deployment, the cube student uses the frozen RGB pose estimator. The supplement describes the policy and perception setup for each other object.
+We train the goal projection and adapt the recurrent policy using actions from the frozen teacher in a DAgger-style procedure~\cite{ross2011dagger}. During adaptation, a training-only decoder reconstructs normalized privileged state targets, with the goal quaternion removed. Its MSE has weight 0.2 alongside the action MSE; goal-projection warmup uses action supervision alone. The decoder and teacher are not used at deployment. The cube student then uses the frozen RGB pose estimator. Object-specific interfaces are described in the supplement.
 
 \subsection{From observations to motor goals}
 The cube has a bank of six normalized goal vectors $B=\{g_1,\ldots,g_6\}$, computed from cached SigLIP2 text features~\cite{tschannen2025siglip2}. Each vector represents a color skill and its reference object orientation.

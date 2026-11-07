@@ -48,10 +48,5 @@ for i in range(len(p.slides)-1,-1,-1):
  if i==1:continue
  el=p.slides._sldIdLst[i];p.part.drop_rel(el.rId);p.slides._sldIdLst.remove(el)
 p.save(ROOT/'figures/imported/pipeline_v4_slide2_refined.pptx')
-# Keep the abstract evidence-led with one numerical comparison.
-(ROOT/'sections/00_abstract.tex').write_text(r'''\begin{abstract}
-Language-guided in-hand manipulation requires a robot to find a requested object face, reorient it while preserving contact, and continue acting while visual reasoning is pending. We present REVEAL, an asynchronous system that connects a visual agent to a history-conditioned motor policy through a shared goal bank. The agent uses updated images to inspect and bind semantic targets, while teacher-supervised local controllers adapt joint commands during reasoning and execution. We evaluate complete systems across six object-specific simulation releases and two semantic mappings, with separate cube interventions for control and feedback. Under the same maximum call budget, updated images yield 32/40 completions versus 9/40 when the initial image is repeated. Changed-mapping comparisons further support system-level adaptation within the tested releases. Independent confirmation does not establish an advantage of learned waiting control over fixed slowing. Multi-object physical-hand evaluation remains pending.
-\end{abstract}
-''')
-method=ROOT/'sections/04_method.tex';t=method.read_text();t=t.replace('width=0.78\textwidth','width=0.88\textwidth').replace('training_distillation_pipeline.png','pipeline_v4_slide2_refined.pdf').replace('The v4 figure shows privileged teacher supervision, distillation through an agentic goal latent, and closed-loop control. Dashed deployment photo slots remain illustrative placeholders and do not indicate completed physical-hand trials.','Privileged supervision trains a student conditioned on a public goal-bank vector. The semantic agent selects skills, and local controllers adapt their execution. Dashed physical-hand slots are pending; they do not report hardware results.');method.write_text(t)
-print('Saved refined editable deck, slide 2, and revised manuscript source.')
+# Figure generation must not overwrite the current manuscript.
+print('Saved refined editable deck and slide 2. Manuscript sources are unchanged.')
