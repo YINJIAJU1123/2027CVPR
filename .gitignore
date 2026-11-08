@@ -2,9 +2,8 @@
 /output/*
 !/output/pdf/
 /output/pdf/*
-!/output/pdf/agenticrotation-2027.pdf
-!/output/pdf/agenticrotation-2027-paper.pdf
-!/output/pdf/agenticrotation-2027-supplement.pdf
+!/output/pdf/main.pdf
+!/output/pdf/supplyment.pdf
 /tmp/
 *.aux
 *.bbl

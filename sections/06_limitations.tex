@@ -1,12 +1,12 @@
 \section{Discussion and Limitations}
-\paragraph{Search and control.}
-The strongest mechanism evidence concerns target acquisition: fresh images enable correct bindings that are absent with a repeated first view. Choosing inspection actions shows a favorable but statistically unresolved trend. Q2 separately supports joint correction while the agent reasons. Together, these studies support the search--binding--control loop. Q1 extends the evaluation to six object-specific systems, but its differences also include model, history, controller and stopping choices.
+\paragraph{Exploration and control.}
+Q3 links new visual evidence to target binding and completion; the adaptive-inspection trend remains statistically unresolved. Q2 supports joint correction during reasoning. Q1 compares complete systems differing in models, history, controllers and stopping.
 
 \paragraph{Evaluation limits.}
-Equal call limits do not imply equal inference cost. Controller-goal conditioning has not been isolated, and Q3 tests one fixed sweep on one cube. Success measures correct binding and pose at termination. Independent target visibility and sustained presentation after stopping remain unmeasured; these are distinct from the reported completion rate.
+Equal call limits do not imply equal inference cost. Controller-goal conditioning remains unisolated, and Q3 tests one fixed sweep on one cube. Exploration is directed toward six predefined surface targets per object. Simulation completion measures binding and terminal pose; independent visibility and post-stop holding require separate reporting.
 
 \paragraph{Deployment scope.}
-Each object uses separate weights. Cube pose comes from rendered RGB; other objects use noisy simulator pose. Real-camera performance, transfer to new objects and hardware execution remain untested. Hosted models may change over time, limiting reproducibility. Rates excluding service failures do not measure end-to-end availability.
+Each object uses separate weights. Simulation uses RGB pose for cube and noisy simulator pose otherwise; hardware uses RGB pose. Hardware results do not establish unseen-object transfer or isolate perception gains. Real-camera pose accuracy remains unmeasured. Hosted-model changes limit reproducibility; service-eligible rates do not measure end-to-end availability.
 
 \section{Conclusion}
-REVEAL connects active target search and semantic binding to continuous in-hand control, using a ViserDex-inspired teacher--student foundation adapted to Revo3. Cube experiments show that new observations enable additional target bindings and that joint correction supports control during inference. Adaptive inspection yields a promising but statistically unresolved gain over a fixed sweep. Across six object-specific systems, mean success is \QOneOriginalSuccess\% with original mappings and \QOneChangedSuccess\% with changed mappings. Physical-hand tests and direct visibility and hold measurements remain necessary to assess sustained target presentation.
+AIMI connects language-guided visual exploration to continuous in-hand manipulation. New observations guide target identification while local controllers adjust motion. Cube studies support fresh visual feedback and joint correction during reasoning. Evaluations cover six simulated objects, two languages, and four physical objects with \HardwareAimiSuccess\% success over 80 hardware trials.

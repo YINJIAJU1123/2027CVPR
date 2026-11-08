@@ -12,7 +12,7 @@ common=set.intersection(*(set(d) for d in trials.values()));eligible={k for k in
 assert len(common)==40 and len(eligible)==37 and sorted(common-eligible)==r['excluded_slots']
 assert all(len({d[k]['initial_state_sha256'] for d in trials.values()})==1 for k in common)
 rows=[]
-for c,label in [('astra_full','REVEAL'),('finetuned_vlm_bare','Fine-tuned VLM, bare'),('rule_vlm_bare','Rule VLM, bare')]:
+for c,label in [('astra_full','AIMI'),('finetuned_vlm_bare','Fine-tuned VLM, bare'),('rule_vlm_bare','Rule VLM, bare')]:
  n=sum(trials[c][k]['success'] for k in eligible);assert n==r['methods'][c]['matched_success']
  rows.append((label,f'{n}/{len(eligible)}',f'{100*n/len(eligible):.1f}'))
 table('followup_replication_rows.tex',rows)

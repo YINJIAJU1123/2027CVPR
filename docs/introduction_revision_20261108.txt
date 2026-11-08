@@ -1,0 +1,29 @@
+ALIVE introduction and contributions revision - 2026-11-08
+
+Scope
+Rewrote sections/01_introduction.tex only. All other manuscript sections, the abstract, bibliography, tables, evidence, and figure assets are unchanged from the preceding local ALIVE revision. No GitHub push was performed.
+
+Reference structure
+Read the introductions of SimToolReal (https://arxiv.org/html/2602.16863) and GoalDex (https://arxiv.org/html/2611.02171v1). Adopted their progression from a concrete robotics capability to the remaining obstacle, the method rationale, and three explicit contributions. The manuscript wording and scientific claims remain specific to ALIVE.
+
+Revised argument
+1. In-hand manipulation can reveal object surfaces that are initially out of view or covered by fingers.
+2. A specified pose or goal image does not settle how to acquire evidence for an unseen language-specified target. Continuous hand control must also work while semantic reasoning is pending.
+3. ALIVE uses manipulation to gather evidence, binds the observed target to a motor goal, and then guides presentation.
+4. The ViserDex teacher-student foundation and its Revo3 adaptation are explicitly attributed. The added goal-bank interface and local controllers are described separately.
+
+Three contributions
+- Agentic language-guided in-hand visual exploration that connects inspection, target binding, and presentation through successive observations.
+- A goal-conditioned interface and teacher-supervised local control that combines speed adjustment with joint correction during reasoning.
+- Evaluation of six object-specific simulation systems, controlled evidence for fresh images and joint correction, English/Chinese instructions on three objects, and author-confirmed demonstrations on four real objects.
+
+Claim boundaries
+The introduction does not claim that teacher-student distillation is new, that one motor policy handles all objects, or that adaptive inspection is conclusively better than fixed inspection. It does not add sustained-visibility metrics, hardware success rates, or any new experiment results. Detailed hardware reporting remains pending in Q4.
+
+Validation
+- Main PDF: 10 pages, comprising 8 body pages and 2 pages for disclosure/references.
+- No undefined references/citations, duplicate labels, or overfull boxes.
+- All 10 pages rendered and visually reviewed; contributions appear together on page 2.
+- 214 tracked local source/evidence/asset hashes checked against the pre-edit snapshot; only sections/01_introduction.tex changed.
+- Supplement remains unchanged and independently compilable via supplyment.tex.
+- Current main compilation entry remains main.tex.

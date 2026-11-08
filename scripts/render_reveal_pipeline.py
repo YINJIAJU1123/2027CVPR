@@ -11,7 +11,7 @@ FONT_DIR = Path('/usr/share/fonts/truetype/liberation2')
 for name, filename in [('Diagram', 'LiberationSans-Regular.ttf'), ('DiagramBold', 'LiberationSans-Bold.ttf')]:
     pdfmetrics.registerFont(TTFont(name, str(FONT_DIR / filename)))
 C = canvas.Canvas(str(ROOT / 'figures/reveal_pipeline.pdf'), pagesize=(504, 228), invariant=1)
-C.setTitle('REVEAL cube training and deployment interface')
+C.setTitle('AIMI cube training and deployment interface')
 C.setAuthor('')
 INK = HexColor('#223647')
 C.setStrokeColor(INK)

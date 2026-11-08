@@ -5,7 +5,7 @@
   "width_px": 1969,
   "height_px": 1281,
   "column_width_inches": 3.28125,
-  "source_sha256": "34e3aa67e65f286b6a7b5e30bb205e5a3a4705bf4e7e66180960050926207cc9",
-  "image_sha256": "902a63b79dbef652051fd7521cade9da8e4ea003d29176a615db043fb1626b10",
+  "source_sha256": "9bb70b3e4a4f5f68118cde4f1d1b1a2bb5d2b0364ac52f1c6b88c3c0c7456a54",
+  "image_sha256": "41f449ff9d1fc5c8e9e97187b628c09be48f7db051de4952ea3f9d8ef600dbb0",
   "caption": "Native LaTeX caption and table label remain outside image"
 }

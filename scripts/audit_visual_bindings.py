@@ -103,7 +103,7 @@ def main():
    'Calls after the first observe different trajectories. Call-level counts are correlated.',
    'Final wrong binding and physical control failures can interact; terminal categories are descriptive, not causal.',
    'Letter-masked inputs remove task information. Chance successes do not establish visual grounding.',
-   'REVEAL intervention arms remain pending and are not included.'])
+   'AIMI intervention arms remain pending and are not included.'])
  a.output.write_text(json.dumps(output,indent=2)+'\n')
  print(json.dumps({name:g['counts'] for name,g in groups.items()},indent=2))
  print(json.dumps(contrasts,indent=2))

@@ -1,10 +1,10 @@
-% Complete reading version: main paper, references, then supplementary material.
-% Compile paper.tex for the standalone submission paper.
+% Standalone main paper, including references. Compile supplyment.tex separately.
 \documentclass[10pt,twocolumn,letterpaper]{article}
 \usepackage[review]{cvpr}
 \input{preamble}
 \input{tables/result_macros}
 \input{tables/q1_summary_macros}
+\input{tables/hardware_macros}
 \input{tables/followup_macros}
 \input{tables/completed_macros}
 \input{tables/ablation_v3_macros}
@@ -14,15 +14,16 @@
 \definecolor{cvprblue}{rgb}{0.21,0.49,0.74}
 \usepackage[pagebackref,breaklinks,colorlinks,allcolors=cvprblue]{hyperref}
 \def\confName{CVPR}\def\confYear{2027}
-\title{REVEAL: Agentic In-Hand Manipulation for Language-Guided Target Presentation}
+\title{AIMI: Agentic In-Hand Manipulation for Language-Guided Visual Exploration}
+\hypersetup{pdftitle={AIMI: Agentic In-Hand Manipulation for Language-Guided Visual Exploration},pdfauthor={Anonymous submission}}
 \author{Anonymous submission}
 \begin{document}
 \raggedbottom
 \twocolumn[{
 \maketitle
 \begin{center}
-\includegraphics[width=0.90\textwidth]{figures/imported/reveal_teaser.png}
-\captionof{figure}{\textbf{REVEAL overview.} New visual evidence guides semantic decisions as the hand inspects and presents a requested object face. This staged simulation illustration is not a recorded rollout or physical-robot result.}
+\includegraphics[width=0.90\textwidth]{figures/imported/aimi_teaser.pdf}
+\captionof{figure}{\textbf{Language-guided visual exploration with AIMI.} The agent chooses how to inspect an object, uses new views to identify the requested face, and guides its presentation. Staged simulation views illustrate the task; recorded trials are reported separately.}
 \label{fig:teaser}
 \end{center}
 \vspace{-0.7em}
@@ -38,18 +39,4 @@
 \section*{LLM Usage Statement}
 OpenAI Codex assisted with research discussion, implementation, experiment orchestration, literature retrieval, statistical analysis, figure-layout code, and drafting and editing throughout the manuscript. A hosted vision-language model and Qwen3-VL are evaluated system components. Numerical claims are grounded in recorded experiments; unfinished work is identified explicitly. The authors are responsible for verifying the text, references, code, figures, and results before submission.
 {\small\bibliographystyle{ieeenat_fullname}\bibliography{references}}
-% The default main target includes the supplement for convenient reading.
-\ifdefined\REVEALPaperOnly
-\else
-\clearpage
-\backrefsetup{disable}
-\input{supplement_setup}
-\twocolumn[{
-\begin{center}
-{\Large\bfseries REVEAL: Supplementary Material\par}
-\vspace{1em}
-\end{center}
-}]
-\input{sections/supplement_content}
-\fi
 \end{document}

@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lccc}
+\toprule
+Object & Rule & Fine-tuned & AIMI\\
+\midrule
+Cube & 9/20 (45\%) & 15/20 (75\%) & \textbf{18/20 (90\%)}\\
+Die & 8/20 (40\%) & 14/20 (70\%) & \textbf{18/20 (90\%)}\\
+Ball & 9/20 (45\%) & 13/20 (65\%) & \textbf{19/20 (95\%)}\\
+Duck & 6/20 (30\%) & 11/20 (55\%) & \textbf{15/20 (75\%)}\\
+\midrule
+Total & 32/80 (40\%) & 53/80 (66.25\%) & \textbf{70/80 (87.5\%)}\\
+\bottomrule
+\end{tabular}
+\caption{\textbf{Real-hand task completion.} Successes/trials and rates for the four physical objects. Every object--method cell contains 20 trials. Success requires reaching the requested target and stopping within $15^\circ$ without dropping the object.}
+\label{tab:hardware-results}
+\end{table}

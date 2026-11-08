@@ -1,0 +1,28 @@
+{
+  "study": "Q4 complete-system real-hand evaluation",
+  "reported_on": "2026-11-08",
+  "provenance": "Author supplied collaborator aggregate counts in chat, in the order Rule, Fine-tuned, ALIVE. No trial-level records were supplied.",
+  "method_order": ["rule", "fine_tuned", "alive"],
+  "trials_per_object_method": 20,
+  "objects": [
+    {"object": "Cube", "successes": {"rule": 9, "fine_tuned": 15, "alive": 18}},
+    {"object": "Die", "successes": {"rule": 8, "fine_tuned": 14, "alive": 18}},
+    {"object": "Ball", "successes": {"rule": 9, "fine_tuned": 13, "alive": 19}},
+    {"object": "Duck", "successes": {"rule": 6, "fine_tuned": 11, "alive": 15}}
+  ],
+  "protocol": {
+    "visual_input": "RGB",
+    "control_interface": "RGB image -> estimated object pose -> control policy, following the ViserDex-based approach adapted to Revo3",
+    "success_requires": ["reaches requested target and stops", "orientation error at stop at most 15 degrees", "no object drop"],
+    "orientation_threshold_degrees": 15,
+    "threshold_comparison": "less_than_or_equal",
+    "scoring_instrument": null,
+    "orientation_error_convention": null,
+    "trial_pairing": null,
+    "seeds": null,
+    "failure_categories": null,
+    "post_stop_holding_duration": null
+  },
+  "reporting_scope": "Descriptive aggregate task completion; 80 trials per method and 240 total. The ball is in the hardware cohort, not an added Q1 simulation object. RGB-D pose recall is a separate simulated perception study, not a hardware estimator ablation.",
+  "do_not_infer": ["independent ground-truth pose scoring", "paired significance", "per-seed outcomes", "drop-only failure counts", "single policy across objects", "zero-shot transfer to unseen objects", "a causal contribution of RGB-D to these RGB hardware results"]
+}

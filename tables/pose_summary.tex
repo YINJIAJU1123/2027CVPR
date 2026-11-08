@@ -1,0 +1,15 @@
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrrr}
+\toprule
+Estimator & \multicolumn{2}{c}{Pose recall (\%) $\uparrow$} & Invalid $\downarrow$\\
+\cmidrule(lr){2-3}
+ & 10\,mm / 10$^\circ$ & 5\,mm / 5$^\circ$ & \\
+\midrule
+RGB & 37.53 & 14.63 & 69\\
+\textbf{RGB-D} & \textbf{64.73} & \textbf{47.56} & \textbf{1}\\
+\bottomrule
+\end{tabular}
+\caption{\textbf{Q4: independent pose estimation.} Recall requires both errors below the listed thresholds. All 6,144 simulated observations remain in the denominator, including invalid predictions. Evaluation uses ideal masks and virtual depth.}
+\label{tab:pose-summary}
+\end{table}

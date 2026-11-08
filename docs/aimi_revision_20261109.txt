@@ -1,0 +1,25 @@
+AIMI naming revision — 2026-11-09
+
+Title: AIMI: Agentic In-Hand Manipulation for Language-Guided Visual Exploration
+Name expansion in the introduction: Agentic In-hand Manipulation for Inspection.
+Scope: current English main paper, supplementary material, numeric table display labels,
+chart legends, editable figure source, vector figure exports, PDF metadata, build scripts,
+and current README. The abstract names AIMI exactly once.
+
+The task remains language-guided inspection, target identification/binding, and presentation.
+All raw evidence, evaluation criteria, counts, cohorts, numerical results and bibliography are
+preserved. Historical raw-data identifiers (including astra/alive) are unchanged for provenance;
+they are not the method name in the published manuscript. Historical docs and Chinese translation
+remain prior revisions, not current English deliverables.
+
+Q4 remains two parts: supporting perception adaptation and complete-system RGB-pose hardware
+results. Rule/Fine-tuned/AIMI totals are 32/80, 53/80, 70/80 (40.0%, 66.25%, 87.5%).
+Q2 remains three evaluation seeds, 40 trials per method per seed; no new tests or outcomes added.
+
+Physical-hand photos and the hardware angular-scoring setup remain author-input items.
+No Git commit or push is included in this revision.
+
+Validation: main body 8 pages (10 including statement/references); supplement 15 pages.
+No undefined references, citations, duplicated labels or overfull boxes. All pages reviewed.
+125 raw evidence files unchanged; 43 table sources numerically identical; bibliography unchanged.
+All 11 PPT embedded image files unchanged. Portable source builds both PDFs independently.

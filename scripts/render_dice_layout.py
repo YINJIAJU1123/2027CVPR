@@ -11,7 +11,7 @@ def main():
     summary,trials,audit=read('summary.json'),read('trials.json'),read('completion_audit.json')
     assert summary['complete'] and not summary['development'] and audit['formal_complete']
     assert audit['total_completed_rows']==240 and not summary['six_cell_excluded_cases']
-    names={'astra':'REVEAL','vlm':'Fine-tuned VLM, bare','rule':'Rule VLM, bare'}
+    names={'astra':'AIMI','vlm':'Fine-tuned VLM, bare','rule':'Rule VLM, bare'}
     for layout in ('identity','permuted'):
         for method in names:
             rows=trials[layout][method];out=summary['layouts'][layout][method]
@@ -32,8 +32,8 @@ def main():
         else:value=f'{p:.4f}'
         pairs.append(f'{title} & {x} & {y} & {value}'+r'\\')
     for layout,label in [('identity','I'),('permuted','P')]:
-        for method,short in [('vlm','fine-tuned'),('rule','rule')]:add(f'{label}: REVEAL vs. {short}',layout,'astra',layout,method,summary['paired_astra_comparisons'][layout][method])
-    for method,label in [('astra','REVEAL'),('vlm','Fine-tuned'),('rule','Rule')]:add(f'{label}: I vs. P','identity',method,'permuted',method,summary['paired_identity_vs_permuted'][method])
+        for method,short in [('vlm','fine-tuned'),('rule','rule')]:add(f'{label}: AIMI vs. {short}',layout,'astra',layout,method,summary['paired_astra_comparisons'][layout][method])
+    for method,label in [('astra','AIMI'),('vlm','Fine-tuned'),('rule','Rule')]:add(f'{label}: I vs. P','identity',method,'permuted',method,summary['paired_identity_vs_permuted'][method])
     macros=''.join('\\newcommand{\\'+name+'}{%\n'+'\n'.join(values)+'\n}\n' for name,values in [('DiceLayoutRows',rows),('DiceLayoutTestRows',pairs)])
     (ROOT/'tables/dice_layout_macros.tex').write_text(macros)
     print('Verified and rendered six dice layout cells (240 trials).')

@@ -1,0 +1,21 @@
+{
+  "existing_data_files_unchanged": 124,
+  "hardware_totals": [
+    32,
+    53,
+    70
+  ],
+  "trials_per_method": 80,
+  "hardware_total_trials": 240,
+  "rates_percent": [
+    40.0,
+    66.25,
+    87.5
+  ],
+  "gain_over_fine_tuned_pp": 21.25,
+  "main_body_pages": 8,
+  "main_total_pages": 10,
+  "supplement_pages": 15,
+  "independent_hardware_scoring_instrument_confirmed": false,
+  "all_numbers_descriptive": true
+}

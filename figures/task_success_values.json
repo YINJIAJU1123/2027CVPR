@@ -1,0 +1,86 @@
+{
+  "source_sha256": {
+    "data/inhand4_completed_20261103/q1_all_objects.json": "4d9c53ccf118906a4b2ef7e13c4a65508b9178da6328afe4f41896a6589b176b",
+    "data/hardware_author_report_20261108/results.json": "d8fb3ff788d130b0414944f773eabb13953d302a13fa10aa5debb411dd2d32b5"
+  },
+  "hardware_trials_per_method": 80,
+  "hardware_total_trials": 240,
+  "hardware_successes": {
+    "rule": 32,
+    "fine_tuned": 53,
+    "alive": 70
+  },
+  "hardware_rates_percent": {
+    "rule": 40.0,
+    "fine_tuned": 66.25,
+    "alive": 87.5
+  },
+  "hardware_gain_over_fine_tuned_pp": 21.25,
+  "q1_plotted_percentages": {
+    "identity": [
+      [
+        57.5,
+        75.0,
+        80.0
+      ],
+      [
+        32.5,
+        57.5,
+        70.0
+      ],
+      [
+        39.473684210526315,
+        36.8421052631579,
+        65.78947368421052
+      ],
+      [
+        43.58974358974359,
+        33.333333333333336,
+        71.7948717948718
+      ],
+      [
+        52.5,
+        40.0,
+        92.5
+      ],
+      [
+        32.5,
+        22.5,
+        42.5
+      ]
+    ],
+    "permuted": [
+      [
+        57.5,
+        40.0,
+        80.0
+      ],
+      [
+        2.5,
+        0.0,
+        65.0
+      ],
+      [
+        22.5,
+        5.0,
+        60.0
+      ],
+      [
+        25.0,
+        5.0,
+        80.0
+      ],
+      [
+        37.5,
+        7.5,
+        82.5
+      ],
+      [
+        7.5,
+        2.5,
+        27.5
+      ]
+    ]
+  },
+  "uncertainty": "Descriptive aggregate rates; no error bars or significance test inferred."
+}

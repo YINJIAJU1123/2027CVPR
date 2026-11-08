@@ -1,10 +1,10 @@
 \section{Overview}
-This supplement provides runtime and training details, followed by Q3 target-search evidence, Q2 controller results and Q1 system comparisons. Q2 uses exactly three evaluation seeds, 187102, 187103 and 187104, with 40 trials per method and seed. Other seeds identify separate studies or training diagnostics. All reported rates retain their study-specific denominators. Physical-hand evaluation remains pending.
+This supplement describes AIMI's runtime and training, followed by visual exploration (Q3), control during reasoning (Q2), complete-system comparisons (Q1), and pose estimation and hardware transfer (Q4). Q2 uses exactly three evaluation seeds, 187102, 187103 and 187104, with 40 trials per method and seed. Other seeds belong to separate studies or training diagnostics. Each result retains its study-specific denominator. Q4 includes 240 physical-hand trials on a cube, die, ball and duck; per-object counts are reported below. Recorded physical-hand image sequences remain to be added.
 
 \section{Task and Runtime}
 This section describes the cube system. The die, additional-object and language sections explain the differences for other objects.
 \subsection{Object and goals}
-Table~\ref{tab:mapping} records the fixed face mapping. Body normals include the original mesh rotation. All methods use the same mapping and cached six-vector bank. The cyan channel corresponds visually to a pale-blue face and magenta to a purple face. The target quaternion gives a canonical twist as well as the upward face normal.
+Language-guided exploration seeks evidence for a requested surface target. Inspection changes the view; target binding associates the identified surface with a motor goal. Table~\ref{tab:mapping} records the cube's fixed face mapping. Body normals include the original mesh rotation. All methods use this mapping and the same cached six-vector bank. Cyan appears pale blue and magenta appears purple. The target quaternion specifies the reference orientation used for scoring.
 
 \begin{table}[h]
 \centering\small
@@ -27,9 +27,9 @@ H & cyan & $(1,0,0)$ & $(0,-s,0,s)$\\
 The instruction names a letter, and the benchmark checks its fixed reference orientation with a 0.16-radian tolerance. A drop ends the trial when the object moves at least 0.24 metres from its nominal grasp position. This rule does not detect every brief slip or loss of contact within that boundary.
 
 \subsection{Physics and perception}
-The runtime uses Isaac Lab 3.0, Isaac Sim 6.2, Newton 1.6.1, Warp 1.17, and PyTorch 2.11 with CUDA 13.0. The validated collision model contains 23 bodies and 117 shapes, comprising 116 convex shapes and one box. The contact allocation uses \texttt{nconmax=4096} and \texttt{njmax=1024}. Earlier overflow runs are invalid even if their reported rewards appear plausible.
+The runtime uses Isaac Lab 3.0, Isaac Sim 6.2, Newton 1.6.1, Warp 1.17, and PyTorch 2.11 with CUDA 13.0. The collision model contains 23 bodies and 117 shapes: 116 convex shapes and one box. Contact allocation uses \texttt{nconmax=4096} and \texttt{njmax=1024}. Runs with contact overflow are excluded from the reported experiments.
 
-The pose estimator is frozen. It predicts 27 image-coordinate/depth outputs for nine points, then recovers pose through calibrated geometry. The object image is rendered at $120\times120$ with live hand occlusion. Sensor calibration, object asset, policy normalization, joint order, action mapping, and smoothing belong to the release contract. A change to one of these produces a new release. The current setup does not establish real-camera robustness or unseen-scene generalization.
+The frozen pose estimator predicts 27 image-coordinate/depth values for nine points and recovers pose through calibrated geometry. Its $120\times120$ rendered input includes live hand occlusion. Sensor calibration, object asset, policy normalization, joint order, action mapping and smoothing remain fixed within each study. The simulation pose results do not establish accuracy on real-camera images or unseen scenes.
 
 \subsection{Timing, termination, and exclusions}
 Each episode lasts at most 120 seconds of simulated control time. A model call taking $L$ wall-clock seconds must remain pending for at least $\lceil30L\rceil$ control steps, and its reply cannot be used before the call finishes. Physics continues throughout. Since simulation runs slower than real time, an episode takes longer in wall-clock time. Hardware control speed must be measured separately.
@@ -39,22 +39,22 @@ The stopping check runs at 3~Hz. The requested symbol must be bound to a goal, w
 A service error or model call exceeding 120 seconds is recorded without replacement. The original three-system panel removes trial 183102011 from every arm. This leaves 39 common eligible trials for that historical Q1 panel. The current Q2 study reports all 120 outcomes per method. Raw 40-trial outcomes remain visible, including service-affected cases.
 
 \section{Models and Training}
-Figure~\ref{fig:method-supp} expands the main-text task overview with the training and deployment pathways.
+Figure~\ref{fig:method-supp} expands the cube's deployed observation, goal-selection and control loop. The training procedures are described below.
 \begin{figure*}[t]
 \centering
 \includegraphics[width=.96\textwidth]{figures/method.pdf}
-\caption{\textbf{Expanded system architecture.} The diagram shows privileged teacher supervision, the semantic-to-latent student interface, and closed-loop deployment. This schematic describes the cube implementation and does not report hardware outcomes.}
+\caption{\textbf{Cube deployment loop.} An asynchronous agent selects motor goals from visual evidence. The pose estimator, student and local controllers continue operating between agent replies. Privileged teacher supervision is used only during training. This is a system schematic.}
 \label{fig:method-supp}
 \end{figure*}
 \subsection{ViserDex-based Revo3 foundation and student adaptation}
-Our motor foundation adapts the teacher--student approach of ViserDex~\cite{bhardwaj2026viserdex} to the Revo3 hand. We start REVEAL adaptation from the resulting pretrained teacher and student. The teacher is frozen while the student acquires its goal-bank interface. Compatible observation encoders, recurrent and actor weights, and normalization statistics are reused. The new interface removes the target quaternion and relative-goal quaternion from the student's deployed inputs.
+Our motor foundation adapts ViserDex's teacher--student approach~\cite{bhardwaj2026viserdex} to the Revo3 hand. AIMI starts from the resulting pretrained teacher and student. The teacher remains frozen while the student learns its goal-bank interface. We reuse compatible observation encoders, recurrent and actor weights, and normalization statistics. The adapted student receives neither the target quaternion nor the relative-goal quaternion at deployment.
 
 The student is fitted on collected trajectories using frozen-teacher action labels. Goal-projection warmup uses action MSE. Recurrent adaptation additionally uses a training-only decoder with normalized privileged state targets, excluding goal-quaternion channels; its reconstruction MSE has weight 0.2. The decoder provides auxiliary supervision and is absent from deployed control. This loss is distinct from the local-controller loss in the main paper.
 
 \subsection{Semantic and motor inputs}
 The motor policy receives 109 target-free proprioceptive/history features, seven measured pose values, and a 768-dimensional goal. Its goal projection has width 64 and a tanh nonlinearity. The inherited recurrent policy emits 21 normalized joint targets. The asset-specific goal quaternion is absent from the migrated student's inference inputs.
 
-The hosted model route recorded in the manifests is \texttt{gpt-6-astra}. The local grounding backbone is Qwen3-VL-4B-Instruct. The REVEAL pathway uses public tool actions and a deterministic goal-bank lookup. The fine-tuned pathway predicts a continuous vector within the normalized skill span. Neither pathway receives the requested face's true pose. The local unreadable-view schedule is $(1,3,0,2,4,5)$ with 90-step inspections. REVEAL chooses inspection actions of 10--90 steps. This scheduler difference is part of the complete-system comparison and a confound for attributing all effects to model weights.
+The hosted model route recorded in the experiment manifests is \texttt{gpt-6-astra}; the local grounding backbone is Qwen3-VL-4B-Instruct. AIMI passes validated tool arguments through a fixed goal-bank lookup. The fine-tuned baseline predicts a continuous vector within the normalized skill span. Neither receives the requested face's true pose. When the view is unreadable, the local baselines follow schedule $(1,3,0,2,4,5)$ with 90-step inspections. AIMI selects inspection actions of 10--90 steps. This difference is included in the complete-system comparison; Q3 separately tests inspection choices under a shared model and controllers.
 
 The language-study archive contains exact task prompts and schedules. The route name alone does not identify immutable serving weights. \TODO{Reconcile available serving metadata and sampling settings, and include full sanitized system prompts/tool schemas for each release in the anonymous package; state explicitly which provider revisions were not exposed.}
 
@@ -70,8 +70,8 @@ The waiting actor interpolates from current joint positions toward the proposal 
 
 No raw RGB, true object pose, teacher action, future model response, or oracle semantic label is a deployed actor input. Vision affects the actor through estimated pose and recurrent belief. The reported stopping gate is measured-pose based. Previously trained completion-evidence heads are inactive and cannot be credited for the current results.
 
-\section{Q3: Active Target Search and Visual Feedback}
-\subsection{Q3: Initial planning and continued feedback}
+\section{Q3: Visual Exploration and Feedback}
+\subsection{Initial planning and continued feedback}
 \label{sec:feedback-protocol}
 The two conditions share 40 initial states. Full feedback reuses Q2's 40 trials from seed 187102, so these trials are not an independent replication. The initial plan uses one observation to return a bounded action sequence. Full feedback uses updated observations and history on up to six calls. Both conditions use the same student, local controllers, stopping rule and time limit.
 
@@ -94,7 +94,7 @@ Twenty-seven pairs succeed only with feedback, and none only with the initial pl
 
 Median logical duration is 8.17 seconds for initial planning and 22.0 seconds for feedback on the eligible panel. These durations include unsuccessful termination and must be interpreted alongside 28 initial-plan abstentions. Median measured call latency over raw requests is 8.12 and 5.33 seconds. The protocols differ in output structure and inference budget.
 
-\subsection{Q3: Fresh visual evidence}
+\subsection{Fresh visual evidence}
 \label{sec:fresh-evidence}
 The image intervention uses seeds 187201 and 187202, with 20 trials per seed and arm: 40 matched pairs, 80 trials in total. These are Q3 image-intervention seeds, not additional Q2 controller seeds. Condition order is reversed for the second seed. Both arms freeze the student, predictor, waiting and execution actors, physics, prompt, six-call cap and scoring rule. All 40 pairs are retained, with no service exclusions.
 
@@ -103,7 +103,7 @@ The image intervention uses seeds 187201 and 187202, with 20 trials per seed and
 \setlength{\tabcolsep}{3pt}
 \begin{tabular}{lrrrr}
 \toprule
-Upper RGB & Success & Drops & Calls & Tokens\\
+Agent RGB & Success & Drops & Calls & Tokens\\
 \midrule
 Current image & 32/40 & 3 & 112 & 209,547\\
 Repeated first frame & 9/40 & 4 & 98 & 161,082\\
@@ -115,9 +115,9 @@ Repeated first frame & 9/40 & 4 & 98 & 161,082\\
 
 All 23 pairs with different success outcomes favor current images (two-sided exact paired $p=2.3842\times10^{-7}$, unadjusted). Success counts for the two seeds are $(17,15)$ with current images and $(5,4)$ with repeated first frames. Wilson 95\% intervals for the combined rates are 65.2--89.5\% and 12.3--37.5\%, respectively.
 
-Only the upper agent's RGB changes. The frozen arm sends exactly its first frame, including derived crops. Every request also saves the actual current frame. Pixel and file hashes are checked against transport records. All 40 initial states and first images match. Later live frames differ from the first on 72 fresh-arm and 58 frozen-arm requests. Both arms have 31 trials with multiple calls. Local perception, numeric pose feedback, history and motor control remain live in both arms.
+Only the agent's RGB input changes. The repeated-frame arm sends its exact first frame, including derived crops, while saving the actual current frame for verification. Pixel and file hashes are checked against transport records. All 40 initial states and first images match. Later live frames differ from the first on 72 fresh-arm and 58 repeated-frame requests. Both arms have 31 trials with multiple calls. Local perception, numeric pose feedback, history and motor control remain live in both conditions.
 
-Fresh-image outcomes comprise 32 successes, three drops, three false stops and two abstentions. Frozen-image outcomes comprise nine successes, four drops, three false stops and 24 abstentions. Median measured call latency is 6.25 versus 6.95 seconds, and median logical duration is 22.67 versus 25.62 seconds. Actual inference cost and trajectories differ, so this is not a matched-realized-compute test. Timing checks verify continuous logical control and delayed response application, without asserting wall-clock real-time simulation.
+Fresh-image outcomes comprise 32 successes, three drops, three false stops and two abstentions. Repeated-frame outcomes comprise nine successes, four drops, three false stops and 24 abstentions. Median call latency is 6.25 versus 6.95 seconds, and median simulated duration is 22.67 versus 25.62 seconds. Actual inference costs and trajectories differ despite the common call cap. Timing checks verify continuous simulated control and delayed response application; wall-clock real-time operation is not measured.
 
 A post-hoc analysis checks whether each trial ends with a correct, incorrect or absent target binding. Current images give counts of 34, one and five. Repeated first frames give nine, three and 28. Correct binding alone is insufficient for success: two current-image trials bind correctly but fail the final pose check. These counts do not measure first-binding accuracy, initial target visibility or stability after stopping. The analysis script records the source hash and each trial's classification.
 
@@ -125,9 +125,9 @@ A post-hoc analysis checks whether each trial ends with a correct, incorrect or 
 \paragraph{When correct bindings are acquired.}
 A further post-hoc audit uses applied tool calls rather than terminal states alone. Both arms first declare the correct binding on call one in the same nine trials. With fresh images, an additional 25 trials first bind correctly on calls two through six: eight, nine, five, two and one trials, respectively. Of these 25, 23 subsequently succeed; the other two stop with an incorrect true pose. Repeated first frames produce no additional correct binding after call one. Six fresh-image trials and 31 repeated-frame trials never bind correctly. These are semantic declarations in recorded trajectories, not independently measured first visual-recognition events. All 210 request images were verified against transport hashes. Initial-target readability and finger-versus-back-face occlusion have not been independently annotated and are not reported as results.
 
-\subsection{Q3: Adaptive versus fixed inspection}
+\subsection{Adaptive versus fixed inspection}
 \label{sec:inspection-policy}
-This prospective addendum uses new seeds 187301 and 187302, with 20 trials per seed and arm (40 matched pairs; 80 formal trials). Two admission trials with seed 187291 are excluded from results. Both formal arms were run anew; the earlier fresh-image arm is not reused as a control. The order is adaptive then fixed for the first seed and fixed then adaptive for the second. All 80 outcomes are retained, with no service exclusions, replacement trials or extension after observing the result.
+This separate study uses seeds 187301 and 187302, with 20 trials per seed and condition (40 matched pairs; 80 formal trials). Two preliminary trials with seed 187291 are excluded. Both conditions were run anew; the earlier fresh-image cohort is not reused. The order is adaptive then fixed for the first seed and fixed then adaptive for the second. All 80 outcomes are retained, with no service exclusions, replacement trials or additional trials after observing the result.
 
 \paragraph{Intervention and controls.}
 Both arms use the archived fresh-image cube release's semantic model (\texttt{gpt-6-astra}), system prompt, tool schema, pose estimator, latent student, waiting and execution actors, physical horizon and stopping rule. Each has the same six-call cap. In the adaptive arm, the model selects the color and duration of each \texttt{inspect\_face} action, from 10 to 90 control steps. In the fixed arm, only these actions are replaced by a cyclic green, yellow, red, blue, magenta, cyan sequence, each lasting 90 steps at 30~Hz. The sweep index advances only on inspection. Non-inspection actions and target declarations are unchanged. Both arms retain the model's choice of whether to inspect, bind, verify, stop or abstain, so this isolates inspection direction/duration rather than removing all high-level autonomy.
@@ -145,7 +145,7 @@ Fixed sweep & 31/40 & 32 & 7 & 1 & 126\\
 Adaptive & 38/40 & 39 & 1 & 0 & 117\\
 \bottomrule
 \end{tabular}
-\caption{New Q3 inspection-policy cohort. Bound counts correct terminal bindings. Fixed inspection additionally has one wrong terminal binding; adaptive has none. Binding categories and terminal failure types overlap and must not be added together.}
+\caption{Q3 inspection-policy study. Bound counts correct terminal bindings. Fixed inspection additionally has one wrong terminal binding; adaptive has none. Binding categories and terminal failure types overlap.}
 \label{tab:inspection-policy-supp}
 \end{table}
 
@@ -170,10 +170,10 @@ Figure~\ref{fig:feedback-example} shows a recorded pair from the initial-plan/co
 \label{fig:feedback-example}
 \end{figure*}
 
-\section{Q2: Control During Agent Inference}
+\section{Q2: Control During Agent Reasoning}
 \subsection{Three-seed controller evaluation}
 \label{sec:collaborator-waiting}
-The controller ablation uses seeds 187102, 187103 and 187104, with 40 trials per seed and method. Seed 187102 provides the first 40 trials, and the other two seeds add 80. Q2 reports their combined counts as the paper's only formal online controller ablation. For learned slowing alone, we disable joint correction and keep the same initialization, data, sampling, optimizer and 2,400 updates.
+The controller ablation uses seeds 187102, 187103 and 187104, with 40 trials per seed and method. Seed 187102 provides the first 40 trials; the other two seeds contribute a reported aggregate of 80. The main paper reports all 120 outcomes per method. Table~\ref{tab:collaborator-waiting} preserves the supplied breakdown without inferring separate counts for the latter two seeds. For learned slowing alone, we disable joint correction and keep the same initialization, data, sampling, optimizer and 2,400 updates.
 
 \begin{table}[h]
 \centering\small
@@ -230,12 +230,17 @@ The full actor is below the scalar bound in 64.8\% of these states and has a low
 \subsection{Timing verification}
 The request logs verify that pending requests preserve continuous logical control and that replies are applied only after their measured latency and actual completion. Replies arriving after episode termination are not applied. These checks verify the simulated delay protocol rather than wall-clock real-time operation. Q2 aggregate outcomes do not provide per-trial timing for the two additional seeds, so no timing result is extrapolated to all 120 trials.
 
+\section{Q1: Six-Object Mapping Results}
+The complete numerical table accompanies the main-paper bar chart. Each cell schedules 40 trials; service-eligible denominators are shared across methods within each condition. Object-specific weights remain fixed when the semantic mapping changes.
+
+\input{tables/q1_all_objects}
+
 \section{Q1: Cube System Comparisons}
 \label{sec:followup}
 These comparisons have their own frozen releases and trial sets. They are not additional Q2 controller seeds. Service-eligible comparisons remove the same affected slots from all arms; raw records remain archived.
 
-\subsection{Completed visual interventions}
-The upper-level image changes while the low-level pose predictor continues to receive the original image. Lighting is fixed. The permuted condition assigns the next symbol in $(T,E,R,L,S,H)$ to each color face and changes the requested symbol accordingly, preserving the scored physical target across conditions. The masked condition hides the lettering. Geometry-consistent image construction and the transmitted image hashes are audited. Seeds 183441 and 183442 provide 20 trials each, and physical initial-state hashes match across the three conditions.
+\subsection{Visual-semantic interventions}
+Only the agent's image changes; the pose predictor continues to receive the original image, with lighting fixed. The permuted condition assigns the next symbol in $(T,E,R,L,S,H)$ to each color face and changes the requested symbol accordingly, preserving the physical target. The masked condition hides the lettering. Image construction preserves the object's geometry, and transmitted-image hashes are verified. Seeds 183441 and 183442 provide 20 trials each, with matching physical initial states across conditions.
 
 \begin{table}[h]
 \centering\small
@@ -247,10 +252,10 @@ Method & Identity & Permuted & Masked\\
 \CompletedVisualRows
 \bottomrule
 \end{tabular}
-\caption{Completed upper-image interventions. Identity and permutation each use 40 trials. REVEAL masking has one service exclusion. For its paired masking contrast the identity numerator becomes 31/39. All conditions use reconstructed face images, not the untouched native-image comparison.}
+\caption{Completed upper-image interventions. Identity and permutation each use 40 trials. AIMI masking has one service exclusion. For its paired masking contrast the identity numerator becomes 31/39. All conditions use reconstructed face images, not the untouched native-image comparison.}
 \end{table}
 
-Fine-tuned success falls by 35 percentage points after remapping and to 7.5\% after masking. Rule-based success is 57.5\% under both identity and remapping, then zero after masking. Equal aggregate identity and remapped rates do not imply identical trial outcomes. REVEAL now has 32/40 successes under both identity and permutation, with zero of 39 eligible masked trials. This supports robustness to the tested permutation, without proving equivalence or identifying all fine-tuned successes as a fixed lookup.
+Fine-tuned success falls by 35 percentage points after remapping and to 7.5\% after masking. Rule-based success is 57.5\% under both identity and remapping, then zero after masking. AIMI achieves 32/40 successes under both identity and permutation, with zero of 39 eligible masked trials. Equal aggregate rates can contain different trial outcomes. The result supports performance under this tested permutation, while the binding analysis below examines reliance on prior associations.
 
 \paragraph{Applied semantic bindings.}
 We audit every applied, accepted call from the same 240 trials. The episode-file hashes match the archived results, and the last accepted skill agrees with the recorded terminal binding. Table~\ref{tab:visual-bindings} separates acquiring the correct target from completing it. Under permutation, the fine-tuned model first binds correctly in 25 trials and incorrectly in eleven, compared with 34 and four under identity. Nine of its eleven wrong-binding trials select the original color for the newly requested symbol. The rule model has six wrong-binding trials under each layout, with three following the old association after permutation. This pattern is consistent with reliance on training associations, but does not identify the model's internal mechanism.
@@ -271,13 +276,13 @@ Model & Layout & Correct & Wrong & None & Old\\
 
 No wrong-to-correct binding transition occurs in these bare-VLM cohorts. This is descriptive: trajectories, visibility, and opportunities for additional calls differ. Of fourteen fine-tuned false stops under permutation, ten end with a wrong binding and four with the correct binding but an independently incorrect final pose. Masking leads to no accepted binding in 36 fine-tuned trials and all forty rule-model trials. The three masked fine-tuned successes cannot establish letter grounding when that information is removed.
 
-Identity versus permutation yields eighteen exclusive successes and four exclusive failures for the fine-tuned model (exact paired $p=0.00434$), versus ten and ten for the rule model ($p=1.0$). The final analysis applies Holm correction across six planned image contrasts, giving adjusted $p=0.0130$ for the fine-tuned mapping contrast. The single deterministic remapping and reconstructed upper images limit generalization claims. REVEAL has five exclusive identity successes and five exclusive permutation successes ($p=1.0$).
+Identity versus permutation yields eighteen exclusive successes and four exclusive failures for the fine-tuned model (exact paired $p=0.00434$), versus ten and ten for the rule model ($p=1.0$). The final analysis applies Holm correction across six planned image contrasts, giving adjusted $p=0.0130$ for the fine-tuned mapping contrast. The single deterministic remapping and reconstructed upper images limit generalization claims. AIMI has five exclusive identity successes and five exclusive permutation successes ($p=1.0$).
 
 
 \subsection{Native-image comparison and failure audit}
-Seeds 185451 and 185452 give 40 matched trials per method with no service exclusions. The REVEAL system gives 35 successes, three execution-phase drops, one wrong-binding false stop, and one abstention. The bare fine-tuned system gives 30 successes, nine execution drops, and one horizon failure. The bare rule system gives 17 successes, twelve drops, ten false stops, and one horizon failure. Its drops include two during startup waiting. REVEAL makes 101 calls, fine-tuning 117, and the rule baseline 126. Median latencies are 4.349, 0.099 and 1.104 seconds.
+Seeds 185451 and 185452 give 40 matched trials per method with no service exclusions. The AIMI system gives 35 successes, three execution-phase drops, one wrong-binding false stop, and one abstention. The bare fine-tuned system gives 30 successes, nine execution drops, and one horizon failure. The bare rule system gives 17 successes, twelve drops, ten false stops, and one horizon failure. Its drops include two during startup waiting. AIMI makes 101 calls, fine-tuning 117, and the rule baseline 126. Median latencies are 4.349, 0.099 and 1.104 seconds.
 
-The three REVEAL drops occur during inspection before final target binding. One is 59 control steps after the most recent applied inspection command, and the others are 36 and 24 steps after it. These intervals describe timing, not causal attribution. The false-stop episode binds R to cyan rather than blue. Its measured error to the declared target is 0.057 radians, while true requested-target error is 3.079 radians. It is a semantic binding failure and cannot simply be assigned to pose estimation. The abstention follows four inspections without a declared target. A favorable instantaneous pose during that trajectory does not meet the autonomous success rule.
+The three AIMI drops occur during inspection before final target binding. One is 59 control steps after the most recent applied inspection command, and the others are 36 and 24 steps after it. These intervals describe timing, not causal attribution. The false-stop episode binds R to cyan rather than blue. Its measured error to the declared target is 0.057 radians, while true requested-target error is 3.079 radians. It is a semantic binding failure and cannot simply be assigned to pose estimation. The abstention follows four inspections without a declared target. A favorable instantaneous pose during that trajectory does not meet the autonomous success rule.
 
 \section{Q1: Native-Layout Dice Extension}
 \label{sec:dice-extension}
@@ -289,7 +294,7 @@ The released feedforward actor uses ten frames of normalized input. Its goal-rel
 \paragraph{Perception, control and stop policy.}
 The die uses the released simulator-pose noise, bias, failure, jitter and delay model. There is no image pose estimator in these trials. All upper methods receive the same RGB and image-only crop. The physical horizon is 120 seconds at 20~Hz and the stop gate is checked at 3~Hz. A reply cannot be applied before $\lceil20L\rceil$ steps, while control continues. The drop boundary and independent full-quaternion success tolerance remain 0.24 metres and 0.16 radians.
 
-REVEAL uses one object-specific maintenance actor during pending and ordinary execution. Its calibrated completion model learns a bounded correction to measured angular error and an uncertainty term. It accepts when the calibrated upper bound is at most 0.16 radians. Once a correct count is declared and the state is not inspection, this gate may stop even with a further request pending. The bare baselines use no learned maintenance or completion module and stop on the measured-angle criterion only when no request is pending. Thus these are complete-system comparisons, not isolated tests of the semantic models or a replication of the cube's shared measured gate.
+AIMI uses one object-specific maintenance actor during pending and ordinary execution. Its calibrated completion model learns a bounded correction to measured angular error and an uncertainty term. It accepts when the calibrated upper bound is at most 0.16 radians. Once a correct count is declared and the state is not inspection, this gate may stop even with a further request pending. The bare baselines use no learned maintenance or completion module and stop on the measured-angle criterion only when no request is pending. Thus these are complete-system comparisons, not isolated tests of the semantic models or a replication of the cube's shared measured gate.
 
 \begin{table}[t]
 \centering\small
@@ -297,7 +302,7 @@ REVEAL uses one object-specific maintenance actor during pending and ordinary ex
 \toprule
 System & Success & \% & Drops & Calls\\
 \midrule
-REVEAL & 24/40 & 60.0 & 15 & 63\\
+AIMI & 24/40 & 60.0 & 15 & 63\\
 Fine-tuned VLM, bare & 20/40 & 50.0 & 8 & 141\\
 Rule VLM, bare & 17/40 & 42.5 & 7 & 154\\
 \bottomrule
@@ -305,15 +310,15 @@ Rule VLM, bare & 17/40 & 42.5 & 7 & 154\\
 \caption{Completed native-layout die comparison. No service exclusions. The independent success definition is shared; internal control and stop modules differ by system.}
 \end{table}
 
-REVEAL's 95\% Wilson interval is [44.6, 73.7]\%, versus [35.2, 64.8]\% for fine-tuning and [28.5, 57.8]\% for rules. REVEAL has ten exclusive successes against six for fine-tuning (exact paired $p=0.4545$), and eleven against four for rules ($p=0.1185$). These exploratory comparisons do not establish superiority. REVEAL has twelve startup drops, three execution drops and one false stop. Fine-tuning has eight execution drops, seven false stops and five horizon failures. Rules have seven startup drops, six false stops and ten horizon failures. Median request latencies are 5.63, 0.124 and 1.16 seconds, respectively.
+AIMI's 95\% Wilson interval is [44.6, 73.7]\%, versus [35.2, 64.8]\% for fine-tuning and [28.5, 57.8]\% for rules. AIMI has ten exclusive successes against six for fine-tuning (exact paired $p=0.4545$), and eleven against four for rules ($p=0.1185$). These exploratory comparisons do not establish superiority. AIMI has twelve startup drops, three execution drops and one false stop. Fine-tuning has eight execution drops, seven false stops and five horizon failures. Rules have seven startup drops, six false stops and ten horizon failures. Median request latencies are 5.63, 0.124 and 1.16 seconds, respectively.
 
-\section{Q1: Completed Dice Visual-Layout Study}
+\section{Q1: Dice Visual-Layout Transfer}
 \label{sec:dice-layout}
 \begin{figure*}[t]
 \centering
 \includegraphics[width=.38\textwidth]{data/dice_visual_layout_20261102/qualitative_request_02.png}\hspace{.04\textwidth}
 \includegraphics[width=.38\textwidth]{data/dice_visual_layout_20261102/qualitative_request_03.png}
-\caption{A recorded permuted-layout episode requesting two dots upward. Left: probing physical skill 3 exposes six dots. Right: probing skill 1 exposes two dots. REVEAL then binds the target to skill 1 and stops with an independently measured orientation error of 0.025 radians. Images are the actual model inputs. This first scheduled trial was selected after its outcome and illustrates one successful sequence, not a reliability estimate.}
+\caption{A recorded permuted-layout episode requesting two dots upward. Left: probing physical skill 3 exposes six dots. Right: probing skill 1 exposes two dots. AIMI then binds the target to skill 1 and stops with an independently measured orientation error of 0.025 radians. Images are the actual model inputs. This first scheduled trial was selected after its outcome and illustrates one successful sequence, not a reliability estimate.}
 \label{fig:dice-probe}
 \end{figure*}
 
@@ -322,7 +327,7 @@ The six cells use identity or a 120-degree visual-mesh rotation about a body dia
 \paragraph{Input and motor contract.}
 Printed counts are separated from fixed physical motor IDs. Skills 1--6 display counts $[1,2,3,4,5,6]$ in identity and $[2,4,6,1,3,5]$ after rotation. This table is used only to construct task instructions and score outcomes. Models receive no layout table, and their commands are not inversely remapped. The learned VLM's continuous 768-dimensional output is applied unchanged. Both layouts share an explicit skill-ID prompt that differs from the native-main prompt, making identity a control for that common change. The VLM retains its native-layout-trained weights. This measures zero-shot layout transfer, not performance after training on permuted examples.
 
-REVEAL receives updated RGB, action/observation history and noisy feedback and can probe skills. The bare VLMs receive only current RGB and instruction, with their original fallback inspection schedule. From a single view, a new printed-count-to-motor-ID association may be ambiguous without a stable face reference. The comparison therefore measures complete systems, not a controlled effect of model scale or fine-tuning alone. Dice maintenance and stopping modules remain as documented above. The shared primary success predicate is unchanged.
+AIMI receives updated RGB, action/observation history and noisy feedback and can probe skills. The bare VLMs receive only current RGB and instruction, with their original fallback inspection schedule. From a single view, a new printed-count-to-motor-ID association may be ambiguous without a stable face reference. The comparison therefore measures complete systems, not a controlled effect of model scale or fine-tuning alone. Dice maintenance and stopping modules remain as documented above. The shared primary success predicate is unchanged.
 
 \begin{table}[t]
 \centering\small
@@ -338,7 +343,7 @@ System & Identity & Permuted\\
 \end{table}
 
 \paragraph{Results and paired uncertainty.}
-REVEAL completes 28/40 identity trials and 26/40 permuted trials. Their 95\% Wilson intervals are [54.6, 81.9]\% and [49.5, 77.9]\%. Fine-tuning changes from 23/40 to 0/40, and rules from 13/40 to 1/40. Four paired states succeed only for identity REVEAL and two only for permuted REVEAL. The absence of a detected difference does not establish equivalence or robustness to other layouts. Table~\ref{tab:dice-layout-tests} reports all seven exploratory paired contrasts without multiple-testing adjustment. The native-main results are a separate cohort and must not be pooled with this study.
+AIMI completes 28/40 identity trials and 26/40 permuted trials. Their 95\% Wilson intervals are [54.6, 81.9]\% and [49.5, 77.9]\%. Fine-tuning changes from 23/40 to 0/40, and rules from 13/40 to 1/40. Four paired states succeed only for identity AIMI and two only for permuted AIMI. The absence of a detected difference does not establish equivalence or robustness to other layouts. Table~\ref{tab:dice-layout-tests} reports all seven exploratory paired contrasts without multiple-testing adjustment. The native-main results are a separate cohort and must not be pooled with this study.
 
 \begin{table}[t]
 \centering\small
@@ -355,7 +360,7 @@ Contrast A versus B & A only & B only & Exact $p$\\
 \end{table}
 
 \paragraph{Binding and control failures.}
-Permuted REVEAL has 27 trials with a correct binding to a skill ID different from the printed count, and 26 complete successfully. It applies inspection in 32 trials and first binds after inspection in 27. No wrong-to-correct binding transition is observed. Its failures comprise seven startup drops, one execution drop, five abstentions and one wrong-binding stop. These traces describe evidence gathering before commitment, not recovery from an already executed incorrect binding.
+Permuted AIMI has 27 trials with a correct binding to a skill ID different from the printed count, and 26 complete successfully. It applies inspection in 32 trials and first binds after inspection in 27. No wrong-to-correct binding transition is observed. Its failures comprise seven startup drops, one execution drop, five abstentions and one wrong-binding stop. These traces describe evidence gathering before commitment, not recovery from an already executed incorrect binding.
 
 The permuted fine-tuned VLM has 31 wrong-binding stops, five horizons and four execution drops. All 31 wrong-binding stops report the native same-number skill. Code review confirms that RGB and instruction enter the backbone and learned latent head, with no service-side assignment from requested count to skill. In identity, it binds correctly in 36 trials but succeeds in 23, illustrating a separate control/stop limitation. The permuted rule model has 32 wrong-binding stops, four horizons, three drops and one success; 24 of its wrong-binding stops select the native same-number skill. These post-hoc diagnostics are consistent with reliance on native associations. They do not establish memorization as an exclusive cause, especially given the baseline's limited observation history.
 
@@ -364,19 +369,19 @@ The permuted fine-tuned VLM has 31 wrong-binding stops, five horizons and four e
 \paragraph{Audit and scope.}
 The independent audit checks all 240 trials, 69 frozen source files, matched resets, model-request image hashes, delayed response application, continuous VLM latents and canonical-quaternion scoring. A separate SciPy calculation verifies all six Wilson intervals and seven exact paired tests. No service exclusions, outcome replacements or post-test model changes occur. Trace diagnostics were developed while cells were completing and are explicitly post-hoc. Earlier invalid digit-overlay attempts are excluded and preserved separately. One changed layout, one native-trained local model and object-specific motor weights do not establish broad semantic or geometric generalization.
 
-\section{Four Additional Q1 Objects}
+\section{Q1: Four Additional Objects}
 Duck, hedgehog, pig and milk carton each contribute six cells of forty raw trials, totaling 960. Each object uses its own frozen student and adaptation, native marked RGB for semantic decisions, and noisy simulator pose for motor control. Bare VLM baselines omit the added control modules. We preserve every recorded outcome. Two historical duck service failures and one hedgehog service failure affect only original-mapping cells. Common service-eligible panels remove the corresponding slots from all three methods. All changed-mapping cells retain forty trials.
 
-The full audit covers all 960 episodes, 320 within-mapping initial-image groups and 160 physical-state groups. Seventeen image comparisons differ in one color channel of one pixel by one 8-bit level. Saved model-request pixels and delivered-input hashes match strictly. One duck original-mapping REVEAL reset (slot 7) differs from the other conditions in one quaternion component by $2.98\times10^{-8}$. The normalized angular difference is $5.77\times10^{-8}$ radians, with identical initial image pixels. We retain this explicitly reviewed numerical exception rather than claiming bitwise reset equality. All other recorded state components match exactly.
+The full audit covers all 960 episodes, 320 within-mapping initial-image groups and 160 physical-state groups. Seventeen image comparisons differ in one color channel of one pixel by one 8-bit level. Saved model-request pixels and delivered-input hashes match strictly. One duck original-mapping AIMI reset (slot 7) differs from the other conditions in one quaternion component by $2.98\times10^{-8}$. The normalized angular difference is $5.77\times10^{-8}$ radians, with identical initial image pixels. We retain this explicitly reviewed numerical exception rather than claiming bitwise reset equality. All other recorded state components match exactly.
 
-As a sensitivity analysis, removing slot 7 from every method gives original-mapping successes of 24/37 for REVEAL, 13/37 for fine-tuning and 15/37 for rules. Removing it from the changed mapping gives 23/39, 2/39 and 9/39. The ordering is unchanged. The main table retains the frozen service-exclusion rule. This post-run sensitivity check does not replace outcomes or change the success definition.
+As a sensitivity analysis, removing slot 7 from every method gives original-mapping successes of 24/37 for AIMI, 13/37 for fine-tuning and 15/37 for rules. Removing it from the changed mapping gives 23/39, 2/39 and 9/39. The ordering is unchanged. The main table retains the frozen service-exclusion rule. This post-run sensitivity check does not replace outcomes or change the success definition.
 
 \section{Q1: Language and Wording Coverage Across Three Objects}
 \label{sec:language-supp}
 Three separate cohorts contribute 2,160 recorded trials: cube, duck and hedgehog, each with three systems, two languages, two wording templates per language and 60 trials per cell. Cube seeds are 210501--210503, duck seeds 210601--210603, and hedgehog seeds 210701--210703, twenty trials per seed. Each of six goals occurs ten times per cell. These are evaluation blocks, not independent training seeds. Within each object, the same 60 reset seeds and physical goals are reused across methods and instruction variants. Four prompt variants must not be pooled as 240 independent physical tasks.
 
 \paragraph{Intervention and deployment.}
-Mapping, task criterion and object-specific weights remain fixed within each system. Cube retains its visual pose estimator, goal bank, latent student, 30-Hz control and measured-pose stopping; REVEAL uses its paper-selected waiting and execution actors. Duck and hedgehog use their own latent students, 20-Hz control and noisy simulator-pose feedback; REVEAL additionally uses object-specific learned maintenance and completion correction. Bare local baselines omit these added actors. All systems use the independently scored 0.16-radian tolerance. Upper RGB is 120-by-120 for cube and 512-by-512 for duck and hedgehog. The English-trained fine-tuned models receive the requested instructions without Chinese retraining. The rule baseline additionally uses localized task/output instructions for Chinese conditions. This is deployed-system language coverage, not an isolated change to the user sentence for every backend, a shared-policy transfer test, or a causal test of fine-tuning. Exact prompts are retained in the evidence bundle.
+Mapping, task criterion and object-specific weights remain fixed within each system. Cube retains its visual pose estimator, goal bank, latent student, 30-Hz control and measured-pose stopping; AIMI uses its paper-selected waiting and execution actors. Duck and hedgehog use their own latent students, 20-Hz control and noisy simulator-pose feedback; AIMI additionally uses object-specific learned maintenance and completion correction. Bare local baselines omit these added actors. All systems use the independently scored 0.16-radian tolerance. Upper RGB is 120-by-120 for cube and 512-by-512 for duck and hedgehog. The English-trained fine-tuned models receive the requested instructions without Chinese retraining. The rule baseline additionally uses localized task/output instructions for Chinese conditions. This is deployed-system language coverage, not an isolated change to the user sentence for every backend, a shared-policy transfer test, or a causal test of fine-tuning. Exact prompts are retained in the evidence bundle.
 
 \paragraph{Service eligibility and raw records.}
 The main-paper language table reports completion conditional on service availability. Within each object and instruction condition, the union of infrastructure-affected slots is removed from all three methods, including any successful baseline outcome at that slot. Thus each row comparison uses identical physical tasks and the same denominator. These rates do not measure end-to-end service reliability. This reporting choice was made after inspecting the raw outcomes; it is not described as preregistered. Table~\ref{tab:language-raw} retains every scheduled slot and Table~\ref{tab:language-exclusions} lists exclusions. No excluded slot is replaced; continuations visit only unvisited slots. Physical drops, incorrect stopping, abstention and task-horizon failures remain in the denominator. Infrastructure faults include TLS/proxy failures and server overload, not model grounding or control errors.
@@ -400,14 +405,14 @@ Two-sided exact McNemar tests use discordant pairs. Method tests use the same co
 \paragraph{Scope and evidence.}
 Two languages and two templates per language, with six fixed targets and one mapping per object, do not establish broad multilingual generalization or equivalence. Earlier misconfigured runs are excluded; historical native/mapping cohorts remain separate. The sanitized archive retains all 2,160 outcomes, 72 main and 72 sensitivity comparisons, prompts, schedules and checksums.
 
-\section{Independent Pose Estimation under Hand Occlusion}
+\section{Q4: Independent Pose Estimation under Hand Occlusion}
 \label{sec:pose-occlusion}
 This supporting perception study for Q4 evaluates fixed RGB and RGB-D estimators on a 58.5~mm lettered cube. Its RGB model differs from the frozen agent CNN, and its pose recalls do not update agent success counts.
 
 \paragraph{Sampling and scoring.}
 Three test seeds (31001--31003), four camera pitches ($0^\circ$, $60^\circ$, $90^\circ$, $105^\circ$), and 512 frames per group yield 6,144 observations in 48 environment clusters. RGB, RGB-D, their no-hand controls and perturbed-depth RGB-D produce 30,720 predictions. Collection records four geometry rejections; 6,139 admitted observations contain the full object.
 
-Recall requires translation error $<10$~mm and full rotation error $<10^\circ$, without cube-symmetry minimization. Invalid predictions count as failures. Secondary recall uses 5~mm and $5^\circ$. ADD uses 6,144 nominal-cube surface points and threshold 0.1 diameter, not BOP average recall. Frozen prose used non-strict inequalities, but all evaluations consistently used strict thresholds. No samples lie on the primary boundaries.
+Recall requires translation error $<10$~mm and full rotation error $<10^\circ$, without cube-symmetry minimization. Invalid predictions count as failures. Secondary recall uses 5~mm and $5^\circ$. ADD uses 6,144 nominal-cube surface points and a threshold of 0.1 diameter. All evaluated thresholds are strict, and no samples lie on the primary boundaries.
 
 \begin{table}[t]
 \centering\small
@@ -439,28 +444,35 @@ The evaluation uses simulator pose labels, ideal target segmentation, and virtua
 \paragraph{Evidence provenance.}
 The supplied integrity report records 129 unchanged frozen files, shared finite ground truth, and pose-error recomputation within $2.28\times10^{-13}$~mm and $1.01\times10^{-11}$ degrees. Paper integration verifies file hashes and re-sums twelve shard counts. Bootstrap intervals and per-frame checks retain delivery provenance. Protocol/model hashes are archived; the final reproduction package still needs sanitized per-frame records.
 
-\section{Physical-Hand Evaluation and Remaining Scope}
-Physical-hand results are not yet available. The planned evaluation will identify the tested objects, camera calibration, reset procedure and independent scorer, and record synchronized images and commands. The simulation evidence measures terminal binding and orientation. Direct visibility and post-stop holding should be evaluated separately to test sustained target presentation. The following layouts reserve space for the planned hardware evidence.
+\section{Q4: Physical-Hand Evaluation}
+\label{sec:hardware}
+We evaluate the complete Rule, Fine-tuned and AIMI systems on a Revo3 hand with four physical objects: cube, die, ball and duck. Each object--method combination has 20 trials, totaling 80 per method and 240 overall. RGB images provide estimated object pose to the control policy, following the ViserDex-based deployment interface. The ball belongs to this hardware cohort and is not an additional Q1 simulation object.
+
+\input{tables/hardware_results}
+
+A trial succeeds when the robot reaches the requested target, stops with orientation error at most $15^\circ$, and does not drop the object. This hardware criterion is distinct from the simulation tolerance of 0.16 radians. Table~\ref{tab:hardware-results} reports 32/80, 53/80 and 70/80 successes for Rule, Fine-tuned and AIMI. Equal trials per object make the pooled rate equal to the object-averaged rate. These complete-system results do not isolate the effect of perception adaptation or measure an additional post-stop holding period.
+
+\TODO{Add the camera/scoring setup and recorded physical-hand sequences.} The image layouts below reserve space for the task instruction, inspection views, target binding and final presentation.
 
 
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=0.95\textwidth]{figures/imported/sim_real_protocol_placeholder.png}
+\includegraphics[width=0.50\textwidth]{figures/imported/aimi_exploration.pdf}
 \caption{\textbf{Planned inspection and presentation sequence.} Reference crops illustrate observing, inspecting, binding, and presenting a requested face. Real-hand image slots remain empty. This is a protocol mockup, not a physical-robot result.}
 \label{fig:sim-real-protocol}
 \end{figure*}
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=0.95\textwidth]{figures/imported/real_robot_cases_placeholder.png}
+\includegraphics[width=0.95\textwidth]{figures/imported/aimi_sim_real.pdf}
 \caption{\textbf{Planned simulation/physical presentation comparison.} The layout pairs hidden-target, reveal, and stable-display stages. The reference simulation crop is illustrative; the remaining simulation and physical-hand slots await matched observations. No real-robot outcome is represented.}
 \label{fig:physical-panels}
 \end{figure*}
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=0.95\textwidth]{figures/imported/qualitative_real_robot_placeholder.png}
+\includegraphics[width=0.95\textwidth]{figures/imported/aimi_real_cases.pdf}
 \caption{\textbf{Planned qualitative comparison and real-robot cases.} Initial/end-state and physical-robot image slots remain placeholders until corresponding observations are available. No completed trial is represented.}
 \label{fig:qualitative-real}
 \end{figure*}

@@ -1,0 +1,3 @@
+2026-11-07 author update: sim-to-real demonstrations cover four real-world objects.
+Source: current user message.
+Updated abstract and manuscript status consistently. Object identities, per-object trial counts, success rates, baseline outcomes and real-hand images were not supplied in this update; placeholders retained. No zero-shot, unseen-object or quantitative hardware claim added. Existing simulation counts unchanged.
