@@ -1,0 +1,128 @@
+{
+  "source": "data/inhand4_completed_20261103/q1_all_objects.json",
+  "source_sha256": "4d9c53ccf118906a4b2ef7e13c4a65508b9178da6328afe4f41896a6589b176b",
+  "objects": [
+    "Cube",
+    "Die",
+    "Duck",
+    "Hedgehog",
+    "Pig",
+    "Milk carton"
+  ],
+  "methods": [
+    "Rule",
+    "Fine-tuned",
+    "AIMI"
+  ],
+  "original_mapping": [
+    [
+      57.5,
+      75.0,
+      80.0
+    ],
+    [
+      32.5,
+      57.5,
+      70.0
+    ],
+    [
+      39.473684210526315,
+      36.8421052631579,
+      65.78947368421052
+    ],
+    [
+      43.58974358974359,
+      33.333333333333336,
+      71.7948717948718
+    ],
+    [
+      52.5,
+      40.0,
+      92.5
+    ],
+    [
+      32.5,
+      22.5,
+      42.5
+    ]
+  ],
+  "changed_mapping": [
+    [
+      57.5,
+      40.0,
+      80.0
+    ],
+    [
+      2.5,
+      0.0,
+      65.0
+    ],
+    [
+      22.5,
+      5.0,
+      60.0
+    ],
+    [
+      25.0,
+      5.0,
+      80.0
+    ],
+    [
+      37.5,
+      7.5,
+      82.5
+    ],
+    [
+      7.5,
+      2.5,
+      27.5
+    ]
+  ],
+  "styles": {
+    "A": {
+      "name": "Slate & coral",
+      "colors": [
+        "#C4CFDC",
+        "#829CB8",
+        "#D37778"
+      ]
+    },
+    "B": {
+      "name": "Sage & teal",
+      "colors": [
+        "#D6DED5",
+        "#A3C9B7",
+        "#38867B"
+      ]
+    },
+    "C": {
+      "name": "Sand, rose & plum",
+      "colors": [
+        "#DECFB3",
+        "#D8A5B5",
+        "#87638E"
+      ]
+    },
+    "D": {
+      "name": "Aqua, apricot & blue",
+      "colors": [
+        "#BCDDE1",
+        "#EBC78E",
+        "#547CB4"
+      ]
+    },
+    "E": {
+      "name": "Horizontal dot plot",
+      "colors": [
+        "#A8B6C6",
+        "#718EA9",
+        "#C5636C"
+      ]
+    },
+    "F": {
+      "name": "Annotated heatmap",
+      "colors": []
+    }
+  },
+  "note": "All styles share these exact values. No new data, uncertainty or significance is inferred."
+}

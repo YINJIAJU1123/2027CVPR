@@ -1,53 +1,43 @@
 \section{Method}
 \label{sec:method}
-AIMI connects an agent's exploration decisions to a continuously running motor policy. Training begins with a ViserDex-based teacher--student foundation adapted to Revo3~\cite{bhardwaj2026viserdex}. A frozen teacher then supervises student adaptation to a shared goal bank, followed by training local controllers around the adapted student. At deployment, new observations guide inspection and target binding (Fig.~\ref{fig:pipeline}). We describe the cube implementation below; other objects have their own students, noisy pose feedback and maintenance controllers.
-\begin{figure*}[t]
-\centering
-\includegraphics[width=0.88\textwidth]{figures/imported/aimi_pipeline.pdf}
-\caption{\textbf{AIMI training and deployment.} (a) Privileged teacher training follows the ViserDex-based Revo3 foundation. (b) The frozen teacher supervises student adaptation to goal-bank vectors; the state decoder is training-only. (c) An agent selects inspection or presentation skills from new observations while local controllers adjust joint commands. Dashed slots await physical-hand images.}
-\label{fig:pipeline}
-\end{figure*}
+AIMI uses in-hand motion to acquire visual evidence and turn it into a presentation goal. An agent decides how to inspect the object, while a recurrent motor policy and local controllers maintain continuous control. Training proceeds from a ViserDex-based teacher--student foundation adapted to Revo3, to goal-bank adaptation, and then local-controller learning (Fig.~\ref{fig:pipeline}). We describe the cube implementation below. Other objects use their own students and maintenance controllers; their interfaces are given in the supplement.
 
-\subsection{Teacher-supervised motor adaptation}
-We start from a pretrained student that takes geometric goals. A learned projection replaces these goal inputs with $g_t\in\R^{768}$:
+\input{sections/03_task}
+
+\subsection{Learning goal-conditioned motor skills}
+\paragraph{Teacher--student foundation.}
+We build on the ViserDex teacher--student approach adapted to the Revo3 hand~\cite{bhardwaj2026viserdex}. The pretrained teacher uses privileged simulation information and geometric goals to provide action supervision. Starting from the corresponding student, we retain compatible encoders, recurrent and actor weights, and normalization statistics. The teacher remains frozen during the following adaptation.
+
+\paragraph{Goal-bank adaptation.}
+To connect discrete agent decisions to motor skills, we use six normalized vectors $B=\{g_1,\ldots,g_6\}$ from cached SigLIP2 text features~\cite{tschannen2025siglip2}. Each represents a color skill and its reference object orientation. A learned projection replaces the student's geometric goal inputs:
 \begin{align}
- z_t&=\tanh(W_g g_t+b_g)\in\R^{64},\\
+ z_t&=\tanh(W_g g_t+b_g),\\
  (u_t,h_{t+1})&=\pi_\theta([x_t,z_t],\hat p_t,h_t).
 \label{eq:student}
 \end{align}
-Here $x_t\in\R^{109}$ contains proprioception and history without the target pose, and $u_t\in\R^{21}$ contains proposed joint targets in normalized coordinates. We reuse compatible encoders, recurrent and actor weights, and normalization statistics from the released policy. The adapted student receives neither the target quaternion nor the relative-goal quaternion.
+The adapted student receives neither the target quaternion nor the relative-goal quaternion. The goal bank is fixed; online agent outputs select its entries rather than supplying hidden model features.
 
-We train the goal projection and adapt the recurrent policy using actions from the frozen teacher in a DAgger-style procedure~\cite{ross2011dagger}. A training-only decoder reconstructs normalized privileged state targets with the goal quaternion removed. Its MSE has weight 0.2 alongside the action MSE; goal-projection warmup uses action supervision alone. The decoder and teacher are absent at deployment.
+We fit the projection and recurrent policy to frozen-teacher actions using a DAgger-style procedure~\cite{ross2011dagger}. Projection warmup uses action MSE. Recurrent adaptation adds a training-only decoder that reconstructs normalized privileged state with the goal quaternion removed. Its reconstruction MSE has weight 0.2. The teacher and decoder are removed from deployment. Network dimensions and fitting details are provided in the supplement.
 
-For deployed cube control, a frozen CNN takes a $120\times120$ RGB crop and predicts image coordinates and depth for the object center and eight keypoints. Camera calibration and rigid fitting recover position, XYZW orientation and a fitting error. These images include hand occlusion. The student receives this estimated pose. Physical deployment follows the same RGB-to-pose-to-control interface. Following ViserDex, Gaussian-splat rendering supplies training images for the pose estimator; the deployed estimator recovers pose from camera RGB. Object-specific interfaces are described in the supplement.
+\subsection{Agentic visual exploration}
+\label{sec:exploration}
+The agent receives the instruction, current image and action history, and returns an explicit action: inspect, reorient, verify, stop, or abstain. We validate the reply before applying it. Inspection selects a color skill to expose another view. Once the requested face is identified, the agent binds it to a motor goal and guides its presentation (Fig.~\ref{fig:search-component}).
 
-\subsection{Language-guided visual exploration}
-The cube has a bank of six normalized goal vectors $B=\{g_1,\ldots,g_6\}$, computed from cached SigLIP2 text features~\cite{tschannen2025siglip2}. Each vector represents a color skill and its reference object orientation.
-
-\paragraph{Inspection, binding and presentation.}
-Given the instruction, current image and action history, the agent returns an explicit action: inspect, reorient, verify, stop, or abstain. We validate each action before applying it. During inspection, its color argument selects a goal vector from $B$ to expose another view without declaring that the target has been found. After identifying the requested face, the agent binds it to a motor goal for presentation. It selects inspection and reorientation durations of 10--90 steps and uses subsequent images to update its decisions. These durations are separate from model latency. The interface passes validated tool arguments through a fixed goal-bank lookup; it does not use the agent's hidden features.
-
-
-\begin{figure}[t]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.96\columnwidth]{figures/imported/aimi_exploration.pdf}
 \caption{\textbf{Agentic visual exploration.} New observations guide inspection, target binding and presentation. Reference crops illustrate the sequence in simulation; physical-hand image slots remain open.}
 \label{fig:search-component}
 \end{figure}
 
-\subsection{Control while the agent is reasoning}
+The agent chooses inspection and reorientation durations of 10--90 control steps. Later images reveal the effect of these actions and support the next decision. Action duration is distinct from model latency. Only one request can be pending, and the current skill remains active until a valid reply changes it. Invalid replies never select an oracle target. This loop lets the hand gather evidence before committing to a presentation goal, while control continues between decisions.
+
+\subsection{Continuous control during and after reasoning}
 \label{sec:wait}
-The hand needs updated commands while an agent request is pending. The waiting controller receives a feature vector $s_t$ containing proprioception, measured pose, the student's recurrent state and proposed action, fitting error, binding status and request status. It also receives the pose and command recorded when the request began, which we call the \emph{request anchor}, and the elapsed waiting time. The active goal $g_t$ is encoded separately. Before target binding, this goal represents the startup or inspection skill. The controller does not know the target that a future reply may select.
+The agent chooses goals at irregular intervals, but the hand needs commands at every control step. We therefore place local controllers around the adapted student. A sensor encoder and a goal encoder feed a fusion layer that predicts command corrections (Fig.~\ref{fig:controller-component}). Sensor features include proprioception, measured pose, the student's recurrent state and proposal, pose-fitting error, and binding and request status.
 
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.96\columnwidth]{figures/imported/aimi_controller.pdf}
-\caption{\textbf{Continuous local control.} Sensor features and the active goal-bank vector condition joint correction. The waiting controller also adjusts command speed. Empty slots are reserved for physical-hand images.}
-\label{fig:controller-component}
-\end{figure}
-
-A fusion layer combines the outputs of a sensor encoder and a goal encoder. The waiting actor predicts a speed logit $r_t$ and correction values $v_t\in\R^{21}$. Let $\bar q_t$ denote normalized current joint positions and $\bar u_t$ the clipped student proposal. The applied command is
+\paragraph{Waiting and execution commands.}
+The waiting actor also receives the pose and command recorded when the request began, called the \emph{request anchor}, and elapsed waiting time. It predicts a speed logit $r_t$ and joint correction values $v_t$. With normalized current joints $\bar q_t$ and clipped student targets $\bar u_t$, the command is
 \begin{align}
  \alpha_t&=\sigmoid(4r_t+\logit(0.15)),\\
  b_t&=\begin{cases}
@@ -57,21 +47,24 @@ A fusion layer combines the outputs of a sensor encoder and a goal encoder. The 
  a_t&=\clip\bigl(b_t+0.35\tanh(v_t),-1,1\bigr).
 \label{eq:control}
 \end{align}
-Zero actor outputs give fixed slowing with coefficient 0.15 while a request is pending. The environment keeps the same joint mapping and smoothing. Unlike scalar slowing, the joint correction can change the command direction as well as its size.
+When no request is pending, a separate execution actor supplies $v_t$ at full proposal speed. Zero waiting-actor outputs recover fixed slowing with coefficient 0.15. Joint correction can also change command direction, which scalar slowing alone cannot do. The underlying joint mapping and smoothing remain unchanged.
 
-During training, the frozen teacher provides holding actions for the request anchor. At deployment, the actor uses only measured inputs and the active goal, without the pending reply. Writing the correction as $\delta_\phi=0.35\tanh(v_t)$, we train it to match the teacher action while keeping this correction small:
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.96\columnwidth]{figures/imported/aimi_controller.pdf}
+\caption{\textbf{Continuous local control.} Sensor features and the active goal-bank vector condition joint correction. The waiting controller also adjusts command speed. Empty slots are reserved for physical-hand images.}
+\label{fig:controller-component}
+\end{figure}
+
+\paragraph{Teacher-supervised correction.}
+The frozen teacher supplies holding actions for the request anchor during waiting and actions toward the active goal during execution. We train each actor against these labels with a penalty on its correction $\delta_\phi=0.35\tanh(v_t)$:
 \begin{equation}
  \mathcal{L}_{\mathrm{control}}=\mathbb{E}_{(s,g,a^*)\sim\mathcal{D}}\left[\|a_\phi(s,g)-a^*\|_2^2+0.01\|\delta_\phi(s,g)\|_2^2\right].
 \label{eq:control_loss}
 \end{equation}
+Here $s$ collects sensor features, $g$ is the active goal and $a^*$ is the teacher action. Before target binding, $g$ represents a startup or inspection skill. Deployed actors use measured inputs and the active goal; they cannot access true pose, teacher actions or a pending reply. The execution actor also receives the goal, whose separate benefit is not isolated in our experiments. Controller fitting holds the student fixed, and waiting-actor updates leave the execution actor and stopping rule unchanged.
 
+\subsection{RGB perception and closed-loop deployment}
+For cube control, a frozen CNN takes a $120\times120$ RGB crop with hand occlusion and predicts image coordinates and depth for the object center and eight keypoints. Camera calibration and rigid fitting recover position, XYZW orientation and a fitting error. Following ViserDex, Gaussian-splat rendering supplies training images for this estimator~\cite{bhardwaj2026viserdex}. The deployed model estimates pose from camera RGB.
 
-The waiting-actor update changes only control during pending requests. The student, pose estimator, execution controller and stopping rule remain fixed. Training details are in the supplement.
-
-\subsection{Control after an agent decision}
-When no request is pending ($m_t=0$), a separate execution actor supplies $v_t$ in Eq.~\ref{eq:control}. It learns from teacher actions to add a bounded correction to the student's proposal. The actor also receives the active goal, although our experiments do not isolate the benefit of this extra goal input.
-
-\subsection{Closed-loop execution}
-At each control step, the system updates the pose estimate, runs the recurrent student, selects the waiting or execution actor, and sends joint targets to the hand. Only a valid agent reply can change the active skill or target binding. Later images reflect the motion that occurred during reasoning and execution, closing the exploration loop. The measured-pose check in Sec.~\ref{sec:task} determines completion. Invalid replies never trigger an oracle target selection.
-
-We evaluate student adaptation separately from controller learning because a new student also changes the recurrent features and action proposals seen by the controllers.
+At every control step, we update the measured pose, run the recurrent student, choose the waiting or execution actor, and send joint targets to the hand. New agent observations reflect the motion that occurred during inference and execution. All four physical-object systems use this RGB-to-pose-to-control interface. In simulation, the cube uses RGB pose estimates, while other objects use noisy simulator-derived pose feedback. True pose is reserved for training supervision and independent simulation scoring. Measured-pose stopping and evaluation criteria are specified in Sec.~\ref{sec:setup}.

@@ -3,15 +3,21 @@
 We organize the evidence around visual exploration (Q3), continuous control during reasoning (Q2), and complete-system performance across objects and instructions (Q1). Q2 and Q3 use the marked cube. Q4 evaluates perception for transfer and complete-system performance on four physical objects.
 
 \subsection{Setup and reporting}
-Simulation uses Revo3 assets in Isaac Lab 3.0/Newton. Unless specified otherwise, each simulated condition has 40 trials across two evaluation seeds, paired by physical task. Cube systems share the frozen RGB pose estimator, goal bank, student, stopping rule and 0.16-radian tolerance. Other simulated objects use separate students and noisy simulator pose. AIMI additionally uses calibrated completion correction on these objects. The VLM baselines omit the extra control actors and follow a fixed inspection schedule when the target is unreadable. AIMI chooses its inspection actions. These differences and measured inference delays are part of the complete-system comparison.
+\label{sec:setup}
+\paragraph{Objects and systems.}
+Simulation uses Revo3 assets in Isaac Lab 3.0/Newton. Q1 covers a cube, die, duck, hedgehog, pig and milk carton; Q2 and Q3 use the cube. Instructions request one of six surface letters or a dot count on the die. Each target has a fixed reference orientation placing its face upward. Cube systems share the frozen RGB pose estimator, goal bank, student and stopping rule. Other objects use separate students and noisy simulator pose. AIMI additionally uses calibrated completion correction on these objects. The VLM baselines omit the extra control actors and use a fixed inspection schedule when the target is unreadable. These are complete-system differences; Q2 varies only control during pending requests.
 
-Q1 and Q3 compare methods on common service-eligible trials. Q2 reports all 120 trials per method and varies only control during pending requests. Its gains are measured within that cohort; Q1 uses different trials for complete-system comparison. The supplement gives study-specific seeds, paired tests and corrections for multiple comparisons.
+\paragraph{Timing and completion.}
+Cube trials allow up to six agent calls over 120 seconds of simulated control at 30~Hz; other objects use 20~Hz. Replies cannot take effect before inference completes, and physics continues during model latency. Simulation runs slower than real time, so these rates are not hardware-speed measurements. The cube stopping check runs at 3~Hz and requires target binding, no pending request or inspection, and measured orientation error at most 0.16 radians. It may terminate without an explicit agent stop action. Independent scoring requires the correct binding, true full-quaternion error at most 0.16 radians at stop, and no drop. There is no extra holding period. Non-cube methods use the same scoring tolerance with object-specific stopping rules. Exact timing, drop boundaries and scoring equations are in the supplement; Q4 gives the physical-hand criterion.
+
+\paragraph{Trials and reporting.}
+Unless specified otherwise, each simulated condition has 40 trials, 20 per evaluation seed, matched by initial physical state and scored target. Q2 uses three seeds with 40 trials each and reports all 120 outcomes per method. Q1 and Q3 use common service-eligible trials: a service error or call exceeding 120 seconds excludes the matched trial from every method. All raw outcomes are retained without replacement. Q1's complete-system trials differ from Q2's controller cohort, so their absolute rates need not match. The supplement provides study-specific seeds, pairing details and statistical tests.
 
 \subsection{Q3: Visual Exploration and Feedback}
 
 Three paired experiments examine how the agent acquires and uses visual evidence (Table~\ref{tab:q3-feedback}): continuing to observe and decide, receiving new images, and choosing inspection direction and duration. Each comparison has its own trial set.
 
-\begin{table}[t]
+\begin{table}[!htbp]
 \centering\small
 \begin{tabular}{lrrrr}
 \toprule
@@ -33,22 +39,15 @@ Condition & Success & \% & Drops & Calls\\
 \label{tab:image-refresh}
 \end{table}
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth]{figures/controller_outcomes.pdf}
-\caption{\textbf{Q2: outcomes during controller ablation.} Each bar contains 120 trials, 40 per evaluation seed. Labels show success rates; colored segments partition all outcomes. Drop stages record when failure occurs. Full counts are in the supplement.}
-\label{fig:controller-outcomes}
-\end{figure}
-
-\begin{figure*}[t]
-\centering
-\includegraphics[width=0.86\textwidth]{figures/feedback_example.pdf}
-\caption{\textbf{New evidence enables target binding.} Unretouched model-input frames from a simulated trial. The initial plan abstains; continued feedback exposes T, after which AIMI binds T to red and completes at step 420 (true error 0.0812 radians). Both arms start from the same state and image. This selected example illustrates inspection before binding.}
-\label{fig:recorded-search}
-\end{figure*}
-
 \paragraph{(a) Does continued feedback help find the target?}
 An initial plan selects up to six bounded actions from one image and measured feedback; continued feedback allows up to six calls with new images and history. Local controllers, stopping and time limits remain fixed. Success rises from 6/39 to 33/39 eligible trials, with all 27 discordant pairs favoring feedback (exact $p=1.49\times10^{-8}$). Feedback resolves 22 of 28 initial-plan abstentions; 32 trials first bind after inspection (Fig.~\ref{fig:recorded-search}). The next comparison holds the call budget fixed.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\columnwidth]{figures/feedback_example.pdf}
+\caption{\textbf{New evidence enables target binding.} Unretouched model-input frames from a simulated trial. The initial plan abstains; continued feedback exposes T, after which AIMI binds T to red and completes at step 420 (true error 0.0812 radians). Both arms start from the same state and image. This selected example illustrates inspection before binding.}
+\label{fig:recorded-search}
+\end{figure}
 
 \paragraph{(b) Does the next image provide useful evidence?}
 Both conditions use the same six-call cap, request rule, live numeric feedback, history and local control. Only RGB changes: the current image versus the exact first frame. Success is 32/40 versus 9/40, with all 23 discordant pairs favoring fresh images (exact $p=2.38\times10^{-7}$). Correct terminal bindings number 34 versus nine. Both first bind correctly on call one in the same nine trials; fresh images enable 25 additional correct bindings, 23 leading to success, versus none with repeated frames. Drops differ by one; initial visibility is not independently annotated.
@@ -56,26 +55,34 @@ Both conditions use the same six-call cap, request rule, live numeric feedback, 
 \paragraph{(c) Does choosing the next view help?}
 Forty new pairs compare agent-selected directions and durations with a fixed 90-step color sweep. Both use the same model, controllers, fresh images, history format and stopping; history records executed actions. The agent still decides whether to inspect, bind or abstain. Adaptive inspection achieves 38/40 successes (95.0\%) versus 31/40 (77.5\%). Nine pairs favor adaptive and two favor fixed inspection: a 17.5-point observed gain (exact $p=0.0654$). Correct terminal bindings are 39 versus 32, with zero versus one drop. This trend remains statistically unresolved and covers one fixed sweep.
 
+% Keep the Q2 discussion and outcome chart together in the next column.
+\newpage
 \subsection{Q2: Control During Agent Reasoning}
 Figure~\ref{fig:controller-outcomes} compares four ways to control the hand while the agent is reasoning: continue the student's command, slow it by a fixed coefficient of 0.15, learn the slowing coefficient, or learn slowing together with a bounded joint correction. All four use the same execution controller when no request is pending. Each method has 120 trials: 40 under each of three evaluation seeds, with the trained weights fixed. These seeds vary evaluation tasks, not training initialization.
 
-
-
 Learned slowing with joint correction achieves 104/120 successes (86.7\%), compared with 88/120 (73.3\%) for fixed slowing, a gain of 13.3 percentage points. Waiting drops decrease from 13 to five, and execution drops from eight to four. Learning speed alone gives 82/120 successes (68.3\%), below fixed slowing. The results favor learning speed and joint correction together. Drop stages tell us when failure occurs, but do not identify its cause. Seed settings and outcome breakdowns are in the supplement.
 
-\subsection{Q1: Objects, Target Mappings and Language}
-We compare original and changed target-to-skill mappings on six objects (Fig.~\ref{fig:q1-task-success}), then test language and wording coverage. Separate native-image cohorts and their inconclusive AIMI--fine-tuned comparisons are reported in the supplement.
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\columnwidth]{figures/controller_outcomes.pdf}
+\caption{\textbf{Q2: outcomes during controller ablation.} Each bar contains 120 trials, 40 per evaluation seed. Labels show success rates; colored segments partition all outcomes. Drop stages record when failure occurs. Full counts are in the supplement.}
+\label{fig:controller-outcomes}
+\end{figure}
 
-\begin{figure*}[t]
+\begin{figure*}[!t]
 \centering
 \includegraphics[width=\textwidth]{figures/q1_task_success.pdf}
 \caption{\textbf{Q1: task success across six simulated objects.} Bars use common service-eligible trials: 40 per cell, except 38 for original-mapping duck and 39 for original-mapping hedgehog. Labels show AIMI rates. Each object uses its own policy. The supplement retains all values and system differences. These are complete-system comparisons.}
 \label{fig:q1-task-success}
 \end{figure*}
 
+% Keep the Q1 heading and discussion below its two-column overview.
+\newpage
+\subsection{Q1: Objects, Target Mappings and Language}
+We compare original and changed target-to-skill mappings on six objects (Fig.~\ref{fig:q1-task-success}), then test language and wording coverage. Separate native-image cohorts and their inconclusive AIMI--fine-tuned comparisons are reported in the supplement.
+
 \paragraph{Aggregate system performance.}
 Across 1,440 scheduled trials, mean success is \QOneOriginalSuccess\% with original mappings and \QOneChangedSuccess\% with changed mappings, exceeding the strongest baseline means (\QOneOriginalBaseline\% and \QOneChangedBaseline\%) by \QOneOriginalGain{} and \QOneChangedGain{} points. These descriptive, post-hoc means weight each object's service-eligible rate equally.
-
 
 \paragraph{Four additional objects.}
 Duck, hedgehog, pig and milk carton contribute 960 trials, with AIMI leading in each condition. Three service failures exclude matching trials from all methods. Milk-carton drops remain frequent: 15/40 original-mapping and 20/40 changed-mapping AIMI trials. Reset checks and sensitivity analyses appear in the supplement.
@@ -89,9 +96,12 @@ Across 240 die trials, rotating the visual mesh preserves collision geometry, in
 \paragraph{Language and wording coverage.}
 We test standard and rewritten English and Chinese instructions on three objects: 60 trials per condition across three seeds, totaling 2,160 trials (Table~\ref{tab:language-objects}). Weights, mappings and scoring remain fixed, without Chinese retraining. The rule baseline also translates its task/output instructions. Raw outcomes remain in the supplement.
 
-AIMI exceeds fine-tuning in all eight duck/hedgehog conditions and rules in six after Holm correction over 36 method tests. Cube comparisons remain inconclusive, with fine-tuning leading for rewritten Chinese. Strict state/image pairing preserves these decisions. Language/wording contrasts remain inconclusive after a separate 36-test correction.
-
+\begingroup
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
 \input{tables/language_objects}
+\endgroup
+
+AIMI exceeds fine-tuning in all eight duck/hedgehog conditions and rules in six after Holm correction over 36 method tests. Cube comparisons remain inconclusive, with fine-tuning leading for rewritten Chinese. Strict state/image pairing preserves these decisions. Language/wording contrasts remain inconclusive after a separate 36-test correction.
 
 \subsection{Q4: Pose Estimation and Sim-to-Real Transfer}
 \paragraph{Perception adaptation for transfer.}
@@ -100,11 +110,6 @@ We adapt the ViserDex-based perception pipeline with real-camera calibration and
 \input{tables/pose_summary}
 
 \paragraph{Complete-system real-hand evaluation.}
-We evaluate Rule, Fine-tuned and AIMI on a cube, die, ball and duck, with 20 trials per object and method (240 total). All use RGB-based pose estimation. A trial succeeds when the hand reaches the requested target and stops within $15^\circ$ of its target orientation without dropping the object. Figure~\ref{fig:hardware-success} shows per-object success. Overall rates are \HardwareRuleSuccess\%, \HardwareFineTunedSuccess\% and \HardwareAimiSuccess\%, respectively. AIMI completes 70/80 trials, exceeding fine-tuning by \HardwareGain{} percentage points. Counts are provided in the supplement.
+We evaluate Rule, Fine-tuned and AIMI on a cube, die, ball and duck, with 20 trials per object and method (240 total). All use RGB-based pose estimation. A trial succeeds when the hand reaches the requested target and stops within $15^\circ$ of its target orientation without dropping the object. Table~\ref{tab:hardware-results} reports per-object success counts and rates. Overall rates are \HardwareRuleSuccess\%, \HardwareFineTunedSuccess\% and \HardwareAimiSuccess\%, respectively. AIMI completes 70/80 trials, exceeding fine-tuning by \HardwareGain{} percentage points.
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth]{figures/hardware_task_success.pdf}
-\caption{\textbf{Q4: complete-system success on the real hand.} Each bar contains 20 trials, using RGB pose feedback. Success requires reaching the target, stopping within $15^\circ$, and no drop.}
-\label{fig:hardware-success}
-\end{figure}
+\input{tables/hardware_results}

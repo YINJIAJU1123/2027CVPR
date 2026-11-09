@@ -41,6 +41,12 @@ for method in hardware['method_order']:
         raise SystemExit(f'Hardware rate mismatch: {method}')
 for value in ('87.5','66.25','70/80','240'):
     if value not in text:raise SystemExit(f'Missing hardware result: {value}')
+experiment_source=Path('sections/05_experiments.tex').read_text()
+if r'\input{tables/hardware_results}' not in experiment_source or 'fig:hardware-success' in experiment_source:
+    raise SystemExit('Q4 hardware results must use the requested native table')
+for value in ('9/20','15/20','18/20','8/20','14/20','13/20','19/20','6/20','11/20','32/80','53/80','70/80'):
+    if value not in text:raise SystemExit(f'Missing main-paper hardware table count: {value}')
+
 supp=read_pdf('supplyment')
 for value in ('9/20','15/20','18/20','8/20','14/20','13/20','19/20','6/20','11/20','32/80','53/80','70/80'):
     if value not in supp:raise SystemExit(f'Missing supplementary hardware count: {value}')

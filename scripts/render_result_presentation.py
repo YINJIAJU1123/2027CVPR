@@ -55,7 +55,7 @@ for model,label in [('rgb','RGB'),('rgbd','RGB-D')]:
     values=[label,f"{m['recall_percent']:.2f}",f"{m['strict_recall_percent']:.2f}",str(m['invalid'])]
     if model=='rgbd':values=[r'\textbf{'+v+'}' for v in values]
     rows.append(' & '.join(values)+r'\\')
-text = r'''\begin{table}[t]
+text = r'''\begin{table}[!htbp]
 \centering\small
 \begin{tabular}{lrrr}
 \toprule

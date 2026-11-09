@@ -2,7 +2,7 @@
 
 **AIMI: Agentic In-Hand Manipulation for Language-Guided Visual Exploration**
 
-2026-11-09 AIMI 命名统一版（包含 2026-11-08 真机结果与图表修订）：按 Q3 主动目标搜索 → Q2 推理期间控制 → Q1 跨物体系统表现组织正文，Q3 为第一张结果表。Teacher–student 明确为参考 ViserDex、适配 Revo3 的运动基础；补充状态重建辅助监督的说明。Q2 三个评估 seed 的 480 个汇总结果逐项闭合，数据未改变。附录按证据主题重排；历史开发版本保存在 `archive/editorial_20261107/`。英文改为正文与补充材料两个独立编译入口；摘要不再提及 ViserDex，方法中的来源说明保留。Q4 恢复独立 RGB/RGB-D 位姿评测摘要。2026-11-08 补入 cube、die、ball、duck 四物体真机汇总：每物体每方法 20 次，共 240 次；Rule / Fine-tuned / AIMI 为 32/80、53/80、70/80。正文 Q1 与真机结果改为柱状图，完整数值表保留在补充材料。实拍图和相机/评分设置仍待补入。可见性与持续保持需要单独报告。
+2026-11-09 AIMI 命名统一版（包含 2026-11-08 真机结果与图表修订）：按 Q3 主动目标搜索 → Q2 推理期间控制 → Q1 跨物体系统表现组织正文，Q3 为第一张结果表。Teacher–student 明确为参考 ViserDex、适配 Revo3 的运动基础；补充状态重建辅助监督的说明。Q2 三个评估 seed 的 480 个汇总结果逐项闭合，数据未改变。附录按证据主题重排；历史开发版本保存在 `archive/editorial_20261107/`。英文改为正文与补充材料两个独立编译入口；摘要不再提及 ViserDex，方法中的来源说明保留。Q4 恢复独立 RGB/RGB-D 位姿评测摘要。2026-11-08 补入 cube、die、ball、duck 四物体真机汇总：每物体每方法 20 次，共 240 次；Rule / Fine-tuned / AIMI 为 32/80、53/80、70/80。正文 Q1 使用柱状图；2026-11-09 真机结果按作者要求恢复为表格。Q1 的完整数值表保留在补充材料。实拍图和相机/评分设置仍待补入。可见性与持续保持需要单独报告。
 
 ## 阅读
 
@@ -26,7 +26,7 @@
 - Related Work 顺序为 Agentic reasoning → Visual / goal-conditioned dexterity → RL for dexterous manipulation → Asynchronous policies。
 - 摘要参考 SimToolReal（arXiv:2602.16863）与 GoalDex（arXiv:2611.02171v1）的“任务难点—方法—实验”组织方式，保持 AIMI 自身的方法与证据范围。
 - Q2 正文改为四类结局的堆叠条形图，完整计数保留在补充材料；图由冻结汇总数据直接生成。
-- Q4 分为感知适配和完整方法真机评测：保留 RGB/RGB-D 位姿小表，真机采用分组柱状图。RGB-D 的仿真感知评测与 RGB pose 真机任务结果分别报告。
+- Q4 分为感知适配和完整方法真机评测：保留 RGB/RGB-D 位姿小表，真机采用成功次数与成功率表格。RGB-D 的仿真感知评测与 RGB pose 真机任务结果分别报告。
 - `scripts/render_result_presentation.py` 生成 Q2 的 PDF/SVG/PNG 和 Q4 小表；重绘需 Matplotlib，直接编译 TeX 可使用已生成的文件。
 
 ## 当前实验口径
@@ -56,7 +56,7 @@ python3 scripts/analyze_q3_terminal_bindings.py --check
 python3 scripts/render_q3_inspection.py --check
 ```
 
-当前检出的仓库未包含 `data/language_objects_20261106/trials.json` 和 `results.json`，因此本轮不声称重新计算了语言实验的逐试验配对统计。现有表格数字与修订前逐项一致。仅重排现有语言表可运行 `python3 scripts/render_language_table_image.py`；取得原始导出后，再运行 `python3 scripts/render_language_objects.py --verify-paper .` 和图像生成脚本。构建时会检查表格图像来源哈希，并重算 Q1 汇总、Q2 三 seed 表及 Q3 巡检表和配对统计；同时从固定计数重新生成 Q1/真机柱状图、真机汇总及附录表。旧归档图表脚本仅用于其对应历史数据，不作为当前结果口径的入口。
+当前检出的仓库未包含 `data/language_objects_20261106/trials.json` 和 `results.json`，因此本轮不声称重新计算了语言实验的逐试验配对统计。现有表格数字与修订前逐项一致。仅重排现有语言表可运行 `python3 scripts/render_language_table_image.py`；取得原始导出后，再运行 `python3 scripts/render_language_objects.py --verify-paper .` 和图像生成脚本。构建时会检查表格图像来源哈希，并重算 Q1 汇总、Q2 三 seed 表及 Q3 巡检表和配对统计；同时从固定计数重新生成 Q1 选定样式图、真机汇总及表格。旧归档图表脚本仅用于其对应历史数据，不作为当前结果口径的入口。
 
 两个英文编译入口：`main.tex`（正文和参考文献）与 `supplyment.tex`（补充材料及其参考文献，文件名按本项目约定保留此拼写）。在 Overleaf 中分别选作 Main document 即可独立编译。`sections/`、`tables/`、`preamble.tex` 和 `supplement_setup.tex` 是共用内容或设置文件，无需单独编译。
 
@@ -78,3 +78,7 @@ latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build/supplyment su
 ## 2026-11-08 真机数据来源
 
 `data/hardware_author_report_20261108/results.json` 保存作者转交的同事汇总计数与确认的 RGB pose 流程。成功标准：到达目标后停止、停止时姿态误差不超过 15°、没有掉落。数据为汇总计数，未构造逐次记录、seed、配对信息、失败分类或显著性检验。角度评分工具和误差定义尚待确认；详见修订记录。
+
+## 2026-11-09 Q1 样式备选与 Q4 表格
+
+Q1 已确定采用 A（蓝灰＋珊瑚红）。`python3 scripts/render_q1_variants.py --all` 生成六种配色／图形备选；`--select A` 至 `--select F` 可保存选定样式，常规构建会保留该选择。若改用点图或热力图，需同时调整 Q1 图注的 Bars/Labels 表述。所有备选使用同一份冻结计数。Q4 真机结果恢复为表格，仅显示已提供的成功计数和成功率；掉落次数及失败分类待作者提供，不推算。

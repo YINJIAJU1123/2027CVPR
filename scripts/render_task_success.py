@@ -1,4 +1,4 @@
-"""Render Q1 and real-hand task success from recorded aggregate counts.
+"""Render the selected Q1 chart and Q4 hardware tables from recorded counts.
 
 All axes start at zero. Bars are descriptive rates, not independent runs;
 no error bars or statistical significance are inferred from aggregate counts.
@@ -7,68 +7,9 @@ from pathlib import Path
 import json
 import hashlib
 
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
-import numpy as np
-from matplotlib.patches import Patch
+from render_q1_variants import render_selected
 
 ROOT = Path(__file__).resolve().parents[1]
-COLORS = ['#B8C1CA', '#E6B77C', '#6198BF']
-EDGES = ['#6F7C88', '#A87B46', '#356A94']
-HATCHES = ['', '//', '']
-LABELS = ['Rule', 'Fine-tuned', 'AIMI']
-plt.rcParams.update({
-    'font.family': 'serif', 'font.serif': ['Liberation Serif', 'DejaVu Serif'],
-    'font.size': 8.5, 'axes.linewidth': .55, 'pdf.fonttype': 42,
-    'svg.fonttype': 'none', 'hatch.linewidth': .35,
-})
-
-
-def style_axis(ax, labels):
-    ax.set_ylim(0, 110)
-    ax.set_yticks([0, 25, 50, 75, 100])
-    ax.set_xticks(np.arange(len(labels)), labels)
-    ax.tick_params(axis='both', length=2, width=.5, pad=3)
-    ax.set_axisbelow(True)
-    ax.yaxis.grid(color='#E3E7EC', linewidth=.55)
-    for side in ('top', 'right'):
-        ax.spines[side].set_visible(False)
-    for side in ('left', 'bottom'):
-        ax.spines[side].set_color('#A8B1BA')
-
-
-def grouped(ax, values, counts=None, fontsize=7.2, label_all=True):
-    xs = np.arange(len(values))
-    width = .25
-    for j in range(3):
-        heights = [v[j] for v in values]
-        bars = ax.bar(xs + (j-1)*width, heights, width=width*.9,
-                      color=COLORS[j], edgecolor=EDGES[j], linewidth=.45,
-                      hatch=HATCHES[j], zorder=3)
-        for k, (bar, value) in enumerate(zip(bars, heights)):
-            if not label_all and j != 2:
-                continue
-            label = f'{value:.0f}' if abs(value-round(value)) < 1e-8 else f'{value:.1f}'
-            if counts is not None:
-                label = str(counts[k][j])
-            ax.text(bar.get_x()+bar.get_width()/2, value+2, label,
-                    ha='center', va='bottom', fontsize=fontsize,
-                    weight='bold' if j==2 else 'normal', color='#253343', zorder=5)
-
-
-def add_legend(fig, y=1.):
-    handles = [Patch(facecolor=c, edgecolor=e, linewidth=.45, hatch=h, label=l)
-               for c, e, h, l in zip(COLORS, EDGES, HATCHES, LABELS)]
-    fig.legend(handles=handles, loc='upper center', bbox_to_anchor=(.5, y),
-               ncol=3, frameon=False, handlelength=1.25,
-               columnspacing=1.3, handletextpad=.45, fontsize=8.5)
-
-
-def save(fig, name):
-    for ext in ('pdf', 'svg', 'png'):
-        fig.savefig(ROOT/f'figures/{name}.{ext}', dpi=300, facecolor='white')
-    plt.close(fig)
 
 
 def main():
@@ -76,21 +17,10 @@ def main():
     q1 = json.loads(q1_path.read_text())
     objects = q1['objects']
     assert len(objects) == 6
-    fig, axes = plt.subplots(1, 2, figsize=(7., 1.9), sharey=True)
-    fig.subplots_adjust(left=.065, right=.99, bottom=.2, top=.74, wspace=.13)
-    q1_values = {}
-    names = [o['object'].replace('Milk carton', 'Milk') for o in objects]
-    for ax, setting, title in zip(axes, ['identity', 'permuted'],
-                                  ['(a) Original mapping', '(b) Changed mapping']):
-        values = [[100*o['cells'][setting][m]['success']/o['cells'][setting][m]['trials']
-                   for m in ('rule', 'vlm', 'astra')] for o in objects]
-        q1_values[setting] = values
-        grouped(ax, values, label_all=False)
-        style_axis(ax, names)
-        ax.set_title(title, fontsize=9, weight='bold', pad=5)
-    axes[0].set_ylabel('Success (%)', fontsize=9, labelpad=3)
-    add_legend(fig, 1.015)
-    save(fig, 'q1_task_success')
+    q1_values = {setting: [[100*o['cells'][setting][m]['success']/o['cells'][setting][m]['trials']
+                           for m in ('rule', 'vlm', 'astra')] for o in objects]
+                 for setting in ('identity', 'permuted')}
+    render_selected()
 
     hardware_path = ROOT/'data/hardware_author_report_20261108/results.json'
     hw = json.loads(hardware_path.read_text())
@@ -104,14 +34,6 @@ def main():
     assert totals == [32, 53, 70]
     total_n = n*len(counts)
     rates = [100*c/total_n for c in totals]
-    fig, ax = plt.subplots(figsize=(3.35, 1.95))
-    fig.subplots_adjust(left=.14, right=.99, bottom=.2, top=.78)
-    grouped(ax, [[100*c/n for c in row] for row in counts], fontsize=8)
-    style_axis(ax, [o['object'] for o in hw['objects']])
-    ax.set_ylabel('Success (%)', fontsize=8.5, labelpad=2)
-    add_legend(fig, 1.015)
-    save(fig, 'hardware_task_success')
-
     macros = {
         'HardwareRuleSuccess': f'{rates[0]:.1f}',
         'HardwareFineTunedSuccess': f'{rates[1]:.2f}',
@@ -127,7 +49,7 @@ def main():
         rows.append(' & '.join([obj['object']]+cells)+r'\\')
     total_cells = [f'{c}/{total_n} ({r:g}\\%)' for c,r in zip(totals,rates)]
     total_cells[-1] = r'\textbf{'+total_cells[-1]+'}'
-    table = r'''\begin{table}[t]
+    table = r'''\begin{table}[!htbp]
 \centering\small
 \setlength{\tabcolsep}{3pt}
 \begin{tabular}{lccc}
@@ -136,7 +58,7 @@ Object & Rule & Fine-tuned & AIMI\\
 \midrule
 '''+ '\n'.join(rows)+'\n'+r'\midrule'+'\n'+ ' & '.join(['Total']+total_cells)+r'\\'+'\n'+r'''\bottomrule
 \end{tabular}
-\caption{\textbf{Real-hand task completion.} Successes/trials and rates for the four physical objects. Every object--method cell contains 20 trials. Success requires reaching the requested target and stopping within $15^\circ$ without dropping the object.}
+\caption{\textbf{Q4: real-hand task completion.} Successes/trials and rates for the four physical objects. Every object--method cell contains 20 trials. Success requires reaching the requested target and stopping within $15^\circ$ without dropping the object.}
 \label{tab:hardware-results}
 \end{table}
 '''

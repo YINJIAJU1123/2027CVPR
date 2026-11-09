@@ -32,11 +32,21 @@ The runtime uses Isaac Lab 3.0, Isaac Sim 6.2, Newton 1.6.1, Warp 1.17, and PyTo
 The frozen pose estimator predicts 27 image-coordinate/depth values for nine points and recovers pose through calibrated geometry. Its $120\times120$ rendered input includes live hand occlusion. Sensor calibration, object asset, policy normalization, joint order, action mapping and smoothing remain fixed within each study. The simulation pose results do not establish accuracy on real-camera images or unseen scenes.
 
 \subsection{Timing, termination, and exclusions}
-Each episode lasts at most 120 seconds of simulated control time. A model call taking $L$ wall-clock seconds must remain pending for at least $\lceil30L\rceil$ control steps, and its reply cannot be used before the call finishes. Physics continues throughout. Since simulation runs slower than real time, an episode takes longer in wall-clock time. Hardware control speed must be measured separately.
+Cube episodes allow up to six agent calls and 3,600 control steps at 30~Hz, over at most 120 seconds of simulated control time. Other simulated objects use 20~Hz over the same horizon. Only one request can be pending at a time. For the cube, a model call taking $L$ wall-clock seconds must remain pending for at least $\lceil30L\rceil$ control steps, and its reply cannot be used before the call finishes. Physics continues throughout. Since simulation runs slower than real time, an episode takes longer in wall-clock time. Hardware control speed must be measured separately.
 
 The stopping check runs at 3~Hz. The requested symbol must be bound to a goal, with no inspection or model request underway, and estimated orientation error must be at most 0.16 radians. The independent scorer then checks the actual requested face and true orientation using the same tolerance. It scores the stop time, without an extra holding period or credit for a better pose reached earlier.
 
 A service error or model call exceeding 120 seconds is recorded without replacement. The original three-system panel removes trial 183102011 from every arm. This leaves 39 common eligible trials for that historical Q1 panel. The current Q2 study reports all 120 outcomes per method. Raw 40-trial outcomes remain visible, including service-affected cases.
+
+\subsection{Independent scoring and matched trials}
+At stop time $\tau$, simulation success is
+\begin{equation}
+ S=\mathbf{1}\!\left[\hat b_\tau=b^*(\ell),\ d(q_\tau,Q(b^*))\leq\epsilon,\ \neg D_{0:\tau}\right],
+\label{eq:success}
+\end{equation}
+where $\hat b_\tau$ is the declared target binding, $b^*(\ell)$ is the requested target, $Q(b^*)$ is its fixed reference orientation, $q_\tau$ is true orientation, $\epsilon=0.16$ radians, and $D_{0:\tau}$ indicates an earlier terminal drop. For normalized quaternions, $d(q,Q)=2\arccos(|\langle q,Q\rangle|)$. A wrong binding or incorrect final pose counts as failure even if the object stays in the hand. The score uses the stop-time pose, not an earlier best pose, with no additional hold requirement. The measured-pose gate can stop the system without an explicit agent stop action. Other objects use AIMI's calibrated completion correction or the baselines' measured-pose gate, as detailed in their respective sections, with the same true-pose scoring tolerance.
+
+Unless a study specifies otherwise, each condition has 40 trials: 20 under each of two evaluation seeds. Q2 instead uses 40 trials under each of its three seeds. Compared methods share initial physical states and scored targets. Control and feedback studies also share instructions. In the mapping experiment, the requested letter changes with the layout so that the physical target stays the same. Service-eligible comparisons remove the matched trial from every method following a service error or a call exceeding 120 seconds. All raw outcomes are retained without replacement, and every rate uses its study-specific denominator.
 
 \section{Models and Training}
 Figure~\ref{fig:method-supp} expands the cube's deployed observation, goal-selection and control loop. The training procedures are described below.
