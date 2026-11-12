@@ -2,7 +2,7 @@
 This supplement describes AIMI's runtime and training, followed by visual exploration (Q3), control during reasoning (Q2), complete-system comparisons (Q1), and pose estimation and hardware transfer (Q4). Q2 uses exactly three evaluation seeds, 187102, 187103 and 187104, with 40 trials per method and seed. Other seeds belong to separate studies or training diagnostics. Each result retains its study-specific denominator. Q4 includes 240 physical-hand trials on a cube, die, ball and duck; per-object counts are reported below. Recorded physical-hand image sequences remain to be added.
 
 \section{Task and Runtime}
-This section describes the cube system. The die, additional-object and language sections explain the differences for other objects.
+This section describes the cube system. The non-cube Q3, die, additional-object and language sections explain the differences for other objects.
 \subsection{Object and goals}
 Language-guided exploration seeks evidence for a requested surface target. Inspection changes the view; target binding associates the identified surface with a motor goal. Table~\ref{tab:mapping} records the cube's fixed face mapping. Body normals include the original mesh rotation. All methods use this mapping and the same cached six-vector bank. Cyan appears pale blue and magenta appears purple. The target quaternion specifies the reference orientation used for scoring.
 
@@ -34,7 +34,7 @@ The frozen pose estimator predicts 27 image-coordinate/depth values for nine poi
 \subsection{Timing, termination, and exclusions}
 Cube episodes allow up to six agent calls and 3,600 control steps at 30~Hz, over at most 120 seconds of simulated control time. Other simulated objects use 20~Hz over the same horizon. Only one request can be pending at a time. For the cube, a model call taking $L$ wall-clock seconds must remain pending for at least $\lceil30L\rceil$ control steps, and its reply cannot be used before the call finishes. Physics continues throughout. Since simulation runs slower than real time, an episode takes longer in wall-clock time. Hardware control speed must be measured separately.
 
-The stopping check runs at 3~Hz. The requested symbol must be bound to a goal, with no inspection or model request underway, and estimated orientation error must be at most 0.16 radians. The independent scorer then checks the actual requested face and true orientation using the same tolerance. It scores the stop time, without an extra holding period or credit for a better pose reached earlier.
+For the cube, the stopping check runs at 3~Hz. The requested symbol must be bound to a goal, with no inspection or model request underway, and estimated orientation error must be at most 0.16 radians. The independent scorer then checks the actual requested face and true orientation using the same tolerance. It scores the stop time, without an extra holding period or credit for a better pose reached earlier.
 
 A service error or model call exceeding 120 seconds is recorded without replacement. The original three-system panel removes trial 183102011 from every arm. This leaves 39 common eligible trials for that historical Q1 panel. The current Q2 study reports all 120 outcomes per method. Raw 40-trial outcomes remain visible, including service-affected cases.
 
@@ -64,7 +64,7 @@ The student is fitted on collected trajectories using frozen-teacher action labe
 \subsection{Semantic and motor inputs}
 The motor policy receives 109 target-free proprioceptive/history features, seven measured pose values, and a 768-dimensional goal. Its goal projection has width 64 and a tanh nonlinearity. The inherited recurrent policy emits 21 normalized joint targets. The asset-specific goal quaternion is absent from the migrated student's inference inputs.
 
-The hosted model route recorded in the experiment manifests is \texttt{gpt-6-astra}; the local grounding backbone is Qwen3-VL-4B-Instruct. AIMI passes validated tool arguments through a fixed goal-bank lookup. The fine-tuned baseline predicts a continuous vector within the normalized skill span. Neither receives the requested face's true pose. When the view is unreadable, the local baselines follow schedule $(1,3,0,2,4,5)$ with 90-step inspections. AIMI selects inspection actions of 10--90 steps. This difference is included in the complete-system comparison; Q3 separately tests inspection choices under a shared model and controllers.
+The hosted model route recorded in the experiment manifests is \texttt{gpt-6-astra}; the local grounding backbone is Qwen3-VL-4B-Instruct~\cite{qwen3vl}. AIMI passes validated tool arguments through a fixed goal-bank lookup. The fine-tuned baseline predicts a continuous vector within the normalized skill span. Neither receives the requested face's true pose. When the view is unreadable, the local baselines follow schedule $(1,3,0,2,4,5)$ with 90-step inspections. AIMI selects inspection actions of 10--90 steps. This difference is included in the complete-system comparison; Q3 separately tests inspection choices under a shared model and controllers.
 
 The language-study archive contains exact task prompts and schedules. The route name alone does not identify immutable serving weights. \TODO{Reconcile available serving metadata and sampling settings, and include full sanitized system prompts/tool schemas for each release in the anonymous package; state explicitly which provider revisions were not exposed.}
 
@@ -78,7 +78,7 @@ The sensor branch uses the current proprioceptive vector, measured pose, student
 
 The waiting actor interpolates from current joint positions toward the proposal and adds a bounded residual. The execution actor applies a bounded residual to the proposal at full speed. Both are supervised from the teacher with residual regularization of 0.01. Waiting labels hold the request anchor. Execution labels follow the active goal. Paired state/goal examples and schedule-derived states are used during fitting. Their causal utility remains to be established by matched training ablations.
 
-No raw RGB, true object pose, teacher action, future model response, or oracle semantic label is a deployed actor input. Vision affects the actor through estimated pose and recurrent belief. The reported stopping gate is measured-pose based. Previously trained completion-evidence heads are inactive and cannot be credited for the current results.
+In this cube release, no raw RGB, true object pose, teacher action, future model response, or oracle semantic label is a deployed actor input. Vision affects the actor through estimated pose and recurrent belief. Its stopping gate uses measured pose; previously trained completion-evidence heads are inactive. Other object releases use the maintenance and calibrated completion modules described in their respective sections.
 
 \section{Q3: Visual Exploration and Feedback}
 \subsection{Initial planning and continued feedback}
@@ -135,7 +135,7 @@ A post-hoc analysis checks whether each trial ends with a correct, incorrect or 
 \paragraph{When correct bindings are acquired.}
 A further post-hoc audit uses applied tool calls rather than terminal states alone. Both arms first declare the correct binding on call one in the same nine trials. With fresh images, an additional 25 trials first bind correctly on calls two through six: eight, nine, five, two and one trials, respectively. Of these 25, 23 subsequently succeed; the other two stop with an incorrect true pose. Repeated first frames produce no additional correct binding after call one. Six fresh-image trials and 31 repeated-frame trials never bind correctly. These are semantic declarations in recorded trajectories, not independently measured first visual-recognition events. All 210 request images were verified against transport hashes. Initial-target readability and finger-versus-back-face occlusion have not been independently annotated and are not reported as results.
 
-\subsection{Adaptive versus fixed inspection}
+\subsection{Adaptive versus fixed inspection on the cube}
 \label{sec:inspection-policy}
 This separate study uses seeds 187301 and 187302, with 20 trials per seed and condition (40 matched pairs; 80 formal trials). Two preliminary trials with seed 187291 are excluded. Both conditions were run anew; the earlier fresh-image cohort is not reused. The order is adaptive then fixed for the first seed and fixed then adaptive for the second. All 80 outcomes are retained, with no service exclusions, replacement trials or additional trials after observing the result.
 
@@ -166,9 +166,67 @@ The prespecified primary endpoint is autonomous success, tested by exact two-sid
 
 First correct-binding call counts for calls one through six are $(8,12,12,5,2,0)$ for adaptive and $(8,5,9,6,4,0)$ for fixed inspection. One and eight trials, respectively, never bind correctly. The index includes the input producing the binding; strictly preceding observations equal the index minus one. These never-bound outcomes must accompany any conditional acquisition-time statistic; early failure cannot be interpreted as faster acquisition. The experiment records declared bindings, not an independent visibility annotation.
 
-Adaptive inspection uses 117 calls and 247,383 tokens, versus 126 calls and 273,048 tokens for the fixed sweep. Median measured call latency is 4.57 versus 4.56 seconds; median logical episode duration is 17.83 versus 20.33 seconds, including failures. One prescribed sweep on one cube does not establish superiority to all reactive policies, and an equal maximum call count does not ensure equal realized compute. Different cohorts and hosted-service conditions also preclude attributing differences from older Q3 success rates to this intervention.
+Adaptive inspection uses 117 calls and 247,383 tokens, versus 126 calls and 273,048 tokens for the fixed sweep. Median measured call latency is 4.57 versus 4.56 seconds; median logical episode duration is 17.83 versus 20.33 seconds, including failures. This cube study tests one prescribed sweep, and an equal maximum call count does not ensure equal realized compute. Different cohorts and hosted-service conditions also preclude attributing differences from older Q3 success rates to this intervention.
 
+\subsection{Inspection-policy replication on the pig}
+\label{sec:inspection-policy-pig}
+We repeat the direction-and-duration intervention in a second object-specific system. This follow-up was designed after the cube study; its protocol, primary endpoint and 40-pair sample size were frozen before the formal pig trials. The pig was selected before collecting adaptive-versus-fixed outcomes, based on stable frozen motor control and complete existing records. Four independent engineering initializations (188291000--188291003), without model calls, verified that the prescribed sweep changed orientation and exposed different surface regions. A separate paired smoke check used seed 188292. These checks establish execution feasibility, not human-annotated target readability, and contribute no formal outcomes.
 
+\paragraph{Paired design and intervention.}
+The formal study contains 40 matched pairs, with 20 initial states under each of seeds 188301 and 188302. Paired episodes run consecutively, alternating adaptive--fixed and fixed--adaptive order; the first order is reversed for the second seed. Initial physical-state and first-input-image hashes match for all pairs. All 80 formal trials are retained: there are no service exclusions, replacements or added trials after observing the result.
+
+Both arms use the same \texttt{gpt-6-astra} configuration with low reasoning effort, object-specific prompt and tools, live RGB, feedback schema, frozen latent student, maintenance actor and completion model. They share the six-call cap and 120-second simulated horizon at 20~Hz. Only the \texttt{number} and \texttt{steps} arguments of an applied \texttt{inspect\_face} action differ. Adaptive inspection follows the model's choice of motor ID and duration, within the existing 10--90-step range (0.5--4.5 seconds). Fixed inspection cycles through motor IDs $(2,4,1,3,6,5)$, corresponding to green, yellow, red, blue, purple and cyan, for 60 steps (3 seconds) each. Its index advances only when an inspection is applied. Binding, verification, stopping and abstention remain model decisions in both arms. Shared feedback records the last \emph{executed} action; proposed and executed arguments are archived separately. Realized images and action histories can therefore diverge without misrepresenting an overridden action.
+
+\paragraph{Perception, stopping and scoring.}
+The agent receives $512\times512$ scene RGB with hand occlusion and an image-derived $336\times336$ crop. The motor system retains the pig release's simulator-derived pose with noise, bias, failures, jitter and delay. At 3~Hz, the frozen completion model tests its calibrated angular-error bound against 0.16 radians. Once the declared label matches the instruction, a motor goal is bound and inspection has ended, the existing gate can stop with another model request pending. Independent success requires correct target binding, true full-quaternion error at most 0.16 radians at autonomous stop, and no preceding drop. No post-stop hold is required. These rules are identical between the two pig arms.
+
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrr}
+\toprule
+Outcome & Adaptive & Fixed\\
+\midrule
+Success & 37/40 & 29/40\\
+Correct terminal binding & 37 & 29\\
+Ever correctly bound & 37 & 29\\
+Wrong terminal binding & 1 & 4\\
+Unbound at termination & 2 & 7\\
+Drops & 2 & 2\\
+\bottomrule
+\end{tabular}
+\caption{Pig inspection-policy replication. Binding is reconstructed independently from applied actions and does not require successful completion. Drops overlap with terminal binding categories. All 40 trials per arm are included.}
+\label{tab:inspection-policy-pig}
+\end{table}
+
+\paragraph{Success and binding.}
+Adaptive inspection succeeds in 92.5\% of trials, compared with 72.5\% for the fixed sweep (Table~\ref{tab:inspection-policy-pig}). The paired table has 29 shared successes, eight adaptive-only successes, no fixed-only successes and three shared failures. The prespecified within-study primary analysis uses a two-sided exact McNemar test, giving $p=0.0078125$ for the 20-percentage-point observed gain. Reported per-object $p$ values are unadjusted; binding and cost are descriptive secondary outcomes. Success counts by seed are $(20,17)$ for adaptive and $(15,14)$ for fixed inspection. Adaptive failures comprise two drops and one false stop; fixed failures comprise two drops, four false stops and five abstentions. Equal drop counts do not account for the success difference.
+
+The binding audit reconstructs both the active terminal binding and whether a correct binding was ever applied, independently of the success flag. An applied inspection clears the active binding; a drop does not. All four drop trials had no applied binding before termination. Replies recorded but never applied cannot establish a binding. Thus correct terminal binding, ever-correct binding and success happen to have the same counts here; this equality is an observed outcome, not part of the binding definition. First correct-binding counts on calls one through six are $(6,10,12,9,0,0)$ for adaptive and $(6,8,6,4,5,0)$ for fixed inspection. Three and eleven trials, respectively, never bind correctly and remain in the denominator. These are applied semantic declarations, not independent visibility or recognition labels.
+
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrr}
+\toprule
+Cost over 40 trials & Adaptive & Fixed\\
+\midrule
+Model calls & 106 & 125\\
+Input tokens & 256,965 & 348,660\\
+Output tokens & 5,867 & 6,796\\
+Total tokens & 262,832 & 355,456\\
+Applied inspections & 61 & 79\\
+Commanded inspection time (s) & 235 & 237\\
+\bottomrule
+\end{tabular}
+\caption{Pig inference and inspection cost, including every formal trial and replies not applied before termination. Usage is available for all 231 formal calls. Engineering and smoke checks are excluded. Commanded time sums the applied inspection durations, not time to successful completion.}
+\label{tab:inspection-policy-pig-cost}
+\end{table}
+
+\paragraph{Cost and scope.}
+Adaptive inspection uses 15.2\% fewer calls and 26.1\% fewer tokens than the fixed sweep (Table~\ref{tab:inspection-policy-pig-cost}). However, their commanded inspection times are similar: 235 versus 237 seconds across all trials. Fewer calls therefore do not establish faster physical exploration. Median logical episode durations are 23.85 and 25.85 seconds, including failures; median call latencies are 5.94 and 6.04 seconds. These descriptive costs were not matched between arms.
+
+The pig result extends the direction-and-duration intervention beyond the cube under its own frozen controller. Both studies use a corresponding fixed color order with 3-second inspections and the same true-pose success criterion, but they differ in geometry, visual resolution, pose source, internal stopping gate, tool/feedback details and adaptive duration in seconds. The requested hosted-model configuration also does not establish immutable serving weights across collection dates. We therefore report and test the objects separately, without pooling their 80 pairs or attributing cross-object rate or token differences to inspection policy. One fixed sweep on each of two objects does not establish superiority to all inspection policies. Independent human visibility annotation remains a separate analysis of Q3(b), using its own image-intervention cohort.
 
 \subsection{A recorded feedback sequence}
 Figure~\ref{fig:feedback-example} shows a recorded pair from the initial-plan/continued-feedback comparison. Both protocols start from the same physical state and byte-identical initial image. The one-call plan abstains. The feedback agent inspects red, then binds T to red after the next observation. The measured gate stops at step 420, with independently scored orientation error 0.0812 radians and correct semantic binding. This is the lowest trial identity among eligible pairs with initial-plan abstention, feedback success, and an inspection action. It is a selected illustration, not a visibility annotation for the whole cohort or evidence of wrong-to-correct binding.
@@ -268,7 +326,7 @@ Method & Identity & Permuted & Masked\\
 Fine-tuned success falls by 35 percentage points after remapping and to 7.5\% after masking. Rule-based success is 57.5\% under both identity and remapping, then zero after masking. AIMI achieves 32/40 successes under both identity and permutation, with zero of 39 eligible masked trials. Equal aggregate rates can contain different trial outcomes. The result supports performance under this tested permutation, while the binding analysis below examines reliance on prior associations.
 
 \paragraph{Applied semantic bindings.}
-We audit every applied, accepted call from the same 240 trials. The episode-file hashes match the archived results, and the last accepted skill agrees with the recorded terminal binding. Table~\ref{tab:visual-bindings} separates acquiring the correct target from completing it. Under permutation, the fine-tuned model first binds correctly in 25 trials and incorrectly in eleven, compared with 34 and four under identity. Nine of its eleven wrong-binding trials select the original color for the newly requested symbol. The rule model has six wrong-binding trials under each layout, with three following the old association after permutation. This pattern is consistent with reliance on training associations, but does not identify the model's internal mechanism.
+We audit every applied, accepted call from the 240 trials of the two local baseline systems across the three image conditions. The episode-file hashes match the archived results, and the last accepted skill agrees with the recorded terminal binding. Table~\ref{tab:visual-bindings} separates acquiring the correct target from completing it. Under permutation, the fine-tuned model first binds correctly in 25 trials and incorrectly in eleven, compared with 34 and four under identity. Nine of its eleven wrong-binding trials select the original color for the newly requested symbol. The rule model has six wrong-binding trials under each layout, with three following the old association after permutation. This pattern is consistent with reliance on training associations, but does not identify the model's internal mechanism.
 
 \begin{table}[h]
 \centering\small
@@ -304,7 +362,7 @@ The released feedforward actor uses ten frames of normalized input. Its goal-rel
 \paragraph{Perception, control and stop policy.}
 The die uses the released simulator-pose noise, bias, failure, jitter and delay model. There is no image pose estimator in these trials. All upper methods receive the same RGB and image-only crop. The physical horizon is 120 seconds at 20~Hz and the stop gate is checked at 3~Hz. A reply cannot be applied before $\lceil20L\rceil$ steps, while control continues. The drop boundary and independent full-quaternion success tolerance remain 0.24 metres and 0.16 radians.
 
-AIMI uses one object-specific maintenance actor during pending and ordinary execution. Its calibrated completion model learns a bounded correction to measured angular error and an uncertainty term. It accepts when the calibrated upper bound is at most 0.16 radians. Once a correct count is declared and the state is not inspection, this gate may stop even with a further request pending. The bare baselines use no learned maintenance or completion module and stop on the measured-angle criterion only when no request is pending. Thus these are complete-system comparisons, not isolated tests of the semantic models or a replication of the cube's shared measured gate.
+AIMI uses one object-specific maintenance actor during pending and ordinary execution. Its calibrated completion model learns a bounded correction to measured angular error and an uncertainty term. It accepts when the calibrated upper bound is at most 0.16 radians. Once the declared count matches the instruction, a motor goal is bound and the state is not inspection, this gate may stop even with a further request pending. The bare baselines use no learned maintenance or completion module and stop on the measured-angle criterion only when no request is pending. Thus these are complete-system comparisons, not isolated tests of the semantic models or a replication of the cube's shared measured gate.
 
 \begin{table}[t]
 \centering\small
@@ -489,5 +547,7 @@ A trial succeeds when the robot reaches the requested target, stops with orienta
 
 \section{Reproducibility}
 The archived evidence retains outcomes, goals, stopping errors, service exclusions and latency for the audited cohorts. The three-seed controller aggregate is maintained separately from the historical trial records.
+
+For the pig inspection study, the sanitized archive includes all 80 trial records, 231 returned calls, applied-action logs, matched-pair identities, frozen settings, the system prompt and tool schema. An offline checker reconstructs success, binding states, paired statistics and costs from these records. Source hashes link the export to the original image and physical-trace audits; the compact export does not replace those full logs.
 
 \TODO{Complete anonymous code and asset licenses.}

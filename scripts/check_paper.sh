@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 cd "$(dirname -- "${BASH_SOURCE[0]}")/.."
+python3 scripts/render_q3_inspection.py --check
+python3 scripts/render_q3_pig_inspection.py --check
 for log in build/main/main.log build/supplyment/supplyment.log; do
     [[ -s "$log" ]] || { printf 'Missing build log: %s\n' "$log" >&2; exit 1; }
 done
@@ -11,11 +13,12 @@ ${PDFINFO:-pdfinfo} output/pdf/main.pdf | head -18
 ${PDFINFO:-pdfinfo} output/pdf/supplyment.pdf | head -18
 
 python3 - <<'PY_CHECK'
-import os,re,subprocess,json,hashlib
+import os,re,subprocess,json,hashlib,unicodedata
 from pathlib import Path
 
 def read_pdf(name):
-    return subprocess.check_output([os.environ.get('PDFTOTEXT','/usr/bin/pdftotext'),'-layout',f'output/pdf/{name}.pdf','-'],text=True)
+    extracted=subprocess.check_output([os.environ.get('PDFTOTEXT','/usr/bin/pdftotext'),'-layout',f'output/pdf/{name}.pdf','-'],text=True)
+    return unicodedata.normalize('NFKC',extracted)
 text=read_pdf('main')
 pages=text.rstrip('\f').split('\f')
 llm=[i for i,page in enumerate(pages) if re.search(r'^\s*(?:\d+\s+)?LLM Usage Statement(?:\s{2,}|$)',page,re.M)]
@@ -24,6 +27,9 @@ if not llm or not refs:raise SystemExit('LLM statement or references boundary mi
 if llm[0]>8:raise SystemExit('Main body exceeds eight pages')
 if text.index('LLM Usage Statement')>text.index('References'):raise SystemExit('LLM statement must precede references')
 if 'Supplementary Material' in text:raise SystemExit('Main paper unexpectedly contains the supplement')
+for value in ('92.5','72.5','37/40','29/40','0.0078','15.2','26.1'):
+    if value not in text:raise SystemExit(f'Missing Pig Q3 result: {value}')
+if 'unadjusted' not in text:raise SystemExit('Object-specific Q3 tests must disclose unadjusted p values')
 if 'ViserDex' in Path('sections/00_abstract.tex').read_text():raise SystemExit('Abstract still mentions ViserDex')
 for value in ('37.53','64.73'):
     if value not in text:raise SystemExit(f'Missing Q4 pose result: {value}')
@@ -48,6 +54,8 @@ for value in ('9/20','15/20','18/20','8/20','14/20','13/20','19/20','6/20','11/2
     if value not in text:raise SystemExit(f'Missing main-paper hardware table count: {value}')
 
 supp=read_pdf('supplyment')
+for value in ('188301','188302','0.0078125','262,832','355,456','235','237'):
+    if value not in supp:raise SystemExit(f'Missing Pig protocol or cost: {value}')
 for value in ('9/20','15/20','18/20','8/20','14/20','13/20','19/20','6/20','11/20','32/80','53/80','70/80'):
     if value not in supp:raise SystemExit(f'Missing supplementary hardware count: {value}')
 for name,body in [('main',text),('supplyment',supp)]:

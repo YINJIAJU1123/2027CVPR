@@ -1,11 +1,11 @@
 \section{Experiments}
 \label{sec:experiments}
-We organize the evidence around visual exploration (Q3), continuous control during reasoning (Q2), and complete-system performance across objects and instructions (Q1). Q2 and Q3 use the marked cube. Q4 evaluates perception for transfer and complete-system performance on four physical objects.
+We organize the evidence around visual exploration (Q3), control during reasoning (Q2), and complete-system performance (Q1). Q3 studies visual feedback on the cube and inspection choices on the cube and pig. Q2 uses the cube. Q4 evaluates perception and four physical-object systems.
 
 \subsection{Setup and reporting}
 \label{sec:setup}
 \paragraph{Objects and systems.}
-Simulation uses Revo3 assets in Isaac Lab 3.0/Newton. Q1 covers a cube, die, duck, hedgehog, pig and milk carton; Q2 and Q3 use the cube. Instructions request one of six surface letters or a dot count on the die. Each target has a fixed reference orientation placing its face upward. Cube systems share the frozen RGB pose estimator, goal bank, student and stopping rule. Other objects use separate students and noisy simulator pose. AIMI additionally uses calibrated completion correction on these objects. The VLM baselines omit the extra control actors and use a fixed inspection schedule when the target is unreadable. These are complete-system differences; Q2 varies only control during pending requests.
+Simulation uses Revo3 assets in Isaac Lab 3.0/Newton. Q1 covers a cube, die, duck, hedgehog, pig and milk carton. Instructions request one of six surface letters or a die dot count, each with a fixed face-up reference orientation. Rule maps Qwen3-VL-4B-Instruct outputs to discrete skills; Fine-tuned adapts the same backbone to predict continuous goal vectors~\cite{qwen3vl}. Cube systems share the frozen RGB pose estimator, goal bank, student and stopping rule. Other objects use separate students and noisy simulator pose; AIMI adds calibrated completion correction. The VLM baselines omit the extra control actors and follow fixed inspections when the target is unreadable. Q1 compares these complete systems; Q2 and Q3 hold non-intervened components fixed within each study.
 
 \paragraph{Timing and completion.}
 Cube trials allow up to six agent calls over 120 seconds of simulated control at 30~Hz; other objects use 20~Hz. Replies cannot take effect before inference completes, and physics continues during model latency. Simulation runs slower than real time, so these rates are not hardware-speed measurements. The cube stopping check runs at 3~Hz and requires target binding, no pending request or inspection, and measured orientation error at most 0.16 radians. It may terminate without an explicit agent stop action. Independent scoring requires the correct binding, true full-quaternion error at most 0.16 radians at stop, and no drop. There is no extra holding period. Non-cube methods use the same scoring tolerance with object-specific stopping rules. Exact timing, drop boundaries and scoring equations are in the supplement; Q4 gives the physical-hand criterion.
@@ -15,7 +15,7 @@ Unless specified otherwise, each simulated condition has 40 trials, 20 per evalu
 
 \subsection{Q3: Visual Exploration and Feedback}
 
-Three paired experiments examine how the agent acquires and uses visual evidence (Table~\ref{tab:q3-feedback}): continuing to observe and decide, receiving new images, and choosing inspection direction and duration. Each comparison has its own trial set.
+Three interventions examine how the agent acquires and uses evidence (Table~\ref{tab:q3-feedback}): continued feedback, fresh images, and inspection direction/duration. Each comparison uses its own trial set; the inspection intervention is evaluated separately on cube and pig.
 
 \begin{table}[!htbp]
 \centering\small
@@ -29,11 +29,14 @@ Condition & Success & \% & Drops & Calls\\
 \multicolumn{5}{l}{\textbf{(b) Fresh visual evidence: same six-call cap}}\\
 \ImageRefreshRows
 \midrule
-\multicolumn{5}{l}{\textbf{(c) Inspection policy: same model and controllers}}\\
+\multicolumn{5}{l}{\textbf{(c) Inspection policy: cube}}\\
 \InspectionPolicyRows
+\midrule
+\multicolumn{5}{l}{\textbf{(c) Inspection policy: pig follow-up}}\\
+\PigInspectionPolicyRows
 \bottomrule
 \end{tabular}
-\caption{\textbf{Q3: visual exploration on the cube.} Each panel schedules 40 trials per condition. (a) excludes one service-affected pair and reuses Q2's initial full-feedback subset. (b) changes only the agent's RGB input. (c) changes inspection direction and duration. (b,c) have no exclusions. Drops/calls include all trials; realized inference costs differ.}
+\caption{\textbf{Q3: visual evidence and inspection choices.} Each comparison schedules 40 pairs. (a,b) use cube; (a) excludes one service-affected pair and reuses Q2's initial feedback subset. (b) changes only agent RGB. (c) changes inspection direction/duration within each object system; the objects are not pooled. (b,c) have no exclusions. Drops/calls include all trials.}
 \label{tab:q3-feedback}
 \label{tab:feedback}
 \label{tab:image-refresh}
@@ -52,8 +55,12 @@ An initial plan selects up to six bounded actions from one image and measured fe
 \paragraph{(b) Does the next image provide useful evidence?}
 Both conditions use the same six-call cap, request rule, live numeric feedback, history and local control. Only RGB changes: the current image versus the exact first frame. Success is 32/40 versus 9/40, with all 23 discordant pairs favoring fresh images (exact $p=2.38\times10^{-7}$). Correct terminal bindings number 34 versus nine. Both first bind correctly on call one in the same nine trials; fresh images enable 25 additional correct bindings, 23 leading to success, versus none with repeated frames. Drops differ by one; initial visibility is not independently annotated.
 
-\paragraph{(c) Does choosing the next view help?}
-Forty new pairs compare agent-selected directions and durations with a fixed 90-step color sweep. Both use the same model, controllers, fresh images, history format and stopping; history records executed actions. The agent still decides whether to inspect, bind or abstain. Adaptive inspection achieves 38/40 successes (95.0\%) versus 31/40 (77.5\%). Nine pairs favor adaptive and two favor fixed inspection: a 17.5-point observed gain (exact $p=0.0654$). Correct terminal bindings are 39 versus 32, with zero versus one drop. This trend remains statistically unresolved and covers one fixed sweep.
+\paragraph{(c) Does choosing inspection actions help?}
+Within each object, 40 new pairs compare agent-selected directions and durations with a prescribed color sweep of 3-second inspections. Both arms share the model, controllers, fresh-image input, history format and stopping; history records executed actions. The agent still decides whether to inspect, bind or abstain.
+
+On cube, adaptive inspection achieves 38/40 successes (95.0\%) versus 31/40 (77.5\%). Nine pairs favor adaptive and two favor fixed inspection (exact $p=0.0654$); this trend remains inconclusive. A separate pig follow-up, frozen before its formal trials, gives 37/40 (92.5\%) versus 29/40 (72.5\%). Eight pairs favor adaptive and none favor fixed inspection: a 20-point gain (exact $p=0.0078$). These per-object tests are unadjusted.
+
+Pig has 37 versus 29 correct terminal bindings, independently reconstructed from applied actions, and two drops per arm. Adaptive inspection uses 15.2\% fewer calls and 26.1\% fewer tokens. This supports inspection choice under the prescribed pig comparison; it does not establish faster completion. The supplement reports seed splits, binding trajectories, costs and differences between the two object systems.
 
 % Keep the Q2 discussion and outcome chart together in the next column.
 \newpage
@@ -79,13 +86,13 @@ Learned slowing with joint correction achieves 104/120 successes (86.7\%), compa
 % Keep the Q1 heading and discussion below its two-column overview.
 \newpage
 \subsection{Q1: Objects, Target Mappings and Language}
-We compare original and changed target-to-skill mappings on six objects (Fig.~\ref{fig:q1-task-success}), then test language and wording coverage. Separate native-image cohorts and their inconclusive AIMI--fine-tuned comparisons are reported in the supplement.
+We compare original and changed target-to-skill mappings on six objects (Fig.~\ref{fig:q1-task-success}), then vary language and wording. Separate native-image comparisons remain in the supplement.
 
 \paragraph{Aggregate system performance.}
 Across 1,440 scheduled trials, mean success is \QOneOriginalSuccess\% with original mappings and \QOneChangedSuccess\% with changed mappings, exceeding the strongest baseline means (\QOneOriginalBaseline\% and \QOneChangedBaseline\%) by \QOneOriginalGain{} and \QOneChangedGain{} points. These descriptive, post-hoc means weight each object's service-eligible rate equally.
 
 \paragraph{Four additional objects.}
-Duck, hedgehog, pig and milk carton contribute 960 trials, with AIMI leading in each condition. Three service failures exclude matching trials from all methods. Milk-carton drops remain frequent: 15/40 original-mapping and 20/40 changed-mapping AIMI trials. Reset checks and sensitivity analyses appear in the supplement.
+Duck, hedgehog, pig and milk carton contribute 960 trials. AIMI leads in each condition, although milk-carton drops remain frequent: 15/40 original-mapping and 20/40 changed-mapping trials. Three service failures exclude matched trials across methods; reset checks and sensitivity analyses are in the supplement.
 
 \paragraph{Visual-semantic intervention.}
 Only the agent's RGB changes across 40 matched states with original, reassigned or hidden letters; pose-estimator input and lighting remain fixed. Reassignment leaves AIMI at 32/40 successes but reduces fine-tuning from 30/40 to 16/40 (Holm $p=0.0130$, six comparisons); rules remain at 23/40. Hiding letters gives 0/39, 3/40 and 0/40, respectively. Nine of eleven fine-tuned wrong bindings follow the old mapping. One reassignment does not establish broad generalization.
@@ -94,14 +101,14 @@ Only the agent's RGB changes across 40 matched states with original, reassigned 
 Across 240 die trials, rotating the visual mesh preserves collision geometry, inertia and the skill-ID prompt. Exploratory paired tests favor AIMI over both baselines under the changed layout; its own layout difference remains inconclusive. The supplement reports all seven unadjusted contrasts.
 
 \paragraph{Language and wording coverage.}
-We test standard and rewritten English and Chinese instructions on three objects: 60 trials per condition across three seeds, totaling 2,160 trials (Table~\ref{tab:language-objects}). Weights, mappings and scoring remain fixed, without Chinese retraining. The rule baseline also translates its task/output instructions. Raw outcomes remain in the supplement.
+Standard and rewritten English and Chinese instructions are tested on three objects: 60 trials per condition across three seeds, totaling 2,160 (Table~\ref{tab:language-objects}). Weights, mappings and scoring remain fixed, without Chinese retraining. Rule also translates its task/output instructions; raw outcomes are in the supplement.
 
 \begingroup
 \setlength{\intextsep}{8pt plus 2pt minus 2pt}
 \input{tables/language_objects}
 \endgroup
 
-AIMI exceeds fine-tuning in all eight duck/hedgehog conditions and rules in six after Holm correction over 36 method tests. Cube comparisons remain inconclusive, with fine-tuning leading for rewritten Chinese. Strict state/image pairing preserves these decisions. Language/wording contrasts remain inconclusive after a separate 36-test correction.
+AIMI exceeds fine-tuning in all eight duck/hedgehog conditions and rules in six after Holm correction over 36 tests. Cube comparisons remain inconclusive; fine-tuning leads for rewritten Chinese. Strict state/image pairing preserves these decisions. Language/wording contrasts remain inconclusive after a separate 36-test correction.
 
 \subsection{Q4: Pose Estimation and Sim-to-Real Transfer}
 \paragraph{Perception adaptation for transfer.}

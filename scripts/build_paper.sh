@@ -7,6 +7,7 @@ python3 scripts/render_language_table_image.py --check
 python3 scripts/render_q1_summary.py > build/q1_summary.log
 python3 scripts/render_controller_three_seed.py > build/controller_three_seed.log
 python3 scripts/render_q3_inspection.py > build/q3_inspection.log
+python3 scripts/render_q3_pig_inspection.py > build/q3_pig_inspection.log
 python3 scripts/render_result_presentation.py > build/result_presentation.log
 python3 scripts/render_task_success.py > build/task_success.log
 for target in main supplyment; do

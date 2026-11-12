@@ -1,17 +1,17 @@
 \section{Introduction}
-Dexterous in-hand manipulation allows robots to reposition and inspect objects without releasing their grasp. Following language, however, may require finding a surface that the camera cannot see. To ``present the face marked T,'' the robot must expose the mark from behind the object or fingers, identify it, and reach the desired orientation without dropping the object (Fig.~\ref{fig:teaser}).
+Dexterous in-hand manipulation lets robots reposition and inspect objects without releasing their grasp. A target specified by language may be hidden from the camera. To ``present the face marked T,'' the robot must expose and identify it, then reach the requested orientation without dropping the object (Fig.~\ref{fig:teaser}).
 
-Learning-based controllers reach specified poses or goal images~\cite{bhardwaj2026viserdex,bhardwaj2026goaldex,kedia2026simtoolreal}. This provides the motor skills needed for presentation, but goal selection remains difficult when the target is hidden. An instruction specifies the requested surface; visual evidence is needed to select the skill that will present it.
+Learning-based controllers reach specified poses or goal images~\cite{bhardwaj2026viserdex,bhardwaj2026goaldex,kedia2026simtoolreal}. Yet an instruction may name a surface whose motor goal is unknown. Visual evidence is needed to connect that surface to a presentation skill.
 
-Language-based agents select skills and revise plans from feedback~\cite{ichter2023saycan,huang2023innermonologue}. Within a grasp, this raises two coupled questions: which view should the hand obtain next, and how should it control the object while the agent reasons? Multiple observations may be needed before choosing a presentation goal.
+Language-based agents select skills and revise plans from feedback~\cite{ichter2023saycan,huang2023innermonologue}. Within a grasp, two questions arise: which view should the hand obtain next, and how should it control the object while the agent reasons?
 
-Our goal is language-guided visual exploration with continuous in-hand control. We use hand motion to obtain evidence for goal selection: an agent chooses inspection actions, examines new images, and links the identified target to a motor goal. This \emph{target binding} guides subsequent presentation.
+Our goal is language-guided visual exploration with continuous in-hand control. The agent uses hand motion to gather images and link a requested visual target to a motor goal. This \emph{target binding} guides presentation.
 
 We implement this approach in AIMI (\textbf{A}gentic \textbf{I}n-hand \textbf{M}anipulation for \textbf{I}nspection). We adapt the ViserDex teacher--student foundation to Revo3~\cite{bhardwaj2026viserdex} and use teacher supervision to connect the student to an agent-selectable goal bank. Local controllers adjust its joint commands during reasoning and execution. While a reply is pending, learned slowing and joint correction keep control responsive to measured feedback.
 
-We evaluate six object-specific simulation systems, achieving \QOneChangedSuccess\% mean success under changed target-to-skill mappings. Controlled studies examine visual feedback and waiting control, while multilingual trials test instruction coverage. We also demonstrate transfer to four physical objects using RGB pose feedback, with \HardwareAimiSuccess\% success over 80 trials. Our contributions are:
+We evaluate six object-specific simulation systems, achieving \QOneChangedSuccess\% mean success under changed target-to-skill mappings. Controlled studies distinguish receiving fresh images from choosing inspection directions and durations, and separately examine control during reasoning. Multilingual trials test instruction coverage. We also demonstrate transfer to four physical objects using RGB pose feedback, with \HardwareAimiSuccess\% success over 80 trials. Our contributions are:
 \begin{itemize}
-\item An agentic framework that connects inspection, target binding and presentation through successive observations for language-guided in-hand visual exploration.
-\item A goal-conditioned control interface with teacher-supervised local controllers that combine slowing and joint correction during agent reasoning.
-\item An evaluation across objects, target mappings and languages, with controlled studies of fresh visual evidence and local control, and four-object real-hand validation.
+\item An agentic framework that selects inspection directions and durations, binds visual targets to motor goals, and guides their presentation through successive observations.
+\item Teacher-supervised local controllers that combine learned slowing and joint correction to maintain control during agent reasoning.
+\item Controlled studies of fresh observations, inspection action selection and waiting control, alongside evaluations across objects, target mappings and languages, and four-object real-hand validation.
 \end{itemize}

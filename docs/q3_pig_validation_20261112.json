@@ -1,0 +1,53 @@
+{
+  "status": "passed",
+  "baseline_commit": "45a6cf67bdb9a2f5c02958d917eb096ba04b2b20",
+  "main_body_pages": 8,
+  "main_pdf_pages": 10,
+  "supplement_pdf_pages": 17,
+  "main_and_supplement_checked": true,
+  "layout_review": {
+    "main": "All 10 pages reviewed; final Q3 table and text reviewed at higher resolution.",
+    "supplement": "All 17 pages reviewed, including both new Pig tables and existing figures.",
+    "clipping_or_overlap_found": false
+  },
+  "latex_fatal_reference_or_overflow_errors": false,
+  "compiler": "Tectonic 0.15.0; existing build workflow with local cached TeX resources",
+  "compiler_notes": [
+    "Nonfatal cached lineno source-encoding warning",
+    "Input PDF 1.7 assets retained; output rendering verified",
+    "Tectonic rerun bookkeeping warning; references and final PDF text checks passed"
+  ],
+  "figures_byte_identical_to_baseline": 63,
+  "q4_text_unchanged": {
+    "sections/05_experiments.tex": true,
+    "sections/supplement_content.tex": true
+  },
+  "protected_outcome_files_unchanged": [
+    "data/controller_three_seed_20261107/summary.json",
+    "data/inhand4_completed_20261103/q1_all_objects.json",
+    "data/hardware_author_report_20261108/results.json",
+    "data/q3_inspection_20261107/summary.json",
+    "tables/hardware_results.tex"
+  ],
+  "pig_formal_trials": 80,
+  "pig_pairs": 40,
+  "pig_exact_p": 0.0078125,
+  "new_data_contains_weights_or_credentials": false,
+  "checks": [
+    "scripts/check_paper.sh",
+    "scripts/render_q3_inspection.py --check",
+    "scripts/render_q3_pig_inspection.py --check",
+    "git diff --check"
+  ],
+  "pending_scope": [
+    "Independent human visibility annotations not yet available; no new visibility result claimed",
+    "Existing hardware images/scoring placeholders left unchanged at author request",
+    "Existing code/asset-license TODO retained"
+  ],
+  "artifact_sha256": {
+    "output/pdf/main.pdf": "5eec07758857bec97e77a1214082250813216aee98e0af336af3d47a921b54f3",
+    "output/pdf/supplyment.pdf": "6fab885a50bd53e54a33f643186f9e523d4621d0171e42d6a6dbe03ac0aefe10",
+    "data/q3_pig_inspection_20261112/export_manifest.json": "5092b718b3e693f0496c608710830684b2adca36f043b04ae1d9ca926463e4ad",
+    "data/q3_pig_inspection_20261112/summary.json": "935028efa312edeb3d274c5c2df52374c5d4d0bda18d9ee67d72a419a56ca4e6"
+  }
+}

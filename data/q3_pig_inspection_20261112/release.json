@@ -1,0 +1,559 @@
+{
+  "format": "q3_noncube_inspection_release_v1",
+  "status": "frozen",
+  "stage": "formal",
+  "object": "pig",
+  "layout_condition": "identity",
+  "inspection_modes": [
+    "adaptive",
+    "fixed"
+  ],
+  "fixed_policy": {
+    "motor_ids": [
+      2,
+      4,
+      1,
+      3,
+      6,
+      5
+    ],
+    "steps": 60
+  },
+  "canonical_target_quaternions_xyzw": [
+    [
+      0.0,
+      0.7071067690849304,
+      0.0,
+      0.7071067690849304
+    ],
+    [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.7071067690849304,
+      0.0,
+      0.0,
+      0.7071067690849304
+    ],
+    [
+      -0.7071067690849304,
+      0.0,
+      0.0,
+      0.7071067690849304
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    [
+      0.0,
+      -0.7071067690849304,
+      0.0,
+      0.7071067690849304
+    ]
+  ],
+  "cases": [
+    {
+      "index": 0,
+      "base_seed": 188301,
+      "episode": 0,
+      "trial_seed": 188301000,
+      "goal_index": 0,
+      "requested_label_index": 1,
+      "requested_letter": "A",
+      "instruction": "Reorient the object so that the surface marked with letter A faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 1,
+      "base_seed": 188301,
+      "episode": 1,
+      "trial_seed": 188301001,
+      "goal_index": 1,
+      "requested_label_index": 2,
+      "requested_letter": "B",
+      "instruction": "Reorient the object so that the surface marked with letter B faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 2,
+      "base_seed": 188301,
+      "episode": 2,
+      "trial_seed": 188301002,
+      "goal_index": 2,
+      "requested_label_index": 3,
+      "requested_letter": "C",
+      "instruction": "Reorient the object so that the surface marked with letter C faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 3,
+      "base_seed": 188301,
+      "episode": 3,
+      "trial_seed": 188301003,
+      "goal_index": 3,
+      "requested_label_index": 4,
+      "requested_letter": "D",
+      "instruction": "Reorient the object so that the surface marked with letter D faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 4,
+      "base_seed": 188301,
+      "episode": 4,
+      "trial_seed": 188301004,
+      "goal_index": 4,
+      "requested_label_index": 5,
+      "requested_letter": "E",
+      "instruction": "Reorient the object so that the surface marked with letter E faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 5,
+      "base_seed": 188301,
+      "episode": 5,
+      "trial_seed": 188301005,
+      "goal_index": 5,
+      "requested_label_index": 6,
+      "requested_letter": "F",
+      "instruction": "Reorient the object so that the surface marked with letter F faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 6,
+      "base_seed": 188301,
+      "episode": 6,
+      "trial_seed": 188301006,
+      "goal_index": 0,
+      "requested_label_index": 1,
+      "requested_letter": "A",
+      "instruction": "Reorient the object so that the surface marked with letter A faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 7,
+      "base_seed": 188301,
+      "episode": 7,
+      "trial_seed": 188301007,
+      "goal_index": 1,
+      "requested_label_index": 2,
+      "requested_letter": "B",
+      "instruction": "Reorient the object so that the surface marked with letter B faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 8,
+      "base_seed": 188301,
+      "episode": 8,
+      "trial_seed": 188301008,
+      "goal_index": 2,
+      "requested_label_index": 3,
+      "requested_letter": "C",
+      "instruction": "Reorient the object so that the surface marked with letter C faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 9,
+      "base_seed": 188301,
+      "episode": 9,
+      "trial_seed": 188301009,
+      "goal_index": 3,
+      "requested_label_index": 4,
+      "requested_letter": "D",
+      "instruction": "Reorient the object so that the surface marked with letter D faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 10,
+      "base_seed": 188301,
+      "episode": 10,
+      "trial_seed": 188301010,
+      "goal_index": 4,
+      "requested_label_index": 5,
+      "requested_letter": "E",
+      "instruction": "Reorient the object so that the surface marked with letter E faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 11,
+      "base_seed": 188301,
+      "episode": 11,
+      "trial_seed": 188301011,
+      "goal_index": 5,
+      "requested_label_index": 6,
+      "requested_letter": "F",
+      "instruction": "Reorient the object so that the surface marked with letter F faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 12,
+      "base_seed": 188301,
+      "episode": 12,
+      "trial_seed": 188301012,
+      "goal_index": 0,
+      "requested_label_index": 1,
+      "requested_letter": "A",
+      "instruction": "Reorient the object so that the surface marked with letter A faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 13,
+      "base_seed": 188301,
+      "episode": 13,
+      "trial_seed": 188301013,
+      "goal_index": 1,
+      "requested_label_index": 2,
+      "requested_letter": "B",
+      "instruction": "Reorient the object so that the surface marked with letter B faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 14,
+      "base_seed": 188301,
+      "episode": 14,
+      "trial_seed": 188301014,
+      "goal_index": 2,
+      "requested_label_index": 3,
+      "requested_letter": "C",
+      "instruction": "Reorient the object so that the surface marked with letter C faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 15,
+      "base_seed": 188301,
+      "episode": 15,
+      "trial_seed": 188301015,
+      "goal_index": 3,
+      "requested_label_index": 4,
+      "requested_letter": "D",
+      "instruction": "Reorient the object so that the surface marked with letter D faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 16,
+      "base_seed": 188301,
+      "episode": 16,
+      "trial_seed": 188301016,
+      "goal_index": 4,
+      "requested_label_index": 5,
+      "requested_letter": "E",
+      "instruction": "Reorient the object so that the surface marked with letter E faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 17,
+      "base_seed": 188301,
+      "episode": 17,
+      "trial_seed": 188301017,
+      "goal_index": 5,
+      "requested_label_index": 6,
+      "requested_letter": "F",
+      "instruction": "Reorient the object so that the surface marked with letter F faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 18,
+      "base_seed": 188301,
+      "episode": 18,
+      "trial_seed": 188301018,
+      "goal_index": 0,
+      "requested_label_index": 1,
+      "requested_letter": "A",
+      "instruction": "Reorient the object so that the surface marked with letter A faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 19,
+      "base_seed": 188301,
+      "episode": 19,
+      "trial_seed": 188301019,
+      "goal_index": 1,
+      "requested_label_index": 2,
+      "requested_letter": "B",
+      "instruction": "Reorient the object so that the surface marked with letter B faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 20,
+      "base_seed": 188302,
+      "episode": 0,
+      "trial_seed": 188302000,
+      "goal_index": 2,
+      "requested_label_index": 3,
+      "requested_letter": "C",
+      "instruction": "Reorient the object so that the surface marked with letter C faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 21,
+      "base_seed": 188302,
+      "episode": 1,
+      "trial_seed": 188302001,
+      "goal_index": 3,
+      "requested_label_index": 4,
+      "requested_letter": "D",
+      "instruction": "Reorient the object so that the surface marked with letter D faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 22,
+      "base_seed": 188302,
+      "episode": 2,
+      "trial_seed": 188302002,
+      "goal_index": 4,
+      "requested_label_index": 5,
+      "requested_letter": "E",
+      "instruction": "Reorient the object so that the surface marked with letter E faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 23,
+      "base_seed": 188302,
+      "episode": 3,
+      "trial_seed": 188302003,
+      "goal_index": 5,
+      "requested_label_index": 6,
+      "requested_letter": "F",
+      "instruction": "Reorient the object so that the surface marked with letter F faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 24,
+      "base_seed": 188302,
+      "episode": 4,
+      "trial_seed": 188302004,
+      "goal_index": 0,
+      "requested_label_index": 1,
+      "requested_letter": "A",
+      "instruction": "Reorient the object so that the surface marked with letter A faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 25,
+      "base_seed": 188302,
+      "episode": 5,
+      "trial_seed": 188302005,
+      "goal_index": 1,
+      "requested_label_index": 2,
+      "requested_letter": "B",
+      "instruction": "Reorient the object so that the surface marked with letter B faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 26,
+      "base_seed": 188302,
+      "episode": 6,
+      "trial_seed": 188302006,
+      "goal_index": 2,
+      "requested_label_index": 3,
+      "requested_letter": "C",
+      "instruction": "Reorient the object so that the surface marked with letter C faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 27,
+      "base_seed": 188302,
+      "episode": 7,
+      "trial_seed": 188302007,
+      "goal_index": 3,
+      "requested_label_index": 4,
+      "requested_letter": "D",
+      "instruction": "Reorient the object so that the surface marked with letter D faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 28,
+      "base_seed": 188302,
+      "episode": 8,
+      "trial_seed": 188302008,
+      "goal_index": 4,
+      "requested_label_index": 5,
+      "requested_letter": "E",
+      "instruction": "Reorient the object so that the surface marked with letter E faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 29,
+      "base_seed": 188302,
+      "episode": 9,
+      "trial_seed": 188302009,
+      "goal_index": 5,
+      "requested_label_index": 6,
+      "requested_letter": "F",
+      "instruction": "Reorient the object so that the surface marked with letter F faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 30,
+      "base_seed": 188302,
+      "episode": 10,
+      "trial_seed": 188302010,
+      "goal_index": 0,
+      "requested_label_index": 1,
+      "requested_letter": "A",
+      "instruction": "Reorient the object so that the surface marked with letter A faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 31,
+      "base_seed": 188302,
+      "episode": 11,
+      "trial_seed": 188302011,
+      "goal_index": 1,
+      "requested_label_index": 2,
+      "requested_letter": "B",
+      "instruction": "Reorient the object so that the surface marked with letter B faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 32,
+      "base_seed": 188302,
+      "episode": 12,
+      "trial_seed": 188302012,
+      "goal_index": 2,
+      "requested_label_index": 3,
+      "requested_letter": "C",
+      "instruction": "Reorient the object so that the surface marked with letter C faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 33,
+      "base_seed": 188302,
+      "episode": 13,
+      "trial_seed": 188302013,
+      "goal_index": 3,
+      "requested_label_index": 4,
+      "requested_letter": "D",
+      "instruction": "Reorient the object so that the surface marked with letter D faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 34,
+      "base_seed": 188302,
+      "episode": 14,
+      "trial_seed": 188302014,
+      "goal_index": 4,
+      "requested_label_index": 5,
+      "requested_letter": "E",
+      "instruction": "Reorient the object so that the surface marked with letter E faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 35,
+      "base_seed": 188302,
+      "episode": 15,
+      "trial_seed": 188302015,
+      "goal_index": 5,
+      "requested_label_index": 6,
+      "requested_letter": "F",
+      "instruction": "Reorient the object so that the surface marked with letter F faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 36,
+      "base_seed": 188302,
+      "episode": 16,
+      "trial_seed": 188302016,
+      "goal_index": 0,
+      "requested_label_index": 1,
+      "requested_letter": "A",
+      "instruction": "Reorient the object so that the surface marked with letter A faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 37,
+      "base_seed": 188302,
+      "episode": 17,
+      "trial_seed": 188302017,
+      "goal_index": 1,
+      "requested_label_index": 2,
+      "requested_letter": "B",
+      "instruction": "Reorient the object so that the surface marked with letter B faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 38,
+      "base_seed": 188302,
+      "episode": 18,
+      "trial_seed": 188302018,
+      "goal_index": 2,
+      "requested_label_index": 3,
+      "requested_letter": "C",
+      "instruction": "Reorient the object so that the surface marked with letter C faces upward.",
+      "language": "en"
+    },
+    {
+      "index": 39,
+      "base_seed": 188302,
+      "episode": 19,
+      "trial_seed": 188302019,
+      "goal_index": 3,
+      "requested_label_index": 4,
+      "requested_letter": "D",
+      "instruction": "Reorient the object so that the surface marked with letter D faces upward.",
+      "language": "en"
+    }
+  ],
+  "shared_artifact_sha256": {
+    "source_checkpoint": "60d070b2f43fce2b636619c4af2e8441f016f5b792c2ab8302999adabcf11866",
+    "checkpoint": "11a61cf016b90c1cee3d5d4a007f7a774d7f69a323b9159d7a86e9b832ab8a72",
+    "env_config": "a87225e01ececa58488acdbd67e1e7df4c070bd9b52601de2506d7199c97b6d5",
+    "bank": "347dc498699a05549aec1888d30d03e70208c0d85db45488710d8d31e1dacef7",
+    "assets_manifest": "d220a6a95d5af5842f7bc970ca2659e28e2e7ae214d11b51575558298c2279cb",
+    "relocation": "13376e29065eba7b8db549e2613e3e5beb0f05e7edb947e1fe5af0be63bce9d5"
+  },
+  "condition": {
+    "maintenance": "learned",
+    "actor_checkpoint_sha256": "4e1c6e84c865d19d074a54f7cb1736bce8aa324ce58ea13df69ad3636c262d73",
+    "stop_checkpoint_sha256": "e9b89d648585186811af235a60f18552b6bf693711af657e382d125c0d86c257"
+  },
+  "model_contract": {
+    "model": "gpt-6-astra",
+    "frame_size": 512,
+    "auth_method": "sign_in_with_chatgpt",
+    "api_base_url": "https://api.openai.com/v1",
+    "reasoning_effort": "low",
+    "system_prompt_sha256": "03e8f08233e38c728b37b2637103bbd29bb411981e97819230d58d1237bf2b25",
+    "tools_schema_sha256": "d654b481e29c78d73acce9819fae94778fbf01181f93216ba3f3c50f8a56facc"
+  },
+  "protocol_sha256": "73100dcc5c894fc0410cf06530ad7fd6ca44699366ad09f57d78e4cd6c46c2ff",
+  "engineering_sha256": "de078e3de8bd78dc7abf6d18ec1e5224cae57e0c20290ce1cb2f48a2f7b2b86f",
+  "engineering_visual_review_sha256": "caf7de313ded914c9d3daacded8071b3c2f1700721876ec1f79600fee3123e25",
+  "parent_code_drift": {
+    "scripts/astra_transport_v2/bridge.py": {
+      "parent": "9aa26966056ec499f6a1daecf5d413af8bc7a2f0c77009380ec0e0d651e3d2e6",
+      "current": "65a1cd458d333feb9796619bf1a25a0c469e9a7eb540acb7dd019bf6be4dd450"
+    },
+    "scripts/astra_transport_v2/subscription_v2.py": {
+      "parent": "a04fc065f1942d5b9b01450c87d3d633f2291cfaa98a9d748b16c4dd5f1243fa",
+      "current": "80523f9da9aeffed6a66bcbf6fb4f5f57dcd705331113311370cfed53b837a19"
+    },
+    "scripts/inhand4_q1/aggregate_q1.py": {
+      "parent": "087a6e1c93292a6832af2a6ba2e06b451a6617569a499ad2313852d91e2b4020",
+      "current": "8c0d6de80252171cbce38acd012fcf01a0b1eb2d8757172261b81f22525f6418"
+    },
+    "scripts/inhand4_q1/evaluate_agent.py": {
+      "parent": "e9d915da262985b332c2ba8d8e4b8d1bb2942252ebb545802dbd5305ffc3f5bb",
+      "current": "03af39829bde5e6afe110ef934b760544a1c1f7618cf125b3ce8d972e954e653"
+    },
+    "scripts/inhand4_q1/run_cells.py": {
+      "parent": "748878d8a3f90f7028c5e3a9c05428680ca7d94ed06776ba97cdd84bf2615b55",
+      "current": "3a644a93dfa82c89ddb889595bb0f31a030f9ec3c3ea828f4763f4befbc77767"
+    },
+    "scripts/inhand4_q1/vlm_service.py": {
+      "parent": "be553a79e3a44839a78a59474fb084f1cf975355a2f7e7e86369c4c7306b26e4",
+      "current": "ab789c2831bba7722a42616c0c92d070c5707a3ba3518e92b6efe8c2216bf12b"
+    },
+    "scripts/semantic_completion_v1/bridge.py": {
+      "parent": "5a696cdf23f059cf49d0e7b0df16663e5fbb90c3cdbe1a04a7b59de8cac8a791",
+      "current": "c80c3128a3363384e1842275663cfc7e19b5b0c80fcbaca5ac1a0f03a4ec3646"
+    }
+  },
+  "interpretation": "New paired study; audited infrastructure changes shared by both arms; historical Q1 results untouched",
+  "source_sha256_inventory": "source_sha256.json:frozen_source_files"
+}

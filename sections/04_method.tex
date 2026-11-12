@@ -21,7 +21,7 @@ We fit the projection and recurrent policy to frozen-teacher actions using a DAg
 
 \subsection{Agentic visual exploration}
 \label{sec:exploration}
-The agent receives the instruction, current image and action history, and returns an explicit action: inspect, reorient, verify, stop, or abstain. We validate the reply before applying it. Inspection selects a color skill to expose another view. Once the requested face is identified, the agent binds it to a motor goal and guides its presentation (Fig.~\ref{fig:search-component}).
+The agent receives the instruction, current image, executed-action history and measured-state summaries, and returns an action: inspect, reorient, verify, stop, or abstain. State summaries include estimated skill-relative errors and current binding/request status, but no true pose or correctness label. We validate replies before applying them. Inspection selects a skill to obtain another view; target binding selects the motor goal for presentation (Fig.~\ref{fig:search-component}).
 
 \begin{figure}[!htbp]
 \centering
@@ -67,4 +67,4 @@ Here $s$ collects sensor features, $g$ is the active goal and $a^*$ is the teach
 \subsection{RGB perception and closed-loop deployment}
 For cube control, a frozen CNN takes a $120\times120$ RGB crop with hand occlusion and predicts image coordinates and depth for the object center and eight keypoints. Camera calibration and rigid fitting recover position, XYZW orientation and a fitting error. Following ViserDex, Gaussian-splat rendering supplies training images for this estimator~\cite{bhardwaj2026viserdex}. The deployed model estimates pose from camera RGB.
 
-At every control step, we update the measured pose, run the recurrent student, choose the waiting or execution actor, and send joint targets to the hand. New agent observations reflect the motion that occurred during inference and execution. All four physical-object systems use this RGB-to-pose-to-control interface. In simulation, the cube uses RGB pose estimates, while other objects use noisy simulator-derived pose feedback. True pose is reserved for training supervision and independent simulation scoring. Measured-pose stopping and evaluation criteria are specified in Sec.~\ref{sec:setup}.
+At each control step, we estimate pose, run the recurrent student and local controller, and send joint targets. New agent observations reflect motion during inference and execution. All four physical-object systems use this RGB-to-pose-to-control interface. In simulation, cube uses RGB pose, while other objects use noisy simulator-derived pose. True pose supplies training supervision and independent scoring. Stopping and scoring are defined in Sec.~\ref{sec:setup}.

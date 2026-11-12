@@ -1,12 +1,12 @@
 \section{Discussion and Limitations}
 \paragraph{Exploration and control.}
-Q3 links new visual evidence to target binding and completion; the adaptive-inspection trend remains statistically unresolved. Q2 supports joint correction during reasoning. Q1 compares complete systems differing in models, history, controllers and stopping.
+Q3 separates receiving new evidence from choosing how to acquire it. Fresh images support target binding on cube; the pig follow-up supports adaptive inspection under its prescribed comparison, while the cube inspection result remains inconclusive. Q2 supports joint correction during reasoning. Q1 compares complete systems differing in models, history, controllers and stopping.
 
 \paragraph{Evaluation limits.}
-Equal call limits do not imply equal inference cost. Controller-goal conditioning remains unisolated, and Q3 tests one fixed sweep on one cube. Exploration is directed toward six predefined surface targets per object. Simulation completion measures binding and terminal pose; independent visibility and post-stop holding require separate reporting.
+Fewer calls and tokens on pig do not establish faster completion or fewer drops. Inspection comparisons cover one prescribed sweep and six targets on each of two objects. The latent interface and controller-goal conditioning lack independent ablations. Initial readability lacks independent human annotation; binding and terminal pose do not establish recognition accuracy or post-stop holding.
 
 \paragraph{Deployment scope.}
 Each object uses separate weights. Simulation uses RGB pose for cube and noisy simulator pose otherwise; hardware uses RGB pose. Hardware results do not establish unseen-object transfer or isolate perception gains. Real-camera pose accuracy remains unmeasured. Hosted-model changes limit reproducibility; service-eligible rates do not measure end-to-end availability.
 
 \section{Conclusion}
-AIMI connects language-guided visual exploration to continuous in-hand manipulation. New observations guide target identification while local controllers adjust motion. Cube studies support fresh visual feedback and joint correction during reasoning. Evaluations cover six simulated objects, two languages, and four physical objects with \HardwareAimiSuccess\% success over 80 hardware trials.
+AIMI connects language-guided visual exploration to continuous in-hand manipulation. Controlled studies distinguish fresh visual evidence, inspection action selection and local control during reasoning. The pig comparison supports adaptive inspection over the prescribed sweep; the cube comparison remains inconclusive. Evaluations cover six simulated objects, two languages, and four physical objects with \HardwareAimiSuccess\% success over 80 hardware trials.
