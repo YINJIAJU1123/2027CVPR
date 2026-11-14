@@ -5,7 +5,7 @@ We organize the evidence around visual exploration (Q3), control during reasonin
 \subsection{Setup and reporting}
 \label{sec:setup}
 \paragraph{Objects and systems.}
-Simulation uses Revo3 assets in Isaac Lab 3.0/Newton. Q1 covers a cube, die, duck, hedgehog, pig and milk carton. Instructions request one of six surface letters or a die dot count, each with a fixed face-up reference orientation. Rule maps Qwen3-VL-4B-Instruct outputs to discrete skills; Fine-tuned adapts the same backbone to predict continuous goal vectors~\cite{qwen3vl}. Cube systems share the frozen RGB pose estimator, goal bank, student and stopping rule. Other objects use separate students and noisy simulator pose; AIMI adds calibrated completion correction. The VLM baselines omit the extra control actors and follow fixed inspections when the target is unreadable. Q1 compares these complete systems; Q2 and Q3 hold non-intervened components fixed within each study.
+Simulation uses Revo3 assets in Isaac Lab 3.0/Newton. Q1 covers a cube, die, duck, hedgehog, pig and milk carton. Instructions request one of six surface letters or a die dot count, each with a fixed face-up reference orientation. Rule maps Qwen3-VL-4B-Instruct outputs to discrete skills; Fine-tuned adapts the same backbone to predict continuous goal vectors~\cite{qwen3vl}. Cube systems share the frozen RGB pose estimator, goal bank, student and stopping rule. Other objects use separate students and noisy simulator pose; AIMI adds calibrated completion correction. The VLM baselines omit the extra control actors and follow fixed inspections when the target is not directly identifiable from the initial observation. Q1 compares these complete systems; Q2 and Q3 hold non-intervened components fixed within each study.
 
 \paragraph{Timing and completion.}
 Cube trials allow up to six agent calls over 120 seconds of simulated control at 30~Hz; other objects use 20~Hz. Replies cannot take effect before inference completes, and physics continues during model latency. Simulation runs slower than real time, so these rates are not hardware-speed measurements. The cube stopping check runs at 3~Hz and requires target binding, no pending request or inspection, and measured orientation error at most 0.16 radians. It may terminate without an explicit agent stop action. Independent scoring requires the correct binding, true full-quaternion error at most 0.16 radians at stop, and no drop. There is no extra holding period. Non-cube methods use the same scoring tolerance with object-specific stopping rules. Exact timing, drop boundaries and scoring equations are in the supplement; Q4 gives the physical-hand criterion.
@@ -32,11 +32,11 @@ Condition & Success & \% & Drops & Calls\\
 \multicolumn{5}{l}{\textbf{(c) Inspection policy: cube}}\\
 \InspectionPolicyRows
 \midrule
-\multicolumn{5}{l}{\textbf{(c) Inspection policy: pig follow-up}}\\
+\multicolumn{5}{l}{\textbf{(d) Inspection policy: pig follow-up}}\\
 \PigInspectionPolicyRows
 \bottomrule
 \end{tabular}
-\caption{\textbf{Q3: visual evidence and inspection choices.} Each comparison schedules 40 pairs. (a,b) use cube; (a) excludes one service-affected pair and reuses Q2's initial feedback subset. (b) changes only agent RGB. (c) changes inspection direction/duration within each object system; the objects are not pooled. (b,c) have no exclusions. Drops/calls include all trials.}
+\caption{\textbf{Q3: visual evidence and inspection choices.} Each comparison schedules 40 pairs. (a,b) use cube; (a) excludes one service-affected pair and reuses Q2's initial feedback subset. (b) changes only agent RGB. (c,d) change inspection direction/duration within each object system; the objects are not pooled. (b--d) have no exclusions. Drops/calls include all trials.}
 \label{tab:q3-feedback}
 \label{tab:feedback}
 \label{tab:image-refresh}

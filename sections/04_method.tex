@@ -21,20 +21,14 @@ We fit the projection and recurrent policy to frozen-teacher actions using a DAg
 
 \subsection{Agentic visual exploration}
 \label{sec:exploration}
-The agent receives the instruction, current image, executed-action history and measured-state summaries, and returns an action: inspect, reorient, verify, stop, or abstain. State summaries include estimated skill-relative errors and current binding/request status, but no true pose or correctness label. We validate replies before applying them. Inspection selects a skill to obtain another view; target binding selects the motor goal for presentation (Fig.~\ref{fig:search-component}).
+The agent receives the instruction, current image, executed-action history and measured-state summaries, and returns an action: inspect, reorient, verify, stop, or abstain. State summaries include estimated skill-relative errors and current binding/request status, but no true pose or correctness label. We validate replies before applying them. Inspection selects a skill to obtain another view; target binding selects the motor goal for presentation.
 
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=0.96\columnwidth]{figures/imported/aimi_exploration.pdf}
-\caption{\textbf{Agentic visual exploration.} New observations guide inspection, target binding and presentation. Reference crops illustrate the sequence in simulation; physical-hand image slots remain open.}
-\label{fig:search-component}
-\end{figure}
 
 The agent chooses inspection and reorientation durations of 10--90 control steps. Later images reveal the effect of these actions and support the next decision. Action duration is distinct from model latency. Only one request can be pending, and the current skill remains active until a valid reply changes it. Invalid replies never select an oracle target. This loop lets the hand gather evidence before committing to a presentation goal, while control continues between decisions.
 
 \subsection{Continuous control during and after reasoning}
 \label{sec:wait}
-The agent chooses goals at irregular intervals, but the hand needs commands at every control step. We therefore place local controllers around the adapted student. A sensor encoder and a goal encoder feed a fusion layer that predicts command corrections (Fig.~\ref{fig:controller-component}). Sensor features include proprioception, measured pose, the student's recurrent state and proposal, pose-fitting error, and binding and request status.
+The agent chooses goals at irregular intervals, but the hand needs commands at every control step. We therefore place local controllers around the adapted student. A sensor encoder and a goal encoder feed a fusion layer that predicts command corrections. Sensor features include proprioception, measured pose, the student's recurrent state and proposal, pose-fitting error, and binding and request status.
 
 \paragraph{Waiting and execution commands.}
 The waiting actor also receives the pose and command recorded when the request began, called the \emph{request anchor}, and elapsed waiting time. It predicts a speed logit $r_t$ and joint correction values $v_t$. With normalized current joints $\bar q_t$ and clipped student targets $\bar u_t$, the command is
@@ -49,12 +43,6 @@ The waiting actor also receives the pose and command recorded when the request b
 \end{align}
 When no request is pending, a separate execution actor supplies $v_t$ at full proposal speed. Zero waiting-actor outputs recover fixed slowing with coefficient 0.15. Joint correction can also change command direction, which scalar slowing alone cannot do. The underlying joint mapping and smoothing remain unchanged.
 
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=0.96\columnwidth]{figures/imported/aimi_controller.pdf}
-\caption{\textbf{Continuous local control.} Sensor features and the active goal-bank vector condition joint correction. The waiting controller also adjusts command speed. Empty slots are reserved for physical-hand images.}
-\label{fig:controller-component}
-\end{figure}
 
 \paragraph{Teacher-supervised correction.}
 The frozen teacher supplies holding actions for the request anchor during waiting and actions toward the active goal during execution. We train each actor against these labels with a penalty on its correction $\delta_\phi=0.35\tanh(v_t)$:
