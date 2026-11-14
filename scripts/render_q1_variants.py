@@ -19,7 +19,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'data/inhand4_completed_20261103/q1_all_objects.json'
 CONFIG = ROOT / 'figures/q1_style.json'
-LABELS = ['Rule', 'Fine-tuned', 'AIMI']
+LABELS = ['Rule', 'Fine-tuned', 'REVEAL']
 STYLES = {
     'A': ('Slate & coral', ['#C4CFDC', '#829CB8', '#D37778']),
     'B': ('Sage & teal', ['#D6DED5', '#A3C9B7', '#38867B']),

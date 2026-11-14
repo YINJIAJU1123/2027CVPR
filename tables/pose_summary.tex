@@ -1,15 +1,16 @@
 \begin{table}[!htbp]
 \centering\small
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{lrrr}
 \toprule
-Estimator & \multicolumn{2}{c}{Pose recall (\%) $\uparrow$} & Invalid $\downarrow$\\
-\cmidrule(lr){2-3}
- & 10\,mm / 10$^\circ$ & 5\,mm / 5$^\circ$ & \\
+ & \multicolumn{2}{c}{Simulation} & Real\\
+\cmidrule(lr){2-3}\cmidrule(lr){4-4}
+Estimator & 10\,mm / 10$^\circ$ & 5\,mm / 5$^\circ$ & 10\,mm / 10$^\circ$\\
 \midrule
-RGB & 37.53 & 14.63 & 69\\
-\textbf{RGB-D} & \textbf{64.73} & \textbf{47.56} & \textbf{1}\\
+ViserDex-style & 37.53 & 14.63 & 40.7\\
+\textbf{Ours} & \textbf{64.73} & \textbf{47.56} & \textbf{87.3}\\
 \bottomrule
 \end{tabular}
-\caption{\textbf{Q4: independent pose estimation.} Recall requires both errors below the listed thresholds. All 6,144 simulated observations remain in the denominator, including invalid predictions. Evaluation uses ideal masks and virtual depth.}
+\caption{\textbf{Q4: pose recall (\%) on the cube under hand occlusion.} Recall requires both errors below the listed thresholds. Simulation: 6,144 frames, including camera pitches up to $105^\circ$. Real: 1,000 frames, scored against a multi-view FoundationPose reference.}
 \label{tab:pose-summary}
 \end{table}

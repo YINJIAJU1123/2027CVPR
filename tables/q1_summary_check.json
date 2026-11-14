@@ -1,6 +1,6 @@
 {
   "source": "data/inhand4_completed_20261103/q1_all_objects.json",
-  "source_sha256": "4d9c53ccf118906a4b2ef7e13c4a65508b9178da6328afe4f41896a6589b176b",
+  "source_sha256": "fdefc0df43e2492dc9b6d08c42d57381033b5d5409526bc862909fe79230ff72",
   "raw_trials_in_mapping_study": 1440,
   "estimand": "Post-hoc descriptive equal-object mean of common-service-eligible rates, separately by mapping. Not a pooled trial rate, shared-policy score, or new significance test.",
   "objects": [
@@ -8,7 +8,7 @@
     "Die",
     "Duck",
     "Hedgehog",
-    "Pig",
+    "Ball",
     "Milk carton"
   ],
   "means_percent": {

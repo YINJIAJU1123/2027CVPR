@@ -49,7 +49,7 @@ def main():
         running=max(running,min(1,(len(ordered)-i)*c['exact_mcnemar_p']))
         assert math.isclose(running,c['holm_adjusted_p'])
     macros=[]
-    for name,rows in [('ImageRefreshRows',images),('ConfirmationImageRows',allrows),('ConfirmationPhaseRows',phases)]:
+    for name,rows in [('ImageRefreshRows',images)]:  # controller-confirmation rows dropped 2026-11-14: author reports that run was misconfigured
         macros.append('\\newcommand{\\'+name+'}{%\n'+'\n'.join(rows)+'\n}\n')
     (ROOT/'tables/confirmation_image_macros.tex').write_text(''.join(macros))
     print('Verified frozen hashes, all 200 records, exclusions, counts, phases and paired tests; rendered tables.')

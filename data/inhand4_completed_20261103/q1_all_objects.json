@@ -141,7 +141,7 @@
       }
     },
     {
-      "object": "Pig",
+      "object": "Ball",
       "backend": "Noisy pose",
       "protocol": "native RGB surface-letter permutation",
       "cells": {

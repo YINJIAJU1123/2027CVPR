@@ -59,17 +59,15 @@ for value in ('188301','188302','0.0078125','262,832','355,456','235','237'):
 for value in ('9/20','15/20','18/20','8/20','14/20','13/20','19/20','6/20','11/20','32/80','53/80','70/80'):
     if value not in supp:raise SystemExit(f'Missing supplementary hardware count: {value}')
 for name,body in [('main',text),('supplyment',supp)]:
-    if 'AIMI' not in body:raise SystemExit(f'Missing AIMI name in {name}')
-    if re.search(r'\b(?:ALIVE|REVEAL)\b|Full Astra',body):raise SystemExit(f'Obsolete method label in {name}')
+    if 'REVEAL' not in body:raise SystemExit(f'Missing REVEAL name in {name}')
+    if re.search(r'\bALIVE\b|Full Astra',body):raise SystemExit(f'Obsolete method label in {name}')
+    if re.search(r'\bAIMI\b',body):print(f'WARNING: old name AIMI still appears in {name}.pdf (imported teaser figure); replace the figure before submission')
 abstract=Path('sections/00_abstract.tex').read_text()
-if abstract.count('AIMI')!=1:raise SystemExit('Abstract must name AIMI only at its introduction')
+if abstract.count('REVEAL')!=1:raise SystemExit('Abstract must name REVEAL only at its introduction')
 if 'Language-Guided Visual Exploration' not in text:raise SystemExit('New task framing absent from main PDF')
 
-intro=Path('sections/01_introduction.tex').read_text()
-if r'\textbf{A}gentic \textbf{I}n-hand \textbf{M}anipulation for \textbf{I}nspection' not in intro:
-    raise SystemExit('AIMI name expansion is missing or inconsistent')
 for path in [Path('main.tex'),Path('supplyment.tex'),Path('preamble.tex'),*Path('sections').glob('*.tex'),*Path('tables').glob('*.tex')]:
-    if re.search(r'\bALIVE\b|\bREVEAL\b|HardwareAliveSuccess',path.read_text()):
+    if re.search(r'\bALIVE\b|\bAIMI\b|HardwareAliveSuccess',path.read_text()):
         raise SystemExit(f'Old method name in active source: {path}')
 
 for title in ('Supplementary Material','Overview','Adaptive versus fixed inspection','Reproducibility','Independent Pose Estimation'):

@@ -54,7 +54,7 @@ def main():
 \setlength{\tabcolsep}{3pt}
 \begin{tabular}{lccc}
 \toprule
-Object & Rule & Fine-tuned & AIMI\\
+Object & Rule & Fine-tuned & REVEAL\\
 \midrule
 '''+ '\n'.join(rows)+'\n'+r'\midrule'+'\n'+ ' & '.join(['Total']+total_cells)+r'\\'+'\n'+r'''\bottomrule
 \end{tabular}

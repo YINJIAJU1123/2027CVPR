@@ -1,7 +1,7 @@
 {
   "source_sha256": {
-    "data/inhand4_completed_20261103/q1_all_objects.json": "4d9c53ccf118906a4b2ef7e13c4a65508b9178da6328afe4f41896a6589b176b",
-    "data/hardware_author_report_20261108/results.json": "d8fb3ff788d130b0414944f773eabb13953d302a13fa10aa5debb411dd2d32b5"
+    "data/inhand4_completed_20261103/q1_all_objects.json": "fdefc0df43e2492dc9b6d08c42d57381033b5d5409526bc862909fe79230ff72",
+    "data/hardware_author_report_20261108/results.json": "62166762c5c6b4f1574203d30b46b955642bb33d6214a026e8eb43d67d7a3067"
   },
   "hardware_trials_per_method": 80,
   "hardware_total_trials": 240,

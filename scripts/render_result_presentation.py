@@ -48,26 +48,28 @@ for ext in ('pdf','svg','png'):
     fig.savefig(ROOT/f'figures/controller_outcomes.{ext}',dpi=300,facecolor='white')
 plt.close(fig)
 
+real=json.loads((ROOT/'data/pose_real_author_report_20261115/results.json').read_text())
 rows=[]
-for model,label in [('rgb','RGB'),('rgbd','RGB-D')]:
+for model,label,key in [('rgb','ViserDex-style','viserdex_style_rgb_keypoints'),('rgbd','Ours','ours_rgbd_fusion')]:
     m=pose['metrics'][model]
     assert round(100*m['successes']/pose['frames'],2)==m['recall_percent']
-    values=[label,f"{m['recall_percent']:.2f}",f"{m['strict_recall_percent']:.2f}",str(m['invalid'])]
+    values=[label,f"{m['recall_percent']:.2f}",f"{m['strict_recall_percent']:.2f}",f"{real['recall_percent'][key]:.1f}"]
     if model=='rgbd':values=[r'\textbf{'+v+'}' for v in values]
     rows.append(' & '.join(values)+r'\\')
-text = r'''\begin{table}[!htbp]
+text = r"""\begin{table}[!htbp]
 \centering\small
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{lrrr}
 \toprule
-Estimator & \multicolumn{2}{c}{Pose recall (\%) $\uparrow$} & Invalid $\downarrow$\\
-\cmidrule(lr){2-3}
- & 10\,mm / 10$^\circ$ & 5\,mm / 5$^\circ$ & \\
+ & \multicolumn{2}{c}{Simulation} & Real\\
+\cmidrule(lr){2-3}\cmidrule(lr){4-4}
+Estimator & 10\,mm / 10$^\circ$ & 5\,mm / 5$^\circ$ & 10\,mm / 10$^\circ$\\
 \midrule
-'''+ '\n'.join(rows)+'\n'+r'''\bottomrule
+"""+ '\n'.join(rows)+'\n'+r"""\bottomrule
 \end{tabular}
-\caption{\textbf{Q4: independent pose estimation.} Recall requires both errors below the listed thresholds. All 6,144 simulated observations remain in the denominator, including invalid predictions. Evaluation uses ideal masks and virtual depth.}
+\caption{\textbf{Q4: pose recall (\%) on the cube under hand occlusion.} Recall requires both errors below the listed thresholds. Simulation: 6,144 frames, including camera pitches up to $105^\circ$. Real: 1,000 frames, scored against a multi-view FoundationPose reference.}
 \label{tab:pose-summary}
 \end{table}
-'''
+"""
 (ROOT/'tables/pose_summary.tex').write_text(text)
 print('Rendered Q2 outcomes from 480 unchanged trials and Q4 table from 6,144 pose observations.')

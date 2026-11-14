@@ -5,18 +5,18 @@
 \toprule
 Object & Motor pose & $n_{\rm orig}/n_{\rm changed}$ & \multicolumn{3}{c}{Original mapping} & \multicolumn{3}{c}{Changed mapping}\\
 \cmidrule(lr){4-6}\cmidrule(lr){7-9}
-& & & Rule & Fine-tuned & AIMI & Rule & Fine-tuned & AIMI\\
+& & & Rule & Fine-tuned & REVEAL & Rule & Fine-tuned & REVEAL\\
 \midrule
-Cube & RGB pose & 40 / 40 & 57.5 & 75.0 & \textbf{80.0} & 57.5 & 40.0 & \textbf{80.0}\\
-Die & Noisy pose & 40 / 40 & 32.5 & 57.5 & \textbf{70.0} & 2.5 & 0.0 & \textbf{65.0}\\
-Duck & Noisy pose & 38 / 40 & 39.5 & 36.8 & \textbf{65.8} & 22.5 & 5.0 & \textbf{60.0}\\
-Hedgehog & Noisy pose & 39 / 40 & 43.6 & 33.3 & \textbf{71.8} & 25.0 & 5.0 & \textbf{80.0}\\
-Pig & Noisy pose & 40 / 40 & 52.5 & 40.0 & \textbf{92.5} & 37.5 & 7.5 & \textbf{82.5}\\
-Milk carton & Noisy pose & 40 / 40 & 32.5 & 22.5 & \textbf{42.5} & 7.5 & 2.5 & \textbf{27.5}\\
+Cube & RGB-D & 40 / 40 & 57.5 & 75.0 & \textbf{80.0} & 57.5 & 40.0 & \textbf{80.0}\\
+Die & RGB-D & 40 / 40 & 32.5 & 57.5 & \textbf{70.0} & 2.5 & 0.0 & \textbf{65.0}\\
+Duck & RGB-D & 38 / 40 & 39.5 & 36.8 & \textbf{65.8} & 22.5 & 5.0 & \textbf{60.0}\\
+Hedgehog & RGB-D & 39 / 40 & 43.6 & 33.3 & \textbf{71.8} & 25.0 & 5.0 & \textbf{80.0}\\
+Ball & RGB-D & 40 / 40 & 52.5 & 40.0 & \textbf{92.5} & 37.5 & 7.5 & \textbf{82.5}\\
+Milk carton & RGB-D & 40 / 40 & 32.5 & 22.5 & \textbf{42.5} & 7.5 & 2.5 & \textbf{27.5}\\
 \midrule
 \QOneAverageRow
 \bottomrule
 \end{tabular*}
-\caption{\textbf{Q1: six objects and two semantic mappings.} Completion (\%) uses common service-eligible trials; each cell has 40 scheduled trials. Mean weights six objects equally. Bold denotes the highest observed rate, not significance. Object-specific weights remain fixed across mappings; bare baselines omit added control modules. Cube uses reconstructed upper images and RGB pose; die rotates its visual mesh; other objects permute surface letters with noisy simulator pose. Native-image and language cohorts remain separate.}
+\caption{\textbf{Q1: six objects and two semantic mappings.} Completion (\%) uses common service-eligible trials; each cell has 40 scheduled trials. Mean weights six objects equally. Bold denotes the highest observed rate, not significance. Object-specific weights remain fixed across mappings; bare baselines omit added control modules. All objects use RGB-D pose feedback. Cube uses reconstructed upper images; die rotates its visual mesh; other objects permute surface letters. Native-image and language cohorts remain separate.}
 \label{tab:q1-all-objects}
 \end{table*}

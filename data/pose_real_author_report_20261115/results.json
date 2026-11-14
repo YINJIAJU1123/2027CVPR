@@ -1,0 +1,13 @@
+{
+  "study": "Q4 real-image pose evaluation (cube)",
+  "reported_on": "2026-11-15",
+  "provenance": "Author-reported aggregate; no per-frame records supplied.",
+  "object": "cube",
+  "frames": 1000,
+  "collection": "Several clips recorded while the hand rotates the cube",
+  "cameras": "Three Intel RealSense D405: one test camera, two reference cameras",
+  "reference": "FoundationPose on the two reference cameras, transformed to the test-camera frame with calibrated extrinsics; frames on which the two references differ by more than 5 mm or 5 degrees are discarded; remaining poses averaged (quaternion average for rotation)",
+  "criterion": "translation error < 10 mm and rotation error < 10 degrees relative to the reference",
+  "recall_percent": {"viserdex_style_rgb_keypoints": 40.7, "ours_rgbd_fusion": 87.3},
+  "baseline": "ViserDex-style RGB keypoint estimator trained from the same source as ours"
+}
