@@ -1,0 +1,128 @@
+{
+  "status": "completed_candidate_rejected",
+  "trials": 160,
+  "actual_model_calls": 0,
+  "formal_trials": 0,
+  "candidate_deployed": false,
+  "retain_original_execution_controller": true,
+  "methods": {
+    "original_execution": {
+      "trials": 40,
+      "success": 29,
+      "drops": 3,
+      "reasons": {
+        "success": 29,
+        "horizon": 4,
+        "false_stop": 3,
+        "drop": 3,
+        "abstain": 1
+      }
+    },
+    "fixed_residual_gate": {
+      "trials": 40,
+      "success": 27,
+      "drops": 7,
+      "reasons": {
+        "success": 27,
+        "drop": 7,
+        "horizon": 2,
+        "false_stop": 3,
+        "abstain": 1
+      }
+    },
+    "phase_fixed_residual_gate": {
+      "trials": 40,
+      "success": 24,
+      "drops": 10,
+      "reasons": {
+        "success": 24,
+        "drop": 10,
+        "false_stop": 4,
+        "horizon": 1,
+        "abstain": 1
+      }
+    },
+    "learned_residual_gate": {
+      "trials": 40,
+      "success": 26,
+      "drops": 5,
+      "reasons": {
+        "success": 26,
+        "horizon": 4,
+        "false_stop": 4,
+        "drop": 5,
+        "abstain": 1
+      }
+    }
+  },
+  "per_seed": {
+    "original_execution": {
+      "185481": {
+        "trials": 20,
+        "success": 16,
+        "drops": 1
+      },
+      "185482": {
+        "trials": 20,
+        "success": 13,
+        "drops": 2
+      }
+    },
+    "fixed_residual_gate": {
+      "185481": {
+        "trials": 20,
+        "success": 14,
+        "drops": 4
+      },
+      "185482": {
+        "trials": 20,
+        "success": 13,
+        "drops": 3
+      }
+    },
+    "phase_fixed_residual_gate": {
+      "185481": {
+        "trials": 20,
+        "success": 14,
+        "drops": 5
+      },
+      "185482": {
+        "trials": 20,
+        "success": 10,
+        "drops": 5
+      }
+    },
+    "learned_residual_gate": {
+      "185481": {
+        "trials": 20,
+        "success": 15,
+        "drops": 2
+      },
+      "185482": {
+        "trials": 20,
+        "success": 11,
+        "drops": 3
+      }
+    }
+  },
+  "gates": {
+    "success_vs_original": {
+      "required_at_least": 32,
+      "actual": 26,
+      "passed": false
+    },
+    "success_vs_best_fixed": {
+      "required_at_least": 29,
+      "actual": 26,
+      "passed": false
+    },
+    "drops_vs_best_control": {
+      "required_at_most": 3,
+      "actual": 5,
+      "passed": false
+    }
+  },
+  "reason": "The fixed preregistered development gate failed. Preserve the existing native Astra system and all negative outcomes.",
+  "verification_sha256": "0a2220ec171635f6dd2a94d2079417b141f34f0f26e7dfeea1b45d3181680cda",
+  "archive_sha256": "f1dcf416f4a665e68d7ad97b7ed4ac7836defd62e38ea721ffd8b2c09e1258a2"
+}

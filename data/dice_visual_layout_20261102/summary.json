@@ -1,0 +1,169 @@
+{
+  "complete": true,
+  "development": false,
+  "paired_astra_comparisons": {
+    "identity": {
+      "vlm": {
+        "n": 40,
+        "a_only": 11,
+        "b_only": 6,
+        "mcnemar_exact_two_sided_p": 0.332305908203125
+      },
+      "rule": {
+        "n": 40,
+        "a_only": 18,
+        "b_only": 3,
+        "mcnemar_exact_two_sided_p": 0.0014896392822265625
+      }
+    },
+    "permuted": {
+      "vlm": {
+        "n": 40,
+        "a_only": 26,
+        "b_only": 0,
+        "mcnemar_exact_two_sided_p": 2.9802322387695312e-08
+      },
+      "rule": {
+        "n": 40,
+        "a_only": 25,
+        "b_only": 0,
+        "mcnemar_exact_two_sided_p": 5.960464477539063e-08
+      }
+    }
+  },
+  "paired_identity_vs_permuted": {
+    "astra": {
+      "n": 40,
+      "a_only": 4,
+      "b_only": 2,
+      "mcnemar_exact_two_sided_p": 0.6875
+    },
+    "vlm": {
+      "n": 40,
+      "a_only": 23,
+      "b_only": 0,
+      "mcnemar_exact_two_sided_p": 2.384185791015625e-07
+    },
+    "rule": {
+      "n": 40,
+      "a_only": 13,
+      "b_only": 1,
+      "mcnemar_exact_two_sided_p": 0.0018310546875
+    }
+  },
+  "release_sha256": "71fdbef410b8001a550a7132910e6026bb18c88d3ca8d0ac5c175148674ff0bd",
+  "six_cell_excluded_cases": [],
+  "layouts": {
+    "identity": {
+      "astra": {
+        "raw_trials": 40,
+        "raw_success": 28,
+        "matched_trials": 40,
+        "matched_success": 28,
+        "wilson_95": [
+          0.5456998118185507,
+          0.8192515477025347
+        ],
+        "six_cell_common_trials": 40,
+        "six_cell_common_success": 28,
+        "reasons": {
+          "drop": 10,
+          "false_stop": 2,
+          "success": 28
+        }
+      },
+      "vlm": {
+        "raw_trials": 40,
+        "raw_success": 23,
+        "matched_trials": 40,
+        "matched_success": 23,
+        "wilson_95": [
+          0.42195068541991065,
+          0.7149060744004962
+        ],
+        "six_cell_common_trials": 40,
+        "six_cell_common_success": 23,
+        "reasons": {
+          "drop": 4,
+          "false_stop": 7,
+          "horizon": 6,
+          "success": 23
+        }
+      },
+      "rule": {
+        "raw_trials": 40,
+        "raw_success": 13,
+        "matched_trials": 40,
+        "matched_success": 13,
+        "wilson_95": [
+          0.200845022317827,
+          0.47982253810122333
+        ],
+        "six_cell_common_trials": 40,
+        "six_cell_common_success": 13,
+        "reasons": {
+          "drop": 5,
+          "false_stop": 16,
+          "horizon": 6,
+          "success": 13
+        }
+      }
+    },
+    "permuted": {
+      "astra": {
+        "raw_trials": 40,
+        "raw_success": 26,
+        "matched_trials": 40,
+        "matched_success": 26,
+        "wilson_95": [
+          0.49505880837257693,
+          0.7786547112682372
+        ],
+        "six_cell_common_trials": 40,
+        "six_cell_common_success": 26,
+        "reasons": {
+          "abstain": 5,
+          "drop": 8,
+          "false_stop": 1,
+          "success": 26
+        }
+      },
+      "vlm": {
+        "raw_trials": 40,
+        "raw_success": 0,
+        "matched_trials": 40,
+        "matched_success": 0,
+        "wilson_95": [
+          0.0,
+          0.08762160119728664
+        ],
+        "six_cell_common_trials": 40,
+        "six_cell_common_success": 0,
+        "reasons": {
+          "drop": 4,
+          "false_stop": 31,
+          "horizon": 5
+        }
+      },
+      "rule": {
+        "raw_trials": 40,
+        "raw_success": 1,
+        "matched_trials": 40,
+        "matched_success": 1,
+        "wilson_95": [
+          0.0044268315026814095,
+          0.1288136896347409
+        ],
+        "six_cell_common_trials": 40,
+        "six_cell_common_success": 1,
+        "reasons": {
+          "drop": 3,
+          "false_stop": 32,
+          "horizon": 4,
+          "success": 1
+        }
+      }
+    }
+  },
+  "scope": "Frozen-weight layout-shift study, separate from native main; no pose estimator"
+}

@@ -1,0 +1,20 @@
+{
+  "source_study": "waiting_feedback_ablation_20261101_v3",
+  "raw_trials_total": 200,
+  "source_result_sha256": {
+    "initial_observations.json": "2a21727c74172b9d895fbcb86067a5858973de1787c18d7346849e113b0c471b",
+    "study_summary.json": "4022d5514bef035a54801fb0a425726571917e2cb124b35734b8a0b206dc4e3f",
+    "evidence.json": "25034afe7d5719dc050580991f3b0f66fd7bec1fe51d12f5add3d9ab164aaa14",
+    "feedback_mechanisms.json": "78b43cc9a0a2d9e9fd44eda0584fe1be221a14eaced95c6b9e2d4bd3728331f7",
+    "timing.json": "96ee6cc2ccee36213a54a386fdd8c113489aa3bc2f14faeb3b54b558ad746ba9",
+    "summary.json": "009d5e4a4f973dbb65695ac8364342fca4b4fd2ff804d01c53871da4256454fd",
+    "trials.json": "0dde77bdf3908466d159bd246ddbc26632a83770d37a61c8b24a70a643ed8fd1",
+    "action_scope.json": "50606e876503fb7f2ac80314b46fdc5ae2cd39074d2b18811a6a0844bb5f9e86"
+  },
+  "source_release_sha256": "ebcd3ddd33e640ddabf1681f5a6b2b5be912005a17d04bda06efb63e8d2868a5",
+  "auditor_sha256": "84d06f7f0a5b3f225018c2c0d584f3daf276728ce8dc5cdb71ef787268304764",
+  "export_script_sha256": "1746321cbfb51f92ee82b33a6654082811a4e707debe7706c362fdb6304b882b",
+  "no_original_or_prior_followup_trials_replaced": true,
+  "no_model_calls_by_export": true,
+  "scope": "Two separate symmetric eligibility panels share the full-feedback/full-waiting condition. Do not count that condition twice."
+}

@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname -- "${BASH_SOURCE[0]}")/.."
+python3 scripts/render_q3_inspection.py --check
+python3 scripts/render_q3_pig_inspection.py --check
+for log in build/main/main.log build/supplyment/supplyment.log; do
+    [[ -s "$log" ]] || { printf 'Missing build log: %s\n' "$log" >&2; exit 1; }
+done
+if rg -n 'undefined references|Citation .+ undefined|LaTeX Error|Overfull \\hbox|Overfull \\vbox|multiply defined|destination with the same identifier' build/main/main.log build/supplyment/supplyment.log; then
+    exit 1
+fi
+${PDFINFO:-pdfinfo} output/pdf/main.pdf | head -18
+${PDFINFO:-pdfinfo} output/pdf/supplyment.pdf | head -18
+
+python3 - <<'PY_CHECK'
+import os,re,subprocess,json,hashlib,unicodedata
+from pathlib import Path
+
+def read_pdf(name):
+    extracted=subprocess.check_output([os.environ.get('PDFTOTEXT','/usr/bin/pdftotext'),'-layout',f'output/pdf/{name}.pdf','-'],text=True)
+    return unicodedata.normalize('NFKC',extracted)
+text=read_pdf('main')
+pages=text.rstrip('\f').split('\f')
+llm=[i for i,page in enumerate(pages) if re.search(r'^\s*(?:\d+\s+)?LLM Usage Statement(?:\s{2,}|$)',page,re.M)]
+refs=[i for i,page in enumerate(pages) if re.search(r'^\s*(?:\d+\s+)?References(?:\s{2,}|$)',page,re.M)]
+if not llm or not refs:raise SystemExit('LLM statement or references boundary missing')
+if llm[0]>8:raise SystemExit('Main body exceeds eight pages')
+if text.index('LLM Usage Statement')>text.index('References'):raise SystemExit('LLM statement must precede references')
+if 'Supplementary Material' in text:raise SystemExit('Main paper unexpectedly contains the supplement')
+for value in ('92.5','72.5','37/40','29/40','0.0078','15.2','26.1'):
+    if value not in text:raise SystemExit(f'Missing Pig Q3 result: {value}')
+if 'unadjusted' not in text:raise SystemExit('Object-specific Q3 tests must disclose unadjusted p values')
+if 'ViserDex' in Path('sections/00_abstract.tex').read_text():raise SystemExit('Abstract still mentions ViserDex')
+for value in ('37.53','64.73'):
+    if value not in text:raise SystemExit(f'Missing Q4 pose result: {value}')
+hardware_path=Path('data/hardware_author_report_20261108/results.json')
+hardware=json.loads(hardware_path.read_text())
+derived=json.loads(Path('figures/task_success_values.json').read_text())
+if derived['source_sha256'][str(hardware_path)]!=hashlib.sha256(hardware_path.read_bytes()).hexdigest():
+    raise SystemExit('Hardware figure was not regenerated from current counts')
+for method in hardware['method_order']:
+    successes=sum(o['successes'][method] for o in hardware['objects'])
+    if successes!=derived['hardware_successes'][method]:
+        raise SystemExit(f'Hardware count mismatch: {method}')
+    rate=100*successes/(hardware['trials_per_object_method']*len(hardware['objects']))
+    if rate!=derived['hardware_rates_percent'][method]:
+        raise SystemExit(f'Hardware rate mismatch: {method}')
+for value in ('87.5','66.25','70/80','240'):
+    if value not in text:raise SystemExit(f'Missing hardware result: {value}')
+experiment_source=Path('sections/05_experiments.tex').read_text()
+if r'\input{tables/hardware_results}' not in experiment_source or 'fig:hardware-success' in experiment_source:
+    raise SystemExit('Q4 hardware results must use the requested native table')
+for value in ('9/20','15/20','18/20','8/20','14/20','13/20','19/20','6/20','11/20','32/80','53/80','70/80'):
+    if value not in text:raise SystemExit(f'Missing main-paper hardware table count: {value}')
+
+supp=read_pdf('supplyment')
+for value in ('188301','188302','0.0078125','262,832','355,456','235','237'):
+    if value not in supp:raise SystemExit(f'Missing Pig protocol or cost: {value}')
+for value in ('9/20','15/20','18/20','8/20','14/20','13/20','19/20','6/20','11/20','32/80','53/80','70/80'):
+    if value not in supp:raise SystemExit(f'Missing supplementary hardware count: {value}')
+for name,body in [('main',text),('supplyment',supp)]:
+    if 'REVEAL' not in body:raise SystemExit(f'Missing REVEAL name in {name}')
+    if re.search(r'\bALIVE\b|Full Astra',body):raise SystemExit(f'Obsolete method label in {name}')
+    if re.search(r'\bAIMI\b',body):print(f'WARNING: old name AIMI still appears in {name}.pdf (imported teaser figure); replace the figure before submission')
+abstract=Path('sections/00_abstract.tex').read_text()
+if abstract.count('REVEAL')!=1:raise SystemExit('Abstract must name REVEAL only at its introduction')
+if 'Language-Guided Visual Exploration' not in text:raise SystemExit('New task framing absent from main PDF')
+
+for path in [Path('main.tex'),Path('supplyment.tex'),Path('preamble.tex'),*Path('sections').glob('*.tex'),*Path('tables').glob('*.tex')]:
+    if re.search(r'\bALIVE\b|\bAIMI\b|HardwareAliveSuccess',path.read_text()):
+        raise SystemExit(f'Old method name in active source: {path}')
+
+for title in ('Supplementary Material','Overview','Adaptive versus fixed inspection','Reproducibility','Independent Pose Estimation'):
+    if title not in supp:raise SystemExit(f'Missing supplementary section: {title}')
+if '\\input{sections/supplement_content}' in Path('main.tex').read_text():
+    raise SystemExit('Main source still includes supplement')
+print(f'Main body: {llm[0]} pages before LLM statement and references')
+print(f'Standalone main: {len(pages)} pages; standalone supplement: {len(supp.rstrip(chr(12)).split(chr(12)))} pages')
+PY_CHECK

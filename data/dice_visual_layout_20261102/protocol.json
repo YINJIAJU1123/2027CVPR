@@ -1,0 +1,961 @@
+{
+  "source_repository_commit": "6d83535ccc65af7305faffdce2ac0c3ec1e88ba4",
+  "format": "dice_visual_layout_v2",
+  "benchmark": {
+    "episodes_per_method": 40,
+    "seeds": [
+      186701,
+      186702
+    ],
+    "horizon_s": 120,
+    "control_hz": 20,
+    "stop_hz": 3,
+    "maximum_calls": 6,
+    "true_success_angle_rad": 0.16,
+    "success": "correct semantic binding and full canonical orientation at autonomous stop",
+    "drop": ">=0.24m from nominal grasp reference",
+    "service_exclusions": "service error or request latency >120 seconds, matched case exclusion across all methods",
+    "no_physics_pause": true,
+    "sim_pose": "published noisy sensors; no estimator",
+    "mapping": "paired native pip visual-layout rotation; explicit physical skill identifiers; scorer-only layout table",
+    "bare_vlm_modules": "none; raw measured-pose stop gate",
+    "astra_modules": [
+      "learned speed and residual maintenance",
+      "learned calibrated completion correction",
+      "feedback observations and replanning"
+    ]
+  },
+  "selection": {
+    "formal_trials_used": 0,
+    "development_evidence": {
+      "outputs/dice_visual_study_20261102/development_v3/identity_astra/result.json": "d6a71166b7390e028909d2869dc8506b675124868c9016a7118b165a0a9e9890",
+      "outputs/dice_visual_study_20261102/development_v3/identity_astra/manifest.json": "dd4d11ccfdaf807fe32ed00861a79a33168b68f2bfbd6c5d2b6f5d050e40b1e5",
+      "outputs/dice_visual_study_20261102/development_v3/identity_astra/episodes.jsonl": "a720723a130b598d730e42a1ef37d017b2d590a83aba8ac8ceca5324331a02f0",
+      "outputs/dice_visual_study_20261102/development_v3/identity_astra/action_interface.jsonl": "1971fe4b28dbfa938134881be5bfe4d884832507ed32d335d8f0f3dc138021a7",
+      "outputs/dice_visual_study_20261102/development_v3/identity_vlm/result.json": "0e259004cceae75a97251ea8b98681527964de37bc701987bcab4541cabca5b5",
+      "outputs/dice_visual_study_20261102/development_v3/identity_vlm/manifest.json": "463cca42abfdf4b2568244631f0cca4fcbb06f6a1044367de74c75563c6466ac",
+      "outputs/dice_visual_study_20261102/development_v3/identity_vlm/episodes.jsonl": "ee5131192a4620ddca3e29fdb3a948b8550b0de5a954f560f96e260c34ce80dc",
+      "outputs/dice_visual_study_20261102/development_v3/identity_vlm/action_interface.jsonl": "ebed9b27435c9791289908964b8f1c0cbbd52c15c55ad66e5f755ad690ada894",
+      "outputs/dice_visual_study_20261102/development_v3/identity_rule/result.json": "1fdc77bc4da084d4b002f2dda21cb668d1d9e05b388bb2d5cb827c84476abcce",
+      "outputs/dice_visual_study_20261102/development_v3/identity_rule/manifest.json": "212e6d296783ed9f4a510f31f5e86eefcaba2d0f57013bbe490b917f10108326",
+      "outputs/dice_visual_study_20261102/development_v3/identity_rule/episodes.jsonl": "e175c951d740483cfcc5d638613d267f74cc5bc571dec102506985821b50208b",
+      "outputs/dice_visual_study_20261102/development_v3/identity_rule/action_interface.jsonl": "dca89b66f22b6f2c15a4a93c4eb879745abe6cbe6f38f19ca7f81945bf139dcd",
+      "outputs/dice_visual_study_20261102/development_v3/permuted_astra/result.json": "36bfbc2766b39cf25f4d8d86709b6338a697f07eb9d576c3eade611677595bbb",
+      "outputs/dice_visual_study_20261102/development_v3/permuted_astra/manifest.json": "432d955b82b5001fe47a1cd8a3d9adea2b0056337db9375321e3e20f98e6b0f5",
+      "outputs/dice_visual_study_20261102/development_v3/permuted_astra/episodes.jsonl": "e0650ca8577b50c31487634cfb988ed90cd5c57ffc588b35d9a2466b25c3d045",
+      "outputs/dice_visual_study_20261102/development_v3/permuted_astra/action_interface.jsonl": "46e1947bb52b6bbf98038bf8c0803d52bb81d26c1b83ae4638e9f8df850c280a",
+      "outputs/dice_visual_study_20261102/development_v3/permuted_vlm/result.json": "687bdda92271c7c48a3a85840db6109304ba13491c39abbd36c2f0c3f5889abd",
+      "outputs/dice_visual_study_20261102/development_v3/permuted_vlm/manifest.json": "9c854cb37839eb33feafc8cc1843d2bf06000642549a4164d4639288e3f432b4",
+      "outputs/dice_visual_study_20261102/development_v3/permuted_vlm/episodes.jsonl": "1a162c5e655d3c4340dccf4095a58a7c836f3e7fd5e859b39bbb337d6d0ee8f3",
+      "outputs/dice_visual_study_20261102/development_v3/permuted_vlm/action_interface.jsonl": "0d5b1f6ef1673d96b363f6f017511e972f023531c92dabac09295eea058a65b4",
+      "outputs/dice_visual_study_20261102/development_v3/permuted_rule/result.json": "32084aee982ccdba084dad48c72caf85213fb052b87184f1e0dd2cfc018fcb15",
+      "outputs/dice_visual_study_20261102/development_v3/permuted_rule/manifest.json": "276da856722e74a20fcb1cdb6f9e4610cea104f1e8e8bcff6337792f7e67eb5d",
+      "outputs/dice_visual_study_20261102/development_v3/permuted_rule/episodes.jsonl": "23ee8b2a5ebaea1b07513a523e772e4ca45e88ef892106dc818dd344e5172ac9",
+      "outputs/dice_visual_study_20261102/development_v3/permuted_rule/action_interface.jsonl": "3064e0fbadd8c6e3af2e6e91483fc956612d89956c8b8d5595391993b6fb41fb"
+    },
+    "live_continuous_commands_verified": 2,
+    "physics_admission_sha256": "39404070c55810a3100e8942d1348f7ada907fb4402e944ddb932e090db45451",
+    "gate": "Execution and interface validity only; no success-rate threshold"
+  },
+  "cases_by_layout": {
+    "identity": [
+      {
+        "index": 0,
+        "base_seed": 186701,
+        "episode": 0,
+        "trial_seed": 186701000,
+        "goal_index": 0,
+        "requested_pips": 1,
+        "instruction": "Turn the die so that the face with 1 dots faces upward."
+      },
+      {
+        "index": 1,
+        "base_seed": 186701,
+        "episode": 1,
+        "trial_seed": 186701001,
+        "goal_index": 1,
+        "requested_pips": 2,
+        "instruction": "Turn the die so that the face with 2 dots faces upward."
+      },
+      {
+        "index": 2,
+        "base_seed": 186701,
+        "episode": 2,
+        "trial_seed": 186701002,
+        "goal_index": 2,
+        "requested_pips": 3,
+        "instruction": "Turn the die so that the face with 3 dots faces upward."
+      },
+      {
+        "index": 3,
+        "base_seed": 186701,
+        "episode": 3,
+        "trial_seed": 186701003,
+        "goal_index": 3,
+        "requested_pips": 4,
+        "instruction": "Turn the die so that the face with 4 dots faces upward."
+      },
+      {
+        "index": 4,
+        "base_seed": 186701,
+        "episode": 4,
+        "trial_seed": 186701004,
+        "goal_index": 4,
+        "requested_pips": 5,
+        "instruction": "Turn the die so that the face with 5 dots faces upward."
+      },
+      {
+        "index": 5,
+        "base_seed": 186701,
+        "episode": 5,
+        "trial_seed": 186701005,
+        "goal_index": 5,
+        "requested_pips": 6,
+        "instruction": "Turn the die so that the face with 6 dots faces upward."
+      },
+      {
+        "index": 6,
+        "base_seed": 186701,
+        "episode": 6,
+        "trial_seed": 186701006,
+        "goal_index": 0,
+        "requested_pips": 1,
+        "instruction": "Turn the die so that the face with 1 dots faces upward."
+      },
+      {
+        "index": 7,
+        "base_seed": 186701,
+        "episode": 7,
+        "trial_seed": 186701007,
+        "goal_index": 1,
+        "requested_pips": 2,
+        "instruction": "Turn the die so that the face with 2 dots faces upward."
+      },
+      {
+        "index": 8,
+        "base_seed": 186701,
+        "episode": 8,
+        "trial_seed": 186701008,
+        "goal_index": 2,
+        "requested_pips": 3,
+        "instruction": "Turn the die so that the face with 3 dots faces upward."
+      },
+      {
+        "index": 9,
+        "base_seed": 186701,
+        "episode": 9,
+        "trial_seed": 186701009,
+        "goal_index": 3,
+        "requested_pips": 4,
+        "instruction": "Turn the die so that the face with 4 dots faces upward."
+      },
+      {
+        "index": 10,
+        "base_seed": 186701,
+        "episode": 10,
+        "trial_seed": 186701010,
+        "goal_index": 4,
+        "requested_pips": 5,
+        "instruction": "Turn the die so that the face with 5 dots faces upward."
+      },
+      {
+        "index": 11,
+        "base_seed": 186701,
+        "episode": 11,
+        "trial_seed": 186701011,
+        "goal_index": 5,
+        "requested_pips": 6,
+        "instruction": "Turn the die so that the face with 6 dots faces upward."
+      },
+      {
+        "index": 12,
+        "base_seed": 186701,
+        "episode": 12,
+        "trial_seed": 186701012,
+        "goal_index": 0,
+        "requested_pips": 1,
+        "instruction": "Turn the die so that the face with 1 dots faces upward."
+      },
+      {
+        "index": 13,
+        "base_seed": 186701,
+        "episode": 13,
+        "trial_seed": 186701013,
+        "goal_index": 1,
+        "requested_pips": 2,
+        "instruction": "Turn the die so that the face with 2 dots faces upward."
+      },
+      {
+        "index": 14,
+        "base_seed": 186701,
+        "episode": 14,
+        "trial_seed": 186701014,
+        "goal_index": 2,
+        "requested_pips": 3,
+        "instruction": "Turn the die so that the face with 3 dots faces upward."
+      },
+      {
+        "index": 15,
+        "base_seed": 186701,
+        "episode": 15,
+        "trial_seed": 186701015,
+        "goal_index": 3,
+        "requested_pips": 4,
+        "instruction": "Turn the die so that the face with 4 dots faces upward."
+      },
+      {
+        "index": 16,
+        "base_seed": 186701,
+        "episode": 16,
+        "trial_seed": 186701016,
+        "goal_index": 4,
+        "requested_pips": 5,
+        "instruction": "Turn the die so that the face with 5 dots faces upward."
+      },
+      {
+        "index": 17,
+        "base_seed": 186701,
+        "episode": 17,
+        "trial_seed": 186701017,
+        "goal_index": 5,
+        "requested_pips": 6,
+        "instruction": "Turn the die so that the face with 6 dots faces upward."
+      },
+      {
+        "index": 18,
+        "base_seed": 186701,
+        "episode": 18,
+        "trial_seed": 186701018,
+        "goal_index": 0,
+        "requested_pips": 1,
+        "instruction": "Turn the die so that the face with 1 dots faces upward."
+      },
+      {
+        "index": 19,
+        "base_seed": 186701,
+        "episode": 19,
+        "trial_seed": 186701019,
+        "goal_index": 1,
+        "requested_pips": 2,
+        "instruction": "Turn the die so that the face with 2 dots faces upward."
+      },
+      {
+        "index": 20,
+        "base_seed": 186702,
+        "episode": 0,
+        "trial_seed": 186702000,
+        "goal_index": 2,
+        "requested_pips": 3,
+        "instruction": "Turn the die so that the face with 3 dots faces upward."
+      },
+      {
+        "index": 21,
+        "base_seed": 186702,
+        "episode": 1,
+        "trial_seed": 186702001,
+        "goal_index": 3,
+        "requested_pips": 4,
+        "instruction": "Turn the die so that the face with 4 dots faces upward."
+      },
+      {
+        "index": 22,
+        "base_seed": 186702,
+        "episode": 2,
+        "trial_seed": 186702002,
+        "goal_index": 4,
+        "requested_pips": 5,
+        "instruction": "Turn the die so that the face with 5 dots faces upward."
+      },
+      {
+        "index": 23,
+        "base_seed": 186702,
+        "episode": 3,
+        "trial_seed": 186702003,
+        "goal_index": 5,
+        "requested_pips": 6,
+        "instruction": "Turn the die so that the face with 6 dots faces upward."
+      },
+      {
+        "index": 24,
+        "base_seed": 186702,
+        "episode": 4,
+        "trial_seed": 186702004,
+        "goal_index": 0,
+        "requested_pips": 1,
+        "instruction": "Turn the die so that the face with 1 dots faces upward."
+      },
+      {
+        "index": 25,
+        "base_seed": 186702,
+        "episode": 5,
+        "trial_seed": 186702005,
+        "goal_index": 1,
+        "requested_pips": 2,
+        "instruction": "Turn the die so that the face with 2 dots faces upward."
+      },
+      {
+        "index": 26,
+        "base_seed": 186702,
+        "episode": 6,
+        "trial_seed": 186702006,
+        "goal_index": 2,
+        "requested_pips": 3,
+        "instruction": "Turn the die so that the face with 3 dots faces upward."
+      },
+      {
+        "index": 27,
+        "base_seed": 186702,
+        "episode": 7,
+        "trial_seed": 186702007,
+        "goal_index": 3,
+        "requested_pips": 4,
+        "instruction": "Turn the die so that the face with 4 dots faces upward."
+      },
+      {
+        "index": 28,
+        "base_seed": 186702,
+        "episode": 8,
+        "trial_seed": 186702008,
+        "goal_index": 4,
+        "requested_pips": 5,
+        "instruction": "Turn the die so that the face with 5 dots faces upward."
+      },
+      {
+        "index": 29,
+        "base_seed": 186702,
+        "episode": 9,
+        "trial_seed": 186702009,
+        "goal_index": 5,
+        "requested_pips": 6,
+        "instruction": "Turn the die so that the face with 6 dots faces upward."
+      },
+      {
+        "index": 30,
+        "base_seed": 186702,
+        "episode": 10,
+        "trial_seed": 186702010,
+        "goal_index": 0,
+        "requested_pips": 1,
+        "instruction": "Turn the die so that the face with 1 dots faces upward."
+      },
+      {
+        "index": 31,
+        "base_seed": 186702,
+        "episode": 11,
+        "trial_seed": 186702011,
+        "goal_index": 1,
+        "requested_pips": 2,
+        "instruction": "Turn the die so that the face with 2 dots faces upward."
+      },
+      {
+        "index": 32,
+        "base_seed": 186702,
+        "episode": 12,
+        "trial_seed": 186702012,
+        "goal_index": 2,
+        "requested_pips": 3,
+        "instruction": "Turn the die so that the face with 3 dots faces upward."
+      },
+      {
+        "index": 33,
+        "base_seed": 186702,
+        "episode": 13,
+        "trial_seed": 186702013,
+        "goal_index": 3,
+        "requested_pips": 4,
+        "instruction": "Turn the die so that the face with 4 dots faces upward."
+      },
+      {
+        "index": 34,
+        "base_seed": 186702,
+        "episode": 14,
+        "trial_seed": 186702014,
+        "goal_index": 4,
+        "requested_pips": 5,
+        "instruction": "Turn the die so that the face with 5 dots faces upward."
+      },
+      {
+        "index": 35,
+        "base_seed": 186702,
+        "episode": 15,
+        "trial_seed": 186702015,
+        "goal_index": 5,
+        "requested_pips": 6,
+        "instruction": "Turn the die so that the face with 6 dots faces upward."
+      },
+      {
+        "index": 36,
+        "base_seed": 186702,
+        "episode": 16,
+        "trial_seed": 186702016,
+        "goal_index": 0,
+        "requested_pips": 1,
+        "instruction": "Turn the die so that the face with 1 dots faces upward."
+      },
+      {
+        "index": 37,
+        "base_seed": 186702,
+        "episode": 17,
+        "trial_seed": 186702017,
+        "goal_index": 1,
+        "requested_pips": 2,
+        "instruction": "Turn the die so that the face with 2 dots faces upward."
+      },
+      {
+        "index": 38,
+        "base_seed": 186702,
+        "episode": 18,
+        "trial_seed": 186702018,
+        "goal_index": 2,
+        "requested_pips": 3,
+        "instruction": "Turn the die so that the face with 3 dots faces upward."
+      },
+      {
+        "index": 39,
+        "base_seed": 186702,
+        "episode": 19,
+        "trial_seed": 186702019,
+        "goal_index": 3,
+        "requested_pips": 4,
+        "instruction": "Turn the die so that the face with 4 dots faces upward."
+      }
+    ],
+    "permuted": [
+      {
+        "index": 0,
+        "base_seed": 186701,
+        "episode": 0,
+        "trial_seed": 186701000,
+        "goal_index": 0,
+        "requested_pips": 2,
+        "instruction": "Turn the die so that the face with 2 dots faces upward."
+      },
+      {
+        "index": 1,
+        "base_seed": 186701,
+        "episode": 1,
+        "trial_seed": 186701001,
+        "goal_index": 1,
+        "requested_pips": 4,
+        "instruction": "Turn the die so that the face with 4 dots faces upward."
+      },
+      {
+        "index": 2,
+        "base_seed": 186701,
+        "episode": 2,
+        "trial_seed": 186701002,
+        "goal_index": 2,
+        "requested_pips": 6,
+        "instruction": "Turn the die so that the face with 6 dots faces upward."
+      },
+      {
+        "index": 3,
+        "base_seed": 186701,
+        "episode": 3,
+        "trial_seed": 186701003,
+        "goal_index": 3,
+        "requested_pips": 1,
+        "instruction": "Turn the die so that the face with 1 dots faces upward."
+      },
+      {
+        "index": 4,
+        "base_seed": 186701,
+        "episode": 4,
+        "trial_seed": 186701004,
+        "goal_index": 4,
+        "requested_pips": 3,
+        "instruction": "Turn the die so that the face with 3 dots faces upward."
+      },
+      {
+        "index": 5,
+        "base_seed": 186701,
+        "episode": 5,
+        "trial_seed": 186701005,
+        "goal_index": 5,
+        "requested_pips": 5,
+        "instruction": "Turn the die so that the face with 5 dots faces upward."
+      },
+      {
+        "index": 6,
+        "base_seed": 186701,
+        "episode": 6,
+        "trial_seed": 186701006,
+        "goal_index": 0,
+        "requested_pips": 2,
+        "instruction": "Turn the die so that the face with 2 dots faces upward."
+      },
+      {
+        "index": 7,
+        "base_seed": 186701,
+        "episode": 7,
+        "trial_seed": 186701007,
+        "goal_index": 1,
+        "requested_pips": 4,
+        "instruction": "Turn the die so that the face with 4 dots faces upward."
+      },
+      {
+        "index": 8,
+        "base_seed": 186701,
+        "episode": 8,
+        "trial_seed": 186701008,
+        "goal_index": 2,
+        "requested_pips": 6,
+        "instruction": "Turn the die so that the face with 6 dots faces upward."
+      },
+      {
+        "index": 9,
+        "base_seed": 186701,
+        "episode": 9,
+        "trial_seed": 186701009,
+        "goal_index": 3,
+        "requested_pips": 1,
+        "instruction": "Turn the die so that the face with 1 dots faces upward."
+      },
+      {
+        "index": 10,
+        "base_seed": 186701,
+        "episode": 10,
+        "trial_seed": 186701010,
+        "goal_index": 4,
+        "requested_pips": 3,
+        "instruction": "Turn the die so that the face with 3 dots faces upward."
+      },
+      {
+        "index": 11,
+        "base_seed": 186701,
+        "episode": 11,
+        "trial_seed": 186701011,
+        "goal_index": 5,
+        "requested_pips": 5,
+        "instruction": "Turn the die so that the face with 5 dots faces upward."
+      },
+      {
+        "index": 12,
+        "base_seed": 186701,
+        "episode": 12,
+        "trial_seed": 186701012,
+        "goal_index": 0,
+        "requested_pips": 2,
+        "instruction": "Turn the die so that the face with 2 dots faces upward."
+      },
+      {
+        "index": 13,
+        "base_seed": 186701,
+        "episode": 13,
+        "trial_seed": 186701013,
+        "goal_index": 1,
+        "requested_pips": 4,
+        "instruction": "Turn the die so that the face with 4 dots faces upward."
+      },
+      {
+        "index": 14,
+        "base_seed": 186701,
+        "episode": 14,
+        "trial_seed": 186701014,
+        "goal_index": 2,
+        "requested_pips": 6,
+        "instruction": "Turn the die so that the face with 6 dots faces upward."
+      },
+      {
+        "index": 15,
+        "base_seed": 186701,
+        "episode": 15,
+        "trial_seed": 186701015,
+        "goal_index": 3,
+        "requested_pips": 1,
+        "instruction": "Turn the die so that the face with 1 dots faces upward."
+      },
+      {
+        "index": 16,
+        "base_seed": 186701,
+        "episode": 16,
+        "trial_seed": 186701016,
+        "goal_index": 4,
+        "requested_pips": 3,
+        "instruction": "Turn the die so that the face with 3 dots faces upward."
+      },
+      {
+        "index": 17,
+        "base_seed": 186701,
+        "episode": 17,
+        "trial_seed": 186701017,
+        "goal_index": 5,
+        "requested_pips": 5,
+        "instruction": "Turn the die so that the face with 5 dots faces upward."
+      },
+      {
+        "index": 18,
+        "base_seed": 186701,
+        "episode": 18,
+        "trial_seed": 186701018,
+        "goal_index": 0,
+        "requested_pips": 2,
+        "instruction": "Turn the die so that the face with 2 dots faces upward."
+      },
+      {
+        "index": 19,
+        "base_seed": 186701,
+        "episode": 19,
+        "trial_seed": 186701019,
+        "goal_index": 1,
+        "requested_pips": 4,
+        "instruction": "Turn the die so that the face with 4 dots faces upward."
+      },
+      {
+        "index": 20,
+        "base_seed": 186702,
+        "episode": 0,
+        "trial_seed": 186702000,
+        "goal_index": 2,
+        "requested_pips": 6,
+        "instruction": "Turn the die so that the face with 6 dots faces upward."
+      },
+      {
+        "index": 21,
+        "base_seed": 186702,
+        "episode": 1,
+        "trial_seed": 186702001,
+        "goal_index": 3,
+        "requested_pips": 1,
+        "instruction": "Turn the die so that the face with 1 dots faces upward."
+      },
+      {
+        "index": 22,
+        "base_seed": 186702,
+        "episode": 2,
+        "trial_seed": 186702002,
+        "goal_index": 4,
+        "requested_pips": 3,
+        "instruction": "Turn the die so that the face with 3 dots faces upward."
+      },
+      {
+        "index": 23,
+        "base_seed": 186702,
+        "episode": 3,
+        "trial_seed": 186702003,
+        "goal_index": 5,
+        "requested_pips": 5,
+        "instruction": "Turn the die so that the face with 5 dots faces upward."
+      },
+      {
+        "index": 24,
+        "base_seed": 186702,
+        "episode": 4,
+        "trial_seed": 186702004,
+        "goal_index": 0,
+        "requested_pips": 2,
+        "instruction": "Turn the die so that the face with 2 dots faces upward."
+      },
+      {
+        "index": 25,
+        "base_seed": 186702,
+        "episode": 5,
+        "trial_seed": 186702005,
+        "goal_index": 1,
+        "requested_pips": 4,
+        "instruction": "Turn the die so that the face with 4 dots faces upward."
+      },
+      {
+        "index": 26,
+        "base_seed": 186702,
+        "episode": 6,
+        "trial_seed": 186702006,
+        "goal_index": 2,
+        "requested_pips": 6,
+        "instruction": "Turn the die so that the face with 6 dots faces upward."
+      },
+      {
+        "index": 27,
+        "base_seed": 186702,
+        "episode": 7,
+        "trial_seed": 186702007,
+        "goal_index": 3,
+        "requested_pips": 1,
+        "instruction": "Turn the die so that the face with 1 dots faces upward."
+      },
+      {
+        "index": 28,
+        "base_seed": 186702,
+        "episode": 8,
+        "trial_seed": 186702008,
+        "goal_index": 4,
+        "requested_pips": 3,
+        "instruction": "Turn the die so that the face with 3 dots faces upward."
+      },
+      {
+        "index": 29,
+        "base_seed": 186702,
+        "episode": 9,
+        "trial_seed": 186702009,
+        "goal_index": 5,
+        "requested_pips": 5,
+        "instruction": "Turn the die so that the face with 5 dots faces upward."
+      },
+      {
+        "index": 30,
+        "base_seed": 186702,
+        "episode": 10,
+        "trial_seed": 186702010,
+        "goal_index": 0,
+        "requested_pips": 2,
+        "instruction": "Turn the die so that the face with 2 dots faces upward."
+      },
+      {
+        "index": 31,
+        "base_seed": 186702,
+        "episode": 11,
+        "trial_seed": 186702011,
+        "goal_index": 1,
+        "requested_pips": 4,
+        "instruction": "Turn the die so that the face with 4 dots faces upward."
+      },
+      {
+        "index": 32,
+        "base_seed": 186702,
+        "episode": 12,
+        "trial_seed": 186702012,
+        "goal_index": 2,
+        "requested_pips": 6,
+        "instruction": "Turn the die so that the face with 6 dots faces upward."
+      },
+      {
+        "index": 33,
+        "base_seed": 186702,
+        "episode": 13,
+        "trial_seed": 186702013,
+        "goal_index": 3,
+        "requested_pips": 1,
+        "instruction": "Turn the die so that the face with 1 dots faces upward."
+      },
+      {
+        "index": 34,
+        "base_seed": 186702,
+        "episode": 14,
+        "trial_seed": 186702014,
+        "goal_index": 4,
+        "requested_pips": 3,
+        "instruction": "Turn the die so that the face with 3 dots faces upward."
+      },
+      {
+        "index": 35,
+        "base_seed": 186702,
+        "episode": 15,
+        "trial_seed": 186702015,
+        "goal_index": 5,
+        "requested_pips": 5,
+        "instruction": "Turn the die so that the face with 5 dots faces upward."
+      },
+      {
+        "index": 36,
+        "base_seed": 186702,
+        "episode": 16,
+        "trial_seed": 186702016,
+        "goal_index": 0,
+        "requested_pips": 2,
+        "instruction": "Turn the die so that the face with 2 dots faces upward."
+      },
+      {
+        "index": 37,
+        "base_seed": 186702,
+        "episode": 17,
+        "trial_seed": 186702017,
+        "goal_index": 1,
+        "requested_pips": 4,
+        "instruction": "Turn the die so that the face with 4 dots faces upward."
+      },
+      {
+        "index": 38,
+        "base_seed": 186702,
+        "episode": 18,
+        "trial_seed": 186702018,
+        "goal_index": 2,
+        "requested_pips": 6,
+        "instruction": "Turn the die so that the face with 6 dots faces upward."
+      },
+      {
+        "index": 39,
+        "base_seed": 186702,
+        "episode": 19,
+        "trial_seed": 186702019,
+        "goal_index": 3,
+        "requested_pips": 1,
+        "instruction": "Turn the die so that the face with 1 dots faces upward."
+      }
+    ]
+  },
+  "limitations": [
+    "Frozen native-layout VLM weights; zero-shot layout shift, not shuffled-layout training.",
+    "Shared prompt change is controlled by the paired identity arm.",
+    "Visual mesh rotation changes small shape details as well as dots; collision stays unchanged.",
+    "Two seeds and one fixed unseen permutation; not arbitrary-layout generalization."
+  ],
+  "interfaces": {
+    "identity": {
+      "astra": {
+        "provider": "astra",
+        "maintenance": "learned",
+        "semantic_sha256": "446814afa670d73ded0a2962584f056fd955173ef7f98c3b9611bf95f1e677ef",
+        "study_source_sha256": {
+          "scripts/dice_visual_study/evaluate_agent.py": "701ee0bef2997454136c5d673583e1c3e7adda86851a6f858de5b1ae56a68fb0",
+          "scripts/dice_visual_study/study_runtime.py": "ea1665394ed3536e1d22360f8eaee9d9b52f9c729f950338479dd5acf908b392",
+          "scripts/dice_visual_study/semantic.py": "446814afa670d73ded0a2962584f056fd955173ef7f98c3b9611bf95f1e677ef",
+          "scripts/dice_visual_study/aggregate_layout.py": "2c53e8e8454ef915122c74a73e9df8a73faa010b966a03735e68ee51ffc5671e",
+          "scripts/dice_visual_study/probe_runtime.py": "e2a3898c93e66d65b58f39794decbd1acb8c2886c8c984c03245c3797907a312",
+          "scripts/dice_visual_study/freeze_study.py": "a4f90430f6cb57fabc34876b26fd7c32718000dc9ae284ab367ce7e9f085d2aa",
+          "scripts/dice_visual_study/vlm_service.py": "04d0001a81a462589d569a6fc2d048063a8ff22941ffe00b17fa05934351e3fa",
+          "scripts/dice_visual_study/build_assets.py": "b79422a1ce176ddccbc2872fb520da36b5f601c895f87e796bd188f9f8a6dcef",
+          "scripts/dice_visual_study/astra_bridge.py": "e24354a65c7e1f41a0c560b09ad76ff8d8da3591d4d2602c1a3795ac8c40d5a5",
+          "scripts/dice_visual_study/start_profile_bridge.py": "a4bb8503d0348e790059847172176adaad8d352182f00c756a0fb68cc0f47491"
+        },
+        "stop_mode": "learned",
+        "stop_hz": 3,
+        "call_limit": 6,
+        "development": false,
+        "release_sha256": "71fdbef410b8001a550a7132910e6026bb18c88d3ca8d0ac5c175148674ff0bd",
+        "success": "correct semantic binding AND true full canonical orientation error <= .16 rad at autonomous stop",
+        "service_exclusion": "transport error or request latency >120s; matched across methods; never drop or wrong instruction",
+        "actor_sha256": "5722fd5d18550992bdf1238299d7c3a778bcc7251c1bc9e1b3b8774a4cfa122b",
+        "stop_sha256": "f9d4e0bfaaf4f9eb00a5ea53858669b1f6fb7992cf24d832469f2a90421f964d"
+      },
+      "vlm": {
+        "provider": "vlm",
+        "maintenance": "continue",
+        "semantic_sha256": "446814afa670d73ded0a2962584f056fd955173ef7f98c3b9611bf95f1e677ef",
+        "study_source_sha256": {
+          "scripts/dice_visual_study/evaluate_agent.py": "701ee0bef2997454136c5d673583e1c3e7adda86851a6f858de5b1ae56a68fb0",
+          "scripts/dice_visual_study/study_runtime.py": "ea1665394ed3536e1d22360f8eaee9d9b52f9c729f950338479dd5acf908b392",
+          "scripts/dice_visual_study/semantic.py": "446814afa670d73ded0a2962584f056fd955173ef7f98c3b9611bf95f1e677ef",
+          "scripts/dice_visual_study/aggregate_layout.py": "2c53e8e8454ef915122c74a73e9df8a73faa010b966a03735e68ee51ffc5671e",
+          "scripts/dice_visual_study/probe_runtime.py": "e2a3898c93e66d65b58f39794decbd1acb8c2886c8c984c03245c3797907a312",
+          "scripts/dice_visual_study/freeze_study.py": "a4f90430f6cb57fabc34876b26fd7c32718000dc9ae284ab367ce7e9f085d2aa",
+          "scripts/dice_visual_study/vlm_service.py": "04d0001a81a462589d569a6fc2d048063a8ff22941ffe00b17fa05934351e3fa",
+          "scripts/dice_visual_study/build_assets.py": "b79422a1ce176ddccbc2872fb520da36b5f601c895f87e796bd188f9f8a6dcef",
+          "scripts/dice_visual_study/astra_bridge.py": "e24354a65c7e1f41a0c560b09ad76ff8d8da3591d4d2602c1a3795ac8c40d5a5",
+          "scripts/dice_visual_study/start_profile_bridge.py": "a4bb8503d0348e790059847172176adaad8d352182f00c756a0fb68cc0f47491"
+        },
+        "stop_mode": "measured",
+        "stop_hz": 3,
+        "call_limit": 6,
+        "development": false,
+        "release_sha256": "71fdbef410b8001a550a7132910e6026bb18c88d3ca8d0ac5c175148674ff0bd",
+        "success": "correct semantic binding AND true full canonical orientation error <= .16 rad at autonomous stop",
+        "service_exclusion": "transport error or request latency >120s; matched across methods; never drop or wrong instruction",
+        "actor_sha256": null,
+        "stop_sha256": null
+      },
+      "rule": {
+        "provider": "rule",
+        "maintenance": "continue",
+        "semantic_sha256": "446814afa670d73ded0a2962584f056fd955173ef7f98c3b9611bf95f1e677ef",
+        "study_source_sha256": {
+          "scripts/dice_visual_study/evaluate_agent.py": "701ee0bef2997454136c5d673583e1c3e7adda86851a6f858de5b1ae56a68fb0",
+          "scripts/dice_visual_study/study_runtime.py": "ea1665394ed3536e1d22360f8eaee9d9b52f9c729f950338479dd5acf908b392",
+          "scripts/dice_visual_study/semantic.py": "446814afa670d73ded0a2962584f056fd955173ef7f98c3b9611bf95f1e677ef",
+          "scripts/dice_visual_study/aggregate_layout.py": "2c53e8e8454ef915122c74a73e9df8a73faa010b966a03735e68ee51ffc5671e",
+          "scripts/dice_visual_study/probe_runtime.py": "e2a3898c93e66d65b58f39794decbd1acb8c2886c8c984c03245c3797907a312",
+          "scripts/dice_visual_study/freeze_study.py": "a4f90430f6cb57fabc34876b26fd7c32718000dc9ae284ab367ce7e9f085d2aa",
+          "scripts/dice_visual_study/vlm_service.py": "04d0001a81a462589d569a6fc2d048063a8ff22941ffe00b17fa05934351e3fa",
+          "scripts/dice_visual_study/build_assets.py": "b79422a1ce176ddccbc2872fb520da36b5f601c895f87e796bd188f9f8a6dcef",
+          "scripts/dice_visual_study/astra_bridge.py": "e24354a65c7e1f41a0c560b09ad76ff8d8da3591d4d2602c1a3795ac8c40d5a5",
+          "scripts/dice_visual_study/start_profile_bridge.py": "a4bb8503d0348e790059847172176adaad8d352182f00c756a0fb68cc0f47491"
+        },
+        "stop_mode": "measured",
+        "stop_hz": 3,
+        "call_limit": 6,
+        "development": false,
+        "release_sha256": "71fdbef410b8001a550a7132910e6026bb18c88d3ca8d0ac5c175148674ff0bd",
+        "success": "correct semantic binding AND true full canonical orientation error <= .16 rad at autonomous stop",
+        "service_exclusion": "transport error or request latency >120s; matched across methods; never drop or wrong instruction",
+        "actor_sha256": null,
+        "stop_sha256": null
+      }
+    },
+    "permuted": {
+      "astra": {
+        "provider": "astra",
+        "maintenance": "learned",
+        "semantic_sha256": "446814afa670d73ded0a2962584f056fd955173ef7f98c3b9611bf95f1e677ef",
+        "study_source_sha256": {
+          "scripts/dice_visual_study/evaluate_agent.py": "701ee0bef2997454136c5d673583e1c3e7adda86851a6f858de5b1ae56a68fb0",
+          "scripts/dice_visual_study/study_runtime.py": "ea1665394ed3536e1d22360f8eaee9d9b52f9c729f950338479dd5acf908b392",
+          "scripts/dice_visual_study/semantic.py": "446814afa670d73ded0a2962584f056fd955173ef7f98c3b9611bf95f1e677ef",
+          "scripts/dice_visual_study/aggregate_layout.py": "2c53e8e8454ef915122c74a73e9df8a73faa010b966a03735e68ee51ffc5671e",
+          "scripts/dice_visual_study/probe_runtime.py": "e2a3898c93e66d65b58f39794decbd1acb8c2886c8c984c03245c3797907a312",
+          "scripts/dice_visual_study/freeze_study.py": "a4f90430f6cb57fabc34876b26fd7c32718000dc9ae284ab367ce7e9f085d2aa",
+          "scripts/dice_visual_study/vlm_service.py": "04d0001a81a462589d569a6fc2d048063a8ff22941ffe00b17fa05934351e3fa",
+          "scripts/dice_visual_study/build_assets.py": "b79422a1ce176ddccbc2872fb520da36b5f601c895f87e796bd188f9f8a6dcef",
+          "scripts/dice_visual_study/astra_bridge.py": "e24354a65c7e1f41a0c560b09ad76ff8d8da3591d4d2602c1a3795ac8c40d5a5",
+          "scripts/dice_visual_study/start_profile_bridge.py": "a4bb8503d0348e790059847172176adaad8d352182f00c756a0fb68cc0f47491"
+        },
+        "stop_mode": "learned",
+        "stop_hz": 3,
+        "call_limit": 6,
+        "development": false,
+        "release_sha256": "71fdbef410b8001a550a7132910e6026bb18c88d3ca8d0ac5c175148674ff0bd",
+        "success": "correct semantic binding AND true full canonical orientation error <= .16 rad at autonomous stop",
+        "service_exclusion": "transport error or request latency >120s; matched across methods; never drop or wrong instruction",
+        "actor_sha256": "5722fd5d18550992bdf1238299d7c3a778bcc7251c1bc9e1b3b8774a4cfa122b",
+        "stop_sha256": "f9d4e0bfaaf4f9eb00a5ea53858669b1f6fb7992cf24d832469f2a90421f964d"
+      },
+      "vlm": {
+        "provider": "vlm",
+        "maintenance": "continue",
+        "semantic_sha256": "446814afa670d73ded0a2962584f056fd955173ef7f98c3b9611bf95f1e677ef",
+        "study_source_sha256": {
+          "scripts/dice_visual_study/evaluate_agent.py": "701ee0bef2997454136c5d673583e1c3e7adda86851a6f858de5b1ae56a68fb0",
+          "scripts/dice_visual_study/study_runtime.py": "ea1665394ed3536e1d22360f8eaee9d9b52f9c729f950338479dd5acf908b392",
+          "scripts/dice_visual_study/semantic.py": "446814afa670d73ded0a2962584f056fd955173ef7f98c3b9611bf95f1e677ef",
+          "scripts/dice_visual_study/aggregate_layout.py": "2c53e8e8454ef915122c74a73e9df8a73faa010b966a03735e68ee51ffc5671e",
+          "scripts/dice_visual_study/probe_runtime.py": "e2a3898c93e66d65b58f39794decbd1acb8c2886c8c984c03245c3797907a312",
+          "scripts/dice_visual_study/freeze_study.py": "a4f90430f6cb57fabc34876b26fd7c32718000dc9ae284ab367ce7e9f085d2aa",
+          "scripts/dice_visual_study/vlm_service.py": "04d0001a81a462589d569a6fc2d048063a8ff22941ffe00b17fa05934351e3fa",
+          "scripts/dice_visual_study/build_assets.py": "b79422a1ce176ddccbc2872fb520da36b5f601c895f87e796bd188f9f8a6dcef",
+          "scripts/dice_visual_study/astra_bridge.py": "e24354a65c7e1f41a0c560b09ad76ff8d8da3591d4d2602c1a3795ac8c40d5a5",
+          "scripts/dice_visual_study/start_profile_bridge.py": "a4bb8503d0348e790059847172176adaad8d352182f00c756a0fb68cc0f47491"
+        },
+        "stop_mode": "measured",
+        "stop_hz": 3,
+        "call_limit": 6,
+        "development": false,
+        "release_sha256": "71fdbef410b8001a550a7132910e6026bb18c88d3ca8d0ac5c175148674ff0bd",
+        "success": "correct semantic binding AND true full canonical orientation error <= .16 rad at autonomous stop",
+        "service_exclusion": "transport error or request latency >120s; matched across methods; never drop or wrong instruction",
+        "actor_sha256": null,
+        "stop_sha256": null
+      },
+      "rule": {
+        "provider": "rule",
+        "maintenance": "continue",
+        "semantic_sha256": "446814afa670d73ded0a2962584f056fd955173ef7f98c3b9611bf95f1e677ef",
+        "study_source_sha256": {
+          "scripts/dice_visual_study/evaluate_agent.py": "701ee0bef2997454136c5d673583e1c3e7adda86851a6f858de5b1ae56a68fb0",
+          "scripts/dice_visual_study/study_runtime.py": "ea1665394ed3536e1d22360f8eaee9d9b52f9c729f950338479dd5acf908b392",
+          "scripts/dice_visual_study/semantic.py": "446814afa670d73ded0a2962584f056fd955173ef7f98c3b9611bf95f1e677ef",
+          "scripts/dice_visual_study/aggregate_layout.py": "2c53e8e8454ef915122c74a73e9df8a73faa010b966a03735e68ee51ffc5671e",
+          "scripts/dice_visual_study/probe_runtime.py": "e2a3898c93e66d65b58f39794decbd1acb8c2886c8c984c03245c3797907a312",
+          "scripts/dice_visual_study/freeze_study.py": "a4f90430f6cb57fabc34876b26fd7c32718000dc9ae284ab367ce7e9f085d2aa",
+          "scripts/dice_visual_study/vlm_service.py": "04d0001a81a462589d569a6fc2d048063a8ff22941ffe00b17fa05934351e3fa",
+          "scripts/dice_visual_study/build_assets.py": "b79422a1ce176ddccbc2872fb520da36b5f601c895f87e796bd188f9f8a6dcef",
+          "scripts/dice_visual_study/astra_bridge.py": "e24354a65c7e1f41a0c560b09ad76ff8d8da3591d4d2602c1a3795ac8c40d5a5",
+          "scripts/dice_visual_study/start_profile_bridge.py": "a4bb8503d0348e790059847172176adaad8d352182f00c756a0fb68cc0f47491"
+        },
+        "stop_mode": "measured",
+        "stop_hz": 3,
+        "call_limit": 6,
+        "development": false,
+        "release_sha256": "71fdbef410b8001a550a7132910e6026bb18c88d3ca8d0ac5c175148674ff0bd",
+        "success": "correct semantic binding AND true full canonical orientation error <= .16 rad at autonomous stop",
+        "service_exclusion": "transport error or request latency >120s; matched across methods; never drop or wrong instruction",
+        "actor_sha256": null,
+        "stop_sha256": null
+      }
+    }
+  },
+  "shared_artifact_sha256": {
+    "source_checkpoint": "62f04fa8355b0523ed25d62f2758cf1cca0c02fa532f09c53e6f257eeeaf36ec",
+    "checkpoint": "4c7700c8b520f63f491b54cb8a43abeed95a5d679aefc02cc9fbeb97da6f2f4d",
+    "env_config": "4a2e174593ee7d0e14681e58f97d52e54c5ec2e2cd95f3c8f0fac882c09bfad6",
+    "bank": "57dcd29c1e44a2218f3b96c20085f59993ea0bb816c3747a246353b7948d0198",
+    "assets_manifest": "d870b0f826a418fedb087fa6823906680b7454796e857553eb070aca836dced7"
+  }
+}

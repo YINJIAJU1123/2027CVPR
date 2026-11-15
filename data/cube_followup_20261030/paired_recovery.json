@@ -1,0 +1,69 @@
+{
+  "scope": "Deterministic controlled recovery diagnostic, not autonomous semantic task success; unchanged frozen cube-v1 evaluation.",
+  "plan_sha256": "7c0a3c1c04f085f868dce072bf5d37041395ffd20a7f3e37a6122e62a519443e",
+  "complete": false,
+  "verified_states": 19,
+  "planned_states": 20,
+  "incomplete_or_unavailable_states": [
+    12
+  ],
+  "interpretation": [
+    "First-action comparison starts at exactly matched physics, sensors and recurrent state.",
+    "Student receives the assigned target in both controller conditions; action differences alone do not isolate the explicit controller goal pathway.",
+    "Trajectory differences after the first action also reflect diverging physical states and unequal survival durations.",
+    "Condition comparisons below use only fully matched four-branch states, include all failures, and are provisional until the cohort completes.",
+    "This is a controlled recovery diagnostic, not autonomous semantic success."
+  ],
+  "conditions": {
+    "active": {
+      "branches": 38,
+      "first_action_goal_gap_l2_mean": 2.2718668825508965,
+      "mean_assigned_progress_rad": 1.1949174472522632,
+      "final_within_tolerance_count": 26,
+      "drop_count": 5,
+      "initially_at_target_count": 4,
+      "waiting_drop_count": 0,
+      "execution_drop_count": 5,
+      "waiting_phase_completed_branches": 38,
+      "mean_state_waiting_speed": 0.42558939078419705
+    },
+    "center": {
+      "branches": 38,
+      "first_action_goal_gap_l2_mean": 2.282234974557114,
+      "mean_assigned_progress_rad": 1.3401856265498238,
+      "final_within_tolerance_count": 29,
+      "drop_count": 2,
+      "initially_at_target_count": 4,
+      "waiting_drop_count": 0,
+      "execution_drop_count": 2,
+      "waiting_phase_completed_branches": 38,
+      "mean_state_waiting_speed": 0.4881075581998635
+    }
+  },
+  "paired_differences": {
+    "mean_assigned_progress_rad": {
+      "mean_active_minus_center": -0.14526817929756042,
+      "positive_states": 8,
+      "negative_states": 11,
+      "equal_states": 0
+    },
+    "final_within_tolerance_count": {
+      "mean_active_minus_center": -0.15789473684210525,
+      "positive_states": 3,
+      "negative_states": 5,
+      "equal_states": 11
+    },
+    "drop_count": {
+      "mean_active_minus_center": 0.15789473684210525,
+      "positive_states": 3,
+      "negative_states": 1,
+      "equal_states": 15
+    },
+    "first_action_goal_gap_l2": {
+      "mean_active_minus_center": -0.01036809200621721,
+      "positive_states": 9,
+      "negative_states": 10,
+      "equal_states": 0
+    }
+  }
+}

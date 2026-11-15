@@ -1,0 +1,79 @@
+{
+  "status": "verified_complete_trials",
+  "checked_at_unix": 1793571462.4418087,
+  "release_sha256": "71fdbef410b8001a550a7132910e6026bb18c88d3ca8d0ac5c175148674ff0bd",
+  "formal_complete": true,
+  "cells": {
+    "identity/astra": {
+      "completed_rows": 40,
+      "audited_requests": 116,
+      "continuous_commands": 0,
+      "raw_success": 28,
+      "service_exclusions": 0,
+      "model_calls": 116
+    },
+    "identity/vlm": {
+      "completed_rows": 40,
+      "audited_requests": 148,
+      "continuous_commands": 68,
+      "raw_success": 23,
+      "service_exclusions": 0,
+      "model_calls": 148
+    },
+    "identity/rule": {
+      "completed_rows": 40,
+      "audited_requests": 121,
+      "continuous_commands": 0,
+      "raw_success": 13,
+      "service_exclusions": 0,
+      "model_calls": 121
+    },
+    "permuted/astra": {
+      "completed_rows": 40,
+      "audited_requests": 128,
+      "continuous_commands": 0,
+      "raw_success": 26,
+      "service_exclusions": 0,
+      "model_calls": 128
+    },
+    "permuted/vlm": {
+      "completed_rows": 40,
+      "audited_requests": 142,
+      "continuous_commands": 36,
+      "raw_success": 0,
+      "service_exclusions": 0,
+      "model_calls": 142
+    },
+    "permuted/rule": {
+      "completed_rows": 40,
+      "audited_requests": 136,
+      "continuous_commands": 0,
+      "raw_success": 1,
+      "service_exclusions": 0,
+      "model_calls": 136
+    }
+  },
+  "cross_condition_matched_cases": 40,
+  "source_files_verified": 69,
+  "mapping_recomputed": {
+    "identity": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "permuted": [
+      2,
+      4,
+      6,
+      1,
+      3,
+      5
+    ]
+  },
+  "total_completed_rows": 240,
+  "reset_cases_observed": 40,
+  "interpretation": "All 240 trial records passed independent checks; six-cell aggregate statistics are verified separately."
+}

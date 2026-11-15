@@ -1,0 +1,298 @@
+{
+  "contract": {
+    "model": "gpt-6-astra",
+    "frame_size": 512,
+    "auth_method": "sign_in_with_chatgpt",
+    "api_base_url": "https://api.openai.com/v1",
+    "reasoning_effort": "low",
+    "system_prompt_sha256": "03e8f08233e38c728b37b2637103bbd29bb411981e97819230d58d1237bf2b25",
+    "tools_schema_sha256": "d654b481e29c78d73acce9819fae94778fbf01181f93216ba3f3c50f8a56facc"
+  },
+  "system_prompt": "You supervise a Revo3 dexterous hand performing semantic in-hand reorientation.\nThe object carries six colored surface patches with letters A through F.\nThe fixed motor skill IDs are: 1 red, 2 green, 3 blue, 4 yellow, 5 cyan, 6 purple.\nEach skill brings that colored surface region upward in its canonical pose.\nLetters may be on different colors from training. Read the actual letter-color\nassociation from RGB. Never assume A means red or skill 1, or use alphabetical\norder as a motor mapping. An occluded letter has not been visually observed.\nThe color-to-motor dictionary above is fixed and shared by every method.\nOnly upward goals are supported. No current letter-to-color layout is provided.\nUse inspect_face to try a physical skill and obtain another view, reorient_target\nfor a visually grounded goal, verify_target to maintain it and request new\nevidence, stop to declare completion, or abstain without success.\nTool field number is a motor skill ID. Tool field goal_number encodes the\nrequested letter only: A=1, B=2, C=3, D=4, E=5, F=6. These two fields need not\nbe equal. current_number_skill and bound_number are motor IDs.\nEach step lasts 0.05 seconds. Local orientation-error estimates are noisy,\nnot a success sensor. Stillness does not prove completion. No true object pose\nor task success is supplied. One tool call per response, no joint commands.\nYour stop is independently scored.",
+  "tools_schema": [
+    {
+      "type": "function",
+      "name": "inspect_face",
+      "description": "Obtain a new view.",
+      "strict": true,
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 6
+          },
+          "steps": {
+            "type": "integer",
+            "minimum": 10,
+            "maximum": 90
+          },
+          "evidence": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "number",
+          "steps",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "type": "function",
+      "name": "reorient_target",
+      "description": "Execute the visually grounded upward goal.",
+      "strict": true,
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "goal_number": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 6
+          },
+          "number": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 6
+          },
+          "steps": {
+            "type": "integer",
+            "minimum": 10,
+            "maximum": 90
+          },
+          "evidence": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "goal_number",
+          "number",
+          "steps",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "type": "function",
+      "name": "verify_target",
+      "description": "Maintain the target and gather fresh evidence.",
+      "strict": true,
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "goal_number": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 6
+          },
+          "number": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 6
+          },
+          "evidence": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "goal_number",
+          "number",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "type": "function",
+      "name": "stop",
+      "description": "Declare visual completion.",
+      "strict": true,
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "goal_number": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 6
+          },
+          "number": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 6
+          },
+          "evidence": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "goal_number",
+          "number",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "type": "function",
+      "name": "abstain",
+      "description": "Stop without success.",
+      "strict": true,
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "evidence": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    }
+  ],
+  "runtime": {
+    "task_id": "Isaac-ViserDex-Repose-Revo3-SuperMimic-InhandPig-WujiOffset-HandPose-Hold-v1",
+    "physical_binding": {
+      "source_environment": "outputs/q1_inhand4_20261102/handoff/inhand4_video_checkpoints_20261102/pig/env.source.yaml",
+      "source_environment_sha256": "a87225e01ececa58488acdbd67e1e7df4c070bd9b52601de2506d7199c97b6d5",
+      "contract_sha256": "bdd63b4dd4ff17eb2c2e11e5c9bed79bc7a54a689434a0549e48c7bb0516ae83",
+      "assets": {
+        "robot": {
+          "path": "outputs/q1_inhand4_20261102/repository/source/viserdex/viserdex/assets/generated/revo3_compact_visual_palm/revo3_right_compact_v4/revo3_right_compact_v4.usda",
+          "sha256": "a13e3f0ac0482d88c57a9050b4095fde62cc01e9db5dd6053d6dd19ce8f0c650"
+        },
+        "object": {
+          "path": "outputs/q1_inhand4_20261102/repository/assets/inhand7/objects/pig/object_newton.usda",
+          "sha256": "5c2d3327de64fd88b52e7208b4c861b2e9b05047d434ee9a41f13094c8a40d86"
+        }
+      },
+      "physics": "isaaclab_newton.physics.mjwarp_manager:NewtonMJWarpManager",
+      "step_dt": 0.05,
+      "nconmax": 1536,
+      "njmax": 512
+    },
+    "goal_manifest": {
+      "normals_body": [
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "target_quaternions_world_xyzw": [
+        [
+          0,
+          0.7071067811865476,
+          0,
+          0.7071067811865476
+        ],
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0.7071067811865476,
+          0,
+          0,
+          0.7071067811865476
+        ],
+        [
+          -0.7071067811865476,
+          0,
+          0,
+          0.7071067811865476
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          -0.7071067811865476,
+          0,
+          0.7071067811865476
+        ]
+      ],
+      "cache_sha256": "347dc498699a05549aec1888d30d03e70208c0d85db45488710d8d31e1dacef7",
+      "mapping_status": "physical motor orientations; no visible-label mapping encoded"
+    },
+    "pose_source": "simulator through released noise, bias, failure, jitter and delay model",
+    "noise_config": {
+      "enabled": true,
+      "joint_enabled": true,
+      "joint_noise_std": 0.005,
+      "joint_bias_std": 0.01,
+      "joint_delay_max_steps": 1,
+      "max_period": 3,
+      "jitter_probability": 0.1,
+      "failure_probability": 0.3,
+      "position_noise": 0.012,
+      "position_bias": 0.012,
+      "rotation_noise_deg": 1.0,
+      "rotation_bias_deg": 0.1,
+      "failure_position_extent": 0.15
+    },
+    "explicit_overrides": {
+      "horizon_s": 120,
+      "steps": 2400,
+      "drop_distance_m": 0.24,
+      "success_termination": false,
+      "automatic_goal_resampling": false,
+      "student_clock": "clip(1 - elapsed_steps/400,0,1)",
+      "command_subclass": "honors disabled goal update; no physics override"
+    },
+    "camera": {
+      "eye": [
+        -0.146,
+        0.033,
+        0.878
+      ],
+      "lookat": [
+        0.02,
+        -0.01,
+        0.565
+      ],
+      "size": 512
+    },
+    "inputs": [
+      "physical_history_10x116",
+      "continuous_latent_history_10x768"
+    ]
+  },
+  "immutable_hosted_weights_available": false,
+  "settings_note": "Requested model identifier and low reasoning effort were fixed; immutable provider weights were not exposed."
+}

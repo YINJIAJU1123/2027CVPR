@@ -1,0 +1,35 @@
+Q3 Pig revision and manuscript review (2026-11-12)
+
+Base: latest fetched main 45a6cf6 (AIMI narrative and figure revision).
+Scope: integrate the completed Pig inspection-policy follow-up and its verified evidence;
+review English, align claims across abstract/method/results/discussion, and preserve existing results.
+No new experimental rollouts, no Q1/Q2 outcome changes, no hardware-section changes.
+
+Main changes
+- Separate fresh-observation evidence from inspection-direction/duration selection.
+- Extend the Q3 result table to include Pig; keep Cube and Pig as separate 40-pair comparisons.
+- Retain Cube 38/40 vs 31/40 and its inconclusive exact p=0.0654297.
+- Add Pig 37/40 vs 29/40, with paired counts 29/8/0/3 and unadjusted exact p=0.0078125.
+- Keep the abstract focused on the task, method and principal complete-system results.
+- Explicitly describe measured-state summaries in the agent input, in addition to RGB and history.
+- Define the Qwen3-VL baselines and cite the existing backbone reference.
+- Position the latent bank as an interface; do not attribute all Q1 gains to agentic decisions.
+
+Evidence and interpretation
+The Pig protocol, sample size and within-study primary analysis were frozen before formal data
+collection. The follow-up was designed after the Cube result; a cross-study multiplicity family
+was not prespecified. Per-object p values are unadjusted and the studies are not pooled.
+Binding and cost metrics are descriptive. Both arms had two drops; fewer calls/tokens do not
+establish fewer drops, shorter completion time or sustained post-stop presentation.
+Terminal and ever-correct binding are reconstructed from applied actions, independently of success.
+Inspect actions clear the active binding; drop does not. Unapplied responses do not establish
+binding but count toward inference cost. All four dropped Pig trials had no applied binding.
+Initial human readability remains unannotated; Q3(b)'s 210 requests belong to 40 paired trials.
+The new paper data export omits credentials, account identifiers, local absolute paths and weights.
+Original full evidence remains in the experiment archive; hashes identify exported source records.
+
+Validation scope
+Build and verification scripts regenerate Q3 statistics/macros and verify manuscript figures,
+counts, references and the eight-page main-body limit. Rendered PDF pages are visually reviewed.
+Exact compiler diagnostics, source/PDF hashes and checks are recorded in the accompanying JSON
+validation record after the final build. Existing hardware placeholders remain outside this edit.

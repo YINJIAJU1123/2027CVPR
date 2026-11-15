@@ -1,0 +1,225 @@
+{
+  "complete": true,
+  "development": false,
+  "paired_astra_comparisons": {
+    "identity": {
+      "vlm": {
+        "n": 39,
+        "a_only": 18,
+        "b_only": 3,
+        "mcnemar_exact_two_sided_p": 0.0014896392822265625
+      },
+      "rule": {
+        "n": 39,
+        "a_only": 15,
+        "b_only": 4,
+        "mcnemar_exact_two_sided_p": 0.0192108154296875
+      }
+    },
+    "permuted": {
+      "vlm": {
+        "n": 40,
+        "a_only": 30,
+        "b_only": 0,
+        "mcnemar_exact_two_sided_p": 1.862645149230957e-09
+      },
+      "rule": {
+        "n": 40,
+        "a_only": 23,
+        "b_only": 1,
+        "mcnemar_exact_two_sided_p": 2.9802322387695312e-06
+      }
+    }
+  },
+  "paired_identity_vs_permuted": {
+    "astra": {
+      "n": 39,
+      "a_only": 1,
+      "b_only": 4,
+      "mcnemar_exact_two_sided_p": 0.375
+    },
+    "vlm": {
+      "n": 39,
+      "a_only": 11,
+      "b_only": 0,
+      "mcnemar_exact_two_sided_p": 0.0009765625
+    },
+    "rule": {
+      "n": 39,
+      "a_only": 12,
+      "b_only": 5,
+      "mcnemar_exact_two_sided_p": 0.143463134765625
+    }
+  },
+  "release_sha256": "df3a917de8ee5b4954c8929ec97fec76078e67bf2e6e570ec9eb04dbbea2f21a",
+  "six_cell_excluded_cases": [
+    10
+  ],
+  "layouts": {
+    "identity": {
+      "astra": {
+        "raw_trials": 40,
+        "raw_success": 28,
+        "matched_trials": 39,
+        "matched_success": 28,
+        "wilson_95": [
+          0.5622468051697918,
+          0.8345650791115233
+        ],
+        "six_cell_common_trials": 39,
+        "six_cell_common_success": 28,
+        "reasons": {
+          "drop": 10,
+          "false_stop": 1,
+          "service_excluded": 1,
+          "success": 28
+        }
+      },
+      "vlm": {
+        "raw_trials": 40,
+        "raw_success": 14,
+        "matched_trials": 39,
+        "matched_success": 13,
+        "wilson_95": [
+          0.20632956189598373,
+          0.4902260560065401
+        ],
+        "six_cell_common_trials": 39,
+        "six_cell_common_success": 13,
+        "reasons": {
+          "drop": 7,
+          "false_stop": 2,
+          "horizon": 17,
+          "success": 14
+        }
+      },
+      "rule": {
+        "raw_trials": 40,
+        "raw_success": 17,
+        "matched_trials": 39,
+        "matched_success": 17,
+        "wilson_95": [
+          0.2930475387568963,
+          0.5902430835133052
+        ],
+        "six_cell_common_trials": 39,
+        "six_cell_common_success": 17,
+        "reasons": {
+          "drop": 4,
+          "false_stop": 19,
+          "success": 17
+        }
+      }
+    },
+    "permuted": {
+      "astra": {
+        "raw_trials": 40,
+        "raw_success": 32,
+        "matched_trials": 40,
+        "matched_success": 32,
+        "wilson_95": [
+          0.652426936536005,
+          0.895000102745623
+        ],
+        "six_cell_common_trials": 39,
+        "six_cell_common_success": 31,
+        "reasons": {
+          "drop": 6,
+          "false_stop": 2,
+          "success": 32
+        }
+      },
+      "vlm": {
+        "raw_trials": 40,
+        "raw_success": 2,
+        "matched_trials": 40,
+        "matched_success": 2,
+        "wilson_95": [
+          0.013820667386148344,
+          0.16503877369140962
+        ],
+        "six_cell_common_trials": 39,
+        "six_cell_common_success": 2,
+        "reasons": {
+          "drop": 6,
+          "false_stop": 15,
+          "horizon": 17,
+          "success": 2
+        }
+      },
+      "rule": {
+        "raw_trials": 40,
+        "raw_success": 10,
+        "matched_trials": 40,
+        "matched_success": 10,
+        "wilson_95": [
+          0.14187118639096302,
+          0.40193961420768026
+        ],
+        "six_cell_common_trials": 39,
+        "six_cell_common_success": 10,
+        "reasons": {
+          "drop": 5,
+          "false_stop": 25,
+          "success": 10
+        }
+      }
+    }
+  },
+  "input_sha256": {
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_astra/187501/batch_000/episodes.jsonl": "50fdcf02e98b338160b281be7686e39cd752a3bc5da08d292bdd1c598d607bf9",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_astra/187501/batch_000/manifest.json": "64a2b527b68f42e76937ac489f21633b279afc640d47bf81335432916318fb7a",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_astra/187501/batch_000/result.json": "342c35afc7f4af623a87efcc5338c338d039e8d8e5c1823235459341545891ab",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_astra/187501/batch_000/action_interface.jsonl": "21655629c8e0f7f43e64bee548b7e8172c3e3e63477dc7deac27acdc528af2f3",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_astra/187501/batch_011/episodes.jsonl": "74c06da539ff692a574738f7660f96d971a03b4cc10c774e5a94423cf5298769",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_astra/187501/batch_011/manifest.json": "64a2b527b68f42e76937ac489f21633b279afc640d47bf81335432916318fb7a",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_astra/187501/batch_011/result.json": "0c8539eb49784d5895b0985d7d02153ed4f541c1d9bd10a7ff608a877a0f6a32",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_astra/187501/batch_011/action_interface.jsonl": "4e50585a5fd909c17591e2f7c1c8212131ae9e8342f3f7d670eca1a001e82bc7",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_astra/187502/batch_020/episodes.jsonl": "5269471c38a54f7a348b4357d7d87583cd71957261aa198b4abee971999b5b38",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_astra/187502/batch_020/manifest.json": "64a2b527b68f42e76937ac489f21633b279afc640d47bf81335432916318fb7a",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_astra/187502/batch_020/result.json": "175846f1318d2a003a7115443d56b2a50c1a9ebef9fbd9e4eb4a0988ce834bf5",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_astra/187502/batch_020/action_interface.jsonl": "87fcd887eaa687b0f27a308c07d5ed3c9d87d7ca9f4c3cec0fb2501da5988800",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_vlm/187501/batch_000/episodes.jsonl": "b4299e1d59fb33a3d861f673fac7ae5b54215a59009cbb2b05f8d6e477b9c615",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_vlm/187501/batch_000/manifest.json": "5b3b87d4d8ad9bb5a900dc4dffd1bbf28bd9f0db05653c1e9d4f151abaccfe22",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_vlm/187501/batch_000/result.json": "fd3f0394dc46c3bf4658403c770f612718599639d180484954df936d8c40e38c",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_vlm/187501/batch_000/action_interface.jsonl": "0c475c95e5af23c36c06aadbf367ede05abe55b24639abd83a3f2f6faf6c96c6",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_vlm/187502/batch_020/episodes.jsonl": "23c6e4beb3ab1fdfe22e8fea84692f35ca6d7664e8a294fa08607f8d7aa8d936",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_vlm/187502/batch_020/manifest.json": "5b3b87d4d8ad9bb5a900dc4dffd1bbf28bd9f0db05653c1e9d4f151abaccfe22",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_vlm/187502/batch_020/result.json": "848c10c85e9e2fdfe41fe60cdcaea360d3ac55543601b363ef954c56eb15e4a0",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_vlm/187502/batch_020/action_interface.jsonl": "3d673854d6f8d299030d5c04cd2af822228c65d5ebdf73da694f10f352390f8e",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_rule/187501/batch_000/episodes.jsonl": "57fe6241d1144069d39175cf470062d2e26ce72a9fb74a49fb6a80b6166f1bdd",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_rule/187501/batch_000/manifest.json": "c00d2608920e511b0b579ee92e786e67ce52e5f0267b9730e6a3aaaebf15d2ee",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_rule/187501/batch_000/result.json": "916cb6a35668333fdac67d8c45f89efc43c8f0af2503e6083073f6797ebc126e",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_rule/187501/batch_000/action_interface.jsonl": "77f65daea45cdadbfb0910134ec88fbd85d3187b2c938da509d4cba4952dfbae",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_rule/187502/batch_020/episodes.jsonl": "076ae5461ed7088ac48676fc0e9cb77c70d3d3b5f4674925681aeba1649b1c81",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_rule/187502/batch_020/manifest.json": "c00d2608920e511b0b579ee92e786e67ce52e5f0267b9730e6a3aaaebf15d2ee",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_rule/187502/batch_020/result.json": "b89e66c1c87311a6fdee21740d4b27f56478e17da9651475615d551feb7e6097",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/identity_rule/187502/batch_020/action_interface.jsonl": "41dffa6a5a28bb2bd8676d45bc172b2b987f6a23dcb764dcc9dfc59292164d7d",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_astra/187501/batch_000/episodes.jsonl": "3db76f9510ae37ed96ec4cb95f3c7b21d00eea9d62d3f70145a61cb70231b1c6",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_astra/187501/batch_000/manifest.json": "3c137303dd5550977c515ae0399b7241b796fd189496540b7013f9e09ec5b6f1",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_astra/187501/batch_000/result.json": "1b97946fb89909e78fe8839407ed995e31b124b53ff8e8747df21f0179ade5c1",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_astra/187501/batch_000/action_interface.jsonl": "dc2c46b29754f10b0cd2e4e3b67658660ef94645f0a5661cb65d84c93da76bb8",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_astra/187502/batch_020/episodes.jsonl": "e3ee11f543af050fcdeac079c7e53e005e894eadf6a304eccbc7b0bf5a36d539",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_astra/187502/batch_020/manifest.json": "3c137303dd5550977c515ae0399b7241b796fd189496540b7013f9e09ec5b6f1",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_astra/187502/batch_020/result.json": "2a414988e306d44cb11001c61dbc18e2efa295b1ba6811b55f7b95daa7879dba",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_astra/187502/batch_020/action_interface.jsonl": "cb1387822f5173569241fe7c24889c37e8519ff468512dd9edc7f53743b90924",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_vlm/187501/batch_000/episodes.jsonl": "a0cfb0022941f85e0f0146e9e907ebf5d0efee03a85df11289990fb8ad623bd8",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_vlm/187501/batch_000/manifest.json": "37a03f8d83207d2a4c5ae6e474d79e5534a9971b47124eba1e410c0e484cffe8",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_vlm/187501/batch_000/result.json": "d3decaccb071e3426e58c62ae42219a300433ba1924df8e6ae828b313e30dda5",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_vlm/187501/batch_000/action_interface.jsonl": "f951f87e5479e110ddf14046806a71f7f8a5af9240640cd945f1204d9d566697",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_vlm/187502/batch_020/episodes.jsonl": "c7b1ccf3904751a3949e1f128c5f7819c6cf54fc126515f15d58366199faedbb",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_vlm/187502/batch_020/manifest.json": "37a03f8d83207d2a4c5ae6e474d79e5534a9971b47124eba1e410c0e484cffe8",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_vlm/187502/batch_020/result.json": "e8e0d71ff2f0e31338c66d0d67766b3ecb0745f18af23baf9ec903b8af21e645",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_vlm/187502/batch_020/action_interface.jsonl": "e295d8d734d8d7cb3892ef93ec2329aa3b847940f4bf96cc728258794fc3c676",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_rule/187501/batch_000/episodes.jsonl": "6ae3f5a6fa1c25b5f22196d6923bc81847303aed74e5f4304b7fbb9c8a33a701",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_rule/187501/batch_000/manifest.json": "fa54a066f67cfa491fad07be51c7a72c2a87e041fe2016f2e3c0c6e2114eac57",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_rule/187501/batch_000/result.json": "18a385a9c64d019e39a96d51d379492a6399a50fad966c4bffa88028ad4044cb",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_rule/187501/batch_000/action_interface.jsonl": "5f4badabba825c652e30fc734654053208335d4636e93a1ca02af34eb9628a0d",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_rule/187502/batch_020/episodes.jsonl": "621c8a3f75c179726c878359b7316d4bfeee36f296799e206bad0385e6d2b417",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_rule/187502/batch_020/manifest.json": "fa54a066f67cfa491fad07be51c7a72c2a87e041fe2016f2e3c0c6e2114eac57",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_rule/187502/batch_020/result.json": "06f193b12354af73269ae0253fe2a3400edd87b6f161ac3e4aa327aedc2d031e",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/hedgehog/formal_v1/permuted_rule/187502/batch_020/action_interface.jsonl": "f6e975f42c7d6c86bad077edeb42b5422a86c78217135497e791fed92320fd82"
+  },
+  "object": "hedgehog",
+  "scope": "Object-specific frozen marked-object Q1, six cells of 40 raw slots; original and changed mapping, noisy simulator pose"
+}

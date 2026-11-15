@@ -1,0 +1,58 @@
+{
+  "object_id": "RSLCube",
+  "release": "cube-v1-20261029",
+  "scope": "Frozen cube-only results. Successor student and other objects are separate releases.",
+  "unique_raw_trials": 400,
+  "semantic_raw_trials": 320,
+  "low_level_raw_trials": 80,
+  "files": [
+    {
+      "file": "parent_summary.json",
+      "source": "formal_serialization_repair_20261029/completed_export/summary.json",
+      "sha256": "e69cc3fd9885f683748b9186f06b789f059f62baeadd3b321589f35d0bf76bee",
+      "bytes": 23417
+    },
+    {
+      "file": "parent_trials.json",
+      "source": "formal_serialization_repair_20261029/completed_export/trials.json",
+      "sha256": "fd76f777d32bfd1847e6fe212c5c3958cbec8ffeebf44774aeb0dd7c7f3fe3e2",
+      "bytes": 1572517
+    },
+    {
+      "file": "parent_manifests.json",
+      "source": "formal_serialization_repair_20261029/completed_export/manifests.json",
+      "sha256": "7ad1eb0aa43fb4b5d09f5a8b68c899265f7d3440b2f0b0e385911abd396d8036",
+      "bytes": 222752
+    },
+    {
+      "file": "addendum_summary.json",
+      "source": "pure_vlm_addendum_20261029/formal_export/summary.json",
+      "sha256": "8f55be5f913318e9170725b1b664b9739f23fa62ba6f87cfde3522f05b784bcf",
+      "bytes": 32960
+    },
+    {
+      "file": "addendum_trials.json",
+      "source": "pure_vlm_addendum_20261029/formal_export/trials.json",
+      "sha256": "3cd487ff4b334f10c4a1351d8641b7a5bce59b07c66f7ea3224936de3bb6de8f",
+      "bytes": 956708
+    },
+    {
+      "file": "addendum_manifests.json",
+      "source": "pure_vlm_addendum_20261029/formal_export/manifests.json",
+      "sha256": "cb05c5caac612a3467f418b8fc671e05d2f227417804ef46a05e1ccd44e61c88",
+      "bytes": 155047
+    },
+    {
+      "file": "addendum_release.json",
+      "source": "pure_vlm_addendum_20261029/formal_release.json",
+      "sha256": "c74dfbbceaa00e27db4b2add0624dd1efe94d3100be6e585c65cbeb976fa1a7e",
+      "bytes": 136802
+    },
+    {
+      "file": "student_successor_plan.json",
+      "source": "student_pose_adaptation_20261029/plan.json",
+      "sha256": "6e210b079c16a1739c1f410897b8e42cb9fd9ab07827e09dcd09a356e124d40b",
+      "bytes": 3983
+    }
+  ]
+}

@@ -1,0 +1,2478 @@
+{
+  "scope": "Descriptive audit of the completed frozen Astra full condition. Public decisions and observed physical phases, not a causal module ablation.",
+  "summary": {
+    "raw_trials": 40,
+    "successes": 29,
+    "drops": 10,
+    "all_drop_trials_never_bound": true,
+    "drop_with_zero_skills": 0,
+    "drop_when_pending": 1,
+    "own_service_exclusions": [
+      183102011
+    ],
+    "successes_with_logged_bound_step": 28
+  },
+  "records": [
+    {
+      "trial_seed": 183101000,
+      "symbol": "T",
+      "goal_index": 0,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 630,
+      "first_skill_delivery_step": 128,
+      "phase_steps": {
+        "startup_pending": 128,
+        "inspection_without_binding_executing": 180,
+        "inspection_without_binding_pending": 309,
+        "bound_executing": 13
+      },
+      "first_known_step": 618,
+      "known_steps": 13,
+      "active_goal_changes": 1,
+      "terminal": {
+        "step": 630,
+        "pending": false,
+        "known": true,
+        "mode": "reorient_target",
+        "active_goal": 0,
+        "true_error_rad": 0.12574965519500378,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 128,
+          "elapsed_s": 4.260835276916623,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "green",
+            "steps": 90,
+            "evidence": "Current crop shows S on purple/magenta and H on pale-blue/cyan; T is not visible. Inspect green for additional letters."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 218,
+          "applied_step": 355,
+          "elapsed_s": 4.563720291946083,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "red",
+            "steps": 90,
+            "evidence": "Green shows E and yellow shows L in the new crop. T remains unseen; inspect red."
+          }
+        },
+        {
+          "call": 3,
+          "request_step": 445,
+          "applied_step": 617,
+          "elapsed_s": 5.726200081873685,
+          "error": null,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "T",
+            "color": "red",
+            "steps": 30,
+            "evidence": "The enlarged crop now visibly shows capital T rotated in-plane on the red upper face. Ground target T to red and maintain it upward."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183101001,
+      "symbol": "E",
+      "goal_index": 1,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 640,
+      "first_skill_delivery_step": 144,
+      "phase_steps": {
+        "startup_pending": 144,
+        "inspection_without_binding_executing": 180,
+        "inspection_without_binding_pending": 313,
+        "bound_executing": 3
+      },
+      "first_known_step": 638,
+      "known_steps": 3,
+      "active_goal_changes": 2,
+      "terminal": {
+        "step": 640,
+        "pending": false,
+        "known": true,
+        "mode": "reorient_target",
+        "active_goal": 1,
+        "true_error_rad": 0.13720335671968625,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 144,
+          "elapsed_s": 4.795036353170872,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "red",
+            "steps": 90,
+            "evidence": "Visible pale-blue top appears H, purple side S and yellow side is partially obscured. E is not yet identified; inspect red."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 234,
+          "applied_step": 385,
+          "elapsed_s": 5.028733359184116,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "green",
+            "steps": 90,
+            "evidence": "Red upward face visibly bears T, not E. Inspect green to locate E; cyan front remains partially obscured."
+          }
+        },
+        {
+          "call": 3,
+          "request_step": 475,
+          "applied_step": 637,
+          "elapsed_s": 5.3684936966747046,
+          "error": null,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "E",
+            "color": "green",
+            "steps": 10,
+            "evidence": "The enlarged image clearly shows capital E printed on the green upper face, rotated in the image. Bind green to E and maintain it upward."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183101002,
+      "symbol": "R",
+      "goal_index": 2,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 1230,
+      "first_skill_delivery_step": 173,
+      "phase_steps": {
+        "startup_pending": 173,
+        "inspection_without_binding_executing": 360,
+        "inspection_without_binding_pending": 672,
+        "bound_executing": 25
+      },
+      "first_known_step": 1206,
+      "known_steps": 25,
+      "active_goal_changes": 4,
+      "terminal": {
+        "step": 1230,
+        "pending": false,
+        "known": true,
+        "mode": "stop",
+        "active_goal": 2,
+        "true_error_rad": 0.010897284707460077,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 173,
+          "elapsed_s": 5.757905861362815,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "red",
+            "steps": 90,
+            "evidence": "Visible pale face shows H and purple face shows S. R is not yet observed; inspect red face."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 263,
+          "applied_step": 446,
+          "elapsed_s": 6.096060439012945,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "yellow",
+            "steps": 90,
+            "evidence": "Red upper face appears T; pale-blue face shows H. Yellow side letter is occluded; inspect yellow to search for R."
+          }
+        },
+        {
+          "call": 3,
+          "request_step": 536,
+          "applied_step": 685,
+          "elapsed_s": 4.947175940964371,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "green",
+            "steps": 90,
+            "evidence": "Yellow upward face shows L, not R. R remains unobserved; inspect green face."
+          }
+        },
+        {
+          "call": 4,
+          "request_step": 775,
+          "applied_step": 947,
+          "elapsed_s": 5.700494037941098,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "blue",
+            "steps": 90,
+            "evidence": "Green face visibly shows E. Inspect darker blue face; its letter has not yet been observed."
+          }
+        },
+        {
+          "call": 5,
+          "request_step": 1037,
+          "applied_step": 1205,
+          "elapsed_s": 5.5907012121751904,
+          "error": null,
+          "tool": "stop",
+          "arguments": {
+            "goal_symbol": "R",
+            "color": "blue",
+            "evidence": "The fresh enlarged RGB crop visibly shows capital R on the dark-blue upper face. That face is facing upward, with pale-blue and red faces extending down its sides."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183101003,
+      "symbol": "L",
+      "goal_index": 3,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 890,
+      "first_skill_delivery_step": 132,
+      "phase_steps": {
+        "startup_pending": 132,
+        "inspection_without_binding_executing": 270,
+        "inspection_without_binding_pending": 482,
+        "bound_executing": 6
+      },
+      "first_known_step": 885,
+      "known_steps": 6,
+      "active_goal_changes": 3,
+      "terminal": {
+        "step": 890,
+        "pending": false,
+        "known": true,
+        "mode": "reorient_target",
+        "active_goal": 3,
+        "true_error_rad": 0.05780803677650169,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 132,
+          "elapsed_s": 4.387333119288087,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "magenta",
+            "steps": 90,
+            "evidence": "Visible dark-blue face appears R and pale-blue face H; L not yet visible. Inspect purple face for additional letters."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 222,
+          "applied_step": 353,
+          "elapsed_s": 4.361478756181896,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "green",
+            "steps": 90,
+            "evidence": "Purple upward face clearly shows S, not L. Other visible letter is partly obscured; inspect green to locate L."
+          }
+        },
+        {
+          "call": 3,
+          "request_step": 443,
+          "applied_step": 598,
+          "elapsed_s": 5.149243285879493,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "yellow",
+            "steps": 90,
+            "evidence": "Green shows E. Yellow side has an angular mark partly obscured by the hand, possibly L but not yet certain; inspect yellow."
+          }
+        },
+        {
+          "call": 4,
+          "request_step": 688,
+          "applied_step": 884,
+          "elapsed_s": 6.507176509592682,
+          "error": null,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "L",
+            "color": "yellow",
+            "steps": 10,
+            "evidence": "Yellow upper face clearly displays capital L rotated in the image (long stem with perpendicular foot). Bind yellow as target and maintain upward."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183101004,
+      "symbol": "S",
+      "goal_index": 4,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 570,
+      "first_skill_delivery_step": 129,
+      "phase_steps": {
+        "startup_pending": 129,
+        "inspection_without_binding_executing": 60,
+        "inspection_without_binding_pending": 375,
+        "bound_executing": 6
+      },
+      "first_known_step": 565,
+      "known_steps": 6,
+      "active_goal_changes": 1,
+      "terminal": {
+        "step": 570,
+        "pending": false,
+        "known": true,
+        "mode": "reorient_target",
+        "active_goal": 4,
+        "true_error_rad": 0.0873813813664817,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 129,
+          "elapsed_s": 4.290981172118336,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "magenta",
+            "steps": 60,
+            "evidence": "The purple right face has a partly visible white mark possibly S, but the oblique view is insufficient to read it confidently; inspect it upward."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 189,
+          "applied_step": 564,
+          "elapsed_s": 12.47632417222485,
+          "error": null,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "S",
+            "color": "magenta",
+            "steps": 30,
+            "evidence": "The enlarged current image clearly shows capital S on the purple (magenta) upper face. Maintain and settle that visually grounded face upward."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183101005,
+      "symbol": "H",
+      "goal_index": 5,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 340,
+      "first_skill_delivery_step": 128,
+      "phase_steps": {
+        "startup_pending": 128,
+        "inspection_without_binding_executing": 70,
+        "inspection_without_binding_pending": 136,
+        "bound_executing": 6
+      },
+      "first_known_step": 335,
+      "known_steps": 6,
+      "active_goal_changes": 1,
+      "terminal": {
+        "step": 340,
+        "pending": false,
+        "known": true,
+        "mode": "reorient_target",
+        "active_goal": 5,
+        "true_error_rad": 0.07848328341837944,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 128,
+          "elapsed_s": 4.251933420076966,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "cyan",
+            "steps": 70,
+            "evidence": "Visible red face has a partial mark; H is not readable. Inspect pale-blue face to seek the target."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 198,
+          "applied_step": 334,
+          "elapsed_s": 4.528980136848986,
+          "error": null,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "H",
+            "color": "cyan",
+            "steps": 20,
+            "evidence": "The enlarged view shows a capital H on the pale-blue cyan top face, distinct from the dark-blue side face. Maintain this face upward."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183101006,
+      "symbol": "T",
+      "goal_index": 0,
+      "success": false,
+      "reason": "drop",
+      "exclusion_reason": null,
+      "steps": 635,
+      "first_skill_delivery_step": 155,
+      "phase_steps": {
+        "startup_pending": 155,
+        "inspection_without_binding_executing": 199,
+        "inspection_without_binding_pending": 281
+      },
+      "first_known_step": null,
+      "known_steps": 0,
+      "active_goal_changes": 3,
+      "terminal": {
+        "step": 635,
+        "pending": false,
+        "known": false,
+        "mode": "inspect_face",
+        "active_goal": 3,
+        "true_error_rad": 2.8371831538584273,
+        "speed": 1.0,
+        "drop": true
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 155,
+          "elapsed_s": 5.134627524763346,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "red",
+            "steps": 90,
+            "evidence": "Visible purple face bears S and pale upper face appears H; T is not visible. Inspect red for target identification."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 245,
+          "applied_step": 380,
+          "elapsed_s": 4.492593572940677,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "green",
+            "steps": 90,
+            "evidence": "Current view shows dark blue R, pale-blue H, and purple S. T remains unobserved; inspect green to expose other letters."
+          }
+        },
+        {
+          "call": 3,
+          "request_step": 470,
+          "applied_step": 616,
+          "elapsed_s": 4.836540508083999,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "yellow",
+            "steps": 90,
+            "evidence": "Green upward face shows E. Yellow front letter is partly occluded and cannot yet be read; inspect yellow."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183101007,
+      "symbol": "E",
+      "goal_index": 1,
+      "success": false,
+      "reason": "drop",
+      "exclusion_reason": null,
+      "steps": 151,
+      "first_skill_delivery_step": 131,
+      "phase_steps": {
+        "startup_pending": 131,
+        "inspection_without_binding_executing": 20
+      },
+      "first_known_step": null,
+      "known_steps": 0,
+      "active_goal_changes": 0,
+      "terminal": {
+        "step": 151,
+        "pending": false,
+        "known": false,
+        "mode": "inspect_face",
+        "active_goal": 1,
+        "true_error_rad": 2.0856834679565557,
+        "speed": 1.0,
+        "drop": true
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 131,
+          "elapsed_s": 4.354974125977606,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "green",
+            "steps": 90,
+            "evidence": "Red face shows T; yellow side letter is unclear. E is not yet observed; inspect green."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183101008,
+      "symbol": "R",
+      "goal_index": 2,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 680,
+      "first_skill_delivery_step": 152,
+      "phase_steps": {
+        "startup_pending": 152,
+        "inspection_without_binding_executing": 180,
+        "inspection_without_binding_pending": 334,
+        "bound_executing": 14
+      },
+      "first_known_step": 667,
+      "known_steps": 14,
+      "active_goal_changes": 2,
+      "terminal": {
+        "step": 680,
+        "pending": false,
+        "known": true,
+        "mode": "reorient_target",
+        "active_goal": 2,
+        "true_error_rad": 0.07153974454922218,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 152,
+          "elapsed_s": 5.038212725892663,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "red",
+            "steps": 90,
+            "evidence": "Yellow shows L and green shows E. The narrow red face has no readable letter; inspect it to locate R."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 242,
+          "applied_step": 401,
+          "elapsed_s": 5.2852009679190814,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "blue",
+            "steps": 90,
+            "evidence": "Red mark appears T rather than R; other faces are obscured. Inspect the dark-blue face for the target letter."
+          }
+        },
+        {
+          "call": 3,
+          "request_step": 491,
+          "applied_step": 666,
+          "elapsed_s": 5.812412371858954,
+          "error": null,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "R",
+            "color": "blue",
+            "steps": 60,
+            "evidence": "The enlarged image shows a rotated capital R on the dark-blue upper face, distinct from the pale-blue side face. Maintain dark blue upward."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183101009,
+      "symbol": "L",
+      "goal_index": 3,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 470,
+      "first_skill_delivery_step": 182,
+      "phase_steps": {
+        "startup_pending": 182,
+        "inspection_without_binding_executing": 90,
+        "inspection_without_binding_pending": 187,
+        "bound_executing": 11
+      },
+      "first_known_step": 460,
+      "known_steps": 11,
+      "active_goal_changes": 1,
+      "terminal": {
+        "step": 470,
+        "pending": false,
+        "known": true,
+        "mode": "reorient_target",
+        "active_goal": 3,
+        "true_error_rad": 0.11156250118026965,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 182,
+          "elapsed_s": 6.052935504820198,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "yellow",
+            "steps": 90,
+            "evidence": "The pale-blue face shows H; the darker blue and red faces are partially occluded. L has not yet been observed; inspect yellow for more evidence."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 272,
+          "applied_step": 459,
+          "elapsed_s": 6.224092926830053,
+          "error": null,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "L",
+            "color": "yellow",
+            "steps": 30,
+            "evidence": "The enlarged image shows a rotated capital L on the yellow upper face: a long stroke meeting a single perpendicular foot. The pale-blue H face is on the side. Bind L to yellow and maintain it upward."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183101010,
+      "symbol": "S",
+      "goal_index": 4,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 460,
+      "first_skill_delivery_step": 147,
+      "phase_steps": {
+        "startup_pending": 147,
+        "inspection_without_binding_executing": 90,
+        "inspection_without_binding_pending": 204,
+        "bound_executing": 19
+      },
+      "first_known_step": 442,
+      "known_steps": 19,
+      "active_goal_changes": 1,
+      "terminal": {
+        "step": 460,
+        "pending": false,
+        "known": true,
+        "mode": "reorient_target",
+        "active_goal": 4,
+        "true_error_rad": 0.06212875349648551,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 147,
+          "elapsed_s": 4.895075051113963,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "magenta",
+            "steps": 90,
+            "evidence": "Visible pale-blue face bears R; upper face is washed out. S has not been observed. Inspect purple face for more letters."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 237,
+          "applied_step": 441,
+          "elapsed_s": 6.785613047890365,
+          "error": null,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "S",
+            "color": "magenta",
+            "steps": 30,
+            "evidence": "The enlarged crop visibly shows capital S on the purple (magenta) upper face. Bind S to magenta and maintain that face upward."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183101011,
+      "symbol": "H",
+      "goal_index": 5,
+      "success": false,
+      "reason": "drop",
+      "exclusion_reason": null,
+      "steps": 123,
+      "first_skill_delivery_step": 108,
+      "phase_steps": {
+        "startup_pending": 108,
+        "inspection_without_binding_executing": 15
+      },
+      "first_known_step": null,
+      "known_steps": 0,
+      "active_goal_changes": 1,
+      "terminal": {
+        "step": 123,
+        "pending": false,
+        "known": false,
+        "mode": "inspect_face",
+        "active_goal": 5,
+        "true_error_rad": 2.8685380695906173,
+        "speed": 1.0,
+        "drop": true
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 108,
+          "elapsed_s": 3.591602703090757,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "cyan",
+            "steps": 90,
+            "evidence": "Visible yellow face reads L and red face reads T; H is not yet visible. Inspect pale-blue face for additional letters."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183101012,
+      "symbol": "T",
+      "goal_index": 0,
+      "success": false,
+      "reason": "drop",
+      "exclusion_reason": null,
+      "steps": 252,
+      "first_skill_delivery_step": 189,
+      "phase_steps": {
+        "startup_pending": 189,
+        "inspection_without_binding_executing": 60,
+        "inspection_without_binding_pending": 3
+      },
+      "first_known_step": null,
+      "known_steps": 0,
+      "active_goal_changes": 1,
+      "terminal": {
+        "step": 252,
+        "pending": true,
+        "known": false,
+        "mode": "inspect_face",
+        "active_goal": 5,
+        "true_error_rad": 1.5863551319804705,
+        "speed": 0.9410592913627625,
+        "drop": true
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 189,
+          "elapsed_s": 6.277067733928561,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "cyan",
+            "steps": 60,
+            "evidence": "Visible green face bears E and purple face appears S; T is not yet visible. Inspect pale-blue face for target."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 249,
+          "applied_step": null,
+          "elapsed_s": 4.962022761814296,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "red",
+            "steps": 90,
+            "evidence": "Current view is dark with R visible on one face; T remains unobserved. Inspect red to reveal more letters."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183101013,
+      "symbol": "E",
+      "goal_index": 1,
+      "success": false,
+      "reason": "drop",
+      "exclusion_reason": null,
+      "steps": 166,
+      "first_skill_delivery_step": 153,
+      "phase_steps": {
+        "startup_pending": 153,
+        "inspection_without_binding_executing": 13
+      },
+      "first_known_step": null,
+      "known_steps": 0,
+      "active_goal_changes": 0,
+      "terminal": {
+        "step": 166,
+        "pending": false,
+        "known": false,
+        "mode": "inspect_face",
+        "active_goal": 1,
+        "true_error_rad": 2.7489692552572937,
+        "speed": 1.0,
+        "drop": true
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 153,
+          "elapsed_s": 5.079913015943021,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "green",
+            "steps": 60,
+            "evidence": "Yellow shows L; green side letter is too oblique to identify. Inspect green to read its mark."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183101014,
+      "symbol": "R",
+      "goal_index": 2,
+      "success": false,
+      "reason": "drop",
+      "exclusion_reason": null,
+      "steps": 959,
+      "first_skill_delivery_step": 131,
+      "phase_steps": {
+        "startup_pending": 131,
+        "inspection_without_binding_executing": 269,
+        "inspection_without_binding_pending": 559
+      },
+      "first_known_step": null,
+      "known_steps": 0,
+      "active_goal_changes": 4,
+      "terminal": {
+        "step": 959,
+        "pending": false,
+        "known": false,
+        "mode": "inspect_face",
+        "active_goal": 1,
+        "true_error_rad": 1.9788437639848464,
+        "speed": 1.0,
+        "drop": true
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 131,
+          "elapsed_s": 4.349641117267311,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "cyan",
+            "steps": 70,
+            "evidence": "Red upper face reads T. Pale-blue left face has an indistinct mark; inspect it to identify whether it is R."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 201,
+          "applied_step": 335,
+          "elapsed_s": 4.4493785398080945,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "blue",
+            "steps": 90,
+            "evidence": "Pale-blue cyan face appears to bear H, not R. Dark-blue face is occluded; inspect dark blue for another letter."
+          }
+        },
+        {
+          "call": 3,
+          "request_step": 425,
+          "applied_step": 636,
+          "elapsed_s": 7.002393580041826,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "magenta",
+            "steps": 90,
+            "evidence": "Dark-blue face shows an angular mark not clearly R; purple side letter is not legible. Inspect purple/magenta to read its mark."
+          }
+        },
+        {
+          "call": 4,
+          "request_step": 726,
+          "applied_step": 940,
+          "elapsed_s": 7.121729219797999,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "green",
+            "steps": 90,
+            "evidence": "Purple upper face clearly reads S and pale-blue face reads H. R remains unidentified; inspect green."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183101015,
+      "symbol": "L",
+      "goal_index": 3,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 730,
+      "first_skill_delivery_step": 271,
+      "phase_steps": {
+        "startup_pending": 271,
+        "inspection_without_binding_executing": 120,
+        "inspection_without_binding_pending": 339
+      },
+      "first_known_step": null,
+      "known_steps": 0,
+      "active_goal_changes": 2,
+      "terminal": {
+        "step": 730,
+        "pending": true,
+        "known": false,
+        "mode": "inspect_face",
+        "active_goal": 3,
+        "true_error_rad": 0.07854006660100726,
+        "speed": 0.6659350991249084,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 271,
+          "elapsed_s": 9.008799083996564,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "cyan",
+            "steps": 50,
+            "evidence": "Visible red face shows T and dark blue shows R. Pale-blue face is visible only as a narrow strip with unreadable letter; inspect it for L."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 321,
+          "applied_step": 445,
+          "elapsed_s": 4.113016357179731,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "yellow",
+            "steps": 70,
+            "evidence": "Pale-blue upward face reads H, not L. Red T and dark-blue R previously observed. Inspect yellow to locate L."
+          }
+        },
+        {
+          "call": 3,
+          "request_step": 515,
+          "applied_step": 730,
+          "elapsed_s": 7.134122883901,
+          "error": null,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "L",
+            "color": "yellow",
+            "steps": 30,
+            "evidence": "Enlarged view shows a white capital L rotated on the yellow face, with two perpendicular strokes. Yellow is the upward-facing surface; maintain this grounded target."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183101016,
+      "symbol": "S",
+      "goal_index": 4,
+      "success": false,
+      "reason": "drop",
+      "exclusion_reason": null,
+      "steps": 143,
+      "first_skill_delivery_step": 133,
+      "phase_steps": {
+        "startup_pending": 133,
+        "inspection_without_binding_executing": 10
+      },
+      "first_known_step": null,
+      "known_steps": 0,
+      "active_goal_changes": 1,
+      "terminal": {
+        "step": 143,
+        "pending": false,
+        "known": false,
+        "mode": "inspect_face",
+        "active_goal": 4,
+        "true_error_rad": 2.259702051573906,
+        "speed": 1.0,
+        "drop": true
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 133,
+          "elapsed_s": 4.426143620163202,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "magenta",
+            "steps": 90,
+            "evidence": "Visible green face appears E and yellow appears L; S is not visible. Inspect purple face to identify its letter."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183101017,
+      "symbol": "H",
+      "goal_index": 5,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 360,
+      "first_skill_delivery_step": 130,
+      "phase_steps": {
+        "startup_pending": 130,
+        "inspection_without_binding_executing": 70,
+        "inspection_without_binding_pending": 157,
+        "bound_executing": 3
+      },
+      "first_known_step": 358,
+      "known_steps": 3,
+      "active_goal_changes": 1,
+      "terminal": {
+        "step": 360,
+        "pending": false,
+        "known": true,
+        "mode": "reorient_target",
+        "active_goal": 5,
+        "true_error_rad": 0.12838479590188254,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 130,
+          "elapsed_s": 4.306623965967447,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "cyan",
+            "steps": 70,
+            "evidence": "Visible green face has E and dark-blue face has R. H is not yet visible; inspect pale-blue face."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 200,
+          "applied_step": 357,
+          "elapsed_s": 5.2142066969536245,
+          "error": null,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "H",
+            "color": "cyan",
+            "steps": 30,
+            "evidence": "The enlarged view shows capital H on the pale-blue upper face, distinct from the dark-blue side with R. Bind H to cyan and maintain it upward."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183101018,
+      "symbol": "T",
+      "goal_index": 0,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 220,
+      "first_skill_delivery_step": 183,
+      "phase_steps": {
+        "startup_pending": 183,
+        "bound_executing": 37
+      },
+      "first_known_step": 184,
+      "known_steps": 37,
+      "active_goal_changes": 1,
+      "terminal": {
+        "step": 220,
+        "pending": false,
+        "known": true,
+        "mode": "reorient_target",
+        "active_goal": 0,
+        "true_error_rad": 0.10640505185448416,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 183,
+          "elapsed_s": 6.091332541313022,
+          "error": null,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "T",
+            "color": "red",
+            "steps": 90,
+            "evidence": "The enlarged crop shows a white capital T, rotated in the image, on the red face; the dark-blue face bears R. Bring the red T face upward."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183101019,
+      "symbol": "E",
+      "goal_index": 1,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 160,
+      "first_skill_delivery_step": 144,
+      "phase_steps": {
+        "startup_pending": 144,
+        "bound_executing": 16
+      },
+      "first_known_step": 145,
+      "known_steps": 16,
+      "active_goal_changes": 0,
+      "terminal": {
+        "step": 160,
+        "pending": false,
+        "known": true,
+        "mode": "reorient_target",
+        "active_goal": 1,
+        "true_error_rad": 0.12837640884055457,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 144,
+          "elapsed_s": 4.776376430876553,
+          "error": null,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "E",
+            "color": "green",
+            "steps": 80,
+            "evidence": "The enlarged image shows a sideways capital E on the green face: a spine with three projecting strokes."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183102000,
+      "symbol": "R",
+      "goal_index": 2,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 980,
+      "first_skill_delivery_step": 209,
+      "phase_steps": {
+        "startup_pending": 209,
+        "inspection_without_binding_executing": 270,
+        "inspection_without_binding_pending": 495,
+        "bound_executing": 6
+      },
+      "first_known_step": 975,
+      "known_steps": 6,
+      "active_goal_changes": 3,
+      "terminal": {
+        "step": 980,
+        "pending": false,
+        "known": true,
+        "mode": "reorient_target",
+        "active_goal": 2,
+        "true_error_rad": 0.12424478333725086,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 209,
+          "elapsed_s": 6.965731781441718,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "magenta",
+            "steps": 90,
+            "evidence": "Visible yellow face reads L; purple edge has no readable letter. Inspect purple face to seek R."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 299,
+          "applied_step": 433,
+          "elapsed_s": 4.433848555199802,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "cyan",
+            "steps": 90,
+            "evidence": "Purple upward face clearly reads S. Pale-blue side letter is occluded; inspect cyan for readable evidence."
+          }
+        },
+        {
+          "call": 3,
+          "request_step": 523,
+          "applied_step": 710,
+          "elapsed_s": 6.205522286705673,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "blue",
+            "steps": 90,
+            "evidence": "Pale-blue top reads H. Darker blue front shows a partial letter with a stem and upper loop, but lower portion is occluded; inspect to distinguish R."
+          }
+        },
+        {
+          "call": 4,
+          "request_step": 800,
+          "applied_step": 974,
+          "elapsed_s": 5.779889321886003,
+          "error": null,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "R",
+            "color": "blue",
+            "steps": 30,
+            "evidence": "Enlarged view now shows capital R on the dark-blue top face, rotated in the image with its loop and diagonal leg visible. Maintain this blue face upward."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183102001,
+      "symbol": "L",
+      "goal_index": 3,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 1140,
+      "first_skill_delivery_step": 141,
+      "phase_steps": {
+        "startup_pending": 141,
+        "inspection_without_binding_executing": 320,
+        "inspection_without_binding_pending": 652,
+        "bound_executing": 27
+      },
+      "first_known_step": 1114,
+      "known_steps": 27,
+      "active_goal_changes": 4,
+      "terminal": {
+        "step": 1140,
+        "pending": false,
+        "known": true,
+        "mode": "stop",
+        "active_goal": 3,
+        "true_error_rad": 0.14232420874536708,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 141,
+          "elapsed_s": 4.6668474189937115,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "cyan",
+            "steps": 80,
+            "evidence": "Red face visibly bears T; pale-blue face is only a narrow occluded edge. Inspect pale-blue to find L."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 221,
+          "applied_step": 368,
+          "elapsed_s": 4.867433301638812,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "magenta",
+            "steps": 80,
+            "evidence": "Pale-blue upward face shows H and dark-blue front shows R. Purple side letter is occluded; inspect purple for L."
+          }
+        },
+        {
+          "call": 3,
+          "request_step": 448,
+          "applied_step": 617,
+          "elapsed_s": 5.606277381069958,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "green",
+            "steps": 80,
+            "evidence": "Purple upward face clearly shows S, not L. Red T, blue R, cyan H observed; inspect green to locate L."
+          }
+        },
+        {
+          "call": 4,
+          "request_step": 697,
+          "applied_step": 855,
+          "elapsed_s": 5.2491579442285,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "yellow",
+            "steps": 80,
+            "evidence": "Green shows E. Yellow face is heavily occluded and its letter cannot yet be read; inspect yellow rather than infer L."
+          }
+        },
+        {
+          "call": 5,
+          "request_step": 935,
+          "applied_step": 1113,
+          "elapsed_s": 5.900385553017259,
+          "error": null,
+          "tool": "stop",
+          "arguments": {
+            "goal_symbol": "L",
+            "color": "yellow",
+            "evidence": "Fresh image shows the yellow face on top, with a clearly visible rotated capital L (long stem and short perpendicular foot). Cyan H is on the front vertical face and purple is on the side; yellow L points upward."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183102002,
+      "symbol": "S",
+      "goal_index": 4,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 420,
+      "first_skill_delivery_step": 151,
+      "phase_steps": {
+        "startup_pending": 151,
+        "inspection_without_binding_executing": 70,
+        "inspection_without_binding_pending": 190,
+        "bound_executing": 9
+      },
+      "first_known_step": 412,
+      "known_steps": 9,
+      "active_goal_changes": 1,
+      "terminal": {
+        "step": 420,
+        "pending": false,
+        "known": true,
+        "mode": "reorient_target",
+        "active_goal": 4,
+        "true_error_rad": 0.04348748866440321,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 151,
+          "elapsed_s": 5.016894492786378,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "magenta",
+            "steps": 70,
+            "evidence": "Visible pale-blue face reads H, yellow reads L, and red appears T. S is not visible; inspect purple face."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 221,
+          "applied_step": 411,
+          "elapsed_s": 6.323863942641765,
+          "error": null,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "S",
+            "color": "magenta",
+            "steps": 20,
+            "evidence": "The enlarged image clearly shows capital S on the purple (magenta) face, which is currently on top. Maintain this grounded face upward."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183102003,
+      "symbol": "H",
+      "goal_index": 5,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 350,
+      "first_skill_delivery_step": 134,
+      "phase_steps": {
+        "startup_pending": 134,
+        "inspection_without_binding_executing": 60,
+        "inspection_without_binding_pending": 151,
+        "bound_executing": 5
+      },
+      "first_known_step": 346,
+      "known_steps": 5,
+      "active_goal_changes": 1,
+      "terminal": {
+        "step": 350,
+        "pending": false,
+        "known": true,
+        "mode": "reorient_target",
+        "active_goal": 5,
+        "true_error_rad": 0.13502564216463014,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 134,
+          "elapsed_s": 4.463915012776852,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "cyan",
+            "steps": 60,
+            "evidence": "Red face shows T; pale-blue lower face letter is not legible. Inspect pale-blue face to identify its letter."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 194,
+          "applied_step": 345,
+          "elapsed_s": 5.024564990308136,
+          "error": null,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "H",
+            "color": "cyan",
+            "steps": 20,
+            "evidence": "The enlarged view clearly shows capital H on the pale-blue (cyan) top face, distinct from the dark-blue side face."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183102004,
+      "symbol": "T",
+      "goal_index": 0,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 360,
+      "first_skill_delivery_step": 136,
+      "phase_steps": {
+        "startup_pending": 136,
+        "inspection_without_binding_executing": 60,
+        "inspection_without_binding_pending": 160,
+        "bound_executing": 4
+      },
+      "first_known_step": 357,
+      "known_steps": 4,
+      "active_goal_changes": 1,
+      "terminal": {
+        "step": 360,
+        "pending": false,
+        "known": true,
+        "mode": "reorient_target",
+        "active_goal": 0,
+        "true_error_rad": 0.08443813917040552,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 136,
+          "elapsed_s": 4.5152860577218235,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "red",
+            "steps": 60,
+            "evidence": "Pale-blue face visibly shows H and yellow shows L. Red face is edge-on with unreadable mark; inspect red to locate T."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 196,
+          "applied_step": 356,
+          "elapsed_s": 5.308823822066188,
+          "error": null,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "T",
+            "color": "red",
+            "steps": 30,
+            "evidence": "Red face now clearly displays a rotated capital T, with crossbar on the right and stem extending left. Bind T to red and maintain red upward."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183102005,
+      "symbol": "E",
+      "goal_index": 1,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 700,
+      "first_skill_delivery_step": 156,
+      "phase_steps": {
+        "startup_pending": 156,
+        "inspection_without_binding_executing": 180,
+        "inspection_without_binding_pending": 356,
+        "bound_executing": 8
+      },
+      "first_known_step": 693,
+      "known_steps": 8,
+      "active_goal_changes": 2,
+      "terminal": {
+        "step": 700,
+        "pending": false,
+        "known": true,
+        "mode": "reorient_target",
+        "active_goal": 1,
+        "true_error_rad": 0.10907223882840877,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 156,
+          "elapsed_s": 5.180497657973319,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "magenta",
+            "steps": 90,
+            "evidence": "Visible darker blue face appears R and pale-blue cyan face H; E not yet observed. Inspect purple face."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 246,
+          "applied_step": 397,
+          "elapsed_s": 5.029051318299025,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "green",
+            "steps": 90,
+            "evidence": "Purple magenta upward face clearly shows S, not E. Inspect green to locate E."
+          }
+        },
+        {
+          "call": 3,
+          "request_step": 487,
+          "applied_step": 692,
+          "elapsed_s": 6.805722121614963,
+          "error": null,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "E",
+            "color": "green",
+            "steps": 10,
+            "evidence": "The enlarged crop visibly shows a capital E, rotated in the image, on the green upper face. Bind E to green and maintain it upward."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183102006,
+      "symbol": "R",
+      "goal_index": 2,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 190,
+      "first_skill_delivery_step": 140,
+      "phase_steps": {
+        "startup_pending": 140,
+        "bound_executing": 50
+      },
+      "first_known_step": 141,
+      "known_steps": 50,
+      "active_goal_changes": 1,
+      "terminal": {
+        "step": 190,
+        "pending": false,
+        "known": true,
+        "mode": "reorient_target",
+        "active_goal": 2,
+        "true_error_rad": 0.06605992880576063,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 140,
+          "elapsed_s": 4.633521962910891,
+          "error": null,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "R",
+            "color": "blue",
+            "steps": 90,
+            "evidence": "The enlarged RGB crop clearly shows capital R on the dark-blue face, distinct from pale-blue cyan."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183102007,
+      "symbol": "L",
+      "goal_index": 3,
+      "success": false,
+      "reason": "drop",
+      "exclusion_reason": null,
+      "steps": 491,
+      "first_skill_delivery_step": 215,
+      "phase_steps": {
+        "startup_pending": 215,
+        "inspection_without_binding_executing": 78,
+        "inspection_without_binding_pending": 198
+      },
+      "first_known_step": null,
+      "known_steps": 0,
+      "active_goal_changes": 2,
+      "terminal": {
+        "step": 491,
+        "pending": false,
+        "known": false,
+        "mode": "inspect_face",
+        "active_goal": 3,
+        "true_error_rad": 1.4133058457533674,
+        "speed": 1.0,
+        "drop": true
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 215,
+          "elapsed_s": 7.166018828749657,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "red",
+            "steps": 60,
+            "evidence": "Green face shows E. The foreshortened red face has a white bent mark that may be L; inspect red to resolve its letter."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 275,
+          "applied_step": 473,
+          "elapsed_s": 6.581828556954861,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "yellow",
+            "steps": 90,
+            "evidence": "The red upper face appears to show T, with a crossbar at the right end, rather than L. Pale-blue side shows H. Inspect yellow for the requested L."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183102008,
+      "symbol": "S",
+      "goal_index": 4,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 420,
+      "first_skill_delivery_step": 149,
+      "phase_steps": {
+        "startup_pending": 149,
+        "inspection_without_binding_executing": 90,
+        "inspection_without_binding_pending": 164,
+        "bound_executing": 17
+      },
+      "first_known_step": 404,
+      "known_steps": 17,
+      "active_goal_changes": 1,
+      "terminal": {
+        "step": 420,
+        "pending": false,
+        "known": true,
+        "mode": "reorient_target",
+        "active_goal": 4,
+        "true_error_rad": 0.09593965233688044,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 149,
+          "elapsed_s": 4.952630339656025,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "magenta",
+            "steps": 90,
+            "evidence": "Red face shows T; pale-blue top mark is unclear. S has not been observed; inspect purple face."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 239,
+          "applied_step": 403,
+          "elapsed_s": 5.437956030014902,
+          "error": null,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "S",
+            "color": "magenta",
+            "steps": 30,
+            "evidence": "The enlarged image clearly shows capital S printed on the purple (magenta) upper face."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183102009,
+      "symbol": "H",
+      "goal_index": 5,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 750,
+      "first_skill_delivery_step": 145,
+      "phase_steps": {
+        "startup_pending": 145,
+        "inspection_without_binding_executing": 175,
+        "inspection_without_binding_pending": 427,
+        "bound_executing": 3
+      },
+      "first_known_step": 748,
+      "known_steps": 3,
+      "active_goal_changes": 3,
+      "terminal": {
+        "step": 750,
+        "pending": false,
+        "known": true,
+        "mode": "reorient_target",
+        "active_goal": 5,
+        "true_error_rad": 0.08771864132211213,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 145,
+          "elapsed_s": 4.816551479045302,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "cyan",
+            "steps": 70,
+            "evidence": "Yellow face shows L; pale-blue side letter is too oblique to identify. Inspect pale-blue face for H."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 215,
+          "applied_step": 341,
+          "elapsed_s": 4.1807678560726345,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "magenta",
+            "steps": 70,
+            "evidence": "Pale-blue upward face is occluded and unreadable; darker blue side shows R. Inspect purple face to locate H."
+          }
+        },
+        {
+          "call": 3,
+          "request_step": 411,
+          "applied_step": 577,
+          "elapsed_s": 5.502495842985809,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "cyan",
+            "steps": 35,
+            "evidence": "Purple face visibly shows S. Pale-blue adjacent face is washed out; inspect it again from the new grasp to read its letter."
+          }
+        },
+        {
+          "call": 4,
+          "request_step": 612,
+          "applied_step": 747,
+          "elapsed_s": 4.498045396991074,
+          "error": null,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "H",
+            "color": "cyan",
+            "steps": 10,
+            "evidence": "Current enlarged image clearly shows capital H on the pale-blue upper face, distinct from darker blue side. Maintain cyan upward."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183102010,
+      "symbol": "T",
+      "goal_index": 0,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 380,
+      "first_skill_delivery_step": 164,
+      "phase_steps": {
+        "startup_pending": 164,
+        "inspection_without_binding_executing": 60,
+        "inspection_without_binding_pending": 147,
+        "bound_executing": 9
+      },
+      "first_known_step": 372,
+      "known_steps": 9,
+      "active_goal_changes": 1,
+      "terminal": {
+        "step": 380,
+        "pending": false,
+        "known": true,
+        "mode": "reorient_target",
+        "active_goal": 0,
+        "true_error_rad": 0.10542449862326551,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 164,
+          "elapsed_s": 5.464959046803415,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "red",
+            "steps": 60,
+            "evidence": "The red face has a partially visible white mark that may be T, but the oblique view is insufficient; inspect red upward to read it."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 224,
+          "applied_step": 371,
+          "elapsed_s": 4.878504130989313,
+          "error": null,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "T",
+            "color": "red",
+            "steps": 20,
+            "evidence": "The enlarged view shows a white capital T rotated sideways on the red face: a long stem meets a perpendicular crossbar. Red is the visible upper face."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183102011,
+      "symbol": "E",
+      "goal_index": 1,
+      "success": false,
+      "reason": "service_excluded",
+      "exclusion_reason": "service_error",
+      "steps": 1004,
+      "first_skill_delivery_step": 124,
+      "phase_steps": {
+        "startup_pending": 124,
+        "inspection_without_binding_executing": 90,
+        "inspection_without_binding_pending": 790
+      },
+      "first_known_step": null,
+      "known_steps": 0,
+      "active_goal_changes": 1,
+      "terminal": {
+        "step": 1004,
+        "pending": true,
+        "known": false,
+        "mode": "inspect_face",
+        "active_goal": 5,
+        "true_error_rad": 1.2512894549538196,
+        "speed": 0.329709529876709,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 124,
+          "elapsed_s": 4.104838726110756,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "cyan",
+            "steps": 90,
+            "evidence": "Visible purple face reads S and dark blue face appears R; E not yet observed. Inspect pale-blue face."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 214,
+          "applied_step": null,
+          "elapsed_s": 120.48712275316939,
+          "error": "RuntimeError: bridge_http_503: ReadTimeout",
+          "tool": null,
+          "arguments": null
+        }
+      ]
+    },
+    {
+      "trial_seed": 183102012,
+      "symbol": "R",
+      "goal_index": 2,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 1000,
+      "first_skill_delivery_step": 134,
+      "phase_steps": {
+        "startup_pending": 134,
+        "inspection_without_binding_executing": 250,
+        "inspection_without_binding_pending": 614,
+        "bound_executing": 2
+      },
+      "first_known_step": 999,
+      "known_steps": 2,
+      "active_goal_changes": 3,
+      "terminal": {
+        "step": 1000,
+        "pending": false,
+        "known": true,
+        "mode": "reorient_target",
+        "active_goal": 2,
+        "true_error_rad": 0.12591269742652475,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 134,
+          "elapsed_s": 4.434046350885183,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "blue",
+            "steps": 70,
+            "evidence": "Visible red face shows T and yellow face appears L; R is not yet visible. Inspect the darker blue face for its letter."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 204,
+          "applied_step": 447,
+          "elapsed_s": 8.07838887302205,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "green",
+            "steps": 90,
+            "evidence": "Purple face visibly shows S and pale-blue face H. Dark-blue top letter is too foreshortened to identify confidently. Inspect green to locate R."
+          }
+        },
+        {
+          "call": 3,
+          "request_step": 537,
+          "applied_step": 725,
+          "elapsed_s": 6.244937350973487,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "blue",
+            "steps": 90,
+            "evidence": "Green upward face clearly shows E, not R. Earlier dark-blue letter was foreshortened; inspect darker blue again to read it directly."
+          }
+        },
+        {
+          "call": 4,
+          "request_step": 815,
+          "applied_step": 998,
+          "elapsed_s": 6.081543532200158,
+          "error": null,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "R",
+            "color": "blue",
+            "steps": 60,
+            "evidence": "The dark-blue upper face shows the rotated R mark, with its stem, bowl and diagonal leg; the pale-blue front face shows H. Bring and maintain dark-blue R upward."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183102013,
+      "symbol": "L",
+      "goal_index": 3,
+      "success": false,
+      "reason": "drop",
+      "exclusion_reason": null,
+      "steps": 241,
+      "first_skill_delivery_step": 183,
+      "phase_steps": {
+        "startup_pending": 183,
+        "inspection_without_binding_executing": 58
+      },
+      "first_known_step": null,
+      "known_steps": 0,
+      "active_goal_changes": 1,
+      "terminal": {
+        "step": 241,
+        "pending": false,
+        "known": false,
+        "mode": "inspect_face",
+        "active_goal": 5,
+        "true_error_rad": 1.9262224770194627,
+        "speed": 1.0,
+        "drop": true
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 183,
+          "elapsed_s": 6.098712635226548,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "cyan",
+            "steps": 70,
+            "evidence": "Visible purple face reads S; darker blue and green faces are visible but no L is established. Inspect pale-blue face for target."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183102014,
+      "symbol": "S",
+      "goal_index": 4,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 440,
+      "first_skill_delivery_step": 127,
+      "phase_steps": {
+        "startup_pending": 127,
+        "inspection_without_binding_executing": 90,
+        "inspection_without_binding_pending": 212,
+        "bound_executing": 11
+      },
+      "first_known_step": 430,
+      "known_steps": 11,
+      "active_goal_changes": 1,
+      "terminal": {
+        "step": 440,
+        "pending": false,
+        "known": true,
+        "mode": "reorient_target",
+        "active_goal": 4,
+        "true_error_rad": 0.0805913732849165,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 127,
+          "elapsed_s": 4.2078587911091745,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "magenta",
+            "steps": 90,
+            "evidence": "Visible red looks T and dark blue E; pale-blue letter unclear. S not yet identified; inspect purple face."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 217,
+          "applied_step": 429,
+          "elapsed_s": 7.041965965181589,
+          "error": null,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "S",
+            "color": "magenta",
+            "steps": 30,
+            "evidence": "Enlarged image clearly shows capital S on the purple (magenta) upper face."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183102015,
+      "symbol": "H",
+      "goal_index": 5,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 400,
+      "first_skill_delivery_step": 128,
+      "phase_steps": {
+        "startup_pending": 128,
+        "inspection_without_binding_executing": 70,
+        "inspection_without_binding_pending": 196,
+        "bound_executing": 6
+      },
+      "first_known_step": 395,
+      "known_steps": 6,
+      "active_goal_changes": 1,
+      "terminal": {
+        "step": 400,
+        "pending": false,
+        "known": true,
+        "mode": "reorient_target",
+        "active_goal": 5,
+        "true_error_rad": 0.1460849550040334,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 128,
+          "elapsed_s": 4.265268972609192,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "cyan",
+            "steps": 70,
+            "evidence": "Green face shows E and darker blue shows R; H is not visible. Inspect pale-blue cyan face for its letter."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 198,
+          "applied_step": 394,
+          "elapsed_s": 6.528808011673391,
+          "error": null,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "H",
+            "color": "cyan",
+            "steps": 20,
+            "evidence": "The enlarged view clearly shows capital H on the pale-blue cyan face, distinct from the dark blue side. Bring and maintain that face upward."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183102016,
+      "symbol": "T",
+      "goal_index": 0,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 410,
+      "first_skill_delivery_step": 138,
+      "phase_steps": {
+        "startup_pending": 138,
+        "inspection_without_binding_executing": 90,
+        "inspection_without_binding_pending": 177,
+        "bound_executing": 5
+      },
+      "first_known_step": 406,
+      "known_steps": 5,
+      "active_goal_changes": 1,
+      "terminal": {
+        "step": 410,
+        "pending": false,
+        "known": true,
+        "mode": "reorient_target",
+        "active_goal": 0,
+        "true_error_rad": 0.14167735756426225,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 138,
+          "elapsed_s": 4.587951121386141,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "red",
+            "steps": 90,
+            "evidence": "Visible pale-blue face reads H and dark blue face reads R. Red side is too narrow to read; inspect it to locate T."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 228,
+          "applied_step": 405,
+          "elapsed_s": 5.8991274940781295,
+          "error": null,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "T",
+            "color": "red",
+            "steps": 30,
+            "evidence": "The enlarged view shows a rotated capital T printed on the red upper face: a long stem meeting a perpendicular crossbar. Bind T to red and maintain red upward."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183102017,
+      "symbol": "E",
+      "goal_index": 1,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 170,
+      "first_skill_delivery_step": 146,
+      "phase_steps": {
+        "startup_pending": 146,
+        "bound_executing": 24
+      },
+      "first_known_step": 147,
+      "known_steps": 24,
+      "active_goal_changes": 0,
+      "terminal": {
+        "step": 170,
+        "pending": false,
+        "known": true,
+        "mode": "reorient_target",
+        "active_goal": 1,
+        "true_error_rad": 0.15183595471874303,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 146,
+          "elapsed_s": 4.864068306982517,
+          "error": null,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "E",
+            "color": "green",
+            "steps": 80,
+            "evidence": "The enlarged crop shows a white capital E rotated on the green upper-facing face; the red face shows T. Bring the green E face upward."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183102018,
+      "symbol": "R",
+      "goal_index": 2,
+      "success": true,
+      "reason": "success",
+      "exclusion_reason": null,
+      "steps": 690,
+      "first_skill_delivery_step": 162,
+      "phase_steps": {
+        "startup_pending": 162,
+        "inspection_without_binding_executing": 140,
+        "inspection_without_binding_pending": 370,
+        "bound_executing": 18
+      },
+      "first_known_step": 673,
+      "known_steps": 18,
+      "active_goal_changes": 2,
+      "terminal": {
+        "step": 690,
+        "pending": false,
+        "known": true,
+        "mode": "reorient_target",
+        "active_goal": 2,
+        "true_error_rad": 0.1042068039299131,
+        "speed": 1.0,
+        "drop": false
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 162,
+          "elapsed_s": 5.374361461028457,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "cyan",
+            "steps": 70,
+            "evidence": "The purple (magenta) face visibly reads S. The adjacent pale-blue face is visible only edge-on with no readable letter; inspect it to search for R."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 232,
+          "applied_step": 398,
+          "elapsed_s": 5.521969976834953,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "blue",
+            "steps": 70,
+            "evidence": "The cyan inspection shows a washed-out top face and a partially occluded white glyph on the darker blue side. The glyph is not yet reliably readable; inspect darker blue."
+          }
+        },
+        {
+          "call": 3,
+          "request_step": 468,
+          "applied_step": 672,
+          "elapsed_s": 6.770618987735361,
+          "error": null,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "R",
+            "color": "blue",
+            "steps": 30,
+            "evidence": "The enlarged image now shows a capital R, rotated in the image, printed on the darker blue upper face. Bind R to blue and maintain that face upward."
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 183102019,
+      "symbol": "L",
+      "goal_index": 3,
+      "success": false,
+      "reason": "drop",
+      "exclusion_reason": null,
+      "steps": 417,
+      "first_skill_delivery_step": 116,
+      "phase_steps": {
+        "startup_pending": 116,
+        "inspection_without_binding_executing": 148,
+        "inspection_without_binding_pending": 153
+      },
+      "first_known_step": null,
+      "known_steps": 0,
+      "active_goal_changes": 2,
+      "terminal": {
+        "step": 417,
+        "pending": false,
+        "known": false,
+        "mode": "inspect_face",
+        "active_goal": 2,
+        "true_error_rad": 2.731877836657135,
+        "speed": 1.0,
+        "drop": true
+      },
+      "calls": [
+        {
+          "call": 1,
+          "request_step": 0,
+          "applied_step": 116,
+          "elapsed_s": 3.8579083988443017,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "magenta",
+            "steps": 90,
+            "evidence": "Visible pale-blue face reads H; L is not visible. Inspect purple face for its letter."
+          }
+        },
+        {
+          "call": 2,
+          "request_step": 206,
+          "applied_step": 359,
+          "elapsed_s": 5.089533966965973,
+          "error": null,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "blue",
+            "steps": 90,
+            "evidence": "Purple upward face reads S, not L. Dark-blue side has an incompletely visible white mark; inspect it to read the letter."
+          }
+        }
+      ]
+    }
+  ],
+  "limitations": "The common measured stop gate remains active. Zero bound-stage failures is conditional on reaching that stage, not proof that the local policy is perfect. Actual model latency and subsequent physical histories differ across conditions. No formal trajectory is reused for training or selection. A successful stop may occur immediately upon binding before another physical step is logged. Absence of a logged bound step alone is not evidence of success without binding."
+}

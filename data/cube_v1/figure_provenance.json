@@ -1,0 +1,9 @@
+{
+  "phase_analysis_source_sha256": "042c4a22616deebc9e98c8b1628e3e47b49872f56ce0736fd7494bc9c46c638e",
+  "images": {
+    "cube_trial183101000_request03.png": "01647d02928fd04f338fe7c57e27a20307b889dc9e80b598e7e402ca02721dfb",
+    "cube_trial183101000_request02.png": "5926dd04083a9a34650d078196f0f0fab0fd1a59505fada07f2ae72c9eeeb152",
+    "cube_trial183101000_request01.png": "9bdd38447a87e528f2ddc00fcce83f9336cb2a66e9960736fd8f29cce43d7e98"
+  },
+  "image_source": "formal Astra trial 183101000, requests 1-3, frozen cube-v1"
+}

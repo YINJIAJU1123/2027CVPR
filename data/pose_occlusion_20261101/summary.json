@@ -1,0 +1,129 @@
+{
+  "frames": 6144,
+  "seeds": [
+    31001,
+    31002,
+    31003
+  ],
+  "view_pitch_degrees": [
+    0,
+    60,
+    90,
+    105
+  ],
+  "environment_clusters": 48,
+  "threshold": {
+    "translation_mm": 10,
+    "rotation_degrees": 10,
+    "comparison": "strict_less_than",
+    "invalid_predictions": "failure"
+  },
+  "metrics": {
+    "rgb": {
+      "successes": 2306,
+      "invalid": 69,
+      "recall_percent": 37.53,
+      "recall_ci95_percent": [
+        36.6,
+        38.48
+      ],
+      "strict_recall_percent": 14.63,
+      "add_recall_percent": 38.35,
+      "mean_translation_mm_valid_only": 57.56,
+      "mean_rotation_deg_valid_only": 12.282
+    },
+    "rgbd": {
+      "successes": 3977,
+      "invalid": 1,
+      "recall_percent": 64.73,
+      "recall_ci95_percent": [
+        64.02,
+        65.46
+      ],
+      "strict_recall_percent": 47.56,
+      "add_recall_percent": 71.48,
+      "mean_translation_mm_valid_only": 6.261,
+      "mean_rotation_deg_valid_only": 10.821
+    }
+  },
+  "occlusion_bins": [
+    {
+      "label": "[0,25%)",
+      "frames": 2891,
+      "clusters": 48,
+      "rgb_percent": 66.17,
+      "rgbd_percent": 97.61,
+      "delta_pp": 31.44,
+      "delta_ci95_pp": [
+        29.76,
+        33.08
+      ]
+    },
+    {
+      "label": "[25,50%)",
+      "frames": 1964,
+      "clusters": 48,
+      "rgb_percent": 19.91,
+      "rgbd_percent": 55.45,
+      "delta_pp": 35.54,
+      "delta_ci95_pp": [
+        33.07,
+        38.06
+      ]
+    },
+    {
+      "label": "[50,75%)",
+      "frames": 1198,
+      "clusters": 48,
+      "rgb_percent": 0.17,
+      "rgbd_percent": 5.51,
+      "delta_pp": 5.34,
+      "delta_ci95_pp": [
+        4.11,
+        6.62
+      ]
+    },
+    {
+      "label": "[75,100%]",
+      "frames": 91,
+      "clusters": 44,
+      "rgb_percent": 0.0,
+      "rgbd_percent": 0.0,
+      "delta_pp": 0.0,
+      "delta_ci95_pp": [
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "difference_pp": 27.2,
+  "reported_difference_ci95_pp": [
+    26.07,
+    28.3
+  ],
+  "bootstrap": {
+    "replicates": 10000,
+    "unit": "whole environment cluster paired, stratified by seed",
+    "interpretation": "fixed object and test seeds, not training randomness"
+  },
+  "controls": {
+    "rgb_control": {
+      "successes": 4725,
+      "frames": 6144
+    },
+    "rgbd_control": {
+      "successes": 6137,
+      "frames": 6144
+    },
+    "rgbd_noisy": {
+      "successes": 3973,
+      "frames": 6144
+    }
+  },
+  "model_sha256": {
+    "rgb": "0f5f893f7de75f53dcae6adeba047148867b24e1e54d98f28568898e3433a2af",
+    "rgbd": "9efb44fb2fb587de82c17ee0a60dfaf942fa004be0883705f5c859e518763968"
+  },
+  "protocol_sha256": "ce0d19205716f98909b40292369c34a7235725109e74d4a11a0ba9e7536d7a48",
+  "verification_scope": "Aggregate counts independently re-summed from 12 delivered shard summaries. Occlusion-bin percentages, secondary metrics and bootstrap intervals transcribed from delivered report. Raw-frame and bootstrap reruns not performed during paper integration."
+}

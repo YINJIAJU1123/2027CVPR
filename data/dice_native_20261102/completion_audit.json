@@ -1,0 +1,231 @@
+{
+  "complete": true,
+  "release_sha256": "253c20d5d2ae83eb41d4b70a6934cf95c8ccefb7b0c3e46b3535f70213500185",
+  "audit_script_sha256": "b55a46d9bfae580469ff04c357ec321f9d6164dacc130b6aa1d2c54b841afde6",
+  "trials": 120,
+  "frozen_sources": 39,
+  "checks": [
+    "source and weight hashes unchanged",
+    "published repository unchanged",
+    "canonical targets independently checked",
+    "initial hashes recomputed and full states paired",
+    "all control steps recorded through model wait",
+    "model input images present",
+    "bare baseline module isolation",
+    "all methods use identical noisy simulator pose runtime"
+  ],
+  "methods": {
+    "astra": {
+      "per_goal": {
+        "1": {
+          "n": 7,
+          "success": 5,
+          "drop": 2,
+          "false_stop": 0,
+          "horizon": 0
+        },
+        "2": {
+          "n": 7,
+          "success": 1,
+          "drop": 6,
+          "false_stop": 0,
+          "horizon": 0
+        },
+        "3": {
+          "n": 7,
+          "success": 4,
+          "drop": 3,
+          "false_stop": 0,
+          "horizon": 0
+        },
+        "4": {
+          "n": 7,
+          "success": 4,
+          "drop": 3,
+          "false_stop": 0,
+          "horizon": 0
+        },
+        "5": {
+          "n": 6,
+          "success": 6,
+          "drop": 0,
+          "false_stop": 0,
+          "horizon": 0
+        },
+        "6": {
+          "n": 6,
+          "success": 4,
+          "drop": 1,
+          "false_stop": 1,
+          "horizon": 0
+        }
+      },
+      "wrong_binding_at_end": 0,
+      "tool_counts": {
+        "inspect_face": 32,
+        "reorient_target": 27,
+        "verify_target": 4
+      },
+      "token_usage": {
+        "input_tokens": 96425,
+        "output_tokens": 3743,
+        "total_tokens": 100168
+      },
+      "reached_but_failed": 2,
+      "latency_s": {
+        "n": 63,
+        "median": 5.626326168003288,
+        "p95": 7.51759493300051,
+        "maximum": 9.162461419000465
+      },
+      "rule_invalid_responses": null,
+      "elapsed_wall_s": 486.224232159002
+    },
+    "vlm": {
+      "per_goal": {
+        "1": {
+          "n": 7,
+          "success": 5,
+          "drop": 1,
+          "false_stop": 1,
+          "horizon": 0
+        },
+        "2": {
+          "n": 7,
+          "success": 3,
+          "drop": 3,
+          "false_stop": 0,
+          "horizon": 1
+        },
+        "3": {
+          "n": 7,
+          "success": 5,
+          "drop": 1,
+          "false_stop": 1,
+          "horizon": 0
+        },
+        "4": {
+          "n": 7,
+          "success": 2,
+          "drop": 1,
+          "false_stop": 3,
+          "horizon": 1
+        },
+        "5": {
+          "n": 6,
+          "success": 3,
+          "drop": 1,
+          "false_stop": 0,
+          "horizon": 2
+        },
+        "6": {
+          "n": 6,
+          "success": 2,
+          "drop": 1,
+          "false_stop": 2,
+          "horizon": 1
+        }
+      },
+      "wrong_binding_at_end": 0,
+      "tool_counts": null,
+      "token_usage": null,
+      "reached_but_failed": 8,
+      "latency_s": {
+        "n": 141,
+        "median": 0.12388290600210894,
+        "p95": 0.1302084939998167,
+        "maximum": 0.13472220199764706
+      },
+      "rule_invalid_responses": null,
+      "elapsed_wall_s": 1037.7563034769992
+    },
+    "rule": {
+      "per_goal": {
+        "1": {
+          "n": 7,
+          "success": 0,
+          "drop": 1,
+          "false_stop": 6,
+          "horizon": 0
+        },
+        "2": {
+          "n": 7,
+          "success": 0,
+          "drop": 3,
+          "false_stop": 0,
+          "horizon": 4
+        },
+        "3": {
+          "n": 7,
+          "success": 6,
+          "drop": 1,
+          "false_stop": 0,
+          "horizon": 0
+        },
+        "4": {
+          "n": 7,
+          "success": 5,
+          "drop": 1,
+          "false_stop": 0,
+          "horizon": 1
+        },
+        "5": {
+          "n": 6,
+          "success": 6,
+          "drop": 0,
+          "false_stop": 0,
+          "horizon": 0
+        },
+        "6": {
+          "n": 6,
+          "success": 0,
+          "drop": 1,
+          "false_stop": 0,
+          "horizon": 5
+        }
+      },
+      "wrong_binding_at_end": 6,
+      "tool_counts": null,
+      "token_usage": null,
+      "reached_but_failed": 10,
+      "latency_s": {
+        "n": 154,
+        "median": 1.1586480615005712,
+        "p95": 1.5460657519979577,
+        "maximum": 1.9917508250000537
+      },
+      "rule_invalid_responses": 0,
+      "elapsed_wall_s": 1748.8125736580005
+    }
+  },
+  "paired_descriptive_analysis": {
+    "astra_vs_vlm": {
+      "left_only_success": 10,
+      "right_only_success": 6,
+      "both_success": 14,
+      "both_failure": 10,
+      "exact_mcnemar_two_sided_p": 0.454498291015625
+    },
+    "astra_vs_rule": {
+      "left_only_success": 11,
+      "right_only_success": 4,
+      "both_success": 13,
+      "both_failure": 12,
+      "exact_mcnemar_two_sided_p": 0.11846923828125
+    },
+    "vlm_vs_rule": {
+      "left_only_success": 11,
+      "right_only_success": 8,
+      "both_success": 9,
+      "both_failure": 12,
+      "exact_mcnemar_two_sided_p": 0.6476058959960938
+    }
+  },
+  "limitations": [
+    "single dice native mapping",
+    "no estimator used in simulation",
+    "forty predeclared cases per method",
+    "latencies are measured service-specific values",
+    "no isolated controller ablation in this main comparison"
+  ]
+}

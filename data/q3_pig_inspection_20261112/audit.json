@@ -1,0 +1,26 @@
+{
+  "status": "sanitized_export_of_completed_formal_records",
+  "formal_trials": 80,
+  "formal_pairs": 40,
+  "previous_independent_audit_status": "independently_recomputed_and_verified",
+  "frozen_sources_verified": 1254,
+  "frozen_artifacts_verified": 8,
+  "common_service_exclusions": [],
+  "evidence_bundle_review_status": "passed_independent_read_only_bundle_review",
+  "evidence_bundle_zip_sha256": "738be066fa6173a4fc6c4e1bafd0b190e9c45029d3422a4220f7b56663d92b25",
+  "binding_definitions": {
+    "terminal_correct": "At episode exit, known=True and last active semantic bound_goal_index equals scored goal_index and declared label equals requested label. No success, stop, pose, or drop predicate is used.",
+    "ever_correct": "At least one actually applied reorient_target/verify_target/stop action binds the scored physical goal and requested label, regardless of subsequent inspect, wrong binding, drop, abstention or success.",
+    "terminal_unbound": "No current binding: initial state or cleared by an actually applied inspect_face.",
+    "drop_after_binding": "A drop does not clear outer evaluator binding variables. A correctly bound trial dropping before stop would count as terminal-correct and ever-correct but failed, unless a later applied inspection had already cleared the terminal binding.",
+    "unapplied_responses": "Replies without applied_step never change binding, even if saved after episode termination and containing a target-binding proposal.",
+    "recognition_limit": "Applied binding is a semantic action declaration, not an independent human recognition or visibility annotation."
+  },
+  "original_audit_sources": {
+    "final_audit.json": "dba8abdac0c3d34f08d691142b36d8d490f92c3f662c3419c18dcb3ffef1d067",
+    "final_independent_audit.json": "b0d0c5d696fefa61d0ad1b3fc8b20f96a7dfe24f214b846adc9c3cecb0067af9",
+    "binding_semantics_audit_20261112.json": "d414667b82959a9409a87f75d15e260b1c8fb68dd54357751d721e0980212a70"
+  },
+  "scope": "Hashes reference original files; sanitized files intentionally have different hashes. Compact offline recomputation does not replace the full physical-trace audit.",
+  "exclusions": "Engineering and smoke attempts are excluded, including an earlier failed admission HTTP 504. All 80 formal episodes and all their returned calls are included."
+}

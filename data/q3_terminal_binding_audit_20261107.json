@@ -1,0 +1,984 @@
+{
+  "analysis": "Offline terminal-binding audit of existing Q3 image-refresh trials",
+  "source": "data/cube_confirmation_image_refresh_20261102/trials.json",
+  "source_sha256": "1ff915aad25fe25ae1615ad1149fd7d3de31c0114c91fe0489c9dd844dfb6361",
+  "generator": "scripts/analyze_q3_terminal_bindings.py",
+  "classification": {
+    "correct": "declared_goal equals goal_index at episode termination",
+    "wrong": "declared_goal is present but differs from goal_index",
+    "unbound": "declared_goal and declared_symbol are both null"
+  },
+  "scope": "Descriptive classification of existing terminal records, not new trials. This does not measure first binding, initial or final target visibility, post-stop stability, or causal superiority of adaptive inspection.",
+  "checks": {
+    "trials_per_arm": 40,
+    "paired_trials": 40,
+    "matching_trial_ids_goals_symbols_and_initial_states": true,
+    "no_service_exclusions": true,
+    "goal_and_binding_fields_validated": true,
+    "success_and_failure_consistency_validated": true,
+    "six_call_cap_validated": true,
+    "success_pose_tolerance_rad": 0.16
+  },
+  "groups": {
+    "image_fresh": {
+      "trials": 40,
+      "service_exclusions": 0,
+      "terminal_binding_counts": {
+        "correct": 34,
+        "wrong": 1,
+        "unbound": 5
+      },
+      "terminal_reason_counts": {
+        "success": 32,
+        "drop": 3,
+        "false_stop": 3,
+        "abstain": 2
+      },
+      "terminal_binding_by_reason": {
+        "correct": {
+          "success": 32,
+          "drop": 0,
+          "false_stop": 2,
+          "abstain": 0
+        },
+        "wrong": {
+          "success": 0,
+          "drop": 0,
+          "false_stop": 1,
+          "abstain": 0
+        },
+        "unbound": {
+          "success": 0,
+          "drop": 3,
+          "false_stop": 0,
+          "abstain": 2
+        }
+      },
+      "correct_terminal_binding_rate": 0.85,
+      "success_rate": 0.8,
+      "actual_model_calls": 112,
+      "classified_trials": [
+        {
+          "trial_id": 187201000,
+          "requested_goal_index": 0,
+          "requested_symbol": "T",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "drop",
+          "success": false,
+          "final_error_rad": 1.8755058780075584
+        },
+        {
+          "trial_id": 187201001,
+          "requested_goal_index": 1,
+          "requested_symbol": "E",
+          "declared_goal_index": 1,
+          "declared_symbol": "E",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.15565068205168808
+        },
+        {
+          "trial_id": 187201002,
+          "requested_goal_index": 2,
+          "requested_symbol": "R",
+          "declared_goal_index": 2,
+          "declared_symbol": "R",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.14560727401670057
+        },
+        {
+          "trial_id": 187201003,
+          "requested_goal_index": 3,
+          "requested_symbol": "L",
+          "declared_goal_index": 3,
+          "declared_symbol": "L",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.11185678311227851
+        },
+        {
+          "trial_id": 187201004,
+          "requested_goal_index": 4,
+          "requested_symbol": "S",
+          "declared_goal_index": 4,
+          "declared_symbol": "S",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.10903825450563223
+        },
+        {
+          "trial_id": 187201005,
+          "requested_goal_index": 5,
+          "requested_symbol": "H",
+          "declared_goal_index": 5,
+          "declared_symbol": "H",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.05409849617215631
+        },
+        {
+          "trial_id": 187201006,
+          "requested_goal_index": 0,
+          "requested_symbol": "T",
+          "declared_goal_index": 0,
+          "declared_symbol": "T",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.09377840136549799
+        },
+        {
+          "trial_id": 187201007,
+          "requested_goal_index": 1,
+          "requested_symbol": "E",
+          "declared_goal_index": 1,
+          "declared_symbol": "E",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.047523683929257654
+        },
+        {
+          "trial_id": 187201008,
+          "requested_goal_index": 2,
+          "requested_symbol": "R",
+          "declared_goal_index": 2,
+          "declared_symbol": "R",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.13456904906867176
+        },
+        {
+          "trial_id": 187201009,
+          "requested_goal_index": 3,
+          "requested_symbol": "L",
+          "declared_goal_index": 3,
+          "declared_symbol": "L",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.05978171057502715
+        },
+        {
+          "trial_id": 187201010,
+          "requested_goal_index": 4,
+          "requested_symbol": "S",
+          "declared_goal_index": 4,
+          "declared_symbol": "S",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.12415271238136913
+        },
+        {
+          "trial_id": 187201011,
+          "requested_goal_index": 5,
+          "requested_symbol": "H",
+          "declared_goal_index": 5,
+          "declared_symbol": "H",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.1165109026271219
+        },
+        {
+          "trial_id": 187201012,
+          "requested_goal_index": 0,
+          "requested_symbol": "T",
+          "declared_goal_index": 0,
+          "declared_symbol": "T",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.06447151704139141
+        },
+        {
+          "trial_id": 187201013,
+          "requested_goal_index": 1,
+          "requested_symbol": "E",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "drop",
+          "success": false,
+          "final_error_rad": 2.931850989961713
+        },
+        {
+          "trial_id": 187201014,
+          "requested_goal_index": 2,
+          "requested_symbol": "R",
+          "declared_goal_index": 2,
+          "declared_symbol": "R",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.08579883374852916
+        },
+        {
+          "trial_id": 187201015,
+          "requested_goal_index": 3,
+          "requested_symbol": "L",
+          "declared_goal_index": 3,
+          "declared_symbol": "L",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.11875577096670513
+        },
+        {
+          "trial_id": 187201016,
+          "requested_goal_index": 4,
+          "requested_symbol": "S",
+          "declared_goal_index": 4,
+          "declared_symbol": "S",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.04116811882144466
+        },
+        {
+          "trial_id": 187201017,
+          "requested_goal_index": 5,
+          "requested_symbol": "H",
+          "declared_goal_index": 5,
+          "declared_symbol": "H",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.11933892888053427
+        },
+        {
+          "trial_id": 187201018,
+          "requested_goal_index": 0,
+          "requested_symbol": "T",
+          "declared_goal_index": 0,
+          "declared_symbol": "T",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.15043638600224205
+        },
+        {
+          "trial_id": 187201019,
+          "requested_goal_index": 1,
+          "requested_symbol": "E",
+          "declared_goal_index": 1,
+          "declared_symbol": "E",
+          "terminal_binding": "correct",
+          "terminal_reason": "false_stop",
+          "success": false,
+          "final_error_rad": 0.16825784413254583
+        },
+        {
+          "trial_id": 187202000,
+          "requested_goal_index": 2,
+          "requested_symbol": "R",
+          "declared_goal_index": 2,
+          "declared_symbol": "R",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.0916164215870445
+        },
+        {
+          "trial_id": 187202001,
+          "requested_goal_index": 3,
+          "requested_symbol": "L",
+          "declared_goal_index": 3,
+          "declared_symbol": "L",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.042293412141403704
+        },
+        {
+          "trial_id": 187202002,
+          "requested_goal_index": 4,
+          "requested_symbol": "S",
+          "declared_goal_index": 4,
+          "declared_symbol": "S",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.1199125429008561
+        },
+        {
+          "trial_id": 187202003,
+          "requested_goal_index": 5,
+          "requested_symbol": "H",
+          "declared_goal_index": 5,
+          "declared_symbol": "H",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.11883846078897183
+        },
+        {
+          "trial_id": 187202004,
+          "requested_goal_index": 0,
+          "requested_symbol": "T",
+          "declared_goal_index": 3,
+          "declared_symbol": "T",
+          "terminal_binding": "wrong",
+          "terminal_reason": "false_stop",
+          "success": false,
+          "final_error_rad": 1.5400273205971977
+        },
+        {
+          "trial_id": 187202005,
+          "requested_goal_index": 1,
+          "requested_symbol": "E",
+          "declared_goal_index": 1,
+          "declared_symbol": "E",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.11485666938194118
+        },
+        {
+          "trial_id": 187202006,
+          "requested_goal_index": 2,
+          "requested_symbol": "R",
+          "declared_goal_index": 2,
+          "declared_symbol": "R",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.12486886755514091
+        },
+        {
+          "trial_id": 187202007,
+          "requested_goal_index": 3,
+          "requested_symbol": "L",
+          "declared_goal_index": 3,
+          "declared_symbol": "L",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.10725363269704584
+        },
+        {
+          "trial_id": 187202008,
+          "requested_goal_index": 4,
+          "requested_symbol": "S",
+          "declared_goal_index": 4,
+          "declared_symbol": "S",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.019913241040144525
+        },
+        {
+          "trial_id": 187202009,
+          "requested_goal_index": 5,
+          "requested_symbol": "H",
+          "declared_goal_index": 5,
+          "declared_symbol": "H",
+          "terminal_binding": "correct",
+          "terminal_reason": "false_stop",
+          "success": false,
+          "final_error_rad": 0.16736007115803173
+        },
+        {
+          "trial_id": 187202010,
+          "requested_goal_index": 0,
+          "requested_symbol": "T",
+          "declared_goal_index": 0,
+          "declared_symbol": "T",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.15109305712616464
+        },
+        {
+          "trial_id": 187202011,
+          "requested_goal_index": 1,
+          "requested_symbol": "E",
+          "declared_goal_index": 1,
+          "declared_symbol": "E",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.051904579967745654
+        },
+        {
+          "trial_id": 187202012,
+          "requested_goal_index": 2,
+          "requested_symbol": "R",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "abstain",
+          "success": false,
+          "final_error_rad": 3.1114316510635898
+        },
+        {
+          "trial_id": 187202013,
+          "requested_goal_index": 3,
+          "requested_symbol": "L",
+          "declared_goal_index": 3,
+          "declared_symbol": "L",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.03801920414294498
+        },
+        {
+          "trial_id": 187202014,
+          "requested_goal_index": 4,
+          "requested_symbol": "S",
+          "declared_goal_index": 4,
+          "declared_symbol": "S",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.04024284754358182
+        },
+        {
+          "trial_id": 187202015,
+          "requested_goal_index": 5,
+          "requested_symbol": "H",
+          "declared_goal_index": 5,
+          "declared_symbol": "H",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.06823254445817335
+        },
+        {
+          "trial_id": 187202016,
+          "requested_goal_index": 0,
+          "requested_symbol": "T",
+          "declared_goal_index": 0,
+          "declared_symbol": "T",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.08075264604967712
+        },
+        {
+          "trial_id": 187202017,
+          "requested_goal_index": 1,
+          "requested_symbol": "E",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "abstain",
+          "success": false,
+          "final_error_rad": 1.5557875495337228
+        },
+        {
+          "trial_id": 187202018,
+          "requested_goal_index": 2,
+          "requested_symbol": "R",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "drop",
+          "success": false,
+          "final_error_rad": 1.210753763692748
+        },
+        {
+          "trial_id": 187202019,
+          "requested_goal_index": 3,
+          "requested_symbol": "L",
+          "declared_goal_index": 3,
+          "declared_symbol": "L",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.12988741256471475
+        }
+      ]
+    },
+    "image_frozen": {
+      "trials": 40,
+      "service_exclusions": 0,
+      "terminal_binding_counts": {
+        "correct": 9,
+        "wrong": 3,
+        "unbound": 28
+      },
+      "terminal_reason_counts": {
+        "success": 9,
+        "drop": 4,
+        "false_stop": 3,
+        "abstain": 24
+      },
+      "terminal_binding_by_reason": {
+        "correct": {
+          "success": 9,
+          "drop": 0,
+          "false_stop": 0,
+          "abstain": 0
+        },
+        "wrong": {
+          "success": 0,
+          "drop": 0,
+          "false_stop": 3,
+          "abstain": 0
+        },
+        "unbound": {
+          "success": 0,
+          "drop": 4,
+          "false_stop": 0,
+          "abstain": 24
+        }
+      },
+      "correct_terminal_binding_rate": 0.225,
+      "success_rate": 0.225,
+      "actual_model_calls": 98,
+      "classified_trials": [
+        {
+          "trial_id": 187201000,
+          "requested_goal_index": 0,
+          "requested_symbol": "T",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "abstain",
+          "success": false,
+          "final_error_rad": 0.14567475443175967
+        },
+        {
+          "trial_id": 187201001,
+          "requested_goal_index": 1,
+          "requested_symbol": "E",
+          "declared_goal_index": 1,
+          "declared_symbol": "E",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.11823449411350165
+        },
+        {
+          "trial_id": 187201002,
+          "requested_goal_index": 2,
+          "requested_symbol": "R",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "abstain",
+          "success": false,
+          "final_error_rad": 3.0698638070536113
+        },
+        {
+          "trial_id": 187201003,
+          "requested_goal_index": 3,
+          "requested_symbol": "L",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "abstain",
+          "success": false,
+          "final_error_rad": 1.5997943204621348
+        },
+        {
+          "trial_id": 187201004,
+          "requested_goal_index": 4,
+          "requested_symbol": "S",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "abstain",
+          "success": false,
+          "final_error_rad": 2.128473038414681
+        },
+        {
+          "trial_id": 187201005,
+          "requested_goal_index": 5,
+          "requested_symbol": "H",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "drop",
+          "success": false,
+          "final_error_rad": 2.0288708544569802
+        },
+        {
+          "trial_id": 187201006,
+          "requested_goal_index": 0,
+          "requested_symbol": "T",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "abstain",
+          "success": false,
+          "final_error_rad": 1.2999108057327473
+        },
+        {
+          "trial_id": 187201007,
+          "requested_goal_index": 1,
+          "requested_symbol": "E",
+          "declared_goal_index": 1,
+          "declared_symbol": "E",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.10190680553096598
+        },
+        {
+          "trial_id": 187201008,
+          "requested_goal_index": 2,
+          "requested_symbol": "R",
+          "declared_goal_index": 2,
+          "declared_symbol": "R",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.125904013332748
+        },
+        {
+          "trial_id": 187201009,
+          "requested_goal_index": 3,
+          "requested_symbol": "L",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "abstain",
+          "success": false,
+          "final_error_rad": 0.08022760005812231
+        },
+        {
+          "trial_id": 187201010,
+          "requested_goal_index": 4,
+          "requested_symbol": "S",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "abstain",
+          "success": false,
+          "final_error_rad": 2.3381089088997076
+        },
+        {
+          "trial_id": 187201011,
+          "requested_goal_index": 5,
+          "requested_symbol": "H",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "abstain",
+          "success": false,
+          "final_error_rad": 2.7398550525119107
+        },
+        {
+          "trial_id": 187201012,
+          "requested_goal_index": 0,
+          "requested_symbol": "T",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "abstain",
+          "success": false,
+          "final_error_rad": 0.1721710027199546
+        },
+        {
+          "trial_id": 187201013,
+          "requested_goal_index": 1,
+          "requested_symbol": "E",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "abstain",
+          "success": false,
+          "final_error_rad": 1.6095377813079268
+        },
+        {
+          "trial_id": 187201014,
+          "requested_goal_index": 2,
+          "requested_symbol": "R",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "drop",
+          "success": false,
+          "final_error_rad": 1.0182128570979163
+        },
+        {
+          "trial_id": 187201015,
+          "requested_goal_index": 3,
+          "requested_symbol": "L",
+          "declared_goal_index": 3,
+          "declared_symbol": "L",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.067093896392983
+        },
+        {
+          "trial_id": 187201016,
+          "requested_goal_index": 4,
+          "requested_symbol": "S",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "abstain",
+          "success": false,
+          "final_error_rad": 2.401608204780065
+        },
+        {
+          "trial_id": 187201017,
+          "requested_goal_index": 5,
+          "requested_symbol": "H",
+          "declared_goal_index": 5,
+          "declared_symbol": "H",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.09956628452399235
+        },
+        {
+          "trial_id": 187201018,
+          "requested_goal_index": 0,
+          "requested_symbol": "T",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "abstain",
+          "success": false,
+          "final_error_rad": 1.6420013196601466
+        },
+        {
+          "trial_id": 187201019,
+          "requested_goal_index": 1,
+          "requested_symbol": "E",
+          "declared_goal_index": 5,
+          "declared_symbol": "E",
+          "terminal_binding": "wrong",
+          "terminal_reason": "false_stop",
+          "success": false,
+          "final_error_rad": 3.0814740227955735
+        },
+        {
+          "trial_id": 187202000,
+          "requested_goal_index": 2,
+          "requested_symbol": "R",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "abstain",
+          "success": false,
+          "final_error_rad": 1.573781765998306
+        },
+        {
+          "trial_id": 187202001,
+          "requested_goal_index": 3,
+          "requested_symbol": "L",
+          "declared_goal_index": 3,
+          "declared_symbol": "L",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.06878708121229787
+        },
+        {
+          "trial_id": 187202002,
+          "requested_goal_index": 4,
+          "requested_symbol": "S",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "abstain",
+          "success": false,
+          "final_error_rad": 2.0991025326952806
+        },
+        {
+          "trial_id": 187202003,
+          "requested_goal_index": 5,
+          "requested_symbol": "H",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "abstain",
+          "success": false,
+          "final_error_rad": 2.0481872789274984
+        },
+        {
+          "trial_id": 187202004,
+          "requested_goal_index": 0,
+          "requested_symbol": "T",
+          "declared_goal_index": 3,
+          "declared_symbol": "T",
+          "terminal_binding": "wrong",
+          "terminal_reason": "false_stop",
+          "success": false,
+          "final_error_rad": 1.7114442864637482
+        },
+        {
+          "trial_id": 187202005,
+          "requested_goal_index": 1,
+          "requested_symbol": "E",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "abstain",
+          "success": false,
+          "final_error_rad": 2.0367082666419343
+        },
+        {
+          "trial_id": 187202006,
+          "requested_goal_index": 2,
+          "requested_symbol": "R",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "drop",
+          "success": false,
+          "final_error_rad": 2.8504152434132957
+        },
+        {
+          "trial_id": 187202007,
+          "requested_goal_index": 3,
+          "requested_symbol": "L",
+          "declared_goal_index": 3,
+          "declared_symbol": "L",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.048050459976561044
+        },
+        {
+          "trial_id": 187202008,
+          "requested_goal_index": 4,
+          "requested_symbol": "S",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "abstain",
+          "success": false,
+          "final_error_rad": 0.15931884497762147
+        },
+        {
+          "trial_id": 187202009,
+          "requested_goal_index": 5,
+          "requested_symbol": "H",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "abstain",
+          "success": false,
+          "final_error_rad": 1.3275567500142946
+        },
+        {
+          "trial_id": 187202010,
+          "requested_goal_index": 0,
+          "requested_symbol": "T",
+          "declared_goal_index": 0,
+          "declared_symbol": "T",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.11812948339266133
+        },
+        {
+          "trial_id": 187202011,
+          "requested_goal_index": 1,
+          "requested_symbol": "E",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "abstain",
+          "success": false,
+          "final_error_rad": 1.8716051715172597
+        },
+        {
+          "trial_id": 187202012,
+          "requested_goal_index": 2,
+          "requested_symbol": "R",
+          "declared_goal_index": 4,
+          "declared_symbol": "R",
+          "terminal_binding": "wrong",
+          "terminal_reason": "false_stop",
+          "success": false,
+          "final_error_rad": 1.534443342300055
+        },
+        {
+          "trial_id": 187202013,
+          "requested_goal_index": 3,
+          "requested_symbol": "L",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "abstain",
+          "success": false,
+          "final_error_rad": 1.5028289229939447
+        },
+        {
+          "trial_id": 187202014,
+          "requested_goal_index": 4,
+          "requested_symbol": "S",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "abstain",
+          "success": false,
+          "final_error_rad": 0.28345088700727233
+        },
+        {
+          "trial_id": 187202015,
+          "requested_goal_index": 5,
+          "requested_symbol": "H",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "drop",
+          "success": false,
+          "final_error_rad": 2.23722397232069
+        },
+        {
+          "trial_id": 187202016,
+          "requested_goal_index": 0,
+          "requested_symbol": "T",
+          "declared_goal_index": 0,
+          "declared_symbol": "T",
+          "terminal_binding": "correct",
+          "terminal_reason": "success",
+          "success": true,
+          "final_error_rad": 0.09917730237157911
+        },
+        {
+          "trial_id": 187202017,
+          "requested_goal_index": 1,
+          "requested_symbol": "E",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "abstain",
+          "success": false,
+          "final_error_rad": 0.08189941998826195
+        },
+        {
+          "trial_id": 187202018,
+          "requested_goal_index": 2,
+          "requested_symbol": "R",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "abstain",
+          "success": false,
+          "final_error_rad": 2.955822247165715
+        },
+        {
+          "trial_id": 187202019,
+          "requested_goal_index": 3,
+          "requested_symbol": "L",
+          "declared_goal_index": null,
+          "declared_symbol": null,
+          "terminal_binding": "unbound",
+          "terminal_reason": "abstain",
+          "success": false,
+          "final_error_rad": 1.5821830458317787
+        }
+      ]
+    }
+  }
+}

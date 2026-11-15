@@ -1,0 +1,217 @@
+{
+  "complete": true,
+  "development": false,
+  "paired_astra_comparisons": {
+    "identity": {
+      "vlm": {
+        "n": 40,
+        "a_only": 22,
+        "b_only": 1,
+        "mcnemar_exact_two_sided_p": 5.7220458984375e-06
+      },
+      "rule": {
+        "n": 40,
+        "a_only": 18,
+        "b_only": 2,
+        "mcnemar_exact_two_sided_p": 0.0004024505615234375
+      }
+    },
+    "permuted": {
+      "vlm": {
+        "n": 40,
+        "a_only": 31,
+        "b_only": 1,
+        "mcnemar_exact_two_sided_p": 1.5366822481155396e-08
+      },
+      "rule": {
+        "n": 40,
+        "a_only": 21,
+        "b_only": 3,
+        "mcnemar_exact_two_sided_p": 0.0002771615982055664
+      }
+    }
+  },
+  "paired_identity_vs_permuted": {
+    "astra": {
+      "n": 40,
+      "a_only": 4,
+      "b_only": 0,
+      "mcnemar_exact_two_sided_p": 0.125
+    },
+    "vlm": {
+      "n": 40,
+      "a_only": 13,
+      "b_only": 0,
+      "mcnemar_exact_two_sided_p": 0.000244140625
+    },
+    "rule": {
+      "n": 40,
+      "a_only": 11,
+      "b_only": 5,
+      "mcnemar_exact_two_sided_p": 0.210113525390625
+    }
+  },
+  "release_sha256": "a49ffc5ab10a321ab375cabec79bc779c282ed89da275979997900b3d1a66e2d",
+  "six_cell_excluded_cases": [],
+  "layouts": {
+    "identity": {
+      "astra": {
+        "raw_trials": 40,
+        "raw_success": 37,
+        "matched_trials": 40,
+        "matched_success": 37,
+        "wilson_95": [
+          0.8013576647568946,
+          0.9741639742254119
+        ],
+        "six_cell_common_trials": 40,
+        "six_cell_common_success": 37,
+        "reasons": {
+          "drop": 2,
+          "false_stop": 1,
+          "success": 37
+        }
+      },
+      "vlm": {
+        "raw_trials": 40,
+        "raw_success": 16,
+        "matched_trials": 40,
+        "matched_success": 16,
+        "wilson_95": [
+          0.2634832568429192,
+          0.5540410633965381
+        ],
+        "six_cell_common_trials": 40,
+        "six_cell_common_success": 16,
+        "reasons": {
+          "drop": 9,
+          "false_stop": 4,
+          "horizon": 11,
+          "success": 16
+        }
+      },
+      "rule": {
+        "raw_trials": 40,
+        "raw_success": 21,
+        "matched_trials": 40,
+        "matched_success": 21,
+        "wilson_95": [
+          0.3749736210669248,
+          0.670645298873211
+        ],
+        "six_cell_common_trials": 40,
+        "six_cell_common_success": 21,
+        "reasons": {
+          "false_stop": 19,
+          "success": 21
+        }
+      }
+    },
+    "permuted": {
+      "astra": {
+        "raw_trials": 40,
+        "raw_success": 33,
+        "matched_trials": 40,
+        "matched_success": 33,
+        "wilson_95": [
+          0.6805000966821229,
+          0.9125458625396408
+        ],
+        "six_cell_common_trials": 40,
+        "six_cell_common_success": 33,
+        "reasons": {
+          "abstain": 3,
+          "drop": 2,
+          "false_stop": 2,
+          "success": 33
+        }
+      },
+      "vlm": {
+        "raw_trials": 40,
+        "raw_success": 3,
+        "matched_trials": 40,
+        "matched_success": 3,
+        "wilson_95": [
+          0.025836025774588198,
+          0.19864233524310543
+        ],
+        "six_cell_common_trials": 40,
+        "six_cell_common_success": 3,
+        "reasons": {
+          "drop": 10,
+          "false_stop": 18,
+          "horizon": 9,
+          "success": 3
+        }
+      },
+      "rule": {
+        "raw_trials": 40,
+        "raw_success": 15,
+        "matched_trials": 40,
+        "matched_success": 15,
+        "wilson_95": [
+          0.24222979167233266,
+          0.5296756086269889
+        ],
+        "six_cell_common_trials": 40,
+        "six_cell_common_success": 15,
+        "reasons": {
+          "false_stop": 25,
+          "success": 15
+        }
+      }
+    }
+  },
+  "input_sha256": {
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_astra/187501/batch_000/episodes.jsonl": "3cb88915f3fee910c371b0d6725c8a11fc850e52c7998462a4eb42f7edf1c4dc",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_astra/187501/batch_000/manifest.json": "946267ef345c04066676ae5a93e568d5dcb85b6db322fdea841426736f1ff41f",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_astra/187501/batch_000/result.json": "9ca76c0b91da0708ab8a66a43972cacc73322d4cc3fd41420dabcebcfdb4591f",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_astra/187501/batch_000/action_interface.jsonl": "3be6d2ad918d595f13823173bc995448a519102a5832b8e4b0ef0641001a893f",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_astra/187502/batch_020/episodes.jsonl": "8fb5d99201322754b9c4c5a39333493aadbc9869b33314e3e26b8292cad9949f",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_astra/187502/batch_020/manifest.json": "946267ef345c04066676ae5a93e568d5dcb85b6db322fdea841426736f1ff41f",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_astra/187502/batch_020/result.json": "0f785a3d0f18133c8520b60f46bc9de40007e3204452cdcac8d774d4ca3f879d",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_astra/187502/batch_020/action_interface.jsonl": "7d65461f3fbb3c37aed7a397bbe1bd9d82d2c3e6443d854986222ebb7035d975",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_vlm/187501/batch_000/episodes.jsonl": "7fa042764137f2ac35401459cb366f5d7a6ed35aa451956aa7315789634a7c8e",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_vlm/187501/batch_000/manifest.json": "b1c731b78698da10d03af566e01b2374845ddf5fdf6cffd4299423829c4c70f2",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_vlm/187501/batch_000/result.json": "d26d42ff5708bbb45168c3d1d8b9a9b1bdc199a5c893df63433ded4f943f2048",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_vlm/187501/batch_000/action_interface.jsonl": "a19b36798e74ba59b3571b4c32f48ec7e3729670d88e7a9cdae74a0690d5df77",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_vlm/187502/batch_020/episodes.jsonl": "10a684f12e70a866a2ce8ad1a544254e9d6a6138b9f955e7e66023a941683291",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_vlm/187502/batch_020/manifest.json": "b1c731b78698da10d03af566e01b2374845ddf5fdf6cffd4299423829c4c70f2",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_vlm/187502/batch_020/result.json": "ec5784ef2bedc406987d9b2d1371ea98d22feb9dfc103510bb1050830df5b76b",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_vlm/187502/batch_020/action_interface.jsonl": "8fe5ed6fd8475e1187f507d9dc8145df6ce122ccba83c6e164fef14fe6f16816",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_rule/187501/batch_000/episodes.jsonl": "1927fd89df7454282a79019d3f4941364efb31afde90ba9b1bb4935a854eca8c",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_rule/187501/batch_000/manifest.json": "645c7d3ff013c49aa7b16e85bdd41004355bb28f58d67e5015efe3466d4357aa",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_rule/187501/batch_000/result.json": "955dcfb874b7024fbaa93a8eec0524fe1185d7c2aa50f22966a578c0925caa12",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_rule/187501/batch_000/action_interface.jsonl": "006d8349bd46973775306eaccd2c0492912d68cc67e550b8224676392f4aa5a7",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_rule/187502/batch_020/episodes.jsonl": "a59e493064b9bbb4d345eefe73f76e228c953ada5f21492e4b38fe9e69269b02",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_rule/187502/batch_020/manifest.json": "645c7d3ff013c49aa7b16e85bdd41004355bb28f58d67e5015efe3466d4357aa",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_rule/187502/batch_020/result.json": "dc6696700d5ebad2331badcc7b026b178fdafd4245b6ac98e1fd4c30d641451a",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/identity_rule/187502/batch_020/action_interface.jsonl": "83e4e07916d7a4ee17b4b6f0d923a45f378929ae120c3babb23959193d5fffb4",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_astra/187501/batch_000/episodes.jsonl": "a2f5346932c0dd56e1f52ea5a99a1dc9b644804873ecb4b1b921e2edb0a0949b",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_astra/187501/batch_000/manifest.json": "8f2c5f76d02b19814eed6165f95b30a15951f8dced88b4807c24061df40af8cf",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_astra/187501/batch_000/result.json": "2ff671733927eb9e950b6c335c43523cae4eae5af5ce8a7abbf317a7467cb90f",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_astra/187501/batch_000/action_interface.jsonl": "4344a8d9cd82393e86dda930150950eb750ebb7ec52909f6d8b8cd15c42b0e70",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_astra/187502/batch_020/episodes.jsonl": "c4b66bad7fd42c15f65aa2c603f0f6aa2f33f4778e3696983b6659af4263fd1f",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_astra/187502/batch_020/manifest.json": "8f2c5f76d02b19814eed6165f95b30a15951f8dced88b4807c24061df40af8cf",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_astra/187502/batch_020/result.json": "af51d8b268390efbe31892953eb54c86ad22d9399022179908c6df5b6093a776",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_astra/187502/batch_020/action_interface.jsonl": "5b5504432f575330b58ec1dc18ca962b7af4f34b15264c310a20940fc23ceb78",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_vlm/187501/batch_000/episodes.jsonl": "d2e14946c3b91250c70e33c42d58d2edb14a7231d6bec85506e7f6cb3ff19574",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_vlm/187501/batch_000/manifest.json": "d154d3cf7843fac1db1d989755181edb783ae1a5964f7af3b6e0a5c59178490f",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_vlm/187501/batch_000/result.json": "8959ded5397619f5617897851bca5f5962430c23759966b9c78e75e82bb6bec6",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_vlm/187501/batch_000/action_interface.jsonl": "fa4428d0a939b9336d3798795ba55134d6587dd2ba6793acd02d724d02e73047",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_vlm/187502/batch_020/episodes.jsonl": "92a3cc0040b6fd91d26d2a08d7dd8402544c56f786f1f66f09326e716a89670a",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_vlm/187502/batch_020/manifest.json": "d154d3cf7843fac1db1d989755181edb783ae1a5964f7af3b6e0a5c59178490f",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_vlm/187502/batch_020/result.json": "da8a97b1778886a587a5036d3082f643c8958fb207211c64ebcc7b51d8280183",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_vlm/187502/batch_020/action_interface.jsonl": "2c4fcf07aa7c7ebe3b783199a7d826a15d747265e55c2c64d02e8aebdb4bb946",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_rule/187501/batch_000/episodes.jsonl": "aa4b3dea497e4d2d87e667d91fc8c1f2a87aa880b420b010ebe33cb2ea8c2d87",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_rule/187501/batch_000/manifest.json": "9b14e45b2e5b46ea19246405119c814bcea8d5dada8688c38639f827af828cea",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_rule/187501/batch_000/result.json": "b0b3004f0943fe00430acb7b0ec799a60f1ffdaddd7973b7872cc0c6f529b909",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_rule/187501/batch_000/action_interface.jsonl": "b86f495437514bf031fbb675127d1a3b82f8ac2056dac6759fc75a20126b458f",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_rule/187502/batch_020/episodes.jsonl": "118dfda08cf3ef3701c82c343c03888d40bc712dc6d3b622682c0160ce3c694f",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_rule/187502/batch_020/manifest.json": "9b14e45b2e5b46ea19246405119c814bcea8d5dada8688c38639f827af828cea",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_rule/187502/batch_020/result.json": "02e1209771446d4cbad0738f986272504296ed7d58f92a037b86fa769a4b414e",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/pig/formal_v1/permuted_rule/187502/batch_020/action_interface.jsonl": "00481a0910760075c34a478dfd3580040f3e45f548e1e1f9d057cc1f826ac49b"
+  },
+  "object": "pig",
+  "scope": "Object-specific frozen marked-object Q1, six cells of 40 raw slots; original and changed mapping, noisy simulator pose"
+}

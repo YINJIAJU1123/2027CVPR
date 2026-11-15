@@ -1,0 +1,297 @@
+{
+  "status": "completed_and_audited",
+  "raw_trials_total": 200,
+  "release_sha256": "e58c7c2d125005eddb52a46b86b3df2fafe1eddfae6b3606d08fd8b00de37c96",
+  "panels": {
+    "confirmation": {
+      "outcomes": {
+        "confirm_continue": {
+          "raw_trials": 40,
+          "raw_success": 25,
+          "raw_reasons": {
+            "success": 25,
+            "drop": 14,
+            "service_excluded": 1
+          },
+          "eligible_trials": 39,
+          "success": 25,
+          "rate": 0.6410256410256411,
+          "wilson_95": [
+            0.4841814855954854,
+            0.7725791454100714
+          ],
+          "drops": 14,
+          "drop_phases": {
+            "execution": 9,
+            "startup_wait": 2,
+            "wait": 3
+          },
+          "calls": 78,
+          "tokens": {
+            "input_tokens": 121084,
+            "output_tokens": 4420,
+            "total_tokens": 125504
+          },
+          "median_call_latency_s": 6.513738812500378,
+          "median_duration_s": 13.666666666666666,
+          "later_live_frames_changed": 38,
+          "trials_with_multiple_calls": 21,
+          "per_seed": {
+            "187101": {
+              "raw_trials": 20,
+              "raw_success": 11,
+              "eligible_trials": 19,
+              "success": 11
+            },
+            "187102": {
+              "raw_trials": 20,
+              "raw_success": 14,
+              "eligible_trials": 20,
+              "success": 14
+            }
+          }
+        },
+        "confirm_fixed": {
+          "raw_trials": 40,
+          "raw_success": 32,
+          "raw_reasons": {
+            "success": 32,
+            "drop": 5,
+            "false_stop": 2,
+            "abstain": 1
+          },
+          "eligible_trials": 39,
+          "success": 31,
+          "rate": 0.7948717948717948,
+          "wilson_95": [
+            0.644660319864177,
+            0.8922028176928961
+          ],
+          "drops": 5,
+          "drop_phases": {
+            "execution": 2,
+            "startup_wait": 3
+          },
+          "calls": 95,
+          "tokens": {
+            "input_tokens": 159604,
+            "output_tokens": 5384,
+            "total_tokens": 164988
+          },
+          "median_call_latency_s": 6.671149269997841,
+          "median_duration_s": 23.0,
+          "later_live_frames_changed": 55,
+          "trials_with_multiple_calls": 27,
+          "per_seed": {
+            "187101": {
+              "raw_trials": 20,
+              "raw_success": 17,
+              "eligible_trials": 19,
+              "success": 16
+            },
+            "187102": {
+              "raw_trials": 20,
+              "raw_success": 15,
+              "eligible_trials": 20,
+              "success": 15
+            }
+          }
+        },
+        "confirm_full": {
+          "raw_trials": 40,
+          "raw_success": 31,
+          "raw_reasons": {
+            "success": 31,
+            "false_stop": 1,
+            "drop": 8
+          },
+          "eligible_trials": 39,
+          "success": 30,
+          "rate": 0.7692307692307693,
+          "wilson_95": [
+            0.6166374277165825,
+            0.8735419587485715
+          ],
+          "drops": 8,
+          "drop_phases": {
+            "execution": 8
+          },
+          "calls": 92,
+          "tokens": {
+            "input_tokens": 156464,
+            "output_tokens": 5277,
+            "total_tokens": 161741
+          },
+          "median_call_latency_s": 7.3715666304997285,
+          "median_duration_s": 21.0,
+          "later_live_frames_changed": 52,
+          "trials_with_multiple_calls": 23,
+          "per_seed": {
+            "187101": {
+              "raw_trials": 20,
+              "raw_success": 18,
+              "eligible_trials": 19,
+              "success": 17
+            },
+            "187102": {
+              "raw_trials": 20,
+              "raw_success": 13,
+              "eligible_trials": 20,
+              "success": 13
+            }
+          }
+        }
+      },
+      "excluded_trial_ids": [
+        187101004
+      ],
+      "matched_initial_physics": true,
+      "matched_first_rgb": true
+    },
+    "image_refresh": {
+      "outcomes": {
+        "image_fresh": {
+          "raw_trials": 40,
+          "raw_success": 32,
+          "raw_reasons": {
+            "drop": 3,
+            "success": 32,
+            "false_stop": 3,
+            "abstain": 2
+          },
+          "eligible_trials": 40,
+          "success": 32,
+          "rate": 0.8,
+          "wilson_95": [
+            0.652426936536005,
+            0.895000102745623
+          ],
+          "drops": 3,
+          "drop_phases": {
+            "execution": 2,
+            "wait": 1
+          },
+          "calls": 112,
+          "tokens": {
+            "input_tokens": 203258,
+            "output_tokens": 6289,
+            "total_tokens": 209547
+          },
+          "median_call_latency_s": 6.247255638496426,
+          "median_duration_s": 22.666666666666668,
+          "later_live_frames_changed": 72,
+          "trials_with_multiple_calls": 31,
+          "per_seed": {
+            "187201": {
+              "raw_trials": 20,
+              "raw_success": 17,
+              "eligible_trials": 20,
+              "success": 17
+            },
+            "187202": {
+              "raw_trials": 20,
+              "raw_success": 15,
+              "eligible_trials": 20,
+              "success": 15
+            }
+          }
+        },
+        "image_frozen": {
+          "raw_trials": 40,
+          "raw_success": 9,
+          "raw_reasons": {
+            "abstain": 24,
+            "success": 9,
+            "drop": 4,
+            "false_stop": 3
+          },
+          "eligible_trials": 40,
+          "success": 9,
+          "rate": 0.225,
+          "wilson_95": [
+            0.12316091323540743,
+            0.37503096742310027
+          ],
+          "drops": 4,
+          "drop_phases": {
+            "execution": 3,
+            "wait": 1
+          },
+          "calls": 98,
+          "tokens": {
+            "input_tokens": 155333,
+            "output_tokens": 5749,
+            "total_tokens": 161082
+          },
+          "median_call_latency_s": 6.945596568999463,
+          "median_duration_s": 25.616666666666667,
+          "later_live_frames_changed": 58,
+          "trials_with_multiple_calls": 31,
+          "per_seed": {
+            "187201": {
+              "raw_trials": 20,
+              "raw_success": 5,
+              "eligible_trials": 20,
+              "success": 5
+            },
+            "187202": {
+              "raw_trials": 20,
+              "raw_success": 4,
+              "eligible_trials": 20,
+              "success": 4
+            }
+          }
+        }
+      },
+      "excluded_trial_ids": [],
+      "matched_initial_physics": true,
+      "matched_first_rgb": true
+    }
+  },
+  "primary": [
+    {
+      "group": "confirmation",
+      "left": "confirm_full",
+      "right": "confirm_fixed",
+      "eligible_trials": 39,
+      "left_only": 6,
+      "right_only": 7,
+      "paired_difference_pp": -2.5641025641025643,
+      "exact_mcnemar_p": 1.0,
+      "scope": "Preregistered primary; Holm across two studies",
+      "holm_adjusted_p": 1.0
+    },
+    {
+      "group": "image_refresh",
+      "left": "image_fresh",
+      "right": "image_frozen",
+      "eligible_trials": 40,
+      "left_only": 23,
+      "right_only": 0,
+      "paired_difference_pp": 57.5,
+      "exact_mcnemar_p": 2.384185791015625e-07,
+      "scope": "Preregistered primary; Holm across two studies",
+      "holm_adjusted_p": 4.76837158203125e-07
+    }
+  ],
+  "secondary": [
+    {
+      "group": "confirmation",
+      "left": "confirm_full",
+      "right": "confirm_continue",
+      "eligible_trials": 39,
+      "left_only": 11,
+      "right_only": 6,
+      "paired_difference_pp": 12.820512820512821,
+      "exact_mcnemar_p": 0.332305908203125,
+      "scope": "Preregistered secondary, descriptive unadjusted test"
+    }
+  ],
+  "limitations": [
+    "Forty trials per condition and two seeds per study. No outcome-based extra trials.",
+    "Image intervention freezes upper RGB only; numeric pose feedback, history and lower visual control stay live.",
+    "Equal maximum calls and trigger policy, not equal realized compute. Actual calls, tokens and delays reported.",
+    "Image latency is live hosted inference; contrasts include induced trajectories and response timing.",
+    "Timing audit establishes continuous simulated control and delayed delivery, not wall-clock real-time simulator throughput."
+  ]
+}

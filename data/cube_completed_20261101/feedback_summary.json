@@ -1,0 +1,93 @@
+{
+  "primary_metric": "Success rate on matched service-eligible trials; raw outcomes retained for audit",
+  "status": "completed_and_audited",
+  "release_sha256": "97e45f28a79b6d723b9caf8eb52694edd6e6a54276b2107855b85dd18d25174a",
+  "cohort": {
+    "seeds": [
+      183431,
+      183432
+    ],
+    "episodes_per_seed": 20,
+    "raw_trials_per_condition": 40
+  },
+  "common_excluded_trial_ids": [
+    183432001
+  ],
+  "continuation_manifest_sha256": "7acf73a84d0424bb5d5380b54c6ee15c33af292d857a64edaf20a48a2d27ca77",
+  "initial_states_match": true,
+  "eligibility_scope": "Common symmetric service eligibility across registered conditions",
+  "outcomes": {
+    "one_initial_bounded_plan": {
+      "raw_trials": 40,
+      "raw_success": 7,
+      "raw_rate": 0.175,
+      "raw_drops": 6,
+      "raw_reasons": {
+        "false_stop": 4,
+        "abstain": 22,
+        "success": 7,
+        "drop": 6,
+        "service_excluded": 1
+      },
+      "own_service_exclusions": 1,
+      "common_eligible_trials": 39,
+      "common_eligible_success": 7,
+      "common_eligible_rate": 0.1794871794871795,
+      "wilson_95": [
+        0.08977265473219115,
+        0.32668045661881623
+      ],
+      "actual_calls": 40,
+      "median_call_latency_s": 7.450155197177082,
+      "drop_phases": {
+        "execution": 1,
+        "startup_wait": 5
+      }
+    },
+    "full_feedback": {
+      "raw_trials": 40,
+      "raw_success": 31,
+      "raw_rate": 0.775,
+      "raw_drops": 9,
+      "raw_reasons": {
+        "success": 31,
+        "drop": 9
+      },
+      "own_service_exclusions": 0,
+      "common_eligible_trials": 39,
+      "common_eligible_success": 30,
+      "common_eligible_rate": 0.7692307692307693,
+      "wilson_95": [
+        0.6166374277165825,
+        0.8735419587485715
+      ],
+      "actual_calls": 113,
+      "median_call_latency_s": 5.1545675550587475,
+      "drop_phases": {
+        "execution": 4,
+        "startup_wait": 2,
+        "wait": 3
+      }
+    }
+  },
+  "paired_comparisons": [
+    {
+      "left": "one_initial_bounded_plan",
+      "right": "full_feedback",
+      "left_only": 1,
+      "right_only": 24,
+      "eligible_trials": 39,
+      "excluded_trial_ids": [
+        183432001
+      ],
+      "left_success": 7,
+      "right_success": 30,
+      "exact_mcnemar_p": 1.5497207641601562e-06,
+      "scope": "Exploratory paired test, no multiple-testing adjustment"
+    }
+  ],
+  "controller_phase_step_counts": {
+    "one_initial_bounded_plan": {},
+    "full_feedback": {}
+  }
+}

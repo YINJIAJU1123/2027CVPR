@@ -1,0 +1,265 @@
+{
+  "complete": true,
+  "development": false,
+  "paired_astra_comparisons": {
+    "identity": {
+      "vlm": {
+        "n": 38,
+        "a_only": 13,
+        "b_only": 2,
+        "mcnemar_exact_two_sided_p": 0.00738525390625
+      },
+      "rule": {
+        "n": 38,
+        "a_only": 14,
+        "b_only": 4,
+        "mcnemar_exact_two_sided_p": 0.0308837890625
+      }
+    },
+    "permuted": {
+      "vlm": {
+        "n": 40,
+        "a_only": 22,
+        "b_only": 0,
+        "mcnemar_exact_two_sided_p": 4.76837158203125e-07
+      },
+      "rule": {
+        "n": 40,
+        "a_only": 17,
+        "b_only": 2,
+        "mcnemar_exact_two_sided_p": 0.000728607177734375
+      }
+    }
+  },
+  "paired_identity_vs_permuted": {
+    "astra": {
+      "n": 38,
+      "a_only": 6,
+      "b_only": 3,
+      "mcnemar_exact_two_sided_p": 0.5078125
+    },
+    "vlm": {
+      "n": 38,
+      "a_only": 13,
+      "b_only": 0,
+      "mcnemar_exact_two_sided_p": 0.000244140625
+    },
+    "rule": {
+      "n": 38,
+      "a_only": 11,
+      "b_only": 4,
+      "mcnemar_exact_two_sided_p": 0.11846923828125
+    }
+  },
+  "release_sha256": "dafa669220957673b2e42087c68449c83415162925945ddde38b715fb386e9de",
+  "six_cell_excluded_cases": [
+    1,
+    6
+  ],
+  "layouts": {
+    "identity": {
+      "astra": {
+        "raw_trials": 40,
+        "raw_success": 25,
+        "matched_trials": 38,
+        "matched_success": 25,
+        "wilson_95": [
+          0.4989210355178308,
+          0.7878758482004058
+        ],
+        "six_cell_common_trials": 38,
+        "six_cell_common_success": 25,
+        "reasons": {
+          "drop": 12,
+          "false_stop": 1,
+          "service_excluded": 2,
+          "success": 25
+        }
+      },
+      "vlm": {
+        "raw_trials": 40,
+        "raw_success": 15,
+        "matched_trials": 38,
+        "matched_success": 14,
+        "wilson_95": [
+          0.23384219247155955,
+          0.5271604044299099
+        ],
+        "six_cell_common_trials": 38,
+        "six_cell_common_success": 14,
+        "reasons": {
+          "drop": 5,
+          "false_stop": 10,
+          "horizon": 10,
+          "success": 15
+        }
+      },
+      "rule": {
+        "raw_trials": 40,
+        "raw_success": 17,
+        "matched_trials": 38,
+        "matched_success": 15,
+        "wilson_95": [
+          0.25598075748160104,
+          0.5528213200395746
+        ],
+        "six_cell_common_trials": 38,
+        "six_cell_common_success": 15,
+        "reasons": {
+          "drop": 5,
+          "false_stop": 18,
+          "success": 17
+        }
+      }
+    },
+    "permuted": {
+      "astra": {
+        "raw_trials": 40,
+        "raw_success": 24,
+        "matched_trials": 40,
+        "matched_success": 24,
+        "wilson_95": [
+          0.44595893660346186,
+          0.7365167431570808
+        ],
+        "six_cell_common_trials": 38,
+        "six_cell_common_success": 22,
+        "reasons": {
+          "abstain": 3,
+          "drop": 10,
+          "false_stop": 3,
+          "success": 24
+        }
+      },
+      "vlm": {
+        "raw_trials": 40,
+        "raw_success": 2,
+        "matched_trials": 40,
+        "matched_success": 2,
+        "wilson_95": [
+          0.013820667386148344,
+          0.16503877369140962
+        ],
+        "six_cell_common_trials": 38,
+        "six_cell_common_success": 1,
+        "reasons": {
+          "drop": 6,
+          "false_stop": 14,
+          "horizon": 18,
+          "success": 2
+        }
+      },
+      "rule": {
+        "raw_trials": 40,
+        "raw_success": 9,
+        "matched_trials": 40,
+        "matched_success": 9,
+        "wilson_95": [
+          0.12316091323540743,
+          0.37503096742310027
+        ],
+        "six_cell_common_trials": 38,
+        "six_cell_common_success": 8,
+        "reasons": {
+          "drop": 6,
+          "false_stop": 25,
+          "success": 9
+        }
+      }
+    }
+  },
+  "input_sha256": {
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_astra/187501/batch_000/episodes.jsonl": "9b2e8546d6c3e0113dff85e9c2ec5db9f35a31a090041df2b82bf7394a834879",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_astra/187501/batch_000/manifest.json": "616db333a22b0f3a13a399afb470af1e6ad48177b5d30bb2d6859458f471d16c",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_astra/187501/batch_000/result.json": "44af0ca3da2adf8c225019911cdbed5e52c689d18e4a5f69ee8d277fc35b1168",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_astra/187501/batch_000/action_interface.jsonl": "87e657b66c3c125559c87d40119d8b3e028e53021ecad47263b23174f07cda58",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_astra/187501/batch_002/episodes.jsonl": "1c107e111f33ca6c045e1f3192787edc4ec53f088a2928cf86f5a30bc3fd747f",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_astra/187501/batch_002/manifest.json": "616db333a22b0f3a13a399afb470af1e6ad48177b5d30bb2d6859458f471d16c",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_astra/187501/batch_002/result.json": "7b67e91b501404bf1ab090b5b56072fa4c36e166a4f82919bf2c28dbd6f4380a",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_astra/187501/batch_002/action_interface.jsonl": "40a02e224539cddb2bec981ba68e50bb024a84ce966769ecd450ff2e35fbae93",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_astra/187501/batch_007/episodes.jsonl": "b3de4b3e635e58ac7067d313b6dc8c0674d93821d8538fdf707cf64452757598",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_astra/187501/batch_007/manifest.json": "616db333a22b0f3a13a399afb470af1e6ad48177b5d30bb2d6859458f471d16c",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_astra/187501/batch_007/result.json": "b7c89f8dedf139dabd8d8e7c0f83b9b3314dce53b3feda60c268c50d9fa3b1ec",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_astra/187501/batch_007/action_interface.jsonl": "843a69df843ba64cc198513031fe1a39d165c264c0aa91da139aff9ea73a8af2",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_astra/187502/batch_020/episodes.jsonl": "8fdaadc3d6da0a2dadeee12cbe964219e8e86b1c1e51833fa9748ac8c3bbbd9f",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_astra/187502/batch_020/manifest.json": "616db333a22b0f3a13a399afb470af1e6ad48177b5d30bb2d6859458f471d16c",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_astra/187502/batch_020/result.json": "c0e32a7188f13b201e1be8e66385841b45aca5c21872e09512406843ace92519",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_astra/187502/batch_020/action_interface.jsonl": "3154bf283ab0f9d0339a13ff3ec141a46ddf4257ff3a18e8f2e6b3c6e1920944",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_vlm/187501/batch_000/episodes.jsonl": "46d8803bb11ec553d23dcfdd2b08b76166f029629e80a542c330db6c38baae05",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_vlm/187501/batch_000/manifest.json": "0f81ca65db2b045e07c3df01840ef03b210513b9b7d89d90b12cab5bed7da567",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_vlm/187501/batch_000/result.json": "76b8e4d2d44eb2acf55f5d3922ca5a8a5a8cc4e7074fea2b348000a26cae87b5",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_vlm/187501/batch_000/action_interface.jsonl": "05ba33d910c12c28b828e923d07932afe79ad148d01c3c8df14023d0919f5027",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_vlm/187502/batch_020/episodes.jsonl": "30afb45170934e9c4f703dd70a02f596a343c16f4c76b4e7b6ccff169df33bbb",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_vlm/187502/batch_020/manifest.json": "0f81ca65db2b045e07c3df01840ef03b210513b9b7d89d90b12cab5bed7da567",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_vlm/187502/batch_020/result.json": "8eb89394a74950beef8520be2b5bb020a44639fdce49022a927217aa7a646e0b",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_vlm/187502/batch_020/action_interface.jsonl": "2e8657cd14d3c620e6866fd090b0cbf26db5a05038edb32eea8cc68f613fc5e0",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_rule/187501/batch_000/episodes.jsonl": "5bfbce8db291294da7ffa086d0592b9d5a2230a6016b9ba1e3ecb433cc4cce0a",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_rule/187501/batch_000/manifest.json": "21c36c76ef932ff5205a16746977bce7997e53dbe978227ac8f5d969727ca768",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_rule/187501/batch_000/result.json": "77ce6a943eab4ee7d963c534540267b6e766d722d900ed79fcd1c2fe4142ed42",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_rule/187501/batch_000/action_interface.jsonl": "36a4789483d8568d0b99d35b0f7f4f6cc1eb5c9af5bd070447feb8c158c65b35",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_rule/187502/batch_020/episodes.jsonl": "627786e402a4da3f5063acff8eab9e29389fe96fdf68b64f1b8abbe185a0a091",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_rule/187502/batch_020/manifest.json": "21c36c76ef932ff5205a16746977bce7997e53dbe978227ac8f5d969727ca768",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_rule/187502/batch_020/result.json": "f26158214f0b35d874906afe989b4a9dee71704665f1f0ac0fd05c6973774556",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/identity_rule/187502/batch_020/action_interface.jsonl": "d074db2bfc8d70c35162e9012ca6743fa1420e2372e1992a25b15df3eb43bb0e",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/permuted_astra/187501/batch_000/episodes.jsonl": "3482227f7f6f061bec315e6a8508a2640639de6121568090c982b996d474d890",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/permuted_astra/187501/batch_000/manifest.json": "c9facc54182fba7c43af86a5debb032fff392c61fd17f58ba13401d0b6e06868",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/permuted_astra/187501/batch_000/result.json": "02723caa78932c8ab5475856db2765378e491e78375373acc8d2c28ecb9fc2dc",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/permuted_astra/187501/batch_000/action_interface.jsonl": "3dd3dc08485baf29450f0cc97ca3dacd0e9bd00d27545212f9b712f3414e0ec6",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/permuted_astra/187502/batch_020/episodes.jsonl": "97e628a6d2b612a770071b96ef455dee57dcbecde819cfa7238067ed29257b9c",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/permuted_astra/187502/batch_020/manifest.json": "c9facc54182fba7c43af86a5debb032fff392c61fd17f58ba13401d0b6e06868",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/permuted_astra/187502/batch_020/result.json": "e6e75bc0b343dc7bc7b7e7ceb74cb91614c167cbbdcac6126e49f0d165597854",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/permuted_astra/187502/batch_020/action_interface.jsonl": "981224e90577f49ead2134323de68323c370dd5bac4b1fd6eca86825baf54174",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/permuted_vlm/187501/batch_000/episodes.jsonl": "44258218bc7cfea88599b715690f0ec5a47ce246b18be8bf6d69b13adb59f46c",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/permuted_vlm/187501/batch_000/manifest.json": "f59d6c05d1e9253cdd9773a5ceac217b5c4b1e93ce12ba8504c9a546c316488e",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/permuted_vlm/187501/batch_000/result.json": "a0a63b119daba2fd179c4dcc085928a182f3f91662ebc1c9a3e957e8f99d3a65",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/permuted_vlm/187501/batch_000/action_interface.jsonl": "297f31cd010b2a591d612c0280e92d55b794b499f9853885ec4d29595fdcbfb2",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/permuted_vlm/187502/batch_020/episodes.jsonl": "508e0447941f2112d2e434fb95770ce59179a9ee78b875858c1d894953277e26",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/permuted_vlm/187502/batch_020/manifest.json": "f59d6c05d1e9253cdd9773a5ceac217b5c4b1e93ce12ba8504c9a546c316488e",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/permuted_vlm/187502/batch_020/result.json": "a848c56a56bc6d8a2c075c0d979628b7e40769c488c31f88934a531cec5378d4",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/permuted_vlm/187502/batch_020/action_interface.jsonl": "f16c1e969fbf59855bb0eac293dd33cfbbef0f78aa789f827361feaff3324328",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/permuted_rule/187501/batch_000/episodes.jsonl": "a52a49fe30e30a1ffe1906f093950b2f11a8fdf7b57504480ed5672aeb9664f0",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/permuted_rule/187501/batch_000/manifest.json": "d9be95fe5c50a3e7d4c0df26a48d0752da48d0c88785be41ce60b759c9efc2df",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/permuted_rule/187501/batch_000/result.json": "371891d647bb0897353ea0bbe43ad6850c7bc98a063192ba6727b9e7d2dcaf8e",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/permuted_rule/187501/batch_000/action_interface.jsonl": "77382a9141859890f1d0d2acab14e7f80219e5e4e7613ce31cc56b27450ff4e6",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/permuted_rule/187502/batch_020/episodes.jsonl": "2e4c9018b26efaee2a4a5748c0f23da874863cceea6f5246354ec49b2314e539",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/permuted_rule/187502/batch_020/manifest.json": "d9be95fe5c50a3e7d4c0df26a48d0752da48d0c88785be41ce60b759c9efc2df",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/permuted_rule/187502/batch_020/result.json": "dac655c420255bf98b7b811ed1cfebd8fa54575480d40ad09d7d947306da51a2",
+    "outputs/q1_inhand4_20261102/duck/formal_v1/permuted_rule/187502/batch_020/action_interface.jsonl": "2c594ae3def4686373903433ad5caf341c7b13481dc1163251c4b4e35a65bb00",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/duck/formal_v1/initial_state_review.json": "3bbf88700cc79b7bd96c5f314abc38b74021a93369d2d18fe8961571369822a5"
+  },
+  "object": "duck",
+  "scope": "Object-specific frozen marked-object Q1, six cells of 40 raw slots; original and changed mapping, noisy simulator pose",
+  "reviewed_initial_state_difference_cases": [
+    7
+  ],
+  "exact_reset_sensitivity": {
+    "identity": {
+      "astra": {
+        "trials": 37,
+        "success": 24
+      },
+      "vlm": {
+        "trials": 37,
+        "success": 13
+      },
+      "rule": {
+        "trials": 37,
+        "success": 15
+      }
+    },
+    "permuted": {
+      "astra": {
+        "trials": 39,
+        "success": 23
+      },
+      "vlm": {
+        "trials": 39,
+        "success": 2
+      },
+      "rule": {
+        "trials": 39,
+        "success": 9
+      }
+    }
+  }
+}

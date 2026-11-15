@@ -1,0 +1,61 @@
+{
+  "parent_study": "cube_confirmation_image_refresh_20261102/image_fresh",
+  "format": "cube_inspection_policy_v1",
+  "release_sha256": "369419e917dec33f3dcd4d55aede283b193c8b2caf4e01e2aa0582280a0ac14f",
+  "fixed_order": [
+    "green",
+    "yellow",
+    "red",
+    "blue",
+    "magenta",
+    "cyan"
+  ],
+  "fixed_inspection_steps": 90,
+  "logical_hz": 30,
+  "adaptive_inspection_steps_range": [
+    10,
+    90
+  ],
+  "intervention": "Only inspect_face color and duration are overridden. Both arms retain model decisions to inspect, bind, verify, stop or abstain.",
+  "common_feedback": "last_executed_action added identically to both arms; executed color/duration are reported alongside current numeric feedback. Realized histories differ.",
+  "unchanged": [
+    "semantic model gpt-6-astra",
+    "system prompt and tool schema",
+    "local pose estimator and latent student",
+    "waiting and execution actor weights",
+    "fresh upper RGB and crop construction",
+    "six-call cap",
+    "0.16-radian measured stopping and independent true-orientation scoring",
+    "physics and horizon"
+  ],
+  "order": [
+    [
+      "adaptive",
+      187301
+    ],
+    [
+      "fixed",
+      187301
+    ],
+    [
+      "fixed",
+      187302
+    ],
+    [
+      "adaptive",
+      187302
+    ]
+  ],
+  "pairing": "40 matched initial physical states and first input images",
+  "inference": "One prespecified primary exact two-sided paired McNemar success test. Binding, failures, calls, tokens and binding-call histograms are descriptive secondary outcomes.",
+  "eligibility": "Union of service-affected pairs, no replacement; zero exclusions realized.",
+  "stopping": "Fixed 80 formal trials; no sample extension based on p-values.",
+  "binding_count": "Input call producing first applied correct binding, including that input. Strictly earlier observations = call index minus one. Never-bound episodes are separately counted; conditional averages alone cannot establish faster acquisition.",
+  "limitations": [
+    "one fixed sweep and cube only",
+    "same history schema, not identical realized history",
+    "equal call cap does not equalize compute or latency",
+    "no claim of initial visibility or first visual-recognition accuracy",
+    "live service may change across historical cohorts; both arms newly evaluated"
+  ]
+}

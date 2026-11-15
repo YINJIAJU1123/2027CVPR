@@ -1,0 +1,34 @@
+{
+  "accepted_for_reporting": true,
+  "scope": "Explicit post-run numerical review, not bitwise equality. No raw outcomes replaced. Exact-reset sensitivity also reported.",
+  "cases": [
+    {
+      "index": 7,
+      "state_hashes": [
+        "76d70ffe3bef5eeb469a3dd2af165a6068df1761596ac4b8597428e835d2003c",
+        "b6d7e8f04836dd725789b9abaf723c06cd99f227c37b8ed42d2a6f63ed1e0a99"
+      ],
+      "differences": [
+        {
+          "method": "identity_astra",
+          "field": "object_root",
+          "index": [
+            0,
+            4
+          ],
+          "absolute_difference": 2.9802322387695312e-08
+        }
+      ],
+      "normalized_quaternion_angle_rad": 5.774202767601032e-08,
+      "identity_astra_vs_rule_initial_pixels_equal": true
+    }
+  ],
+  "input_sha256": {
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/duck/formal_v1/identity_astra/187501/batch_007/episodes.jsonl": "b3de4b3e635e58ac7067d313b6dc8c0674d93821d8538fdf707cf64452757598",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/duck/formal_v1/permuted_rule/187501/batch_000/episodes.jsonl": "a52a49fe30e30a1ffe1906f093950b2f11a8fdf7b57504480ed5672aeb9664f0",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/duck/formal_v1/permuted_vlm/187501/batch_000/episodes.jsonl": "44258218bc7cfea88599b715690f0ec5a47ce246b18be8bf6d69b13adb59f46c",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/duck/formal_v1/permuted_astra/187501/batch_000/episodes.jsonl": "3482227f7f6f061bec315e6a8508a2640639de6121568090c982b996d474d890",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/duck/formal_v1/identity_rule/187501/batch_000/episodes.jsonl": "5bfbce8db291294da7ffa086d0592b9d5a2230a6016b9ba1e3ecb433cc4cce0a",
+    "/home/yin/DexManipulation/VLMmanipulation/outputs/q1_inhand4_20261102/duck/formal_v1/identity_vlm/187501/batch_000/episodes.jsonl": "46d8803bb11ec553d23dcfdd2b08b76166f029629e80a542c330db6c38baae05"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-01",
+  "source_files_sha256": {
+    "refit_bare_comparison_20261031_v1/independent_local_results/summary.json": "874fa50a8bb9b3efeeda32a62975605b53cba2b8a51f928a726352bec0912111",
+    "refit_bare_comparison_20261031_v1/independent_local_results/trials.json": "e8bafd9a2ac1aa7b3a70d69307c91459087e1e512c3888cc0eb381710ac1f5d0",
+    "waiting_live_confirmation_20261030_v1/audited_results/summary.json": "11627b5e97fbeda0505ca0ded312c9189ab9dc8abca4558f063dd4f8e6201933",
+    "waiting_live_confirmation_20261030_v1/audited_results/trials.json": "0e69eb9ef65eb22a17874189f2f425068a5014a3c8a5494c9b6d205c621f3cca",
+    "feedback_stream_resume_20261031/feedback_audited_results/summary.json": "33adac9cbc0a1a2407495e15165aeec15b9f7e7a7e925d4ae565feb2e7ca753e",
+    "feedback_stream_resume_20261031/feedback_audited_results/trials.json": "14406d19ab2096a8b6b3c79f4db946b94ba34994dc9f5dc3925c0e54427de532",
+    "goal_connection_resume_20261031/goal_audited_results/summary.json": "1c0c530d22a08bcecf3f0d094a0f3af597f799d45ab693ca7ebdf7682a11c6aa",
+    "goal_connection_resume_20261031/goal_audited_results/trials.json": "7a401d47052d200897f676e2b62d60e5979164c3593fc7d74b794b0742a7ae31",
+    "visual_ssl_resume_20261031/visual_audited_results/summary.json": "e106f29173aaea6da3e86f938e1f9f249179ffa00c2d11eefc126522c35b83af",
+    "visual_ssl_resume_20261031/visual_audited_results/trials.json": "982498d60a14c0431b7174f634cebb6e3758446d93333fe7f16a8e2f434c1b00",
+    "residual_gate_replay_cloud_20261101_v1/decision.json": "7b7f6b4bde79831b03e0281f656af0069bbd8cd0ec8b6424a81ad0e95522ee1c",
+    "refit_bare_comparison_20261031_v1/failure_diagnosis.json": "94f5957faf959fe45dbcc192bea5f82268400abc269aeac5eaa8f2744afa11c1",
+    "startup_waiting_development_20261030_v1/uniform/manifest.json": "416be52a7ae75fd8ad89400d56bf4bdfe2a13ebc3393f09a5ca79228e42aebc0",
+    "refit_bare_comparison_20261031_v1/figures/native_comparison.pdf": "b1b86362beb617d65b7378a46537fd0251ec96c295e4f0df1122d09355f43ae6",
+    "refit_bare_comparison_20261031_v1/figures/native_comparison.png": "b65718036343a8710bfcc1eb1b7d05aed42231c4c94d783b79361c8663f7b27b"
+  },
+  "success_definition_changed": false,
+  "new_trials_run_for_paper_update": 0,
+  "scope": "760 live semantic records plus a separate 160-trial fixed-plan development summary. The 240 bare visual records overlap the earlier visual archive and must not be counted twice."
+}

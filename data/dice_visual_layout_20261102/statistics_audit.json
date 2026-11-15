@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "scipy_version": "1.17.0",
+  "trials": 240,
+  "rate_intervals_verified": 6,
+  "paired_tests": [
+    {
+      "contrast": "identity/astra-vs-vlm",
+      "a_only": 11,
+      "b_only": 6,
+      "exact_p": 0.332305908203125
+    },
+    {
+      "contrast": "identity/astra-vs-rule",
+      "a_only": 18,
+      "b_only": 3,
+      "exact_p": 0.0014896392822265625
+    },
+    {
+      "contrast": "permuted/astra-vs-vlm",
+      "a_only": 26,
+      "b_only": 0,
+      "exact_p": 2.9802322387695312e-08
+    },
+    {
+      "contrast": "permuted/astra-vs-rule",
+      "a_only": 25,
+      "b_only": 0,
+      "exact_p": 5.960464477539063e-08
+    },
+    {
+      "contrast": "astra/identity-vs-permuted",
+      "a_only": 4,
+      "b_only": 2,
+      "exact_p": 0.6875
+    },
+    {
+      "contrast": "vlm/identity-vs-permuted",
+      "a_only": 23,
+      "b_only": 0,
+      "exact_p": 2.384185791015625e-07
+    },
+    {
+      "contrast": "rule/identity-vs-permuted",
+      "a_only": 13,
+      "b_only": 1,
+      "exact_p": 0.0018310546875
+    }
+  ],
+  "summary_sha256": "20bd09255707be40ce9cb140a5677f92c25804f28584dd0f31b82e8e06e5d511",
+  "scope": "Independent count/Wilson interval/exact paired test verification; tests remain exploratory and unadjusted."
+}

@@ -1,0 +1,28 @@
+{
+  "raw_evidence_files_unchanged": 125,
+  "numeric_tables_unchanged": 43,
+  "bibliography_unchanged": true,
+  "ppt_embedded_media_unchanged": 11,
+  "ppt_updated_parts": [
+    "ppt/slides/slide1.xml",
+    "ppt/slides/slide5.xml",
+    "ppt/slides/slide6.xml"
+  ],
+  "figure_aimi_label_counts": {
+    "teaser": 1,
+    "pipeline": 0,
+    "controller": 0,
+    "exploration": 0,
+    "sim_real": 1,
+    "real_cases": 3
+  },
+  "main_body_pages": 8,
+  "main_total_pages": 10,
+  "supplement_pages": 15,
+  "old_method_names_absent_from_current_pdfs": true,
+  "abstract_method_name_mentions": 1,
+  "latex_errors_or_overfull_boxes": false,
+  "visual_review": "All pages and revised teaser reviewed; existing author image placeholders retained.",
+  "portable_build_passed": true,
+  "portable_pdfs_text_identical": true
+}

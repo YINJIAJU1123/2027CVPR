@@ -1,0 +1,38 @@
+ALIVE hardware results and figure revision - 2026-11-08
+
+Q4 structure
+1. Perception adaptation for transfer: real-camera calibration and Gaussian-splat appearance assets, followed by the existing independent RGB/RGB-D simulated pose table.
+2. Complete-system real-hand evaluation: RGB -> estimated pose -> control, following the ViserDex-based Revo3 interface. Four physical objects: Cube, Die, Ball, Duck.
+
+New author-supplied hardware data
+Order: Rule, Fine-tuned, ALIVE. Every cell contains 20 trials.
+Cube: 9, 15, 18 -> 45%, 75%, 90%.
+Die: 8, 14, 18 -> 40%, 70%, 90%.
+Ball: 9, 13, 19 -> 45%, 65%, 95%.
+Duck: 6, 11, 15 -> 30%, 55%, 75%.
+Totals: 32/80 (40.0%), 53/80 (66.25%), 70/80 (87.5%).
+ALIVE minus Fine-tuned: 21.25 percentage points.
+Across all methods: 240 physical-hand trials.
+Success requires reaching the requested target, stopping with orientation error at most 15 degrees, and no drop.
+
+Presentation changes
+- New grouped bar chart for Q1's original/changed mappings. ALIVE bars have numerical labels; the full table remains in the supplement.
+- New grouped bar chart for all four hardware objects, with consistent Rule/Fine-tuned/ALIVE colors.
+- Existing Q2 outcome bars retained. Q3's multi-metric table and Q4's small pose table retained.
+- Hardware totals added to the abstract, contribution summary and conclusion.
+- Simulation-specific stopping, perception, pairing and timing statements explicitly scoped to simulation.
+- Redundant Q1/Q3 prose shortened to keep eight body pages, without removing reported results or changing their interpretation.
+- Physical photo-slot labels updated to Cube, Die, Ball, Duck in the exported vector figure. The deck remains the original editable layout; export_alive_figures.py applies the paper-label correction reproducibly using relabel_hardware_figure.py.
+
+Evidence boundaries
+The hardware results are collaborator aggregate counts supplied by the author. No trial records, per-seed outcomes, failure categories, pairing, confidence intervals or significance were invented. The ball is only part of this hardware cohort; Q1 remains six simulated objects. The scoring instrument and exact angular-error convention were not supplied; a short appendix setup placeholder remains. Physical photos and calibrated real-camera pose-error measurements remain pending.
+
+The existing 37.53% -> 64.73% result is pose recall for a separate simulated RGB/RGB-D study, not an RGB-only hardware estimator ablation. It does not attribute the new hardware task success to RGB-D. Three-dimensional Gaussian splatting supplies training imagery; deployment estimates pose from RGB before motor control. Proprioception remains part of the control input.
+
+Validation
+Main: 8 body pages plus 2 disclosure/reference pages. Supplement: 15 pages.
+All 124 existing evidence files are unchanged. Existing numerical tables remain unchanged, except the superseded unused hardware plan now redirects to the new counts.
+Source counts, plotted rates, aggregate macros and supplementary rows agree.
+No undefined citations/references, duplicate labels or overfull boxes.
+All PDF pages visually reviewed; figure labels, Q4 paragraphs and hardware count table checked.
+No GitHub push performed. The earlier local ALIVE revisions are preserved.

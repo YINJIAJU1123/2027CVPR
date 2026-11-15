@@ -1,0 +1,38 @@
+{
+  "format": "cube_controller_confirmation_image_refresh_v1",
+  "created_at": "2026-11-02T07:18:00.750682+00:00",
+  "parent_sha256": "ebcd3ddd33e640ddabf1681f5a6b2b5be912005a17d04bda06efb63e8d2868a5",
+  "cohorts": {
+    "confirmation": [
+      187101,
+      187102
+    ],
+    "image_refresh": [
+      187201,
+      187202
+    ]
+  },
+  "episodes_per_seed": 20,
+  "raw_trials_per_condition": 40,
+  "raw_trials_total": 200,
+  "formal_trials_used_for_selection": false,
+  "image_intervention": "Upper-agent RGB only. Every request still renders and saves current RGB; frozen arm sends exact first frame. Numeric pose feedback and action history stay current. Six-call maximum and trigger rules unchanged. Actual calls, tokens and latency reported; not an equal-compute claim.",
+  "primary_contrasts": {
+    "confirmation": [
+      "confirm_full",
+      "confirm_fixed"
+    ],
+    "image_refresh": [
+      "image_fresh",
+      "image_frozen"
+    ]
+  },
+  "inference": "Two primary exact paired two-sided McNemar comparisons, Holm across the two primary tests; unadjusted values also shown. Full vs continue is a declared secondary comparison. Report paired effect sizes, per-seed rates, Wilson intervals, drops, duration, actual calls/tokens/delays. No outcome-based stopping or checkpoint selection.",
+  "exclusions": "Symmetric service eligibility across the three confirmation arms, and separately across the two image arms. Retain every raw visited slot, stop on service errors; resume only unvisited slots after audited segment registration.",
+  "stopping": "Finish all registered slots, audit both studies, then stop. No automatic additional training or experiments.",
+  "source_release_sha256": "e58c7c2d125005eddb52a46b86b3df2fafe1eddfae6b3606d08fd8b00de37c96",
+  "success_definition": "Autonomous stop at the correctly bound requested semantic target, full quaternion error <=0.16 rad, no previous drop. Reaching alone is not completion. No extra hold requirement.",
+  "horizon_seconds": 120,
+  "maximum_calls": 6,
+  "note": "Cohorts above define the new seeds. Historical seed fields embedded in the parent are not the current cohort."
+}

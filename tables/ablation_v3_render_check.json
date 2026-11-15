@@ -1,0 +1,224 @@
+{
+  "raw_trials": 200,
+  "panels": {
+    "waiting": {
+      "eligible_trials": 40,
+      "excluded_trial_ids": [],
+      "outcomes": {
+        "continue": {
+          "raw_trials": 40,
+          "raw_success": 25,
+          "raw_drops": 12,
+          "eligible_trials": 40,
+          "success": 25,
+          "rate": 0.625,
+          "wilson_95": [
+            0.47032439137301096,
+            0.7577702083276673
+          ],
+          "drops": 12,
+          "reasons": {
+            "success": 25,
+            "drop": 12,
+            "abstain": 1,
+            "false_stop": 2
+          },
+          "drop_phases": {
+            "wait": 3,
+            "startup_wait": 4,
+            "execution": 5
+          },
+          "actual_calls": 104,
+          "median_call_latency_s": 5.504656073499973,
+          "median_logical_duration_s": 17.95
+        },
+        "fixed_slow": {
+          "raw_trials": 40,
+          "raw_success": 30,
+          "raw_drops": 4,
+          "eligible_trials": 40,
+          "success": 30,
+          "rate": 0.75,
+          "wilson_95": [
+            0.5980603857923197,
+            0.858128813609037
+          ],
+          "drops": 4,
+          "reasons": {
+            "success": 30,
+            "horizon": 1,
+            "false_stop": 2,
+            "drop": 4,
+            "abstain": 3
+          },
+          "drop_phases": {
+            "startup_wait": 4
+          },
+          "actual_calls": 132,
+          "median_call_latency_s": 5.724186318000193,
+          "median_logical_duration_s": 24.166666666666664
+        },
+        "learned_speed": {
+          "raw_trials": 40,
+          "raw_success": 28,
+          "raw_drops": 8,
+          "eligible_trials": 40,
+          "success": 28,
+          "rate": 0.7,
+          "wilson_95": [
+            0.5456998118185507,
+            0.8192515477025347
+          ],
+          "drops": 8,
+          "reasons": {
+            "success": 28,
+            "drop": 8,
+            "abstain": 2,
+            "false_stop": 2
+          },
+          "drop_phases": {
+            "execution": 7,
+            "wait": 1
+          },
+          "actual_calls": 113,
+          "median_call_latency_s": 5.74535590800042,
+          "median_logical_duration_s": 20.166666666666664
+        },
+        "learned_speed_residual": {
+          "raw_trials": 40,
+          "raw_success": 34,
+          "raw_drops": 5,
+          "eligible_trials": 40,
+          "success": 34,
+          "rate": 0.85,
+          "wilson_95": [
+            0.709276756335103,
+            0.9293881228267964
+          ],
+          "drops": 5,
+          "reasons": {
+            "success": 34,
+            "drop": 5,
+            "false_stop": 1
+          },
+          "drop_phases": {
+            "execution": 1,
+            "wait": 4
+          },
+          "actual_calls": 120,
+          "median_call_latency_s": 5.3261571429998185,
+          "median_logical_duration_s": 22.166666666666664
+        }
+      },
+      "paired_comparisons": [
+        {
+          "left": "fixed_slow",
+          "right": "continue",
+          "left_only": 10,
+          "right_only": 5,
+          "exact_mcnemar_p": 0.3017578125,
+          "eligible_trials": 40,
+          "holm_adjusted_p": 0.603515625
+        },
+        {
+          "left": "learned_speed",
+          "right": "fixed_slow",
+          "left_only": 7,
+          "right_only": 9,
+          "exact_mcnemar_p": 0.803619384765625,
+          "eligible_trials": 40,
+          "holm_adjusted_p": 0.803619384765625
+        },
+        {
+          "left": "learned_speed_residual",
+          "right": "learned_speed",
+          "left_only": 10,
+          "right_only": 4,
+          "exact_mcnemar_p": 0.1795654296875,
+          "eligible_trials": 40,
+          "holm_adjusted_p": 0.5386962890625
+        }
+      ]
+    },
+    "feedback": {
+      "eligible_trials": 39,
+      "excluded_trial_ids": [
+        185502011
+      ],
+      "outcomes": {
+        "initial_plan": {
+          "raw_trials": 40,
+          "raw_success": 6,
+          "raw_drops": 0,
+          "eligible_trials": 39,
+          "success": 6,
+          "rate": 0.15384615384615385,
+          "wilson_95": [
+            0.07247472376982099,
+            0.29729463648926696
+          ],
+          "drops": 0,
+          "reasons": {
+            "abstain": 28,
+            "false_stop": 5,
+            "success": 6
+          },
+          "drop_phases": {},
+          "actual_calls": 40,
+          "median_call_latency_s": 8.116777884499697,
+          "median_logical_duration_s": 8.166666666666666
+        },
+        "learned_speed_residual": {
+          "raw_trials": 40,
+          "raw_success": 34,
+          "raw_drops": 5,
+          "eligible_trials": 39,
+          "success": 33,
+          "rate": 0.8461538461538461,
+          "wilson_95": [
+            0.7027053635107331,
+            0.927525276230179
+          ],
+          "drops": 5,
+          "reasons": {
+            "success": 33,
+            "drop": 5,
+            "false_stop": 1
+          },
+          "drop_phases": {
+            "execution": 1,
+            "wait": 4
+          },
+          "actual_calls": 120,
+          "median_call_latency_s": 5.3261571429998185,
+          "median_logical_duration_s": 22.0
+        }
+      },
+      "paired_comparisons": [
+        {
+          "left": "learned_speed_residual",
+          "right": "initial_plan",
+          "left_only": 27,
+          "right_only": 0,
+          "exact_mcnemar_p": 1.4901161193847656e-08,
+          "eligible_trials": 39,
+          "holm_adjusted_p": 1.4901161193847656e-08
+        }
+      ]
+    }
+  },
+  "source_sha256": {
+    "README.md": "cf573d2301624191557453a8697301aea2a011c70e060e85f88312ac1461d36a",
+    "initial_observations.json": "2a21727c74172b9d895fbcb86067a5858973de1787c18d7346849e113b0c471b",
+    "feedback_mechanisms.json": "78b43cc9a0a2d9e9fd44eda0584fe1be221a14eaced95c6b9e2d4bd3728331f7",
+    "provenance.json": "55f98eaabfe387d5834632bdaae77ecbcf462d2972716003c34bbbf308ec7926",
+    "timing.json": "18bb48cf5ea830afda20c243de5890c934c7ea2997764487fc9226b8c3f7445d",
+    "protocol.json": "00592b458280515ebef078a678d69cb1a9080e781019072f4d7387082a44d750",
+    "summary.json": "4022d5514bef035a54801fb0a425726571917e2cb124b35734b8a0b206dc4e3f",
+    "trials.json": "0dde77bdf3908466d159bd246ddbc26632a83770d37a61c8b24a70a643ed8fd1",
+    "action_branch_audit.json": "3f81b9b140f9c71fc64219f746afe602dd0bf28cc834ace8735088250372b26c",
+    "legacy_controller_parity.json": "65a3ff2dea761dcbf5138c23c1def612b5d670a6933d0ffa0ce7f584a247b8b9",
+    "action_scope.json": "50606e876503fb7f2ac80314b46fdc5ae2cd39074d2b18811a6a0844bb5f9e86",
+    "training_admission.json": "891ad5609533638689554d2b69b139cfb655dc63a0272be7a65e36bf92c75b3b"
+  }
+}

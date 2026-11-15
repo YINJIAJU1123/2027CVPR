@@ -1,0 +1,112 @@
+\section{Experiments}
+\label{sec:experiments}
+We organize the experiments around four questions. \textbf{Q1}: how does the complete system compare with VLM baselines across objects, target mappings and languages? \textbf{Q2}: how should the hand be controlled while the agent reasons? \textbf{Q3}: does exploration matter, that is, does the agent need new views and does it help to let it choose them? \textbf{Q4}: does the system transfer to a physical hand?
+
+\subsection{Setup and reporting}
+\label{sec:setup}
+\paragraph{Objects and systems.}
+Simulation uses Revo3 assets in Isaac Lab 3.0/Newton. Q1 covers a cube, die, duck, hedgehog, ball and milk carton. An instruction requests one of six surface letters, or a dot count on the die; each target has a fixed face-up reference orientation. We compare against two baselines built on Qwen3-VL-4B-Instruct~\cite{qwen3vl}. \emph{Rule} maps the model's outputs to discrete skills, and \emph{Fine-tuned} adapts the same backbone to predict continuous goal vectors. When the target is not identifiable in the first image, both baselines follow a fixed inspection schedule, and neither has the local control actors. REVEAL's agent is a hosted vision-language model, \texttt{gpt-6-astra}, called through its API with tool use. For each object, all three methods share the RGB-D pose estimator, goal bank, student and stopping rule; REVEAL adds the agent and the local controllers of Sec.~\ref{sec:wait}. Q1 thus compares complete systems, while Q2 and Q3 change one component at a time on the cube (and, for inspection, the ball) and hold everything else fixed.
+
+\paragraph{Timing and completion.}
+A cube trial allows up to six agent calls within 120 seconds of simulated control at 30~Hz; the other objects run at 20~Hz. Physics continues during model latency, and a reply takes effect only after inference has finished. For the cube, a stopping check runs at 3~Hz and ends the trial once a target is bound, no request or inspection is pending, and the measured orientation error is at most 0.16 radians. A trial is scored as a success if the binding is correct, the true full-quaternion error at the stop is at most 0.16 radians, and the object was not dropped. The other objects use the same criteria. The supplement gives exact timing, drop boundaries and scoring equations.
+
+\paragraph{Trials and statistics.}
+Unless stated otherwise, each simulated condition has 40 trials, 20 per evaluation seed, and compared methods share initial physical states and scored targets. Q2 uses three seeds, for 120 trials per method. In Q1 and Q3, a service error or a call longer than 120 seconds removes the matched trial from every method, and we report rates over the remaining common trials. Paired comparisons use two-sided exact McNemar tests, unadjusted unless a Holm correction is stated. Seeds, pairing details and all tests are in the supplement.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/q1_task_success.pdf}
+\caption{\textbf{Q1: task success on six simulated objects.} Each cell has 40 trials, except original-mapping duck (38) and hedgehog (39) after service exclusions. Labels give REVEAL's rates. Each object uses its own policy; all values are tabulated in the supplement.}
+\label{fig:q1-task-success}
+\end{figure*}
+
+\subsection{Q1: Objects, Target Mappings and Language}
+We first compare the complete system with the two VLM baselines on six objects, under the original target-to-skill mapping and under a changed one (Fig.~\ref{fig:q1-task-success}), and then vary the language and wording of the instruction.
+
+\paragraph{Six objects, two mappings.}
+Across 1,440 scheduled trials, REVEAL's mean success is \QOneOriginalSuccess\% with the original mappings and \QOneChangedSuccess\% with changed mappings, where the mean weights the six objects equally. The best baseline means are \QOneOriginalBaseline\% and \QOneChangedBaseline\%, so the margin grows from \QOneOriginalGain{} to \QOneChangedGain{} points when the mapping changes. REVEAL has the highest rate for every object under both mappings. Changing the mapping costs REVEAL less than five points on average, whereas Fine-tuned falls from 44.2\% to 10.0\%. This pattern suggests that Fine-tuned has memorized the training association between marks and skills, while REVEAL reads the association from the image; the cube study below tests this directly. The milk carton is REVEAL's hardest object: it reaches 42.5\% and 27.5\%, and drops the carton in 15 and 20 of 40 trials.
+
+\paragraph{Is the mark actually read?}
+A cube study changes only what the agent sees. Over 40 matched states we show the original letters, reassigned letters, or no letters; the pose estimator's input and the lighting stay fixed. Reassigning the letters leaves REVEAL at 32/40 but reduces Fine-tuned from 30/40 to 16/40 (Holm-adjusted $p=0.013$ over six comparisons), and nine of its eleven wrong bindings follow the old mapping. Rule stays at 23/40. With the letters hidden, REVEAL, Fine-tuned and Rule succeed in 0/39, 3/40 and 0/40 trials, so success depends on reading the mark. The die gives the same picture: rotating its visual mesh moves every dot count to a different face, paired tests favor REVEAL over both baselines under the new layout, and REVEAL's own success does not change significantly (supplement).
+
+\paragraph{Language and wording.}
+We test standard and reworded instructions in English and Chinese on three objects, with 60 trials per condition over three seeds and 2,160 trials in total (Table~\ref{tab:language-objects}). Weights, mappings and scoring are unchanged, and nothing is retrained for Chinese.
+
+\begingroup
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\input{tables/language_objects}
+\endgroup
+
+On duck and hedgehog, REVEAL stays between 67.8\% and 76.7\% in all four conditions. It exceeds Fine-tuned in all eight object--condition cells and Rule in six, after Holm correction over 36 tests. On the cube, where Fine-tuned is strongest, the two methods are close: no comparison is significant, and Fine-tuned has the higher rate for reworded Chinese. No method shows a significant effect of language or wording.
+
+\subsection{Q2: Control During Agent Reasoning}
+Q1 compares complete systems, which differ in several components. The next two studies change one component at a time, starting with control. What should the hand do while the agent is thinking? Figure~\ref{fig:controller-outcomes} compares four answers: keep following the student's command, slow it by a fixed coefficient of 0.15, learn the slowing coefficient, or learn slowing together with a bounded joint correction. All four use the same execution controller once a reply has arrived. Each is evaluated on 120 trials, 40 under each of three evaluation seeds, with the trained weights fixed.
+
+Following the student at full speed is the worst choice: 73/120 trials succeed (60.8\%), and 24 end in a drop while waiting. Fixed slowing roughly halves the waiting drops, to 13, and reaches 88/120 (73.3\%). Learning the slowing coefficient alone lowers waiting drops further, to seven, but more trials then fail during execution or for other reasons, so it brings no gain over fixed slowing (82/120, 68.3\%). Adding the joint correction gives the best result on every count: 104/120 successes (86.7\%), five waiting drops and four execution drops. How fast the hand moves is therefore only part of the answer. The controller also needs the freedom to adjust individual joints, and with it gains 13.3 points over fixed slowing. Per-seed results and outcome breakdowns are in the supplement.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\columnwidth]{figures/controller_outcomes.pdf}
+\caption{\textbf{Q2: waiting control on the cube.} Each bar contains 120 trials, 40 per evaluation seed. Labels give success rates; colored segments partition all outcomes, with drops split by the stage in which they occur.}
+\label{fig:controller-outcomes}
+\end{figure}
+
+\subsection{Q3: Visual Exploration and Feedback}
+
+We now turn to the agent. Three interventions examine how it acquires and uses evidence (Table~\ref{tab:q3-feedback}): whether it receives feedback at all, whether that feedback contains new images, and whether it chooses its own inspection actions. Each comparison has its own set of 40 matched pairs.
+
+\begin{table}[!htbp]
+\centering\small
+\begin{tabular}{lrrrr}
+\toprule
+Condition & Success & \% & Drops & Calls\\
+\midrule
+\multicolumn{5}{l}{\textbf{(a) Continued feedback: one vs. up to six calls}}\\
+\AblationFeedbackRows
+\midrule
+\multicolumn{5}{l}{\textbf{(b) Fresh visual evidence: same six-call cap}}\\
+\ImageRefreshRows
+\midrule
+\multicolumn{5}{l}{\textbf{(c) Inspection policy: cube}}\\
+\InspectionPolicyRows
+\midrule
+\multicolumn{5}{l}{\textbf{(d) Inspection policy: ball}}\\
+\PigInspectionPolicyRows
+\bottomrule
+\end{tabular}
+\caption{\textbf{Q3: visual evidence and inspection choices.} Each comparison uses 40 matched pairs; (a,b) use the cube. In (a), one pair is excluded for a service error, and the feedback arm reuses Q2's first-seed trials. (b) changes only the agent's RGB input. (c,d) change only inspection direction and duration. Drops and calls are totals over all trials.}
+\label{tab:q3-feedback}
+\label{tab:feedback}
+\label{tab:image-refresh}
+\end{table}
+
+\paragraph{(a) Does continued feedback help find the target?}
+With a single call, the agent sees one image and must plan up to six actions in advance. With continued feedback, it may call up to six times, each with a new image and the action history. Local controllers, stopping and time limits are identical. Success rises from 6/39 to 33/39, and all 27 discordant pairs favor feedback ($p=1.49\times10^{-8}$). The single-call agent usually recognizes that it cannot see the target: it abstains in 28 trials, and feedback turns 22 of these into successes. In 32 feedback trials the first binding comes after an inspection (Fig.~\ref{fig:recorded-search}).
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\columnwidth]{figures/feedback_example.pdf}
+\caption{\textbf{New evidence enables target binding.} Enlarged crops of the agent's input frames in one simulated trial, with its recorded reasoning. The first view shows only the R face; given this image alone, the single-call plan abstains. After one inspection the T is visible, the agent binds T to the red skill, and the trial completes at step 420 with a true error of 0.081 radians.}
+\label{fig:recorded-search}
+\end{figure}
+
+\paragraph{(b) Does the next image provide useful evidence?}
+More calls could help simply by giving the agent more chances. To separate this from visual evidence, both conditions here have the same six-call cap, live numeric feedback, history and local control, and differ only in the image: the current view, or the first frame repeated at every call. Success is 32/40 with current images and 9/40 with the repeated frame; all 23 discordant pairs favor current images ($p=2.38\times10^{-7}$). The nine repeated-frame successes are exactly the trials in which both arms bind correctly on the first call, before any new view is needed. Beyond these, current images produce 25 further correct bindings, 23 of which end in success, and the repeated frame produces none. The gain comes from what the new images show.
+
+\paragraph{(c) Does choosing inspection actions help?}
+We next fix the evidence channel and vary who chooses the inspection. In the adaptive arm the agent selects the direction and duration of each inspection. In the fixed arm, inspections follow a prescribed sweep over the six skills, three seconds each; the agent still decides when to inspect, bind or abstain. Model, controllers, image input, history format and stopping are shared.
+
+On the ball, adaptive inspection succeeds in 37/40 trials (92.5\%) against 29/40 (72.5\%) for the fixed sweep. Eight pairs favor adaptive inspection and none favor the sweep ($p=0.0078$). The difference lies in finding the target: correct terminal bindings number 37 versus 29, while each arm drops the object twice. Adaptive inspection also needs 15.2\% fewer calls and 26.1\% fewer tokens. On the cube, the rates are 38/40 (95.0\%) versus 31/40 (77.5\%), with nine pairs favoring adaptive inspection and two favoring the sweep. The effect has the same direction and a similar size, but does not reach significance with 40 pairs ($p=0.065$). The ball comparison and its analysis were fixed before its trials were run. The supplement reports seed splits, binding trajectories and costs for both objects.
+
+\subsection{Q4: Pose Estimation and Sim-to-Real Transfer}
+\paragraph{Pose estimation under hand occlusion.}
+We compare our estimator with a ViserDex-style baseline that regresses the same keypoints from the image alone and is trained for the same object and camera~\cite{bhardwaj2026viserdex} (Table~\ref{tab:pose-summary}). In simulation we use 6,144 frames rendered with real-camera calibration, Gaussian-splat appearance and hand occlusion. Over all frames, 10\,mm/$10^\circ$ recall rises from 37.5\% to 64.7\%, and invalid predictions fall from 69 to one. The average hides a strong dependence on occlusion, because the test set deliberately includes camera pitches up to $105^\circ$, at which much of the object is hidden. When less than a quarter of the object is hidden, our estimator is correct in 97.6\% of frames against 66.2\% for the baseline, and at the nominal camera view it reaches 99.8\%. Between 25\% and 50\% occlusion its recall is 55.5\% (baseline: 19.9\%); beyond that both fail.
+
+The gap carries over to real images. On 1,000 frames of the cube being rotated in the hand, scored against a multi-view FoundationPose reference~\cite{wen2024foundationpose}, our estimator reaches 87.3\% recall and the baseline 40.7\% (protocol in the supplement). We use our estimator in all simulated and physical experiments.
+
+\input{tables/pose_summary}
+
+\paragraph{Real-hand evaluation.}
+We run Rule, Fine-tuned and REVEAL on a physical Revo3 hand with four of the simulated objects (cube, die, ball and duck), 20 trials per object and method (240 in total). A RealSense D405 camera provides the images for pose estimation. A trial succeeds when the hand presents the requested target within $15^\circ$ of its reference orientation and stops without dropping the object. REVEAL completes 70/80 trials (\HardwareAimiSuccess\%), against \HardwareFineTunedSuccess\% for Fine-tuned and \HardwareRuleSuccess\% for Rule, a margin of \HardwareGain{} points over the stronger baseline (Table~\ref{tab:hardware-results}). The ranking of the three methods is the same for every object, and the duck is the hardest object for all of them. Object descriptions, targets and the scoring setup are given in the supplement.
+
+\input{tables/hardware_results}

@@ -1,0 +1,34 @@
+{
+  "seed": 185311,
+  "updates": 2400,
+  "actor_goal_input": "active",
+  "actor_execution_speed_mode": "fixed",
+  "source_student_sha256": "9d55b83f27c4f1dd24b56695639a76d95bd56ccb248668c5e742ee597d84dd24",
+  "observation_fields": [
+    "proprio",
+    "measured_pose",
+    "belief",
+    "proposal",
+    "anchor_pose",
+    "anchor_action",
+    "fit_error_m",
+    "known",
+    "pending",
+    "elapsed_pending_s"
+  ],
+  "feature_dim": 425,
+  "actor_warm_start_sha256": "2f55120ee866e19fea406d14a528536bb8cb88e3baa05bbb275dd92c4fee9f19",
+  "balance_waiting_startup": false,
+  "balance_execution_phases": true,
+  "actor_phase_sampling": {
+    "pending_states": 33312,
+    "unknown_execution_states": 10138,
+    "known_execution_states": 16550,
+    "batch_fractions": [
+      0.5,
+      0.25,
+      0.25
+    ],
+    "scope": "Actor only; evidence fitting and original global RNG draws unchanged"
+  }
+}

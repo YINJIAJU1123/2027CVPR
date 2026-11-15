@@ -1,0 +1,378 @@
+{
+  "format": "dice_main_comparison_v1",
+  "benchmark": {
+    "episodes_per_method": 40,
+    "seeds": [
+      186301,
+      186302
+    ],
+    "horizon_s": 120,
+    "control_hz": 20,
+    "stop_hz": 3,
+    "maximum_calls": 6,
+    "true_success_angle_rad": 0.16,
+    "success": "correct semantic binding and full canonical orientation at autonomous stop",
+    "drop": ">=0.24m from nominal grasp reference",
+    "service_exclusions": "service error or request latency >120 seconds, matched case exclusion across all methods",
+    "no_physics_pause": true,
+    "sim_pose": "published noisy sensors; no estimator",
+    "mapping": "native dot-count faces; fixed layout",
+    "bare_vlm_modules": "none; raw measured-pose stop gate",
+    "astra_modules": [
+      "learned speed and residual maintenance",
+      "learned calibrated completion correction",
+      "feedback observations and replanning"
+    ]
+  },
+  "cases": [
+    {
+      "index": 0,
+      "base_seed": 186301,
+      "episode": 0,
+      "trial_seed": 186301000,
+      "goal_index": 0,
+      "instruction": "Turn the die so that the face with 1 dots faces upward."
+    },
+    {
+      "index": 1,
+      "base_seed": 186301,
+      "episode": 1,
+      "trial_seed": 186301001,
+      "goal_index": 1,
+      "instruction": "Turn the die so that the face with 2 dots faces upward."
+    },
+    {
+      "index": 2,
+      "base_seed": 186301,
+      "episode": 2,
+      "trial_seed": 186301002,
+      "goal_index": 2,
+      "instruction": "Turn the die so that the face with 3 dots faces upward."
+    },
+    {
+      "index": 3,
+      "base_seed": 186301,
+      "episode": 3,
+      "trial_seed": 186301003,
+      "goal_index": 3,
+      "instruction": "Turn the die so that the face with 4 dots faces upward."
+    },
+    {
+      "index": 4,
+      "base_seed": 186301,
+      "episode": 4,
+      "trial_seed": 186301004,
+      "goal_index": 4,
+      "instruction": "Turn the die so that the face with 5 dots faces upward."
+    },
+    {
+      "index": 5,
+      "base_seed": 186301,
+      "episode": 5,
+      "trial_seed": 186301005,
+      "goal_index": 5,
+      "instruction": "Turn the die so that the face with 6 dots faces upward."
+    },
+    {
+      "index": 6,
+      "base_seed": 186301,
+      "episode": 6,
+      "trial_seed": 186301006,
+      "goal_index": 0,
+      "instruction": "Turn the die so that the face with 1 dots faces upward."
+    },
+    {
+      "index": 7,
+      "base_seed": 186301,
+      "episode": 7,
+      "trial_seed": 186301007,
+      "goal_index": 1,
+      "instruction": "Turn the die so that the face with 2 dots faces upward."
+    },
+    {
+      "index": 8,
+      "base_seed": 186301,
+      "episode": 8,
+      "trial_seed": 186301008,
+      "goal_index": 2,
+      "instruction": "Turn the die so that the face with 3 dots faces upward."
+    },
+    {
+      "index": 9,
+      "base_seed": 186301,
+      "episode": 9,
+      "trial_seed": 186301009,
+      "goal_index": 3,
+      "instruction": "Turn the die so that the face with 4 dots faces upward."
+    },
+    {
+      "index": 10,
+      "base_seed": 186301,
+      "episode": 10,
+      "trial_seed": 186301010,
+      "goal_index": 4,
+      "instruction": "Turn the die so that the face with 5 dots faces upward."
+    },
+    {
+      "index": 11,
+      "base_seed": 186301,
+      "episode": 11,
+      "trial_seed": 186301011,
+      "goal_index": 5,
+      "instruction": "Turn the die so that the face with 6 dots faces upward."
+    },
+    {
+      "index": 12,
+      "base_seed": 186301,
+      "episode": 12,
+      "trial_seed": 186301012,
+      "goal_index": 0,
+      "instruction": "Turn the die so that the face with 1 dots faces upward."
+    },
+    {
+      "index": 13,
+      "base_seed": 186301,
+      "episode": 13,
+      "trial_seed": 186301013,
+      "goal_index": 1,
+      "instruction": "Turn the die so that the face with 2 dots faces upward."
+    },
+    {
+      "index": 14,
+      "base_seed": 186301,
+      "episode": 14,
+      "trial_seed": 186301014,
+      "goal_index": 2,
+      "instruction": "Turn the die so that the face with 3 dots faces upward."
+    },
+    {
+      "index": 15,
+      "base_seed": 186301,
+      "episode": 15,
+      "trial_seed": 186301015,
+      "goal_index": 3,
+      "instruction": "Turn the die so that the face with 4 dots faces upward."
+    },
+    {
+      "index": 16,
+      "base_seed": 186301,
+      "episode": 16,
+      "trial_seed": 186301016,
+      "goal_index": 4,
+      "instruction": "Turn the die so that the face with 5 dots faces upward."
+    },
+    {
+      "index": 17,
+      "base_seed": 186301,
+      "episode": 17,
+      "trial_seed": 186301017,
+      "goal_index": 5,
+      "instruction": "Turn the die so that the face with 6 dots faces upward."
+    },
+    {
+      "index": 18,
+      "base_seed": 186301,
+      "episode": 18,
+      "trial_seed": 186301018,
+      "goal_index": 0,
+      "instruction": "Turn the die so that the face with 1 dots faces upward."
+    },
+    {
+      "index": 19,
+      "base_seed": 186301,
+      "episode": 19,
+      "trial_seed": 186301019,
+      "goal_index": 1,
+      "instruction": "Turn the die so that the face with 2 dots faces upward."
+    },
+    {
+      "index": 20,
+      "base_seed": 186302,
+      "episode": 0,
+      "trial_seed": 186302000,
+      "goal_index": 2,
+      "instruction": "Turn the die so that the face with 3 dots faces upward."
+    },
+    {
+      "index": 21,
+      "base_seed": 186302,
+      "episode": 1,
+      "trial_seed": 186302001,
+      "goal_index": 3,
+      "instruction": "Turn the die so that the face with 4 dots faces upward."
+    },
+    {
+      "index": 22,
+      "base_seed": 186302,
+      "episode": 2,
+      "trial_seed": 186302002,
+      "goal_index": 4,
+      "instruction": "Turn the die so that the face with 5 dots faces upward."
+    },
+    {
+      "index": 23,
+      "base_seed": 186302,
+      "episode": 3,
+      "trial_seed": 186302003,
+      "goal_index": 5,
+      "instruction": "Turn the die so that the face with 6 dots faces upward."
+    },
+    {
+      "index": 24,
+      "base_seed": 186302,
+      "episode": 4,
+      "trial_seed": 186302004,
+      "goal_index": 0,
+      "instruction": "Turn the die so that the face with 1 dots faces upward."
+    },
+    {
+      "index": 25,
+      "base_seed": 186302,
+      "episode": 5,
+      "trial_seed": 186302005,
+      "goal_index": 1,
+      "instruction": "Turn the die so that the face with 2 dots faces upward."
+    },
+    {
+      "index": 26,
+      "base_seed": 186302,
+      "episode": 6,
+      "trial_seed": 186302006,
+      "goal_index": 2,
+      "instruction": "Turn the die so that the face with 3 dots faces upward."
+    },
+    {
+      "index": 27,
+      "base_seed": 186302,
+      "episode": 7,
+      "trial_seed": 186302007,
+      "goal_index": 3,
+      "instruction": "Turn the die so that the face with 4 dots faces upward."
+    },
+    {
+      "index": 28,
+      "base_seed": 186302,
+      "episode": 8,
+      "trial_seed": 186302008,
+      "goal_index": 4,
+      "instruction": "Turn the die so that the face with 5 dots faces upward."
+    },
+    {
+      "index": 29,
+      "base_seed": 186302,
+      "episode": 9,
+      "trial_seed": 186302009,
+      "goal_index": 5,
+      "instruction": "Turn the die so that the face with 6 dots faces upward."
+    },
+    {
+      "index": 30,
+      "base_seed": 186302,
+      "episode": 10,
+      "trial_seed": 186302010,
+      "goal_index": 0,
+      "instruction": "Turn the die so that the face with 1 dots faces upward."
+    },
+    {
+      "index": 31,
+      "base_seed": 186302,
+      "episode": 11,
+      "trial_seed": 186302011,
+      "goal_index": 1,
+      "instruction": "Turn the die so that the face with 2 dots faces upward."
+    },
+    {
+      "index": 32,
+      "base_seed": 186302,
+      "episode": 12,
+      "trial_seed": 186302012,
+      "goal_index": 2,
+      "instruction": "Turn the die so that the face with 3 dots faces upward."
+    },
+    {
+      "index": 33,
+      "base_seed": 186302,
+      "episode": 13,
+      "trial_seed": 186302013,
+      "goal_index": 3,
+      "instruction": "Turn the die so that the face with 4 dots faces upward."
+    },
+    {
+      "index": 34,
+      "base_seed": 186302,
+      "episode": 14,
+      "trial_seed": 186302014,
+      "goal_index": 4,
+      "instruction": "Turn the die so that the face with 5 dots faces upward."
+    },
+    {
+      "index": 35,
+      "base_seed": 186302,
+      "episode": 15,
+      "trial_seed": 186302015,
+      "goal_index": 5,
+      "instruction": "Turn the die so that the face with 6 dots faces upward."
+    },
+    {
+      "index": 36,
+      "base_seed": 186302,
+      "episode": 16,
+      "trial_seed": 186302016,
+      "goal_index": 0,
+      "instruction": "Turn the die so that the face with 1 dots faces upward."
+    },
+    {
+      "index": 37,
+      "base_seed": 186302,
+      "episode": 17,
+      "trial_seed": 186302017,
+      "goal_index": 1,
+      "instruction": "Turn the die so that the face with 2 dots faces upward."
+    },
+    {
+      "index": 38,
+      "base_seed": 186302,
+      "episode": 18,
+      "trial_seed": 186302018,
+      "goal_index": 2,
+      "instruction": "Turn the die so that the face with 3 dots faces upward."
+    },
+    {
+      "index": 39,
+      "base_seed": 186302,
+      "episode": 19,
+      "trial_seed": 186302019,
+      "goal_index": 3,
+      "instruction": "Turn the die so that the face with 4 dots faces upward."
+    }
+  ],
+  "shared_artifact_sha256": {
+    "source_checkpoint": "62f04fa8355b0523ed25d62f2758cf1cca0c02fa532f09c53e6f257eeeaf36ec",
+    "checkpoint": "4c7700c8b520f63f491b54cb8a43abeed95a5d679aefc02cc9fbeb97da6f2f4d",
+    "env_config": "4a2e174593ee7d0e14681e58f97d52e54c5ec2e2cd95f3c8f0fac882c09bfad6",
+    "bank": "57dcd29c1e44a2218f3b96c20085f59993ea0bb816c3747a246353b7948d0198"
+  },
+  "conditions": {
+    "astra": {
+      "maintenance": "learned",
+      "actor_checkpoint_sha256": "5722fd5d18550992bdf1238299d7c3a778bcc7251c1bc9e1b3b8774a4cfa122b",
+      "stop_checkpoint_sha256": "f9d4e0bfaaf4f9eb00a5ea53858669b1f6fb7992cf24d832469f2a90421f964d",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "low"
+    },
+    "vlm": {
+      "maintenance": "continue",
+      "actor_checkpoint_sha256": null,
+      "stop_checkpoint_sha256": null,
+      "goal_head_sha256": "5956dc4765bf6fee9de707fa3550633ca3532fa1fe78541ac4968ec048b2510e",
+      "adapter_sha256": "bee8c28042a92ecbed3c0ce45e66f4d35c4a540dbcfa46e2a14fa603fdfc62c8"
+    },
+    "rule": {
+      "maintenance": "continue",
+      "actor_checkpoint_sha256": null,
+      "stop_checkpoint_sha256": null,
+      "uses_lora": false
+    }
+  },
+  "source_repository_commit": "6d83535ccc65af7305faffdce2ac0c3ec1e88ba4"
+}

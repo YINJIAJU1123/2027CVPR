@@ -1,0 +1,113 @@
+{
+  "source": "User-confirmed collaborator report and seed correction, 2026-11-07",
+  "seed_ids": [
+    187102,
+    187103,
+    187104
+  ],
+  "trials_per_seed_per_condition": 40,
+  "trials_per_condition": 120,
+  "total_trials": 480,
+  "status": "user_confirmed_aggregate_counts; individual trial records not supplied for added runs",
+  "seed_correction": {
+    "previous_archive_labels": [
+      185501,
+      185502
+    ],
+    "corrected_first_block_seed": 187102,
+    "scope": "40-trial controller subset only; historical raw archives preserved unchanged",
+    "confirmation": "User identifies the 25/30/28/34 successes as seed 187102 and requests adding the unchanged 80-trial block for seeds 187103/187104."
+  },
+  "methods": [
+    {
+      "key": "continue_execution",
+      "label": "Continue student",
+      "seed_187102": {
+        "success": 25,
+        "waiting_drop": 7,
+        "execution_drop": 5,
+        "other_failure": 3
+      },
+      "seeds_187103_187104": {
+        "success": 48,
+        "waiting_drop": 17,
+        "execution_drop": 9,
+        "other_failure": 6
+      },
+      "combined": {
+        "success": 73,
+        "waiting_drop": 24,
+        "execution_drop": 14,
+        "other_failure": 9
+      }
+    },
+    {
+      "key": "fixed_slow",
+      "label": "Fixed slowing",
+      "seed_187102": {
+        "success": 30,
+        "waiting_drop": 4,
+        "execution_drop": 0,
+        "other_failure": 6
+      },
+      "seeds_187103_187104": {
+        "success": 58,
+        "waiting_drop": 9,
+        "execution_drop": 8,
+        "other_failure": 5
+      },
+      "combined": {
+        "success": 88,
+        "waiting_drop": 13,
+        "execution_drop": 8,
+        "other_failure": 11
+      }
+    },
+    {
+      "key": "learned_speed",
+      "label": "Learned slowing",
+      "seed_187102": {
+        "success": 28,
+        "waiting_drop": 1,
+        "execution_drop": 7,
+        "other_failure": 4
+      },
+      "seeds_187103_187104": {
+        "success": 54,
+        "waiting_drop": 6,
+        "execution_drop": 7,
+        "other_failure": 13
+      },
+      "combined": {
+        "success": 82,
+        "waiting_drop": 7,
+        "execution_drop": 14,
+        "other_failure": 17
+      }
+    },
+    {
+      "key": "learned_speed_joint_correction",
+      "label": "Slowing + correction",
+      "seed_187102": {
+        "success": 34,
+        "waiting_drop": 4,
+        "execution_drop": 1,
+        "other_failure": 1
+      },
+      "seeds_187103_187104": {
+        "success": 70,
+        "waiting_drop": 1,
+        "execution_drop": 3,
+        "other_failure": 6
+      },
+      "combined": {
+        "success": 104,
+        "waiting_drop": 5,
+        "execution_drop": 4,
+        "other_failure": 7
+      }
+    }
+  ],
+  "paired_statistics": null,
+  "additional_per_seed_counts": null
+}

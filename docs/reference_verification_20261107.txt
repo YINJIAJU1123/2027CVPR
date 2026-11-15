@@ -1,0 +1,59 @@
+Reference verification — 2026-11-07
+Scope: all 23 entries in references.bib; preserve citation keys.
+
+Corrected publication records
+1. qwen3vl: replaced the 4B model card / Qwen Team attribution with Qwen3-VL Technical Report, arXiv:2511.21631 (2025), using all 64 authors in the official repository's recommended citation.
+   https://github.com/QwenLM/Qwen3-VL#citation
+   https://arxiv.org/abs/2511.21631
+2. openai2018dexterity: replaced the 2018 preprint with IJRR 39(1):3–20 (2020), DOI 10.1177/0278364919887447. The issue date is January 2020; online-first was November 2019. Listed the 16 named authors; OpenAI is the research group, not an additional seventeenth individual author. Restored the accent in Józefowicz.
+   https://journals.sagepub.com/doi/abs/10.1177/0278364919887447
+   https://api.crossref.org/works/10.1177/0278364919887447
+3. liang2022codepolicies: replaced the 2022 preprint with ICRA 2023, pp.9493–9500, DOI 10.1109/ICRA48891.2023.10160591. Publisher-deposited Crossref metadata was fetched successfully; the IEEE web page itself presents a JavaScript robot check.
+   https://api.crossref.org/works/10.1109/ICRA48891.2023.10160591
+   https://code-as-policies.github.io/
+4. black2025rtc: replaced the preprint with NeurIPS 2025, volume 38, pp.33383–33407, DOI 10.52202/085713-1122. Used Manuel Galliker as in the proceedings, without the unsupported middle initial. Official BibTeX labels the volume “38, Main Conference”; stored the numeric volume 38.
+   https://proceedings.neurips.cc/paper_files/paper/2025/hash/300ccb2187dedd4edcc07f7e76d8e553-Abstract-Conference.html
+   https://proceedings.neurips.cc/paper_files/paper/30311-/bibtex
+
+Verified existing proceedings records; no substantive metadata change required
+5. yang2025magma — CVPR 2025, 14203–14214; authors/title match.
+   https://openaccess.thecvf.com/content/CVPR2025/html/Yang_Magma_A_Foundation_Model_for_Multimodal_AI_Agents_CVPR_2025_paper.html
+6. li2025maniptrans — CVPR 2025, 6991–7003; authors/title match.
+   https://openaccess.thecvf.com/content/CVPR2025/html/Li_ManipTrans_Efficient_Dexterous_Bimanual_Manipulation_Transfer_via_Residual_Learning_CVPR_2025_paper.html
+7. ross2011dagger — AISTATS / PMLR 15:627–635 (2011).
+   https://proceedings.mlr.press/v15/ross11a.html
+8. chen2022reorientation — PMLR 164:297–307 (2022).
+   https://proceedings.mlr.press/v164/chen22a.html
+9. qi2023hora — PMLR 205:1722–1732 (2023).
+   https://proceedings.mlr.press/v205/qi23a.html
+10. qi2023rotateit — PMLR 229:2549–2564 (2023).
+   https://proceedings.mlr.press/v229/qi23a.html
+11. yang2025anyrotate — PMLR 270:4727–4747 (2025).
+   https://proceedings.mlr.press/v270/yang25c.html
+12. ichter2023saycan — PMLR 205:287–318 (2023), author order follows the proceedings (Ichter first), not the arXiv version (Ahn first).
+   https://proceedings.mlr.press/v205/ichter23a.html
+13. huang2023innermonologue — PMLR 205:1769–1782 (2023).
+   https://proceedings.mlr.press/v205/huang23c.html
+14. huang2023voxposer — PMLR 229:540–562 (2023).
+   https://proceedings.mlr.press/v229/huang23b.html
+15. huang2025rekep — PMLR 270:4573–4602 (2025).
+   https://proceedings.mlr.press/v270/huang25g.html
+PMLR years follow the publisher's citation year; this can differ from the date of the CoRL meeting.
+
+Verified arXiv title, author order, year and identifier; retain preprint status
+16. li2026vera — https://arxiv.org/abs/2605.27817
+17. sendai2025a2c2 — https://arxiv.org/abs/2509.23224
+18. bhardwaj2026viserdex — https://arxiv.org/abs/2604.11138
+19. bhardwaj2026goaldex — https://arxiv.org/abs/2611.02171
+20. tschannen2025siglip2 — https://arxiv.org/abs/2502.14786
+21. zhu2026arli — https://arxiv.org/abs/2608.23831
+22. zhu2026deflect — https://arxiv.org/abs/2605.19294
+23. chen2026lima — https://arxiv.org/abs/2609.28431
+No authoritative journal/conference replacement was established for these eight entries in this audit. Their preprint citations remain valid. This is not a guarantee that no later publication exists.
+
+Integrity / scope
+- No new references were invented or added; the bibliography still contains 23 entries.
+- Citation keys retain their historical years to avoid breaking existing TeX citations; printed publication years are corrected.
+- Named authors and publication metadata were checked against primary repositories, proceedings or publisher-deposited metadata.
+- The main experimental setup must still name the exact Qwen3-VL-4B-Instruct model used; citing the series report does not change the actual experimental model.
+- This verification log is source-side provenance, not additional manuscript content.

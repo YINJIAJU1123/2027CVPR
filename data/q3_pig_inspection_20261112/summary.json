@@ -1,0 +1,375 @@
+{
+  "status": "recomputed_from_sanitized_raw_formal_records",
+  "formal_episodes": 80,
+  "common_eligible_pairs": 40,
+  "common_service_exclusions": [],
+  "summary": {
+    "adaptive": {
+      "n": 40,
+      "success": 37,
+      "reasons": {
+        "drop": 2,
+        "false_stop": 1,
+        "success": 37
+      },
+      "terminal_binding": {
+        "correct": 37,
+        "wrong": 1,
+        "unbound": 2
+      },
+      "ever_correct_binding": 37,
+      "never_correct_binding": 3,
+      "ever_any_binding": 38,
+      "never_any_binding": 2,
+      "first_correct_call_histogram": {
+        "1": 6,
+        "2": 10,
+        "3": 12,
+        "4": 9,
+        "5": 0,
+        "6": 0
+      },
+      "drop_phases": {
+        "startup_wait": 2
+      },
+      "calls": 106,
+      "applied_calls": 101,
+      "unapplied_calls": 5,
+      "inspections": 61,
+      "commanded_inspection_steps": 4700,
+      "median_call_latency_s": 5.944238148003933,
+      "median_episode_simulation_s": 23.85,
+      "commanded_inspection_seconds": 235.0,
+      "tokens": {
+        "input_tokens": {
+          "total": 256965,
+          "known_sum": 256965,
+          "missing_calls": 0
+        },
+        "output_tokens": {
+          "total": 5867,
+          "known_sum": 5867,
+          "missing_calls": 0
+        },
+        "total_tokens": {
+          "total": 262832,
+          "known_sum": 262832,
+          "missing_calls": 0
+        }
+      },
+      "per_seed": {
+        "188301": {
+          "n": 20,
+          "success": 20,
+          "reasons": {
+            "success": 20
+          },
+          "terminal_binding": {
+            "correct": 20,
+            "wrong": 0,
+            "unbound": 0
+          },
+          "ever_correct_binding": 20,
+          "never_correct_binding": 0,
+          "ever_any_binding": 20,
+          "never_any_binding": 0,
+          "first_correct_call_histogram": {
+            "1": 4,
+            "2": 6,
+            "3": 5,
+            "4": 5,
+            "5": 0,
+            "6": 0
+          },
+          "drop_phases": {},
+          "calls": 55,
+          "applied_calls": 53,
+          "unapplied_calls": 2,
+          "inspections": 31,
+          "commanded_inspection_steps": 2340,
+          "median_call_latency_s": 6.002535972002079,
+          "median_episode_simulation_s": 22.175,
+          "commanded_inspection_seconds": 117.0,
+          "tokens": {
+            "input_tokens": {
+              "total": 138709,
+              "known_sum": 138709,
+              "missing_calls": 0
+            },
+            "output_tokens": {
+              "total": 3006,
+              "known_sum": 3006,
+              "missing_calls": 0
+            },
+            "total_tokens": {
+              "total": 141715,
+              "known_sum": 141715,
+              "missing_calls": 0
+            }
+          }
+        },
+        "188302": {
+          "n": 20,
+          "success": 17,
+          "reasons": {
+            "drop": 2,
+            "false_stop": 1,
+            "success": 17
+          },
+          "terminal_binding": {
+            "correct": 17,
+            "wrong": 1,
+            "unbound": 2
+          },
+          "ever_correct_binding": 17,
+          "never_correct_binding": 3,
+          "ever_any_binding": 18,
+          "never_any_binding": 2,
+          "first_correct_call_histogram": {
+            "1": 2,
+            "2": 4,
+            "3": 7,
+            "4": 4,
+            "5": 0,
+            "6": 0
+          },
+          "drop_phases": {
+            "startup_wait": 2
+          },
+          "calls": 51,
+          "applied_calls": 48,
+          "unapplied_calls": 3,
+          "inspections": 30,
+          "commanded_inspection_steps": 2360,
+          "median_call_latency_s": 5.892389915999956,
+          "median_episode_simulation_s": 23.85,
+          "commanded_inspection_seconds": 118.0,
+          "tokens": {
+            "input_tokens": {
+              "total": 118256,
+              "known_sum": 118256,
+              "missing_calls": 0
+            },
+            "output_tokens": {
+              "total": 2861,
+              "known_sum": 2861,
+              "missing_calls": 0
+            },
+            "total_tokens": {
+              "total": 121117,
+              "known_sum": 121117,
+              "missing_calls": 0
+            }
+          }
+        }
+      }
+    },
+    "fixed": {
+      "n": 40,
+      "success": 29,
+      "reasons": {
+        "abstain": 5,
+        "drop": 2,
+        "false_stop": 4,
+        "success": 29
+      },
+      "terminal_binding": {
+        "correct": 29,
+        "wrong": 4,
+        "unbound": 7
+      },
+      "ever_correct_binding": 29,
+      "never_correct_binding": 11,
+      "ever_any_binding": 33,
+      "never_any_binding": 7,
+      "first_correct_call_histogram": {
+        "1": 6,
+        "2": 8,
+        "3": 6,
+        "4": 4,
+        "5": 5,
+        "6": 0
+      },
+      "drop_phases": {
+        "startup_wait": 1,
+        "wait": 1
+      },
+      "calls": 125,
+      "applied_calls": 120,
+      "unapplied_calls": 5,
+      "inspections": 79,
+      "commanded_inspection_steps": 4740,
+      "median_call_latency_s": 6.044269331992837,
+      "median_episode_simulation_s": 25.85,
+      "commanded_inspection_seconds": 237.0,
+      "tokens": {
+        "input_tokens": {
+          "total": 348660,
+          "known_sum": 348660,
+          "missing_calls": 0
+        },
+        "output_tokens": {
+          "total": 6796,
+          "known_sum": 6796,
+          "missing_calls": 0
+        },
+        "total_tokens": {
+          "total": 355456,
+          "known_sum": 355456,
+          "missing_calls": 0
+        }
+      },
+      "per_seed": {
+        "188301": {
+          "n": 20,
+          "success": 15,
+          "reasons": {
+            "abstain": 3,
+            "false_stop": 2,
+            "success": 15
+          },
+          "terminal_binding": {
+            "correct": 15,
+            "wrong": 2,
+            "unbound": 3
+          },
+          "ever_correct_binding": 15,
+          "never_correct_binding": 5,
+          "ever_any_binding": 17,
+          "never_any_binding": 3,
+          "first_correct_call_histogram": {
+            "1": 4,
+            "2": 4,
+            "3": 3,
+            "4": 1,
+            "5": 3,
+            "6": 0
+          },
+          "drop_phases": {},
+          "calls": 64,
+          "applied_calls": 61,
+          "unapplied_calls": 3,
+          "inspections": 41,
+          "commanded_inspection_steps": 2460,
+          "median_call_latency_s": 6.049569023496588,
+          "median_episode_simulation_s": 25.85,
+          "commanded_inspection_seconds": 123.0,
+          "tokens": {
+            "input_tokens": {
+              "total": 181065,
+              "known_sum": 181065,
+              "missing_calls": 0
+            },
+            "output_tokens": {
+              "total": 3526,
+              "known_sum": 3526,
+              "missing_calls": 0
+            },
+            "total_tokens": {
+              "total": 184591,
+              "known_sum": 184591,
+              "missing_calls": 0
+            }
+          }
+        },
+        "188302": {
+          "n": 20,
+          "success": 14,
+          "reasons": {
+            "abstain": 2,
+            "drop": 2,
+            "false_stop": 2,
+            "success": 14
+          },
+          "terminal_binding": {
+            "correct": 14,
+            "wrong": 2,
+            "unbound": 4
+          },
+          "ever_correct_binding": 14,
+          "never_correct_binding": 6,
+          "ever_any_binding": 16,
+          "never_any_binding": 4,
+          "first_correct_call_histogram": {
+            "1": 2,
+            "2": 4,
+            "3": 3,
+            "4": 3,
+            "5": 2,
+            "6": 0
+          },
+          "drop_phases": {
+            "startup_wait": 1,
+            "wait": 1
+          },
+          "calls": 61,
+          "applied_calls": 59,
+          "unapplied_calls": 2,
+          "inspections": 38,
+          "commanded_inspection_steps": 2280,
+          "median_call_latency_s": 5.969958700996358,
+          "median_episode_simulation_s": 27.525,
+          "commanded_inspection_seconds": 114.0,
+          "tokens": {
+            "input_tokens": {
+              "total": 167595,
+              "known_sum": 167595,
+              "missing_calls": 0
+            },
+            "output_tokens": {
+              "total": 3270,
+              "known_sum": 3270,
+              "missing_calls": 0
+            },
+            "total_tokens": {
+              "total": 170865,
+              "known_sum": 170865,
+              "missing_calls": 0
+            }
+          }
+        }
+      }
+    }
+  },
+  "primary_success": {
+    "pairs": 40,
+    "both_success": 29,
+    "adaptive_only": 8,
+    "fixed_only": 0,
+    "both_failure": 3,
+    "adaptive_minus_fixed": 0.2,
+    "exact_two_sided_mcnemar_p_unadjusted": 0.0078125,
+    "descriptive_paired_percentile_bootstrap_95": {
+      "interval": [
+        0.075,
+        0.325
+      ],
+      "seed": 188399,
+      "resamples": 20000,
+      "exact_interval": false
+    }
+  },
+  "per_seed_paired_descriptive": {
+    "188301": {
+      "pairs": 20,
+      "both_success": 15,
+      "adaptive_only": 5,
+      "fixed_only": 0,
+      "both_failure": 0,
+      "adaptive_minus_fixed": 0.25,
+      "exact_two_sided_mcnemar_p_unadjusted": 0.0625
+    },
+    "188302": {
+      "pairs": 20,
+      "both_success": 14,
+      "adaptive_only": 3,
+      "fixed_only": 0,
+      "both_failure": 3,
+      "adaptive_minus_fixed": 0.15,
+      "exact_two_sided_mcnemar_p_unadjusted": 0.25
+    }
+  },
+  "statistical_scope": "Within-study prespecified primary success endpoint; exact two-sided McNemar p is unadjusted. A later separate Pig cohort after the Cube study; no pooling or prespecified cross-study multiplicity family. Seed splits, binding and costs are descriptive; the paired bootstrap interval is descriptive, not exact.",
+  "cost_scope": "All submitted formal calls with returned records, including 10 replies not applied before episode exit; missing token usage is null with an explicit known sum, never zero.",
+  "binding_scope": "Reconstructed from applied actions only; physical drops and abstain retain the last binding, inspect_face clears it. Binding is not independent recognition/visibility annotation or post-stop holding."
+}

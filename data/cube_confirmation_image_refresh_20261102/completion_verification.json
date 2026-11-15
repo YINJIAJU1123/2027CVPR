@@ -1,0 +1,10 @@
+{
+  "status": "all_200_verified",
+  "auditor_sha256": "279b756ebc7120ef2bd7a31ac9bd8b6d533b001f570195eaf4c570d2ae0f5c42",
+  "result_sha256": {
+    "evidence.json": "161c1d9f5194561cfcb18954149eb6fe56f34c1457c5b47afb09cea6697a058e",
+    "summary.json": "2e0e1ba438b6c0845ccf5772ce0dcff7fbe7d67f1f363f8bc9af747266400716",
+    "trials.json": "1ff915aad25fe25ae1615ad1149fd7d3de31c0114c91fe0489c9dd844dfb6361"
+  },
+  "release_sha256": "e58c7c2d125005eddb52a46b86b3df2fafe1eddfae6b3606d08fd8b00de37c96"
+}

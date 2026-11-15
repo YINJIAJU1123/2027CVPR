@@ -1,0 +1,31 @@
+{
+  "completed": true,
+  "device": "cpu",
+  "scope": "Exact loader, forward-output and initialization RNG agreement for the supplied checkpoints. This does not establish closed-loop performance.",
+  "checks": {
+    "waiting": {
+      "checkpoint_sha256": "d1d9ee14acbfe6ee0d59d9ce8e9f442862daa52828d2affb762cba1cbbfe6c3f",
+      "examples": 64,
+      "equal_fields": [
+        "action",
+        "speed",
+        "residual"
+      ],
+      "initialization_rng_equal": true
+    },
+    "execution": {
+      "checkpoint_sha256": "4e0160227dc8e5076ca3e9dc58039c7856b37eed2f9f798f4b99dcbaebb285cd",
+      "examples": 64,
+      "equal_fields": [
+        "action",
+        "speed",
+        "residual"
+      ],
+      "initialization_rng_equal": true
+    }
+  },
+  "source_sha256": {
+    "old": "edc607e933adf7ae4e4e81049e3d7dcbea3b8746da49615aaedcbc5f49e9ec70",
+    "new": "9792141cb870101670958626feb274cbf042a7ef49e2563f85fde6d5b34fe633"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "primary": "Prespecified two-sided exact paired McNemar; one primary endpoint",
+  "pairs": 40,
+  "adaptive_only": 9,
+  "fixed_only": 2,
+  "both_success": 29,
+  "neither_success": 0,
+  "exact_p": 0.0654296875,
+  "success_difference_percentage_points": 17.5,
+  "wilson_95": {
+    "adaptive": [
+      0.8349612263085903,
+      0.9861793326138516
+    ],
+    "fixed": [
+      0.6249690325768998,
+      0.8768390867645927
+    ]
+  },
+  "interpretation": "Observed advantage; does not reject equal success probability at alpha 0.05. No post-result sample extension."
+}

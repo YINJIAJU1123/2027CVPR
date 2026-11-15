@@ -1,0 +1,49 @@
+{
+  "scope": "Arithmetic and manuscript consistency against user-confirmed aggregate data; not independent verification of unsupplied episode logs.",
+  "seeds": [
+    187102,
+    187103,
+    187104
+  ],
+  "trials_per_seed_per_method": 40,
+  "total_trials": 480,
+  "additional_seeds_individually_available": false,
+  "rows": [
+    {
+      "method": "Continue student",
+      "success_187102": 25,
+      "success_187103_plus_187104": 48,
+      "success_total": 73,
+      "n": 120,
+      "success_percent": 60.8,
+      "outcome_counts_closed": true
+    },
+    {
+      "method": "Fixed slowing",
+      "success_187102": 30,
+      "success_187103_plus_187104": 58,
+      "success_total": 88,
+      "n": 120,
+      "success_percent": 73.3,
+      "outcome_counts_closed": true
+    },
+    {
+      "method": "Learned slowing",
+      "success_187102": 28,
+      "success_187103_plus_187104": 54,
+      "success_total": 82,
+      "n": 120,
+      "success_percent": 68.3,
+      "outcome_counts_closed": true
+    },
+    {
+      "method": "Slowing + correction",
+      "success_187102": 34,
+      "success_187103_plus_187104": 70,
+      "success_total": 104,
+      "n": 120,
+      "success_percent": 86.7,
+      "outcome_counts_closed": true
+    }
+  ]
+}

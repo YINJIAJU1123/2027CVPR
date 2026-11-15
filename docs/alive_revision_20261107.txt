@@ -1,0 +1,40 @@
+ALIVE full-manuscript revision — 2026-11-07
+
+Title
+ALIVE: Agentic In-Hand Manipulation for Language-Guided Visual Exploration
+ALIVE expands to Agentic Language-guided In-hand Visual Exploration.
+
+Editorial changes
+1. Reframed the abstract, introduction and task around language-directed visual exploration for identifying and presenting a requested surface target. The final presentation objective remains explicit.
+2. Defined agentic behavior through inspection choices, new observations, target binding and subsequent action selection. No general-purpose exploration or self-correction claim was added.
+3. Kept the teacher-student attribution to ViserDex in the method and related work, with the Revo3 adaptation described explicitly. The abstract names ALIVE exactly once and does not name ViserDex.
+4. Reordered the motor-method explanation to describe teacher-supervised adaptation before deployed pose estimation. Clarified that the agent selects cached goal-bank vectors through public tools, not hidden VLM states.
+5. Revised Q3 around three distinct evidence questions: continued feedback, fresh images, and adaptive inspection. Preserved the unresolved adaptive-vs-fixed result and the reused initial Q2 feedback cohort.
+6. Preserved Q2's three seeds (187102, 187103, 187104), 40 trials per seed and method. The two later seeds remain a reported 80-trial aggregate; no per-seed split or aggregate significance test was invented.
+7. Simplified Q1 prose and moved repeated details out of the main narrative while retaining object-specific policies, complete-system scope and service-eligible denominators.
+8. Preserved the independent Q4 pose table and author-confirmed four-object sim-to-real statement. Hardware outcome/image placeholders remain explicit.
+9. Updated all active English method labels and figure text. The teaser remains centered. Control-figure input is now Goal-bank vector g, and the speed output is marked waiting-only. Existing embedded simulation images are byte-identical.
+10. Maintained main.tex and supplyment.tex as independent English compilation entries; updated PDF metadata and README. The previous Chinese translation is explicitly marked unsynchronized.
+
+Validation
+- main.pdf: 10 pages, including 8 body pages and 2 pages for disclosure/references.
+- supplyment.pdf: 14 pages, independent references and S-numbered figures/tables.
+- No undefined citations/references, duplicate labels or overfull boxes in either final build.
+- No REVEAL or Full Astra method labels remain in either rendered PDF. The historical hosted-model route is preserved as provenance, separate from the ALIVE framework name.
+- 124 existing evidence files are byte-identical to the pre-revision local baseline.
+- Numeric sequences in all 41 existing LaTeX tables/macros are unchanged.
+- All 11 embedded media files in the editable figure source are unchanged.
+- Bibliography unchanged during this revision (24 entries, including the previously added SimToolReal entry).
+- Build regeneration checked the Q1 descriptive means, Q2 aggregate sums, Q3(c) counts and exact test, Q3 terminal-binding analysis, and the Q4 pose table.
+- Every final PDF page was rendered and visually inspected. Figure labels, caption wrapping and the final body-page boundary were reviewed.
+
+Reanalysis limitation
+The current local checkout does not contain data/language_objects_20261106/trials.json or results.json. The language tables and their numeric values were preserved and relabeled, but their per-trial paired tests were not recomputed in this revision. Restoring that export is needed for a fresh full language-study audit. The source package can compile without it.
+
+Remaining author material
+- Identities and per-object counts for the four physical objects, baseline outcomes and recorded inspection/presentation frames.
+- Direct target visibility and post-stop holding measurements if claiming sustained display.
+- Available serving metadata, sanitized prompts/tool schemas, and anonymous code/asset-license information marked TODO in the supplement.
+
+Repository state
+This revision is local. No commit or GitHub push was performed. The pre-existing local edits were preserved; a source snapshot was saved under build/alive_revision/before_alive_source.zip.

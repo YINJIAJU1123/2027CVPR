@@ -1,0 +1,258 @@
+{
+  "format": "q3_noncube_inspection_protocol_draft_v1",
+  "status": "draft_not_launched",
+  "date": "2026-11-12",
+  "no_api_calls": true,
+  "new_simulations_started": false,
+  "question": "On a non-cube object, does choosing inspection direction and duration improve target binding and autonomous task completion over one prescribed sweep?",
+  "scope": "New independent 40-pair Q3 inspection-policy study; not Q3(b), not pooled with the old cube Q3(c), not an extension of Q1 or Q2.",
+  "object": "pig",
+  "layout": "identity",
+  "object_selection": {
+    "rule": "Choose an existing object with stable frozen low-level control and complete records, before any new active-versus-fixed outcomes are seen.",
+    "reason": "Pig has the fewest drops in the equal-length latent-controller holdouts among the four objects, and two Astra drops per Q1 mapping condition. Selection is based on motor stability, not expected adaptive-minus-fixed advantage.",
+    "evidence": {
+      "duck": {
+        "latent_holdout_steps": 102400,
+        "latent_holdout_drops": 28,
+        "latent_holdout_success_events": 1781,
+        "q1_astra_drops": {
+          "identity": 12,
+          "permuted": 10
+        },
+        "sources": [
+          "outputs/q1_inhand4_20261102/duck/latent_holdout_187211/result.json",
+          "outputs/q1_inhand4_20261102/duck/latent_holdout_187212/result.json",
+          "outputs/q1_inhand4_20261102/duck/formal_v1/summary.json"
+        ]
+      },
+      "hedgehog": {
+        "latent_holdout_steps": 102400,
+        "latent_holdout_drops": 30,
+        "latent_holdout_success_events": 1726,
+        "q1_astra_drops": {
+          "identity": 10,
+          "permuted": 6
+        },
+        "sources": [
+          "outputs/q1_inhand4_20261102/hedgehog/latent_holdout_187211/result.json",
+          "outputs/q1_inhand4_20261102/hedgehog/latent_holdout_187212/result.json",
+          "outputs/q1_inhand4_20261102/hedgehog/formal_v1/summary.json"
+        ]
+      },
+      "pig": {
+        "latent_holdout_steps": 102400,
+        "latent_holdout_drops": 15,
+        "latent_holdout_success_events": 2052,
+        "q1_astra_drops": {
+          "identity": 2,
+          "permuted": 2
+        },
+        "sources": [
+          "outputs/q1_inhand4_20261102/pig/latent_holdout_187211/result.json",
+          "outputs/q1_inhand4_20261102/pig/latent_holdout_187212/result.json",
+          "outputs/q1_inhand4_20261102/pig/formal_v1/summary.json"
+        ]
+      },
+      "milk_carton": {
+        "latent_holdout_steps": 102400,
+        "latent_holdout_drops": 100,
+        "latent_holdout_success_events": 479,
+        "q1_astra_drops": {
+          "identity": 15,
+          "permuted": 20
+        },
+        "sources": [
+          "outputs/q1_inhand4_20261102/milk_carton/latent_holdout_187211/result.json",
+          "outputs/q1_inhand4_20261102/milk_carton/latent_holdout_187212/result.json",
+          "outputs/q1_inhand4_20261102/milk_carton/formal_v1/summary.json"
+        ]
+      }
+    },
+    "note": "Continuous holdout success_events are not episode success rates. The high prior complete-system success also permits ceiling effects; it does not guarantee a detectable inspection-policy gain."
+  },
+  "parent_release": {
+    "path": "outputs/q1_inhand4_20261102/pig/release_v1/release.json",
+    "sha256": "a49ffc5ab10a321ab375cabec79bc779c282ed89da275979997900b3d1a66e2d"
+  },
+  "artifacts": {
+    "source_checkpoint": {
+      "path": "outputs/q1_inhand4_20261102/handoff/inhand4_video_checkpoints_20261102/pig/model_5700.pt",
+      "sha256": "60d070b2f43fce2b636619c4af2e8441f016f5b792c2ab8302999adabcf11866",
+      "matches_parent_release": true
+    },
+    "checkpoint": {
+      "path": "outputs/q1_inhand4_20261102/pig/feature_fit_v1/final.pt",
+      "sha256": "11a61cf016b90c1cee3d5d4a007f7a774d7f69a323b9159d7a86e9b832ab8a72",
+      "matches_parent_release": true
+    },
+    "env_config": {
+      "path": "outputs/q1_inhand4_20261102/handoff/inhand4_video_checkpoints_20261102/pig/env.source.yaml",
+      "sha256": "a87225e01ececa58488acdbd67e1e7df4c070bd9b52601de2506d7199c97b6d5",
+      "matches_parent_release": true
+    },
+    "bank": {
+      "path": "outputs/q1_inhand4_20261102/goal_bank.pt",
+      "sha256": "347dc498699a05549aec1888d30d03e70208c0d85db45488710d8d31e1dacef7",
+      "matches_parent_release": true
+    },
+    "assets_manifest": {
+      "path": "outputs/q1_inhand4_20261102/pig/marked_assets_v2/manifest.json",
+      "sha256": "d220a6a95d5af5842f7bc970ca2659e28e2e7ae214d11b51575558298c2279cb",
+      "matches_parent_release": true
+    },
+    "relocation": {
+      "path": "outputs/q1_inhand4_20261102/pig/q1_relocation.json",
+      "sha256": "13376e29065eba7b8db549e2613e3e5beb0f05e7edb947e1fe5af0be63bce9d5",
+      "matches_parent_release": true
+    },
+    "maintenance_actor": {
+      "path": "outputs/q1_inhand4_20261102/pig/modules_v1/maintenance_actor.pt",
+      "sha256": "4e1c6e84c865d19d074a54f7cb1736bce8aa324ce58ea13df69ad3636c262d73",
+      "matches_parent_release": true
+    },
+    "completion_correction": {
+      "path": "outputs/q1_inhand4_20261102/pig/completion_v1/correction.pt",
+      "sha256": "e9b89d648585186811af235a60f18552b6bf693711af657e382d125c0d86c257",
+      "matches_parent_release": true
+    }
+  },
+  "parent_code_audit": {
+    "files_checked": 902,
+    "mismatched_paths": [
+      "scripts/astra_transport_v2/bridge.py",
+      "scripts/astra_transport_v2/subscription_v2.py",
+      "scripts/inhand4_q1/aggregate_q1.py",
+      "scripts/inhand4_q1/evaluate_agent.py",
+      "scripts/inhand4_q1/run_cells.py",
+      "scripts/inhand4_q1/vlm_service.py",
+      "scripts/semantic_completion_v1/bridge.py"
+    ],
+    "implication": "Current workspace is not byte-identical to the old Q1 release. Do not weaken the existing guard. Create an isolated snapshot and explicitly audit shared infrastructure changes and the inspection-only intervention before freezing a new release."
+  },
+  "common_configuration": {
+    "semantic_model": "gpt-6-astra; effective serving configuration must be verified and archived before formal launch",
+    "online_model_config_identical_between_arms": true,
+    "prompt_and_tools": "Same object-specific semantic.py, same exact prompts/tool schema/decoding settings in both arms",
+    "camera": "Existing frozen 512x512 native RGB; verify actual transport image preprocessing/crops",
+    "pose_source": "Existing simulator-derived pose through the released noise/bias/failure/jitter/delay model; no new RGB pose estimator",
+    "maintenance": "learned, same frozen maintenance actor in both arms",
+    "stopping": "Same frozen calibrated completion correction and existing 3 Hz eligibility/stop logic, including the existing pending-request semantics",
+    "control_hz": 20,
+    "horizon_control_steps": 2400,
+    "horizon_sim_seconds": 120,
+    "max_agent_calls": 6,
+    "success": "Correct requested letter-to-physical-skill binding AND true full-canonical quaternion error <=0.16 rad at autonomous stop, without a preceding drop",
+    "post_stop_hold_requirement": false,
+    "maximum_service_latency_seconds": 120
+  },
+  "intervention": {
+    "adaptive": "Execute model-proposed inspect_face.number and inspect_face.steps unchanged (existing tool range 10..90 steps)",
+    "fixed": {
+      "motor_ids": [
+        2,
+        4,
+        1,
+        3,
+        6,
+        5
+      ],
+      "colors": [
+        "green",
+        "yellow",
+        "red",
+        "blue",
+        "purple",
+        "cyan"
+      ],
+      "steps": 60,
+      "seconds": 3,
+      "advancement": "Advance index only when an inspect_face action is actually applied",
+      "rationale": "Same color order as cube Q3(c), identifying purple with magenta; 60 steps at 20 Hz preserves the cube fixed sweep duration of 90 steps at 30 Hz. Not claimed optimal."
+    },
+    "only_overridden_fields": [
+      "inspect_face.number",
+      "inspect_face.steps"
+    ],
+    "unchanged_actions": [
+      "reorient_target",
+      "verify_target",
+      "stop",
+      "abstain"
+    ],
+    "same_history_schema": true,
+    "last_executed_action_in_feedback": true,
+    "history_warning": "Executed action must be returned in both arms; realized trajectories/history content and inference costs are not identical."
+  },
+  "trial_plan": {
+    "pairs": 40,
+    "formal_episodes_total": 80,
+    "formal_seed_candidates": [
+      188301,
+      188302
+    ],
+    "pairs_per_seed": 20,
+    "engineering_seed_candidate": 188291,
+    "engineering_episodes_excluded_from_formal": true,
+    "case_generation": "Freeze all 40 cases before formal launch, cycle goal_index=global_case_index%6. Pair each arm by trial_seed, exact physical state and first-input image hash.",
+    "order": "Run adjacent paired trials with arm order alternating AB,BA by pair; invert the first order in seed 2. Complete the full registered set regardless of observed effect.",
+    "sequential_expansion_allowed": false,
+    "replacement_trials_allowed": false,
+    "service_policy": "Preserve each raw attempt and exclude the union of service-affected pair IDs in both arms for paired primary analysis; physical failures remain outcomes. Pause on infrastructure/physics errors for diagnosis."
+  },
+  "seed_collision_audit": {
+    "candidate_seeds": [
+      188291,
+      188301,
+      188302
+    ],
+    "files_checked": 51,
+    "scope": "Only the listed experiment code/configuration and existing four-object/cube-Q3 releases plus new RGB pose plan; not an exhaustive scan of every historical output.",
+    "matches": [],
+    "globally_unique_verified": false,
+    "final_requirement": "Check all active registered manifests and freeze the new seed assignment before any engineering/formal use."
+  },
+  "engineering_check": {
+    "status": "not_run",
+    "api_calls": 0,
+    "initial_states": 4,
+    "seed": 188291,
+    "trial_seed_formula": "188291000 + index, index 0..3",
+    "procedure": "Use the frozen pig runtime and motor controller, apply the predeclared six inspect_face motor IDs for 60 steps each. Save initial/action-boundary RGB, executed skill, noisy feedback, and independent true pose only in audit fields. Do not use a language model or score adaptive-vs-fixed success.",
+    "admission": [
+      "All initial states and complete traces retained, including failures; no capacity overflow/nonfinite state or resource collision.",
+      "A fixed sequence must produce distinct object orientations and visible patch regions; pixel changes alone are insufficient. Verify at least three distinct orientation/view states per completed sequence and inspect the synchronized RGB sequence.",
+      "Confirm all six commands use the intended physical skill IDs and canonical orientation definitions.",
+      "If the predeclared sweep fails the engineering check, stop and revise before freezing; keep failed diagnostics and do not use any formal state or success difference for tuning."
+    ]
+  },
+  "formal_admission": [
+    "Independent visibility package/audit remains separate from this study.",
+    "New immutable source/artifact/prompt/tool/model-serving contract frozen; only inspection motor choice differs across arms.",
+    "Engineering view-change check passes; resource check ensures no interference with other tasks.",
+    "Separate paired live initialization checks verify same physical state, first model-input image, transport path, latency accounting, history semantics, and correct executed-action feedback; do not reuse these diagnostics as formal trials.",
+    "Archive actual endpoint/model identifier, available serving metadata, prompts, budgets and timestamps, without credentials.",
+    "Finalize the fixed budget and primary endpoint before obtaining formal outcomes."
+  ],
+  "analysis": {
+    "primary": "Paired autonomous success; two-sided exact McNemar with counts of discordant pairs and a paired effect interval",
+    "secondary": [
+      "terminal correct/wrong/unbound binding",
+      "ever-correct and first-correct binding call",
+      "never-bound proportion",
+      "number/duration of actually executed inspections",
+      "agent calls/input-output-total tokens",
+      "latency and logical episode duration",
+      "drops by phase"
+    ],
+    "independence_unit": "40 paired trials, not model requests or frames",
+    "censoring": "Keep never-bound and early-failure trials explicit; conditional time-to-binding alone is insufficient.",
+    "scope": "One additional object and one prescribed sweep; no universal superiority claim or post-hoc sample expansion."
+  },
+  "execution": {
+    "formal_started": false,
+    "engineering_started": false,
+    "api_requests": 0,
+    "paper_modified": false
+  }
+}

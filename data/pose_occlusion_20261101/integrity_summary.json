@@ -1,0 +1,662 @@
+{
+  "passed": true,
+  "protocol_sha256": "ce0d19205716f98909b40292369c34a7235725109e74d4a11a0ba9e7536d7a48",
+  "unchanged_frozen_files": 129,
+  "unique_frames": 6144,
+  "condition_results": 30720,
+  "shards": [
+    {
+      "shard": "seed31001_nominal",
+      "frames": 512,
+      "bin_counts": [
+        503,
+        9,
+        0,
+        0
+      ],
+      "fully_framed": 511,
+      "geometry_rejections": 1,
+      "audit_maxima": {
+        "pose_composition_m": 0.0,
+        "keypoints_m": 0.0,
+        "point_pixel_roundtrip_px": 6.103515625e-05,
+        "point_depth_m": 0.0,
+        "rgb_uv_px": 6.103515625e-05,
+        "occlusion_fraction": 0.0,
+        "own_cube_surface_m": 0.0005272643605635161,
+        "control_cube_surface_m": 0.0005271738574242832
+      },
+      "counts": {
+        "rgb": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 395,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 510,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgb_control": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 440,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd_control": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 511,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd_noisy": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 510,
+          "exactly_on_primary_threshold": 0
+        }
+      }
+    },
+    {
+      "shard": "seed31001_pitch_plus60",
+      "frames": 512,
+      "bin_counts": [
+        357,
+        153,
+        2,
+        0
+      ],
+      "fully_framed": 511,
+      "geometry_rejections": 1,
+      "audit_maxima": {
+        "pose_composition_m": 0.0,
+        "keypoints_m": 0.0,
+        "point_pixel_roundtrip_px": 6.103515625e-05,
+        "point_depth_m": 0.0,
+        "rgb_uv_px": 6.103515625e-05,
+        "occlusion_fraction": 0.0,
+        "own_cube_surface_m": 0.0005086468403319132,
+        "control_cube_surface_m": 0.0005094862497108839
+      },
+      "counts": {
+        "rgb": {
+          "valid": 511,
+          "invalid": 1,
+          "success_10mm_10deg": 268,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 485,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgb_control": {
+          "valid": 511,
+          "invalid": 1,
+          "success_10mm_10deg": 378,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd_control": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 510,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd_noisy": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 483,
+          "exactly_on_primary_threshold": 0
+        }
+      }
+    },
+    {
+      "shard": "seed31001_pitch_plus90",
+      "frames": 512,
+      "bin_counts": [
+        97,
+        353,
+        62,
+        0
+      ],
+      "fully_framed": 512,
+      "geometry_rejections": 0,
+      "audit_maxima": {
+        "pose_composition_m": 0.0,
+        "keypoints_m": 0.0,
+        "point_pixel_roundtrip_px": 3.0517578125e-05,
+        "point_depth_m": 0.0,
+        "rgb_uv_px": 3.0517578125e-05,
+        "occlusion_fraction": 0.0,
+        "own_cube_surface_m": 0.0005002420732342777,
+        "control_cube_surface_m": 0.0005023472767304166
+      },
+      "counts": {
+        "rgb": {
+          "valid": 507,
+          "invalid": 5,
+          "success_10mm_10deg": 97,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 307,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgb_control": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 383,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd_control": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 512,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd_noisy": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 305,
+          "exactly_on_primary_threshold": 0
+        }
+      }
+    },
+    {
+      "shard": "seed31001_pitch_plus105",
+      "frames": 512,
+      "bin_counts": [
+        8,
+        143,
+        333,
+        28
+      ],
+      "fully_framed": 510,
+      "geometry_rejections": 0,
+      "audit_maxima": {
+        "pose_composition_m": 0.0,
+        "keypoints_m": 0.0,
+        "point_pixel_roundtrip_px": 6.103515625e-05,
+        "point_depth_m": 0.0,
+        "rgb_uv_px": 6.103515625e-05,
+        "occlusion_fraction": 0.0,
+        "own_cube_surface_m": 0.0005104704520359944,
+        "control_cube_surface_m": 0.0005123462816469838
+      },
+      "counts": {
+        "rgb": {
+          "valid": 499,
+          "invalid": 13,
+          "success_10mm_10deg": 4,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd": {
+          "valid": 511,
+          "invalid": 1,
+          "success_10mm_10deg": 27,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgb_control": {
+          "valid": 511,
+          "invalid": 1,
+          "success_10mm_10deg": 377,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd_control": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 510,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd_noisy": {
+          "valid": 511,
+          "invalid": 1,
+          "success_10mm_10deg": 26,
+          "exactly_on_primary_threshold": 0
+        }
+      }
+    },
+    {
+      "shard": "seed31002_nominal",
+      "frames": 512,
+      "bin_counts": [
+        509,
+        3,
+        0,
+        0
+      ],
+      "fully_framed": 512,
+      "geometry_rejections": 0,
+      "audit_maxima": {
+        "pose_composition_m": 0.0,
+        "keypoints_m": 0.0,
+        "point_pixel_roundtrip_px": 3.0517578125e-05,
+        "point_depth_m": 0.0,
+        "rgb_uv_px": 3.0517578125e-05,
+        "occlusion_fraction": 0.0,
+        "own_cube_surface_m": 0.0004942621314163835,
+        "control_cube_surface_m": 0.0004942605228867372
+      },
+      "counts": {
+        "rgb": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 380,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 512,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgb_control": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 426,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd_control": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 512,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd_noisy": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 512,
+          "exactly_on_primary_threshold": 0
+        }
+      }
+    },
+    {
+      "shard": "seed31002_pitch_plus60",
+      "frames": 512,
+      "bin_counts": [
+        375,
+        137,
+        0,
+        0
+      ],
+      "fully_framed": 512,
+      "geometry_rejections": 0,
+      "audit_maxima": {
+        "pose_composition_m": 0.0,
+        "keypoints_m": 0.0,
+        "point_pixel_roundtrip_px": 3.0517578125e-05,
+        "point_depth_m": 0.0,
+        "rgb_uv_px": 3.0517578125e-05,
+        "occlusion_fraction": 0.0,
+        "own_cube_surface_m": 0.0005202406440310836,
+        "control_cube_surface_m": 0.0005202472923511031
+      },
+      "counts": {
+        "rgb": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 313,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 497,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgb_control": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 400,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd_control": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 512,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd_noisy": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 497,
+          "exactly_on_primary_threshold": 0
+        }
+      }
+    },
+    {
+      "shard": "seed31002_pitch_plus90",
+      "frames": 512,
+      "bin_counts": [
+        88,
+        319,
+        104,
+        1
+      ],
+      "fully_framed": 512,
+      "geometry_rejections": 0,
+      "audit_maxima": {
+        "pose_composition_m": 0.0,
+        "keypoints_m": 0.0,
+        "point_pixel_roundtrip_px": 3.0517578125e-05,
+        "point_depth_m": 0.0,
+        "rgb_uv_px": 3.0517578125e-05,
+        "occlusion_fraction": 0.0,
+        "own_cube_surface_m": 0.0005064340206799717,
+        "control_cube_surface_m": 0.0005099013831285221
+      },
+      "counts": {
+        "rgb": {
+          "valid": 508,
+          "invalid": 4,
+          "success_10mm_10deg": 75,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 295,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgb_control": {
+          "valid": 511,
+          "invalid": 1,
+          "success_10mm_10deg": 374,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd_control": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 512,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd_noisy": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 295,
+          "exactly_on_primary_threshold": 0
+        }
+      }
+    },
+    {
+      "shard": "seed31002_pitch_plus105",
+      "frames": 512,
+      "bin_counts": [
+        5,
+        163,
+        317,
+        27
+      ],
+      "fully_framed": 512,
+      "geometry_rejections": 0,
+      "audit_maxima": {
+        "pose_composition_m": 0.0,
+        "keypoints_m": 0.0,
+        "point_pixel_roundtrip_px": 3.0517578125e-05,
+        "point_depth_m": 0.0,
+        "rgb_uv_px": 3.0517578125e-05,
+        "occlusion_fraction": 0.0,
+        "own_cube_surface_m": 0.0005162645351306262,
+        "control_cube_surface_m": 0.0005162600211653517
+      },
+      "counts": {
+        "rgb": {
+          "valid": 490,
+          "invalid": 22,
+          "success_10mm_10deg": 4,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 14,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgb_control": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 373,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd_control": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 512,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd_noisy": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 14,
+          "exactly_on_primary_threshold": 0
+        }
+      }
+    },
+    {
+      "shard": "seed31003_nominal",
+      "frames": 512,
+      "bin_counts": [
+        508,
+        4,
+        0,
+        0
+      ],
+      "fully_framed": 512,
+      "geometry_rejections": 1,
+      "audit_maxima": {
+        "pose_composition_m": 0.0,
+        "keypoints_m": 0.0,
+        "point_pixel_roundtrip_px": 3.0517578125e-05,
+        "point_depth_m": 0.0,
+        "rgb_uv_px": 3.0517578125e-05,
+        "occlusion_fraction": 0.0,
+        "own_cube_surface_m": 0.000481646880846516,
+        "control_cube_surface_m": 0.0004831052039334059
+      },
+      "counts": {
+        "rgb": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 393,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 511,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgb_control": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 425,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd_control": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 511,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd_noisy": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 511,
+          "exactly_on_primary_threshold": 0
+        }
+      }
+    },
+    {
+      "shard": "seed31003_pitch_plus60",
+      "frames": 512,
+      "bin_counts": [
+        325,
+        183,
+        4,
+        0
+      ],
+      "fully_framed": 512,
+      "geometry_rejections": 0,
+      "audit_maxima": {
+        "pose_composition_m": 0.0,
+        "keypoints_m": 0.0,
+        "point_pixel_roundtrip_px": 3.0517578125e-05,
+        "point_depth_m": 0.0,
+        "rgb_uv_px": 3.0517578125e-05,
+        "occlusion_fraction": 0.0,
+        "own_cube_surface_m": 0.0005127434896283027,
+        "control_cube_surface_m": 0.0005134792365077724
+      },
+      "counts": {
+        "rgb": {
+          "valid": 508,
+          "invalid": 4,
+          "success_10mm_10deg": 288,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 486,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgb_control": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 401,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd_control": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 512,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd_noisy": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 486,
+          "exactly_on_primary_threshold": 0
+        }
+      }
+    },
+    {
+      "shard": "seed31003_pitch_plus90",
+      "frames": 512,
+      "bin_counts": [
+        108,
+        345,
+        58,
+        1
+      ],
+      "fully_framed": 512,
+      "geometry_rejections": 1,
+      "audit_maxima": {
+        "pose_composition_m": 0.0,
+        "keypoints_m": 0.0,
+        "point_pixel_roundtrip_px": 3.0517578125e-05,
+        "point_depth_m": 0.0,
+        "rgb_uv_px": 3.0517578125e-05,
+        "occlusion_fraction": 0.0,
+        "own_cube_surface_m": 0.0005146367720767694,
+        "control_cube_surface_m": 0.0005143176001276804
+      },
+      "counts": {
+        "rgb": {
+          "valid": 510,
+          "invalid": 2,
+          "success_10mm_10deg": 84,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 309,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgb_control": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 381,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd_control": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 512,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd_noisy": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 310,
+          "exactly_on_primary_threshold": 0
+        }
+      }
+    },
+    {
+      "shard": "seed31003_pitch_plus105",
+      "frames": 512,
+      "bin_counts": [
+        8,
+        152,
+        318,
+        34
+      ],
+      "fully_framed": 511,
+      "geometry_rejections": 0,
+      "audit_maxima": {
+        "pose_composition_m": 0.0,
+        "keypoints_m": 0.0,
+        "point_pixel_roundtrip_px": 3.0517578125e-05,
+        "point_depth_m": 0.0,
+        "rgb_uv_px": 3.0517578125e-05,
+        "occlusion_fraction": 0.0,
+        "own_cube_surface_m": 0.000501461132800373,
+        "control_cube_surface_m": 0.0005017039174522696
+      },
+      "counts": {
+        "rgb": {
+          "valid": 494,
+          "invalid": 18,
+          "success_10mm_10deg": 5,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 24,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgb_control": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 367,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd_control": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 511,
+          "exactly_on_primary_threshold": 0
+        },
+        "rgbd_noisy": {
+          "valid": 512,
+          "invalid": 0,
+          "success_10mm_10deg": 24,
+          "exactly_on_primary_threshold": 0
+        }
+      }
+    }
+  ],
+  "translation_recompute_max_difference_mm": 2.2737367544323206e-13,
+  "rotation_recompute_max_difference_deg": 1.000736993272966e-11,
+  "all_conditions_share_finite_ground_truth": true,
+  "threshold_documentation_note": "Frozen prose used <=; frozen evaluator and all analyses implement strict <10 mm and <10 deg (also <5 mm/<5 deg). Counts exactly on the primary boundary are explicitly reported. No threshold or code was changed.",
+  "scope": "All frozen source/model hashes, frame IDs, condition pairing, geometry checks and independent pose-error recomputation. Raw frame hashes are retained in audits."
+}

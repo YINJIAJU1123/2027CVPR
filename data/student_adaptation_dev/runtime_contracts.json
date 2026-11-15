@@ -1,0 +1,3702 @@
+{
+  "simulated/released_183221": {
+    "version": "pose_latent_student_diagnostic_v1",
+    "policy": "released",
+    "checkpoint_sha256": "022f963f3fa177cc84d3ca14888ba2872e594577ccf1614713834eb10f9336f1",
+    "checkpoint": {
+      "iteration": 1000,
+      "format": "viserdex_revo3_belief_v1"
+    },
+    "original_student_sha256": "022f963f3fa177cc84d3ca14888ba2872e594577ccf1614713834eb10f9336f1",
+    "physical_environment_binding": {
+      "source_environment": "<runtime-path-redacted>",
+      "source_environment_sha256": "f8d5eef6ac7fdf56b37cfc54095d1918dfa6acd62821637a05f3ca65584318df",
+      "contract_sha256": "8845592f802e8badeccce52ed332a8453e50a80edd93c03370516077f21c6279",
+      "assets": {
+        "robot": {
+          "sha256": "a13e3f0ac0482d88c57a9050b4095fde62cc01e9db5dd6053d6dd19ce8f0c650"
+        },
+        "object": {
+          "sha256": "0df16dfdb9c483e5b1e1ddc28b479afb44e2eac34d9a83955e44a3788057ae92"
+        }
+      },
+      "physics": "isaaclab_newton.physics.mjwarp_manager:NewtonMJWarpManager",
+      "step_dt": 0.03333333333333333,
+      "nconmax": 4096,
+      "njmax": 1024
+    },
+    "goal_bank": {
+      "asset_sha256": "93d60bde1d00cf5398b5d31e2016663e793d8bb4cdee817421e324f47fccb4a8",
+      "cache_sha256": "579ca62922aac9e5084f13b33bf3e2cd846bc19a5aa53ed11568ef71cf252856",
+      "latent_source": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+      "colors": [
+        "red",
+        "green",
+        "blue",
+        "yellow",
+        "magenta",
+        "cyan"
+      ],
+      "symbols": [
+        "T",
+        "E",
+        "R",
+        "L",
+        "S",
+        "H"
+      ],
+      "texture_numbers": [
+        2,
+        1,
+        4,
+        6,
+        5,
+        3
+      ],
+      "normals_body": [
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "target_quaternions_world_xyzw": [
+        [
+          -0.7071067811865476,
+          0,
+          0,
+          0.7071067811865476
+        ],
+        [
+          0,
+          0.7071067811865476,
+          0,
+          0.7071067811865476
+        ],
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0.7071067811865476,
+          0,
+          0,
+          0.7071067811865476
+        ],
+        [
+          0,
+          -0.7071067811865476,
+          0,
+          0.7071067811865476
+        ]
+      ],
+      "cyan_channel_visual_name": "pale blue H",
+      "magenta_channel_visual_name": "purple S",
+      "mapping_scope": "fixed body-frame mapping in the exact released asset, not randomized face layouts"
+    },
+    "schedule": [
+      {
+        "episode": 0,
+        "trial_seed": 183221000,
+        "goal_index": 2
+      },
+      {
+        "episode": 1,
+        "trial_seed": 183221001,
+        "goal_index": 3
+      },
+      {
+        "episode": 2,
+        "trial_seed": 183221002,
+        "goal_index": 4
+      },
+      {
+        "episode": 3,
+        "trial_seed": 183221003,
+        "goal_index": 5
+      },
+      {
+        "episode": 4,
+        "trial_seed": 183221004,
+        "goal_index": 0
+      },
+      {
+        "episode": 5,
+        "trial_seed": 183221005,
+        "goal_index": 1
+      },
+      {
+        "episode": 6,
+        "trial_seed": 183221006,
+        "goal_index": 2
+      },
+      {
+        "episode": 7,
+        "trial_seed": 183221007,
+        "goal_index": 3
+      },
+      {
+        "episode": 8,
+        "trial_seed": 183221008,
+        "goal_index": 4
+      },
+      {
+        "episode": 9,
+        "trial_seed": 183221009,
+        "goal_index": 5
+      },
+      {
+        "episode": 10,
+        "trial_seed": 183221010,
+        "goal_index": 0
+      },
+      {
+        "episode": 11,
+        "trial_seed": 183221011,
+        "goal_index": 1
+      },
+      {
+        "episode": 12,
+        "trial_seed": 183221012,
+        "goal_index": 2
+      },
+      {
+        "episode": 13,
+        "trial_seed": 183221013,
+        "goal_index": 3
+      },
+      {
+        "episode": 14,
+        "trial_seed": 183221014,
+        "goal_index": 4
+      },
+      {
+        "episode": 15,
+        "trial_seed": 183221015,
+        "goal_index": 5
+      },
+      {
+        "episode": 16,
+        "trial_seed": 183221016,
+        "goal_index": 0
+      },
+      {
+        "episode": 17,
+        "trial_seed": 183221017,
+        "goal_index": 1
+      },
+      {
+        "episode": 18,
+        "trial_seed": 183221018,
+        "goal_index": 2
+      },
+      {
+        "episode": 19,
+        "trial_seed": 183221019,
+        "goal_index": 3
+      }
+    ],
+    "startup_randomization_seed": 183221,
+    "reset_seed_rule": "base_seed * 1000 + episode_index; same schedule required for both policies",
+    "initial_state_digest_scope": "actual roots, joints, raw actions and EMA memory; stale processed output cache excluded; startup dynamics use matched seed and saved binding",
+    "goal_distribution_override": {
+      "distribution": "six audited cardinal goals in deterministic cyclic order",
+      "fixed_during_trial": true,
+      "update_goal_on_success": false,
+      "time_resampling": "time_left set beyond external horizon after each reset",
+      "reset_sampler": "original resampler runs, then its orientation is replaced by the assigned goal"
+    },
+    "metric": "full-quaternion reach <=0.16 rad before any object_out_of_reach termination",
+    "stopping": "diagnostic trial ends at first reach, drop, original environment termination, or external cap",
+    "initial_reach": "counts as diagnostic reach and is separately recorded",
+    "simultaneous_drop_and_reach": "drop takes precedence",
+    "not_autonomous_semantic_success": true,
+    "teacher_used": false,
+    "formal_trials_used": false,
+    "formal_condition": null,
+    "formal_release_sha256": null,
+    "pose_source": "calibrated GS object plus black hand occlusion, frozen RGB CNN",
+    "full_scene_rgb": false,
+    "visual_noise_added_to_cnn_pose": false,
+    "noise_cfg": {
+      "enabled": true,
+      "joint_enabled": true,
+      "joint_noise_std": 0.005,
+      "joint_bias_std": 0.01,
+      "joint_delay_max_steps": 1,
+      "max_period": 3,
+      "jitter_probability": 0.1,
+      "failure_probability": 0.3,
+      "position_noise": 0.012,
+      "position_bias": 0.012,
+      "rotation_noise_deg": 1.0,
+      "rotation_bias_deg": 0.1,
+      "failure_position_extent": 0.15
+    },
+    "physical_randomization": "unchanged startup and reset events",
+    "step_dt": 0.03333333333333333,
+    "external_max_steps": 3600,
+    "external_horizon_seconds": 120.0,
+    "preserved_environment_episode_seconds": 20.0,
+    "policy_inputs": [
+      "released_proprio113_including_goal_quaternion",
+      "released_extero11"
+    ],
+    "ground_truth_scope": "simulation sensor generation and evaluator diagnostics only; collect-only pose observation is excluded from policy inputs",
+    "source_sha256": {
+      "evaluate.py": "1afb75d2dce26051a63b58d9407095392aafdec8ff2ca33d4aea5263fc29b4c9",
+      "model.py": "7e69500b12808df7912b615b58f39288e92d3100c9b02d86f5c10d30b061c582",
+      "goals.py": "125de050472754c34118c01b375ad2962cfbec14e1ec0bb07c0d4cdfd54cb0f0",
+      "perception.py": "d5298b33ccc890caee24534733df7bf3518d8de681c9caba3f42e0f208783219"
+    },
+    "arguments": {
+      "episodes": 20,
+      "seed": 183221,
+      "policy": "released",
+      "checkpoint": "<runtime-path-redacted>",
+      "student_checkpoint": "<runtime-path-redacted>",
+      "text_cache": "<runtime-path-redacted>",
+      "original_asset": "<runtime-path-redacted>",
+      "output": "<runtime-path-redacted>",
+      "formal_release": null,
+      "formal_condition": null,
+      "prepare_only": false,
+      "max_steps": 3600,
+      "pose_source": "gs_cnn",
+      "pose_checkpoint": "<runtime-path-redacted>",
+      "camera_calibration": "<runtime-path-redacted>",
+      "task": "Isaac-ViserDex-Repose-Revo3",
+      "livestream": 0,
+      "xr": false,
+      "device": "cuda:0",
+      "visualizer": [],
+      "verbose": false,
+      "info": false,
+      "experience": "",
+      "deterministic": false,
+      "kit_args": "",
+      "anim_recording_enabled": false,
+      "anim_recording_start_time": 0,
+      "anim_recording_stop_time": 10,
+      "device_explicit": true,
+      "preset_overrides": [
+        "env.sim.physics.solver_cfg.nconmax=4096",
+        "env.sim.physics.solver_cfg.njmax=1024"
+      ],
+      "num_envs": 1,
+      "kit_visualizer": false
+    },
+    "estimator": {
+      "checkpoint": "<runtime-path-redacted>",
+      "checkpoint_sha256": "6a940233e65146bf34f1051a593727f79fa0821d0d8bcc7feec18b07a67794ed",
+      "keypoints_sha256": "d5e65f06e32872cfbf5cf2147179dcabb604911b0b8c2a283effbb2af10dcd01",
+      "image_size": [
+        120,
+        120
+      ],
+      "pose_frame": "right_hand_base_link",
+      "quaternion_order": "xyzw",
+      "position_unit": "m",
+      "cnn_preprocessing": [
+        "binary_opening",
+        "released_network_resize_and_normalization"
+      ],
+      "visual_noise_added_to_cnn_pose": false,
+      "ground_truth_fallback": false
+    },
+    "camera": {
+      "image_protocol": "original_gsplat_object_plus_depth_ordered_black_hand_occlusion",
+      "raw_calibration_size": [
+        1280,
+        1024
+      ],
+      "cnn_image_size": [
+        120,
+        120
+      ],
+      "camera_intrinsics": [
+        [
+          122.86667490224502,
+          0.0,
+          60.31119860275362
+        ],
+        [
+          0.0,
+          153.5033526224968,
+          58.38762604230718
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "T_base_camera": [
+        [
+          0.09686958975171941,
+          -0.7892732850133177,
+          -0.6063530029163036,
+          0.2905681944462764
+        ],
+        [
+          0.9402422071523159,
+          0.27237946668979046,
+          -0.20433799943996125,
+          0.06494179774601874
+        ],
+        [
+          0.32643663163112346,
+          -0.5503245475990239,
+          0.7684933427423132,
+          -0.2447436270886566
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "T_world_camera_env0": [
+        [
+          -0.3264366581128613,
+          0.5503246258134735,
+          -0.7684932754835058,
+          0.3647436201572418
+        ],
+        [
+          0.9402421932162344,
+          0.27237954366345374,
+          -0.20433796096079226,
+          0.06494180113077164
+        ],
+        [
+          0.096869635779394,
+          -0.7892732039141765,
+          -0.6063531011275678,
+          0.8005682229995728
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "T_world_camera_expected_env0": [
+        [
+          -0.3264366316311234,
+          0.5503245475990238,
+          -0.768493342742313,
+          0.3647436244064475
+        ],
+        [
+          0.9402422071523157,
+          0.2723794666897904,
+          -0.2043379994399612,
+          0.06494179774601871
+        ],
+        [
+          0.09686958975171939,
+          -0.7892732850133175,
+          -0.6063530029163035,
+          0.8005681849095332
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "maximum_position_error_m": 3.809003956689594e-08,
+      "maximum_rotation_matrix_abs_error": 9.82112643432842e-08,
+      "maximum_extrinsic_abs_error": 9.82112643432842e-08,
+      "num_envs_checked": 1,
+      "extrinsic_position_tolerance_m_per_axis_max": [
+        1.0596046447753906e-06,
+        1.0149011611938476e-06,
+        1.1192092895507812e-06
+      ],
+      "extrinsic_rotation_abs_tolerance": 1e-06,
+      "distortion": "GS and ray camera use rectified pinhole rays; real RGB must use the same undistortion",
+      "full_hand_rgb_in_network_input": false,
+      "calibration_sha256": {
+        "hikrobot_DB0447679_1280x1024_intrinsics.json": "80742054a501a20d29d5fcb9602e2a0d5fa28d49a50aba97e8bec23cdf99955b",
+        "hikrobot_DB0447679_1280x1024_extrinsics_revo3_20261022.json": "8fba74d72baf2ddf1565d675d9e64731ca8b61f65d569e0f39f07f1986b32ca4"
+      }
+    }
+  },
+  "simulated/released_183222": {
+    "version": "pose_latent_student_diagnostic_v1",
+    "policy": "released",
+    "checkpoint_sha256": "022f963f3fa177cc84d3ca14888ba2872e594577ccf1614713834eb10f9336f1",
+    "checkpoint": {
+      "iteration": 1000,
+      "format": "viserdex_revo3_belief_v1"
+    },
+    "original_student_sha256": "022f963f3fa177cc84d3ca14888ba2872e594577ccf1614713834eb10f9336f1",
+    "physical_environment_binding": {
+      "source_environment": "<runtime-path-redacted>",
+      "source_environment_sha256": "f8d5eef6ac7fdf56b37cfc54095d1918dfa6acd62821637a05f3ca65584318df",
+      "contract_sha256": "8845592f802e8badeccce52ed332a8453e50a80edd93c03370516077f21c6279",
+      "assets": {
+        "robot": {
+          "sha256": "a13e3f0ac0482d88c57a9050b4095fde62cc01e9db5dd6053d6dd19ce8f0c650"
+        },
+        "object": {
+          "sha256": "0df16dfdb9c483e5b1e1ddc28b479afb44e2eac34d9a83955e44a3788057ae92"
+        }
+      },
+      "physics": "isaaclab_newton.physics.mjwarp_manager:NewtonMJWarpManager",
+      "step_dt": 0.03333333333333333,
+      "nconmax": 4096,
+      "njmax": 1024
+    },
+    "goal_bank": {
+      "asset_sha256": "93d60bde1d00cf5398b5d31e2016663e793d8bb4cdee817421e324f47fccb4a8",
+      "cache_sha256": "579ca62922aac9e5084f13b33bf3e2cd846bc19a5aa53ed11568ef71cf252856",
+      "latent_source": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+      "colors": [
+        "red",
+        "green",
+        "blue",
+        "yellow",
+        "magenta",
+        "cyan"
+      ],
+      "symbols": [
+        "T",
+        "E",
+        "R",
+        "L",
+        "S",
+        "H"
+      ],
+      "texture_numbers": [
+        2,
+        1,
+        4,
+        6,
+        5,
+        3
+      ],
+      "normals_body": [
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "target_quaternions_world_xyzw": [
+        [
+          -0.7071067811865476,
+          0,
+          0,
+          0.7071067811865476
+        ],
+        [
+          0,
+          0.7071067811865476,
+          0,
+          0.7071067811865476
+        ],
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0.7071067811865476,
+          0,
+          0,
+          0.7071067811865476
+        ],
+        [
+          0,
+          -0.7071067811865476,
+          0,
+          0.7071067811865476
+        ]
+      ],
+      "cyan_channel_visual_name": "pale blue H",
+      "magenta_channel_visual_name": "purple S",
+      "mapping_scope": "fixed body-frame mapping in the exact released asset, not randomized face layouts"
+    },
+    "schedule": [
+      {
+        "episode": 0,
+        "trial_seed": 183222000,
+        "goal_index": 0
+      },
+      {
+        "episode": 1,
+        "trial_seed": 183222001,
+        "goal_index": 1
+      },
+      {
+        "episode": 2,
+        "trial_seed": 183222002,
+        "goal_index": 2
+      },
+      {
+        "episode": 3,
+        "trial_seed": 183222003,
+        "goal_index": 3
+      },
+      {
+        "episode": 4,
+        "trial_seed": 183222004,
+        "goal_index": 4
+      },
+      {
+        "episode": 5,
+        "trial_seed": 183222005,
+        "goal_index": 5
+      },
+      {
+        "episode": 6,
+        "trial_seed": 183222006,
+        "goal_index": 0
+      },
+      {
+        "episode": 7,
+        "trial_seed": 183222007,
+        "goal_index": 1
+      },
+      {
+        "episode": 8,
+        "trial_seed": 183222008,
+        "goal_index": 2
+      },
+      {
+        "episode": 9,
+        "trial_seed": 183222009,
+        "goal_index": 3
+      },
+      {
+        "episode": 10,
+        "trial_seed": 183222010,
+        "goal_index": 4
+      },
+      {
+        "episode": 11,
+        "trial_seed": 183222011,
+        "goal_index": 5
+      },
+      {
+        "episode": 12,
+        "trial_seed": 183222012,
+        "goal_index": 0
+      },
+      {
+        "episode": 13,
+        "trial_seed": 183222013,
+        "goal_index": 1
+      },
+      {
+        "episode": 14,
+        "trial_seed": 183222014,
+        "goal_index": 2
+      },
+      {
+        "episode": 15,
+        "trial_seed": 183222015,
+        "goal_index": 3
+      },
+      {
+        "episode": 16,
+        "trial_seed": 183222016,
+        "goal_index": 4
+      },
+      {
+        "episode": 17,
+        "trial_seed": 183222017,
+        "goal_index": 5
+      },
+      {
+        "episode": 18,
+        "trial_seed": 183222018,
+        "goal_index": 0
+      },
+      {
+        "episode": 19,
+        "trial_seed": 183222019,
+        "goal_index": 1
+      }
+    ],
+    "startup_randomization_seed": 183222,
+    "reset_seed_rule": "base_seed * 1000 + episode_index; same schedule required for both policies",
+    "initial_state_digest_scope": "actual roots, joints, raw actions and EMA memory; stale processed output cache excluded; startup dynamics use matched seed and saved binding",
+    "goal_distribution_override": {
+      "distribution": "six audited cardinal goals in deterministic cyclic order",
+      "fixed_during_trial": true,
+      "update_goal_on_success": false,
+      "time_resampling": "time_left set beyond external horizon after each reset",
+      "reset_sampler": "original resampler runs, then its orientation is replaced by the assigned goal"
+    },
+    "metric": "full-quaternion reach <=0.16 rad before any object_out_of_reach termination",
+    "stopping": "diagnostic trial ends at first reach, drop, original environment termination, or external cap",
+    "initial_reach": "counts as diagnostic reach and is separately recorded",
+    "simultaneous_drop_and_reach": "drop takes precedence",
+    "not_autonomous_semantic_success": true,
+    "teacher_used": false,
+    "formal_trials_used": false,
+    "formal_condition": null,
+    "formal_release_sha256": null,
+    "pose_source": "calibrated GS object plus black hand occlusion, frozen RGB CNN",
+    "full_scene_rgb": false,
+    "visual_noise_added_to_cnn_pose": false,
+    "noise_cfg": {
+      "enabled": true,
+      "joint_enabled": true,
+      "joint_noise_std": 0.005,
+      "joint_bias_std": 0.01,
+      "joint_delay_max_steps": 1,
+      "max_period": 3,
+      "jitter_probability": 0.1,
+      "failure_probability": 0.3,
+      "position_noise": 0.012,
+      "position_bias": 0.012,
+      "rotation_noise_deg": 1.0,
+      "rotation_bias_deg": 0.1,
+      "failure_position_extent": 0.15
+    },
+    "physical_randomization": "unchanged startup and reset events",
+    "step_dt": 0.03333333333333333,
+    "external_max_steps": 3600,
+    "external_horizon_seconds": 120.0,
+    "preserved_environment_episode_seconds": 20.0,
+    "policy_inputs": [
+      "released_proprio113_including_goal_quaternion",
+      "released_extero11"
+    ],
+    "ground_truth_scope": "simulation sensor generation and evaluator diagnostics only; collect-only pose observation is excluded from policy inputs",
+    "source_sha256": {
+      "evaluate.py": "1afb75d2dce26051a63b58d9407095392aafdec8ff2ca33d4aea5263fc29b4c9",
+      "model.py": "7e69500b12808df7912b615b58f39288e92d3100c9b02d86f5c10d30b061c582",
+      "goals.py": "125de050472754c34118c01b375ad2962cfbec14e1ec0bb07c0d4cdfd54cb0f0",
+      "perception.py": "d5298b33ccc890caee24534733df7bf3518d8de681c9caba3f42e0f208783219"
+    },
+    "arguments": {
+      "episodes": 20,
+      "seed": 183222,
+      "policy": "released",
+      "checkpoint": "<runtime-path-redacted>",
+      "student_checkpoint": "<runtime-path-redacted>",
+      "text_cache": "<runtime-path-redacted>",
+      "original_asset": "<runtime-path-redacted>",
+      "output": "<runtime-path-redacted>",
+      "formal_release": null,
+      "formal_condition": null,
+      "prepare_only": false,
+      "max_steps": 3600,
+      "pose_source": "gs_cnn",
+      "pose_checkpoint": "<runtime-path-redacted>",
+      "camera_calibration": "<runtime-path-redacted>",
+      "task": "Isaac-ViserDex-Repose-Revo3",
+      "livestream": 0,
+      "xr": false,
+      "device": "cuda:0",
+      "visualizer": [],
+      "verbose": false,
+      "info": false,
+      "experience": "",
+      "deterministic": false,
+      "kit_args": "",
+      "anim_recording_enabled": false,
+      "anim_recording_start_time": 0,
+      "anim_recording_stop_time": 10,
+      "device_explicit": true,
+      "preset_overrides": [
+        "env.sim.physics.solver_cfg.nconmax=4096",
+        "env.sim.physics.solver_cfg.njmax=1024"
+      ],
+      "num_envs": 1,
+      "kit_visualizer": false
+    },
+    "estimator": {
+      "checkpoint": "<runtime-path-redacted>",
+      "checkpoint_sha256": "6a940233e65146bf34f1051a593727f79fa0821d0d8bcc7feec18b07a67794ed",
+      "keypoints_sha256": "d5e65f06e32872cfbf5cf2147179dcabb604911b0b8c2a283effbb2af10dcd01",
+      "image_size": [
+        120,
+        120
+      ],
+      "pose_frame": "right_hand_base_link",
+      "quaternion_order": "xyzw",
+      "position_unit": "m",
+      "cnn_preprocessing": [
+        "binary_opening",
+        "released_network_resize_and_normalization"
+      ],
+      "visual_noise_added_to_cnn_pose": false,
+      "ground_truth_fallback": false
+    },
+    "camera": {
+      "image_protocol": "original_gsplat_object_plus_depth_ordered_black_hand_occlusion",
+      "raw_calibration_size": [
+        1280,
+        1024
+      ],
+      "cnn_image_size": [
+        120,
+        120
+      ],
+      "camera_intrinsics": [
+        [
+          122.86667490224502,
+          0.0,
+          60.31119860275362
+        ],
+        [
+          0.0,
+          153.5033526224968,
+          58.38762604230718
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "T_base_camera": [
+        [
+          0.09686958975171941,
+          -0.7892732850133177,
+          -0.6063530029163036,
+          0.2905681944462764
+        ],
+        [
+          0.9402422071523159,
+          0.27237946668979046,
+          -0.20433799943996125,
+          0.06494179774601874
+        ],
+        [
+          0.32643663163112346,
+          -0.5503245475990239,
+          0.7684933427423132,
+          -0.2447436270886566
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "T_world_camera_env0": [
+        [
+          -0.3264366581128613,
+          0.5503246258134735,
+          -0.7684932754835058,
+          0.3647436201572418
+        ],
+        [
+          0.9402421932162344,
+          0.27237954366345374,
+          -0.20433796096079226,
+          0.06494180113077164
+        ],
+        [
+          0.096869635779394,
+          -0.7892732039141765,
+          -0.6063531011275678,
+          0.8005682229995728
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "T_world_camera_expected_env0": [
+        [
+          -0.3264366316311234,
+          0.5503245475990238,
+          -0.768493342742313,
+          0.3647436244064475
+        ],
+        [
+          0.9402422071523157,
+          0.2723794666897904,
+          -0.2043379994399612,
+          0.06494179774601871
+        ],
+        [
+          0.09686958975171939,
+          -0.7892732850133175,
+          -0.6063530029163035,
+          0.8005681849095332
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "maximum_position_error_m": 3.809003956689594e-08,
+      "maximum_rotation_matrix_abs_error": 9.82112643432842e-08,
+      "maximum_extrinsic_abs_error": 9.82112643432842e-08,
+      "num_envs_checked": 1,
+      "extrinsic_position_tolerance_m_per_axis_max": [
+        1.0596046447753906e-06,
+        1.0149011611938476e-06,
+        1.1192092895507812e-06
+      ],
+      "extrinsic_rotation_abs_tolerance": 1e-06,
+      "distortion": "GS and ray camera use rectified pinhole rays; real RGB must use the same undistortion",
+      "full_hand_rgb_in_network_input": false,
+      "calibration_sha256": {
+        "hikrobot_DB0447679_1280x1024_intrinsics.json": "80742054a501a20d29d5fcb9602e2a0d5fa28d49a50aba97e8bec23cdf99955b",
+        "hikrobot_DB0447679_1280x1024_extrinsics_revo3_20261022.json": "8fba74d72baf2ddf1565d675d9e64731ca8b61f65d569e0f39f07f1986b32ca4"
+      }
+    }
+  },
+  "simulated/frozen_latent_183221": {
+    "version": "pose_latent_student_diagnostic_v1",
+    "policy": "latent",
+    "checkpoint_sha256": "9d55b83f27c4f1dd24b56695639a76d95bd56ccb248668c5e742ee597d84dd24",
+    "checkpoint": {
+      "format": "pose_latent_student_v1",
+      "stage": "adapt",
+      "completed_updates": 400
+    },
+    "original_student_sha256": "022f963f3fa177cc84d3ca14888ba2872e594577ccf1614713834eb10f9336f1",
+    "physical_environment_binding": {
+      "source_environment": "<runtime-path-redacted>",
+      "source_environment_sha256": "f8d5eef6ac7fdf56b37cfc54095d1918dfa6acd62821637a05f3ca65584318df",
+      "contract_sha256": "8845592f802e8badeccce52ed332a8453e50a80edd93c03370516077f21c6279",
+      "assets": {
+        "robot": {
+          "sha256": "a13e3f0ac0482d88c57a9050b4095fde62cc01e9db5dd6053d6dd19ce8f0c650"
+        },
+        "object": {
+          "sha256": "0df16dfdb9c483e5b1e1ddc28b479afb44e2eac34d9a83955e44a3788057ae92"
+        }
+      },
+      "physics": "isaaclab_newton.physics.mjwarp_manager:NewtonMJWarpManager",
+      "step_dt": 0.03333333333333333,
+      "nconmax": 4096,
+      "njmax": 1024
+    },
+    "goal_bank": {
+      "asset_sha256": "93d60bde1d00cf5398b5d31e2016663e793d8bb4cdee817421e324f47fccb4a8",
+      "cache_sha256": "579ca62922aac9e5084f13b33bf3e2cd846bc19a5aa53ed11568ef71cf252856",
+      "latent_source": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+      "colors": [
+        "red",
+        "green",
+        "blue",
+        "yellow",
+        "magenta",
+        "cyan"
+      ],
+      "symbols": [
+        "T",
+        "E",
+        "R",
+        "L",
+        "S",
+        "H"
+      ],
+      "texture_numbers": [
+        2,
+        1,
+        4,
+        6,
+        5,
+        3
+      ],
+      "normals_body": [
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "target_quaternions_world_xyzw": [
+        [
+          -0.7071067811865476,
+          0,
+          0,
+          0.7071067811865476
+        ],
+        [
+          0,
+          0.7071067811865476,
+          0,
+          0.7071067811865476
+        ],
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0.7071067811865476,
+          0,
+          0,
+          0.7071067811865476
+        ],
+        [
+          0,
+          -0.7071067811865476,
+          0,
+          0.7071067811865476
+        ]
+      ],
+      "cyan_channel_visual_name": "pale blue H",
+      "magenta_channel_visual_name": "purple S",
+      "mapping_scope": "fixed body-frame mapping in the exact released asset, not randomized face layouts"
+    },
+    "schedule": [
+      {
+        "episode": 0,
+        "trial_seed": 183221000,
+        "goal_index": 2
+      },
+      {
+        "episode": 1,
+        "trial_seed": 183221001,
+        "goal_index": 3
+      },
+      {
+        "episode": 2,
+        "trial_seed": 183221002,
+        "goal_index": 4
+      },
+      {
+        "episode": 3,
+        "trial_seed": 183221003,
+        "goal_index": 5
+      },
+      {
+        "episode": 4,
+        "trial_seed": 183221004,
+        "goal_index": 0
+      },
+      {
+        "episode": 5,
+        "trial_seed": 183221005,
+        "goal_index": 1
+      },
+      {
+        "episode": 6,
+        "trial_seed": 183221006,
+        "goal_index": 2
+      },
+      {
+        "episode": 7,
+        "trial_seed": 183221007,
+        "goal_index": 3
+      },
+      {
+        "episode": 8,
+        "trial_seed": 183221008,
+        "goal_index": 4
+      },
+      {
+        "episode": 9,
+        "trial_seed": 183221009,
+        "goal_index": 5
+      },
+      {
+        "episode": 10,
+        "trial_seed": 183221010,
+        "goal_index": 0
+      },
+      {
+        "episode": 11,
+        "trial_seed": 183221011,
+        "goal_index": 1
+      },
+      {
+        "episode": 12,
+        "trial_seed": 183221012,
+        "goal_index": 2
+      },
+      {
+        "episode": 13,
+        "trial_seed": 183221013,
+        "goal_index": 3
+      },
+      {
+        "episode": 14,
+        "trial_seed": 183221014,
+        "goal_index": 4
+      },
+      {
+        "episode": 15,
+        "trial_seed": 183221015,
+        "goal_index": 5
+      },
+      {
+        "episode": 16,
+        "trial_seed": 183221016,
+        "goal_index": 0
+      },
+      {
+        "episode": 17,
+        "trial_seed": 183221017,
+        "goal_index": 1
+      },
+      {
+        "episode": 18,
+        "trial_seed": 183221018,
+        "goal_index": 2
+      },
+      {
+        "episode": 19,
+        "trial_seed": 183221019,
+        "goal_index": 3
+      }
+    ],
+    "startup_randomization_seed": 183221,
+    "reset_seed_rule": "base_seed * 1000 + episode_index; same schedule required for both policies",
+    "initial_state_digest_scope": "actual roots, joints, raw actions and EMA memory; stale processed output cache excluded; startup dynamics use matched seed and saved binding",
+    "goal_distribution_override": {
+      "distribution": "six audited cardinal goals in deterministic cyclic order",
+      "fixed_during_trial": true,
+      "update_goal_on_success": false,
+      "time_resampling": "time_left set beyond external horizon after each reset",
+      "reset_sampler": "original resampler runs, then its orientation is replaced by the assigned goal"
+    },
+    "metric": "full-quaternion reach <=0.16 rad before any object_out_of_reach termination",
+    "stopping": "diagnostic trial ends at first reach, drop, original environment termination, or external cap",
+    "initial_reach": "counts as diagnostic reach and is separately recorded",
+    "simultaneous_drop_and_reach": "drop takes precedence",
+    "not_autonomous_semantic_success": true,
+    "teacher_used": false,
+    "formal_trials_used": false,
+    "formal_condition": null,
+    "formal_release_sha256": null,
+    "pose_source": "calibrated GS object plus black hand occlusion, frozen RGB CNN",
+    "full_scene_rgb": false,
+    "visual_noise_added_to_cnn_pose": false,
+    "noise_cfg": {
+      "enabled": true,
+      "joint_enabled": true,
+      "joint_noise_std": 0.005,
+      "joint_bias_std": 0.01,
+      "joint_delay_max_steps": 1,
+      "max_period": 3,
+      "jitter_probability": 0.1,
+      "failure_probability": 0.3,
+      "position_noise": 0.012,
+      "position_bias": 0.012,
+      "rotation_noise_deg": 1.0,
+      "rotation_bias_deg": 0.1,
+      "failure_position_extent": 0.15
+    },
+    "physical_randomization": "unchanged startup and reset events",
+    "step_dt": 0.03333333333333333,
+    "external_max_steps": 3600,
+    "external_horizon_seconds": 120.0,
+    "preserved_environment_episode_seconds": 20.0,
+    "policy_inputs": [
+      "proprio109",
+      "current_noisy_pose7",
+      "continuous_latent768"
+    ],
+    "ground_truth_scope": "simulation sensor generation and evaluator diagnostics only; collect-only pose observation is excluded from policy inputs",
+    "source_sha256": {
+      "evaluate.py": "1afb75d2dce26051a63b58d9407095392aafdec8ff2ca33d4aea5263fc29b4c9",
+      "model.py": "7e69500b12808df7912b615b58f39288e92d3100c9b02d86f5c10d30b061c582",
+      "goals.py": "125de050472754c34118c01b375ad2962cfbec14e1ec0bb07c0d4cdfd54cb0f0",
+      "perception.py": "d5298b33ccc890caee24534733df7bf3518d8de681c9caba3f42e0f208783219"
+    },
+    "arguments": {
+      "episodes": 20,
+      "seed": 183221,
+      "policy": "latent",
+      "checkpoint": "<runtime-path-redacted>",
+      "student_checkpoint": "<runtime-path-redacted>",
+      "text_cache": "<runtime-path-redacted>",
+      "original_asset": "<runtime-path-redacted>",
+      "output": "<runtime-path-redacted>",
+      "formal_release": null,
+      "formal_condition": null,
+      "prepare_only": false,
+      "max_steps": 3600,
+      "pose_source": "gs_cnn",
+      "pose_checkpoint": "<runtime-path-redacted>",
+      "camera_calibration": "<runtime-path-redacted>",
+      "task": "Isaac-ViserDex-Repose-Revo3",
+      "livestream": 0,
+      "xr": false,
+      "device": "cuda:0",
+      "visualizer": [],
+      "verbose": false,
+      "info": false,
+      "experience": "",
+      "deterministic": false,
+      "kit_args": "",
+      "anim_recording_enabled": false,
+      "anim_recording_start_time": 0,
+      "anim_recording_stop_time": 10,
+      "device_explicit": true,
+      "preset_overrides": [
+        "env.sim.physics.solver_cfg.nconmax=4096",
+        "env.sim.physics.solver_cfg.njmax=1024"
+      ],
+      "num_envs": 1,
+      "kit_visualizer": false
+    },
+    "estimator": {
+      "checkpoint": "<runtime-path-redacted>",
+      "checkpoint_sha256": "6a940233e65146bf34f1051a593727f79fa0821d0d8bcc7feec18b07a67794ed",
+      "keypoints_sha256": "d5e65f06e32872cfbf5cf2147179dcabb604911b0b8c2a283effbb2af10dcd01",
+      "image_size": [
+        120,
+        120
+      ],
+      "pose_frame": "right_hand_base_link",
+      "quaternion_order": "xyzw",
+      "position_unit": "m",
+      "cnn_preprocessing": [
+        "binary_opening",
+        "released_network_resize_and_normalization"
+      ],
+      "visual_noise_added_to_cnn_pose": false,
+      "ground_truth_fallback": false
+    },
+    "camera": {
+      "image_protocol": "original_gsplat_object_plus_depth_ordered_black_hand_occlusion",
+      "raw_calibration_size": [
+        1280,
+        1024
+      ],
+      "cnn_image_size": [
+        120,
+        120
+      ],
+      "camera_intrinsics": [
+        [
+          122.86667490224502,
+          0.0,
+          60.31119860275362
+        ],
+        [
+          0.0,
+          153.5033526224968,
+          58.38762604230718
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "T_base_camera": [
+        [
+          0.09686958975171941,
+          -0.7892732850133177,
+          -0.6063530029163036,
+          0.2905681944462764
+        ],
+        [
+          0.9402422071523159,
+          0.27237946668979046,
+          -0.20433799943996125,
+          0.06494179774601874
+        ],
+        [
+          0.32643663163112346,
+          -0.5503245475990239,
+          0.7684933427423132,
+          -0.2447436270886566
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "T_world_camera_env0": [
+        [
+          -0.3264366581128613,
+          0.5503246258134735,
+          -0.7684932754835058,
+          0.3647436201572418
+        ],
+        [
+          0.9402421932162344,
+          0.27237954366345374,
+          -0.20433796096079226,
+          0.06494180113077164
+        ],
+        [
+          0.096869635779394,
+          -0.7892732039141765,
+          -0.6063531011275678,
+          0.8005682229995728
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "T_world_camera_expected_env0": [
+        [
+          -0.3264366316311234,
+          0.5503245475990238,
+          -0.768493342742313,
+          0.3647436244064475
+        ],
+        [
+          0.9402422071523157,
+          0.2723794666897904,
+          -0.2043379994399612,
+          0.06494179774601871
+        ],
+        [
+          0.09686958975171939,
+          -0.7892732850133175,
+          -0.6063530029163035,
+          0.8005681849095332
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "maximum_position_error_m": 3.809003956689594e-08,
+      "maximum_rotation_matrix_abs_error": 9.82112643432842e-08,
+      "maximum_extrinsic_abs_error": 9.82112643432842e-08,
+      "num_envs_checked": 1,
+      "extrinsic_position_tolerance_m_per_axis_max": [
+        1.0596046447753906e-06,
+        1.0149011611938476e-06,
+        1.1192092895507812e-06
+      ],
+      "extrinsic_rotation_abs_tolerance": 1e-06,
+      "distortion": "GS and ray camera use rectified pinhole rays; real RGB must use the same undistortion",
+      "full_hand_rgb_in_network_input": false,
+      "calibration_sha256": {
+        "hikrobot_DB0447679_1280x1024_intrinsics.json": "80742054a501a20d29d5fcb9602e2a0d5fa28d49a50aba97e8bec23cdf99955b",
+        "hikrobot_DB0447679_1280x1024_extrinsics_revo3_20261022.json": "8fba74d72baf2ddf1565d675d9e64731ca8b61f65d569e0f39f07f1986b32ca4"
+      }
+    }
+  },
+  "simulated/frozen_latent_183222": {
+    "version": "pose_latent_student_diagnostic_v1",
+    "policy": "latent",
+    "checkpoint_sha256": "9d55b83f27c4f1dd24b56695639a76d95bd56ccb248668c5e742ee597d84dd24",
+    "checkpoint": {
+      "format": "pose_latent_student_v1",
+      "stage": "adapt",
+      "completed_updates": 400
+    },
+    "original_student_sha256": "022f963f3fa177cc84d3ca14888ba2872e594577ccf1614713834eb10f9336f1",
+    "physical_environment_binding": {
+      "source_environment": "<runtime-path-redacted>",
+      "source_environment_sha256": "f8d5eef6ac7fdf56b37cfc54095d1918dfa6acd62821637a05f3ca65584318df",
+      "contract_sha256": "8845592f802e8badeccce52ed332a8453e50a80edd93c03370516077f21c6279",
+      "assets": {
+        "robot": {
+          "sha256": "a13e3f0ac0482d88c57a9050b4095fde62cc01e9db5dd6053d6dd19ce8f0c650"
+        },
+        "object": {
+          "sha256": "0df16dfdb9c483e5b1e1ddc28b479afb44e2eac34d9a83955e44a3788057ae92"
+        }
+      },
+      "physics": "isaaclab_newton.physics.mjwarp_manager:NewtonMJWarpManager",
+      "step_dt": 0.03333333333333333,
+      "nconmax": 4096,
+      "njmax": 1024
+    },
+    "goal_bank": {
+      "asset_sha256": "93d60bde1d00cf5398b5d31e2016663e793d8bb4cdee817421e324f47fccb4a8",
+      "cache_sha256": "579ca62922aac9e5084f13b33bf3e2cd846bc19a5aa53ed11568ef71cf252856",
+      "latent_source": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+      "colors": [
+        "red",
+        "green",
+        "blue",
+        "yellow",
+        "magenta",
+        "cyan"
+      ],
+      "symbols": [
+        "T",
+        "E",
+        "R",
+        "L",
+        "S",
+        "H"
+      ],
+      "texture_numbers": [
+        2,
+        1,
+        4,
+        6,
+        5,
+        3
+      ],
+      "normals_body": [
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "target_quaternions_world_xyzw": [
+        [
+          -0.7071067811865476,
+          0,
+          0,
+          0.7071067811865476
+        ],
+        [
+          0,
+          0.7071067811865476,
+          0,
+          0.7071067811865476
+        ],
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0.7071067811865476,
+          0,
+          0,
+          0.7071067811865476
+        ],
+        [
+          0,
+          -0.7071067811865476,
+          0,
+          0.7071067811865476
+        ]
+      ],
+      "cyan_channel_visual_name": "pale blue H",
+      "magenta_channel_visual_name": "purple S",
+      "mapping_scope": "fixed body-frame mapping in the exact released asset, not randomized face layouts"
+    },
+    "schedule": [
+      {
+        "episode": 0,
+        "trial_seed": 183222000,
+        "goal_index": 0
+      },
+      {
+        "episode": 1,
+        "trial_seed": 183222001,
+        "goal_index": 1
+      },
+      {
+        "episode": 2,
+        "trial_seed": 183222002,
+        "goal_index": 2
+      },
+      {
+        "episode": 3,
+        "trial_seed": 183222003,
+        "goal_index": 3
+      },
+      {
+        "episode": 4,
+        "trial_seed": 183222004,
+        "goal_index": 4
+      },
+      {
+        "episode": 5,
+        "trial_seed": 183222005,
+        "goal_index": 5
+      },
+      {
+        "episode": 6,
+        "trial_seed": 183222006,
+        "goal_index": 0
+      },
+      {
+        "episode": 7,
+        "trial_seed": 183222007,
+        "goal_index": 1
+      },
+      {
+        "episode": 8,
+        "trial_seed": 183222008,
+        "goal_index": 2
+      },
+      {
+        "episode": 9,
+        "trial_seed": 183222009,
+        "goal_index": 3
+      },
+      {
+        "episode": 10,
+        "trial_seed": 183222010,
+        "goal_index": 4
+      },
+      {
+        "episode": 11,
+        "trial_seed": 183222011,
+        "goal_index": 5
+      },
+      {
+        "episode": 12,
+        "trial_seed": 183222012,
+        "goal_index": 0
+      },
+      {
+        "episode": 13,
+        "trial_seed": 183222013,
+        "goal_index": 1
+      },
+      {
+        "episode": 14,
+        "trial_seed": 183222014,
+        "goal_index": 2
+      },
+      {
+        "episode": 15,
+        "trial_seed": 183222015,
+        "goal_index": 3
+      },
+      {
+        "episode": 16,
+        "trial_seed": 183222016,
+        "goal_index": 4
+      },
+      {
+        "episode": 17,
+        "trial_seed": 183222017,
+        "goal_index": 5
+      },
+      {
+        "episode": 18,
+        "trial_seed": 183222018,
+        "goal_index": 0
+      },
+      {
+        "episode": 19,
+        "trial_seed": 183222019,
+        "goal_index": 1
+      }
+    ],
+    "startup_randomization_seed": 183222,
+    "reset_seed_rule": "base_seed * 1000 + episode_index; same schedule required for both policies",
+    "initial_state_digest_scope": "actual roots, joints, raw actions and EMA memory; stale processed output cache excluded; startup dynamics use matched seed and saved binding",
+    "goal_distribution_override": {
+      "distribution": "six audited cardinal goals in deterministic cyclic order",
+      "fixed_during_trial": true,
+      "update_goal_on_success": false,
+      "time_resampling": "time_left set beyond external horizon after each reset",
+      "reset_sampler": "original resampler runs, then its orientation is replaced by the assigned goal"
+    },
+    "metric": "full-quaternion reach <=0.16 rad before any object_out_of_reach termination",
+    "stopping": "diagnostic trial ends at first reach, drop, original environment termination, or external cap",
+    "initial_reach": "counts as diagnostic reach and is separately recorded",
+    "simultaneous_drop_and_reach": "drop takes precedence",
+    "not_autonomous_semantic_success": true,
+    "teacher_used": false,
+    "formal_trials_used": false,
+    "formal_condition": null,
+    "formal_release_sha256": null,
+    "pose_source": "calibrated GS object plus black hand occlusion, frozen RGB CNN",
+    "full_scene_rgb": false,
+    "visual_noise_added_to_cnn_pose": false,
+    "noise_cfg": {
+      "enabled": true,
+      "joint_enabled": true,
+      "joint_noise_std": 0.005,
+      "joint_bias_std": 0.01,
+      "joint_delay_max_steps": 1,
+      "max_period": 3,
+      "jitter_probability": 0.1,
+      "failure_probability": 0.3,
+      "position_noise": 0.012,
+      "position_bias": 0.012,
+      "rotation_noise_deg": 1.0,
+      "rotation_bias_deg": 0.1,
+      "failure_position_extent": 0.15
+    },
+    "physical_randomization": "unchanged startup and reset events",
+    "step_dt": 0.03333333333333333,
+    "external_max_steps": 3600,
+    "external_horizon_seconds": 120.0,
+    "preserved_environment_episode_seconds": 20.0,
+    "policy_inputs": [
+      "proprio109",
+      "current_noisy_pose7",
+      "continuous_latent768"
+    ],
+    "ground_truth_scope": "simulation sensor generation and evaluator diagnostics only; collect-only pose observation is excluded from policy inputs",
+    "source_sha256": {
+      "evaluate.py": "1afb75d2dce26051a63b58d9407095392aafdec8ff2ca33d4aea5263fc29b4c9",
+      "model.py": "7e69500b12808df7912b615b58f39288e92d3100c9b02d86f5c10d30b061c582",
+      "goals.py": "125de050472754c34118c01b375ad2962cfbec14e1ec0bb07c0d4cdfd54cb0f0",
+      "perception.py": "d5298b33ccc890caee24534733df7bf3518d8de681c9caba3f42e0f208783219"
+    },
+    "arguments": {
+      "episodes": 20,
+      "seed": 183222,
+      "policy": "latent",
+      "checkpoint": "<runtime-path-redacted>",
+      "student_checkpoint": "<runtime-path-redacted>",
+      "text_cache": "<runtime-path-redacted>",
+      "original_asset": "<runtime-path-redacted>",
+      "output": "<runtime-path-redacted>",
+      "formal_release": null,
+      "formal_condition": null,
+      "prepare_only": false,
+      "max_steps": 3600,
+      "pose_source": "gs_cnn",
+      "pose_checkpoint": "<runtime-path-redacted>",
+      "camera_calibration": "<runtime-path-redacted>",
+      "task": "Isaac-ViserDex-Repose-Revo3",
+      "livestream": 0,
+      "xr": false,
+      "device": "cuda:0",
+      "visualizer": [],
+      "verbose": false,
+      "info": false,
+      "experience": "",
+      "deterministic": false,
+      "kit_args": "",
+      "anim_recording_enabled": false,
+      "anim_recording_start_time": 0,
+      "anim_recording_stop_time": 10,
+      "device_explicit": true,
+      "preset_overrides": [
+        "env.sim.physics.solver_cfg.nconmax=4096",
+        "env.sim.physics.solver_cfg.njmax=1024"
+      ],
+      "num_envs": 1,
+      "kit_visualizer": false
+    },
+    "estimator": {
+      "checkpoint": "<runtime-path-redacted>",
+      "checkpoint_sha256": "6a940233e65146bf34f1051a593727f79fa0821d0d8bcc7feec18b07a67794ed",
+      "keypoints_sha256": "d5e65f06e32872cfbf5cf2147179dcabb604911b0b8c2a283effbb2af10dcd01",
+      "image_size": [
+        120,
+        120
+      ],
+      "pose_frame": "right_hand_base_link",
+      "quaternion_order": "xyzw",
+      "position_unit": "m",
+      "cnn_preprocessing": [
+        "binary_opening",
+        "released_network_resize_and_normalization"
+      ],
+      "visual_noise_added_to_cnn_pose": false,
+      "ground_truth_fallback": false
+    },
+    "camera": {
+      "image_protocol": "original_gsplat_object_plus_depth_ordered_black_hand_occlusion",
+      "raw_calibration_size": [
+        1280,
+        1024
+      ],
+      "cnn_image_size": [
+        120,
+        120
+      ],
+      "camera_intrinsics": [
+        [
+          122.86667490224502,
+          0.0,
+          60.31119860275362
+        ],
+        [
+          0.0,
+          153.5033526224968,
+          58.38762604230718
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "T_base_camera": [
+        [
+          0.09686958975171941,
+          -0.7892732850133177,
+          -0.6063530029163036,
+          0.2905681944462764
+        ],
+        [
+          0.9402422071523159,
+          0.27237946668979046,
+          -0.20433799943996125,
+          0.06494179774601874
+        ],
+        [
+          0.32643663163112346,
+          -0.5503245475990239,
+          0.7684933427423132,
+          -0.2447436270886566
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "T_world_camera_env0": [
+        [
+          -0.3264366581128613,
+          0.5503246258134735,
+          -0.7684932754835058,
+          0.3647436201572418
+        ],
+        [
+          0.9402421932162344,
+          0.27237954366345374,
+          -0.20433796096079226,
+          0.06494180113077164
+        ],
+        [
+          0.096869635779394,
+          -0.7892732039141765,
+          -0.6063531011275678,
+          0.8005682229995728
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "T_world_camera_expected_env0": [
+        [
+          -0.3264366316311234,
+          0.5503245475990238,
+          -0.768493342742313,
+          0.3647436244064475
+        ],
+        [
+          0.9402422071523157,
+          0.2723794666897904,
+          -0.2043379994399612,
+          0.06494179774601871
+        ],
+        [
+          0.09686958975171939,
+          -0.7892732850133175,
+          -0.6063530029163035,
+          0.8005681849095332
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "maximum_position_error_m": 3.809003956689594e-08,
+      "maximum_rotation_matrix_abs_error": 9.82112643432842e-08,
+      "maximum_extrinsic_abs_error": 9.82112643432842e-08,
+      "num_envs_checked": 1,
+      "extrinsic_position_tolerance_m_per_axis_max": [
+        1.0596046447753906e-06,
+        1.0149011611938476e-06,
+        1.1192092895507812e-06
+      ],
+      "extrinsic_rotation_abs_tolerance": 1e-06,
+      "distortion": "GS and ray camera use rectified pinhole rays; real RGB must use the same undistortion",
+      "full_hand_rgb_in_network_input": false,
+      "calibration_sha256": {
+        "hikrobot_DB0447679_1280x1024_intrinsics.json": "80742054a501a20d29d5fcb9602e2a0d5fa28d49a50aba97e8bec23cdf99955b",
+        "hikrobot_DB0447679_1280x1024_extrinsics_revo3_20261022.json": "8fba74d72baf2ddf1565d675d9e64731ca8b61f65d569e0f39f07f1986b32ca4"
+      }
+    }
+  },
+  "simulated/candidate_183221": {
+    "version": "pose_latent_student_diagnostic_v1",
+    "policy": "latent",
+    "checkpoint_sha256": "052d6f23fcd3aa8798993e9435a02961f5a9d3fcdbc0f199ed567321b8fbb984",
+    "checkpoint": {
+      "format": "pose_latent_student_v1",
+      "stage": "adapt",
+      "completed_updates": 400
+    },
+    "original_student_sha256": "022f963f3fa177cc84d3ca14888ba2872e594577ccf1614713834eb10f9336f1",
+    "physical_environment_binding": {
+      "source_environment": "<runtime-path-redacted>",
+      "source_environment_sha256": "f8d5eef6ac7fdf56b37cfc54095d1918dfa6acd62821637a05f3ca65584318df",
+      "contract_sha256": "8845592f802e8badeccce52ed332a8453e50a80edd93c03370516077f21c6279",
+      "assets": {
+        "robot": {
+          "sha256": "a13e3f0ac0482d88c57a9050b4095fde62cc01e9db5dd6053d6dd19ce8f0c650"
+        },
+        "object": {
+          "sha256": "0df16dfdb9c483e5b1e1ddc28b479afb44e2eac34d9a83955e44a3788057ae92"
+        }
+      },
+      "physics": "isaaclab_newton.physics.mjwarp_manager:NewtonMJWarpManager",
+      "step_dt": 0.03333333333333333,
+      "nconmax": 4096,
+      "njmax": 1024
+    },
+    "goal_bank": {
+      "asset_sha256": "93d60bde1d00cf5398b5d31e2016663e793d8bb4cdee817421e324f47fccb4a8",
+      "cache_sha256": "579ca62922aac9e5084f13b33bf3e2cd846bc19a5aa53ed11568ef71cf252856",
+      "latent_source": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+      "colors": [
+        "red",
+        "green",
+        "blue",
+        "yellow",
+        "magenta",
+        "cyan"
+      ],
+      "symbols": [
+        "T",
+        "E",
+        "R",
+        "L",
+        "S",
+        "H"
+      ],
+      "texture_numbers": [
+        2,
+        1,
+        4,
+        6,
+        5,
+        3
+      ],
+      "normals_body": [
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "target_quaternions_world_xyzw": [
+        [
+          -0.7071067811865476,
+          0,
+          0,
+          0.7071067811865476
+        ],
+        [
+          0,
+          0.7071067811865476,
+          0,
+          0.7071067811865476
+        ],
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0.7071067811865476,
+          0,
+          0,
+          0.7071067811865476
+        ],
+        [
+          0,
+          -0.7071067811865476,
+          0,
+          0.7071067811865476
+        ]
+      ],
+      "cyan_channel_visual_name": "pale blue H",
+      "magenta_channel_visual_name": "purple S",
+      "mapping_scope": "fixed body-frame mapping in the exact released asset, not randomized face layouts"
+    },
+    "schedule": [
+      {
+        "episode": 0,
+        "trial_seed": 183221000,
+        "goal_index": 2
+      },
+      {
+        "episode": 1,
+        "trial_seed": 183221001,
+        "goal_index": 3
+      },
+      {
+        "episode": 2,
+        "trial_seed": 183221002,
+        "goal_index": 4
+      },
+      {
+        "episode": 3,
+        "trial_seed": 183221003,
+        "goal_index": 5
+      },
+      {
+        "episode": 4,
+        "trial_seed": 183221004,
+        "goal_index": 0
+      },
+      {
+        "episode": 5,
+        "trial_seed": 183221005,
+        "goal_index": 1
+      },
+      {
+        "episode": 6,
+        "trial_seed": 183221006,
+        "goal_index": 2
+      },
+      {
+        "episode": 7,
+        "trial_seed": 183221007,
+        "goal_index": 3
+      },
+      {
+        "episode": 8,
+        "trial_seed": 183221008,
+        "goal_index": 4
+      },
+      {
+        "episode": 9,
+        "trial_seed": 183221009,
+        "goal_index": 5
+      },
+      {
+        "episode": 10,
+        "trial_seed": 183221010,
+        "goal_index": 0
+      },
+      {
+        "episode": 11,
+        "trial_seed": 183221011,
+        "goal_index": 1
+      },
+      {
+        "episode": 12,
+        "trial_seed": 183221012,
+        "goal_index": 2
+      },
+      {
+        "episode": 13,
+        "trial_seed": 183221013,
+        "goal_index": 3
+      },
+      {
+        "episode": 14,
+        "trial_seed": 183221014,
+        "goal_index": 4
+      },
+      {
+        "episode": 15,
+        "trial_seed": 183221015,
+        "goal_index": 5
+      },
+      {
+        "episode": 16,
+        "trial_seed": 183221016,
+        "goal_index": 0
+      },
+      {
+        "episode": 17,
+        "trial_seed": 183221017,
+        "goal_index": 1
+      },
+      {
+        "episode": 18,
+        "trial_seed": 183221018,
+        "goal_index": 2
+      },
+      {
+        "episode": 19,
+        "trial_seed": 183221019,
+        "goal_index": 3
+      }
+    ],
+    "startup_randomization_seed": 183221,
+    "reset_seed_rule": "base_seed * 1000 + episode_index; same schedule required for both policies",
+    "initial_state_digest_scope": "actual roots, joints, raw actions and EMA memory; stale processed output cache excluded; startup dynamics use matched seed and saved binding",
+    "goal_distribution_override": {
+      "distribution": "six audited cardinal goals in deterministic cyclic order",
+      "fixed_during_trial": true,
+      "update_goal_on_success": false,
+      "time_resampling": "time_left set beyond external horizon after each reset",
+      "reset_sampler": "original resampler runs, then its orientation is replaced by the assigned goal"
+    },
+    "metric": "full-quaternion reach <=0.16 rad before any object_out_of_reach termination",
+    "stopping": "diagnostic trial ends at first reach, drop, original environment termination, or external cap",
+    "initial_reach": "counts as diagnostic reach and is separately recorded",
+    "simultaneous_drop_and_reach": "drop takes precedence",
+    "not_autonomous_semantic_success": true,
+    "teacher_used": false,
+    "formal_trials_used": false,
+    "formal_condition": null,
+    "formal_release_sha256": null,
+    "pose_source": "calibrated GS object plus black hand occlusion, frozen RGB CNN",
+    "full_scene_rgb": false,
+    "visual_noise_added_to_cnn_pose": false,
+    "noise_cfg": {
+      "enabled": true,
+      "joint_enabled": true,
+      "joint_noise_std": 0.005,
+      "joint_bias_std": 0.01,
+      "joint_delay_max_steps": 1,
+      "max_period": 3,
+      "jitter_probability": 0.1,
+      "failure_probability": 0.3,
+      "position_noise": 0.012,
+      "position_bias": 0.012,
+      "rotation_noise_deg": 1.0,
+      "rotation_bias_deg": 0.1,
+      "failure_position_extent": 0.15
+    },
+    "physical_randomization": "unchanged startup and reset events",
+    "step_dt": 0.03333333333333333,
+    "external_max_steps": 3600,
+    "external_horizon_seconds": 120.0,
+    "preserved_environment_episode_seconds": 20.0,
+    "policy_inputs": [
+      "proprio109",
+      "current_noisy_pose7",
+      "continuous_latent768"
+    ],
+    "ground_truth_scope": "simulation sensor generation and evaluator diagnostics only; collect-only pose observation is excluded from policy inputs",
+    "source_sha256": {
+      "evaluate.py": "1afb75d2dce26051a63b58d9407095392aafdec8ff2ca33d4aea5263fc29b4c9",
+      "model.py": "7e69500b12808df7912b615b58f39288e92d3100c9b02d86f5c10d30b061c582",
+      "goals.py": "125de050472754c34118c01b375ad2962cfbec14e1ec0bb07c0d4cdfd54cb0f0",
+      "perception.py": "d5298b33ccc890caee24534733df7bf3518d8de681c9caba3f42e0f208783219"
+    },
+    "arguments": {
+      "episodes": 20,
+      "seed": 183221,
+      "policy": "latent",
+      "checkpoint": "<runtime-path-redacted>",
+      "student_checkpoint": "<runtime-path-redacted>",
+      "text_cache": "<runtime-path-redacted>",
+      "original_asset": "<runtime-path-redacted>",
+      "output": "<runtime-path-redacted>",
+      "formal_release": null,
+      "formal_condition": null,
+      "prepare_only": false,
+      "max_steps": 3600,
+      "pose_source": "gs_cnn",
+      "pose_checkpoint": "<runtime-path-redacted>",
+      "camera_calibration": "<runtime-path-redacted>",
+      "task": "Isaac-ViserDex-Repose-Revo3",
+      "livestream": 0,
+      "xr": false,
+      "device": "cuda:0",
+      "visualizer": [],
+      "verbose": false,
+      "info": false,
+      "experience": "",
+      "deterministic": false,
+      "kit_args": "",
+      "anim_recording_enabled": false,
+      "anim_recording_start_time": 0,
+      "anim_recording_stop_time": 10,
+      "device_explicit": true,
+      "preset_overrides": [
+        "env.sim.physics.solver_cfg.nconmax=4096",
+        "env.sim.physics.solver_cfg.njmax=1024"
+      ],
+      "num_envs": 1,
+      "kit_visualizer": false
+    },
+    "estimator": {
+      "checkpoint": "<runtime-path-redacted>",
+      "checkpoint_sha256": "6a940233e65146bf34f1051a593727f79fa0821d0d8bcc7feec18b07a67794ed",
+      "keypoints_sha256": "d5e65f06e32872cfbf5cf2147179dcabb604911b0b8c2a283effbb2af10dcd01",
+      "image_size": [
+        120,
+        120
+      ],
+      "pose_frame": "right_hand_base_link",
+      "quaternion_order": "xyzw",
+      "position_unit": "m",
+      "cnn_preprocessing": [
+        "binary_opening",
+        "released_network_resize_and_normalization"
+      ],
+      "visual_noise_added_to_cnn_pose": false,
+      "ground_truth_fallback": false
+    },
+    "camera": {
+      "image_protocol": "original_gsplat_object_plus_depth_ordered_black_hand_occlusion",
+      "raw_calibration_size": [
+        1280,
+        1024
+      ],
+      "cnn_image_size": [
+        120,
+        120
+      ],
+      "camera_intrinsics": [
+        [
+          122.86667490224502,
+          0.0,
+          60.31119860275362
+        ],
+        [
+          0.0,
+          153.5033526224968,
+          58.38762604230718
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "T_base_camera": [
+        [
+          0.09686958975171941,
+          -0.7892732850133177,
+          -0.6063530029163036,
+          0.2905681944462764
+        ],
+        [
+          0.9402422071523159,
+          0.27237946668979046,
+          -0.20433799943996125,
+          0.06494179774601874
+        ],
+        [
+          0.32643663163112346,
+          -0.5503245475990239,
+          0.7684933427423132,
+          -0.2447436270886566
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "T_world_camera_env0": [
+        [
+          -0.3264366581128613,
+          0.5503246258134735,
+          -0.7684932754835058,
+          0.3647436201572418
+        ],
+        [
+          0.9402421932162344,
+          0.27237954366345374,
+          -0.20433796096079226,
+          0.06494180113077164
+        ],
+        [
+          0.096869635779394,
+          -0.7892732039141765,
+          -0.6063531011275678,
+          0.8005682229995728
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "T_world_camera_expected_env0": [
+        [
+          -0.3264366316311234,
+          0.5503245475990238,
+          -0.768493342742313,
+          0.3647436244064475
+        ],
+        [
+          0.9402422071523157,
+          0.2723794666897904,
+          -0.2043379994399612,
+          0.06494179774601871
+        ],
+        [
+          0.09686958975171939,
+          -0.7892732850133175,
+          -0.6063530029163035,
+          0.8005681849095332
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "maximum_position_error_m": 3.809003956689594e-08,
+      "maximum_rotation_matrix_abs_error": 9.82112643432842e-08,
+      "maximum_extrinsic_abs_error": 9.82112643432842e-08,
+      "num_envs_checked": 1,
+      "extrinsic_position_tolerance_m_per_axis_max": [
+        1.0596046447753906e-06,
+        1.0149011611938476e-06,
+        1.1192092895507812e-06
+      ],
+      "extrinsic_rotation_abs_tolerance": 1e-06,
+      "distortion": "GS and ray camera use rectified pinhole rays; real RGB must use the same undistortion",
+      "full_hand_rgb_in_network_input": false,
+      "calibration_sha256": {
+        "hikrobot_DB0447679_1280x1024_intrinsics.json": "80742054a501a20d29d5fcb9602e2a0d5fa28d49a50aba97e8bec23cdf99955b",
+        "hikrobot_DB0447679_1280x1024_extrinsics_revo3_20261022.json": "8fba74d72baf2ddf1565d675d9e64731ca8b61f65d569e0f39f07f1986b32ca4"
+      }
+    }
+  },
+  "simulated/candidate_183222": {
+    "version": "pose_latent_student_diagnostic_v1",
+    "policy": "latent",
+    "checkpoint_sha256": "052d6f23fcd3aa8798993e9435a02961f5a9d3fcdbc0f199ed567321b8fbb984",
+    "checkpoint": {
+      "format": "pose_latent_student_v1",
+      "stage": "adapt",
+      "completed_updates": 400
+    },
+    "original_student_sha256": "022f963f3fa177cc84d3ca14888ba2872e594577ccf1614713834eb10f9336f1",
+    "physical_environment_binding": {
+      "source_environment": "<runtime-path-redacted>",
+      "source_environment_sha256": "f8d5eef6ac7fdf56b37cfc54095d1918dfa6acd62821637a05f3ca65584318df",
+      "contract_sha256": "8845592f802e8badeccce52ed332a8453e50a80edd93c03370516077f21c6279",
+      "assets": {
+        "robot": {
+          "sha256": "a13e3f0ac0482d88c57a9050b4095fde62cc01e9db5dd6053d6dd19ce8f0c650"
+        },
+        "object": {
+          "sha256": "0df16dfdb9c483e5b1e1ddc28b479afb44e2eac34d9a83955e44a3788057ae92"
+        }
+      },
+      "physics": "isaaclab_newton.physics.mjwarp_manager:NewtonMJWarpManager",
+      "step_dt": 0.03333333333333333,
+      "nconmax": 4096,
+      "njmax": 1024
+    },
+    "goal_bank": {
+      "asset_sha256": "93d60bde1d00cf5398b5d31e2016663e793d8bb4cdee817421e324f47fccb4a8",
+      "cache_sha256": "579ca62922aac9e5084f13b33bf3e2cd846bc19a5aa53ed11568ef71cf252856",
+      "latent_source": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+      "colors": [
+        "red",
+        "green",
+        "blue",
+        "yellow",
+        "magenta",
+        "cyan"
+      ],
+      "symbols": [
+        "T",
+        "E",
+        "R",
+        "L",
+        "S",
+        "H"
+      ],
+      "texture_numbers": [
+        2,
+        1,
+        4,
+        6,
+        5,
+        3
+      ],
+      "normals_body": [
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "target_quaternions_world_xyzw": [
+        [
+          -0.7071067811865476,
+          0,
+          0,
+          0.7071067811865476
+        ],
+        [
+          0,
+          0.7071067811865476,
+          0,
+          0.7071067811865476
+        ],
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0.7071067811865476,
+          0,
+          0,
+          0.7071067811865476
+        ],
+        [
+          0,
+          -0.7071067811865476,
+          0,
+          0.7071067811865476
+        ]
+      ],
+      "cyan_channel_visual_name": "pale blue H",
+      "magenta_channel_visual_name": "purple S",
+      "mapping_scope": "fixed body-frame mapping in the exact released asset, not randomized face layouts"
+    },
+    "schedule": [
+      {
+        "episode": 0,
+        "trial_seed": 183222000,
+        "goal_index": 0
+      },
+      {
+        "episode": 1,
+        "trial_seed": 183222001,
+        "goal_index": 1
+      },
+      {
+        "episode": 2,
+        "trial_seed": 183222002,
+        "goal_index": 2
+      },
+      {
+        "episode": 3,
+        "trial_seed": 183222003,
+        "goal_index": 3
+      },
+      {
+        "episode": 4,
+        "trial_seed": 183222004,
+        "goal_index": 4
+      },
+      {
+        "episode": 5,
+        "trial_seed": 183222005,
+        "goal_index": 5
+      },
+      {
+        "episode": 6,
+        "trial_seed": 183222006,
+        "goal_index": 0
+      },
+      {
+        "episode": 7,
+        "trial_seed": 183222007,
+        "goal_index": 1
+      },
+      {
+        "episode": 8,
+        "trial_seed": 183222008,
+        "goal_index": 2
+      },
+      {
+        "episode": 9,
+        "trial_seed": 183222009,
+        "goal_index": 3
+      },
+      {
+        "episode": 10,
+        "trial_seed": 183222010,
+        "goal_index": 4
+      },
+      {
+        "episode": 11,
+        "trial_seed": 183222011,
+        "goal_index": 5
+      },
+      {
+        "episode": 12,
+        "trial_seed": 183222012,
+        "goal_index": 0
+      },
+      {
+        "episode": 13,
+        "trial_seed": 183222013,
+        "goal_index": 1
+      },
+      {
+        "episode": 14,
+        "trial_seed": 183222014,
+        "goal_index": 2
+      },
+      {
+        "episode": 15,
+        "trial_seed": 183222015,
+        "goal_index": 3
+      },
+      {
+        "episode": 16,
+        "trial_seed": 183222016,
+        "goal_index": 4
+      },
+      {
+        "episode": 17,
+        "trial_seed": 183222017,
+        "goal_index": 5
+      },
+      {
+        "episode": 18,
+        "trial_seed": 183222018,
+        "goal_index": 0
+      },
+      {
+        "episode": 19,
+        "trial_seed": 183222019,
+        "goal_index": 1
+      }
+    ],
+    "startup_randomization_seed": 183222,
+    "reset_seed_rule": "base_seed * 1000 + episode_index; same schedule required for both policies",
+    "initial_state_digest_scope": "actual roots, joints, raw actions and EMA memory; stale processed output cache excluded; startup dynamics use matched seed and saved binding",
+    "goal_distribution_override": {
+      "distribution": "six audited cardinal goals in deterministic cyclic order",
+      "fixed_during_trial": true,
+      "update_goal_on_success": false,
+      "time_resampling": "time_left set beyond external horizon after each reset",
+      "reset_sampler": "original resampler runs, then its orientation is replaced by the assigned goal"
+    },
+    "metric": "full-quaternion reach <=0.16 rad before any object_out_of_reach termination",
+    "stopping": "diagnostic trial ends at first reach, drop, original environment termination, or external cap",
+    "initial_reach": "counts as diagnostic reach and is separately recorded",
+    "simultaneous_drop_and_reach": "drop takes precedence",
+    "not_autonomous_semantic_success": true,
+    "teacher_used": false,
+    "formal_trials_used": false,
+    "formal_condition": null,
+    "formal_release_sha256": null,
+    "pose_source": "calibrated GS object plus black hand occlusion, frozen RGB CNN",
+    "full_scene_rgb": false,
+    "visual_noise_added_to_cnn_pose": false,
+    "noise_cfg": {
+      "enabled": true,
+      "joint_enabled": true,
+      "joint_noise_std": 0.005,
+      "joint_bias_std": 0.01,
+      "joint_delay_max_steps": 1,
+      "max_period": 3,
+      "jitter_probability": 0.1,
+      "failure_probability": 0.3,
+      "position_noise": 0.012,
+      "position_bias": 0.012,
+      "rotation_noise_deg": 1.0,
+      "rotation_bias_deg": 0.1,
+      "failure_position_extent": 0.15
+    },
+    "physical_randomization": "unchanged startup and reset events",
+    "step_dt": 0.03333333333333333,
+    "external_max_steps": 3600,
+    "external_horizon_seconds": 120.0,
+    "preserved_environment_episode_seconds": 20.0,
+    "policy_inputs": [
+      "proprio109",
+      "current_noisy_pose7",
+      "continuous_latent768"
+    ],
+    "ground_truth_scope": "simulation sensor generation and evaluator diagnostics only; collect-only pose observation is excluded from policy inputs",
+    "source_sha256": {
+      "evaluate.py": "1afb75d2dce26051a63b58d9407095392aafdec8ff2ca33d4aea5263fc29b4c9",
+      "model.py": "7e69500b12808df7912b615b58f39288e92d3100c9b02d86f5c10d30b061c582",
+      "goals.py": "125de050472754c34118c01b375ad2962cfbec14e1ec0bb07c0d4cdfd54cb0f0",
+      "perception.py": "d5298b33ccc890caee24534733df7bf3518d8de681c9caba3f42e0f208783219"
+    },
+    "arguments": {
+      "episodes": 20,
+      "seed": 183222,
+      "policy": "latent",
+      "checkpoint": "<runtime-path-redacted>",
+      "student_checkpoint": "<runtime-path-redacted>",
+      "text_cache": "<runtime-path-redacted>",
+      "original_asset": "<runtime-path-redacted>",
+      "output": "<runtime-path-redacted>",
+      "formal_release": null,
+      "formal_condition": null,
+      "prepare_only": false,
+      "max_steps": 3600,
+      "pose_source": "gs_cnn",
+      "pose_checkpoint": "<runtime-path-redacted>",
+      "camera_calibration": "<runtime-path-redacted>",
+      "task": "Isaac-ViserDex-Repose-Revo3",
+      "livestream": 0,
+      "xr": false,
+      "device": "cuda:0",
+      "visualizer": [],
+      "verbose": false,
+      "info": false,
+      "experience": "",
+      "deterministic": false,
+      "kit_args": "",
+      "anim_recording_enabled": false,
+      "anim_recording_start_time": 0,
+      "anim_recording_stop_time": 10,
+      "device_explicit": true,
+      "preset_overrides": [
+        "env.sim.physics.solver_cfg.nconmax=4096",
+        "env.sim.physics.solver_cfg.njmax=1024"
+      ],
+      "num_envs": 1,
+      "kit_visualizer": false
+    },
+    "estimator": {
+      "checkpoint": "<runtime-path-redacted>",
+      "checkpoint_sha256": "6a940233e65146bf34f1051a593727f79fa0821d0d8bcc7feec18b07a67794ed",
+      "keypoints_sha256": "d5e65f06e32872cfbf5cf2147179dcabb604911b0b8c2a283effbb2af10dcd01",
+      "image_size": [
+        120,
+        120
+      ],
+      "pose_frame": "right_hand_base_link",
+      "quaternion_order": "xyzw",
+      "position_unit": "m",
+      "cnn_preprocessing": [
+        "binary_opening",
+        "released_network_resize_and_normalization"
+      ],
+      "visual_noise_added_to_cnn_pose": false,
+      "ground_truth_fallback": false
+    },
+    "camera": {
+      "image_protocol": "original_gsplat_object_plus_depth_ordered_black_hand_occlusion",
+      "raw_calibration_size": [
+        1280,
+        1024
+      ],
+      "cnn_image_size": [
+        120,
+        120
+      ],
+      "camera_intrinsics": [
+        [
+          122.86667490224502,
+          0.0,
+          60.31119860275362
+        ],
+        [
+          0.0,
+          153.5033526224968,
+          58.38762604230718
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "T_base_camera": [
+        [
+          0.09686958975171941,
+          -0.7892732850133177,
+          -0.6063530029163036,
+          0.2905681944462764
+        ],
+        [
+          0.9402422071523159,
+          0.27237946668979046,
+          -0.20433799943996125,
+          0.06494179774601874
+        ],
+        [
+          0.32643663163112346,
+          -0.5503245475990239,
+          0.7684933427423132,
+          -0.2447436270886566
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "T_world_camera_env0": [
+        [
+          -0.3264366581128613,
+          0.5503246258134735,
+          -0.7684932754835058,
+          0.3647436201572418
+        ],
+        [
+          0.9402421932162344,
+          0.27237954366345374,
+          -0.20433796096079226,
+          0.06494180113077164
+        ],
+        [
+          0.096869635779394,
+          -0.7892732039141765,
+          -0.6063531011275678,
+          0.8005682229995728
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "T_world_camera_expected_env0": [
+        [
+          -0.3264366316311234,
+          0.5503245475990238,
+          -0.768493342742313,
+          0.3647436244064475
+        ],
+        [
+          0.9402422071523157,
+          0.2723794666897904,
+          -0.2043379994399612,
+          0.06494179774601871
+        ],
+        [
+          0.09686958975171939,
+          -0.7892732850133175,
+          -0.6063530029163035,
+          0.8005681849095332
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "maximum_position_error_m": 3.809003956689594e-08,
+      "maximum_rotation_matrix_abs_error": 9.82112643432842e-08,
+      "maximum_extrinsic_abs_error": 9.82112643432842e-08,
+      "num_envs_checked": 1,
+      "extrinsic_position_tolerance_m_per_axis_max": [
+        1.0596046447753906e-06,
+        1.0149011611938476e-06,
+        1.1192092895507812e-06
+      ],
+      "extrinsic_rotation_abs_tolerance": 1e-06,
+      "distortion": "GS and ray camera use rectified pinhole rays; real RGB must use the same undistortion",
+      "full_hand_rgb_in_network_input": false,
+      "calibration_sha256": {
+        "hikrobot_DB0447679_1280x1024_intrinsics.json": "80742054a501a20d29d5fcb9602e2a0d5fa28d49a50aba97e8bec23cdf99955b",
+        "hikrobot_DB0447679_1280x1024_extrinsics_revo3_20261022.json": "8fba74d72baf2ddf1565d675d9e64731ca8b61f65d569e0f39f07f1986b32ca4"
+      }
+    }
+  },
+  "gs_cnn/candidate_183221": {
+    "version": "pose_latent_student_diagnostic_v1",
+    "policy": "latent",
+    "checkpoint_sha256": "25f6186dfd39bd85276e938b4de16737527a28f66ee66aa10de4a95979e0d0c7",
+    "checkpoint": {
+      "format": "pose_latent_student_v1",
+      "stage": "adapt",
+      "completed_updates": 400
+    },
+    "original_student_sha256": "022f963f3fa177cc84d3ca14888ba2872e594577ccf1614713834eb10f9336f1",
+    "physical_environment_binding": {
+      "source_environment": "<runtime-path-redacted>",
+      "source_environment_sha256": "f8d5eef6ac7fdf56b37cfc54095d1918dfa6acd62821637a05f3ca65584318df",
+      "contract_sha256": "8845592f802e8badeccce52ed332a8453e50a80edd93c03370516077f21c6279",
+      "assets": {
+        "robot": {
+          "sha256": "a13e3f0ac0482d88c57a9050b4095fde62cc01e9db5dd6053d6dd19ce8f0c650"
+        },
+        "object": {
+          "sha256": "0df16dfdb9c483e5b1e1ddc28b479afb44e2eac34d9a83955e44a3788057ae92"
+        }
+      },
+      "physics": "isaaclab_newton.physics.mjwarp_manager:NewtonMJWarpManager",
+      "step_dt": 0.03333333333333333,
+      "nconmax": 4096,
+      "njmax": 1024
+    },
+    "goal_bank": {
+      "asset_sha256": "93d60bde1d00cf5398b5d31e2016663e793d8bb4cdee817421e324f47fccb4a8",
+      "cache_sha256": "579ca62922aac9e5084f13b33bf3e2cd846bc19a5aa53ed11568ef71cf252856",
+      "latent_source": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+      "colors": [
+        "red",
+        "green",
+        "blue",
+        "yellow",
+        "magenta",
+        "cyan"
+      ],
+      "symbols": [
+        "T",
+        "E",
+        "R",
+        "L",
+        "S",
+        "H"
+      ],
+      "texture_numbers": [
+        2,
+        1,
+        4,
+        6,
+        5,
+        3
+      ],
+      "normals_body": [
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "target_quaternions_world_xyzw": [
+        [
+          -0.7071067811865476,
+          0,
+          0,
+          0.7071067811865476
+        ],
+        [
+          0,
+          0.7071067811865476,
+          0,
+          0.7071067811865476
+        ],
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0.7071067811865476,
+          0,
+          0,
+          0.7071067811865476
+        ],
+        [
+          0,
+          -0.7071067811865476,
+          0,
+          0.7071067811865476
+        ]
+      ],
+      "cyan_channel_visual_name": "pale blue H",
+      "magenta_channel_visual_name": "purple S",
+      "mapping_scope": "fixed body-frame mapping in the exact released asset, not randomized face layouts"
+    },
+    "schedule": [
+      {
+        "episode": 0,
+        "trial_seed": 183221000,
+        "goal_index": 2
+      },
+      {
+        "episode": 1,
+        "trial_seed": 183221001,
+        "goal_index": 3
+      },
+      {
+        "episode": 2,
+        "trial_seed": 183221002,
+        "goal_index": 4
+      },
+      {
+        "episode": 3,
+        "trial_seed": 183221003,
+        "goal_index": 5
+      },
+      {
+        "episode": 4,
+        "trial_seed": 183221004,
+        "goal_index": 0
+      },
+      {
+        "episode": 5,
+        "trial_seed": 183221005,
+        "goal_index": 1
+      },
+      {
+        "episode": 6,
+        "trial_seed": 183221006,
+        "goal_index": 2
+      },
+      {
+        "episode": 7,
+        "trial_seed": 183221007,
+        "goal_index": 3
+      },
+      {
+        "episode": 8,
+        "trial_seed": 183221008,
+        "goal_index": 4
+      },
+      {
+        "episode": 9,
+        "trial_seed": 183221009,
+        "goal_index": 5
+      },
+      {
+        "episode": 10,
+        "trial_seed": 183221010,
+        "goal_index": 0
+      },
+      {
+        "episode": 11,
+        "trial_seed": 183221011,
+        "goal_index": 1
+      },
+      {
+        "episode": 12,
+        "trial_seed": 183221012,
+        "goal_index": 2
+      },
+      {
+        "episode": 13,
+        "trial_seed": 183221013,
+        "goal_index": 3
+      },
+      {
+        "episode": 14,
+        "trial_seed": 183221014,
+        "goal_index": 4
+      },
+      {
+        "episode": 15,
+        "trial_seed": 183221015,
+        "goal_index": 5
+      },
+      {
+        "episode": 16,
+        "trial_seed": 183221016,
+        "goal_index": 0
+      },
+      {
+        "episode": 17,
+        "trial_seed": 183221017,
+        "goal_index": 1
+      },
+      {
+        "episode": 18,
+        "trial_seed": 183221018,
+        "goal_index": 2
+      },
+      {
+        "episode": 19,
+        "trial_seed": 183221019,
+        "goal_index": 3
+      }
+    ],
+    "startup_randomization_seed": 183221,
+    "reset_seed_rule": "base_seed * 1000 + episode_index; same schedule required for both policies",
+    "initial_state_digest_scope": "actual roots, joints, raw actions and EMA memory; stale processed output cache excluded; startup dynamics use matched seed and saved binding",
+    "goal_distribution_override": {
+      "distribution": "six audited cardinal goals in deterministic cyclic order",
+      "fixed_during_trial": true,
+      "update_goal_on_success": false,
+      "time_resampling": "time_left set beyond external horizon after each reset",
+      "reset_sampler": "original resampler runs, then its orientation is replaced by the assigned goal"
+    },
+    "metric": "full-quaternion reach <=0.16 rad before any object_out_of_reach termination",
+    "stopping": "diagnostic trial ends at first reach, drop, original environment termination, or external cap",
+    "initial_reach": "counts as diagnostic reach and is separately recorded",
+    "simultaneous_drop_and_reach": "drop takes precedence",
+    "not_autonomous_semantic_success": true,
+    "teacher_used": false,
+    "formal_trials_used": false,
+    "formal_condition": null,
+    "formal_release_sha256": null,
+    "pose_source": "calibrated GS object plus black hand occlusion, frozen RGB CNN",
+    "full_scene_rgb": false,
+    "visual_noise_added_to_cnn_pose": false,
+    "noise_cfg": {
+      "enabled": true,
+      "joint_enabled": true,
+      "joint_noise_std": 0.005,
+      "joint_bias_std": 0.01,
+      "joint_delay_max_steps": 1,
+      "max_period": 3,
+      "jitter_probability": 0.1,
+      "failure_probability": 0.3,
+      "position_noise": 0.012,
+      "position_bias": 0.012,
+      "rotation_noise_deg": 1.0,
+      "rotation_bias_deg": 0.1,
+      "failure_position_extent": 0.15
+    },
+    "physical_randomization": "unchanged startup and reset events",
+    "step_dt": 0.03333333333333333,
+    "external_max_steps": 3600,
+    "external_horizon_seconds": 120.0,
+    "preserved_environment_episode_seconds": 20.0,
+    "policy_inputs": [
+      "proprio109",
+      "current_noisy_pose7",
+      "continuous_latent768"
+    ],
+    "ground_truth_scope": "simulation sensor generation and evaluator diagnostics only; collect-only pose observation is excluded from policy inputs",
+    "source_sha256": {
+      "evaluate.py": "1afb75d2dce26051a63b58d9407095392aafdec8ff2ca33d4aea5263fc29b4c9",
+      "model.py": "7e69500b12808df7912b615b58f39288e92d3100c9b02d86f5c10d30b061c582",
+      "goals.py": "125de050472754c34118c01b375ad2962cfbec14e1ec0bb07c0d4cdfd54cb0f0",
+      "perception.py": "d5298b33ccc890caee24534733df7bf3518d8de681c9caba3f42e0f208783219"
+    },
+    "arguments": {
+      "episodes": 20,
+      "seed": 183221,
+      "policy": "latent",
+      "checkpoint": "<runtime-path-redacted>",
+      "student_checkpoint": "<runtime-path-redacted>",
+      "text_cache": "<runtime-path-redacted>",
+      "original_asset": "<runtime-path-redacted>",
+      "output": "<runtime-path-redacted>",
+      "formal_release": null,
+      "formal_condition": null,
+      "prepare_only": false,
+      "max_steps": 3600,
+      "pose_source": "gs_cnn",
+      "pose_checkpoint": "<runtime-path-redacted>",
+      "camera_calibration": "<runtime-path-redacted>",
+      "task": "Isaac-ViserDex-Repose-Revo3",
+      "livestream": 0,
+      "xr": false,
+      "device": "cuda:0",
+      "visualizer": [],
+      "verbose": false,
+      "info": false,
+      "experience": "",
+      "deterministic": false,
+      "kit_args": "",
+      "anim_recording_enabled": false,
+      "anim_recording_start_time": 0,
+      "anim_recording_stop_time": 10,
+      "device_explicit": true,
+      "preset_overrides": [
+        "env.sim.physics.solver_cfg.nconmax=4096",
+        "env.sim.physics.solver_cfg.njmax=1024"
+      ],
+      "num_envs": 1,
+      "kit_visualizer": false
+    },
+    "estimator": {
+      "checkpoint": "<runtime-path-redacted>",
+      "checkpoint_sha256": "6a940233e65146bf34f1051a593727f79fa0821d0d8bcc7feec18b07a67794ed",
+      "keypoints_sha256": "d5e65f06e32872cfbf5cf2147179dcabb604911b0b8c2a283effbb2af10dcd01",
+      "image_size": [
+        120,
+        120
+      ],
+      "pose_frame": "right_hand_base_link",
+      "quaternion_order": "xyzw",
+      "position_unit": "m",
+      "cnn_preprocessing": [
+        "binary_opening",
+        "released_network_resize_and_normalization"
+      ],
+      "visual_noise_added_to_cnn_pose": false,
+      "ground_truth_fallback": false
+    },
+    "camera": {
+      "image_protocol": "original_gsplat_object_plus_depth_ordered_black_hand_occlusion",
+      "raw_calibration_size": [
+        1280,
+        1024
+      ],
+      "cnn_image_size": [
+        120,
+        120
+      ],
+      "camera_intrinsics": [
+        [
+          122.86667490224502,
+          0.0,
+          60.31119860275362
+        ],
+        [
+          0.0,
+          153.5033526224968,
+          58.38762604230718
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "T_base_camera": [
+        [
+          0.09686958975171941,
+          -0.7892732850133177,
+          -0.6063530029163036,
+          0.2905681944462764
+        ],
+        [
+          0.9402422071523159,
+          0.27237946668979046,
+          -0.20433799943996125,
+          0.06494179774601874
+        ],
+        [
+          0.32643663163112346,
+          -0.5503245475990239,
+          0.7684933427423132,
+          -0.2447436270886566
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "T_world_camera_env0": [
+        [
+          -0.3264366581128613,
+          0.5503246258134735,
+          -0.7684932754835058,
+          0.3647436201572418
+        ],
+        [
+          0.9402421932162344,
+          0.27237954366345374,
+          -0.20433796096079226,
+          0.06494180113077164
+        ],
+        [
+          0.096869635779394,
+          -0.7892732039141765,
+          -0.6063531011275678,
+          0.8005682229995728
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "T_world_camera_expected_env0": [
+        [
+          -0.3264366316311234,
+          0.5503245475990238,
+          -0.768493342742313,
+          0.3647436244064475
+        ],
+        [
+          0.9402422071523157,
+          0.2723794666897904,
+          -0.2043379994399612,
+          0.06494179774601871
+        ],
+        [
+          0.09686958975171939,
+          -0.7892732850133175,
+          -0.6063530029163035,
+          0.8005681849095332
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "maximum_position_error_m": 3.809003956689594e-08,
+      "maximum_rotation_matrix_abs_error": 9.82112643432842e-08,
+      "maximum_extrinsic_abs_error": 9.82112643432842e-08,
+      "num_envs_checked": 1,
+      "extrinsic_position_tolerance_m_per_axis_max": [
+        1.0596046447753906e-06,
+        1.0149011611938476e-06,
+        1.1192092895507812e-06
+      ],
+      "extrinsic_rotation_abs_tolerance": 1e-06,
+      "distortion": "GS and ray camera use rectified pinhole rays; real RGB must use the same undistortion",
+      "full_hand_rgb_in_network_input": false,
+      "calibration_sha256": {
+        "hikrobot_DB0447679_1280x1024_intrinsics.json": "80742054a501a20d29d5fcb9602e2a0d5fa28d49a50aba97e8bec23cdf99955b",
+        "hikrobot_DB0447679_1280x1024_extrinsics_revo3_20261022.json": "8fba74d72baf2ddf1565d675d9e64731ca8b61f65d569e0f39f07f1986b32ca4"
+      }
+    }
+  },
+  "gs_cnn/candidate_183222": {
+    "version": "pose_latent_student_diagnostic_v1",
+    "policy": "latent",
+    "checkpoint_sha256": "25f6186dfd39bd85276e938b4de16737527a28f66ee66aa10de4a95979e0d0c7",
+    "checkpoint": {
+      "format": "pose_latent_student_v1",
+      "stage": "adapt",
+      "completed_updates": 400
+    },
+    "original_student_sha256": "022f963f3fa177cc84d3ca14888ba2872e594577ccf1614713834eb10f9336f1",
+    "physical_environment_binding": {
+      "source_environment": "<runtime-path-redacted>",
+      "source_environment_sha256": "f8d5eef6ac7fdf56b37cfc54095d1918dfa6acd62821637a05f3ca65584318df",
+      "contract_sha256": "8845592f802e8badeccce52ed332a8453e50a80edd93c03370516077f21c6279",
+      "assets": {
+        "robot": {
+          "sha256": "a13e3f0ac0482d88c57a9050b4095fde62cc01e9db5dd6053d6dd19ce8f0c650"
+        },
+        "object": {
+          "sha256": "0df16dfdb9c483e5b1e1ddc28b479afb44e2eac34d9a83955e44a3788057ae92"
+        }
+      },
+      "physics": "isaaclab_newton.physics.mjwarp_manager:NewtonMJWarpManager",
+      "step_dt": 0.03333333333333333,
+      "nconmax": 4096,
+      "njmax": 1024
+    },
+    "goal_bank": {
+      "asset_sha256": "93d60bde1d00cf5398b5d31e2016663e793d8bb4cdee817421e324f47fccb4a8",
+      "cache_sha256": "579ca62922aac9e5084f13b33bf3e2cd846bc19a5aa53ed11568ef71cf252856",
+      "latent_source": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+      "colors": [
+        "red",
+        "green",
+        "blue",
+        "yellow",
+        "magenta",
+        "cyan"
+      ],
+      "symbols": [
+        "T",
+        "E",
+        "R",
+        "L",
+        "S",
+        "H"
+      ],
+      "texture_numbers": [
+        2,
+        1,
+        4,
+        6,
+        5,
+        3
+      ],
+      "normals_body": [
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "target_quaternions_world_xyzw": [
+        [
+          -0.7071067811865476,
+          0,
+          0,
+          0.7071067811865476
+        ],
+        [
+          0,
+          0.7071067811865476,
+          0,
+          0.7071067811865476
+        ],
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0.7071067811865476,
+          0,
+          0,
+          0.7071067811865476
+        ],
+        [
+          0,
+          -0.7071067811865476,
+          0,
+          0.7071067811865476
+        ]
+      ],
+      "cyan_channel_visual_name": "pale blue H",
+      "magenta_channel_visual_name": "purple S",
+      "mapping_scope": "fixed body-frame mapping in the exact released asset, not randomized face layouts"
+    },
+    "schedule": [
+      {
+        "episode": 0,
+        "trial_seed": 183222000,
+        "goal_index": 0
+      },
+      {
+        "episode": 1,
+        "trial_seed": 183222001,
+        "goal_index": 1
+      },
+      {
+        "episode": 2,
+        "trial_seed": 183222002,
+        "goal_index": 2
+      },
+      {
+        "episode": 3,
+        "trial_seed": 183222003,
+        "goal_index": 3
+      },
+      {
+        "episode": 4,
+        "trial_seed": 183222004,
+        "goal_index": 4
+      },
+      {
+        "episode": 5,
+        "trial_seed": 183222005,
+        "goal_index": 5
+      },
+      {
+        "episode": 6,
+        "trial_seed": 183222006,
+        "goal_index": 0
+      },
+      {
+        "episode": 7,
+        "trial_seed": 183222007,
+        "goal_index": 1
+      },
+      {
+        "episode": 8,
+        "trial_seed": 183222008,
+        "goal_index": 2
+      },
+      {
+        "episode": 9,
+        "trial_seed": 183222009,
+        "goal_index": 3
+      },
+      {
+        "episode": 10,
+        "trial_seed": 183222010,
+        "goal_index": 4
+      },
+      {
+        "episode": 11,
+        "trial_seed": 183222011,
+        "goal_index": 5
+      },
+      {
+        "episode": 12,
+        "trial_seed": 183222012,
+        "goal_index": 0
+      },
+      {
+        "episode": 13,
+        "trial_seed": 183222013,
+        "goal_index": 1
+      },
+      {
+        "episode": 14,
+        "trial_seed": 183222014,
+        "goal_index": 2
+      },
+      {
+        "episode": 15,
+        "trial_seed": 183222015,
+        "goal_index": 3
+      },
+      {
+        "episode": 16,
+        "trial_seed": 183222016,
+        "goal_index": 4
+      },
+      {
+        "episode": 17,
+        "trial_seed": 183222017,
+        "goal_index": 5
+      },
+      {
+        "episode": 18,
+        "trial_seed": 183222018,
+        "goal_index": 0
+      },
+      {
+        "episode": 19,
+        "trial_seed": 183222019,
+        "goal_index": 1
+      }
+    ],
+    "startup_randomization_seed": 183222,
+    "reset_seed_rule": "base_seed * 1000 + episode_index; same schedule required for both policies",
+    "initial_state_digest_scope": "actual roots, joints, raw actions and EMA memory; stale processed output cache excluded; startup dynamics use matched seed and saved binding",
+    "goal_distribution_override": {
+      "distribution": "six audited cardinal goals in deterministic cyclic order",
+      "fixed_during_trial": true,
+      "update_goal_on_success": false,
+      "time_resampling": "time_left set beyond external horizon after each reset",
+      "reset_sampler": "original resampler runs, then its orientation is replaced by the assigned goal"
+    },
+    "metric": "full-quaternion reach <=0.16 rad before any object_out_of_reach termination",
+    "stopping": "diagnostic trial ends at first reach, drop, original environment termination, or external cap",
+    "initial_reach": "counts as diagnostic reach and is separately recorded",
+    "simultaneous_drop_and_reach": "drop takes precedence",
+    "not_autonomous_semantic_success": true,
+    "teacher_used": false,
+    "formal_trials_used": false,
+    "formal_condition": null,
+    "formal_release_sha256": null,
+    "pose_source": "calibrated GS object plus black hand occlusion, frozen RGB CNN",
+    "full_scene_rgb": false,
+    "visual_noise_added_to_cnn_pose": false,
+    "noise_cfg": {
+      "enabled": true,
+      "joint_enabled": true,
+      "joint_noise_std": 0.005,
+      "joint_bias_std": 0.01,
+      "joint_delay_max_steps": 1,
+      "max_period": 3,
+      "jitter_probability": 0.1,
+      "failure_probability": 0.3,
+      "position_noise": 0.012,
+      "position_bias": 0.012,
+      "rotation_noise_deg": 1.0,
+      "rotation_bias_deg": 0.1,
+      "failure_position_extent": 0.15
+    },
+    "physical_randomization": "unchanged startup and reset events",
+    "step_dt": 0.03333333333333333,
+    "external_max_steps": 3600,
+    "external_horizon_seconds": 120.0,
+    "preserved_environment_episode_seconds": 20.0,
+    "policy_inputs": [
+      "proprio109",
+      "current_noisy_pose7",
+      "continuous_latent768"
+    ],
+    "ground_truth_scope": "simulation sensor generation and evaluator diagnostics only; collect-only pose observation is excluded from policy inputs",
+    "source_sha256": {
+      "evaluate.py": "1afb75d2dce26051a63b58d9407095392aafdec8ff2ca33d4aea5263fc29b4c9",
+      "model.py": "7e69500b12808df7912b615b58f39288e92d3100c9b02d86f5c10d30b061c582",
+      "goals.py": "125de050472754c34118c01b375ad2962cfbec14e1ec0bb07c0d4cdfd54cb0f0",
+      "perception.py": "d5298b33ccc890caee24534733df7bf3518d8de681c9caba3f42e0f208783219"
+    },
+    "arguments": {
+      "episodes": 20,
+      "seed": 183222,
+      "policy": "latent",
+      "checkpoint": "<runtime-path-redacted>",
+      "student_checkpoint": "<runtime-path-redacted>",
+      "text_cache": "<runtime-path-redacted>",
+      "original_asset": "<runtime-path-redacted>",
+      "output": "<runtime-path-redacted>",
+      "formal_release": null,
+      "formal_condition": null,
+      "prepare_only": false,
+      "max_steps": 3600,
+      "pose_source": "gs_cnn",
+      "pose_checkpoint": "<runtime-path-redacted>",
+      "camera_calibration": "<runtime-path-redacted>",
+      "task": "Isaac-ViserDex-Repose-Revo3",
+      "livestream": 0,
+      "xr": false,
+      "device": "cuda:0",
+      "visualizer": [],
+      "verbose": false,
+      "info": false,
+      "experience": "",
+      "deterministic": false,
+      "kit_args": "",
+      "anim_recording_enabled": false,
+      "anim_recording_start_time": 0,
+      "anim_recording_stop_time": 10,
+      "device_explicit": true,
+      "preset_overrides": [
+        "env.sim.physics.solver_cfg.nconmax=4096",
+        "env.sim.physics.solver_cfg.njmax=1024"
+      ],
+      "num_envs": 1,
+      "kit_visualizer": false
+    },
+    "estimator": {
+      "checkpoint": "<runtime-path-redacted>",
+      "checkpoint_sha256": "6a940233e65146bf34f1051a593727f79fa0821d0d8bcc7feec18b07a67794ed",
+      "keypoints_sha256": "d5e65f06e32872cfbf5cf2147179dcabb604911b0b8c2a283effbb2af10dcd01",
+      "image_size": [
+        120,
+        120
+      ],
+      "pose_frame": "right_hand_base_link",
+      "quaternion_order": "xyzw",
+      "position_unit": "m",
+      "cnn_preprocessing": [
+        "binary_opening",
+        "released_network_resize_and_normalization"
+      ],
+      "visual_noise_added_to_cnn_pose": false,
+      "ground_truth_fallback": false
+    },
+    "camera": {
+      "image_protocol": "original_gsplat_object_plus_depth_ordered_black_hand_occlusion",
+      "raw_calibration_size": [
+        1280,
+        1024
+      ],
+      "cnn_image_size": [
+        120,
+        120
+      ],
+      "camera_intrinsics": [
+        [
+          122.86667490224502,
+          0.0,
+          60.31119860275362
+        ],
+        [
+          0.0,
+          153.5033526224968,
+          58.38762604230718
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "T_base_camera": [
+        [
+          0.09686958975171941,
+          -0.7892732850133177,
+          -0.6063530029163036,
+          0.2905681944462764
+        ],
+        [
+          0.9402422071523159,
+          0.27237946668979046,
+          -0.20433799943996125,
+          0.06494179774601874
+        ],
+        [
+          0.32643663163112346,
+          -0.5503245475990239,
+          0.7684933427423132,
+          -0.2447436270886566
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "T_world_camera_env0": [
+        [
+          -0.3264366581128613,
+          0.5503246258134735,
+          -0.7684932754835058,
+          0.3647436201572418
+        ],
+        [
+          0.9402421932162344,
+          0.27237954366345374,
+          -0.20433796096079226,
+          0.06494180113077164
+        ],
+        [
+          0.096869635779394,
+          -0.7892732039141765,
+          -0.6063531011275678,
+          0.8005682229995728
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "T_world_camera_expected_env0": [
+        [
+          -0.3264366316311234,
+          0.5503245475990238,
+          -0.768493342742313,
+          0.3647436244064475
+        ],
+        [
+          0.9402422071523157,
+          0.2723794666897904,
+          -0.2043379994399612,
+          0.06494179774601871
+        ],
+        [
+          0.09686958975171939,
+          -0.7892732850133175,
+          -0.6063530029163035,
+          0.8005681849095332
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "maximum_position_error_m": 3.809003956689594e-08,
+      "maximum_rotation_matrix_abs_error": 9.82112643432842e-08,
+      "maximum_extrinsic_abs_error": 9.82112643432842e-08,
+      "num_envs_checked": 1,
+      "extrinsic_position_tolerance_m_per_axis_max": [
+        1.0596046447753906e-06,
+        1.0149011611938476e-06,
+        1.1192092895507812e-06
+      ],
+      "extrinsic_rotation_abs_tolerance": 1e-06,
+      "distortion": "GS and ray camera use rectified pinhole rays; real RGB must use the same undistortion",
+      "full_hand_rgb_in_network_input": false,
+      "calibration_sha256": {
+        "hikrobot_DB0447679_1280x1024_intrinsics.json": "80742054a501a20d29d5fcb9602e2a0d5fa28d49a50aba97e8bec23cdf99955b",
+        "hikrobot_DB0447679_1280x1024_extrinsics_revo3_20261022.json": "8fba74d72baf2ddf1565d675d9e64731ca8b61f65d569e0f39f07f1986b32ca4"
+      }
+    }
+  }
+}

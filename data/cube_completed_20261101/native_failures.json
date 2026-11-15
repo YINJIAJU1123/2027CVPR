@@ -1,0 +1,210 @@
+{
+  "status": "verified_descriptive_diagnosis",
+  "scope": "All five failures in the completed frozen 40-trial Astra cohort; no reclassification of scored outcomes",
+  "counts": {
+    "unbound_inspection_drop": 3,
+    "wrong_semantic_binding_false_stop": 1,
+    "unbound_abstention": 1
+  },
+  "failures": [
+    {
+      "trial_seed": 185451007,
+      "category": "unbound_inspection_drop",
+      "scored_reason": "drop",
+      "goal_index": 1,
+      "goal_symbol": "E",
+      "declared_goal": null,
+      "steps": 365,
+      "minimum_true_error_rad": 0.8366976287666203,
+      "final_true_error_rad": 2.5179444561321658,
+      "stop_measurement": null,
+      "steps_since_last_applied_action": 59,
+      "applied_actions": [
+        {
+          "call": 1,
+          "applied_step": 111,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "cyan",
+            "steps": 30
+          }
+        },
+        {
+          "call": 2,
+          "applied_step": 306,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "green",
+            "steps": 90
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 185451008,
+      "category": "wrong_semantic_binding_false_stop",
+      "scored_reason": "false_stop",
+      "goal_index": 2,
+      "goal_symbol": "R",
+      "declared_goal": 5,
+      "steps": 170,
+      "minimum_true_error_rad": 2.1589571897711393,
+      "final_true_error_rad": 3.0786671575062785,
+      "stop_measurement": {
+        "raw_error_rad": 0.05723406746983528,
+        "pending": false,
+        "decision_step": 170,
+        "corrected_error_rad": null,
+        "stop_bound_rad": null,
+        "evidence_probability": null
+      },
+      "steps_since_last_applied_action": 33,
+      "applied_actions": [
+        {
+          "call": 1,
+          "applied_step": 137,
+          "tool": "reorient_target",
+          "arguments": {
+            "goal_symbol": "R",
+            "color": "cyan",
+            "steps": 80
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 185451012,
+      "category": "unbound_inspection_drop",
+      "scored_reason": "drop",
+      "goal_index": 0,
+      "goal_symbol": "T",
+      "declared_goal": null,
+      "steps": 379,
+      "minimum_true_error_rad": 1.1806890518517328,
+      "final_true_error_rad": 2.147002076656188,
+      "stop_measurement": null,
+      "steps_since_last_applied_action": 36,
+      "applied_actions": [
+        {
+          "call": 1,
+          "applied_step": 120,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "cyan",
+            "steps": 90
+          }
+        },
+        {
+          "call": 2,
+          "applied_step": 343,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "yellow",
+            "steps": 90
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 185452012,
+      "category": "unbound_inspection_drop",
+      "scored_reason": "drop",
+      "goal_index": 2,
+      "goal_symbol": "R",
+      "declared_goal": null,
+      "steps": 360,
+      "minimum_true_error_rad": 1.406873478230242,
+      "final_true_error_rad": 2.2057634152438723,
+      "stop_measurement": null,
+      "steps_since_last_applied_action": 24,
+      "applied_actions": [
+        {
+          "call": 1,
+          "applied_step": 135,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "red",
+            "steps": 90
+          }
+        },
+        {
+          "call": 2,
+          "applied_step": 336,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "cyan",
+            "steps": 90
+          }
+        }
+      ]
+    },
+    {
+      "trial_seed": 185452015,
+      "category": "unbound_abstention",
+      "scored_reason": "abstain",
+      "goal_index": 5,
+      "goal_symbol": "H",
+      "declared_goal": null,
+      "steps": 952,
+      "minimum_true_error_rad": 0.018481907699653778,
+      "final_true_error_rad": 3.084936173646881,
+      "stop_measurement": null,
+      "steps_since_last_applied_action": 0,
+      "applied_actions": [
+        {
+          "call": 1,
+          "applied_step": 112,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "cyan",
+            "steps": 60
+          }
+        },
+        {
+          "call": 2,
+          "applied_step": 301,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "red",
+            "steps": 70
+          }
+        },
+        {
+          "call": 3,
+          "applied_step": 503,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "yellow",
+            "steps": 70
+          }
+        },
+        {
+          "call": 4,
+          "applied_step": 734,
+          "tool": "inspect_face",
+          "arguments": {
+            "color": "green",
+            "steps": 70
+          }
+        },
+        {
+          "call": 5,
+          "applied_step": 952,
+          "tool": "abstain",
+          "arguments": {}
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Proximity to inspection action does not establish the action caused a drop.",
+    "No counterfactual rollout or new model selection was performed.",
+    "Reported visual ambiguity was not independently adjudicated from images in this diagnostic.",
+    "Conditional success after correct binding must not be interpreted as unconditional local-policy reliability."
+  ],
+  "next_hypotheses": [
+    "Improve contact stability during inspection transitions before final semantic binding.",
+    "Verify uncertain letter-to-color binding before accepting geometric completion.",
+    "Acquire a more informative view when the target letter remains unreadable."
+  ]
+}

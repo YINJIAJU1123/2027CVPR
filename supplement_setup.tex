@@ -1,0 +1,13 @@
+% Shared numbering for standalone and appended supplementary material.
+\appendix
+\setcounter{figure}{0}
+\setcounter{table}{0}
+\setcounter{equation}{0}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\theequation}{S\arabic{equation}}
+% Keep hyperlink destinations distinct from the main paper.
+\renewcommand{\theHsection}{supp.\Alph{section}}
+\renewcommand{\theHfigure}{supp.\arabic{figure}}
+\renewcommand{\theHtable}{supp.\arabic{table}}
+\renewcommand{\theHequation}{supp.\arabic{equation}}

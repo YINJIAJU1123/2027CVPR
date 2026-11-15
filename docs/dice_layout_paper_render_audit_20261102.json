@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "body_pages": 8,
+  "main_total_pages": 9,
+  "supplement_pages": 10,
+  "checks": [
+    "all 240 exported rows and six counts verified",
+    "data SHA256SUMS verified",
+    "seven paired tests recomputed by table generator",
+    "independent SciPy intervals and paired tests passed",
+    "no undefined references or overfull boxes",
+    "all page contact sheets visually reviewed",
+    "final supplement pages 9 and 10 reviewed at enlarged resolution"
+  ],
+  "scope": "Current cube/dice simulation evidence only; external experiments remain TODO.",
+  "agenticrotation-2027.pdf": {
+    "sha256": "731d9a6b7eab34001c2ef82bb54ea4266c80e3f471a9aebb89774e56fefbc175",
+    "bytes": 150728
+  },
+  "agenticrotation-2027-supplement.pdf": {
+    "sha256": "7880c45bba337f1b56b9cab42a4a5e58221720ccf4daa421f15156f4b1f7547e",
+    "bytes": 187030
+  }
+}

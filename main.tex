@@ -1,0 +1,45 @@
+% Standalone main paper, including references. Compile supplyment.tex separately.
+\documentclass[10pt,twocolumn,letterpaper]{article}
+\usepackage[review]{cvpr}
+\input{preamble}
+\input{tables/result_macros}
+\input{tables/q1_summary_macros}
+\input{tables/hardware_macros}
+\input{tables/followup_macros}
+\input{tables/completed_macros}
+\input{tables/ablation_v3_macros}
+\input{tables/confirmation_image_macros}
+\input{tables/q3_inspection_macros}
+\input{tables/q3_pig_inspection_macros}
+\input{tables/dice_layout_macros}
+\definecolor{cvprblue}{rgb}{0.21,0.49,0.74}
+\usepackage[pagebackref,breaklinks,colorlinks,allcolors=cvprblue]{hyperref}
+\def\confName{CVPR}\def\confYear{2027}
+\title{REVEAL: Agentic In-Hand Manipulation for Language-Guided Visual Exploration}
+\hypersetup{pdftitle={REVEAL: Agentic In-Hand Manipulation for Language-Guided Visual Exploration},pdfauthor={Anonymous submission}}
+\author{Anonymous submission}
+\begin{document}
+\raggedbottom
+\twocolumn[{
+\maketitle
+\begin{center}
+\includegraphics[width=0.90\textwidth]{figures/imported/aimi_teaser.pdf}
+\captionof{figure}{\textbf{Language-guided visual exploration with REVEAL.} The requested face is hidden at the start. The agent chooses how to turn the object, uses the new views to identify the face, and guides the hand to present it.}
+\label{fig:teaser}
+\end{center}
+\vspace{-0.7em}
+}]
+\input{sections/00_abstract}
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{figures/pipeline_float}
+\input{sections/04_method}
+\input{sections/05_experiments}
+% Keep the Q4 protocols and tables together; start discussion in the next column.
+\newpage
+\input{sections/06_limitations}
+\clearpage
+\section*{LLM Usage Statement}
+OpenAI Codex assisted with research discussion, implementation, experiment orchestration, literature retrieval, statistical analysis, figure-layout code, and drafting and editing throughout the manuscript. A hosted vision-language model and Qwen3-VL are evaluated system components. Numerical claims are grounded in recorded experiments; unfinished work is identified explicitly. The authors are responsible for verifying the text, references, code, figures, and results before submission.
+{\small\bibliographystyle{ieeenat_fullname}\bibliography{references}}
+\end{document}

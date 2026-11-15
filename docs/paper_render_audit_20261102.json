@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "body_pages": 8,
+  "render_review": "all main/supplement page contact sheets plus enlarged main table and dice supplement pages reviewed",
+  "checks": [
+    "LaTeX compile",
+    "no undefined citations or references",
+    "no overfull boxes",
+    "8-page main body",
+    "native dice count consistency",
+    "no generated follow-up outcomes"
+  ],
+  "dice_counts": {
+    "astra": {
+      "trials": 40,
+      "success": 24
+    },
+    "vlm": {
+      "trials": 40,
+      "success": 20
+    },
+    "rule": {
+      "trials": 40,
+      "success": 17
+    }
+  },
+  "agenticrotation-2027.pdf": {
+    "sha256": "3e70d035d084a196a8c546c15d92440d904eb56ddde87b28bf7e543c9f241eee",
+    "bytes": 151309
+  },
+  "agenticrotation-2027-supplement.pdf": {
+    "sha256": "b2b438da1a492cbfa6c9d2ec00cad49e0f6c4e3ab6c34183b721050982fe0e36",
+    "bytes": 107780
+  }
+}

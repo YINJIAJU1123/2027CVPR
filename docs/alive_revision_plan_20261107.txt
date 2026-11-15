@@ -1,0 +1,6 @@
+ALIVE revision scope, 2026-11-07
+Title: ALIVE: Agentic In-Hand Manipulation for Language-Guided Visual Exploration
+Name expansion: Agentic Language-guided In-hand Visual Exploration.
+Claims to preserve: language-directed inspection acquires evidence for identifying and presenting a requested face; the agent selects explicit tools and cached motor goals; local control continues during reasoning; ViserDex-based teacher-student motor foundation adapted to Revo3; Q3 distinguishes feedback, fresh-image and inspection-policy interventions; Q2 uses exactly three evaluation seeds and fixed trained weights; Q1 reports complete object-specific systems; Q4 pose data are simulated and independent; four-object hardware demonstrations are author-confirmed, detailed outcomes pending.
+Constraints: no new experimental outcomes, no invented hardware counts or object identities, no claim of general-purpose exploration, no claim that a hidden VLM state is distilled, no statistically significant claim for adaptive inspection, no Q2 seed-level values inferred from the two-seed aggregate, no push requested.
+Outputs: independently compilable main.tex and supplyment.tex, PDFs, editable figure sources, revision log and evidence-integrity checks. Preserve prior local changes.
