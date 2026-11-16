@@ -1,0 +1,215 @@
+{
+  "source_sha256": "752ce8a06adc9706e17b16c3d29d2b24fe298f3ca88e9f793098465fb186fe5f",
+  "scheduled": 480,
+  "common": 477,
+  "per_layout": {
+    "identity": {
+      "n": 237,
+      "newly_successful": 16,
+      "formerly_successful": 25,
+      "both_success": 80,
+      "reasons_for_lost_successes": {
+        "false_stop": 9,
+        "drop": 5,
+        "horizon": 11
+      },
+      "arms": {
+        "vlm": {
+          "correct_terminal_binding": 184,
+          "reasons": {
+            "success": 105,
+            "drop": 50,
+            "false_stop": 29,
+            "horizon": 53
+          },
+          "drop_phase": {
+            "execution": 50
+          },
+          "false_stop_with_wrong_binding": 12
+        },
+        "finetuned_control": {
+          "correct_terminal_binding": 174,
+          "reasons": {
+            "success": 96,
+            "drop": 53,
+            "false_stop": 28,
+            "horizon": 60
+          },
+          "drop_phase": {
+            "execution": 53
+          },
+          "false_stop_with_wrong_binding": 12
+        },
+        "astra": {
+          "correct_terminal_binding": 179,
+          "reasons": {
+            "success": 167,
+            "false_stop": 12,
+            "drop": 53,
+            "abstain": 4,
+            "horizon": 1
+          },
+          "drop_phase": {
+            "startup_wait": 31,
+            "execution": 16,
+            "wait": 6
+          },
+          "false_stop_with_wrong_binding": 7
+        }
+      }
+    },
+    "permuted": {
+      "n": 240,
+      "newly_successful": 15,
+      "formerly_successful": 13,
+      "both_success": 11,
+      "reasons_for_lost_successes": {
+        "horizon": 6,
+        "false_stop": 5,
+        "drop": 2
+      },
+      "arms": {
+        "vlm": {
+          "correct_terminal_binding": 43,
+          "reasons": {
+            "false_stop": 99,
+            "success": 24,
+            "drop": 60,
+            "horizon": 57
+          },
+          "drop_phase": {
+            "execution": 59,
+            "wait": 1
+          },
+          "false_stop_with_wrong_binding": 94
+        },
+        "finetuned_control": {
+          "correct_terminal_binding": 45,
+          "reasons": {
+            "false_stop": 92,
+            "horizon": 69,
+            "success": 26,
+            "drop": 53
+          },
+          "drop_phase": {
+            "execution": 53
+          },
+          "false_stop_with_wrong_binding": 91
+        },
+        "astra": {
+          "correct_terminal_binding": 168,
+          "reasons": {
+            "success": 158,
+            "false_stop": 13,
+            "drop": 50,
+            "abstain": 19
+          },
+          "drop_phase": {
+            "execution": 16,
+            "startup_wait": 30,
+            "wait": 4
+          },
+          "false_stop_with_wrong_binding": 7
+        }
+      }
+    }
+  },
+  "all_common": {
+    "n": 477,
+    "newly_successful": 31,
+    "formerly_successful": 38,
+    "both_success": 91,
+    "reasons_for_lost_successes": {
+      "false_stop": 14,
+      "drop": 7,
+      "horizon": 17
+    },
+    "arms": {
+      "vlm": {
+        "correct_terminal_binding": 227,
+        "reasons": {
+          "success": 129,
+          "drop": 110,
+          "false_stop": 128,
+          "horizon": 110
+        },
+        "drop_phase": {
+          "execution": 109,
+          "wait": 1
+        },
+        "false_stop_with_wrong_binding": 106
+      },
+      "finetuned_control": {
+        "correct_terminal_binding": 219,
+        "reasons": {
+          "success": 122,
+          "drop": 106,
+          "false_stop": 120,
+          "horizon": 129
+        },
+        "drop_phase": {
+          "execution": 106
+        },
+        "false_stop_with_wrong_binding": 103
+      },
+      "astra": {
+        "correct_terminal_binding": 347,
+        "reasons": {
+          "success": 325,
+          "false_stop": 25,
+          "drop": 103,
+          "abstain": 23,
+          "horizon": 1
+        },
+        "drop_phase": {
+          "startup_wait": 61,
+          "execution": 32,
+          "wait": 10
+        },
+        "false_stop_with_wrong_binding": 14
+      }
+    }
+  },
+  "controlled_permuted_binding": {
+    "cube": {
+      "wrong_native_slot": 13,
+      "unbound": 2,
+      "correct": 22,
+      "wrong_other_slot": 3
+    },
+    "die": {
+      "wrong_native_slot": 35,
+      "unbound": 5
+    },
+    "duck": {
+      "correct": 6,
+      "unbound": 22,
+      "wrong_native_slot": 7,
+      "wrong_other_slot": 5
+    },
+    "hedgehog": {
+      "wrong_native_slot": 21,
+      "unbound": 10,
+      "correct": 6,
+      "wrong_other_slot": 3
+    },
+    "pig": {
+      "wrong_native_slot": 30,
+      "unbound": 7,
+      "correct": 3
+    },
+    "milk_carton": {
+      "wrong_native_slot": 22,
+      "correct": 8,
+      "unbound": 9,
+      "wrong_other_slot": 1
+    }
+  },
+  "controlled_permuted_total": {
+    "wrong_native_slot": 128,
+    "unbound": 55,
+    "correct": 45,
+    "wrong_other_slot": 12
+  },
+  "interpretation": "Descriptive paired outcomes. A native-slot error means the terminal physical skill equals the original layout's slot for the requested label."
+}

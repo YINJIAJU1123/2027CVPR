@@ -1,9 +1,5 @@
 \section{Discussion and Limitations}
-\paragraph{What the studies show.}
-For a target that starts out of view, how visual evidence is gathered matters as well as how it is read. Repeating the first frame removes almost all of the benefit of feedback, and hiding the marks removes all of it, so the agent succeeds through what it sees. Choosing the inspection adds to this, and depth makes pose estimation far more reliable when fingers pass in front of the object. A model that maps instructions directly to goals does well while its training mapping holds and fails when the mapping changes, whereas an agent that looks before it binds is largely unaffected.
+For a target that starts out of view, how visual evidence is gathered matters as well as how it is read. Repeating the first frame removes almost all of the benefit of feedback, and hiding the marks removes all of it, so the agent succeeds through what it sees. Choosing the inspection adds to this, and depth makes pose estimation more reliable when fingers pass in front of the object.
 
 \paragraph{Limitations.}
-Each object has its own student and controllers, and targets come from a six-skill bank. The baselines differ in several components, so attribution comes from single-factor studies on the cube and ball; the cube inspection effect is not significant at the current sample size. We score at the stopping time without a hold period, and measure real-image pose accuracy only on the cube against a multi-view reference.
-
-\section{Conclusion}
-We presented REVEAL, which lets a dexterous hand look for a language-specified target before presenting it. An agent chooses how to inspect and binds the target once it is seen, while local controllers keep the object stable during reasoning and execution. REVEAL outperforms VLM baselines on six simulated objects and completes \HardwareAimiSuccess\% of 80 physical trials, pointing toward manipulation systems that can act on instructions about things they cannot yet see.
+Each object has its own student and controllers, and we score at stopping time without a post-stop hold period. Pose recall on real images is measured on the cube only.

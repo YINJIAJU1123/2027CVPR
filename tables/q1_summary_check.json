@@ -1,25 +1,32 @@
 {
-  "source": "data/inhand4_completed_20261103/q1_all_objects.json",
-  "source_sha256": "fdefc0df43e2492dc9b6d08c42d57381033b5d5409526bc862909fe79230ff72",
-  "raw_trials_in_mapping_study": 1440,
-  "estimand": "Post-hoc descriptive equal-object mean of common-service-eligible rates, separately by mapping. Not a pooled trial rate, shared-policy score, or new significance test.",
+  "source": "data/q1_four_way_20261116/final_comparison.json",
+  "source_sha256": "752ce8a06adc9706e17b16c3d29d2b24fe298f3ca88e9f793098465fb186fe5f",
+  "scheduled_trials": 480,
   "objects": [
-    "Cube",
-    "Die",
-    "Duck",
-    "Hedgehog",
-    "Ball",
-    "Milk carton"
+    "cube",
+    "die",
+    "duck",
+    "hedgehog",
+    "pig",
+    "milk_carton"
+  ],
+  "methods": [
+    "rule",
+    "vlm",
+    "finetuned_control",
+    "astra"
   ],
   "means_percent": {
     "identity": {
       "rule": 43.01057130004499,
       "vlm": 44.19590643274854,
+      "finetuned_control": 40.391925326135855,
       "astra": 70.43072424651372
     },
     "permuted": {
       "rule": 25.416666666666668,
       "vlm": 10.0,
+      "finetuned_control": 10.833333333333334,
       "astra": 65.83333333333333
     }
   },

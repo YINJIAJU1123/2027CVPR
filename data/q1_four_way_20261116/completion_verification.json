@@ -1,0 +1,31 @@
+{
+  "cross_checked_scheduled_slots": 480,
+  "schedule_unique": true,
+  "independent_cells": 12,
+  "paired_tables_checked": 24,
+  "exact_reset_and_image_common_counts": {
+    "cube/identity": 40,
+    "cube/permuted": 40,
+    "die/identity": 39,
+    "die/permuted": 35,
+    "duck/identity": 34,
+    "duck/permuted": 37,
+    "hedgehog/identity": 34,
+    "hedgehog/permuted": 36,
+    "pig/identity": 35,
+    "pig/permuted": 32,
+    "milk_carton/identity": 38,
+    "milk_carton/permuted": 38
+  },
+  "first_request_comparison_sha256": "32e0b4f74443a6dc06c62d2c5b41bd247a8802afcca28b36ee32952a8f836deb",
+  "paper_baseline": "4102728bdf3adc0c8aab6ef1a26f0f78e6cfe27f",
+  "paper_current": "4102728bdf3adc0c8aab6ef1a26f0f78e6cfe27f",
+  "paper_file_matches_baseline": {
+    "main.tex": true,
+    "supplyment.tex": true,
+    "sections/05_experiments.tex": true,
+    "output/pdf/main.pdf": true,
+    "output/pdf/supplyment.pdf": true
+  },
+  "comparison_sha256": "752ce8a06adc9706e17b16c3d29d2b24fe298f3ca88e9f793098465fb186fe5f"
+}

@@ -1,4 +1,4 @@
-"""Descriptive, equal-object Q1 means from the frozen six-object count table."""
+"""Render and verify the audited four-way Q1 summary used by the paper."""
 from pathlib import Path
 from fractions import Fraction
 import hashlib
@@ -6,35 +6,43 @@ import json
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / 'data/inhand4_completed_20261103/q1_all_objects.json'
-METHODS = ('rule', 'vlm', 'astra')
+SOURCE = ROOT / 'data/q1_four_way_20261116/final_comparison.json'
+METHODS = ('rule', 'vlm', 'finetuned_control', 'astra')
 SETTINGS = ('identity', 'permuted')
+DISPLAY = {'rule': 'Rule', 'vlm': 'Fine-tuned',
+           'finetuned_control': 'Fine-tuned + ctrl.', 'astra': 'REVEAL'}
 
 def main():
     data = json.loads(SOURCE.read_text())
-    objects = data['objects']
-    assert len(objects) == 6 and len({o['object'] for o in objects}) == 6
-    table = (ROOT / 'tables/q1_all_objects.tex').read_text()
+    cells = data['cells']
+    objects = sorted({c['object'] for c in cells}, key=['cube','die','duck','hedgehog','pig','milk_carton'].index)
+    assert len(objects) == 6 and len(cells) == 12
+    lookup = {(c['object'], c['layout']): c for c in cells}
+    table = (ROOT / 'tables/q1_main_four_way.tex').read_text()
     means = {}
     for setting in SETTINGS:
         values = {m: [] for m in METHODS}
         for obj in objects:
-            cells = obj['cells'][setting]
-            assert len({cells[m]['trials'] for m in METHODS}) == 1
+            cell = lookup[(obj, setting)]
+            denominator = cell['common']
+            assert 0 < denominator <= 40
             for method in METHODS:
-                c = cells[method]
-                assert 0 <= c['success'] <= c['trials'] <= 40
-                values[method].append(Fraction(c['success'], c['trials']))
+                arm = cell['arms'][method]
+                assert 0 <= arm['success'] <= denominator
+                values[method].append(Fraction(arm['success'], denominator))
         means[setting] = {m: 100 * sum(values[m]) / len(objects) for m in METHODS}
-    # Ensure the displayed per-object percentages agree with the count source.
+
     for obj in objects:
-        row = next(line for line in table.splitlines() if line.startswith(obj['object'] + ' & '))
+        label = 'Milk carton' if obj == 'milk_carton' else obj.title()
+        row = next(line for line in table.splitlines() if line.startswith(label + ' & '))
         plain = re.sub(r'\\textbf\{([\d.]+)\}', r'\1', row)
         fields = plain.removesuffix('\\\\').split(' & ')
-        assert fields[2] == f"{obj['cells']['identity']['astra']['trials']} / {obj['cells']['permuted']['astra']['trials']}"
-        expected = [f"{100 * obj['cells'][s][m]['success'] / obj['cells'][s][m]['trials']:.1f}" for s in SETTINGS for m in METHODS]
-        assert fields[3:] == expected, obj['object']
-    best = {s: max(('rule', 'vlm'), key=lambda m: means[s][m]) for s in SETTINGS}
+        expected_den = f"{lookup[(obj, 'identity')]['common']} / {lookup[(obj, 'permuted')]['common']}"
+        assert fields[1] == expected_den, (obj, fields[1], expected_den)
+        expected = [f"{100 * lookup[(obj, s)]['arms'][m]['success'] / lookup[(obj, s)]['common']:.1f}" for s in SETTINGS for m in METHODS]
+        assert fields[2:] == expected, (obj, fields[2:], expected)
+
+    best = {s: max(METHODS[:-1], key=lambda m: means[s][m]) for s in SETTINGS}
     gains = {s: means[s]['astra'] - means[s][best[s]] for s in SETTINGS}
     macro_values = {
         'QOneOriginalSuccess': means['identity']['astra'],
@@ -44,26 +52,26 @@ def main():
         'QOneOriginalBaseline': means['identity'][best['identity']],
         'QOneChangedBaseline': means['permuted'][best['permuted']],
     }
-    (ROOT/'tables/q1_summary_macros.tex').write_text(''.join(
-        '\\newcommand{\\' + k + '}{' + f'{float(v):.1f}' + '}\n' for k,v in macro_values.items()))
-    cells = [f'{float(means[s][m]):.1f}' for s in SETTINGS for m in METHODS]
-    cells[2] = r'\textbf{' + cells[2] + '}'
-    cells[5] = r'\textbf{' + cells[5] + '}'
-    row = r'Mean & Object-specific & -- & ' + ' & '.join(cells) + r'\\'
-    with (ROOT/'tables/q1_summary_macros.tex').open('a') as stream:
+    with (ROOT/'tables/q1_summary_macros.tex').open('w') as stream:
+        for k, v in macro_values.items():
+            stream.write('\\newcommand{\\' + k + '}{' + f'{float(v):.1f}' + '}\n')
+        cells_text = [f'{float(means[s][m]):.1f}' for s in SETTINGS for m in METHODS]
+        cells_text[3] = r'\textbf{' + cells_text[3] + '}'
+        cells_text[7] = r'\textbf{' + cells_text[7] + '}'
+        row = r'Mean & -- & ' + ' & '.join(cells_text) + r'\\'
         stream.write('\\newcommand{\\QOneAverageRow}{%\n' + row + '\n}\n')
     report = {
-        'source':str(SOURCE.relative_to(ROOT)),
-        'source_sha256':hashlib.sha256(SOURCE.read_bytes()).hexdigest(),
-        'raw_trials_in_mapping_study':data['raw_trials_in_mapping_table'],
-        'estimand':'Post-hoc descriptive equal-object mean of common-service-eligible rates, separately by mapping. Not a pooled trial rate, shared-policy score, or new significance test.',
-        'objects':[o['object'] for o in objects],
-        'means_percent':{s:{m:float(v) for m,v in ms.items()} for s,ms in means.items()},
-        'best_evaluated_baseline_by_mean':best,
-        'gain_percentage_points':{s:float(v) for s,v in gains.items()},
+        'source': str(SOURCE.relative_to(ROOT)),
+        'source_sha256': hashlib.sha256(SOURCE.read_bytes()).hexdigest(),
+        'scheduled_trials': data['scheduled'],
+        'objects': objects,
+        'methods': list(METHODS),
+        'means_percent': {s: {m: float(v) for m, v in ms.items()} for s, ms in means.items()},
+        'best_evaluated_baseline_by_mean': best,
+        'gain_percentage_points': {s: float(v) for s, v in gains.items()},
     }
-    (ROOT/'tables/q1_summary_check.json').write_text(json.dumps(report,indent=2)+'\n')
-    print(json.dumps(report,indent=2))
+    (ROOT/'tables/q1_summary_check.json').write_text(json.dumps(report, indent=2)+'\n')
+    print(json.dumps(report, indent=2))
 
 if __name__ == '__main__':
     main()

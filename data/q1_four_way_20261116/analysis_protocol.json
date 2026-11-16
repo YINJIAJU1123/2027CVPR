@@ -1,0 +1,15 @@
+{
+  "arm": "Fine-tuned Qwen + AIMI control",
+  "scope": "Q1 visual mapping simulation, 6 objects and 2 layouts, 40 scheduled trials per cell, 480 new trials. No new Astra calls.",
+  "preserve_from_finetuned_qwen": ["per-object frozen backbone, adapter and head", "instruction and original RGB processing", "768-dimensional continuous motor goal and unreadable-view fallback", "re-query schedule and maximum six model calls", "live model latency during physical simulation"],
+  "copy_from_q1_aimi_within_object": ["frozen motor and pose release", "waiting and execution control", "autonomous stop logic including pending-call eligibility and calibrated completion where applicable"],
+  "matching": "Use the Q1 mapping cohort, original target, trial seed, actual reset and original layout transformation. Preserve raw initial images and compare image hashes within layout. Keep archived numerical/reset exceptions explicit; investigate new mismatches.",
+  "outcomes": {
+    "primary": "Successful autonomous stop with correct active semantic binding, full quaternion error at most 0.16 rad and no drop",
+    "secondary": ["correct active terminal binding derived from declared target and selected skill", "drops by phase", "service exclusions", "actual model calls", "actual response latency"]
+  },
+  "comparison": "Within each object-layout cell remove the union of qualifying service exclusions over all four methods from all four denominators. Preserve every scheduled raw outcome. Keep the twelve per-cell results and equal-object original/changed means separate.",
+  "inference": "Report paired percentage-point differences and two-sided exact McNemar tests for fourth arm vs original fine-tuned and fourth arm vs AIMI; Holm adjustment over all 24 contrasts, reporting raw and adjusted p. With the original fine-tuned arm this estimates the effect of the object-specific control and stopping bundle. The AIMI contrast retains upper-system differences.",
+  "historical_reference_sha256": "2fcf9f4dadad6a5124d93e0195642f3407f402d5e1f6fb94d30f9bb340c8a7bb",
+  "engineering_checks": "Exclude off-cohort engineering trials. Do not tune parameters on formal outcomes or replace failed episodes. Record timing, code, release and hardware provenance for each run."
+}
