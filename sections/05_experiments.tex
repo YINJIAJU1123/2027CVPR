@@ -46,8 +46,6 @@ A second-object Duck cohort confirms the ordering: the full controller reaches 9
 
 
 \subsection{Q3: Visual Exploration and Feedback}
-\input{figures/exploration_float}
-
 We now turn to the agent. Three interventions examine how it acquires and uses evidence (Table~\ref{tab:q3-feedback}): whether it receives feedback at all, whether that feedback contains new images, and whether it chooses its own inspection actions. Each comparison has its own set of 40 matched pairs.
 
 \begin{table}[!htbp]
@@ -76,7 +74,7 @@ Condition & Success & \% & Drops & Calls\\
 \end{table}
 
 \paragraph{(a) Does continued feedback help find the target?}
-With a single call, the agent sees one image and must plan up to six actions in advance. With continued feedback, it may call up to six times, each with a new image and the action history. Local controllers, stopping and time limits are identical. Success rises from 6/39 to 33/39, and all 27 discordant pairs favor feedback ($p=1.49\times10^{-8}$). The single-call agent usually recognizes that it cannot see the target: it abstains in 28 trials, and feedback turns 22 of these into successes. In 32 feedback trials the first binding comes after an inspection (Fig.~\ref{fig:exploration}).
+With a single call, the agent sees one image and must plan up to six actions in advance. With continued feedback, it may call up to six times, each with a new image and the action history. Local controllers, stopping and time limits are identical. Success rises from 6/39 to 33/39, and all 27 discordant pairs favor feedback ($p=1.49\times10^{-8}$). The single-call agent usually recognizes that it cannot see the target: it abstains in 28 trials, and feedback turns 22 of these into successes. In 32 feedback trials the first binding comes after an inspection; the supplement documents the protocol.
 
 \paragraph{(b) Does the next image provide useful evidence?}
 More calls could help simply by giving the agent more chances. To separate this from visual evidence, both conditions here have the same six-call cap, live numeric feedback, history and local control, and differ only in the image: the current view, or the first frame repeated at every call. Success is 32/40 with current images and 9/40 with the repeated frame; all 23 discordant pairs favor current images ($p=2.38\times10^{-7}$). The nine repeated-frame successes are exactly the trials in which both arms bind correctly on the first call, before any new view is needed. Beyond these, current images produce 25 further correct bindings, 23 of which end in success, and the repeated frame produces none. The gain comes from what the new images show.
@@ -86,8 +84,8 @@ We next fix the evidence channel and vary who chooses the inspection. In the ada
 
 On the ball, adaptive inspection succeeds in 37/40 trials (92.5\%) against 29/40 (72.5\%) for the fixed sweep. Eight pairs favor adaptive inspection and none favor the sweep ($p=0.0078$). The difference lies in finding the target: correct terminal bindings number 37 versus 29, while each arm drops the object twice. Adaptive inspection also needs 15.2\% fewer calls and 26.1\% fewer tokens. On the cube, the rates are 38/40 (95.0\%) versus 31/40 (77.5\%), with nine pairs favoring adaptive inspection and two favoring the sweep. The effect has the same direction and a similar size, but does not reach significance with 40 pairs ($p=0.065$). The ball comparison and its analysis were fixed before its trials were run. The supplement reports seed splits, binding trajectories and costs for both objects.
 
+\input{figures/real_robot_float}
 \subsection{Q4: Pose Estimation and Sim-to-Real Transfer}
-\input{figures/sim_real_float}
 \paragraph{Pose estimation under hand occlusion.}
 We compare our estimator with a ViserDex-style baseline that regresses the same keypoints from the image alone and is trained for the same object and camera~\cite{bhardwaj2026viserdex} (Table~\ref{tab:pose-summary}). In simulation we use 6,144 frames rendered with real-camera calibration, Gaussian-splat appearance and hand occlusion. Over all frames, 10\,mm/$10^\circ$ recall rises from 37.5\% to 64.7\%, and invalid predictions fall from 69 to one. The average hides a strong dependence on occlusion, because the test set deliberately includes camera pitches up to $105^\circ$, at which much of the object is hidden. When less than a quarter of the object is hidden, our estimator is correct in 97.6\% of frames against 66.2\% for the baseline, and at the nominal camera view it reaches 99.8\%. Between 25\% and 50\% occlusion its recall is 55.5\% (baseline: 19.9\%); beyond that both fail.
 
@@ -96,6 +94,6 @@ The gap carries over to real images. On 1,000 frames of the cube being rotated i
 \input{tables/pose_summary}
 
 \paragraph{Real-hand evaluation.}
-We run Rule, Fine-tuned and REVEAL on a physical Revo3 hand with four of the simulated objects (cube, die, ball and duck), 20 trials per object and method (240 in total). A RealSense D405 camera provides the images for pose estimation. A trial succeeds when the hand presents the requested target within $15^\circ$ of its reference orientation and stops without dropping the object. REVEAL completes 70/80 trials (\HardwareAimiSuccess\%), against \HardwareFineTunedSuccess\% for Fine-tuned and \HardwareRuleSuccess\% for Rule, a margin of \HardwareGain{} points over the stronger baseline (Table~\ref{tab:hardware-results}). The ranking of the three methods is the same for every object, and the duck is the hardest object for all of them. Object descriptions, targets and the scoring setup are given in the supplement.
+We run Rule, Fine-tuned and REVEAL on a physical Revo3 hand with four of the simulated objects (cube, die, ball and duck), 20 trials per object and method (240 in total). A RealSense D405 camera provides the images for pose estimation. A trial succeeds when the hand presents the requested target within $15^\circ$ of its reference orientation and stops without dropping the object. REVEAL completes 70/80 trials (\HardwareAimiSuccess\%), against \HardwareFineTunedSuccess\% for Fine-tuned and \HardwareRuleSuccess\% for Rule, a margin of \HardwareGain{} points over the stronger baseline (Table~\ref{tab:hardware-results}). The ranking of the three methods is the same for every object, and the duck is the hardest object for all of them. Representative final poses are shown in Fig.~\ref{fig:real-robot}; object descriptions, targets and the scoring setup are given in the supplement.
 
 \input{tables/hardware_results}
