@@ -226,6 +226,38 @@ The full audit covers all 960 episodes, 320 within-mapping initial-image groups 
 
 As a sensitivity analysis, removing slot 7 from every method gives original-mapping successes of 24/37 for REVEAL, 13/37 for fine-tuning and 15/37 for rules. Removing it from the changed mapping gives 23/39, 2/39 and 9/39. The ordering is unchanged. The main table retains the frozen service-exclusion rule. This post-run sensitivity check does not replace outcomes or change the success definition.
 
+\section{Q1: Fine-tuned VLM plus controller diagnostic}
+The audited diagnostic package at \texttt{data/q1\_finetuned\_control\_20261116/} adds a fourth arm to the six-object mapping analysis. It reruns the fine-tuned Qwen input, continuous 768-dimensional goal output, fixed inspection schedule, object-specific student and pose release, local waiting and execution actors, and calibrated stopping gate. The hosted-agent route is not used for this arm. The new arm contributes 480 scheduled trials: six object releases, two mappings and forty trials per cell. It has no service errors. The historical three-method records contribute 477 common paired trials after the three registered service exclusions; the same exclusion union is applied to all four arms.
+
+\begin{table}[t]
+\centering\scriptsize
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{llrrrr}
+\toprule
+Object & Mapping & $n$ & Bare FT & FT + control & REVEAL\\
+\midrule
+Cube & original & 40 & 30 & 29 & 32\\
+Cube & changed & 40 & 16 & 19 & 32\\
+Die & original & 40 & 23 & 22 & 28\\
+Die & changed & 40 & 0 & 0 & 26\\
+Duck & original & 38 & 14 & 13 & 25\\
+Duck & changed & 40 & 2 & 5 & 24\\
+Hedgehog & original & 39 & 13 & 10 & 28\\
+Hedgehog & changed & 40 & 2 & 1 & 32\\
+Pig & original & 40 & 16 & 16 & 37\\
+Pig & changed & 40 & 3 & 0 & 33\\
+Milk carton & original & 40 & 9 & 6 & 17\\
+Milk carton & changed & 40 & 1 & 1 & 11\\
+\bottomrule
+\end{tabular}
+\caption{Q1 diagnostic successes. The common denominator is shown after service eligibility; the new arm itself has 480 scheduled outcomes.}
+\label{tab:q1-control-diagnostic-supp}
+\end{table}
+
+Across the 477 paired cases, both Qwen arms succeed on 91 trials, only the controlled arm succeeds on 31, only bare fine-tuning succeeds on 38, and both fail on 317 (exact two-sided McNemar $p=0.470369$). Holm-corrected comparisons within all 12 object--mapping cells show no improvement of the controlled arm over bare fine-tuning. The six-object macro-average is 40.4\% versus 44.2\% under the original mapping and 10.8\% versus 10.0\% under the changed mapping. All 106 controlled-arm drops occur during execution; the median local-model response is 0.141 seconds and waiting occupies 1.56\% of recorded control steps. These values make the arm a negative control for the semantic and complete-system claims, not a test of long-latency controller compensation. The first accepted Qwen requests are also nearly identical on matched initial inputs, so the later trajectory differences should not be described as a changed semantic model.
+
+The audit script reports 480 scheduled slots, 477 common cases and all 24 paired contrasts. The verifier and checksums are included with the release; the comparison to REVEAL remains a complete-system contrast because the upper-level agent, history and inspection policy differ.
+
 \section{Q1: Language and Wording Coverage Across Three Objects}
 \label{sec:language-supp}
 Three separate cohorts contribute 2,160 recorded trials: cube, duck and hedgehog, each with three systems, two languages, two wording templates per language and 60 trials per cell. Cube seeds are 210501--210503, duck seeds 210601--210603, and hedgehog seeds 210701--210703, twenty trials per seed. Each of six goals occurs ten times per cell. These are evaluation blocks, not independent training seeds. Within each object, the same 60 reset seeds and physical goals are reused across methods and instruction variants. Four prompt variants must not be pooled as 240 independent physical tasks.
@@ -278,6 +310,31 @@ Slowing + correction & 34 / 4 / 1 / 1 & 70 / 1 / 3 / 6\\
 \end{table}
 
 Q1's mapping study and Q3's image intervention use different trials. Their absolute rates need not match Q2, whose controller gains are measured within its own trial set. The initial-plan comparison in Sec.~\ref{sec:feedback-protocol} shares the 40 full-feedback trials from seed 187102.
+
+\subsection{Duck controller replication}
+To test object dependence, we repeated the four waiting policies on the Duck under a permuted visual layout. The frozen release uses seeds 287102, 287103 and 287104, forty episodes per method and seed, and twenty appearances of each requested goal per condition. The four methods share the same initial-state quartets, student, pose release, stopping gate and execution interface; only the waiting policy changes. The audit package is at \texttt{data/duck\_controller\_20261115/}.
+
+\begin{table}[h]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrr}
+\toprule
+Seed & Continue & Fixed & Learned speed & Full\\
+\midrule
+287102 & 20/40 & 20/40 & 20/40 & 20/40\\
+287103 & 14/40 & 28/40 & 39/40 & 35/40\\
+287104 & 33/40 & 19/40 & 14/40 & 39/40\\
+\midrule
+All & 67/120 & 67/120 & 73/120 & 94/120\\
+\bottomrule
+\end{tabular}
+\caption{Duck controller replication by evaluation seed.}
+\label{tab:duck-controller-seeds}
+\end{table}
+
+The scheduled-slot analysis gives 94/120 successes for the full controller, versus 67/120 for continued execution, 67/120 for fixed slowing and 73/120 for learned slowing. Exact paired McNemar tests give $p=3.47\times10^{-6}$ against both continued execution and fixed slowing, and $p=1.04\times10^{-4}$ against learned slowing; Holm correction over the three full-versus-ablation contrasts gives $1.04\times10^{-5}$, $1.04\times10^{-5}$ and $1.04\times10^{-4}$. The same paired discordance counts are retained when the two service-affected slots and the one infrastructure-interrupted slot are removed, giving 94/117 versus 67/117, 67/117 and 73/117. Restricting further to the 111 exact-RGB quartets gives 89/111, 65/111, 65/111 and 70/111. Six quartets differ by one channel level at one pixel; this is why the strict RGB sensitivity is reported separately.
+
+The full arm contains one unscored local-bridge interruption at trial 287102021. Two cloud timeouts affect learned speed at 287103014 and continued execution at 287104027. These slots remain in the registered all-scheduled estimand and are removed only in the common-service sensitivity. The seed split is heterogeneous, so the aggregate gain should be read as a paired result over the predeclared 120 shared states rather than as a guarantee for every seed.
 
 \subsection{Waiting-controller fitting}
 The waiting refit uses training collection seed 185301, validation seed 185302, and fitting seed 185311. These are training/validation seeds, not Q2 evaluation seeds. The inherited actor is updated 2,400 times. Actor batches allocate one half to pending states and one quarter each to unbound and bound execution states. Pending samples are uniform. Only the waiting outputs replace the deployed actor; execution remains unchanged. Formal Q2 evaluation uses the three seeds in Sec.~\ref{sec:collaborator-waiting}.

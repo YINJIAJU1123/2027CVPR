@@ -1,0 +1,10 @@
+{
+  "exact_full_actor": true,
+  "exact_shared_execution": true,
+  "full_max_residual_norm": 1.48,
+  "max_abs_learned_speed_minus_fixed": 0.81,
+  "nonpending_states": 1200,
+  "pending_states": 1200,
+  "release_sha256": "c87385d8df567d4465dc55961fc9ef84054c19974638fbcd6604c780a90f1a3b",
+  "speed_only_pending_residual_zero": true
+}

@@ -1,0 +1,8 @@
+{
+  "evidence_tensors_matched": true,
+  "identical_full_tensors": 16,
+  "seed": 287285,
+  "speed_only_sha256": "8e16d068f418b0eaf14cff7ecc47c300a1e9a27dd93fb6799c380113b03e6ada",
+  "updates": 1200,
+  "zero_residual_during_fit": true
+}

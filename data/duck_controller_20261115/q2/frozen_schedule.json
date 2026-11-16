@@ -1,0 +1,3168 @@
+{
+  "source_release_sha256": "c87385d8df567d4465dc55961fc9ef84054c19974638fbcd6604c780a90f1a3b",
+  "object": "duck",
+  "layout": "permuted",
+  "conditions": [
+    "continue",
+    "fixed_slow",
+    "learned_speed",
+    "full"
+  ],
+  "seeds": [
+    287102,
+    287103,
+    287104
+  ],
+  "model": {
+    "frame_size": 512,
+    "name": "gpt-6-astra",
+    "reasoning_effort": "low",
+    "system_sha256": "6e5f806e17c71761f552f2514aee806fe7e883f405ccbcd645b123305aebf0d1",
+    "tools_sha256": "49c348d1dcda5f710261b64b9d5cda4bf3baa655a7d4108931e97efeecd9f15b"
+  },
+  "weight_sha256": {
+    "bank": "b53797a04404c62a063ed3efe5e3ed5633007821ad6d43b1f1df757179786245",
+    "checkpoint": "793c6a8204712cad92e2f352c825c05919e09061de8a089e9f96c660556fd19d",
+    "env_config": "df9e52ea9a71dfb332a4f1b856b154b3842c39a2a885e799c4da548f4694d567",
+    "source_checkpoint": "442e4ddcc71cf78b55bc558e6be1fc18345385c0b005a40262de96e75a4618fb",
+    "stop": "8787e49917134c35e9bb97d3d1db2f255270a130be0e04cd6155161d2e57e168",
+    "actor": "b276f9a195361db1252a7dfe16d0320f8f85f841b08eebe8416f4a0e4bcc56bb",
+    "speed_only": "8e16d068f418b0eaf14cff7ecc47c300a1e9a27dd93fb6799c380113b03e6ada"
+  },
+  "cases": {
+    "287102": [
+      {
+        "base_seed": 287102,
+        "episode": 0,
+        "goal_index": 0,
+        "index": 0,
+        "instruction": "Reorient the object so that the surface marked with letter A faces upward.",
+        "requested_label_index": 1,
+        "requested_letter": "A",
+        "trial_seed": 287102000
+      },
+      {
+        "base_seed": 287102,
+        "episode": 1,
+        "goal_index": 5,
+        "index": 1,
+        "instruction": "Reorient the object so that the surface marked with letter F faces upward.",
+        "requested_label_index": 6,
+        "requested_letter": "F",
+        "trial_seed": 287102001
+      },
+      {
+        "base_seed": 287102,
+        "episode": 2,
+        "goal_index": 4,
+        "index": 2,
+        "instruction": "Reorient the object so that the surface marked with letter E faces upward.",
+        "requested_label_index": 5,
+        "requested_letter": "E",
+        "trial_seed": 287102002
+      },
+      {
+        "base_seed": 287102,
+        "episode": 3,
+        "goal_index": 3,
+        "index": 3,
+        "instruction": "Reorient the object so that the surface marked with letter D faces upward.",
+        "requested_label_index": 4,
+        "requested_letter": "D",
+        "trial_seed": 287102003
+      },
+      {
+        "base_seed": 287102,
+        "episode": 4,
+        "goal_index": 2,
+        "index": 4,
+        "instruction": "Reorient the object so that the surface marked with letter C faces upward.",
+        "requested_label_index": 3,
+        "requested_letter": "C",
+        "trial_seed": 287102004
+      },
+      {
+        "base_seed": 287102,
+        "episode": 5,
+        "goal_index": 1,
+        "index": 5,
+        "instruction": "Reorient the object so that the surface marked with letter B faces upward.",
+        "requested_label_index": 2,
+        "requested_letter": "B",
+        "trial_seed": 287102005
+      },
+      {
+        "base_seed": 287102,
+        "episode": 6,
+        "goal_index": 0,
+        "index": 6,
+        "instruction": "Reorient the object so that the surface marked with letter A faces upward.",
+        "requested_label_index": 1,
+        "requested_letter": "A",
+        "trial_seed": 287102006
+      },
+      {
+        "base_seed": 287102,
+        "episode": 7,
+        "goal_index": 5,
+        "index": 7,
+        "instruction": "Reorient the object so that the surface marked with letter F faces upward.",
+        "requested_label_index": 6,
+        "requested_letter": "F",
+        "trial_seed": 287102007
+      },
+      {
+        "base_seed": 287102,
+        "episode": 8,
+        "goal_index": 4,
+        "index": 8,
+        "instruction": "Reorient the object so that the surface marked with letter E faces upward.",
+        "requested_label_index": 5,
+        "requested_letter": "E",
+        "trial_seed": 287102008
+      },
+      {
+        "base_seed": 287102,
+        "episode": 9,
+        "goal_index": 3,
+        "index": 9,
+        "instruction": "Reorient the object so that the surface marked with letter D faces upward.",
+        "requested_label_index": 4,
+        "requested_letter": "D",
+        "trial_seed": 287102009
+      },
+      {
+        "base_seed": 287102,
+        "episode": 10,
+        "goal_index": 2,
+        "index": 10,
+        "instruction": "Reorient the object so that the surface marked with letter C faces upward.",
+        "requested_label_index": 3,
+        "requested_letter": "C",
+        "trial_seed": 287102010
+      },
+      {
+        "base_seed": 287102,
+        "episode": 11,
+        "goal_index": 1,
+        "index": 11,
+        "instruction": "Reorient the object so that the surface marked with letter B faces upward.",
+        "requested_label_index": 2,
+        "requested_letter": "B",
+        "trial_seed": 287102011
+      },
+      {
+        "base_seed": 287102,
+        "episode": 12,
+        "goal_index": 0,
+        "index": 12,
+        "instruction": "Reorient the object so that the surface marked with letter A faces upward.",
+        "requested_label_index": 1,
+        "requested_letter": "A",
+        "trial_seed": 287102012
+      },
+      {
+        "base_seed": 287102,
+        "episode": 13,
+        "goal_index": 5,
+        "index": 13,
+        "instruction": "Reorient the object so that the surface marked with letter F faces upward.",
+        "requested_label_index": 6,
+        "requested_letter": "F",
+        "trial_seed": 287102013
+      },
+      {
+        "base_seed": 287102,
+        "episode": 14,
+        "goal_index": 4,
+        "index": 14,
+        "instruction": "Reorient the object so that the surface marked with letter E faces upward.",
+        "requested_label_index": 5,
+        "requested_letter": "E",
+        "trial_seed": 287102014
+      },
+      {
+        "base_seed": 287102,
+        "episode": 15,
+        "goal_index": 3,
+        "index": 15,
+        "instruction": "Reorient the object so that the surface marked with letter D faces upward.",
+        "requested_label_index": 4,
+        "requested_letter": "D",
+        "trial_seed": 287102015
+      },
+      {
+        "base_seed": 287102,
+        "episode": 16,
+        "goal_index": 2,
+        "index": 16,
+        "instruction": "Reorient the object so that the surface marked with letter C faces upward.",
+        "requested_label_index": 3,
+        "requested_letter": "C",
+        "trial_seed": 287102016
+      },
+      {
+        "base_seed": 287102,
+        "episode": 17,
+        "goal_index": 1,
+        "index": 17,
+        "instruction": "Reorient the object so that the surface marked with letter B faces upward.",
+        "requested_label_index": 2,
+        "requested_letter": "B",
+        "trial_seed": 287102017
+      },
+      {
+        "base_seed": 287102,
+        "episode": 18,
+        "goal_index": 0,
+        "index": 18,
+        "instruction": "Reorient the object so that the surface marked with letter A faces upward.",
+        "requested_label_index": 1,
+        "requested_letter": "A",
+        "trial_seed": 287102018
+      },
+      {
+        "base_seed": 287102,
+        "episode": 19,
+        "goal_index": 5,
+        "index": 19,
+        "instruction": "Reorient the object so that the surface marked with letter F faces upward.",
+        "requested_label_index": 6,
+        "requested_letter": "F",
+        "trial_seed": 287102019
+      },
+      {
+        "base_seed": 287102,
+        "episode": 20,
+        "goal_index": 4,
+        "index": 20,
+        "instruction": "Reorient the object so that the surface marked with letter E faces upward.",
+        "requested_label_index": 5,
+        "requested_letter": "E",
+        "trial_seed": 287102020
+      },
+      {
+        "base_seed": 287102,
+        "episode": 21,
+        "goal_index": 3,
+        "index": 21,
+        "instruction": "Reorient the object so that the surface marked with letter D faces upward.",
+        "requested_label_index": 4,
+        "requested_letter": "D",
+        "trial_seed": 287102021
+      },
+      {
+        "base_seed": 287102,
+        "episode": 22,
+        "goal_index": 2,
+        "index": 22,
+        "instruction": "Reorient the object so that the surface marked with letter C faces upward.",
+        "requested_label_index": 3,
+        "requested_letter": "C",
+        "trial_seed": 287102022
+      },
+      {
+        "base_seed": 287102,
+        "episode": 23,
+        "goal_index": 1,
+        "index": 23,
+        "instruction": "Reorient the object so that the surface marked with letter B faces upward.",
+        "requested_label_index": 2,
+        "requested_letter": "B",
+        "trial_seed": 287102023
+      },
+      {
+        "base_seed": 287102,
+        "episode": 24,
+        "goal_index": 0,
+        "index": 24,
+        "instruction": "Reorient the object so that the surface marked with letter A faces upward.",
+        "requested_label_index": 1,
+        "requested_letter": "A",
+        "trial_seed": 287102024
+      },
+      {
+        "base_seed": 287102,
+        "episode": 25,
+        "goal_index": 5,
+        "index": 25,
+        "instruction": "Reorient the object so that the surface marked with letter F faces upward.",
+        "requested_label_index": 6,
+        "requested_letter": "F",
+        "trial_seed": 287102025
+      },
+      {
+        "base_seed": 287102,
+        "episode": 26,
+        "goal_index": 4,
+        "index": 26,
+        "instruction": "Reorient the object so that the surface marked with letter E faces upward.",
+        "requested_label_index": 5,
+        "requested_letter": "E",
+        "trial_seed": 287102026
+      },
+      {
+        "base_seed": 287102,
+        "episode": 27,
+        "goal_index": 3,
+        "index": 27,
+        "instruction": "Reorient the object so that the surface marked with letter D faces upward.",
+        "requested_label_index": 4,
+        "requested_letter": "D",
+        "trial_seed": 287102027
+      },
+      {
+        "base_seed": 287102,
+        "episode": 28,
+        "goal_index": 2,
+        "index": 28,
+        "instruction": "Reorient the object so that the surface marked with letter C faces upward.",
+        "requested_label_index": 3,
+        "requested_letter": "C",
+        "trial_seed": 287102028
+      },
+      {
+        "base_seed": 287102,
+        "episode": 29,
+        "goal_index": 1,
+        "index": 29,
+        "instruction": "Reorient the object so that the surface marked with letter B faces upward.",
+        "requested_label_index": 2,
+        "requested_letter": "B",
+        "trial_seed": 287102029
+      },
+      {
+        "base_seed": 287102,
+        "episode": 30,
+        "goal_index": 0,
+        "index": 30,
+        "instruction": "Reorient the object so that the surface marked with letter A faces upward.",
+        "requested_label_index": 1,
+        "requested_letter": "A",
+        "trial_seed": 287102030
+      },
+      {
+        "base_seed": 287102,
+        "episode": 31,
+        "goal_index": 5,
+        "index": 31,
+        "instruction": "Reorient the object so that the surface marked with letter F faces upward.",
+        "requested_label_index": 6,
+        "requested_letter": "F",
+        "trial_seed": 287102031
+      },
+      {
+        "base_seed": 287102,
+        "episode": 32,
+        "goal_index": 4,
+        "index": 32,
+        "instruction": "Reorient the object so that the surface marked with letter E faces upward.",
+        "requested_label_index": 5,
+        "requested_letter": "E",
+        "trial_seed": 287102032
+      },
+      {
+        "base_seed": 287102,
+        "episode": 33,
+        "goal_index": 3,
+        "index": 33,
+        "instruction": "Reorient the object so that the surface marked with letter D faces upward.",
+        "requested_label_index": 4,
+        "requested_letter": "D",
+        "trial_seed": 287102033
+      },
+      {
+        "base_seed": 287102,
+        "episode": 34,
+        "goal_index": 2,
+        "index": 34,
+        "instruction": "Reorient the object so that the surface marked with letter C faces upward.",
+        "requested_label_index": 3,
+        "requested_letter": "C",
+        "trial_seed": 287102034
+      },
+      {
+        "base_seed": 287102,
+        "episode": 35,
+        "goal_index": 1,
+        "index": 35,
+        "instruction": "Reorient the object so that the surface marked with letter B faces upward.",
+        "requested_label_index": 2,
+        "requested_letter": "B",
+        "trial_seed": 287102035
+      },
+      {
+        "base_seed": 287102,
+        "episode": 36,
+        "goal_index": 0,
+        "index": 36,
+        "instruction": "Reorient the object so that the surface marked with letter A faces upward.",
+        "requested_label_index": 1,
+        "requested_letter": "A",
+        "trial_seed": 287102036
+      },
+      {
+        "base_seed": 287102,
+        "episode": 37,
+        "goal_index": 5,
+        "index": 37,
+        "instruction": "Reorient the object so that the surface marked with letter F faces upward.",
+        "requested_label_index": 6,
+        "requested_letter": "F",
+        "trial_seed": 287102037
+      },
+      {
+        "base_seed": 287102,
+        "episode": 38,
+        "goal_index": 4,
+        "index": 38,
+        "instruction": "Reorient the object so that the surface marked with letter E faces upward.",
+        "requested_label_index": 5,
+        "requested_letter": "E",
+        "trial_seed": 287102038
+      },
+      {
+        "base_seed": 287102,
+        "episode": 39,
+        "goal_index": 3,
+        "index": 39,
+        "instruction": "Reorient the object so that the surface marked with letter D faces upward.",
+        "requested_label_index": 4,
+        "requested_letter": "D",
+        "trial_seed": 287102039
+      }
+    ],
+    "287103": [
+      {
+        "base_seed": 287103,
+        "episode": 0,
+        "goal_index": 2,
+        "index": 0,
+        "instruction": "Reorient the object so that the surface marked with letter C faces upward.",
+        "requested_label_index": 3,
+        "requested_letter": "C",
+        "trial_seed": 287103000
+      },
+      {
+        "base_seed": 287103,
+        "episode": 1,
+        "goal_index": 1,
+        "index": 1,
+        "instruction": "Reorient the object so that the surface marked with letter B faces upward.",
+        "requested_label_index": 2,
+        "requested_letter": "B",
+        "trial_seed": 287103001
+      },
+      {
+        "base_seed": 287103,
+        "episode": 2,
+        "goal_index": 0,
+        "index": 2,
+        "instruction": "Reorient the object so that the surface marked with letter A faces upward.",
+        "requested_label_index": 1,
+        "requested_letter": "A",
+        "trial_seed": 287103002
+      },
+      {
+        "base_seed": 287103,
+        "episode": 3,
+        "goal_index": 5,
+        "index": 3,
+        "instruction": "Reorient the object so that the surface marked with letter F faces upward.",
+        "requested_label_index": 6,
+        "requested_letter": "F",
+        "trial_seed": 287103003
+      },
+      {
+        "base_seed": 287103,
+        "episode": 4,
+        "goal_index": 4,
+        "index": 4,
+        "instruction": "Reorient the object so that the surface marked with letter E faces upward.",
+        "requested_label_index": 5,
+        "requested_letter": "E",
+        "trial_seed": 287103004
+      },
+      {
+        "base_seed": 287103,
+        "episode": 5,
+        "goal_index": 3,
+        "index": 5,
+        "instruction": "Reorient the object so that the surface marked with letter D faces upward.",
+        "requested_label_index": 4,
+        "requested_letter": "D",
+        "trial_seed": 287103005
+      },
+      {
+        "base_seed": 287103,
+        "episode": 6,
+        "goal_index": 2,
+        "index": 6,
+        "instruction": "Reorient the object so that the surface marked with letter C faces upward.",
+        "requested_label_index": 3,
+        "requested_letter": "C",
+        "trial_seed": 287103006
+      },
+      {
+        "base_seed": 287103,
+        "episode": 7,
+        "goal_index": 1,
+        "index": 7,
+        "instruction": "Reorient the object so that the surface marked with letter B faces upward.",
+        "requested_label_index": 2,
+        "requested_letter": "B",
+        "trial_seed": 287103007
+      },
+      {
+        "base_seed": 287103,
+        "episode": 8,
+        "goal_index": 0,
+        "index": 8,
+        "instruction": "Reorient the object so that the surface marked with letter A faces upward.",
+        "requested_label_index": 1,
+        "requested_letter": "A",
+        "trial_seed": 287103008
+      },
+      {
+        "base_seed": 287103,
+        "episode": 9,
+        "goal_index": 5,
+        "index": 9,
+        "instruction": "Reorient the object so that the surface marked with letter F faces upward.",
+        "requested_label_index": 6,
+        "requested_letter": "F",
+        "trial_seed": 287103009
+      },
+      {
+        "base_seed": 287103,
+        "episode": 10,
+        "goal_index": 4,
+        "index": 10,
+        "instruction": "Reorient the object so that the surface marked with letter E faces upward.",
+        "requested_label_index": 5,
+        "requested_letter": "E",
+        "trial_seed": 287103010
+      },
+      {
+        "base_seed": 287103,
+        "episode": 11,
+        "goal_index": 3,
+        "index": 11,
+        "instruction": "Reorient the object so that the surface marked with letter D faces upward.",
+        "requested_label_index": 4,
+        "requested_letter": "D",
+        "trial_seed": 287103011
+      },
+      {
+        "base_seed": 287103,
+        "episode": 12,
+        "goal_index": 2,
+        "index": 12,
+        "instruction": "Reorient the object so that the surface marked with letter C faces upward.",
+        "requested_label_index": 3,
+        "requested_letter": "C",
+        "trial_seed": 287103012
+      },
+      {
+        "base_seed": 287103,
+        "episode": 13,
+        "goal_index": 1,
+        "index": 13,
+        "instruction": "Reorient the object so that the surface marked with letter B faces upward.",
+        "requested_label_index": 2,
+        "requested_letter": "B",
+        "trial_seed": 287103013
+      },
+      {
+        "base_seed": 287103,
+        "episode": 14,
+        "goal_index": 0,
+        "index": 14,
+        "instruction": "Reorient the object so that the surface marked with letter A faces upward.",
+        "requested_label_index": 1,
+        "requested_letter": "A",
+        "trial_seed": 287103014
+      },
+      {
+        "base_seed": 287103,
+        "episode": 15,
+        "goal_index": 5,
+        "index": 15,
+        "instruction": "Reorient the object so that the surface marked with letter F faces upward.",
+        "requested_label_index": 6,
+        "requested_letter": "F",
+        "trial_seed": 287103015
+      },
+      {
+        "base_seed": 287103,
+        "episode": 16,
+        "goal_index": 4,
+        "index": 16,
+        "instruction": "Reorient the object so that the surface marked with letter E faces upward.",
+        "requested_label_index": 5,
+        "requested_letter": "E",
+        "trial_seed": 287103016
+      },
+      {
+        "base_seed": 287103,
+        "episode": 17,
+        "goal_index": 3,
+        "index": 17,
+        "instruction": "Reorient the object so that the surface marked with letter D faces upward.",
+        "requested_label_index": 4,
+        "requested_letter": "D",
+        "trial_seed": 287103017
+      },
+      {
+        "base_seed": 287103,
+        "episode": 18,
+        "goal_index": 2,
+        "index": 18,
+        "instruction": "Reorient the object so that the surface marked with letter C faces upward.",
+        "requested_label_index": 3,
+        "requested_letter": "C",
+        "trial_seed": 287103018
+      },
+      {
+        "base_seed": 287103,
+        "episode": 19,
+        "goal_index": 1,
+        "index": 19,
+        "instruction": "Reorient the object so that the surface marked with letter B faces upward.",
+        "requested_label_index": 2,
+        "requested_letter": "B",
+        "trial_seed": 287103019
+      },
+      {
+        "base_seed": 287103,
+        "episode": 20,
+        "goal_index": 0,
+        "index": 20,
+        "instruction": "Reorient the object so that the surface marked with letter A faces upward.",
+        "requested_label_index": 1,
+        "requested_letter": "A",
+        "trial_seed": 287103020
+      },
+      {
+        "base_seed": 287103,
+        "episode": 21,
+        "goal_index": 5,
+        "index": 21,
+        "instruction": "Reorient the object so that the surface marked with letter F faces upward.",
+        "requested_label_index": 6,
+        "requested_letter": "F",
+        "trial_seed": 287103021
+      },
+      {
+        "base_seed": 287103,
+        "episode": 22,
+        "goal_index": 4,
+        "index": 22,
+        "instruction": "Reorient the object so that the surface marked with letter E faces upward.",
+        "requested_label_index": 5,
+        "requested_letter": "E",
+        "trial_seed": 287103022
+      },
+      {
+        "base_seed": 287103,
+        "episode": 23,
+        "goal_index": 3,
+        "index": 23,
+        "instruction": "Reorient the object so that the surface marked with letter D faces upward.",
+        "requested_label_index": 4,
+        "requested_letter": "D",
+        "trial_seed": 287103023
+      },
+      {
+        "base_seed": 287103,
+        "episode": 24,
+        "goal_index": 2,
+        "index": 24,
+        "instruction": "Reorient the object so that the surface marked with letter C faces upward.",
+        "requested_label_index": 3,
+        "requested_letter": "C",
+        "trial_seed": 287103024
+      },
+      {
+        "base_seed": 287103,
+        "episode": 25,
+        "goal_index": 1,
+        "index": 25,
+        "instruction": "Reorient the object so that the surface marked with letter B faces upward.",
+        "requested_label_index": 2,
+        "requested_letter": "B",
+        "trial_seed": 287103025
+      },
+      {
+        "base_seed": 287103,
+        "episode": 26,
+        "goal_index": 0,
+        "index": 26,
+        "instruction": "Reorient the object so that the surface marked with letter A faces upward.",
+        "requested_label_index": 1,
+        "requested_letter": "A",
+        "trial_seed": 287103026
+      },
+      {
+        "base_seed": 287103,
+        "episode": 27,
+        "goal_index": 5,
+        "index": 27,
+        "instruction": "Reorient the object so that the surface marked with letter F faces upward.",
+        "requested_label_index": 6,
+        "requested_letter": "F",
+        "trial_seed": 287103027
+      },
+      {
+        "base_seed": 287103,
+        "episode": 28,
+        "goal_index": 4,
+        "index": 28,
+        "instruction": "Reorient the object so that the surface marked with letter E faces upward.",
+        "requested_label_index": 5,
+        "requested_letter": "E",
+        "trial_seed": 287103028
+      },
+      {
+        "base_seed": 287103,
+        "episode": 29,
+        "goal_index": 3,
+        "index": 29,
+        "instruction": "Reorient the object so that the surface marked with letter D faces upward.",
+        "requested_label_index": 4,
+        "requested_letter": "D",
+        "trial_seed": 287103029
+      },
+      {
+        "base_seed": 287103,
+        "episode": 30,
+        "goal_index": 2,
+        "index": 30,
+        "instruction": "Reorient the object so that the surface marked with letter C faces upward.",
+        "requested_label_index": 3,
+        "requested_letter": "C",
+        "trial_seed": 287103030
+      },
+      {
+        "base_seed": 287103,
+        "episode": 31,
+        "goal_index": 1,
+        "index": 31,
+        "instruction": "Reorient the object so that the surface marked with letter B faces upward.",
+        "requested_label_index": 2,
+        "requested_letter": "B",
+        "trial_seed": 287103031
+      },
+      {
+        "base_seed": 287103,
+        "episode": 32,
+        "goal_index": 0,
+        "index": 32,
+        "instruction": "Reorient the object so that the surface marked with letter A faces upward.",
+        "requested_label_index": 1,
+        "requested_letter": "A",
+        "trial_seed": 287103032
+      },
+      {
+        "base_seed": 287103,
+        "episode": 33,
+        "goal_index": 5,
+        "index": 33,
+        "instruction": "Reorient the object so that the surface marked with letter F faces upward.",
+        "requested_label_index": 6,
+        "requested_letter": "F",
+        "trial_seed": 287103033
+      },
+      {
+        "base_seed": 287103,
+        "episode": 34,
+        "goal_index": 4,
+        "index": 34,
+        "instruction": "Reorient the object so that the surface marked with letter E faces upward.",
+        "requested_label_index": 5,
+        "requested_letter": "E",
+        "trial_seed": 287103034
+      },
+      {
+        "base_seed": 287103,
+        "episode": 35,
+        "goal_index": 3,
+        "index": 35,
+        "instruction": "Reorient the object so that the surface marked with letter D faces upward.",
+        "requested_label_index": 4,
+        "requested_letter": "D",
+        "trial_seed": 287103035
+      },
+      {
+        "base_seed": 287103,
+        "episode": 36,
+        "goal_index": 2,
+        "index": 36,
+        "instruction": "Reorient the object so that the surface marked with letter C faces upward.",
+        "requested_label_index": 3,
+        "requested_letter": "C",
+        "trial_seed": 287103036
+      },
+      {
+        "base_seed": 287103,
+        "episode": 37,
+        "goal_index": 1,
+        "index": 37,
+        "instruction": "Reorient the object so that the surface marked with letter B faces upward.",
+        "requested_label_index": 2,
+        "requested_letter": "B",
+        "trial_seed": 287103037
+      },
+      {
+        "base_seed": 287103,
+        "episode": 38,
+        "goal_index": 0,
+        "index": 38,
+        "instruction": "Reorient the object so that the surface marked with letter A faces upward.",
+        "requested_label_index": 1,
+        "requested_letter": "A",
+        "trial_seed": 287103038
+      },
+      {
+        "base_seed": 287103,
+        "episode": 39,
+        "goal_index": 5,
+        "index": 39,
+        "instruction": "Reorient the object so that the surface marked with letter F faces upward.",
+        "requested_label_index": 6,
+        "requested_letter": "F",
+        "trial_seed": 287103039
+      }
+    ],
+    "287104": [
+      {
+        "base_seed": 287104,
+        "episode": 0,
+        "goal_index": 4,
+        "index": 0,
+        "instruction": "Reorient the object so that the surface marked with letter E faces upward.",
+        "requested_label_index": 5,
+        "requested_letter": "E",
+        "trial_seed": 287104000
+      },
+      {
+        "base_seed": 287104,
+        "episode": 1,
+        "goal_index": 3,
+        "index": 1,
+        "instruction": "Reorient the object so that the surface marked with letter D faces upward.",
+        "requested_label_index": 4,
+        "requested_letter": "D",
+        "trial_seed": 287104001
+      },
+      {
+        "base_seed": 287104,
+        "episode": 2,
+        "goal_index": 2,
+        "index": 2,
+        "instruction": "Reorient the object so that the surface marked with letter C faces upward.",
+        "requested_label_index": 3,
+        "requested_letter": "C",
+        "trial_seed": 287104002
+      },
+      {
+        "base_seed": 287104,
+        "episode": 3,
+        "goal_index": 1,
+        "index": 3,
+        "instruction": "Reorient the object so that the surface marked with letter B faces upward.",
+        "requested_label_index": 2,
+        "requested_letter": "B",
+        "trial_seed": 287104003
+      },
+      {
+        "base_seed": 287104,
+        "episode": 4,
+        "goal_index": 0,
+        "index": 4,
+        "instruction": "Reorient the object so that the surface marked with letter A faces upward.",
+        "requested_label_index": 1,
+        "requested_letter": "A",
+        "trial_seed": 287104004
+      },
+      {
+        "base_seed": 287104,
+        "episode": 5,
+        "goal_index": 5,
+        "index": 5,
+        "instruction": "Reorient the object so that the surface marked with letter F faces upward.",
+        "requested_label_index": 6,
+        "requested_letter": "F",
+        "trial_seed": 287104005
+      },
+      {
+        "base_seed": 287104,
+        "episode": 6,
+        "goal_index": 4,
+        "index": 6,
+        "instruction": "Reorient the object so that the surface marked with letter E faces upward.",
+        "requested_label_index": 5,
+        "requested_letter": "E",
+        "trial_seed": 287104006
+      },
+      {
+        "base_seed": 287104,
+        "episode": 7,
+        "goal_index": 3,
+        "index": 7,
+        "instruction": "Reorient the object so that the surface marked with letter D faces upward.",
+        "requested_label_index": 4,
+        "requested_letter": "D",
+        "trial_seed": 287104007
+      },
+      {
+        "base_seed": 287104,
+        "episode": 8,
+        "goal_index": 2,
+        "index": 8,
+        "instruction": "Reorient the object so that the surface marked with letter C faces upward.",
+        "requested_label_index": 3,
+        "requested_letter": "C",
+        "trial_seed": 287104008
+      },
+      {
+        "base_seed": 287104,
+        "episode": 9,
+        "goal_index": 1,
+        "index": 9,
+        "instruction": "Reorient the object so that the surface marked with letter B faces upward.",
+        "requested_label_index": 2,
+        "requested_letter": "B",
+        "trial_seed": 287104009
+      },
+      {
+        "base_seed": 287104,
+        "episode": 10,
+        "goal_index": 0,
+        "index": 10,
+        "instruction": "Reorient the object so that the surface marked with letter A faces upward.",
+        "requested_label_index": 1,
+        "requested_letter": "A",
+        "trial_seed": 287104010
+      },
+      {
+        "base_seed": 287104,
+        "episode": 11,
+        "goal_index": 5,
+        "index": 11,
+        "instruction": "Reorient the object so that the surface marked with letter F faces upward.",
+        "requested_label_index": 6,
+        "requested_letter": "F",
+        "trial_seed": 287104011
+      },
+      {
+        "base_seed": 287104,
+        "episode": 12,
+        "goal_index": 4,
+        "index": 12,
+        "instruction": "Reorient the object so that the surface marked with letter E faces upward.",
+        "requested_label_index": 5,
+        "requested_letter": "E",
+        "trial_seed": 287104012
+      },
+      {
+        "base_seed": 287104,
+        "episode": 13,
+        "goal_index": 3,
+        "index": 13,
+        "instruction": "Reorient the object so that the surface marked with letter D faces upward.",
+        "requested_label_index": 4,
+        "requested_letter": "D",
+        "trial_seed": 287104013
+      },
+      {
+        "base_seed": 287104,
+        "episode": 14,
+        "goal_index": 2,
+        "index": 14,
+        "instruction": "Reorient the object so that the surface marked with letter C faces upward.",
+        "requested_label_index": 3,
+        "requested_letter": "C",
+        "trial_seed": 287104014
+      },
+      {
+        "base_seed": 287104,
+        "episode": 15,
+        "goal_index": 1,
+        "index": 15,
+        "instruction": "Reorient the object so that the surface marked with letter B faces upward.",
+        "requested_label_index": 2,
+        "requested_letter": "B",
+        "trial_seed": 287104015
+      },
+      {
+        "base_seed": 287104,
+        "episode": 16,
+        "goal_index": 0,
+        "index": 16,
+        "instruction": "Reorient the object so that the surface marked with letter A faces upward.",
+        "requested_label_index": 1,
+        "requested_letter": "A",
+        "trial_seed": 287104016
+      },
+      {
+        "base_seed": 287104,
+        "episode": 17,
+        "goal_index": 5,
+        "index": 17,
+        "instruction": "Reorient the object so that the surface marked with letter F faces upward.",
+        "requested_label_index": 6,
+        "requested_letter": "F",
+        "trial_seed": 287104017
+      },
+      {
+        "base_seed": 287104,
+        "episode": 18,
+        "goal_index": 4,
+        "index": 18,
+        "instruction": "Reorient the object so that the surface marked with letter E faces upward.",
+        "requested_label_index": 5,
+        "requested_letter": "E",
+        "trial_seed": 287104018
+      },
+      {
+        "base_seed": 287104,
+        "episode": 19,
+        "goal_index": 3,
+        "index": 19,
+        "instruction": "Reorient the object so that the surface marked with letter D faces upward.",
+        "requested_label_index": 4,
+        "requested_letter": "D",
+        "trial_seed": 287104019
+      },
+      {
+        "base_seed": 287104,
+        "episode": 20,
+        "goal_index": 2,
+        "index": 20,
+        "instruction": "Reorient the object so that the surface marked with letter C faces upward.",
+        "requested_label_index": 3,
+        "requested_letter": "C",
+        "trial_seed": 287104020
+      },
+      {
+        "base_seed": 287104,
+        "episode": 21,
+        "goal_index": 1,
+        "index": 21,
+        "instruction": "Reorient the object so that the surface marked with letter B faces upward.",
+        "requested_label_index": 2,
+        "requested_letter": "B",
+        "trial_seed": 287104021
+      },
+      {
+        "base_seed": 287104,
+        "episode": 22,
+        "goal_index": 0,
+        "index": 22,
+        "instruction": "Reorient the object so that the surface marked with letter A faces upward.",
+        "requested_label_index": 1,
+        "requested_letter": "A",
+        "trial_seed": 287104022
+      },
+      {
+        "base_seed": 287104,
+        "episode": 23,
+        "goal_index": 5,
+        "index": 23,
+        "instruction": "Reorient the object so that the surface marked with letter F faces upward.",
+        "requested_label_index": 6,
+        "requested_letter": "F",
+        "trial_seed": 287104023
+      },
+      {
+        "base_seed": 287104,
+        "episode": 24,
+        "goal_index": 4,
+        "index": 24,
+        "instruction": "Reorient the object so that the surface marked with letter E faces upward.",
+        "requested_label_index": 5,
+        "requested_letter": "E",
+        "trial_seed": 287104024
+      },
+      {
+        "base_seed": 287104,
+        "episode": 25,
+        "goal_index": 3,
+        "index": 25,
+        "instruction": "Reorient the object so that the surface marked with letter D faces upward.",
+        "requested_label_index": 4,
+        "requested_letter": "D",
+        "trial_seed": 287104025
+      },
+      {
+        "base_seed": 287104,
+        "episode": 26,
+        "goal_index": 2,
+        "index": 26,
+        "instruction": "Reorient the object so that the surface marked with letter C faces upward.",
+        "requested_label_index": 3,
+        "requested_letter": "C",
+        "trial_seed": 287104026
+      },
+      {
+        "base_seed": 287104,
+        "episode": 27,
+        "goal_index": 1,
+        "index": 27,
+        "instruction": "Reorient the object so that the surface marked with letter B faces upward.",
+        "requested_label_index": 2,
+        "requested_letter": "B",
+        "trial_seed": 287104027
+      },
+      {
+        "base_seed": 287104,
+        "episode": 28,
+        "goal_index": 0,
+        "index": 28,
+        "instruction": "Reorient the object so that the surface marked with letter A faces upward.",
+        "requested_label_index": 1,
+        "requested_letter": "A",
+        "trial_seed": 287104028
+      },
+      {
+        "base_seed": 287104,
+        "episode": 29,
+        "goal_index": 5,
+        "index": 29,
+        "instruction": "Reorient the object so that the surface marked with letter F faces upward.",
+        "requested_label_index": 6,
+        "requested_letter": "F",
+        "trial_seed": 287104029
+      },
+      {
+        "base_seed": 287104,
+        "episode": 30,
+        "goal_index": 4,
+        "index": 30,
+        "instruction": "Reorient the object so that the surface marked with letter E faces upward.",
+        "requested_label_index": 5,
+        "requested_letter": "E",
+        "trial_seed": 287104030
+      },
+      {
+        "base_seed": 287104,
+        "episode": 31,
+        "goal_index": 3,
+        "index": 31,
+        "instruction": "Reorient the object so that the surface marked with letter D faces upward.",
+        "requested_label_index": 4,
+        "requested_letter": "D",
+        "trial_seed": 287104031
+      },
+      {
+        "base_seed": 287104,
+        "episode": 32,
+        "goal_index": 2,
+        "index": 32,
+        "instruction": "Reorient the object so that the surface marked with letter C faces upward.",
+        "requested_label_index": 3,
+        "requested_letter": "C",
+        "trial_seed": 287104032
+      },
+      {
+        "base_seed": 287104,
+        "episode": 33,
+        "goal_index": 1,
+        "index": 33,
+        "instruction": "Reorient the object so that the surface marked with letter B faces upward.",
+        "requested_label_index": 2,
+        "requested_letter": "B",
+        "trial_seed": 287104033
+      },
+      {
+        "base_seed": 287104,
+        "episode": 34,
+        "goal_index": 0,
+        "index": 34,
+        "instruction": "Reorient the object so that the surface marked with letter A faces upward.",
+        "requested_label_index": 1,
+        "requested_letter": "A",
+        "trial_seed": 287104034
+      },
+      {
+        "base_seed": 287104,
+        "episode": 35,
+        "goal_index": 5,
+        "index": 35,
+        "instruction": "Reorient the object so that the surface marked with letter F faces upward.",
+        "requested_label_index": 6,
+        "requested_letter": "F",
+        "trial_seed": 287104035
+      },
+      {
+        "base_seed": 287104,
+        "episode": 36,
+        "goal_index": 4,
+        "index": 36,
+        "instruction": "Reorient the object so that the surface marked with letter E faces upward.",
+        "requested_label_index": 5,
+        "requested_letter": "E",
+        "trial_seed": 287104036
+      },
+      {
+        "base_seed": 287104,
+        "episode": 37,
+        "goal_index": 3,
+        "index": 37,
+        "instruction": "Reorient the object so that the surface marked with letter D faces upward.",
+        "requested_label_index": 4,
+        "requested_letter": "D",
+        "trial_seed": 287104037
+      },
+      {
+        "base_seed": 287104,
+        "episode": 38,
+        "goal_index": 2,
+        "index": 38,
+        "instruction": "Reorient the object so that the surface marked with letter C faces upward.",
+        "requested_label_index": 3,
+        "requested_letter": "C",
+        "trial_seed": 287104038
+      },
+      {
+        "base_seed": 287104,
+        "episode": 39,
+        "goal_index": 1,
+        "index": 39,
+        "instruction": "Reorient the object so that the surface marked with letter B faces upward.",
+        "requested_label_index": 2,
+        "requested_letter": "B",
+        "trial_seed": 287104039
+      }
+    ]
+  },
+  "schedule": {
+    "287102": [
+      {
+        "index": 21,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 28,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 27,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 37,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 10,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 29,
+        "mode": "full"
+      },
+      {
+        "index": 22,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 13,
+        "mode": "full"
+      },
+      {
+        "index": 13,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 20,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 2,
+        "mode": "continue"
+      },
+      {
+        "index": 5,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 13,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 24,
+        "mode": "continue"
+      },
+      {
+        "index": 14,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 30,
+        "mode": "continue"
+      },
+      {
+        "index": 17,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 23,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 1,
+        "mode": "continue"
+      },
+      {
+        "index": 28,
+        "mode": "continue"
+      },
+      {
+        "index": 8,
+        "mode": "continue"
+      },
+      {
+        "index": 36,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 3,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 35,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 36,
+        "mode": "full"
+      },
+      {
+        "index": 10,
+        "mode": "continue"
+      },
+      {
+        "index": 7,
+        "mode": "full"
+      },
+      {
+        "index": 14,
+        "mode": "full"
+      },
+      {
+        "index": 11,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 26,
+        "mode": "continue"
+      },
+      {
+        "index": 16,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 2,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 10,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 25,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 38,
+        "mode": "continue"
+      },
+      {
+        "index": 1,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 18,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 7,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 17,
+        "mode": "full"
+      },
+      {
+        "index": 31,
+        "mode": "continue"
+      },
+      {
+        "index": 3,
+        "mode": "full"
+      },
+      {
+        "index": 21,
+        "mode": "continue"
+      },
+      {
+        "index": 22,
+        "mode": "full"
+      },
+      {
+        "index": 1,
+        "mode": "full"
+      },
+      {
+        "index": 27,
+        "mode": "continue"
+      },
+      {
+        "index": 30,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 34,
+        "mode": "full"
+      },
+      {
+        "index": 16,
+        "mode": "full"
+      },
+      {
+        "index": 9,
+        "mode": "full"
+      },
+      {
+        "index": 6,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 6,
+        "mode": "continue"
+      },
+      {
+        "index": 11,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 25,
+        "mode": "continue"
+      },
+      {
+        "index": 3,
+        "mode": "continue"
+      },
+      {
+        "index": 12,
+        "mode": "full"
+      },
+      {
+        "index": 23,
+        "mode": "continue"
+      },
+      {
+        "index": 12,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 7,
+        "mode": "continue"
+      },
+      {
+        "index": 4,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 20,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 19,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 2,
+        "mode": "full"
+      },
+      {
+        "index": 19,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 16,
+        "mode": "continue"
+      },
+      {
+        "index": 3,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 33,
+        "mode": "continue"
+      },
+      {
+        "index": 29,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 6,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 21,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 8,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 2,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 20,
+        "mode": "full"
+      },
+      {
+        "index": 9,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 5,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 5,
+        "mode": "full"
+      },
+      {
+        "index": 39,
+        "mode": "full"
+      },
+      {
+        "index": 39,
+        "mode": "continue"
+      },
+      {
+        "index": 32,
+        "mode": "continue"
+      },
+      {
+        "index": 30,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 4,
+        "mode": "full"
+      },
+      {
+        "index": 6,
+        "mode": "full"
+      },
+      {
+        "index": 32,
+        "mode": "full"
+      },
+      {
+        "index": 0,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 32,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 30,
+        "mode": "full"
+      },
+      {
+        "index": 36,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 8,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 25,
+        "mode": "full"
+      },
+      {
+        "index": 13,
+        "mode": "continue"
+      },
+      {
+        "index": 12,
+        "mode": "continue"
+      },
+      {
+        "index": 26,
+        "mode": "full"
+      },
+      {
+        "index": 12,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 33,
+        "mode": "full"
+      },
+      {
+        "index": 34,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 39,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 0,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 37,
+        "mode": "continue"
+      },
+      {
+        "index": 18,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 11,
+        "mode": "continue"
+      },
+      {
+        "index": 31,
+        "mode": "full"
+      },
+      {
+        "index": 19,
+        "mode": "full"
+      },
+      {
+        "index": 38,
+        "mode": "full"
+      },
+      {
+        "index": 21,
+        "mode": "full"
+      },
+      {
+        "index": 32,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 15,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 14,
+        "mode": "continue"
+      },
+      {
+        "index": 37,
+        "mode": "full"
+      },
+      {
+        "index": 33,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 15,
+        "mode": "continue"
+      },
+      {
+        "index": 23,
+        "mode": "full"
+      },
+      {
+        "index": 7,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 35,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 28,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 31,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 28,
+        "mode": "full"
+      },
+      {
+        "index": 9,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 22,
+        "mode": "continue"
+      },
+      {
+        "index": 17,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 15,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 25,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 22,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 26,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 34,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 31,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 38,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 26,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 27,
+        "mode": "full"
+      },
+      {
+        "index": 20,
+        "mode": "continue"
+      },
+      {
+        "index": 29,
+        "mode": "continue"
+      },
+      {
+        "index": 39,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 24,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 35,
+        "mode": "full"
+      },
+      {
+        "index": 23,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 19,
+        "mode": "continue"
+      },
+      {
+        "index": 29,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 34,
+        "mode": "continue"
+      },
+      {
+        "index": 27,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 5,
+        "mode": "continue"
+      },
+      {
+        "index": 4,
+        "mode": "continue"
+      },
+      {
+        "index": 18,
+        "mode": "full"
+      },
+      {
+        "index": 15,
+        "mode": "full"
+      },
+      {
+        "index": 14,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 17,
+        "mode": "continue"
+      },
+      {
+        "index": 24,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 1,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 38,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 37,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 0,
+        "mode": "full"
+      },
+      {
+        "index": 0,
+        "mode": "continue"
+      },
+      {
+        "index": 10,
+        "mode": "full"
+      },
+      {
+        "index": 18,
+        "mode": "continue"
+      },
+      {
+        "index": 33,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 4,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 36,
+        "mode": "continue"
+      },
+      {
+        "index": 8,
+        "mode": "full"
+      },
+      {
+        "index": 9,
+        "mode": "continue"
+      },
+      {
+        "index": 35,
+        "mode": "continue"
+      },
+      {
+        "index": 24,
+        "mode": "full"
+      },
+      {
+        "index": 11,
+        "mode": "full"
+      },
+      {
+        "index": 16,
+        "mode": "fixed_slow"
+      }
+    ],
+    "287103": [
+      {
+        "index": 23,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 23,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 17,
+        "mode": "continue"
+      },
+      {
+        "index": 2,
+        "mode": "full"
+      },
+      {
+        "index": 18,
+        "mode": "full"
+      },
+      {
+        "index": 4,
+        "mode": "full"
+      },
+      {
+        "index": 26,
+        "mode": "continue"
+      },
+      {
+        "index": 20,
+        "mode": "full"
+      },
+      {
+        "index": 28,
+        "mode": "full"
+      },
+      {
+        "index": 39,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 13,
+        "mode": "continue"
+      },
+      {
+        "index": 20,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 37,
+        "mode": "full"
+      },
+      {
+        "index": 12,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 26,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 10,
+        "mode": "continue"
+      },
+      {
+        "index": 30,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 15,
+        "mode": "continue"
+      },
+      {
+        "index": 33,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 0,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 31,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 37,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 24,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 9,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 5,
+        "mode": "continue"
+      },
+      {
+        "index": 13,
+        "mode": "full"
+      },
+      {
+        "index": 35,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 2,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 25,
+        "mode": "full"
+      },
+      {
+        "index": 31,
+        "mode": "continue"
+      },
+      {
+        "index": 35,
+        "mode": "full"
+      },
+      {
+        "index": 16,
+        "mode": "continue"
+      },
+      {
+        "index": 8,
+        "mode": "continue"
+      },
+      {
+        "index": 25,
+        "mode": "continue"
+      },
+      {
+        "index": 21,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 24,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 3,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 29,
+        "mode": "full"
+      },
+      {
+        "index": 22,
+        "mode": "full"
+      },
+      {
+        "index": 24,
+        "mode": "full"
+      },
+      {
+        "index": 6,
+        "mode": "full"
+      },
+      {
+        "index": 38,
+        "mode": "continue"
+      },
+      {
+        "index": 25,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 12,
+        "mode": "continue"
+      },
+      {
+        "index": 36,
+        "mode": "continue"
+      },
+      {
+        "index": 5,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 11,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 4,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 7,
+        "mode": "full"
+      },
+      {
+        "index": 38,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 26,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 6,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 13,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 5,
+        "mode": "full"
+      },
+      {
+        "index": 18,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 6,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 32,
+        "mode": "continue"
+      },
+      {
+        "index": 22,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 30,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 13,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 37,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 14,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 0,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 33,
+        "mode": "full"
+      },
+      {
+        "index": 36,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 33,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 37,
+        "mode": "continue"
+      },
+      {
+        "index": 27,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 38,
+        "mode": "full"
+      },
+      {
+        "index": 25,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 14,
+        "mode": "continue"
+      },
+      {
+        "index": 31,
+        "mode": "full"
+      },
+      {
+        "index": 0,
+        "mode": "continue"
+      },
+      {
+        "index": 23,
+        "mode": "full"
+      },
+      {
+        "index": 16,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 32,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 14,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 30,
+        "mode": "full"
+      },
+      {
+        "index": 35,
+        "mode": "continue"
+      },
+      {
+        "index": 39,
+        "mode": "continue"
+      },
+      {
+        "index": 21,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 1,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 31,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 3,
+        "mode": "full"
+      },
+      {
+        "index": 15,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 22,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 27,
+        "mode": "continue"
+      },
+      {
+        "index": 6,
+        "mode": "continue"
+      },
+      {
+        "index": 34,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 15,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 19,
+        "mode": "full"
+      },
+      {
+        "index": 32,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 28,
+        "mode": "continue"
+      },
+      {
+        "index": 12,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 23,
+        "mode": "continue"
+      },
+      {
+        "index": 7,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 29,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 11,
+        "mode": "full"
+      },
+      {
+        "index": 12,
+        "mode": "full"
+      },
+      {
+        "index": 7,
+        "mode": "continue"
+      },
+      {
+        "index": 1,
+        "mode": "continue"
+      },
+      {
+        "index": 8,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 2,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 29,
+        "mode": "continue"
+      },
+      {
+        "index": 35,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 1,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 18,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 26,
+        "mode": "full"
+      },
+      {
+        "index": 16,
+        "mode": "full"
+      },
+      {
+        "index": 2,
+        "mode": "continue"
+      },
+      {
+        "index": 33,
+        "mode": "continue"
+      },
+      {
+        "index": 34,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 14,
+        "mode": "full"
+      },
+      {
+        "index": 8,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 24,
+        "mode": "continue"
+      },
+      {
+        "index": 21,
+        "mode": "full"
+      },
+      {
+        "index": 15,
+        "mode": "full"
+      },
+      {
+        "index": 28,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 5,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 16,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 3,
+        "mode": "continue"
+      },
+      {
+        "index": 34,
+        "mode": "full"
+      },
+      {
+        "index": 36,
+        "mode": "full"
+      },
+      {
+        "index": 19,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 20,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 9,
+        "mode": "full"
+      },
+      {
+        "index": 32,
+        "mode": "full"
+      },
+      {
+        "index": 27,
+        "mode": "full"
+      },
+      {
+        "index": 19,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 11,
+        "mode": "continue"
+      },
+      {
+        "index": 39,
+        "mode": "full"
+      },
+      {
+        "index": 10,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 39,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 9,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 1,
+        "mode": "full"
+      },
+      {
+        "index": 34,
+        "mode": "continue"
+      },
+      {
+        "index": 17,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 18,
+        "mode": "continue"
+      },
+      {
+        "index": 36,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 38,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 10,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 3,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 7,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 4,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 19,
+        "mode": "continue"
+      },
+      {
+        "index": 28,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 17,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 20,
+        "mode": "continue"
+      },
+      {
+        "index": 30,
+        "mode": "continue"
+      },
+      {
+        "index": 22,
+        "mode": "continue"
+      },
+      {
+        "index": 9,
+        "mode": "continue"
+      },
+      {
+        "index": 11,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 0,
+        "mode": "full"
+      },
+      {
+        "index": 4,
+        "mode": "continue"
+      },
+      {
+        "index": 17,
+        "mode": "full"
+      },
+      {
+        "index": 10,
+        "mode": "full"
+      },
+      {
+        "index": 27,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 29,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 21,
+        "mode": "continue"
+      },
+      {
+        "index": 8,
+        "mode": "full"
+      }
+    ],
+    "287104": [
+      {
+        "index": 36,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 15,
+        "mode": "full"
+      },
+      {
+        "index": 31,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 34,
+        "mode": "continue"
+      },
+      {
+        "index": 39,
+        "mode": "continue"
+      },
+      {
+        "index": 10,
+        "mode": "continue"
+      },
+      {
+        "index": 4,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 24,
+        "mode": "full"
+      },
+      {
+        "index": 19,
+        "mode": "continue"
+      },
+      {
+        "index": 17,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 32,
+        "mode": "full"
+      },
+      {
+        "index": 17,
+        "mode": "continue"
+      },
+      {
+        "index": 9,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 35,
+        "mode": "full"
+      },
+      {
+        "index": 29,
+        "mode": "full"
+      },
+      {
+        "index": 24,
+        "mode": "continue"
+      },
+      {
+        "index": 6,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 8,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 38,
+        "mode": "continue"
+      },
+      {
+        "index": 26,
+        "mode": "full"
+      },
+      {
+        "index": 3,
+        "mode": "continue"
+      },
+      {
+        "index": 15,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 5,
+        "mode": "full"
+      },
+      {
+        "index": 19,
+        "mode": "full"
+      },
+      {
+        "index": 36,
+        "mode": "continue"
+      },
+      {
+        "index": 4,
+        "mode": "full"
+      },
+      {
+        "index": 39,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 17,
+        "mode": "full"
+      },
+      {
+        "index": 24,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 25,
+        "mode": "full"
+      },
+      {
+        "index": 2,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 31,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 23,
+        "mode": "continue"
+      },
+      {
+        "index": 28,
+        "mode": "full"
+      },
+      {
+        "index": 3,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 34,
+        "mode": "full"
+      },
+      {
+        "index": 28,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 25,
+        "mode": "continue"
+      },
+      {
+        "index": 12,
+        "mode": "continue"
+      },
+      {
+        "index": 16,
+        "mode": "full"
+      },
+      {
+        "index": 6,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 16,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 11,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 38,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 32,
+        "mode": "continue"
+      },
+      {
+        "index": 27,
+        "mode": "continue"
+      },
+      {
+        "index": 7,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 30,
+        "mode": "full"
+      },
+      {
+        "index": 20,
+        "mode": "continue"
+      },
+      {
+        "index": 31,
+        "mode": "full"
+      },
+      {
+        "index": 13,
+        "mode": "full"
+      },
+      {
+        "index": 34,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 12,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 23,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 6,
+        "mode": "continue"
+      },
+      {
+        "index": 29,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 20,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 37,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 23,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 30,
+        "mode": "continue"
+      },
+      {
+        "index": 27,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 2,
+        "mode": "full"
+      },
+      {
+        "index": 21,
+        "mode": "full"
+      },
+      {
+        "index": 14,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 36,
+        "mode": "full"
+      },
+      {
+        "index": 5,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 10,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 20,
+        "mode": "full"
+      },
+      {
+        "index": 1,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 10,
+        "mode": "full"
+      },
+      {
+        "index": 12,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 0,
+        "mode": "full"
+      },
+      {
+        "index": 35,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 3,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 37,
+        "mode": "continue"
+      },
+      {
+        "index": 22,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 33,
+        "mode": "full"
+      },
+      {
+        "index": 9,
+        "mode": "continue"
+      },
+      {
+        "index": 0,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 14,
+        "mode": "full"
+      },
+      {
+        "index": 34,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 0,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 2,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 14,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 7,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 14,
+        "mode": "continue"
+      },
+      {
+        "index": 37,
+        "mode": "full"
+      },
+      {
+        "index": 21,
+        "mode": "continue"
+      },
+      {
+        "index": 11,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 19,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 18,
+        "mode": "continue"
+      },
+      {
+        "index": 18,
+        "mode": "full"
+      },
+      {
+        "index": 29,
+        "mode": "continue"
+      },
+      {
+        "index": 30,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 30,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 17,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 27,
+        "mode": "full"
+      },
+      {
+        "index": 13,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 1,
+        "mode": "continue"
+      },
+      {
+        "index": 1,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 36,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 9,
+        "mode": "full"
+      },
+      {
+        "index": 15,
+        "mode": "continue"
+      },
+      {
+        "index": 11,
+        "mode": "full"
+      },
+      {
+        "index": 22,
+        "mode": "full"
+      },
+      {
+        "index": 22,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 39,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 6,
+        "mode": "full"
+      },
+      {
+        "index": 28,
+        "mode": "continue"
+      },
+      {
+        "index": 5,
+        "mode": "continue"
+      },
+      {
+        "index": 7,
+        "mode": "continue"
+      },
+      {
+        "index": 20,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 9,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 13,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 16,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 32,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 28,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 37,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 1,
+        "mode": "full"
+      },
+      {
+        "index": 7,
+        "mode": "full"
+      },
+      {
+        "index": 25,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 27,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 33,
+        "mode": "continue"
+      },
+      {
+        "index": 15,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 10,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 26,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 2,
+        "mode": "continue"
+      },
+      {
+        "index": 0,
+        "mode": "continue"
+      },
+      {
+        "index": 4,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 26,
+        "mode": "continue"
+      },
+      {
+        "index": 12,
+        "mode": "full"
+      },
+      {
+        "index": 23,
+        "mode": "full"
+      },
+      {
+        "index": 39,
+        "mode": "full"
+      },
+      {
+        "index": 32,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 24,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 35,
+        "mode": "continue"
+      },
+      {
+        "index": 31,
+        "mode": "continue"
+      },
+      {
+        "index": 11,
+        "mode": "continue"
+      },
+      {
+        "index": 22,
+        "mode": "continue"
+      },
+      {
+        "index": 38,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 38,
+        "mode": "full"
+      },
+      {
+        "index": 8,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 21,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 33,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 29,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 19,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 5,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 33,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 13,
+        "mode": "continue"
+      },
+      {
+        "index": 8,
+        "mode": "full"
+      },
+      {
+        "index": 18,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 25,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 21,
+        "mode": "fixed_slow"
+      },
+      {
+        "index": 3,
+        "mode": "full"
+      },
+      {
+        "index": 8,
+        "mode": "continue"
+      },
+      {
+        "index": 35,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 18,
+        "mode": "learned_speed"
+      },
+      {
+        "index": 16,
+        "mode": "continue"
+      },
+      {
+        "index": 4,
+        "mode": "continue"
+      },
+      {
+        "index": 26,
+        "mode": "learned_speed"
+      }
+    ]
+  }
+}

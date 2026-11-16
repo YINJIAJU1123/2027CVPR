@@ -1,0 +1,25 @@
+{
+  "source_incident_sha256": "6a4bb666968b6eecae196d301f344f4aebb880474139aaebbdda2f8a1d269746",
+  "time_utc": "2026-11-15T18:40Z",
+  "original_worker_and_tunnel": "A dedicated evaluation worker lost one local bridge session while the cloud service recorded two independent request timeouts; no host restart occurred.",
+  "local_unscored": {
+    "trial_seed": 287102021,
+    "mode": "full",
+    "preserved_steps": 163,
+    "observed_terminal": false,
+    "model_responses": 1,
+    "reset_hash_missing": true,
+    "replayed": false
+  },
+  "recorded_cloud_service_errors": [
+    {
+      "trial_seed": 287103014,
+      "mode": "learned_speed"
+    },
+    {
+      "trial_seed": 287104027,
+      "mode": "continue"
+    }
+  ],
+  "frozen_release_sha256": "c87385d8df567d4465dc55961fc9ef84054c19974638fbcd6604c780a90f1a3b"
+}
