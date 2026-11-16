@@ -1,7 +1,7 @@
-% Queue the two-column overview early so it appears before detailed method text.
+% Two-column system overview, queued early so it lands before the method text.
 \begin{figure*}[!t]
 \centering
-\includegraphics[width=0.88\textwidth]{figures/imported/reveal_pipeline_ppt.pdf}
-\caption{\textbf{REVEAL training and deployment.} (a) A privileged teacher is trained in simulation. (b) The frozen teacher supervises a student that takes its goal from a bank of skill vectors; the state decoder is used only in training. (c) At deployment, the agent selects inspection or presentation skills from new observations while local controllers adjust the joint commands. The pose feedback path connects simulated and physical deployment.}
+\includegraphics[width=0.96\textwidth]{figures/imported/v11/reveal_pipeline_v11.pdf}
+\caption{\textbf{REVEAL training and deployment.} (a) A privileged teacher with full simulator state is trained for the Revo3 hand. (b) At deployment the agent reads the instruction, the current view and the history of executed actions, and returns either an inspection or a target binding; its output is a goal embedding $g_t$ drawn from the skill bank. (c) Underneath, an RGB-D pose estimator fuses image features with measured surface points, a motor student turns pose and goal into joint targets, and waiting and execution controllers adjust those targets while the agent is still reasoning. The teacher is used only for supervision and the state decoder only in training.}
 \label{fig:pipeline}
 \end{figure*}

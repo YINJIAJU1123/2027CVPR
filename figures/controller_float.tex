@@ -1,6 +1,6 @@
 \begin{figure}[!t]
 \centering
-\includegraphics[width=\columnwidth]{figures/imported/reveal_controller_ppt.pdf}
-\caption{\textbf{Goal-conditioned local control.} The waiting and execution controllers fuse the goal-bank vector with the sensor state, predict a waiting scale and a bounded joint correction, and produce the adjusted hand action.}
+\includegraphics[width=\columnwidth]{figures/imported/v11/reveal_controller_v11.pdf}
+\caption{\textbf{Goal-conditioned local control.} The waiting and execution controllers share one architecture: the goal embedding $g_t$ and the measured state are encoded separately, fused, and decoded into a waiting speed $\alpha$ and a bounded joint correction $\Delta a$ that adjust the student's joint targets.}
 \label{fig:controller-architecture}
 \end{figure}
