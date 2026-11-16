@@ -2,7 +2,7 @@
 \label{sec:experiments}
 We organize the experiments around four questions. \textbf{Q1}: how does the complete system compare with VLM baselines across objects, target mappings and languages? \textbf{Q2}: how should the hand be controlled while the agent reasons? \textbf{Q3}: does exploration matter, that is, does the agent need new views and does it help to let it choose them? \textbf{Q4}: does the system transfer to a physical hand?
 
-\subsection{Setup and reporting}
+\subsection{Setup and Reporting}
 \label{sec:setup}
 \paragraph{Objects and systems.}
 Simulation uses Revo3 assets in Isaac Lab 3.0/Newton. Q1 covers a cube, die, duck, hedgehog, ball and milk carton. An instruction requests one of six surface letters, or a dot count on the die; each target has a fixed face-up reference orientation. We compare four systems built around Qwen3-VL-4B-Instruct~\cite{qwen3vl}: \emph{Rule}, \emph{Fine-tuned}, \emph{Fine-tuned + ctrl.}, which adds the local waiting and execution controllers, and the complete REVEAL system. When the target is not identifiable in the first image, the first three systems follow a fixed inspection schedule. All four share the object policy, RGB-D pose estimator, goal bank and stopping rule; REVEAL additionally selects inspections from new observations. Q2 and Q3 change one component at a time on the cube (and, for inspection, a second object) and hold everything else fixed.
@@ -21,7 +21,7 @@ We first compare the complete system with the two VLM baselines on six objects, 
 \paragraph{Six objects, two mappings.}
 Across 480 paired task slots and four systems, REVEAL's mean success is \QOneOriginalSuccess\% with the original mappings and \QOneChangedSuccess\% with changed mappings, where the mean weights the six objects equally. The strongest non-REVEAL baselines reach \QOneOriginalBaseline\% and \QOneChangedBaseline\%, so the margin grows from \QOneOriginalGain{} to \QOneChangedGain{} points when the mapping changes. REVEAL has the highest rate for every object under both mappings. Changing the mapping costs REVEAL 4.6 points on average, whereas the fine-tuned baselines fall to about 10\%. Adding local controllers to the fine-tuned policy does not recover this loss: it reaches only 40.4\% and 10.8\% on the two mappings. The milk carton remains the hardest object, at 42.5\% and 27.5\% for REVEAL.
 
-\paragraph{Is the mark actually read?}
+\paragraph{Reading the mark.}
 A cube study changes only what the agent sees. Over 40 matched states we show the original letters, reassigned letters, or no letters; the pose estimator's input and the lighting stay fixed. Reassigning the letters leaves REVEAL at 32/40 but reduces Fine-tuned from 30/40 to 16/40 (Holm-adjusted $p=0.013$ over six comparisons), and nine of its eleven wrong bindings follow the old mapping. Rule stays at 23/40. With the letters hidden, REVEAL, Fine-tuned and Rule succeed in 0/39, 3/40 and 0/40 trials, so success depends on reading the mark. The die gives the same picture: rotating its visual mesh moves every dot count to a different face, paired tests favor REVEAL over both baselines under the new layout, and REVEAL's own success does not change significantly (supplement).
 
 \paragraph{Language and wording.}
@@ -74,13 +74,13 @@ Condition & Success & \% & Drops & Calls\\
 \label{tab:image-refresh}
 \end{table}
 
-\paragraph{(a) Does continued feedback help find the target?}
+\paragraph{Continued feedback.}
 With a single call, the agent sees one image and must plan up to six actions in advance. With continued feedback, it may call up to six times, each with a new image and the action history. Local controllers, stopping and time limits are identical. Success rises from 6/39 to 33/39, and all 27 discordant pairs favor feedback ($p=1.49\times10^{-8}$). The single-call agent usually recognizes that it cannot see the target: it abstains in 28 trials, and feedback turns 22 of these into successes. In 32 feedback trials the first binding comes after an inspection; the supplement documents the protocol.
 
-\paragraph{(b) Does the next image provide useful evidence?}
+\paragraph{Fresh images versus repeated calls.}
 More calls could help simply by giving the agent more chances. To separate this from visual evidence, both conditions here have the same six-call cap, live numeric feedback, history and local control, and differ only in the image: the current view, or the first frame repeated at every call. Success is 32/40 with current images and 9/40 with the repeated frame; all 23 discordant pairs favor current images ($p=2.38\times10^{-7}$). The nine repeated-frame successes are exactly the trials in which both arms bind correctly on the first call, before any new view is needed. Beyond these, current images produce 25 further correct bindings, 23 of which end in success, and the repeated frame produces none. The gain comes from what the new images show.
 
-\paragraph{(c) Does choosing inspection actions help?}
+\paragraph{Agent-chosen inspections.}
 We next fix the evidence channel and vary who chooses the inspection. In the adaptive arm the agent selects the direction and duration of each inspection. In the fixed arm, inspections follow a prescribed sweep over the six skills, three seconds each; the agent still decides when to inspect, bind or abstain. Model, controllers, image input, history format and stopping are shared.
 
 On the ball, adaptive inspection succeeds in 37/40 trials (92.5\%) against 29/40 (72.5\%) for the fixed sweep. Eight pairs favor adaptive inspection and none favor the sweep ($p=0.0078$). The difference lies in finding the target: correct terminal bindings number 37 versus 29, while each arm drops the object twice. Adaptive inspection also needs 15.2\% fewer calls and 26.1\% fewer tokens. On the cube, the rates are 38/40 (95.0\%) versus 31/40 (77.5\%), with nine pairs favoring adaptive inspection and two favoring the sweep; the effect has the same direction and a similar size but does not reach significance with 40 pairs ($p=0.065$). The ball protocol was fixed before its trials ran; the supplement reports seed splits, binding trajectories and costs for both objects.

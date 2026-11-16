@@ -4,7 +4,7 @@ REVEAL answers two visual questions at two rates (Fig.~\ref{fig:pipeline}). \emp
 
 \input{sections/03_task}
 
-\subsection{Learning goal-conditioned motor skills}
+\subsection{Goal-Conditioned Motor Skills}
 \paragraph{Teacher--student foundation.}
 We train a teacher and a student for the Revo3 hand following ViserDex~\cite{bhardwaj2026viserdex}. The teacher uses privileged simulation state and geometric goals. It stays frozen and supplies the action labels for everything that follows. The student keeps its encoders, recurrent core and actor.
 
@@ -19,17 +19,17 @@ The adapted student receives neither the target quaternion nor the relative-goal
 
 We fit the projection and the recurrent policy to the frozen teacher's actions with a DAgger-style procedure~\cite{ross2011dagger}. The projection is first warmed up with an action MSE loss. Recurrent adaptation then adds a decoder that reconstructs the normalized privileged state, with the goal quaternion removed, under an MSE loss of weight 0.2. The teacher and the decoder are used only in training. Network dimensions and fitting details are in the supplement.
 
-\subsection{Semantic vision: agentic exploration and target binding}
+\subsection{Semantic Vision: Exploration and Target Binding}
 \label{sec:exploration}
 At each call the agent receives the instruction, the current image, the history of executed actions and a summary of measured state, and returns one action: inspect, reorient, verify, stop, or abstain. The image is the camera view of the hand and the object, so the requested mark may be turned away, covered by a finger or seen at a grazing angle. The state summary contains estimated skill-relative errors and the current binding and request status; it contains neither the true pose nor any correctness label. Inspection selects a skill in order to obtain another view. Target binding selects the motor goal for presentation. Replies are validated before they are applied, and an invalid reply leaves the current skill unchanged.
 
 The agent also chooses how long each inspection or reorientation lasts, between 10 and 90 control steps. A short action gives a quick glimpse; a long one carries the object further toward the selected orientation. The next image shows the effect of the action and informs the next decision. Only one request can be pending at a time, and the current skill stays active until a valid reply changes it. The hand can therefore keep gathering evidence until the agent is ready to commit to a presentation goal.
 
-\subsection{Geometric vision: object pose under hand occlusion}
+\subsection{Geometric Vision: Pose Under Hand Occlusion}
 \label{sec:pose}
 The motor policy needs the object pose at every control step, and inspection is when pose is hardest to see: fingers cross in front of the object and large parts of it leave the view. A network that sees only RGB must then infer metric depth from appearance. We instead fuse the image with measured depth. The inputs are the segmented RGB image and up to 1,024 measured surface points of the object, each paired with its pixel location. A ResNet-34 encodes the image, and the feature at each point's pixel is sampled from the resulting map. A per-point MLP encodes the point's 3D position relative to the centroid of the observed points. The two features are concatenated, processed point-wise and max-pooled into a single vector, from which the network regresses the 3D positions of the object center and the eight corners of its bounding box in the camera frame. A rigid fit of the known keypoint layout to these predictions gives position, orientation and a fitting error, which is also passed to the local controllers. Depth anchors the estimate in metric space, while color resolves which face is which. The network is trained in simulation on Gaussian-splat renderings~\cite{bhardwaj2026viserdex} with hand occlusion, depth noise and point dropout, and the same design is used for all simulated objects and on the physical hand.
 
-\subsection{Continuous control during and after reasoning}
+\subsection{Local Control During and After Reasoning}
 \label{sec:wait}
 The agent chooses goals at irregular intervals, but the hand needs a command at every control step. We place local controllers between the adapted student and the joints. A sensor encoder and a goal encoder feed a fusion layer that predicts corrections to the student's commands. The sensor features are proprioception, measured pose, the student's recurrent state and proposal, the pose-fitting error, and the binding and request status.
 
