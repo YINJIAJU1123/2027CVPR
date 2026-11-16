@@ -1,6 +1,6 @@
 \section{Method}
 \label{sec:method}
-REVEAL answers two visual questions at two rates (Fig.~\ref{fig:pipeline}). \emph{What is on the object} is answered every few seconds by an agent that looks at RGB images and decides how to inspect. \emph{Where the object is} is answered at every control step by an RGB-D pose estimator, whose output drives a recurrent motor policy and two local controllers. Training has three stages: a privileged teacher and its distilled student for the Revo3 hand, adaptation of the student to a goal embedding produced by the agent, and learning of the local controllers. Every object goes through the same pipeline and has its own weights; we use the cube as the running example.
+REVEAL answers two visual questions at two rates (Fig.~\ref{fig:pipeline}). \emph{What is on the object} is answered every few seconds by an agent that looks at RGB images and decides how to inspect. \emph{Where the object is} is answered at every control step by an RGB-D pose estimator, whose output drives a recurrent motor policy and two local controllers. Training has three stages: a privileged teacher and its distilled student for the Revo3 hand, adaptation of the student to a goal embedding produced by the agent, and learning of the local controllers. Every object goes through the same pipeline and has its own weights. We use the cube as the running example.
 
 \input{sections/03_task}
 
@@ -9,7 +9,7 @@ REVEAL answers two visual questions at two rates (Fig.~\ref{fig:pipeline}). \emp
 We train a teacher and a student for the Revo3 hand following ViserDex~\cite{bhardwaj2026viserdex}. The teacher uses privileged simulation state and geometric goals. It stays frozen and supplies the action labels for everything that follows. The student keeps its encoders, recurrent core and actor.
 
 \paragraph{Goal-embedding adaptation.}
-The original student is told where to go by a target quaternion. An agent cannot supply one before it has seen the target, so we give the student a discrete interface instead. A goal embedding $g_t$ is a 768-dimensional vector drawn from a bank $B=\{g_1,\ldots,g_6\}$ of six, one per skill, each corresponding to a reference object orientation; the vectors are precomputed text embeddings of the skill names~\cite{tschannen2025siglip2}. A learned projection replaces the student's geometric goal inputs:
+The original student is told where to go by a target quaternion. An agent cannot supply one before it has seen the target, so we give the student a discrete interface instead. A goal embedding $g_t$ is a 768-dimensional vector drawn from a bank $B=\{g_1,\ldots,g_6\}$ of six, one per skill, each corresponding to a reference object orientation. The vectors are precomputed text embeddings of the skill names~\cite{tschannen2025siglip2}. A learned projection replaces the student's geometric goal inputs:
 \begin{align}
  z_t&=\tanh(W_g g_t+b_g),\\
  (u_t,h_{t+1})&=\pi_\theta([x_t,z_t],\hat p_t,h_t).
@@ -22,9 +22,9 @@ We fit the projection and the recurrent policy to the frozen teacher's actions w
 \subsection{Semantic Vision: Exploration and Target Binding}
 \label{sec:exploration}
 \input{figures/exploration_float}
-At each call the agent receives the instruction, the current image, the history of executed actions and a summary of measured state, and returns one action: inspect, reorient, verify, stop, or abstain. The image is the camera view of the hand and the object, so the requested mark may be turned away, covered by a finger or seen at a grazing angle. The state summary contains estimated skill-relative errors and the current binding and request status; it contains neither the true pose nor any correctness label. Inspection selects a skill in order to obtain another view. Target binding selects the goal embedding for presentation. Replies are validated before they are applied, and an invalid reply leaves the current skill unchanged.
+At each call the agent receives the instruction, the current image, the history of executed actions and a summary of measured state, and returns one action: inspect, reorient, verify, stop, or abstain. The image is the camera view of the hand and the object, so the requested mark may be turned away, covered by a finger or seen at a grazing angle. The state summary contains estimated skill-relative errors and the current binding and request status. It contains neither the true pose nor any correctness label. Inspection selects a skill in order to obtain another view. Target binding selects the goal embedding for presentation. Replies are validated before they are applied, and an invalid reply leaves the current skill unchanged.
 
-The agent also chooses how long each inspection or reorientation lasts, between 10 and 90 control steps. A short action gives a quick glimpse; a long one carries the object further toward the selected orientation. The next image shows the effect of the action and informs the next decision. Only one request can be pending at a time, and the current skill stays active until a valid reply changes it. The hand can therefore keep gathering evidence until the agent is ready to commit to a presentation goal.
+The agent also chooses how long each inspection or reorientation lasts, between 10 and 90 control steps. A short action gives a quick glimpse. A long one carries the object further toward the selected orientation. The next image shows the effect of the action and informs the next decision. Only one request can be pending at a time, and the current skill stays active until a valid reply changes it. The hand can therefore keep gathering evidence until the agent is ready to commit to a presentation goal.
 
 \subsection{Geometric Vision: Pose Under Hand Occlusion}
 \label{sec:pose}
@@ -45,7 +45,7 @@ When a request is issued, we record the current pose and command as the \emph{re
  a_t&=\clip\bigl(b_t+0.35\tanh(v_t),-1,1\bigr).
 \label{eq:control}
 \end{align}
-While waiting, the hand moves toward the student's proposal at a learned fraction $\alpha_t$ of full speed; zero actor outputs recover fixed slowing with coefficient 0.15. Slowing only scales the student's motion. The joint correction $v_t$ can also change its direction. When no request is pending, a separate execution actor supplies $v_t$ and the proposal is followed at full speed.
+While waiting, the hand moves toward the student's proposal at a learned fraction $\alpha_t$ of full speed. Zero actor outputs recover fixed slowing with coefficient 0.15. Slowing only scales the student's motion. The joint correction $v_t$ can also change its direction. When no request is pending, a separate execution actor supplies $v_t$ and the proposal is followed at full speed.
 
 \paragraph{Teacher-supervised correction.}
 The frozen teacher provides the labels for both actors: actions that hold the request anchor during waiting, and actions toward the active goal during execution. Each actor is trained against these labels with a penalty on its correction $\delta_\phi=0.35\tanh(v_t)$:
@@ -53,7 +53,7 @@ The frozen teacher provides the labels for both actors: actions that hold the re
  \mathcal{L}_{\mathrm{control}}=\mathbb{E}_{(s,g,a^*)\sim\mathcal{D}}\left[\|a_\phi(s,g)-a^*\|_2^2+0.01\|\delta_\phi(s,g)\|_2^2\right].
 \label{eq:control_loss}
 \end{equation}
-Here $s$ collects the sensor features, $g$ is the active goal and $a^*$ is the teacher action; before target binding, $g$ is a startup or inspection skill. The deployed actors see only measured inputs and the active goal, and the student is held fixed while they are fitted.
+Here $s$ collects the sensor features, $g$ is the active goal and $a^*$ is the teacher action. Before target binding, $g$ is a startup or inspection skill. The deployed actors see only measured inputs and the active goal, and the student is held fixed while they are fitted.
 
 \paragraph{Closed loop.}
-At each control step we estimate the pose, run the recurrent student and the active controller, and send joint targets. Because the hand keeps moving during inference, each new agent image shows where the object actually is by then. True pose is used only for training supervision and for scoring; stopping and scoring are defined in Sec.~\ref{sec:setup}.
+At each control step we estimate the pose, run the recurrent student and the active controller, and send joint targets. Because the hand keeps moving during inference, each new agent image shows where the object actually is by then. True pose is used only for training supervision and for scoring. Stopping and scoring are defined in Sec.~\ref{sec:setup}.

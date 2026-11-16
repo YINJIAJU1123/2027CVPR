@@ -23,7 +23,7 @@ Waiting policy & Success & \% & \shortstack{Wait\\drops} & \shortstack{Exec.\\dr
 \midrule
 """+ '\n'.join(rows)+'\n'+r"""\bottomrule
 \end{tabularx}
-\caption{\textbf{Q2: controller ablation on the cube.} Outcome counts per method, 120 trials each. Wait and execution drops denote failure stages; Other holds the remaining failures.}
+\caption{\textbf{Q2: controller ablation on the cube.} Outcome counts per method, 120 trials each. Wait and execution drops denote failure stages. Other holds the remaining failures.}
 \label{tab:waiting}
 \end{table}
 """

@@ -45,7 +45,7 @@ for m in methods:
  lines.append(names[m]+' & '+' & '.join(f'{n} ({100*n/60:.1f})' for n in vals)+r'\\')
 caption=r"""\bottomrule
 \end{tabular}
-\caption{\textbf{Q1: cube instruction coverage.} Success counts (percent), each out of 60 scheduled trials. REVEAL service exclusions are 4, 1, 3 and 7 in column order; baselines have none. All remain in these raw denominators.}
+\caption{\textbf{Q1: cube instruction coverage.} Success counts (percent), each out of 60 scheduled trials. REVEAL service exclusions are 4, 1, 3 and 7 in column order, and the baselines have none. All remain in these raw denominators.}
 \label{tab:cube-language}
 \end{table}
 """
