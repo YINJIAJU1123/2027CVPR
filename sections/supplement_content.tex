@@ -574,11 +574,16 @@ The supplied integrity report records 129 unchanged frozen files, shared finite 
 
 \section{Q4: Physical-Hand Evaluation}
 \label{sec:hardware}
-We evaluate the complete Rule, Fine-tuned and REVEAL systems on a Revo3 hand with four physical objects: cube, die, ball and duck. Each object--method combination has 20 trials, totaling 80 per method and 240 overall. An RGB-D pose estimator provides object pose to the control policy through the ViserDex-based deployment interface.
+We evaluate the complete Rule, Fine-tuned, Fine-tuned + ctrl. and REVEAL systems on a Revo3 hand with four physical objects: cube, die, ball and duck. Each object--method combination has 20 trials, totaling 80 per method and 320 overall. An RGB-D pose estimator provides object pose to the control policy through the ViserDex-based deployment interface.
 
 \input{tables/hardware_results}
 
-A trial succeeds when the robot reaches the requested target, stops with orientation error at most $15^\circ$, and does not drop the object. This hardware criterion is distinct from the simulation tolerance of 0.16 radians. Table~\ref{tab:hardware-results} reports 32/80, 53/80 and 70/80 successes for Rule, Fine-tuned and REVEAL. Equal trials per object make the pooled rate equal to the object-averaged rate. These complete-system results do not isolate the effect of perception adaptation or measure an additional post-stop holding period.
+A trial succeeds when the robot reaches the requested target, stops with orientation error at most $15^\circ$, and does not drop the object. This hardware criterion is distinct from the simulation tolerance of 0.16 radians. Table~\ref{tab:hardware-results} reports 32/80, 53/80, 50/80 and 70/80 successes for Rule, Fine-tuned, Fine-tuned + ctrl. and REVEAL. Equal trials per object make the pooled rate equal to the object-averaged rate. These complete-system results do not isolate the effect of perception adaptation or measure an additional post-stop holding period.
+
+\paragraph{Adding the controllers to the fine-tuned policy.}
+The fourth arm uses the same objects and trial budget. Its purpose is to test whether the local waiting and execution controllers, which carry the simulation control ablation, also explain the physical margin of the complete system. They do not. The arm reaches 50/80 (62.5\%), 3.75 points below the fine-tuned system without controllers and 25 points below REVEAL. The per-object pattern is not uniform: it matches the fine-tuned arm on die and falls below it on cube, ball and duck.
+
+The 3.75-point difference is three trials in 80 and is not resolvable at this sample size, so the arm supports a negative statement only: the controllers do not account for the hardware gap, and adding them does not recover the baseline's losses. The remaining difference between this arm and REVEAL is the agent's inspection behaviour, which the simulation Q3 studies isolate under a shared model and controller set. We do not treat the hardware arm as a causal replication of that ablation, because it combines a different agent stack with a different perception release and was not paired trial by trial against the other arms. Per-object rates, none of which exceeds 70\% in this arm, are in Table~\ref{tab:hardware-results}.
 
 \paragraph{Objects and targets.}
 \TODO{For each physical object (cube, die, ball, duck): size and material, the surface targets and how they are marked, the reference orientation of each target, and how instructions are sampled.}

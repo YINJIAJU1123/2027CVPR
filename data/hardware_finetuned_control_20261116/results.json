@@ -1,0 +1,28 @@
+{
+  "study": "Q4 fine-tuned VLM + local controllers, real-hand evaluation (addendum)",
+  "reported_on": "2026-11-16",
+  "provenance": "Author supplied collaborator aggregate counts in chat, in object order Cube, Die, Ball, Duck. No trial-level records were supplied. Same object set and trial budget as the Q4 complete-system cohort.",
+  "arm": "fine_tuned_plus_controllers",
+  "trials_per_object": 20,
+  "objects": [
+    {"object": "Cube", "successes": 14},
+    {"object": "Die", "successes": 14},
+    {"object": "Ball", "successes": 12},
+    {"object": "Duck", "successes": 10}
+  ],
+  "total": {"successes": 50, "trials": 80, "rate_percent": 62.5},
+  "context": {
+    "rule_complete_system": {"successes": 32, "trials": 80, "rate_percent": 40.0},
+    "fine_tuned_complete_system": {"successes": 53, "trials": 80, "rate_percent": 66.25},
+    "reveal_complete_system": {"successes": 70, "trials": 80, "rate_percent": 87.5}
+  },
+  "interpretation_scope": "This arm isolates whether the local waiting/execution controllers explain the real-hand margin of the complete system. The arm reaches 62.5%, below the fine-tuned system without controllers (66.25%) and 25.0 points below REVEAL. Under the stated protocol the controllers do not account for REVEAL's hardware advantage; the agent's inspection behaviour is the remaining candidate, which the simulation Q3 studies examine directly.",
+  "do_not_infer": [
+    "paired significance between real-hand arms",
+    "per-seed or per-session outcomes",
+    "immediate drop-only failure counts",
+    "independently scored ground-truth pose",
+    "transfer of the simulation controller ablation to hardware as a causal claim",
+    "a claim that controllers are harmful; the 3.75-point difference is within the precision of 20 trials per cell"
+  ]
+}

@@ -1,21 +1,25 @@
 {
   "source_sha256": {
     "data/inhand4_completed_20261103/q1_all_objects.json": "fdefc0df43e2492dc9b6d08c42d57381033b5d5409526bc862909fe79230ff72",
-    "data/hardware_author_report_20261108/results.json": "62166762c5c6b4f1574203d30b46b955642bb33d6214a026e8eb43d67d7a3067"
+    "data/hardware_author_report_20261108/results.json": "62166762c5c6b4f1574203d30b46b955642bb33d6214a026e8eb43d67d7a3067",
+    "data/hardware_finetuned_control_20261116/results.json": "bae73e2551df2f15fa5d753c313ff792dba5be70fd8b88dce6a36306f973879b"
   },
   "hardware_trials_per_method": 80,
-  "hardware_total_trials": 240,
+  "hardware_total_trials": 320,
   "hardware_successes": {
     "rule": 32,
     "fine_tuned": 53,
+    "fine_tuned_control": 50,
     "alive": 70
   },
   "hardware_rates_percent": {
     "rule": 40.0,
     "fine_tuned": 66.25,
+    "fine_tuned_control": 62.5,
     "alive": 87.5
   },
   "hardware_gain_over_fine_tuned_pp": 21.25,
+  "hardware_control_arm_delta_pp": 3.75,
   "q1_plotted_percentages": {
     "identity": [
       [

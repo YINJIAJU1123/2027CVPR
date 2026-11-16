@@ -32,13 +32,32 @@ def main():
     assert all(type(c) is int and 0 <= c <= n for row in counts for c in row)
     totals = [sum(row[j] for row in counts) for j in range(3)]
     assert totals == [32, 53, 70]
-    total_n = n*len(counts)
+
+    # Fourth arm: the fine-tuned policy plus the same local controllers. Kept in
+    # its own record because it was reported separately and has no trial-level data.
+    ctrl_path = ROOT/'data/hardware_finetuned_control_20261116/results.json'
+    ctrl = json.loads(ctrl_path.read_text())
+    assert ctrl['trials_per_object'] == n
+    assert [o['object'] for o in ctrl['objects']] == [o['object'] for o in hw['objects']]
+    ctrl_counts = [o['successes'] for o in ctrl['objects']]
+    assert all(type(c) is int and 0 <= c <= n for c in ctrl_counts)
+    ctrl_total = sum(ctrl_counts)
+    assert ctrl_total == ctrl['total']['successes'] == 50
+
+    # Column order in the table: Rule, Fine-tuned, Fine-tuned + ctrl., REVEAL.
+    counts = [row[:2] + [c] + [row[2]] for row, c in zip(counts, ctrl_counts)]
+    totals = totals[:2] + [ctrl_total] + totals[2:]
+    assert totals == [32, 53, 50, 70]
+    total_n = n*len(ctrl_counts)
     rates = [100*c/total_n for c in totals]
     macros = {
         'HardwareRuleSuccess': f'{rates[0]:.1f}',
         'HardwareFineTunedSuccess': f'{rates[1]:.2f}',
-        'HardwareAimiSuccess': f'{rates[2]:.1f}',
-        'HardwareGain': f'{rates[2]-rates[1]:.2f}',
+        'HardwareFineTunedCtrlSuccess': f'{rates[2]:.1f}',
+        'HardwareAimiSuccess': f'{rates[3]:.1f}',
+        'HardwareGain': f'{rates[3]-rates[1]:.2f}',
+        'HardwareCtrlGain': f'{rates[3]-rates[2]:.1f}',
+        'HardwareCtrlDelta': f'{rates[1]-rates[2]:.2f}',
     }
     (ROOT/'tables/hardware_macros.tex').write_text(''.join(
         '\\newcommand{\\'+k+'}{'+v+'}\n' for k,v in macros.items()))
@@ -51,26 +70,28 @@ def main():
     total_cells[-1] = r'\textbf{'+total_cells[-1]+'}'
     table = r'''\begin{table}[!htbp]
 \centering\small
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{lccc}
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{lcccc}
 \toprule
-Object & Rule & Fine-tuned & REVEAL\\
+\multirow{2}{*}{Object} & \multirow{2}{*}{Rule} & \multirow{2}{*}{Fine-tuned} & Fine-tuned & \multirow{2}{*}{REVEAL}\\
+ & & & + ctrl. & \\
 \midrule
 '''+ '\n'.join(rows)+'\n'+r'\midrule'+'\n'+ ' & '.join(['Total']+total_cells)+r'\\'+'\n'+r'''\bottomrule
 \end{tabular}
-\caption{\textbf{Q4: real-hand task completion.} Successes/trials and rates for the four physical objects. Every object--method cell contains 20 trials. Success requires reaching the requested target and stopping within $15^\circ$ without dropping the object.}
+\caption{\textbf{Q4: real-hand task completion.} Successes/trials and rates for the four physical objects. Every object--method cell contains 20 trials. ``Fine-tuned + ctrl.'' adds the same local waiting and execution controllers used by REVEAL to the fine-tuned policy. Success requires reaching the requested target and stopping within $15^\circ$ without dropping the object.}
 \label{tab:hardware-results}
 \end{table}
 '''
     (ROOT/'tables/hardware_results.tex').write_text(table)
     report = {
         'source_sha256': {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
-                          for p in (q1_path, hardware_path)},
+                          for p in (q1_path, hardware_path, ctrl_path)},
         'hardware_trials_per_method': total_n,
-        'hardware_total_trials': total_n*3,
-        'hardware_successes': dict(zip(methods, totals)),
-        'hardware_rates_percent': dict(zip(methods, rates)),
-        'hardware_gain_over_fine_tuned_pp': rates[2]-rates[1],
+        'hardware_total_trials': total_n*4,
+        'hardware_successes': dict(zip(['rule','fine_tuned','fine_tuned_control','alive'], totals)),
+        'hardware_rates_percent': dict(zip(['rule','fine_tuned','fine_tuned_control','alive'], rates)),
+        'hardware_gain_over_fine_tuned_pp': rates[3]-rates[1],
+        'hardware_control_arm_delta_pp': rates[1]-rates[2],
         'q1_plotted_percentages': q1_values,
         'uncertainty': 'Descriptive aggregate rates; no error bars or significance test inferred.',
     }
