@@ -33,7 +33,8 @@ def main():
         means[setting] = {m: 100 * sum(values[m]) / len(objects) for m in METHODS}
 
     for obj in objects:
-        label = 'Milk carton' if obj == 'milk_carton' else ('Ball' if obj == 'pig' else obj.title())
+        DISPLAY = {'milk_carton': 'Milk carton', 'pig': 'Ball', 'die': 'Dice'}
+        label = DISPLAY.get(obj, obj.title())
         row = next(line for line in table.splitlines() if line.startswith(label + ' & '))
         plain = re.sub(r'\\textbf\{([\d.]+)\}', r'\1', row)
         fields = plain.removesuffix('\\\\').split(' & ')

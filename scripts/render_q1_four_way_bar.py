@@ -22,7 +22,7 @@ LABELS = ['Rule', 'Fine-tuned', 'Fine-tuned + ctrl.', 'REVEAL']
 # white, so it is pushed to a deeper sand in the bar face only.
 COLORS = ['#9FED72', '#FFA97B', '#FFD9A0', '#E00000']
 OBJECT_ORDER = ['cube', 'die', 'duck', 'hedgehog', 'pig', 'milk_carton']
-DISPLAY = {'cube': 'Cube', 'die': 'Die', 'duck': 'Duck', 'hedgehog': 'Hedgehog',
+DISPLAY = {'cube': 'Cube', 'die': 'Dice', 'duck': 'Duck', 'hedgehog': 'Hedgehog',
            'pig': 'Ball', 'milk_carton': 'Milk'}
 
 

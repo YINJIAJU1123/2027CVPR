@@ -28,6 +28,8 @@ def main():
     n = hw['trials_per_object_method']
     assert methods == ['rule', 'fine_tuned', 'alive'] and n == 20
     assert [o['object'] for o in hw['objects']] == ['Cube', 'Die', 'Ball', 'Duck']
+    # Data records say 'Die'; the paper writes 'Dice'.
+    DISPLAY = {'Die': 'Dice'}
     counts = [[o['successes'][m] for m in methods] for o in hw['objects']]
     assert all(type(c) is int and 0 <= c <= n for row in counts for c in row)
     totals = [sum(row[j] for row in counts) for j in range(3)]
@@ -65,7 +67,7 @@ def main():
     for obj, row in zip(hw['objects'], counts):
         cells = [f'{c}/{n} ({100*c/n:.0f}\\%)' for c in row]
         cells[-1] = r'\textbf{'+cells[-1]+'}'
-        rows.append(' & '.join([obj['object']]+cells)+r'\\')
+        rows.append(' & '.join([DISPLAY.get(obj['object'], obj['object'])]+cells)+r'\\')
     total_cells = [f'{c}/{total_n} ({r:g}\\%)' for c,r in zip(totals,rates)]
     total_cells[-1] = r'\textbf{'+total_cells[-1]+'}'
     table = r'''\begin{table}[!htbp]

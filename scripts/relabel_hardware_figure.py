@@ -11,7 +11,7 @@ import fitz
 ROOT = Path(__file__).resolve().parents[1]
 REPLACEMENTS = {
     'Hand + camera setup': 'Cube',
-    'Die: six-dot face': 'Die',
+    'Die: six-dot face': 'Dice',
     'Camera: lens': 'Ball',
     'Milk carton: label': 'Duck',
 }

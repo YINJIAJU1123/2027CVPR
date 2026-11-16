@@ -1,8 +1,8 @@
 \section{Overview}
-This supplement describes REVEAL's runtime and training, followed by complete-system comparisons (Q1), control during reasoning (Q2), visual exploration (Q3), and pose estimation and hardware transfer (Q4). Q2 uses exactly three evaluation seeds, 187102, 187103 and 187104, with 40 trials per method and seed. Other seeds belong to separate studies or training diagnostics. Each result retains its study-specific denominator. Q4 includes 240 physical-hand trials on a cube, die, ball and duck; per-object counts are reported below.
+This supplement describes REVEAL's runtime and training, followed by complete-system comparisons (Q1), control during reasoning (Q2), visual exploration (Q3), and pose estimation and hardware transfer (Q4). Q2 uses exactly three evaluation seeds, 187102, 187103 and 187104, with 40 trials per method and seed. Other seeds belong to separate studies or training diagnostics. Each result retains its study-specific denominator. Q4 includes 240 physical-hand trials on a cube, dice, ball and duck; per-object counts are reported below.
 
 \section{Task and Runtime}
-This section describes the cube system. The non-cube Q3, die, additional-object and language sections explain the differences for other objects.
+This section describes the cube system. The non-cube Q3, dice, additional-object and language sections explain the differences for other objects.
 \subsection{Object and goals}
 Language-guided exploration seeks evidence for a requested surface target. Inspection changes the view; target binding associates the identified surface with a motor goal. Table~\ref{tab:mapping} records the cube's fixed face mapping. Body normals include the original mesh rotation. All methods use this mapping and the same cached six-vector bank. Cyan appears pale blue and magenta appears purple. The target quaternion specifies the reference orientation used for scoring.
 
@@ -136,15 +136,15 @@ The three REVEAL drops occur during inspection before final target binding. One 
 
 \section{Q1: Native-Layout Dice Extension}
 \label{sec:dice-extension}
-The die is a wooden object with one through six native textured pips, rendered at $512\times512$ with the hand. Three methods each run 40 matched trials over seeds 186301 and 186302. The independent audit verifies all 120 records, canonical targets, paired reset states, response latency and baseline isolation. No trial is service-excluded.
+The dice is a wooden object with one through six native textured pips, rendered at $512\times512$ with the hand. Three methods each run 40 matched trials over seeds 186301 and 186302. The independent audit verifies all 120 records, canonical targets, paired reset states, response latency and baseline isolation. No trial is service-excluded.
 
 \paragraph{Object-specific motor interface.}
 The released feedforward actor uses ten frames of normalized input. Its goal-related channels are replaced by a learned reconstruction of eight conditioning features. For each frame, a 768-dimensional latent is normalized and encoded to 32 dimensions. The adapter combines it with the four measured quaternion components and their outer product, then applies layers of widths 256, 128, and 8. The original actor and observation normalization remain frozen. Inference receives physical history of shape $10\times116$ and continuous latent history of shape $10\times768$. It receives no true target quaternion, target index or table-based reconstruction of its conditioning features.
 
 \paragraph{Perception, control and stop policy.}
-The die uses the RGB-D pose estimator for motor feedback. All upper methods receive the same RGB and image-only crop. The physical horizon is 120 seconds at 20~Hz and the stop gate is checked at 3~Hz. A reply cannot be applied before $\lceil20L\rceil$ steps, while control continues. The drop boundary and independent full-quaternion success tolerance remain 0.24 metres and 0.16 radians.
+The dice uses the RGB-D pose estimator for motor feedback. All upper methods receive the same RGB and image-only crop. The physical horizon is 120 seconds at 20~Hz and the stop gate is checked at 3~Hz. A reply cannot be applied before $\lceil20L\rceil$ steps, while control continues. The drop boundary and independent full-quaternion success tolerance remain 0.24 metres and 0.16 radians.
 
-REVEAL uses the die's own waiting and execution actors. All three methods share the die's pose estimator, goal bank, student and stopping rule: the trial stops once the declared count matches a bound motor goal, no request or inspection is pending, and the measured orientation error is at most 0.16 radians. The baselines differ from REVEAL in the semantic model, the fixed inspection schedule and the absence of the two actors.
+REVEAL uses the dice's own waiting and execution actors. All three methods share the dice's pose estimator, goal bank, student and stopping rule: the trial stops once the declared count matches a bound motor goal, no request or inspection is pending, and the measured orientation error is at most 0.16 radians. The baselines differ from REVEAL in the semantic model, the fixed inspection schedule and the absence of the two actors.
 
 \begin{table}[t]
 \centering\small
@@ -157,7 +157,7 @@ Fine-tuned VLM, bare & 20/40 & 50.0 & 8 & 141\\
 Rule VLM, bare & 17/40 & 42.5 & 7 & 154\\
 \bottomrule
 \end{tabular}
-\caption{Completed native-layout die comparison. No service exclusions. The independent success definition is shared; internal control and stop modules differ by system.}
+\caption{Completed native-layout dice comparison. No service exclusions. The independent success definition is shared; internal control and stop modules differ by system.}
 \end{table}
 
 REVEAL's 95\% Wilson interval is [44.6, 73.7]\%, versus [35.2, 64.8]\% for fine-tuning and [28.5, 57.8]\% for rules. REVEAL has ten exclusive successes against six for fine-tuning (exact paired $p=0.4545$), and eleven against four for rules ($p=0.1185$). Neither difference is significant. REVEAL has twelve startup drops, three execution drops and one false stop. Fine-tuning has eight execution drops, seven false stops and five horizon failures. Rules have seven startup drops, six false stops and ten horizon failures. Median request latencies are 5.63, 0.124 and 1.16 seconds, respectively.
@@ -238,8 +238,8 @@ Object & Mapping & $n$ & Bare FT & FT + control & REVEAL\\
 \midrule
 Cube & original & 40 & 30 & 29 & 32\\
 Cube & changed & 40 & 16 & 19 & 32\\
-Die & original & 40 & 23 & 22 & 28\\
-Die & changed & 40 & 0 & 0 & 26\\
+Dice & original & 40 & 23 & 22 & 28\\
+Dice & changed & 40 & 0 & 0 & 26\\
 Duck & original & 38 & 14 & 13 & 25\\
 Duck & changed & 40 & 2 & 5 & 24\\
 Hedgehog & original & 39 & 13 & 10 & 28\\
@@ -574,19 +574,19 @@ The supplied integrity report records 129 unchanged frozen files, shared finite 
 
 \section{Q4: Physical-Hand Evaluation}
 \label{sec:hardware}
-We evaluate the complete Rule, Fine-tuned, Fine-tuned + ctrl. and REVEAL systems on a Revo3 hand with four physical objects: cube, die, ball and duck. Each object--method combination has 20 trials, totaling 80 per method and 320 overall. An RGB-D pose estimator provides object pose to the control policy through the ViserDex-based deployment interface.
+We evaluate the complete Rule, Fine-tuned, Fine-tuned + ctrl. and REVEAL systems on a Revo3 hand with four physical objects: cube, dice, ball and duck. Each object--method combination has 20 trials, totaling 80 per method and 320 overall. An RGB-D pose estimator provides object pose to the control policy through the ViserDex-based deployment interface.
 
 \input{tables/hardware_results}
 
 A trial succeeds when the robot reaches the requested target, stops with orientation error at most $15^\circ$, and does not drop the object. This hardware criterion is distinct from the simulation tolerance of 0.16 radians. Table~\ref{tab:hardware-results} reports 32/80, 53/80, 50/80 and 70/80 successes for Rule, Fine-tuned, Fine-tuned + ctrl. and REVEAL. Equal trials per object make the pooled rate equal to the object-averaged rate. These complete-system results do not isolate the effect of perception adaptation or measure an additional post-stop holding period.
 
 \paragraph{Adding the controllers to the fine-tuned policy.}
-The fourth arm uses the same objects and trial budget. Its purpose is to test whether the local waiting and execution controllers, which carry the simulation control ablation, also explain the physical margin of the complete system. They do not. The arm reaches 50/80 (62.5\%), 3.75 points below the fine-tuned system without controllers and 25 points below REVEAL. The per-object pattern is not uniform: it matches the fine-tuned arm on die and falls below it on cube, ball and duck.
+The fourth arm uses the same objects and trial budget. Its purpose is to test whether the local waiting and execution controllers, which carry the simulation control ablation, also explain the physical margin of the complete system. They do not. The arm reaches 50/80 (62.5\%), 3.75 points below the fine-tuned system without controllers and 25 points below REVEAL. The per-object pattern is not uniform: it matches the fine-tuned arm on dice and falls below it on cube, ball and duck.
 
 The 3.75-point difference is three trials in 80 and is not resolvable at this sample size, so the arm supports a negative statement only: the controllers do not account for the hardware gap, and adding them does not recover the baseline's losses. The remaining difference between this arm and REVEAL is the agent's inspection behaviour, which the simulation Q3 studies isolate under a shared model and controller set. We do not treat the hardware arm as a causal replication of that ablation, because it combines a different agent stack with a different perception release and was not paired trial by trial against the other arms. Per-object rates, none of which exceeds 70\% in this arm, are in Table~\ref{tab:hardware-results}.
 
 \paragraph{Objects and targets.}
-\TODO{For each physical object (cube, die, ball, duck): size and material, the surface targets and how they are marked, the reference orientation of each target, and how instructions are sampled.}
+\TODO{For each physical object (cube, dice, ball, duck): size and material, the surface targets and how they are marked, the reference orientation of each target, and how instructions are sampled.}
 
 \paragraph{Sensing and scoring.}
 \TODO{RGB-D camera model and placement, calibration, how the $15^\circ$ criterion is measured, and who scores a trial.}
