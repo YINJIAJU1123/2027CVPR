@@ -1,7 +1,7 @@
 % Two-column system overview, queued early so it lands before the method text.
 \begin{figure*}[!t]
 \centering
-\includegraphics[width=0.96\textwidth]{figures/imported/v11/reveal_pipeline_v11.pdf}
-\caption{\textbf{REVEAL overview.} (a) A privileged teacher with full simulator state supervises training. (b) The agent returns an inspection or a target binding as a goal embedding $g_t$. (c) A pose estimator, a motor student and two local controllers run underneath at control rate.}
+\includegraphics[width=\textwidth]{figures/imported/v24/reveal_pipeline_restored_v24.pdf}
+\caption{\textbf{REVEAL overview.} (a) A frozen teacher supervises training. (b) The agent chooses inspections and binds targets. (c) Its goal embedding is projected into the motor student's latent input; RGB-D pose feedback and local controllers guide execution. Dashed arrows mark training supervision.}
 \label{fig:pipeline}
 \end{figure*}

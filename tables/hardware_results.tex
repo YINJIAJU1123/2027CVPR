@@ -1,6 +1,7 @@
 \begin{table}[!htbp]
 \centering\small
 \setlength{\tabcolsep}{2.5pt}
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lcccc}
 \toprule
 \multirow{2}{*}{Object} & \multirow{2}{*}{Rule} & \multirow{2}{*}{Fine-tuned} & Fine-tuned & \multirow{2}{*}{REVEAL}\\
@@ -13,7 +14,7 @@ Duck & 6/20 (30\%) & 11/20 (55\%) & 10/20 (50\%) & \textbf{15/20 (75\%)}\\
 \midrule
 Total & 32/80 (40\%) & 53/80 (66.25\%) & 50/80 (62.5\%) & \textbf{70/80 (87.5\%)}\\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \caption{\textbf{Q4: real-hand task completion.} Successes/trials, 20 per object and method.}
 \label{tab:hardware-results}
 \end{table}

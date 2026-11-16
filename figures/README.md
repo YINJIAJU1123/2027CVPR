@@ -1,15 +1,18 @@
-# REVEAL paper figures
+# REVEAL paper figures — v24 (2026-11-17)
 
-The active main paper uses five figure environments:
+Based on paper commit `d437e8a`. The main paper contains **five illustrative figures plus the unchanged Q1 result chart**. Paper numbering follows the order in the manuscript and differs from the five-slide deck.
 
-1. `imported/reveal_teaser_ppt.pdf` — teaser.
-2. `imported/reveal_pipeline_ppt.pdf` — teacher, student and deployment pipeline.
-3. `q1_four_way_bar.pdf` — the four-method complete-system comparison.
-4. `imported/reveal_controller_ppt.pdf` — goal-conditioned local control (cropped to remove slide whitespace).
-5. `imported/reveal_real_robot_ppt.pdf` — the real-hand target-presentation panel, cropped from the deck's physical-hand slide for a full-width paper figure.
+| Illustration / source-slide number | Current PDF | Number in the main paper |
+|---|---|---|
+| 1. Teaser | `imported/v24/reveal_teaser_v24.pdf` | Figure 1 |
+| 2. Pipeline | `imported/v24/reveal_pipeline_restored_v24.pdf` | Figure 2 |
+| 3. Controller | `imported/v23/reveal_controller_v23.pdf` | Figure 5 |
+| 4. Exploration mechanism | `imported/v23/reveal_exploration_v23.pdf` | Figure 3 |
+| 5. Simulation / real overview | `imported/v23/reveal_sim_real_v23.pdf` | Figure 6 |
+| Q1 result chart (unchanged) | `q1_four_way_bar.pdf` | Figure 4 |
 
-The exploration sequence remains available in `imported/reveal_exploration_ppt.pdf` and in the supplement, but the main paper keeps the physical-hand panel as its fifth conceptual figure. The older six-object simulation/physical overview is retained in `imported/reveal_sim_real_ppt.pdf` for provenance and supplement use.
+Editable teaser: `source_html/v24/teaser.html`. Pipeline: restored from slide 2 of the v22 deck; the newer v23 HTML pipeline is no longer used. Figures 3–5 are vector crops from `/home/yin/paper/CVPR/Reveal/figure_revision_20261117_v22_dice/REVEAL_five_figures_dice_20261117.pptx`. The original deck was not overwritten.
 
-The processed editable deck is `/home/yin/paper/CVPR/Reveal/REVEAL_paper_figures_five_20261116_processed.pptx`. The source deck and older figures remain outside the active paper for provenance; they are not referenced by `main.tex`.
+The teaser's face icons and agent-decision text are schematic annotations, not raw agent logs. The pipeline's four-frame arc is a visual arrangement, not a measured joint trajectory. The hedgehog and milk-carton views in the evaluation figure remain explicitly marked as posed illustrations.
 
-The active Q1 result is the four-method bar chart in `figures/q1_four_way_bar.pdf`; the full numeric table is in `tables/q1_main_four_way.tex` and the supplement. Both are backed by the audited release in `data/q1_four_way_20261116/`. Legacy result charts are retained only as historical artifacts and are not included in the main paper.
+The supplement uses the same current exploration and simulation/real overview PDFs. An obsolete empty real-case mockup was removed; no experimental data were removed.

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>REVEAL Fig. 2 pipeline</title>
+<style>
+  /* Editable 1000 x 460 SVG canvas; PDF preserves vector shapes and text. */
+  @page { size: 1000px 460px; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1000px; height: 460px; background: #fff; overflow: hidden;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  svg { display: block; font-family: Arial, "Liberation Sans", Helvetica, sans-serif; }
+</style>
+</head>
+<body>
+<svg id="fig" width="1000" height="460" viewBox="0 0 1000 460" xmlns="http://www.w3.org/2000/svg"></svg>
+<script>
+const INK = '#222a33', GRAY = '#7b8590', RULE = '#cfd5dc', PANEL = '#f6f7f9';
+const ACC = '#3b5ba9', ACCL = '#e8edf9';          // the agent-to-motor path
+const FLAME = '#e07b2a', SNOW = '#3f8fd6';
+let out = '';
+const add = s => { out += s; };
+
+// ---- helpers ----
+const box = (x, y, w, h, o = {}) => add(`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${o.r ?? 7}"
+  fill="${o.fill ?? '#fff'}" stroke="${o.stroke ?? RULE}" stroke-width="${o.sw ?? 1.5}"/>`);
+const text = (x, y, s, o = {}) => add(`<text x="${x}" y="${y}" font-size="${o.size ?? 13.5}" font-weight="${o.bold ? 700 : 400}"
+  fill="${o.fill ?? INK}" text-anchor="${o.anchor ?? 'start'}" ${o.italic ? 'font-style="italic"' : ''}>${s}</text>`);
+const sub = (b, t = 't') => `<tspan font-style="italic">${b}</tspan><tspan dy="3.5" font-size="72%" font-style="italic">${t}</tspan><tspan dy="-3.5"> </tspan>`;
+const line = (d, o = {}) => add(`<path d="${d}" fill="none" stroke="${o.color ?? GRAY}" stroke-width="${o.sw ?? 1.5}"
+  stroke-linejoin="round" stroke-linecap="round" ${o.dash ? `stroke-dasharray="${o.dash}"` : ''}
+  ${o.head === false ? '' : `marker-end="url(#m${(o.color ?? GRAY).slice(1)})"`}/>`);
+const flame = (x, y) => add(`<path transform="translate(${x},${y})" d="M8 0C9 4.5 14 6 14 11a6 6 0 0 1-12 0c0-2.6 1.6-3.8 2.2-6C5.4 6.6 6.4 6 8 0z" fill="${FLAME}"/>
+  <path transform="translate(${x},${y})" d="M8 8.5c.6 2 2.6 2.6 2.6 4.7a2.6 2.6 0 0 1-5.2 0c0-1.6 1.6-2.2 2.6-4.7z" fill="#ffd9a8"/>`);
+const snow = (x, y) => add(`<g transform="translate(${x},${y})" stroke="${SNOW}" stroke-width="1.8" stroke-linecap="round">
+  <path d="M8 0v16M1.1 4l13.8 8M1.1 12l13.8-8"/><path d="M5.8 1.6L8 3.6l2.2-2M5.8 14.4L8 12.4l2.2 2" fill="none"/></g>`);
+const robot = (cx, cy, s, c) => add(`<g transform="translate(${cx - s / 2},${cy - s / 2}) scale(${s / 54})" fill="none" stroke="${c}"
+  stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M27 12V6"/><circle cx="27" cy="4.5" r="2.4" fill="${c}" stroke="none"/>
+  <rect x="9" y="12" width="36" height="32" rx="9" fill="#fff"/><path d="M5 24v9M49 24v9"/>
+  <circle cx="20" cy="25.5" r="3.8" fill="${c}" stroke="none"/><circle cx="34" cy="25.5" r="3.8" fill="${c}" stroke="none"/><path d="M20 35.5h14"/></g>`);
+
+// ---- defs ----
+add(`<defs>${[GRAY, INK, ACC].map(c => `<marker id="m${c.slice(1)}" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7"
+  orient="auto-start-reverse"><path d="M1 1.5L9 5L1 8.5z" fill="${c}"/></marker>`).join('')}
+  <clipPath id="thumb"><rect x="204" y="240" width="64" height="64" rx="7"/></clipPath></defs>`);
+
+// ================= (a) Privileged teacher =================
+box(0.75, 0.75, 174.5, 458.5, { fill: PANEL, r: 12 });
+text(10, 23, '(a) Privileged teacher', { bold: true, size: 14.5 });
+add(`<image href="assets/teacher.png" x="30" y="34" width="116" height="86" preserveAspectRatio="xMidYMid meet"/>`);
+['True pose + velocity', 'Joint state', 'Geometric goal'].forEach((s, i) => text(88, 140 + i * 19, s, { anchor: 'middle', size: 12.5 }));
+line('M88 187V207');
+box(22, 210, 132, 38, { stroke: INK });
+text(80, 234, 'Teacher policy', { bold: true, anchor: 'middle' }); snow(132, 216);
+line('M88 248V271');
+for (let i = 0; i < 6; i++) add(`<rect x="${42 + i * 16}" y="275" width="12" height="12" rx="2.5" fill="${GRAY}"/>`);
+text(88, 305, 'Teacher actions', { anchor: 'middle', size: 12.5 });
+snow(22, 421); text(45, 434, 'Frozen', { size: 12.5, fill: GRAY });
+flame(22, 438); text(45, 452, 'Learned offline', { size: 12.5, fill: GRAY });
+
+// ================= (b) Agentic exploration =================
+box(188.75, 0.75, 810.5, 167.5, { fill: PANEL, r: 12 });
+add('<g transform="translate(8,0)">');
+text(196, 23, '(b) Agentic exploration', { bold: true, size: 14.5 });
+text(370, 23, 'slow · semantic', { size: 12.5, fill: GRAY });
+box(192, 34, 180, 44); text(204, 52, 'Language', { bold: true }); text(204, 69, '“Show the six-dot face.”', { size: 12.5, fill: GRAY });
+box(192, 86, 180, 26); text(204, 104, 'Executed history', { bold: true });
+box(192, 120, 180, 26); text(204, 138, 'State summary', { bold: true });
+line('M372 56H411'); line('M372 99H411'); line('M372 133H411');
+box(412, 34, 136, 116, { fill: ACCL, stroke: ACC, sw: 2, r: 10 });
+robot(480, 76, 46, ACC); text(480, 130, 'Agent', { bold: true, size: 19, anchor: 'middle', fill: ACC });
+line('M548 92H569V64H589', { color: ACC, sw: 2.2 }); line('M569 92V120H589', { color: ACC, sw: 2.2 });
+box(590, 44, 140, 40); text(602, 61, 'Inspect', { bold: true }); text(602, 77, 'skill + duration', { size: 12, fill: GRAY });
+box(590, 100, 140, 40); text(602, 117, 'Bind target', { bold: true }); text(602, 133, 'once it is in view', { size: 12, fill: GRAY });
+line('M730 64H753V80H775', { color: ACC, sw: 2.2 }); line('M730 120H753V104H775', { color: ACC, sw: 2.2 });
+box(776, 54, 174, 76, { fill: ACCL, stroke: ACC, sw: 2, r: 10 });
+text(863, 81, `Goal embedding ${sub('g')}`, { bold: true, anchor: 'middle', size: 14 });
+for (let i = 0; i < 6; i++) add(`<circle cx="${813 + i * 20}" cy="106" r="6" fill="${i === 5 ? ACC : '#fff'}" stroke="${ACC}" stroke-width="1.6"/>`);
+add('</g>');
+
+// ================= (c) Continuous control =================
+box(188.75, 180.75, 810.5, 278.5, { fill: PANEL, r: 12 });
+add('<g transform="translate(8,0)">');
+text(196, 203, '(c) Continuous control', { bold: true, size: 14.5 });
+text(367, 203, 'fast · geometric', { size: 12.5, fill: GRAY });
+
+// camera image, shared by the agent and the pose estimator
+add(`<image href="assets/t00.jpg" x="204" y="240" width="64" height="64" clip-path="url(#thumb)"/>`);
+text(236, 233, 'RGB', { bold: true, anchor: 'middle', size: 12.5 });
+[[224,318],[234,314],[245,319],[252,327],[228,328],[239,326],[220,336],[234,338],[247,337],[242,345],[227,345]]
+  .forEach(([x, y]) => add(`<circle cx="${x}" cy="${y}" r="2" fill="${GRAY}"/>`));
+text(238, 364, 'Depth points', { anchor: 'middle', size: 12.5 });
+
+// pose estimator
+box(278, 228, 162, 124);
+text(359, 247, 'RGB-D pose', { bold: true, anchor: 'middle' });
+box(288, 256, 84, 32, { r: 5 }); text(330, 276, 'RGB encoder', { size: 12.5, anchor: 'middle' });
+box(288, 312, 84, 32, { r: 5 }); text(330, 332, 'Point encoder', { size: 12.5, anchor: 'middle' });
+box(388, 280, 46, 40, { r: 5 }); text(411, 304, 'Fusion', { size: 12.5, anchor: 'middle' });
+line('M268 272H287'); line('M258 328H287');
+line('M372 272H380V292H387'); line('M372 328H380V308H387');
+line('M434 300H473', { color: INK }); text(450, 291, sub('p̂'), { anchor: 'middle', size: 14 });
+
+// projection: goal embedding -> latent -> motor student
+line('M863 130V212H613', { color: ACC, sw: 2.2 });
+box(502, 198, 110, 28, { fill: ACCL, stroke: ACC, sw: 2 }); text(557, 217, 'Projection', { bold: true, anchor: 'middle', fill: ACC });
+line('M752 212V249', { color: ACC, sw: 2.2 });
+line('M557 226V249', { color: ACC, sw: 2.2 }); text(566, 243, `latent ${sub('z')}`, { size: 12.5, fill: ACC });
+
+// motor student
+box(474, 250, 166, 100, { stroke: INK, r: 9 });
+text(486, 270, 'Motor student', { bold: true }); flame(616, 256);
+box(484, 280, 64, 40, { r: 5 }); text(516, 304, 'Encoder', { size: 12.5, anchor: 'middle' });
+box(562, 280, 68, 40, { r: 5 }); text(596, 304, 'GRU actor', { size: 12.5, anchor: 'middle' });
+line('M548 300H561');
+text(520, 380, 'Proprioception', { size: 12.5, anchor: 'middle', fill: GRAY }); line('M520 367V351');
+line('M640 300H677', { color: INK }); text(658, 291, sub('u'), { anchor: 'middle', size: 14 });
+
+// local controllers
+box(678, 250, 148, 100, { stroke: INK, r: 9 });
+text(690, 270, 'Local controllers', { bold: true }); flame(804, 256);
+box(690, 279, 124, 26, { r: 5 }); text(752, 297, 'Waiting actor', { size: 12.5, anchor: 'middle' });
+box(690, 313, 124, 26, { r: 5 }); text(752, 331, 'Execution actor', { size: 12.5, anchor: 'middle' });
+add(`<circle cx="456" cy="300" r="2.6" fill="${INK}"/>`); line('M456 300V394H710V351');
+line('M826 300H853', { color: INK }); text(839, 291, sub('a'), { anchor: 'middle', size: 14 });
+
+// in-hand execution: four frames of one real video (0, 8, 16, 30 s), laid out on an arc
+const FR = ['t00', 't08_bal', 't16', 't30'], ANG = [-160, -80, 0, 80], OP = [.5, .65, .82, 1];
+line('M874 233.6A72 72 0 0 1 965.2 342.3', { sw: 1.3 });
+FR.forEach((f, i) => { const a = ANG[i] * Math.PI / 180, cx = 910 + 38 * Math.cos(a), cy = 296 + 38 * Math.sin(a);
+  add(`<clipPath id="c${i}"><circle cx="${cx}" cy="${cy}" r="28"/></clipPath>
+    <circle cx="${cx}" cy="${cy}" r="29.5" fill="#fff"/>
+    <image href="assets/${f}.jpg" x="${cx - 34}" y="${cy - 40}" width="68" height="68" clip-path="url(#c${i})" opacity="${OP[i]}"/>`); });
+text(910, 392, 'In-hand execution', { bold: true, anchor: 'middle' });
+line('M910 400V440H187V174H480V151'); line('M187 272H203'); add(`<circle cx="187" cy="272" r="2.6" fill="${GRAY}"/>`); text(850, 434, 'next view', { size: 12.5, fill: GRAY, anchor: 'middle' });
+add('</g>');
+
+// teacher supervision (training only)
+line('M88 312V416H778V352', { dash: '5 4' }); line('M618 416V352', { dash: '5 4' });
+text(330, 410, 'action supervision', { size: 12.5, fill: GRAY, anchor: 'middle' });
+
+document.getElementById('fig').innerHTML = out;
+</script>
+</body>
+</html>

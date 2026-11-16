@@ -591,30 +591,25 @@ The 3.75-point difference is three trials in 80 and is not resolvable at this sa
 \paragraph{Sensing and scoring.}
 \TODO{RGB-D camera model and placement, calibration, how the $15^\circ$ criterion is measured, and who scores a trial.}
 
-\TODO{Add recorded physical-hand sequences.} The image layouts below reserve space for the task instruction, inspection views, target binding and final presentation.
+The figures below illustrate the exploration mechanism and show recorded physical-hand frames. They do not establish logged binding times or an additional post-stop holding period.
 
 
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=0.45\textwidth]{figures/imported/aimi_exploration.pdf}
-\caption{\textbf{Planned inspection and presentation sequence.} Reference crops illustrate observing, inspecting, binding, and presenting a requested face. Real-hand image slots remain empty. This is a protocol mockup, not a physical-robot result.}
+\includegraphics[width=0.45\textwidth]{figures/imported/v23/reveal_exploration_v23.pdf}
+\caption{\textbf{Illustrative exploration mechanism.} Simulated views illustrate observing, inspecting, binding, and checking a requested face. The four stages are a schematic explanation, not a claim that every trial takes four actions.}
 \label{fig:sim-real-protocol}
 \end{figure*}
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=0.85\textwidth]{figures/imported/aimi_sim_real.pdf}
-\caption{\textbf{Planned simulation/physical presentation comparison.} The layout pairs hidden-target, reveal, and stable-display stages. The reference simulation crop is illustrative; the remaining simulation and physical-hand slots await matched observations. No real-robot outcome is represented.}
+\includegraphics[width=0.85\textwidth]{figures/imported/v23/reveal_sim_real_v23.pdf}
+\caption{\textbf{Objects and example instructions.} Top: six simulated objects; hedgehog and milk-carton poses are illustrations. Bottom: recorded execution frames for four physical objects. These frames illustrate the task rather than provide independent trial-level success or binding labels.}
 \label{fig:physical-panels}
 \end{figure*}
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=0.85\textwidth]{figures/imported/aimi_real_cases.pdf}
-\caption{\textbf{Planned qualitative comparison and real-robot cases.} Initial/end-state and physical-robot image slots remain placeholders until corresponding observations are available. No completed trial is represented.}
-\label{fig:qualitative-real}
-\end{figure*}
+
 
 \section{Reproducibility}
 The archived evidence retains outcomes, goals, stopping errors, service exclusions and latency for the audited cohorts. The three-seed controller aggregate is maintained separately from the historical trial records.
