@@ -69,8 +69,8 @@ def main():
     total_cells = [f'{c}/{total_n} ({r:g}\\%)' for c,r in zip(totals,rates)]
     total_cells[-1] = r'\textbf{'+total_cells[-1]+'}'
     table = r'''\begin{table}[!htbp]
-\centering\small
-\setlength{\tabcolsep}{2.5pt}
+\centering\footnotesize
+\setlength{\tabcolsep}{2pt}
 \begin{tabular}{lcccc}
 \toprule
 \multirow{2}{*}{Object} & \multirow{2}{*}{Rule} & \multirow{2}{*}{Fine-tuned} & Fine-tuned & \multirow{2}{*}{REVEAL}\\
