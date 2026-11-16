@@ -78,7 +78,7 @@ def main():
 \midrule
 '''+ '\n'.join(rows)+'\n'+r'\midrule'+'\n'+ ' & '.join(['Total']+total_cells)+r'\\'+'\n'+r'''\bottomrule
 \end{tabular}
-\caption{\textbf{Q4: real-hand task completion.} Successes/trials and rates for the four physical objects. Every object--method cell contains 20 trials. ``Fine-tuned + ctrl.'' adds the same local waiting and execution controllers used by REVEAL to the fine-tuned policy. Success requires reaching the requested target and stopping within $15^\circ$ without dropping the object.}
+\caption{\textbf{Q4: real-hand task completion.} Successes/trials, 20 per object and method.}
 \label{tab:hardware-results}
 \end{table}
 '''

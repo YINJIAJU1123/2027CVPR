@@ -2,6 +2,6 @@
 \begin{figure*}[!t]
 \centering
 \includegraphics[width=0.96\textwidth]{figures/imported/v11/reveal_pipeline_v11.pdf}
-\caption{\textbf{REVEAL training and deployment.} (a) A privileged teacher with full simulator state is trained for the Revo3 hand. (b) At deployment the agent reads the instruction, the current view and the history of executed actions, and returns either an inspection or a target binding; its output is a goal embedding $g_t$ drawn from the skill bank. (c) Underneath, an RGB-D pose estimator fuses image features with measured surface points, a motor student turns pose and goal into joint targets, and waiting and execution controllers adjust those targets while the agent is still reasoning. The teacher is used only for supervision and the state decoder only in training.}
+\caption{\textbf{REVEAL overview.} (a) A privileged teacher with full simulator state supervises training. (b) The agent returns an inspection or a target binding as a goal embedding $g_t$. (c) A pose estimator, a motor student and two local controllers run underneath at control rate.}
 \label{fig:pipeline}
 \end{figure*}

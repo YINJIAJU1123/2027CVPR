@@ -67,7 +67,7 @@ Estimator & 10\,mm / 10$^\circ$ & 5\,mm / 5$^\circ$ & 10\,mm / 10$^\circ$\\
 \midrule
 """+ '\n'.join(rows)+'\n'+r"""\bottomrule
 \end{tabular}
-\caption{\textbf{Q4: pose recall (\%) on the cube under hand occlusion.} Recall requires both errors below the listed thresholds. Simulation: 6,144 frames, including camera pitches up to $105^\circ$. Real: 1,000 frames, scored against a multi-view FoundationPose reference.}
+\caption{\textbf{Q4: pose recall (\%) on the cube under hand occlusion.} Recall requires both errors below the listed thresholds.}
 \label{tab:pose-summary}
 \end{table}
 """

@@ -89,7 +89,7 @@ def render(out,result):
      vals.append(value)
     s+=N[m]+' & '+' & '.join(vals)+r'\\'+'\n'
    if oi<2:s+='\\midrule\n'
-  captions={'main':r'\textbf{Q1: language and wording coverage.} Completion (\%) on common service-eligible trials. Methods share the listed $n$ of 60 scheduled slots. Bold denotes the highest observed rate, not significance. Raw counts and paired analyses are in the supplement.',
+  captions={'main':r'\textbf{Q1: language and wording coverage.} Success (\%) over the $n$ common trials of 60 scheduled per condition. Bold marks the highest rate.',
    'raw':r'Raw completion counts over all scheduled trials, retaining infrastructure failures in the denominator. These are separate object-specific cohorts; the four instruction variants reuse physical tasks.',
    'strict':r'Strict pairing sensitivity: common service-eligible slots additionally require identical initial-state and first-image hashes across all three methods. Numerators are successes. This is separate from the main service-eligible estimand.'}
   tail=ending(captions[mode],label)
