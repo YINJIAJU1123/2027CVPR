@@ -1,6 +1,12 @@
 \section{Experiments}
 \label{sec:experiments}
-We organize the experiments around four questions. \textbf{Q1}: how does the complete system compare with VLM baselines across objects, target mappings and languages? \textbf{Q2}: how should the hand be controlled while the agent reasons? \textbf{Q3}: does exploration matter, that is, does the agent need new views and does it help to let it choose them? \textbf{Q4}: does the system transfer to a physical hand?
+We organize the experiments around four questions.
+\begin{list}{}{\setlength{\leftmargin}{1.8em}\setlength{\labelwidth}{1.4em}\setlength{\labelsep}{0.4em}\setlength{\itemsep}{3pt}\setlength{\parsep}{0pt}\setlength{\topsep}{4pt}\setlength{\partopsep}{0pt}}
+\item[\textbf{Q1}:] how does the complete system compare with VLM baselines across objects, target mappings and languages?
+\item[\textbf{Q2}:] how should the hand be controlled while the agent reasons?
+\item[\textbf{Q3}:] does exploration matter, that is, does the agent need new views and does it help to let it choose them?
+\item[\textbf{Q4}:] does the system transfer to a physical hand?
+\end{list}
 
 \subsection{Setup and Reporting}
 \label{sec:setup}
@@ -28,7 +34,6 @@ A cube study changes only what the agent sees. Over 40 matched states we show th
 We test standard and reworded English and Chinese instructions on three objects, keeping weights, mapping and tolerance fixed without retraining for Chinese.
 
 \begingroup
-\setlength{\intextsep}{8pt plus 2pt minus 2pt}
 \input{tables/language_objects}
 \endgroup
 
@@ -36,6 +41,7 @@ On duck and hedgehog, REVEAL remains stable across conditions and exceeds Fine-t
 
 \subsection{Q2: Control During Agent Reasoning}
 \input{figures/controller_float}
+\input{figures/real_robot_float}
 Q1 compares complete systems, which differ in several components. The next two studies change one component at a time, starting with control. What should the hand do while the agent is thinking? Figure~\ref{fig:controller-architecture} shows the local controller. We compare four choices: keep following the student's command, slow it by a fixed coefficient, learn the slowing coefficient, or learn slowing together with a bounded joint correction. All four use the same execution controller once a reply has arrived, and the trained weights stay fixed.
 
 Following the student at full speed performs worst, with half its failures occurring as waiting drops (Table~\ref{tab:waiting}). Fixed slowing roughly halves these drops and improves success by about a dozen points. Learned slowing further reduces waiting drops but increases execution failures, finishing below fixed slowing. Adding joint correction avoids this trade-off and leads across all outcome categories. The controller needs to adjust the direction of joint motion as well as its speed.
@@ -44,8 +50,6 @@ On the duck, with requested targets permuted, the full controller again leads. F
 
 \input{tables/controller_three_seed}
 
-
-\input{figures/real_robot_float}
 
 \subsection{Q3: Visual Exploration and Feedback}
 We now turn to the agent. Three interventions examine how it acquires and uses evidence (Table~\ref{tab:q3-feedback}): whether it receives feedback at all, whether that feedback contains new images, and whether it chooses its own inspection actions. Each comparison has its own set of 40 matched pairs, so the numbers within a block are comparable and the numbers between blocks are not.
@@ -86,8 +90,6 @@ We next fix the evidence channel and vary who chooses the inspection. In the ada
 
 On the ball, adaptive inspection wins most pairs and the difference is statistically resolved (Table~\ref{tab:q3-feedback}). Similar drop counts locate the gap in target discovery rather than retention. Adaptive inspection also uses fewer calls and tokens. The cube shows a similar direction and magnitude, but 40 pairs do not resolve the difference. The ball protocol was fixed before its trials; the supplement reports seed splits, binding trajectories and costs for both objects.
 
-% Shorten this column locally to balance the final body page.
-\enlargethispage{-120pt}
 \subsection{Q4: Pose Estimation and Sim-to-Real Transfer}
 \paragraph{Pose estimation under hand occlusion.}
 We compare with a ViserDex-style RGB-only baseline trained for the same object, camera and keypoints~\cite{bhardwaj2026viserdex} (Table~\ref{tab:pose-summary}). Across 6,144 simulated frames, adding measured depth raises recall by about seventy percent at the scoring tolerance and more than triples it at a tighter tolerance. It also avoids the baseline's unusable predictions on dozens of frames. Both estimators degrade with occlusion: ours is nearly always correct below one-quarter occlusion, but neither works beyond half occlusion. The test includes steep camera pitches that hide most of the object. On 1,000 real cube frames, a multi-view FoundationPose reference~\cite{wen2024foundationpose} confirms a larger improvement. Per-occlusion results are in the supplement. Our estimator is shared by all simulated and physical experiments.

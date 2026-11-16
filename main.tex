@@ -27,9 +27,8 @@
 \makeatother
 \begin{document}
 \raggedbottom
-\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
-\setlength{\dbltextfloatsep}{10pt plus 2pt minus 2pt}
-\setlength{\floatsep}{10pt plus 2pt minus 2pt}
+% Restore standard float spacing and give table rows a little more room.
+\AtBeginEnvironment{table}{\renewcommand{\arraystretch}{1.10}}
 \twocolumn[{
 \maketitle
 \vspace{-12pt}
