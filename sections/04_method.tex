@@ -5,7 +5,7 @@ REVEAL answers two visual questions at two rates (Fig.~\ref{fig:pipeline}). \emp
 \input{sections/03_task}
 
 \subsection{Goal-Conditioned Motor Skills}
-\paragraph{Teacher--student foundation.}
+\paragraph{Local motor policy.}
 We train a teacher and a student for the Revo3 hand following ViserDex~\cite{bhardwaj2026viserdex}. The teacher uses privileged simulation state and geometric goals. It stays frozen and supplies the action labels for everything that follows. The student keeps its encoders, recurrent core and actor.
 
 \paragraph{Goal-embedding adaptation.}
