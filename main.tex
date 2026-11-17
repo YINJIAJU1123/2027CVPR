@@ -18,11 +18,12 @@
 \title{REVEAL: Agentic In-Hand Manipulation for Visual Exploration}
 \hypersetup{pdftitle={REVEAL: Agentic In-Hand Manipulation for Visual Exploration},pdfauthor={Anonymous submission}}
 \author{Anonymous submission}
-% Keep the standard 24pt title-to-author gap; compact only the lower title block.
+% Use a 12pt title-to-author gap to make room for a near-full-width teaser.
 % The CVPR style file, text size and page margins remain unchanged.
 \makeatletter
 \patchcmd{\@maketitle}{\vskip .5em}{\vskip 0pt}{}{\PackageError{reveal-layout}{Author spacing patch failed}{}}
 \patchcmd{\@maketitle}{\vspace*{12pt}}{\vspace*{2pt}}{}{\PackageError{reveal-layout}{Title footer spacing patch failed}{}}
+\patchcmd{\@maketitle}{\vspace*{24pt}}{\vspace*{12pt}}{}{\PackageError{reveal-layout}{Title author spacing patch failed}{}}
 \patchcmd{\abstract}{\vspace*{12pt}}{\vspace*{4pt}}{}{\PackageError{reveal-layout}{Abstract spacing patch failed}{}}
 \makeatother
 \begin{document}
@@ -34,8 +35,9 @@
 \vspace{-12pt}
 \begingroup
 \centering
-\includegraphics[width=0.90\textwidth]{figures/imported/v24/reveal_teaser_v24.pdf}
+\includegraphics[width=0.98\textwidth]{figures/imported/v24/reveal_teaser_v24.pdf}
 \par
+\captionsetup{skip=4pt}
 \captionof{figure}{\textbf{Agentic in-hand manipulation for visual exploration.} A language instruction guides inspection and presentation of the six-dot face. Top: simulated and physical objects. Bottom: real video frames with schematic face and agent-decision annotations.}
 \label{fig:teaser}
 \par\endgroup
