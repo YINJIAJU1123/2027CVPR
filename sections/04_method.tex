@@ -17,6 +17,8 @@ The original student is told where to go by a target quaternion. An agent cannot
 \end{align}
 The adapted student receives neither the target quaternion nor the relative-goal quaternion. The agent selects a skill ID, which retrieves its embedding from $B$ and specifies the motor goal without supplying a target pose.
 
+The embeddings index motor skills rather than the visible marks. Their reference orientations stay fixed when the target-to-skill mapping changes, so the agent must determine the new association from images. This allows the same learned motor skills to serve different target mappings without retraining the motor policy.
+
 We fit the projection and the recurrent policy to the frozen teacher's actions with a DAgger-style procedure~\cite{ross2011dagger}. We first warm up the projection with an action MSE loss. Recurrent adaptation then adds a decoder that reconstructs the normalized privileged state, with the goal quaternion removed, under an MSE loss with weight 0.2. The teacher and the decoder are used only in training. Network dimensions and fitting details are in the supplement.
 
 \subsection{Semantic Vision: Exploration and Target Binding}
@@ -71,4 +73,4 @@ The frozen teacher provides the labels for both actors: actions that hold the re
 Here $s$ collects the sensor features, $g$ is the active goal and $a^*$ is the teacher action. Before target binding, $g$ is a startup or inspection skill. The deployed actors see only measured inputs and the active goal, and the student is held fixed while they are fitted.
 
 \paragraph{Closed loop.}
-At each control step, we estimate the pose, run the recurrent student and the active controller, and send joint targets. Because the hand keeps moving during inference, each new agent image shows where the object actually is by then. True pose is used only for training supervision and for scoring. Stopping and scoring are defined in Sec.~\ref{sec:setup}.
+At each control step, we estimate the pose, run the recurrent student and the active controller, and send joint targets. The request anchor provides a holding reference while the next goal is undecided. Sensor feedback keeps the joint commands responsive throughout this waiting period. Because the hand keeps moving during inference, each new agent image shows where the object actually is by then. True pose is used only for training supervision and for scoring. Stopping and scoring are defined in Sec.~\ref{sec:setup}.
