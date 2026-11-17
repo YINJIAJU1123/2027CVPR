@@ -19,11 +19,12 @@
 \hypersetup{pdftitle={REVEAL: Agentic In-Hand Manipulation for Language-Guided Visual Exploration},pdfauthor={Anonymous submission}}
 \author{Anonymous submission}
 % Compact the anonymous-author block for the enlarged teaser (local override).
-% The CVPR style file, text size, page margins and abstract remain unchanged.
+% The CVPR style file, text size and page margins remain unchanged.
 \makeatletter
-\patchcmd{\@maketitle}{\vspace*{24pt}}{\vspace*{4pt}}{}{\PackageError{reveal-layout}{Title spacing patch failed}{}}
+\patchcmd{\@maketitle}{\vspace*{24pt}}{\vspace*{12pt}}{}{\PackageError{reveal-layout}{Title spacing patch failed}{}}
 \patchcmd{\@maketitle}{\vskip .5em}{\vskip 0pt}{}{\PackageError{reveal-layout}{Author spacing patch failed}{}}
 \patchcmd{\@maketitle}{\vspace*{12pt}}{\vspace*{2pt}}{}{\PackageError{reveal-layout}{Title footer spacing patch failed}{}}
+\patchcmd{\abstract}{\vspace*{12pt}}{\vspace*{4pt}}{}{\PackageError{reveal-layout}{Abstract spacing patch failed}{}}
 \makeatother
 \begin{document}
 \raggedbottom
@@ -39,7 +40,7 @@
 \captionof{figure}{\textbf{Language-guided visual exploration.} A language instruction guides inspection and presentation of the six-dot face. Top: simulated and physical objects. Bottom: real video frames with schematic face and agent-decision annotations.}
 \label{fig:teaser}
 \par\endgroup
-\vspace{6pt}
+\vspace{2pt}
 }]
 \input{sections/00_abstract}
 \input{figures/pipeline_float}
@@ -51,6 +52,6 @@
 \input{sections/06_limitations}
 \clearpage
 \section*{LLM Usage Statement}
-OpenAI Codex assisted with research discussion, implementation, experiment orchestration, literature retrieval, statistical analysis, figure-layout code, and drafting and editing throughout the manuscript. A hosted vision-language model and Qwen3-VL are evaluated system components. Numerical claims are grounded in recorded experiments. Unfinished work is identified explicitly. The authors are responsible for verifying the text, references, code, figures, and results before submission.
+OpenAI Codex assisted with manuscript polishing, literature searches for related work, code and implementation, and analysis of experimental data.
 {\small\bibliographystyle{ieeenat_fullname}\bibliography{references}}
 \end{document}
