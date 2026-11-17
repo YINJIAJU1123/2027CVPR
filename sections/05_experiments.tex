@@ -89,7 +89,7 @@ A single call gives the agent one image and asks it to plan every subsequent act
 Repeated calls might help without providing new evidence. Both conditions therefore share the six-call cap, numeric feedback, executed history and local control; only the image changes: the current view or the first frame repeated. Repeating the first frame recovers little. Nearly all its successes bind correctly on the first call, with no additional correct bindings later. The gain depends on fresh visual evidence, not merely additional calls.
 
 \paragraph{Agent-chosen inspections.}
-We next fix the evidence channel and vary who chooses the inspection. In the adaptive arm the agent selects the direction and duration of each inspection. In the fixed arm, inspections follow a prescribed sweep over the six skills. The agent still decides when to inspect, bind or abstain, as do the model, controllers, image input, history format and stopping held in common.
+We next fix the evidence channel and vary who chooses the inspection. In the adaptive arm, the agent selects the direction and duration of each inspection. In the fixed arm, inspections follow a prescribed sweep over the six skills. The agent still decides when to inspect, bind or abstain, as do the model, controllers, image input, history format and stopping held in common.
 
 On the ball, adaptive inspection wins most pairs and the difference is statistically resolved (Table~\ref{tab:q3-feedback}). Similar drop counts locate the gap in target discovery rather than retention. Adaptive inspection also uses fewer calls and tokens. The cube shows a similar direction and magnitude, but 40 pairs do not resolve the difference. The ball protocol was fixed before its trials; the supplement reports seed splits, binding trajectories and costs for both objects.
 
@@ -100,7 +100,7 @@ We compare with a ViserDex-style RGB-only baseline trained for the same object, 
 \input{tables/pose_summary}
 
 \paragraph{Real-hand evaluation.}
-We evaluate all four systems on a physical Revo3 hand with a RealSense D405 camera: four objects (cube, dice, ball and duck), 20 trials per object and method. Success requires stopping within $15^\circ$ of the requested presentation pose without a drop, which is the simulation criterion at a looser physical tolerance. REVEAL achieves 87.5\% success, about twenty points above the strongest baseline (Table~\ref{tab:hardware-results}), and leads on every object. Fine-tuning helps, while adding local controllers does not improve its results. Duck is hardest for every system.
+We evaluate all four systems on a physical Revo3 hand with a RealSense D405 camera: four objects (cube, dice, ball and duck), 20 trials per object and method. Success requires stopping within $15^\circ$ of the requested presentation pose without a drop, which is the simulation criterion at a looser physical tolerance. REVEAL achieves 87.5\% success, about twenty points above the strongest baseline (Table~\ref{tab:hardware-results}), and leads on every object. Fine-tuning helps, while adding local controllers does not improve its results. Duck is the hardest for every system.
 
 Fine-tuned + ctrl. is slightly below Fine-tuned and well below REVEAL. With 20 trials per cell, the small difference between the two fine-tuned systems is unresolved; the control addition does not explain the hardware margin. Q3 separately isolates inspection choice in simulation. Figure~\ref{fig:sim-real-overview} shows the objects and example instructions.
 
